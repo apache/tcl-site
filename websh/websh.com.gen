@@ -7,8 +7,12 @@
 # $Id$
 # -----------------------------------------------------------------------------
 
+proc GetFileName {filename} {
+    return [file join [file dirname [web::config script]] $filename]
+}
+
 proc includeFile {fileName} {
-    set fileName [file join [file dirname [web::config script]] $fileName]
+    set fileName [GetFileName $fileName]
     if {[file exists $fileName] } {
 	set fileId [open $fileName "r"]
 	while {[eof $fileId] == 0} {

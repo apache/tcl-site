@@ -1,5 +1,3 @@
-#! ../../bin/websh3
-
 # This example shows how persistent sessions can be stored
 # on the server.
 # It shows two HTML forms which have one input field each.
@@ -129,7 +127,7 @@ web::command processPageTwo {
 }
 
 
-# Define the default command to show page one. 
+# Define the default command to show page one.
 web::command default {
     # Initialize a fresh state.
     state::init

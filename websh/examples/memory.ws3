@@ -36,7 +36,7 @@ set _levels(6) [list 5 8]
 set _levels(7) [list 6 9]
 
 # setup file context
-web::filecontext mctx -path [file join .. .. data %s.ctx]
+web::filecontext mctx -path [file join / tmp %s.ctx]
 
 # formatLink -- helper function to generate hrefs
 proc formatLink {url {show ""}} {
@@ -65,7 +65,7 @@ proc commandList {} {
 
     putLinkHtmlified [web::cmdurl decrementLevel] "<"
     web::put " | "
-    
+
     putLinkHtmlified [web::cmdurl incrementLevel] ">"
     web::put " | "
 
@@ -160,7 +160,7 @@ proc tablecell {code} {
 # image --
 proc image {gif} {
 
-    set res "<img src=\"/examples/memory/$gif\" width=\"50\" height=\"50\" vspace=\"0\" hspace=\"0\""
+    set res "<img src=\"/websh/images/memory/$gif\" width=\"50\" height=\"50\" vspace=\"0\" hspace=\"0\""
     append res "border=\"1\" ALIGN=\"middle\">"
     return $res
 }
@@ -199,7 +199,7 @@ proc validateImg {vImg vStatus} {
 		set r1 [expr rand()]
 		if { ![info exists shuffle($r1)] } { break }
 	    }
-		
+
 	    while {1} {
 		set r2 [expr rand()]
 		if { ![info exists shuffle($r2)] } { break }
@@ -218,7 +218,7 @@ proc validateImg {vImg vStatus} {
 	}
 
 	# and set status of every image to "closed"
-	set status [string repeat "0" [expr $numImg * 2]]
+	set status [string repeat "0" [expr {$numImg * 2}]]
     }
 }
 
@@ -263,7 +263,7 @@ proc doMatch {vImg vOpens} {
 	lappend res [lindex $opens 1]
 
     } else {
-	
+
 	set res [list 0]
 	lappend res [lindex $opens 0]
 	lappend res [lindex $opens 1]
@@ -364,7 +364,7 @@ proc findMatching {vImg vStatus} {
 	set tmp [doMatch img opens]
 
 	if { [lindex $tmp 0] == 1 } {
-	    
+
 	    # yes, open permanently
 	    setStat status [lindex $tmp 1] 2
 	    setStat status [lindex $tmp 2] 2
@@ -421,7 +421,7 @@ proc showMemory {} {
 	mctx::init memory
 	set best [mctx::cget hof([web::cmdurlcfg l]) -1]
 
-	if { ($best == -1) || 
+	if { ($best == -1) ||
 	     ([web::cmdurlcfg c] < $best) } {
 	    mctx::cset hof([web::cmdurlcfg l]) [web::cmdurlcfg c]
 	    mctx::commit
@@ -435,7 +435,7 @@ proc showMemory {} {
 
     # output HTML page
     page "memory game" {
-	
+
 	# output HTML table
 	table {
 
@@ -447,9 +447,9 @@ proc showMemory {} {
 		    for {set j 0} {$j < $numY} {incr j} {
 
 			set tmpCnt [expr $i * $numY + $j]
-			
+
 			set timg [getImageFromArray img $tmpCnt]
-			
+
 			set curImgStat [getStat status $tmpCnt]
 
 			# table cells
@@ -459,7 +459,7 @@ proc showMemory {} {
 			    if {$curImgStat == 0} {
 
 				# show backside
-				# 
+				#
 				# actually, it is a link back to the CGI app,
 				# recursion of some sort.
 				#
@@ -467,7 +467,7 @@ proc showMemory {} {
 				# picture the player did select
 				putLink [web::cmdurl "" h $tmpCnt] \
 				    [image back.gif]
-				
+
 			    } elseif {$curImgStat == 2} {
 
 				# two matching found - no link any more, just the image
@@ -595,6 +595,6 @@ web::command default {
 # also, we use -hook to execute code just before web::dispatch will
 # call the web::command command. Here, we set the default level to 5
 # if it is not yet known.
-web::dispatch -track [list l c r] -hook { 
+web::dispatch -track [list l c r] -hook {
     web::cmdurlcfg -set l [web::cmdurlcfg l 5]
 }

@@ -1,3 +1,0 @@
-#! ../../bin/websh3
-
-web::put "Hello, world"

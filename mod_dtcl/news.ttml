@@ -16,6 +16,11 @@
 	    <h2>News & Status</h2>
 
 	    <p>
+	      <b>August 30, 2001:</b> mod_dtcl 0.11.2 has been
+	      released, without any major changes.
+	    </p>
+
+	    <p>
 	      <b>August 4, 2001:</b> New documentation is available on
 	      line - check out the documentation link.  In addition, a
 	      new version of mod_dtcl is out.

@@ -1,0 +1,30 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+  <head>
+    <title>Apache Tcl</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <? title ?>
+
+    <table border="0">
+	<tr>
+	  <? navbar ?>
+	  <td valign="top"> 
+	    <h2>Frequently Asked Questions</h2>
+	    <p>
+	      Frequently Asked Questions about Apache Tcl. 
+	    </p>
+
+	    <p align="center">
+	      <a href="http://www.apache.org/"><img src="apache_pb.gif"
+						  alt="Powered by Apache" border="0"
+						  width="259"
+						  height="32"></a>
+	    </p>
+	    
+	  </td>
+	</tr>
+    </table>
+  </body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<!-- $Id$ -->
+<html>
+  <head>
+    <title>Apache Tcl News</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <? title ?>
+    <table border="0">
+	<tr>
+	  <? navbar ?>
+	  <td valign="top">
+	    <h2>News and Status</h2>
+
+	    <p>
+	      <b>29 January, 2002:</b> All Apache Tcl mailing lists
+	      are now on-line at <a
+	      href="http://www.apachelabs.org">www.apachelabs.org</a>.
+	      Thanks to Justin Erenkrantz!
+	    </p>
+
+	    <p><b>11 October, 2001</b>
+	      There are a fair amount of visitors from .jp addresses.
+	      If any of you would like to work on a translation of the
+	      site in Japanese, the help would be welcome.
+	    </p>
+
+	    <p><b>13 August, 2001</b>
+	      New Why Tcl? Page on line.
+	    </p>
+	    <p><b>13 August, 2001</b>
+	      ApacheCon Europe has been cancelled, unfortunately, due
+	      to financial difficulties on the part of the promoter.
+	    </p>
+	    <p><b>10 July, 2001</b>
+	      David Welton will be appearing at <a
+	      href="http://www.apachecon.com">ApacheCon Europe</a> in
+	      Dublin, in October.  Hope to see you there!
+	    </p>
+
+	    <p><b>2 June, 2001</b>
+	      Some updates to the look and feel of the site - more to
+	      come, hopefully. Suggestions welcome!
+	    </p>
+
+	    <p><b>17 April, 2001</b>
+	      tcl.apache.org was down over the weekend as covalent
+	      moved to their new office.  Many thanks to them for
+	      hosting the site!
+	    </p>
+
+	    <p>
+	      <b>10 March, 2001</b> <a href="http://tcl.apache.org/neowebscript/">NeoWebScript</a>
+	      joins the Apache Tcl project.
+	    </p>
+
+	    <p><b>12 February, 2001</b> <a
+	    href="apache-tcl-press-release.txt">Press release</a>
+	    discussing Apache Tcl sent out.
+	    </p>
+
+	    <p>
+	      <b>21 December, 2000</b> tcl.apache.org was unavailable
+	      for a few days due to problems with Covalent's ISP.
+	      They deserve thanks for the resources this site runs on:-)
+	    </p>
+
+	    <p>
+	      <b>07 December, 2000</b> tcl.apache.org is now linked
+	      from <a href="http://www.apache.org">www.apache.org</a>.
+	    </p>
+	    <p>
+	      <b>24 July, 2000:</b> Apache Software Foundation passes
+	      a motion to create Apache Tcl Project.  <a href="http://www.apache.org/foundation/records/minutes/2000/board_minutes_2000_07_24.txt.NY">Link</a>
+	    </p>
+	  </td>
+	</tr>
+    </table>
+    <? powered ?>
+  </body>
+</html>

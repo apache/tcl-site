@@ -1,0 +1,37 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+  <head>
+    <title>Contributing to Apache Tcl</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <? title ?>
+
+    <table border="0">
+	<tr>
+	  <? navbar ?>
+	  <td valign="top">
+	    <h2>Contributing to Apache Tcl</h2>
+	    <p>
+	      The Apache Tcl project can always use dedicated
+	      volunteers to help out with the individual projects.  If
+	      you would like to contribute your project to Apache Tcl,
+	      please see the contacts page.
+	    </p>
+	    <p>
+	      <b>Apache Tcl needs a logo</b>!  If you feel graphically
+	      inclined, please see the contacts page and send in your
+	      work.  We're looking for something that combines the Tcl
+	      and Apache feathers.
+	    </p>
+	    <p>
+	      If you are interested in working on or improving this
+	      website, the code is available from Apache's anonymous
+	      CVS.  You will need mod_dtcl.
+	    </p>
+	  </td>
+	</tr>
+    </table>
+    <? powered ?>
+  </body>
+</html>

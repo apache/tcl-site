@@ -355,7 +355,7 @@ proc putHeader {{mainSectionNr 0} {quickNaviNr 1}} {
     web::putx {
         <map name="grafik_navi">
         <area href="mailto:websh-user@tcl.apache.org" coords="94,2,154,26" shape="rect">
-        <area href="" coords="4,2,64,26" shape="rect">
+        <area href="/websh/" coords="4,2,64,26" shape="rect">
         <area href="contact.ws3" coords="184,2,244,26" shape="rect">
         </map>
         <table border="0" cellpadding="0" cellspacing="0" width="100%" height="76">

@@ -39,7 +39,7 @@ colleagues, it has come to be much more. Tcl is used today in a wide
 variety of applications including web scripting, test automation,
 network/system management, EDA and CAD, and in many other fields.
 
-For more information about Tcl, see http://dev.scriptics.com.
+For more information about Tcl, see http://tcl.activestate.com.
 
 About the Apache Software Foundation
 

@@ -21,6 +21,24 @@ proc title { {txt "Apache Tcl Project"} } {
     }
 }
 
+proc rivettitle { {txt "Apache Rivet"} } {
+    puts {
+	<table align="center" width="100%" border="0">
+	<tr>
+	<td align="left"><img src="Rivetlogo_small.png"></td>
+	<td align="center" valign="top" width="100%">
+	<h1 style="padding: .3em;">
+    }
+    puts "$txt"
+    puts {
+	</h1>
+	</td>
+	</tr>
+	</table>
+	<hr>
+    }
+}
+
 proc powered { } {
     puts {
 	<table align="center" width="100%">

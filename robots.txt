@@ -1,2 +1,2 @@
 User-agent: *
-Disallow: /websh/examples/memory.ws3
+Disallow: /websh/examples/

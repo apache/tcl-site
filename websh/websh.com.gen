@@ -8,6 +8,7 @@
 # -----------------------------------------------------------------------------
 
 proc includeFile {fileName} {
+    set fileName [file join [file dirname [web::config script]] $fileName]
     if {[file exists $fileName] } {
 	set fileId [open $fileName "r"]
 	while {[eof $fileId] == 0} {

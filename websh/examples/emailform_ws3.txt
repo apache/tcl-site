@@ -180,7 +180,7 @@ proc showConfirmationPage {} {
 	    </dl>
 	    You should recieve a confirmation by e-mail shortly.
 	    <br>
-	    {web::put <a href=\"[web::cmdurl default]\">Order more</a>}
+	    {web::put "<a href=\"[web::cmdurl default]\">Order more</a>"}
 	    cool stuff.
 	}
     }

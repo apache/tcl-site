@@ -9,7 +9,7 @@
 
     <table>
 	<tr>
-	  <? include [file join .. navbar.html] ?>
+	  <? include [file join .. newnav.html] ?>
 
 	  <td valign="top">
 	    <p>
@@ -33,6 +33,13 @@
 	      <li>mod_dtcl Presentation: <a href="dtcl/">(live)</a> <a
 	      href="dtcl.tgz">(tarball)</a><br>
 		mod_dtcl presentation.
+	      </li>
+	      <li>
+		Apache Tcl Presentation: <a
+		  href="apache-tcl/">(live)</a><br>
+
+		The present and future of Apache Tcl, and why Tcl is
+		such a logical fit for doing web content.
 	      </li>
 	    </ul>
 	  </td>

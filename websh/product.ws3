@@ -89,9 +89,7 @@ web::putx {
 	  pronounced &quot;tickle&quot;). Tcl is a fast, comprehensive
 	  scripting language as well as a library.  The Tcl
 	  development started 1987 at the University of California at
-	  Berkeley with John K.Ousterhout. Today, Ousterhout is CEO of
-	  "Scriptics Corporation", which continues to develop Tcl, and
-	  markets value added products for Tcl.<br><br>
+    Berkeley with John K.Ousterhout. Development continues through a large group of volunteers coordinated by the <a href="http://www.tcl.tk/community/coreteam/">Tcl Core Team</a>, who also perform the majority of the work.<br><br>
 
 	  The decision to build Websh on top of Tcl has several
 	  advantages which can be summarized as

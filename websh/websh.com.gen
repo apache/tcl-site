@@ -575,7 +575,7 @@ proc finishPage {{where 0}} {
 	    web::put {&nbsp;<a href="copyright.ws3">copyright statement</a>&nbsp;|}
 	}
         <br>
-        <span class="klein"><b>&copy; Websh - an <a href="http://www.apache.org">Apache Tcl</a> project - part of the <a href="http://www.apache.org/">Apache Software Foundation</a></b></span></td>
+        <span class="klein"><b>&copy; Websh - an <a href="http://tcl.apache.org">Apache Tcl</a> project - part of the <a href="http://www.apache.org/">Apache Software Foundation</a></b></span></td>
         </tr>
         </table>
         </body>

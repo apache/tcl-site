@@ -1,7 +1,5 @@
 ## $Id$
 
-web::response -sendheader 0
-
 startHtmlPage
 startHtmlBody
 putHeader 5
@@ -14,8 +12,10 @@ web::putx {
     {navbar_down 0}
     <td width="610">
     <img height="160" width="270" src="images/ausschnitt_download.gif" align="left" alt="graphics">
-    We have source and binaries available for download:
 
+    {
+	web::put "<a href=\"[glob download/*gz]\">[file basename [glob download/*gz]</a>"
+    }
 
 
     <p>

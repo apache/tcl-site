@@ -1,7 +1,5 @@
 ## $Id$
 
-web::response -sendheader 0
-
 startHtmlPage
 startHtmlBody
 putHeader 0

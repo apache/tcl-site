@@ -2,7 +2,7 @@ body {
     font-family: Arial, sans-serif;
     font-style: normal;
     color: #000000;
-    background-color: #333333;
+    background-color: #ddddff;
 }
 
 A:link { color: #cc3300 }
@@ -33,27 +33,16 @@ b {
 
 td {
     font-family: Arial, sans-serif;
-    color: #000000;
     padding: 0.25em;
+    background-color: #ddddff;
 }
 
 td.nav {
-    background-color: #003399;
-}
-
-td.main {
-    background-color: #ffffff;
+         font-weight: bold;
 }
 
 code {
-     color: #006600;
-}
-
-div.box {
- font-size: smaller;
- border-width: medium;
- padding: 0.25em;
- background-color: #dddddd;
+       color: #006600;
 }
 
 li {

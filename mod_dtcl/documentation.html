@@ -1,4 +1,4 @@
-<!-- $Id -->
+<!-- $Id$ -->
       <h2>mod_dtcl Documentation</h2>
       
       <h3>1) Installation</h3>
@@ -189,7 +189,7 @@
 
       </ul>
 
-      <h3>3) mod_dtcl specific Tcl commands</h3>
+      <h3>3) mod_dtcl specific Tcl commands and variables</h3>
 
       <ul>
 	<li>
@@ -237,8 +237,8 @@
 	  URI. <b>Must</b> be done in the first block of TCL code.
 	</li>
 	<li>
-	  <code><b>headers setcookie <i>cookie-name
-		cookie-value ?-expires date/time? ?-domain domain?
+	  <code><b>headers setcookie <i>-name cookie-name
+		-value cookie-value ?-expires date/time? ?-domain domain?
 		?-path path? ?-secure?</i></b></code><br>
 
 	  This command is for setting cookies.  Cookie-name is
@@ -271,6 +271,21 @@
 	  HTML.  Currently, only the PID and size of the object
 	  cache are reported.
 	</li>
+
+	<li>
+	  <code><b>$::request::UPLOAD(filename)</b></code><br>
+	  The filename of the uploaded file.
+	  <code><b>$::request::UPLOAD(name)</b></code><br>
+	  The form variable name of the upload.
+	  <code><b>$::request::UPLOAD(size)</b></code><br>
+	  The size of the uploaded file.
+	  <code><b>$::request::UPLOAD(type)</b></code><br>
+	  The content type of the file upload. <i>Not always available!</i>
+	  <code><b>$::request::UPLOAD(channelname)</b></code><br>
+	  The name of a Tcl channel which may be used to manipulate
+	  the uploaded file.
+	</li>
+
       </ul>
 
       <h3>4) Internals</h3>
@@ -305,8 +320,8 @@
 	  share variables, and most importantly, loaded modules,
 	  from a common parent (such as one of the InitScripts).
 	  When a file is loaded, it is transformed into a Tcl
-	  script by putting everything outside of &lt;+ and
-	  +&gt; into large hputs statements.  When the script is
+	  script by putting everything outside of &lt;? and
+	  ?&gt; into large hputs statements.  When the script is
 	  complete, it is then inserted into the cache, for
 	  future use.  In fact, if the file modification
 	  information doesn't change, mod_dtcl will execute the
@@ -318,8 +333,27 @@
 	  images, or loading binary data with 'include'.
 	</li>
       </ul>
-      
-      <h3>5) Getting Help</h3>
+
+      <h3>5) Upgrading From Older (< 0.9.3) Versions</h3>
+      <ul>
+	<li><b>New tags</b><br> As of version 0.9.4, mod_dtcl uses
+	  &lt;? and ?&gt; instead of &lt;+ and +&gt; to delimit
+	  sections of Tcl code.  By default, dtcl is still compiled
+	  with code to parse the &lt;?  ?&gt; tags, but it will run
+	  faster if <code>USE_OLD_TAGS</code> is set to 0 in
+	  <code>mod_dtcl.h</code>.  You can automatically change your
+	  .ttml files to the new format by using the
+	  <code>newtags.sh</code> script in the contrib/ directory.
+	  Run it at the top level of your DocumentRoot.
+	</li>
+	<li><b>headers setcookie</b><br>
+	  The <code>headers setcookie</code> command now uses the
+	  <code>-name</code> and <code>-value</code> flags for those
+	  arguments, whereas this was not necessary in the past.
+	</li>
+      </ul>
+
+      <h3>6) Getting Help</h3>
       <ul>
 	<li><b>Mailing list</b><br>
 	  <p>
@@ -339,3 +373,12 @@
 	  </p>
 	</li>
       </ul>
+
+      
+      <!-- The load dtd is so that I can work on the documentation
+      with emacs' SGML in all its glory - davidw  -->
+
+      <!-- Local Variables: -->
+      <!-- eval: (sgml-load-dtd "~/html.ced") -->
+      <!-- End: -->
+      

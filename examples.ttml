@@ -22,14 +22,18 @@ These are some examples, rather limited ones, of what can be done with mod_dtcl.
 <tr><td><hr><b>Hello world</b></td></tr>
 <tr><td bgcolor=gray><pre>
 
-&lt;+
-setcookie "foo" "bar" # we have to put this before any 'hputs' statements
+&lt;?
+headers setcookie "foo" "bar" # we have to put this before any 'hputs' statements
+
+# once buffering is switched off, it is no longer possible to
+# maninuplate headers
+buffered off
 
 hputs "Hello world"
-+&gt;
+?&gt;
 
 </pre>
-</td></tr>
+	  </td></tr>
 
 <tr><td>
 Produces:
@@ -56,11 +60,11 @@ hputs "hello world"
 
 <tr><td bgcolor=gray><pre>
 
-&lt;+ if { 1 } { +&gt;
+&lt;? if { 1 } { ?&gt;
 
-&lt;h2> True &lt;/h2>
+&lt;h2&gt; True &lt;/h2&gt;
 
-&lt;+ }  +&gt;
+&lt;? }  ?&gt;
 
 </td></tr></pre>
 
@@ -80,16 +84,16 @@ Produces:
 
 <tr><td bgcolor=gray><pre>
 
-&lt;+ 
+&lt;? 
 set x 0 
 while { $x &lt; 5 } { 
  hputs "\$x = $x&lt;br>"
  incr x
-+&gt;
+?&gt;
 
 LOOP&lt;br>
 
-&lt;+ }  +&gt;
+&lt;? }  ?&gt;
 
 </pre>
 </td></tr>
@@ -109,7 +113,7 @@ LOOP<BR>
 </td></tr>
 <tr><td bgcolor=gray><pre>
 
-&lt;+ 
+&lt;? 
  hgetvars
 if { [ array exists VARS ] } {
     hputs "&lt; ul>"
@@ -137,7 +141,7 @@ if { [ array exists COOKIES ] } {
     hputs "&lt;/ul>"
 }
 
-+&gt;
+?&gt;
 
 </pre>
 </td></tr>
@@ -177,51 +181,49 @@ if { [ array exists COOKIES ] } {
 </td></tr>
 <tr><td bgcolor=gray><pre>
 
-&lt;+
-
-set listone { 1 2 3 4 5 6 7 8 }
-set listtwo { 1 2 3 4 5 6 7 8 }
-
+&lt;?
+set i 1
 hputs "&lt;table&gt;\n"
 
-foreach { a } $listone  { 
+while { $i &lt;= 8 } {
     hputs "&lt;tr&gt;\n"
-    foreach { b } $listtwo {
-	set num [ expr $a * $b * 4 - 1 ]
-	hputs [ format "&lt;td bgcolor=%2x%2x%2x &gt;  $num $num $num &lt;/td&gt;\n" $num $num $num ]
+    for {set j 1} {$j &lt;= 8} {incr j} {
+	set num [ expr $i * $j * 4 - 1]
+	hputs [ format "&lt;td bgcolor=%2x%2x%2x &gt; $num $num $num &lt;/td&gt;\n" $num $num $num ]
     }
+    incr i
     hputs "&lt;/tr&gt;\n"
 }
+
 hputs "&lt;/table&gt;\n"
-+&gt;
-
-
+?&gt;
 </pre>
 </td></tr>
 
 <tr><td>Produces:<p>
 <?
-
-set listone { 1 2 3 4 5 6 7 8 }
-set listtwo { 1 2 3 4 5 6 7 8 }
-
+set i 1
 hputs "<table>\n"
 
-foreach { a } $listone  { 
+while { $i <= 8 } {
     hputs "<tr>\n"
-    foreach { b } $listtwo {
-	set num [ expr $a * $b * 4 - 1]
+    for {set j 1} {$j <= 8} {incr j} {
+	set num [ expr {$i * $j * 4 - 1} ]
 	hputs [ format "<td bgcolor=%2x%2x%2x > $num $num $num </td>\n" $num $num $num ]
     }
+    incr i
     hputs "</tr>\n"
 }
+
 hputs "</table>\n"
 ?>
 </td></tr>
 
-<tr><td><hr>
-<b>In addition</b><br>
-There are many, many other things you can do with mod_dtcl.  You can, if everything is compiled right, load tcl modules, like libpgtcl.so, so that you can interact with a database!
+<tr><td><hr> <b>In addition</b><br> 
+
+There are many, many other things you can do with mod_dtcl.  You can,
+if everything is compiled right, load tcl modules, like libpgtcl.so
+(the Postgresql interface), so that you can interact with a database!
 
 <p>
 
@@ -233,7 +235,7 @@ There are many, many other things you can do with mod_dtcl.  You can, if everyth
 
 
 <p>
-<a href="index.html">Return to the mod_dtcl homepage</a>
+<a href="index.ttml">Return to the mod_dtcl homepage</a>
 </p>
 
 </body>

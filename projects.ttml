@@ -32,6 +32,9 @@
 	      It uses safe interpreters for security, supports db files,
 	      can generate graphics on-the-fly, and other stuff.
 	    </p>
+            <p>
+              <a href="mod_tcl/mod_tcl.html">mod_tcl</a>, With mod_tcl it is possible to write Apache modules entirely in TCL . In addition, the persistent interpreter embedded in the server avoids the overhead of starting an external interpreter and the penalty of TCL start-up time.
+            </p>
 
 	    <p align="center">
 	      <a href="http://www.apache.org/"><img src="apache_pb.gif"

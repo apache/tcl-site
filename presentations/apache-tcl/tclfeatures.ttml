@@ -34,6 +34,12 @@
 	  <li>Tcl runs on UNIX, Windows and Mac OS. Tcl is distributed under a BSD license.</li>
 	</ul>
       </li>
+      <li>Tk toolkit
+	<ul>
+	  <li>Seperate from Tcl, althought it was also developed by
+	  Ousterhout, and very well integrated with Tcl.</li>
+	</ul>
+      </li>
     </ul>
   <?footer?>
 </body>

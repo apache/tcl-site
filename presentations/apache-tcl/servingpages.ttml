@@ -10,6 +10,8 @@
     <ul>
       <li>Reentrant parser
 	<ul>
+	  <li>Transforms HTML chunks into <b><tt>puts</tt></b>
+	  statements, and leaves Tcl code alone.</li>
 	  <li>Can be called from scripts to load other pages.</li>
 	</ul>
       </li>
@@ -20,6 +22,10 @@
 	</ul>
       </li>
     </ul>
+
+    <p align="center">
+      <img src="requestflow.png" alt="">
+    </p>
 
     <?footer?>
   </body>

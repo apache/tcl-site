@@ -8,7 +8,7 @@
   <body>
     <? prevnext "<h1>Conclusion</h1>" ?>
 
-    <p>Thanks for Listening</p>
+    <p>Thanks for listening!</p>
 
     <p>More information is available here:
     </p>
@@ -16,9 +16,9 @@
       <li><a href="http://tcl.apache.org">http://tcl.apache.org</a></li>
       <li><a href="http://www.tcl.tk">http://www.tcl.tk</a></li>
     </ul>
-    <p>I can be reached at <a href="mailto:davidw@dedasys.com">davidw@dedasys.com</a></p>
-
-    <p>Thanks for listening!</p>
+    <p>I can be reached at <a
+	href="mailto:davidw@dedasys.com">davidw@dedasys.com</a> -
+	please feel free to write.</p>
 
   <?footer?>
 </body>

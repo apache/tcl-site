@@ -8,12 +8,13 @@
   <body>
     <? prevnext "<h1>Tcl Channels</h1>" ?>
 
-    This feature is especially interesting.  Tcl channels let us use
-    regular Tcl 'stdout' channel from scripts, instead of using a
-    special command!  Channels support Close, Input, Output, Seek, Set
-    and Get Option, GetHandle, Block, Flush, and EventHandler
-    functions.
-
+    <p>
+      This feature is especially interesting.  Tcl channels let us use
+      regular Tcl 'stdout' channel from scripts, instead of using a
+      special command!  Channels support Close, Input, Output, Seek,
+      Set and Get Option, GetHandle, Block, Flush, and EventHandler
+      functions.
+    </p>
     <?footer?>
   </body>
 </html>

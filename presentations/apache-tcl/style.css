@@ -2,26 +2,34 @@ body {
     font-family: Arial, sans-serif;
     font-style: normal;
     font-size: 200%;
-#    color: #ffffff;
-#    background-color: #000000;
-#    background: url(logoLarge.png)
+    #    color: #ffffff;
+    #    background-color: #000000;
+    #    background: url(logo.png)
 }
 
 body.splash {
     font-size: 300%;
+    background: url(logo.png);
 }
 
 
-A:link { color: #2277ee; }
-A:visited { color : #cc3300; }
-A:hover { color : #000000 ; background-color : #aaaaaa }
+A:link {
+    color: #2277ee;
+}
+A:visited {
+    color : #cc3300;
+}
+A:hover {
+    color : #000000 ;
+    background-color : #aaaaaa
+}
 
 LI {
-   margin-bottom: 0.5em;
+    margin-bottom: 0.5em;
 }
 
-pre { 
-      font-weight: bold;
+pre {
+    font-weight: bold;
 }
 
 #UL LI { list-style-image: url(bullet1.png) }
@@ -58,7 +66,7 @@ th {
 }
 
 code {
-     color: #00aa00;
+    color: #00aa00;
 }
 
 div.box {
@@ -67,4 +75,3 @@ div.box {
     padding: 0.25em;
     background-color: #dddddd;
 }
-

@@ -20,13 +20,13 @@
 &lt;table style="font-size:30%"&gt;
   &lt;tbody&gt;
     &lt;tr&gt;
-      &lt;? top "Header ?&gt;
+      &lt;? top "Header" ?&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td style="width:30% ;&gt;
+      &lt;td style="width:30%"&gt;
 	&lt;? navbar ?&gt;
       &lt;/td&gt;
-      &lt;td style="background-color:#aaaaaa"&gt;
+      &lt;td&gt;
 	&lt;? login ?&gt;
       &lt;/td&gt;
     &lt;/tr&gt;

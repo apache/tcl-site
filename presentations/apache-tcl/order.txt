@@ -29,5 +29,6 @@ servingpages
 tclchannels
 outputproc
 apachec
+integration2
 conclusion
 end

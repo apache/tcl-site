@@ -63,10 +63,9 @@
 	      </li>
 
 	    </ul>
-	    <? powered ?>
-	    
 	  </td>
 	</tr>
     </table>
+    <? powered ?>
   </body>
 </html>

@@ -29,10 +29,9 @@
 	      website, the code is available from Apache's anonymous
 	      CVS.  You will need mod_dtcl.
 	    </p>
-	    <? powered ?>
-	    
 	  </td>
 	</tr>
     </table>
+    <? powered ?>
   </body>
 </html>

@@ -37,10 +37,9 @@
 	      the pages associated with those projects.
 	    </p>
 
-	    <? powered ?>
-	    
 	  </td>
 	</tr>
     </table>
+    <? powered ?>
   </body>
 </html>

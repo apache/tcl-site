@@ -27,17 +27,17 @@
 	    </p>
 	    <p>
 	      <a href="http://www.tcl-tk.net/">Tcl</a> is a very
-	      common scripting language with many years of development
-	      invested in it. Because Tcl is such a widely used
-	      language, there is a large amount of documentation for
-	      it, both on the net and books. There are also many
-	      external Tcl modules that you can load into mod_dtcl, to
-	      create images, access databases, and so forth.
+	      widely used and available scripting language with many
+	      years of development invested in it. Because Tcl is such
+	      a well known language, there is a large amount of
+	      documentation for it, both on the net and books. There
+	      are also many external Tcl modules that you can load
+	      into mod_dtcl, to create images, access databases, and
+	      so forth.
 	    </p>
-
-	    <? powered ?>
 	  </td>
 	</tr>
     </table>
+    <? powered ?>
   </body>
 </html>

@@ -65,9 +65,9 @@
 	      Apache Tcl.
 	    </p>
 
-	    <? powered ?>
 	  </td>
 	</tr>
     </table>
+    <? powered ?>
   </body>
 </html>

@@ -17,11 +17,10 @@
 	      please see the respective page for detailed
 	      information.  To contact the Apache Tcl group, send mail
 	      to <a href="mailto:pmc@tcl.apache.org">pmc@tcl.apache.org</a>.
-	    </p>
-	    <? powered ?>
-	    
+	    </p>	    
 	  </td>
 	</tr>
     </table>
+    <? powered ?>
   </body>
 </html>

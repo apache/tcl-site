@@ -37,10 +37,9 @@
 	    <p>
 	      Hosting services and equipment provided by <b><a href="http://www.covalent.net">Covalent Technologies</a></b>.
 	    </p>
-
-	    <? powered ?>
 	  </td>
 	</tr>
     </table>
+    <? powered ?>
   </body>
 </html>

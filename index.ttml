@@ -24,9 +24,9 @@
 	    </p>
 	    <p>New to Tcl?  Curious about it's advantages?  Have a
 	      look at <a href="why.ttml">Why Tcl?</a></p>
-	    <? powered ?>
 	  </td>
 	</tr>
     </table>
+    <? powered ?>
   </body>
 </html>

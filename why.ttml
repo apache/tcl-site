@@ -59,9 +59,9 @@
 		range of common tasks - image manipulation, email,
 		XML, SOAP, HTTP, socket programming, etc...		
 	    </p>
-	    <? powered ?>
 	  </td>
 	</tr>
     </table>
+    <? powered ?>	      
   </body>
 </html>

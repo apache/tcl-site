@@ -65,10 +65,9 @@ cd ..
 		-d:pserver:anoncvs@cvs.apache.org:/home/cvspublic
 		checkout tcl-moddtcl</code><br>
 	    </p>
-
-	    <? powered ?>
 	  </td>
 	</tr>
     </table>
+    <? powered ?>
   </body>
 </html>

@@ -30,10 +30,9 @@
 	      href="http://archive.covalent.net">http://archive.covalent.net</a>,
 	      at the bottom of the page.
 	    </p>
-
-	    <? powered ?>
 	  </td>
 	</tr>
     </table>
+    <? powered ?>
   </body>
 </html>

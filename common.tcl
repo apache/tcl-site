@@ -7,9 +7,6 @@ proc navbar { } {
 proc title { {txt "Apache Tcl Project"} } {
     puts {
 <p style="margin: 0; border: 0;" align="center">
-
-<a href="http://ApacheCon.Com/2004/US/"><img src="http://ApacheCon.Com/2004/US/logos/logo_only.gif" width="170" height="100" alt="ApacheCon!" title="Come to ApacheCon!"  border="0" align="left"/></a>
-
 <img style="margin-bottom: -2.5em; " src="/logos/medium_logo.gif" alt="Apache Tcl"></p>}
 }
 

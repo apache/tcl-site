@@ -10,25 +10,25 @@
     <table>
 	<tr>
 	  <? include [file join .. navbar.html] ?>
-	  
-	  <td valign="top"> 
+
+	  <td valign="top">
 	    <p>
-	      Tcl presentations on line.  These presentations (for now
-	      just the Tcl one) are made with HTML, style sheets, and
-	      mod_dtcl.  This means they are very portable (although a
-	      modern browser that handles style sheets is necessary),
-	      and you could even use them from a networked computer!
+	      Tcl presentations on line.  These presentations are made
+	      with HTML, style sheets, and mod_dtcl.  This means they
+	      are very portable (although a modern browser that
+	      handles style sheets is necessary), and you can use them
+	      from a networked computer, with just a browser!
 	    </p>
 	    <p>
 	      The presentations are released under the Apache Software
 	      License, which means you need to give credit if you use
 	      these - but please feel free to take them, modify,
-	      redistribute, or otherwise do as you wish!
+	      redistribute, or otherwise do as you wish.
 	    </p>
 	    <ul>
 	      <li>Tcl Presentation: <a href="tcl/">(live)</a> <a
 	      href="tcl.tgz">(tarball)</a><br>
-		Presentation on the Tcl programming language and the Tk toolkit.		
+		Presentation on the Tcl programming language and the Tk toolkit.
 	      </li>
 	      <li>mod_dtcl Presentation: <a href="dtcl/">(live)</a> <a
 	      href="dtcl.tgz">(tarball)</a><br>

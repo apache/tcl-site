@@ -12,14 +12,15 @@
 	  <? include navbar.html ?>
 	  <td valign="top"> 
 
-	    <h2 align="center">Why Tcl?</h2>
-	      <p><b>Flexible</b>: Tcl lets you program how you need.
-		For example, you can program as you need, either
-		quick-and-dirty, mixing up HTML and Tcl script to create
-		dynamic web pages fast, or should you require more order
-		for a larger, complex site, Tcl works very well with the
-		'three tier' model currently in vogue and used by many
-		java systems.
+	    <h2 align="center">Why Tcl?</h2> 
+
+	    <p><b>Flexible</b>: Tcl lets you program in the way you
+	      want.  For example, you can program in a style that fits
+	      your needs, either quick-and-dirty, mixing up HTML and
+	      Tcl script to create dynamic web pages fast, or, should
+	      you require more organization, for a larger, complex site, Tcl
+	      works very well with the 'three tier' model currently in
+	      vogue and used by many java systems.
 	      </p>
 	      <p><b>Multi-Purpose</b>: Tcl can be used for the web,
 		but also for a variety of other tasks.  It was designed
@@ -42,12 +43,15 @@
 		major improvements in the past years.  System resources
 		are also impacted lightly - Tcl takes up relatively
 		small amounts of disk and memory space.</p>
-	      <p><b>Easy</b>: A simple syntax, and resources, both in
-		print and on the web, make Tcl an easy language to
-		learn, both for the experienced software professional as
-		well as students, web authors, hobbyists and others, who
-		find that with a little bit of learning, they can
-		accomplish a great deal.</p>
+
+	      <p><b>Easy</b>: A simple syntax, and lots of
+		documentation, both in print and on the web, make Tcl
+		an easy language to learn, both for the experienced
+		software professional as well as for students, web
+		authors, hobbyists and others, who find that with a
+		little bit of learning, they can accomplish a great
+		deal.</p>
+
 	    <p><b>Existing Code</b>: There are thousands upon
 		thousands of lines of existing code to be used, either
 		as examples to be learned from, to be included

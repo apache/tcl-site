@@ -37,6 +37,12 @@ set _levels(7) [list 6 9]
 
 # setup file context
 web::filecontext mctx -path [file join / tmp %s.ctx]
+# hack ot make the filecontext work
+if {![file exists [file join / tmp memory.ctx]]} {
+    catch {
+	close [open [file join / tmp memory.ctx] w]
+    }
+}
 
 # formatLink -- helper function to generate hrefs
 proc formatLink {url {show ""}} {
@@ -122,7 +128,7 @@ proc page {title code} {
     # footer and end-of-HTML
     web::put "
 	<hr><font size=\"-2\"><tt>
-	[web::copyright -version]</tt></font><br>
+	[web::config version]</tt></font><br>
 	</BODY>
         </HTML>
     "

@@ -16,6 +16,11 @@
 	    <h2>News & Status</h2>
 
 	    <p>
+	      <b>October 10, 2001:</b> mod_dtcl 0.11.3 release -
+	      updates are mainly relevant to internationalization.
+	    </p>
+
+	    <p>
 	      <b>August 30, 2001:</b> mod_dtcl 0.11.2 has been
 	      released, without any major changes.
 	    </p>

@@ -537,7 +537,7 @@ same method of the application).
 
 This section lists the main commands of Websh. For a complete
 overview, you may want to look at the
-<a href="quickref/">Quick Reference</a>.
+<a href="quickref.ws3">Quick Reference</a>.
 
 <br><br>
 <a name="474"><a href="#toc"><h2>6.1 request and url management</h2></a>
@@ -709,6 +709,7 @@ All rights reserved.<br>
 
 You may always find an up-to-date version of the Websh white paper
 at <a href="http://tcl.apache.org/websh/">http://tcl.apache.org/websh/</a>.}}
+<p>&nbsp;
     </td>
   </tr>
   </table>

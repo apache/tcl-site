@@ -82,6 +82,7 @@ Download of source is available through anonymous cvs at apache.org.  .tar.gz sn
 <BR>
 <B>Snapshots</B><BR>
 <BR>
+<A HREF="mod_tcl-1.0d7-2001042700.tar.gz">1.0d7</A><BR>
 <A HREF="mod_tcl-1.0d7-2001032300.tar.gz">1.0d7-2001032300</A>
 
 <HR NOSHADE>
@@ -103,8 +104,8 @@ It is possible to compile mod_tcl as a shared object by passing arguments to the
 In summary the follow procedure was described above.
 <PRE>
 % tar -zxf mod_tcl.tar.gz
-% mv mod_tcl httpd-2_0_14/modules/.
-% cd httpd-2_0_14
+% mv mod_tcl httpd-2_0_16/modules/.
+% cd httpd-2_0_16
 % autoconf
 % autoheader
 % ./configure
@@ -606,55 +607,8 @@ output
 <HR NOSHADE>
 <A NAME="road_map">
 <B>Road Map</B><BR>
+Please see the NEWS file distributed with the archive for details.<BR>
 <PRE>
-Changes in 1.0d7
---------------------------------------------------------------------------------
-- Fixed &lt;Tcl&gt;...&lt;/Tcl&gt;, these should be placed outside of &lt;Directory&gt;/&lt;Location&gt;
-directives.  Everything in &lt;Tcl&gt;...&lt;/Tcl&gt; is added to a global variable and then
-made local to the namespace of the file, this is due to several problems with
-handling configuration, mainly that exection would either result in a "this
-directive doesn't belong here" or a problem with the configuration not being
-built yet as in an EXEC_ON_READ.
-- Fixed a bug in ap_create_environment.
-
-Changes in 1.0d6
---------------------------------------------------------------------------------
-
-- ap_send_http_header no longer does anything so the command just returns TCL_OK
-which essentially makes it null, I'll probably get rid of it later.
-- made changes in league with Apache 2.0.14.  Handlers were moved around etc.
-
-Changes in 1.0d5
---------------------------------------------------------------------------------
-
-- Configuration checks for mmap() and will use malloc(),read(),free() in that
-order to replace mmap() procedures.
-- Constants and commands are now placed in the ::apache namespace, so you must
-import that namespace into your scripts.
-- A test script is included with the distribution for testing and example
-purposes.  test_script.tm
-
-TODO
---------------------------------------------------------------------------------
-
-1. Add configuration documentation to README, add documentation regarding `r'
-and `r_set' commands.
-DONE 2. Possible addition of option to build shared object (.so) library.  (It
-appears Apache 2.0 has a configuration directive for this --enable-shared, but
-it appears to be not implemented yet...).
-3. A couple of hooks are broken (Apache bug?) the DECLINE causes the server to
-exit on signal 11 (SEGV).
-4. Add non-standard hooks?
-5. Add filters?
-6. libapreq (doesn't appear to be ported to 2.0 completley yet...)
-7. Decide what goals need to be acheived for release 1.0
-8. Make necessary changes along with Apache 2.0 revisions.
-9. Look into TCL threads.  A preliminary investigation to enabling TCL threads
-caused SEGVs randomly...?
-
-Map
---------------------------------------------------------------------------------
-
 - 1.0d0 -| Inital port from mod_tcl* 0.26, single file split into 4
          | (Apache 2.0a9)
          |
@@ -672,7 +626,7 @@ Map
 - 1.0d6 -| ap_send_http_header deprecated, updated to be peachy with
          | Apache 2.0.14
          |
-% 1.0d7 %| we're still here, just a pre-release
+% 1.0d7 %| alive and well
          |
 - 1.0d8 -|
          |
@@ -693,7 +647,7 @@ Currently bug reports can be mailed to <A HREF="mailto:general@tcl.apache.org">g
 <TABLE BORDER=0 WIDTH=100%>
 	<TR>
 		<TD ALIGN=RIGHT>
-			<FONT SIZE=-1>FEh</FONT>
+			<FONT SIZE=-1>Updated: Michael Link, 20010430</FONT>
 		</TD>
 	</TR>
 </TABLE>

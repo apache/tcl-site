@@ -276,7 +276,7 @@ proc getImageFromArray {vImg pos} {
 
     upvar $vImg img
 
-    return [string range $img [expr $pos*2] [expr $pos*2 + 1]]
+    return [string range $img [expr {$pos * 2}] [expr {$pos * 2 + 1}]]
 }
 
 # getStat -- helper to pick status for a given picture
@@ -295,7 +295,7 @@ proc setStat {vStatus pos {new 0}} {
     set res [string range $status 0 [expr $pos - 1]]
     set res $res$new
     set res $res[string range \
-		     $status [expr $pos + 1] [string length $status]]
+		     $status [expr {$pos + 1}] [string length $status]]
     set status $res
 }
 
@@ -446,7 +446,7 @@ proc showMemory {} {
 
 		    for {set j 0} {$j < $numY} {incr j} {
 
-			set tmpCnt [expr $i * $numY + $j]
+			set tmpCnt [expr {$i * $numY + $j}]
 
 			set timg [getImageFromArray img $tmpCnt]
 

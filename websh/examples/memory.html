@@ -287,7 +287,7 @@ web::logdest add memory.-debug <B><FONT COLOR="#A020F0">file</FONT></B> [<B><FON
 
     <B><FONT COLOR="#A020F0">upvar</FONT></B> $<FONT COLOR="#B8860B">vImg</FONT> img
 
-    <B><FONT COLOR="#A020F0">return</FONT></B> [<B><FONT COLOR="#A020F0">string</FONT></B> range $<FONT COLOR="#B8860B">img</FONT> [<B><FONT COLOR="#A020F0">expr</FONT></B> $<FONT COLOR="#B8860B">pos</FONT>*2] [<B><FONT COLOR="#A020F0">expr</FONT></B> $<FONT COLOR="#B8860B">pos</FONT>*2 + 1]]
+    <B><FONT COLOR="#A020F0">return</FONT></B> [<B><FONT COLOR="#A020F0">string</FONT></B> range $<FONT COLOR="#B8860B">img</FONT> [<B><FONT COLOR="#A020F0">expr</FONT></B> {$<FONT COLOR="#B8860B">pos</FONT> * 2}] [<B><FONT COLOR="#A020F0">expr</FONT></B> {$<FONT COLOR="#B8860B">pos</FONT> * 2 + 1}]]
 }
 
 <I><FONT COLOR="#B22222"># getStat -- helper to pick status for a given picture
@@ -306,7 +306,7 @@ web::logdest add memory.-debug <B><FONT COLOR="#A020F0">file</FONT></B> [<B><FON
     <B><FONT COLOR="#A020F0">set</FONT></B> res [<B><FONT COLOR="#A020F0">string</FONT></B> range $<FONT COLOR="#B8860B">status</FONT> 0 [<B><FONT COLOR="#A020F0">expr</FONT></B> $<FONT COLOR="#B8860B">pos</FONT> - 1]]
     <B><FONT COLOR="#A020F0">set</FONT></B> res $<FONT COLOR="#B8860B">res</FONT>$<FONT COLOR="#B8860B">new</FONT>
     <B><FONT COLOR="#A020F0">set</FONT></B> res $<FONT COLOR="#B8860B">res</FONT>[<B><FONT COLOR="#A020F0">string</FONT></B> range \
-		     $<FONT COLOR="#B8860B">status</FONT> [<B><FONT COLOR="#A020F0">expr</FONT></B> $<FONT COLOR="#B8860B">pos</FONT> + 1] [<B><FONT COLOR="#A020F0">string</FONT></B> length $<FONT COLOR="#B8860B">status</FONT>]]
+		     $<FONT COLOR="#B8860B">status</FONT> [<B><FONT COLOR="#A020F0">expr</FONT></B> {$<FONT COLOR="#B8860B">pos</FONT> + 1}] [<B><FONT COLOR="#A020F0">string</FONT></B> length $<FONT COLOR="#B8860B">status</FONT>]]
     <B><FONT COLOR="#A020F0">set</FONT></B> status $<FONT COLOR="#B8860B">res</FONT>
 }
 
@@ -457,7 +457,7 @@ web::logdest add memory.-debug <B><FONT COLOR="#A020F0">file</FONT></B> [<B><FON
 
 		    <B><FONT COLOR="#A020F0">for</FONT></B> {<B><FONT COLOR="#A020F0">set</FONT></B> j 0} {$<FONT COLOR="#B8860B">j</FONT> &lt; $<FONT COLOR="#B8860B">numY</FONT>} {<B><FONT COLOR="#A020F0">incr</FONT></B> j} {
 
-			<B><FONT COLOR="#A020F0">set</FONT></B> tmpCnt [<B><FONT COLOR="#A020F0">expr</FONT></B> $<FONT COLOR="#B8860B">i</FONT> * $<FONT COLOR="#B8860B">numY</FONT> + $<FONT COLOR="#B8860B">j</FONT>]
+			<B><FONT COLOR="#A020F0">set</FONT></B> tmpCnt [<B><FONT COLOR="#A020F0">expr</FONT></B> {$<FONT COLOR="#B8860B">i</FONT> * $<FONT COLOR="#B8860B">numY</FONT> + $<FONT COLOR="#B8860B">j</FONT>}]
 
 			<B><FONT COLOR="#A020F0">set</FONT></B> timg [getImageFromArray img $<FONT COLOR="#B8860B">tmpCnt</FONT>]
 

@@ -19,7 +19,7 @@ web::logfilter add *.-debug
 # define where to send log messages to. Here we use a file
 # and again define a log destination based filter, which is again
 # "*.-debug" as above
-web::logdest add *.-debug file ../../logs/emailform.log
+web::logdest add *.-debug file /tmp/emailform.log
 
 
 # utility command to handle an HTML page

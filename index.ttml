@@ -20,7 +20,7 @@
 	      web server with the capabilities of the mature, robust
 	      and flexible Tcl scripting language.  Currently, we host
 	      the <a href="mod_dtcl/">mod_<b>d</b>tcl</a>, <a
-	      href="mod_tcl/mod_tcl.html">mod_tcl</a>, and the <a
+	      href="mod_tcl/">mod_tcl</a>, and the <a
 	      href="neowebscript/">neowebscript</a> projects.
 	    </p>
 	    <p>

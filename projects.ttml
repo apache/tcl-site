@@ -27,7 +27,7 @@
 	      can generate graphics on-the-fly, and other stuff. For Apache 1.3
 	    </p>
             <p>
-              <a href="mod_tcl/mod_tcl.html">mod_tcl</a>, With mod_tcl
+              <a href="mod_tcl/">mod_tcl</a>, With mod_tcl
               it is possible to write Apache modules entirely in TCL
               . In addition, the persistent interpreter embedded in
               the server avoids the overhead of starting an external

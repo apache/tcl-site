@@ -25,20 +25,6 @@
 	    </p>
 
 	    <h3>Current Projects</h3>
-	    <p>
-	      <a href="mod_dtcl/">mod_dtcl</a> enables the use of Tcl
-	      as an HTML-embedded scripting language, similar to PHP,
-	      as well as executing pure Tcl files. It is fast, light,
-	      and lets you use the extensive codebase of existing Tcl
-	      code on the web. For Apache 1.3.
-	    </p>
-	    <p>
-	      <a href="neowebscript/">neowebscript</a> also enables
-	      the use of Tcl as an HTML-embedded scripting language.
-	      It uses safe interpreters for security, supports db
-	      files, can generate graphics on-the-fly, and other
-	      stuff. For Apache 1.3.
-	    </p>
             <p>
               <a href="mod_tcl/">mod_tcl</a>, With mod_tcl
               it is possible to write Apache modules entirely in TCL

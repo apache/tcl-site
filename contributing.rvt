@@ -19,12 +19,6 @@
 	      to the Apache Tcl group, please see the contacts page.
 	    </p>
 	    <p>
-	      <b>Apache Tcl needs a logo</b>!  If you feel graphically
-	      inclined, please see the contacts page and send in your
-	      work.  We're looking for something that combines the Tcl
-	      and Apache feathers.
-	    </p>
-	    <p>
 	      If you are interested in working on or improving this
 	      website, the code is available from Apache's anonymous
 	      CVS.  You will need mod_dtcl, Apache Rivet, and Websh.

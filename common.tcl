@@ -5,38 +5,11 @@ proc navbar { } {
 }
 
 proc title { {txt "Apache Tcl Project"} } {
-    puts {
-	<table align="center" width="63%" border="0">
-	<tr>
-	<td align="center" valign="top">
-	<h1 style="padding: .3em;">
-    }
-    puts "$txt"
-    puts {
-	</h1>
-	</td>
-	</tr>
-	</table>
-	<hr>
-    }
+    puts {<p style="margin: 0; border: 0;" align="center"><img style="margin-bottom: -2.5em; " src="/logos/medium_logo.gif" alt="Apache Tcl"></p>}
 }
 
 proc rivettitle { {txt "Apache Rivet"} } {
-    puts {
-	<table align="center" width="100%" border="0">
-	<tr>
-	<td align="left"><img src="Rivetlogo_small.png"></td>
-	<td align="center" valign="top" width="100%">
-	<h1 style="padding: .3em;">
-    }
-    puts "$txt"
-    puts {
-	</h1>
-	</td>
-	</tr>
-	</table>
-	<hr>
-    }
+    puts {<p align="center"><img src="Rivetlogo_smaller.png" alt="Apache Rivet"></p>}
 }
 
 proc powered { } {

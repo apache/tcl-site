@@ -15,7 +15,7 @@ if { ! [info exists ::mtime] || $::mtime < $statinfo(mtime) } {
     proc ::makeindex {} {
 	puts "<ul>"
 	foreach fl [getorder] {
-	    set flttml "$fl.ttml"
+	    set flttml "$fl.rvt"
 	    puts [subst {
 		<li style="font-size:small ; list-style-type:square ; list-style-image: none"><a href="$flttml">$fl</a></li>
 	    }]
@@ -24,15 +24,14 @@ if { ! [info exists ::mtime] || $::mtime < $statinfo(mtime) } {
     }
 
     proc ::nexturl { } {
-	return "[lindex $::urls $::next].ttml?index=$::next"
+	return "[lindex $::urls $::next].rvt?index=$::next"
     }
 
     proc ::prevurl { } {
-	return "[lindex $::urls $::prev].ttml?index=$::prev"
+	return "[lindex $::urls $::prev].rvt?index=$::prev"
     }
 
     proc ::prevnext { title } {
-	hgetvars
 	set ::urls [getorder]
 	if { [var exists index] } {
 	    set ::index [var get index]
@@ -70,7 +69,7 @@ if { ! [info exists ::mtime] || $::mtime < $statinfo(mtime) } {
     proc ::footer {} {
 	puts {
 	    <p align="center" style="font-size:small">
-	    <a href="list.ttml">INDEX</a>
+	    <a href="list.rvt">INDEX</a>
 	    </p>
 	}
     }

@@ -8,7 +8,7 @@
   <body>
     <? prevnext "<h1>Do you use Tcl?</h1>" ?>
 
-    <form action="survey2.ttml">
+    <form action="survey2.rvt">
       <input type="hidden" name="index" value=<? puts $::index ?>>
       <table>
 	<tbody>

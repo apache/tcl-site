@@ -22,7 +22,7 @@ A:link, A:visited, A:active {
 
 h1 {
     font-family: Arial, sans-serif;
-    background-color: #003399;
+    background-color: #405871;
     color: #cc3300;
 }
 
@@ -73,15 +73,11 @@ table.lists th {
 }
 
 table.nav {
-    border-left-width: thick;
-    border-right-width: 0;
-    border-top-width: 0;
-    border-bottom-width: 0;
-    border-style: solid;
+
 }
 
 table.nav td {
-    background-color: #aaaaff;
+//    background-color: #aaaaff;
     font-weight: bold;
     padding: .3em;
     font-size: smaller;

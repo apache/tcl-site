@@ -13,15 +13,14 @@ if { ! [info exists ::mtime] || $::mtime < $statinfo(mtime) } {
     }
 
     proc ::nexturl { } {
-	return "[lindex $::urls $::next].ttml?index=$::next"
+	return "[lindex $::urls $::next].rvt?index=$::next"
     }
 
     proc ::prevurl { } {
-	return "[lindex $::urls $::prev].ttml?index=$::prev"
+	return "[lindex $::urls $::prev].rvt?index=$::prev"
     }
 
     proc ::prevnext { title } {
-	hgetvars
 	set ::urls [getorder]
 	if { [var exists index] } {
 	    set ::index [var get index]

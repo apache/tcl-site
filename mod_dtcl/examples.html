@@ -1,0 +1,411 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 3.0//EN">
+<html>
+<!-- $Id$ -->
+<title>mod_dtcl examples</title>
+    <link rel="stylesheet" href="../style.css">
+<body bgcolor=white>
+
+<table bgcolor=black width=100%>
+<tr>
+<td align=center>
+<font size=40 color=#ffffff>
+<b>mod_dtcl examples</b>
+</font>
+</td>
+</tr>
+</table>
+
+<p>
+These are some examples, rather limited ones, of what can be done with
+mod_dtcl.  <b>Note:</b> because mod_dtcl is no longer part of the main
+Apache Tcl site (see <a href="../rivet">Rivet</a> instead), this page
+is no longer a live mod_dtcl script.
+
+<p>
+<table>
+<tr><td><hr><b>Hello world</b></td></tr>
+<tr><td bgcolor=gray><pre>
+
+&lt;?
+headers setcookie "foo" "bar" # we have to put this before any 'puts' statements
+
+# once buffering is switched off, it is no longer possible to
+# maninuplate headers
+buffered off
+
+puts "Hello world"
+?&gt;
+
+</pre>
+	  </td></tr>
+
+<tr><td>
+Produces:
+<p>
+
+hello world
+
+
+<p>
+
+
+</td></tr>
+
+<tr><td><hr>
+<b>Conditionals:</b>
+</td></tr>
+
+<tr><td bgcolor=gray><pre>
+
+&lt;? if { 1 } { ?&gt;
+
+&lt;h2&gt; True &lt;/h2&gt;
+
+&lt;? }  ?&gt;
+
+</td></tr></pre>
+
+<tr><td>
+Produces:
+<p>
+
+
+
+<h2> True </h2>
+
+
+</td></tr>
+
+<tr><td><hr><b>Loops:</b>
+</td></tr>
+
+<tr><td bgcolor=gray><pre>
+
+&lt;? 
+set x 0 
+while { $x &lt; 5 } { 
+ puts "\$x = $x&lt;br>"
+ incr x
+?&gt;
+
+LOOP&lt;br>
+
+&lt;? }  ?&gt;
+
+</pre>
+</td></tr>
+
+<tr><td>Produces:<p>
+$x = 0<br>
+
+LOOP<BR>
+$x = 1<br>
+
+LOOP<BR>
+$x = 2<br>
+
+LOOP<BR>
+$x = 3<br>
+
+LOOP<BR>
+$x = 4<br>
+
+LOOP<BR>
+
+</td></tr>
+
+<tr><td><hr><b>Variables (environmental as well as those passed to the script)</b><p>
+</td></tr>
+<tr><td bgcolor=gray><pre>
+
+&lt;? 
+ hgetvars
+if { [ array exists VARS ] } {
+    puts "&lt; ul>"
+    foreach { var val } [ var all ]  {
+        puts "&lt;li>(VARS) $var = $val"
+    }
+    puts "&lt;/ul>"
+}
+
+if { [ array exists ENVS ] } {
+    
+    puts "&lt;ul>"
+    foreach { vr } [ array names ENVS ]  {
+        puts "&lt;li>(ENVS) $vr = $ENVS($vr)"
+    }
+    puts "&lt;/ul>"
+}
+
+if { [ array exists COOKIES ] } {
+    
+    puts "&lt;ul>"
+    foreach { vr } [ array names COOKIES ]  {
+        puts "&lt;li>(COOKIES) $vr = $COOKIES($vr)"
+    }
+    puts "&lt;/ul>"
+}
+
+?&gt;
+
+</pre>
+</td></tr>
+
+<tr><td>Produces:<p>
+<ul>
+<li>(ENVS) DATE_LOCAL = Saturday, 24-May-2003 18:05:46 CEST
+<li>(ENVS) SERVER_ADDR = 127.0.0.1
+<li>(ENVS) DOCUMENT_ROOT = /var/www/tcl-site/
+<li>(ENVS) GATEWAY_INTERFACE = CGI/1.1
+<li>(ENVS) SERVER_PORT = 80
+<li>(ENVS) HTTP_HOST = tclsite
+<li>(ENVS) DATE_GMT = Saturday, 24-May-2003 16:05:46 GMT
+<li>(ENVS) REMOTE_ADDR = 127.0.0.1
+<li>(ENVS) DOCUMENT_URI = /mod_dtcl/examples.ttml
+<li>(ENVS) SERVER_NAME = tclsite
+<li>(ENVS) HTTP_CONNECTION = keep-alive
+<li>(ENVS) SERVER_SIGNATURE = 
+<li>(ENVS) SERVER_PROTOCOL = HTTP/1.1
+<li>(ENVS) REQUEST_URI = /mod_dtcl/examples.ttml
+<li>(ENVS) REMOTE_PORT = 59939
+<li>(ENVS) HTTP_ACCEPT_CHARSET = ISO-8859-1, utf-8;q=0.66, *;q=0.66
+<li>(ENVS) SERVER_SOFTWARE = Apache/1.3.26 (Unix) Debian GNU/Linux Rivet mod_dtcl
+<li>(ENVS) REQUEST_METHOD = GET
+<li>(ENVS) HTTP_ACCEPT_LANGUAGE = en, it;q=0.50
+<li>(ENVS) UNIQUE_ID = Ps@YWn8AAAEAACiR-24
+<li>(ENVS) QUERY_STRING = 
+<li>(ENVS) HTTP_USER_AGENT = Mozilla/5.0 Galeon/1.2.5 (X11; Linux ppc; U;) Gecko/20020622 Debian/1.2.5-0.woody.1
+<li>(ENVS) HTTP_KEEP_ALIVE = 300
+<li>(ENVS) LAST_MODIFIED = Friday, 25-Oct-2002 07:21:04 CEST
+<li>(ENVS) SCRIPT_NAME = /mod_dtcl/examples.ttml
+<li>(ENVS) SCRIPT_FILENAME = /var/www/tcl-site/mod_dtcl/examples.ttml
+<li>(ENVS) PATH = /bin:/usr/bin:/sbin:/usr/sbin
+<li>(ENVS) HTTP_ACCEPT_ENCODING = gzip, deflate, compress;q=0.9
+<li>(ENVS) DOCUMENT_PATH_INFO = 
+<li>(ENVS) SERVER_ADMIN = webmaster@ashland
+<li>(ENVS) USER_NAME = davidw
+<li>(ENVS) DOCUMENT_NAME = examples.ttml
+<li>(ENVS) HTTP_ACCEPT = text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,video/x-mng,image/png,image/jpeg,image/gif;q=0.2,text/css,*/*;q=0.1
+</ul>
+
+</td></tr>
+
+<tr><td><hr><b>Create a table on the fly</b><p>
+</td></tr>
+<tr><td bgcolor=gray><pre>
+
+&lt;?
+set i 1
+puts "&lt;table&gt;\n"
+
+while { $i &lt;= 8 } {
+    puts "&lt;tr&gt;\n"
+    for {set j 1} {$j &lt;= 8} {incr j} {
+	set num [ expr $i * $j * 4 - 1]
+	puts [ format "&lt;td bgcolor=%2x%2x%2x &gt; $num $num $num &lt;/td&gt;\n" $num $num $num ]
+    }
+    incr i
+    puts "&lt;/tr&gt;\n"
+}
+
+puts "&lt;/table&gt;\n"
+?&gt;
+</pre>
+</td></tr>
+
+<tr><td>Produces:<p>
+<table>
+
+<tr>
+
+<td bgcolor= 3 3 3 > 3 3 3 </td>
+
+<td bgcolor= 7 7 7 > 7 7 7 </td>
+
+<td bgcolor= b b b > 11 11 11 </td>
+
+<td bgcolor= f f f > 15 15 15 </td>
+
+<td bgcolor=131313 > 19 19 19 </td>
+
+<td bgcolor=171717 > 23 23 23 </td>
+
+<td bgcolor=1b1b1b > 27 27 27 </td>
+
+<td bgcolor=1f1f1f > 31 31 31 </td>
+
+</tr>
+
+<tr>
+
+<td bgcolor= 7 7 7 > 7 7 7 </td>
+
+<td bgcolor= f f f > 15 15 15 </td>
+
+<td bgcolor=171717 > 23 23 23 </td>
+
+<td bgcolor=1f1f1f > 31 31 31 </td>
+
+<td bgcolor=272727 > 39 39 39 </td>
+
+<td bgcolor=2f2f2f > 47 47 47 </td>
+
+<td bgcolor=373737 > 55 55 55 </td>
+
+<td bgcolor=3f3f3f > 63 63 63 </td>
+
+</tr>
+
+<tr>
+
+<td bgcolor= b b b > 11 11 11 </td>
+
+<td bgcolor=171717 > 23 23 23 </td>
+
+<td bgcolor=232323 > 35 35 35 </td>
+
+<td bgcolor=2f2f2f > 47 47 47 </td>
+
+<td bgcolor=3b3b3b > 59 59 59 </td>
+
+<td bgcolor=474747 > 71 71 71 </td>
+
+<td bgcolor=535353 > 83 83 83 </td>
+
+<td bgcolor=5f5f5f > 95 95 95 </td>
+
+</tr>
+
+<tr>
+
+<td bgcolor= f f f > 15 15 15 </td>
+
+<td bgcolor=1f1f1f > 31 31 31 </td>
+
+<td bgcolor=2f2f2f > 47 47 47 </td>
+
+<td bgcolor=3f3f3f > 63 63 63 </td>
+
+<td bgcolor=4f4f4f > 79 79 79 </td>
+
+<td bgcolor=5f5f5f > 95 95 95 </td>
+
+<td bgcolor=6f6f6f > 111 111 111 </td>
+
+<td bgcolor=7f7f7f > 127 127 127 </td>
+
+</tr>
+
+<tr>
+
+<td bgcolor=131313 > 19 19 19 </td>
+
+<td bgcolor=272727 > 39 39 39 </td>
+
+<td bgcolor=3b3b3b > 59 59 59 </td>
+
+<td bgcolor=4f4f4f > 79 79 79 </td>
+
+<td bgcolor=636363 > 99 99 99 </td>
+
+<td bgcolor=777777 > 119 119 119 </td>
+
+<td bgcolor=8b8b8b > 139 139 139 </td>
+
+<td bgcolor=9f9f9f > 159 159 159 </td>
+
+</tr>
+
+<tr>
+
+<td bgcolor=171717 > 23 23 23 </td>
+
+<td bgcolor=2f2f2f > 47 47 47 </td>
+
+<td bgcolor=474747 > 71 71 71 </td>
+
+<td bgcolor=5f5f5f > 95 95 95 </td>
+
+<td bgcolor=777777 > 119 119 119 </td>
+
+<td bgcolor=8f8f8f > 143 143 143 </td>
+
+<td bgcolor=a7a7a7 > 167 167 167 </td>
+
+<td bgcolor=bfbfbf > 191 191 191 </td>
+
+</tr>
+
+<tr>
+
+<td bgcolor=1b1b1b > 27 27 27 </td>
+
+<td bgcolor=373737 > 55 55 55 </td>
+
+<td bgcolor=535353 > 83 83 83 </td>
+
+<td bgcolor=6f6f6f > 111 111 111 </td>
+
+<td bgcolor=8b8b8b > 139 139 139 </td>
+
+<td bgcolor=a7a7a7 > 167 167 167 </td>
+
+<td bgcolor=c3c3c3 > 195 195 195 </td>
+
+<td bgcolor=dfdfdf > 223 223 223 </td>
+
+</tr>
+
+<tr>
+
+<td bgcolor=1f1f1f > 31 31 31 </td>
+
+<td bgcolor=3f3f3f > 63 63 63 </td>
+
+<td bgcolor=5f5f5f > 95 95 95 </td>
+
+<td bgcolor=7f7f7f > 127 127 127 </td>
+
+<td bgcolor=9f9f9f > 159 159 159 </td>
+
+<td bgcolor=bfbfbf > 191 191 191 </td>
+
+<td bgcolor=dfdfdf > 223 223 223 </td>
+
+<td bgcolor=ffffff > 255 255 255 </td>
+
+</tr>
+
+</table>
+
+
+</td></tr>
+
+<tr><td><hr> <b>In addition</b><br> 
+
+There are many, many other things you can do with mod_dtcl.  You can,
+if everything is compiled right, load tcl modules, like libpgtcl.so
+(the Postgresql interface), so that you can interact with a database!
+
+<p>
+
+</td></tr>
+
+</table>
+
+<table border=0 bgcolor=green><tr><td>
+<table border=0 bgcolor="#000000">
+<tr><td align=center bgcolor=blue><font color="#ffffff" size="+2">dtcl_info</font><br></td></tr>
+<tr><td><font color="#ffffff">Free cache size: 9</font><br></td></tr>
+<tr><td><font color="#ffffff">PID: 10385</font><br></td></tr>
+</table>
+</td></tr></table>
+
+
+
+<p>
+<a href="index.ttml">Return to the mod_dtcl homepage</a>
+</p>
+
+</body>
+</html>

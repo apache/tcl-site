@@ -31,16 +31,15 @@
 
 	      <li>Someone to make RPMs as new versions come out.</li>
 
-	      <li>Script timeouts: set limits on the length of time a script will run
-  before it returns or dies.</li>
+	      <li>Standalone dtcl, so that it may be run from the
+	      command line, for testing, or as a CGI.</li>
+
+	      <li>Script timeouts: set limits on the length of time a
+  script will run before it returns or dies.</li>
 
 	      <li>More commands available for scripters (see PHP for examples).</li>
 
-
-	      <li>File uploads.  This is tricky, but necessary.</li>
-
-	      <li>Possible configuration options: possible safe mode.</li>
-
+	      <li>Possible configuration options: safe mode.</li>
 
 	      <li>Further internationalization (multibyte languages such as Japanese).</li>
 

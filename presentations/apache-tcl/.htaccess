@@ -1,0 +1,3 @@
+Dtcl_Script BeforeScript "source [file join [pwd] common.tcl]"
+
+

@@ -24,10 +24,10 @@
 	<tr>
 	  <th align="left">Apache Tcl:</th>
 	  <td align="right"><a href="http://tcl.apache.org/">http://tcl.apache.org/</a></td>
-	</tr>	
+	</tr>
 	<tr>
 	  <th align="left">Tcl Web Site:</th>
-	  <td align="right"><a href="http://www.tcl-tk.net/">http://www.tcl-tk.net/</a></td>
+	  <td align="right"><a href="http://www.tcl.tk/">http://www.tcl.tk/</a></td>
 	</tr>
 	<tr>
 	  <th align="left">Presentation:</th>
@@ -38,7 +38,7 @@
 	  <td align="right"><a href="mailto:davidw@dedasys.com">davidw@dedasys.com</a></td>
 	</tr>
       </tbody>
-    </table>    
+    </table>
 
   </body>
 </html>

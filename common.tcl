@@ -15,7 +15,7 @@ proc title { {txt "Apache Tcl Project"} } {
 	</table>
     }
 }
-    
+
 proc powered { } {
     hputs {
 	<table align="center" width="100%">
@@ -27,7 +27,7 @@ proc powered { } {
 	height="32"></a>
 	</td>
 	<td align="right">
-	<a href="http://www.tcl-tk.net/"><img src="/tclp.gif"
+	<a href="http://www.tcl.tk/"><img src="/tclp.gif"
 	alt="Powered by Tcl" border="0"
 	width="42"
 	height="64"></a>

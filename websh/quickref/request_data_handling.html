@@ -1,5 +1,5 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html><head><meta content="text/html; charset=ISO-8859-1" http-equiv="Content-Type"><title>Request data handling</title><meta name="generator" content="DocBook XSL Stylesheets V1.52.1"><link rel="home" href="index.html" title="Websh Reference"><link rel="up" href="index.html" title="Websh Reference"><link rel="previous" href="command_dispatching_and_session_management.html" title="Command dispatching and session management"><link rel="next" href="response_data_handling.html" title="Response data handling"><link rel="article" href="index.html" title="Websh Reference"><link rel="subsection" href="request_data_handling.html#web::request" title="web::request"><link rel="subsection" href="request_data_handling.html#web::param" title="web::param"><link rel="subsection" href="request_data_handling.html#web::formvar" title="web::formvar"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Request data handling</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="command_dispatching_and_session_management.html">Prev</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="response_data_handling.html">Next</a></td></tr></table><hr></div><div class="section"><div class="titlepage"><div><hr><h2 class="title" style="clear: both"><a name="request_data_handling"></a>Request data handling</h2></div></div><div class="section"><div class="titlepage"><div><h3 class="title"><a name="web::request"></a>web::request</h3></div></div><p style="width:90%">
+<html><head><meta content="text/html; charset=ISO-8859-1" http-equiv="Content-Type"><title>Request data handling</title><meta name="generator" content="DocBook XSL Stylesheets V1.52.2"><link rel="home" href="index.html" title="Websh Reference"><link rel="up" href="index.html" title="Websh Reference"><link rel="previous" href="command_dispatching_and_session_management.html" title="Command dispatching and session management"><link rel="next" href="response_data_handling.html" title="Response data handling"><link rel="article" href="index.html" title="Websh Reference"><link rel="subsection" href="request_data_handling.html#web::request" title="web::request"><link rel="subsection" href="request_data_handling.html#web::param" title="web::param"><link rel="subsection" href="request_data_handling.html#web::formvar" title="web::formvar"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Request data handling</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="command_dispatching_and_session_management.html">Prev</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="response_data_handling.html">Next</a></td></tr></table><hr></div><div class="section"><div class="titlepage"><div><hr><h2 class="title" style="clear: both"><a name="request_data_handling"></a>Request data handling</h2></div></div><div class="section"><div class="titlepage"><div><h3 class="title"><a name="web::request"></a>web::request</h3></div></div><p style="width:90%">
 
 	</p><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><tt>web::request</tt></span>  ?<i><tt>options</tt></i>? ?<i><tt>key</tt></i>? ?<i><tt>value</tt></i>?</span></div><p style="width:90%">
 	</p><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><tt>web::request</tt></span>  ?<i><tt>key</tt></i>? ?<i><tt>default</tt></i>?</span></div><p style="width:90%">
@@ -13,7 +13,7 @@
 	web::request is an accessor to request specific information: either CGI related (stand alone
         Websh) or Apache related (mod_websh).
 
-	</p><div class="variablelist"><dl><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><b>web::request</b></span></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
+	</p><div class="variablelist"><dl><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><b>web::request</b></span> <tt>-names</tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
 		returns a list of all known keys.
 	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><b>web::request</b></span> <tt><i><tt>key</tt></i></tt>
 	      ?<tt><i><tt>default</tt></i></tt>?</span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
@@ -36,8 +36,8 @@
 	      ?<tt><i><tt>value</tt></i></tt>?
 	      ?<tt><i><tt>...</tt></i></tt>?</span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
 		adds the parameter <tt>key</tt> to the
-		web::request data.  Any existing parameters with
-		<tt>key</tt> are overwritten.
+		<span style="font-family:monospace"><b>web::request</b></span> data. Any existing parameters 
+                with <tt>key</tt> are overwritten.
 	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><b>web::request</b></span>
 	      <tt>-lappend</tt> <tt><i><tt>key</tt></i></tt>
 	      <tt><i><tt>value</tt></i></tt>
@@ -69,7 +69,7 @@
       </p></div><div class="section"><div class="titlepage"><div><h3 class="title"><a name="web::param"></a>web::param</h3></div></div><p style="width:90%">
 
 
-	</p><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><tt>web::param</tt></span>  ?<i><tt>options</tt></i>? ?<i><tt>key</tt></i>? ?<i><tt>value</tt></i>? ?<i><tt>...</tt></i>?</span></div><p style="width:90%">
+	</p><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><tt>web::param</tt></span>  ?<i><tt>option</tt></i>? ?<i><tt>key</tt></i>? ?<i><tt>value</tt></i>? ?<i><tt>...</tt></i>?</span></div><p style="width:90%">
 
 	Options are: <tt>-count</tt>, <tt>-set</tt>,
 	<tt>-lappend</tt>, <tt>-names</tt>, and
@@ -132,7 +132,17 @@
 	data.  After <span style="font-family:monospace"><b>web::dispatch</b></span> has parsed the
 	POST data, you can access all form fields using
 	<span style="font-family:monospace"><b>web::formvar</b></span>.
-      </p><div class="example"><a name="id291036"></a><p class="title"><b>Example 6. web::param</b></p><pre style="background:#bbffbb ; width:75%" class="programlisting">
+      </p><p style="width:90%">
+	In addition to this, <span style="font-family:monospace"><b>web::formvar</b></span> can also 
+	handle files uploaded
+	via Netscape 2.0 file upload mechanism. In this case, the result of
+	<span style="font-family:monospace"><b>web::formvar</b></span> is a list with three elements:
+	The first element contains the name of the locally saved file;
+	the second element contains the remote file name; the third element 
+	is set to 0 if the upload was successful, -1 if upload is disabled 
+	(see <span style="font-family:monospace"><b>web::config uploadfilesize</b></span>) and n &gt; 0 if n
+	Bytes have been truncated, because the file was too big.
+      </p><div class="example"><a name="id293114"></a><p class="title"><b>Example 6. web::param</b></p><pre style="background:#bbffbb ; width:75%" class="programlisting">
 	  % web::request CONTENT_LENGTH
 	  % web::dispatch -querystring &quot;cmd=default&amp;t=100&quot; -postdata &quot;&quot; -cmd &quot;&quot;
 	  % web::param -names

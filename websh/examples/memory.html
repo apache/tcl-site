@@ -48,6 +48,12 @@ web::logdest add memory.-debug <B><FONT COLOR="#A020F0">file</FONT></B> [<B><FON
 
 <I><FONT COLOR="#B22222"># setup file context
 </FONT></I>web::filecontext mctx -path [<B><FONT COLOR="#A020F0">file</FONT></B> <B><FONT COLOR="#A020F0">join</FONT></B> / tmp %s.ctx]
+<I><FONT COLOR="#B22222"># hack ot make the filecontext work
+</FONT></I><B><FONT COLOR="#A020F0">if</FONT></B> {![<B><FONT COLOR="#A020F0">file</FONT></B> exists [<B><FONT COLOR="#A020F0">file</FONT></B> <B><FONT COLOR="#A020F0">join</FONT></B> / tmp memory.ctx]]} {
+    <B><FONT COLOR="#A020F0">catch</FONT></B> {
+	close [<B><FONT COLOR="#A020F0">open</FONT></B> [<B><FONT COLOR="#A020F0">file</FONT></B> <B><FONT COLOR="#A020F0">join</FONT></B> / tmp memory.ctx] w]
+    }
+}
 
 <I><FONT COLOR="#B22222"># formatLink -- helper function to generate hrefs
 </FONT></I><B><FONT COLOR="#A020F0">proc</FONT></B> <B><FONT COLOR="#0000FF">formatLink</FONT></B> {<FONT COLOR="#B8860B">url {show &quot;&quot;}</FONT>} {
@@ -133,7 +139,7 @@ web::logdest add memory.-debug <B><FONT COLOR="#A020F0">file</FONT></B> [<B><FON
     <I><FONT COLOR="#B22222"># footer and end-of-HTML
 </FONT></I>    web::put <B><FONT COLOR="#BC8F8F">&quot;
 	&lt;hr&gt;&lt;font size=\&quot;-2\&quot;&gt;&lt;tt&gt;
-	[web::copyright -version]&lt;/tt&gt;&lt;/font&gt;&lt;br&gt;
+	[web::config version]&lt;/tt&gt;&lt;/font&gt;&lt;br&gt;
 	&lt;/BODY&gt;
         &lt;/HTML&gt;
     &quot;</FONT></B>

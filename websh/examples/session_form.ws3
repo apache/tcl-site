@@ -16,8 +16,11 @@ config::cset stateDirectory /tmp/webshstate/
 
 # Create a file counter that generates the session ids. We take
 # here an easy number generator, which produces sequential numbers
-# and stores the actual counter value in a file
-web::filecounter idGenerator -filename [file join [config::cget stateDirectory] counter]
+# and stores the actual counter value in a file (only create one if 
+# the current interpreter does not already have one)
+if {![llength [info commands idGenerator]]} {
+    web::filecounter idGenerator -filename [file join [config::cget stateDirectory] counter]
+}
 
 # Create a file context named 'state'. The option '-path' defines
 # where the session contexts are stored. '-attachto' defines an
@@ -27,8 +30,7 @@ web::filecounter idGenerator -filename [file join [config::cget stateDirectory] 
 web::filecontext state -path [file join [config::cget stateDirectory] %s] -attachto sid -idgen "idGenerator nextval"
 
 # Make sure the session state directory exists
-file mkdir [config::cget stateDirectory]
-
+catch {file mkdir [config::cget stateDirectory]}
 
 proc form {page code} {
     # Produces a HTML FORM tag. Nested form variables must be output
@@ -86,7 +88,7 @@ proc saveAllFields {} {
     # name correctly here. If a HTML field is given twice or more
     # 'web::formvar -count <fieldname>' would give us the field count
     # 'web::formvar <fieldname>' returns then a list of n values.
-    foreach field [web::formvar names] {
+    foreach field [web::formvar -names] {
         state::cset $field [web::formvar $field]
     }
 }
@@ -147,3 +149,6 @@ web::command default {
 # web::dispatch processes the URL - i.e. extracts parameters from the
 # URL - and handles HTML form input sent to this script.
 web::dispatch -track sid
+
+# cleanup state (so we have no session crosstalk)
+state::delete

@@ -232,13 +232,13 @@ projects, and is moving towards having 3, or less, in the future.
 \includegraphics[scale=0.6]{./future.ps}
 
 Getting ahead of ourselves, our short term plans are to release Rivet,
-and phase out mod\_dtcl and NeoWebScript.  Long term, if possible, we
-will further modularize all our offerings, so that at some point, it
-would be possible to run Rivet and Websh as loaded packages from
-within mod\_tcl, as it is capable of giving us low level access to the
-Apache internals from Tcl.  So, we wouldn't really only have one
-project, but there would be, at the same time, more modularity and
-tighter integration amongst the remaining systems.
+and phase out mod\_dtcl and NeoWebScript.  Our long term goals, should
+they come to fruition, are to further modularize all our offerings, so
+that at some point, it would be possible to run Rivet and Websh as
+packages loaded from within mod\_tcl, as it is capable of giving us
+low level access to the Apache internals from Tcl.  So, we wouldn't
+really only have one project, but there would be, at the same time,
+more modularity and tighter integration amongst the remaining systems.
 
 Without further ado, our 5 projects are:
 
@@ -252,7 +252,7 @@ Without further ado, our 5 projects are:
   with mod\_dtcl as its basis in late 2000.
 
   mod\_dtcl will eventually be replaced by Apache Rivet, which is
-  infact, getting just about 100\% of our development time lately.
+  in fact, getting just about 100\% of our development time lately.
 
   The original design goals of mod\_dtcl were based on observations
   about the success of PHP, and sought to borrow the best of that
@@ -277,10 +277,10 @@ Without further ado, our 5 projects are:
   of exposing the Apache API in Tcl, in order to make it possible to
   write Apache modules in Tcl.  Most of the other projects take
   advantage of Apache features, and are tightly linked to the server,
-  but could conceivably also independent of Apache.  mod\_tcl takes
-  the opposite approach and gives you access to a great deal of
-  Apache's C API.  This flexibility means that, one day, other Apache
-  Tcl modules might conceivably just be plugins for mod\_tcl.
+  but could conceivably also operate independently of Apache.
+  mod\_tcl takes the opposite approach and gives you access to a great
+  deal of Apache's C API.  This flexibility means that, one day, other
+  Apache Tcl modules might just be plugins for mod\_tcl.
 
 \item Websh\\
   Websh was born in 1995 as a C++ library incorporating a Tcl
@@ -296,8 +296,8 @@ Without further ado, our 5 projects are:
   creating pages.
 
   One unique feature of Websh is that it is relatively independent of
-  Apache, and, infact, version is provided that runs as a stand-alone
-  CGI.
+  Apache, and, in fact, a version is provided that runs as a
+  stand-alone CGI.
 
 \item Apache Rivet\\
   The most recent of the Apache Tcl projects, Rivet is the future of
@@ -323,16 +323,16 @@ The following example shows Apache Rivet at work.
 
 This example shows us several features of Tcl.  In reality, the Tcl
 code used here is entirely generic. The only thing that tells us that
-it is used in Rivet, are the $<$? and ?$>$
-delimiters that indicate that the particular section of the file
-should be parsed as Tcl code, and not HTML.  The table (see below)
-which results from this code is created by the two for loops, which
-set and then increment their respective variables.  The value used to
-determine the shade of gray for a particular cell is calculated by the
-\textbf{expr} command, and is in turn used in the \textbf{format}
-command, which sets up both the bgcolor to use for the cell.  Note
-that the numbers to be displayed in the cell are interpolated directly
-in the string, and are not handled by the format command.
+it is used in Rivet, are the $<$? and ?$>$ delimiters that indicate
+that the particular section of the file should be parsed as Tcl code,
+and not HTML.  The table (see below) which results from this code is
+created by the two \textbf{for} loops, which set and then increment
+their respective variables.  The value used to determine the shade of
+gray for a particular cell is calculated by the \textbf{expr} command,
+and is in turn used in the \textbf{format} command, which sets up both
+the bgcolor to use for the cell.  Note that the numbers to be
+displayed in the cell are interpolated directly in the string, and are
+not handled by the format command.
 
 \includegraphics[scale=1.0]{./table.ps}
 
@@ -405,22 +405,22 @@ used to insert custom headers or footers, for instance. Furthermore,
 options are also available to control file upload characteristics, as
 well as determine whether separate virtual hosts get their own
 interpreters.  This last feature is particularly important in
-environments where separate clients might want to have their own tcl
+environments where separate clients might want to have their own Tcl
 code, loaded separately.
 
 \subsection{How Rivet Serves Pages}
 
-When tracing through the Rivet code to find out how it works when a
-Rivet page (.rvt) is requested from the Apache server, the module
-checks to see if a cached version of the page's bytecode is available.
-If it isn't, the page is read into memory, and parsed into a script,
-which is then executed, as well as stored in the cache.  If it is
-available in cache, the script is executed directly, without having to
-touch the disk at all to reload it.  Naturally the cache size is
-configurable via an Apache directive.  The parser works by
-transforming chunks of HTML - everything outside of the $<$? ?$>$ tags -
-into large \textbf{puts} statements, which can then be executed along
-with the rest of the Tcl code as one large script.
+When a Rivet page (.rvt) is requested from the Apache server via HTTP,
+after passing through Apache, the module checks to see if a cached
+version of the page's bytecode is available.  If it isn't, the page is
+read into memory, and parsed into a script, which is then executed, as
+well as stored in the cache.  If it is available in cache, the script
+is executed directly, without having to touch the disk at all to
+reload it.  Naturally the cache size is configurable via an Apache
+directive.  The parser works by transforming chunks of HTML -
+everything outside of the $<$? ?$>$ tags - into large \textbf{puts}
+statements, which can then be executed along with the rest of the Tcl
+code as one large script.
 
 \subsection{Tcl Channels}
 One of the especially interesting things about the Rivet
@@ -466,15 +466,14 @@ passed directly down to the Apache layer.
 
 This is another topic that merits hours of discussion on its own, so
 we are going to stick with a few highlights that have been of
-particular help.
+particular help to us as when working with Apache code.
 
 It would be hard not to talk about ``pools'', which are Apache's
-memory management system for modules, which is extremely convenient
-for the module author.  Pools take care of freeing memory after you
-have used it for tasks during the request (well, at other points too,
-but we are aiming for a simple talk!).  There are also lots of
-convenient string functions that take advantage of pools to make life
-easier
+memory management system for modules, and are very convenient for the
+module author.  Pools take care of freeing memory after you have used
+it for tasks during the request (well, at other points too, but we are
+aiming for a simple talk!).  There are also lots of convenient string
+functions that take advantage of pools to make life easier
 
 It's not part of Apache proper but the apreq code is very useful for
 handling data received from users - cookies, GET and POST variables.
@@ -497,7 +496,7 @@ The ability to leverage so much power - linking together two
 different, flexible, multipurpose systems - is a testament to the
 strength and adaptability of both Tcl and Apache.
 
-More information is availabile at the following sites:
+More information is available at the following sites:
 
 \begin{itemize}
 \item http://www.tcl.tk - The Tcl web site.

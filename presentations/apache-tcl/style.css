@@ -1,3 +1,4 @@
+
 body {
     font-family: Arial, sans-serif;
     font-style: normal;
@@ -9,7 +10,7 @@ body {
 
 body.splash {
     font-size: 300%;
-    background: url(logo.png);
+    background: url(logo.gif);
 }
 
 

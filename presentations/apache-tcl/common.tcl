@@ -53,13 +53,13 @@ if { ! [info exists ::mtime] || $::mtime < $statinfo(mtime) } {
 	    <table align="center" width="90%">
 	    <tr>
 	    <td align="left">
-	    <a href="[prevurl]"><img src="left.png" alt="previous"></a>
+	    <a href="[prevurl]"><img src="left.gif" alt="previous"></a>
 	    </td>
 	    <td align="center">
 	    $title
 	    </td>
 	    <td align="right">
-	    <a href="[nexturl]"><img src="right.png" alt="next"></a>
+	    <a href="[nexturl]"><img src="right.gif" alt="next"></a>
 	    </td>
 	    </tr>
 	    </table>

@@ -30,8 +30,12 @@
 <I><FONT COLOR="#B22222"># define where to send log messages to. Here we use a file
 </FONT></I><I><FONT COLOR="#B22222"># and again define a log destination based filter, which is again
 </FONT></I><I><FONT COLOR="#B22222"># &quot;*.-debug&quot; as above
-</FONT></I>web::logdest add *.-debug <B><FONT COLOR="#A020F0">file</FONT></B> /tmp/emailform.log
+</FONT></I>web::logdest add *.-debug <B><FONT COLOR="#A020F0">file</FONT></B> /tmp/websh/emailform.log
 
+<I><FONT COLOR="#B22222"># because log directory might not exist in this environment
+</FONT></I><I><FONT COLOR="#B22222"># (note: in a production environment you make sure that this exists 
+</FONT></I><I><FONT COLOR="#B22222"># at install time. You don't want to create that directory with every request)
+</FONT></I><B><FONT COLOR="#A020F0">catch</FONT></B> {<B><FONT COLOR="#A020F0">file</FONT></B> mkdir /tmp/websh}
 
 <I><FONT COLOR="#B22222"># utility command to handle an HTML page
 </FONT></I><B><FONT COLOR="#A020F0">proc</FONT></B> <B><FONT COLOR="#0000FF">page</FONT></B> {<FONT COLOR="#B8860B">title code</FONT>} {

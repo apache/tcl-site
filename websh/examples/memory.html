@@ -35,7 +35,7 @@
 </FONT></I>
 <I><FONT COLOR="#B22222"># turn logging on
 </FONT></I><I><FONT COLOR="#B22222">#web::logfilter add memory.-debug
-</FONT></I><I><FONT COLOR="#B22222">#web::logdest add memory.-debug file [file join / tmp memory.log]
+</FONT></I><I><FONT COLOR="#B22222">#web::logdest add memory.-debug file [file join / tmp websh memory.log]
 </FONT></I>
 <I><FONT COLOR="#B22222"># config: map level number to X-Y dimensions
 </FONT></I><B><FONT COLOR="#A020F0">set</FONT></B> _levels(1) [<B><FONT COLOR="#A020F0">list</FONT></B> 1 2]
@@ -47,11 +47,15 @@
 <B><FONT COLOR="#A020F0">set</FONT></B> _levels(7) [<B><FONT COLOR="#A020F0">list</FONT></B> 6 9]
 
 <I><FONT COLOR="#B22222"># setup file context
-</FONT></I>web::filecontext mctx -path [<B><FONT COLOR="#A020F0">file</FONT></B> <B><FONT COLOR="#A020F0">join</FONT></B> / tmp %s.ctx]
-<I><FONT COLOR="#B22222"># hack ot make the filecontext work
-</FONT></I><B><FONT COLOR="#A020F0">if</FONT></B> {![<B><FONT COLOR="#A020F0">file</FONT></B> exists [<B><FONT COLOR="#A020F0">file</FONT></B> <B><FONT COLOR="#A020F0">join</FONT></B> / tmp memory.ctx]]} {
+</FONT></I>web::filecontext mctx -path /tmp/websh/%s.ctx
+<B><FONT COLOR="#A020F0">if</FONT></B> {![<B><FONT COLOR="#A020F0">file</FONT></B> exists /tmp/websh/memory.ctx]} {
     <B><FONT COLOR="#A020F0">catch</FONT></B> {
-	close [<B><FONT COLOR="#A020F0">open</FONT></B> [<B><FONT COLOR="#A020F0">file</FONT></B> <B><FONT COLOR="#A020F0">join</FONT></B> / tmp memory.ctx] w]
+	<I><FONT COLOR="#B22222"># make sure context directory exists
+</FONT></I>	<I><FONT COLOR="#B22222"># (note: in a production environment you make sure that this exists 
+</FONT></I>	<I><FONT COLOR="#B22222"># at install time. You don't want to create that directory with every request)
+</FONT></I>	<B><FONT COLOR="#A020F0">file</FONT></B> mkdir /tmp/websh
+	<I><FONT COLOR="#B22222"># hack ot make the filecontext work
+</FONT></I>	close [<B><FONT COLOR="#A020F0">open</FONT></B> /tmp/websh/memory.ctx w]
     }
 }
 

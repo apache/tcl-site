@@ -24,7 +24,7 @@
 
 # turn logging on
 #web::logfilter add memory.-debug
-#web::logdest add memory.-debug file [file join / tmp memory.log]
+#web::logdest add memory.-debug file [file join / tmp websh memory.log]
 
 # config: map level number to X-Y dimensions
 set _levels(1) [list 1 2]
@@ -36,11 +36,15 @@ set _levels(6) [list 5 8]
 set _levels(7) [list 6 9]
 
 # setup file context
-web::filecontext mctx -path [file join / tmp %s.ctx]
-# hack ot make the filecontext work
-if {![file exists [file join / tmp memory.ctx]]} {
+web::filecontext mctx -path /tmp/websh/%s.ctx
+if {![file exists /tmp/websh/memory.ctx]} {
     catch {
-	close [open [file join / tmp memory.ctx] w]
+	# make sure context directory exists
+	# (note: in a production environment you make sure that this exists 
+	# at install time. You don't want to create that directory with every request)
+	file mkdir /tmp/websh
+	# hack ot make the filecontext work
+	close [open /tmp/websh/memory.ctx w]
     }
 }
 

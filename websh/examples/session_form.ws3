@@ -12,7 +12,7 @@ web::context config
 
 # Now set some configuration variables. Usually put the session
 # state files in a directory not accessible through the Web server.
-config::cset stateDirectory /tmp/webshstate/
+config::cset stateDirectory /tmp/websh/state/
 
 # Create a file counter that generates the session ids. We take
 # here an easy number generator, which produces sequential numbers

@@ -16,7 +16,7 @@
 	  <td valign="top"> 
 	    <h2>Download mod_dtcl</h2>
 	    <p>
-	      Pre-built packages:	      
+	      <b>Pre-built packages</b>:	      
 	    </p>
 	    <ul>
 	      <li>Debian GNU/Linux: <a
@@ -25,6 +25,7 @@
 
 <?
 
+set src [file tail [glob download/*.tar.gz]]
 set rpmurl [ glob download/*.i386.rpm ]
 set srpmurl [ glob download/*.src.rpm ]
 cd download/
@@ -39,7 +40,7 @@ cd ..
 	      and <a
 	      href="<? hputs $srpmurl ?>"><? hputs $srpm ?></a>
 	      (provided by Simon Greaves)</li>
-
+	      
 	      <li>FreeBSD: <a
 	      href="http://www.freebsd.org/cgi/ports.cgi?query=mod_dtcl">http://www.freebsd.org/cgi/ports.cgi?query=mod_dtcl</a></li>
 
@@ -48,22 +49,32 @@ cd ..
 
 	    </ul>
 	    <p>
-	      <a href="download/">mod_dtcl source code</a>
+	      <b>Source Code</b>:
 	    </p>
+	    <ul>
+	      <li>
+		<a href="download/<? puts $src ?>">
+		  <? puts $src ?>
+		</a>
+	      </li>
+	    </ul>
 
-	    <p><b>Get mod_dtcl from Anonymous CVS:</b></p>
-	    <p>
-	      <a href="http://dev.apache.org/anoncvs.txt">Detailed
-	      instructions</a> on the use of anonymous CVS.
-	    </p>
-	    <p>
-	      Or, the quick and dirty way to get mod_dtcl via anoncvs:<br>
+	    <p><b>CVS</b>:</p>
+	    <ol>
+	      <li>
 	      <code>cvs
 	      -d:pserver:anoncvs@cvs.apache.org:/home/cvspublic
-	      login</code> (password anoncvs)<br>
+	      login</code> (password anoncvs)
+	      </li>
+	      <li>
 	      <code>cvs
 		-d:pserver:anoncvs@cvs.apache.org:/home/cvspublic
 		checkout tcl-moddtcl</code><br>
+	      </li>
+	    </ol>
+	    <p>
+	      <a href="http://dev.apache.org/anoncvs.txt">Detailed
+	      instructions</a> on the use of anonymous CVS.
 	    </p>
 	  </td>
 	</tr>

@@ -44,5 +44,6 @@ div.box {
  background-color: #dddddd;
 }
 
-li {
+li { 
+   margin-bottom: 0.5em; 
 }

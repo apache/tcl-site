@@ -1,5 +1,3 @@
-## www.websh.com/subscribe.html
-## nca-115-2
 ## $Id$
 
 web::response -sendheader 0
@@ -28,7 +26,7 @@ with <tt>subscribe websh-news</tt> in the body of the message.
 <br><br><br>
 
 If at any time you would like to unsubscribe from this newsletter,
-you may do so at {pageLink www.websh.com/unsubscribe.html -pre}, or by
+you may do so at {pageLink www.websh.com/unsubscribe.ws3 -pre}, or by
 sending an e-mail to {emailLink majordomo@netcetera.ch} with
 <tt>unsubscribe websh-news</tt> in the body of the message.
 <br><br><br>

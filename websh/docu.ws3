@@ -1,4 +1,4 @@
-## www.websh.com/docu.html
+## www.websh.com/docu.ws3
 ## nca-115-2
 ## $Id$
 
@@ -34,7 +34,7 @@ web::putx {
 
     <h2>Code Examples</h2>
 
-    The <a href="examples.html">example</a> page demonstates
+    The <a href="examples.ws3">example</a> page demonstates
     webshell features - you can both look at the code and play
     with the application.
 

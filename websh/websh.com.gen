@@ -273,7 +273,7 @@ proc navbar_prod {{where 0}} {
              "#history" "history" 1 \
              "#tcl" "based on Tcl" 1 \
              "#design" "design" 1}
-        {navBarElement "TBD" "webshell in action" 2}
+        {navBarElement "TBD" "Websh in action" 2}
         {navBarElement "TBD" "success stories" 2}
         {navBarElement "TBD" "comparison chart" 2}
 	{navBarEnd}
@@ -306,7 +306,7 @@ proc navbar_supp {{where 0}} {
              "faq.ws3#technical" "technical questions" 1 \
              "faq.ws3#toc" "index" 1}
         {navBarElement "subscribe.ws3" "mailing list" 1}
-        {navBarElement "bin/bugsubmit" "bug submission" [expr $where != 3]}
+        {navBarElement "http://nagoya.apache.org/bugzilla/" "bug submission" [expr $where != 3]}
         {navBarElement {/bin/bugdb" onclick="javascript:window.open('','bugdb','width=500,height=400,directories=no,location=no,menubar=no,scrollbars=yes,status=no,toolbar=no,resizable=yes');" target="bugdb} "bug tracking" 2}
         </table>
         </td>
@@ -344,7 +344,7 @@ proc newsbar_supp {} {
         <td width="145">
         <table border="0" cellpadding="0" cellspacing="0" width="145">
         {newsBarElement "free e-mail support" \
-             "For webshell support, simply send an e-mail to {emailSupportLink}"
+             "For Websh support, simply send an e-mail to {emailSupportLink}"
         }
         {newsBarElement "maintenance contracts" \
              {Netcetera offers specially tailored maintenance contracts.
@@ -352,7 +352,7 @@ proc newsbar_supp {} {
         }
         {newsBarElement "Feedback" \
 	     {{emailLink support@websh.com "Please let us know"}
-		 what you think about webshell. Your feedback
+		 what you think about Websh. Your feedback
 		 will help us make a great product even better.}
         }
 	</table>
@@ -391,11 +391,11 @@ proc startHtmlPage {} {
         <html>
         <head>
         <meta http-equiv="content-type" content="text/html;charset=iso-8859-1">
-        <title>webshell - Welcome</title>
+        <title>Websh - Welcome</title>
         <script language="JavaScript" src="buttons.js"></script>
         <link href="websh.css" rel="styleSheet" type="text/css">
-        <meta name="description" content="webshell - the rapid development environment to build powerful web applications.">
-        <META NAME="keywords" CONTENT="websh, webshell, e-commerce, web application, apache, perl,  php, asp, cold fusion">
+        <meta name="description" content="Websh - the rapid development environment to build powerful web applications.">
+        <META NAME="keywords" CONTENT="websh, Websh, e-commerce, web application, apache, perl,  php, asp, cold fusion">
         </head>
     }
 }
@@ -590,7 +590,7 @@ proc finishPage {{where 0}} {
 
 	}
         <br>
-        <span class="klein"><b>&copy; webshell - by {web::put {<a href="http://netcetera.ch">Netcetera AG</a>}}</b></span></td>
+        <span class="klein"><b>&copy; Websh - by {web::put {<a href="http://www.apache.org">The Apache Software Foundation</a>}}</b></span></td>
         </tr>
         </table>
         </body>

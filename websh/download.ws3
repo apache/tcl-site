@@ -1,5 +1,3 @@
-## www.websh.com/download.html
-## nca-115-2
 ## $Id$
 
 web::response -sendheader 0
@@ -39,7 +37,7 @@ web::putx {
 
       If you would like to be notified when new versions of webshell
       become available for download, you can subscribe to the webshell
-      newsletter at {pageLink /subscribe.html -show "http://websh.com/subscribe.html"}.
+      newsletter at {pageLink /subscribe.html -show "subscribe.ws3"}.
 
     </td>
      </tr>

@@ -1,5 +1,3 @@
-## www.websh.com/support.html
-## nca-115-2
 ## $Id$
 
 web::response -sendheader 0
@@ -19,9 +17,9 @@ web::putx {
       and support. That's why we are committed to high-quality support
       for webshell. We work hard to keep {pageLink websh.com -pre}
       up-to-date with all information you need. Here, you can find
-      the {pageLink whitepaper.html -show "webshell white paper"} and
-      the {pageLink quickref.html -show "quick reference"} as well as
-      a list of {pageLink faq.html -show "frequently asked questions"}.
+      the {pageLink whitepaper.ws3 -show "webshell white paper"} and
+      the {pageLink quickref.ws3 -show "quick reference"} as well as
+      a list of {pageLink faq.ws3 -show "frequently asked questions"}.
       <br><br>
 
       In addition, we offer <b>free e-mail support</b>. Contact us at

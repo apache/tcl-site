@@ -1,4 +1,4 @@
-## www.websh.com/product.html
+## www.websh.com/product.ws3
 ## nca-115-2
 ## $Id$
 
@@ -10,36 +10,36 @@ putHeader 1
 
 web::putx {
     <table border="0" cellpadding="0" cellspacing="0" width="770">
-    {headRow 4 "webshell described" "characteristics"}
+    {headRow 4 "Websh described" "characteristics"}
     <tr valign="top">
     {navbar_prod 0}
     <td width="455">
       <img height="160" width="150" src="images/ausschnitt_product.gif" align="left" alt="graphics">
 
-      webshell is a rapid development environment for building
-      powerful, fast, and reliable web applications. webshell is
+      Websh is a rapid development environment for building
+      powerful, fast, and reliable web applications. Websh is
       versatile and handles everything from HTML generation to
       data-base driven one-to-one page customization. We have been
       using it for years for virtually all our customer projects,
       which typically are E-commerce shops or electronic banking
-      applications. webshell is extensible and portable, and its
+      applications. Websh is extensible and portable, and its
       comprehensive set of commands is quickly learned.
 
       <h2>Open Source Software</h2>
 
-      webshell is released as open source software. The source code as
+      Websh is released as open source software. The source code as
       well as binaries for a selection of platforms are available for
-      download for free. webshell users have full control over and
-      insight into webshell. This is protection of investment.
+      download for free. Websh users have full control over and
+      insight into Websh. This is protection of investment.
 
       <h2>Apache 2 module</h2>
 
-      webshell is scalable.  Its CGI interface ensures that webshell
+      Websh is scalable.  Its CGI interface ensures that Websh
       can be employed virtually everywhere, using off-the-shelf web
-      servers.  If performance is key, the webshell Apache 2 module
+      servers.  If performance is key, the Websh Apache 2 module
       gives you lightening-fast one-to-one content.  And the nice
       thing: for both the CGI environment and for the Apache 2 module,
-      you use exactly the same webshell application.  <br><br>
+      you use exactly the same Websh application.  <br><br>
     </td>
     <td width="10"></td>
     <td width="145">
@@ -62,7 +62,7 @@ web::putx {
       </table>
     </td>
   </tr>
-    {uppfeil product.html -text "webshell history" -aName history}
+    {uppfeil product.ws3 -text "Websh history" -aName history}
     <tr valign="top">
       <td width="10"></td>
       <td width="150"></td>
@@ -80,7 +80,7 @@ web::putx {
 	current release, Websh 3.  <br><br>
     </td>
     </tr>
-    {uppfeil product.html -text "Based on Tcl" -aName tcl}
+    {uppfeil product.ws3 -text "Based on Tcl" -aName tcl}
     <tr valign="top">
     <tr valign="top">
       <td width="10"></td>
@@ -128,7 +128,7 @@ web::putx {
 
     </td>
     </tr>
-    {uppfeil product.html -text "Websh Design" -aName design}
+    {uppfeil product.ws3 -text "Websh Design" -aName design}
     <tr valign="top">
     <tr valign="top">
       <td width="10"></td>
@@ -228,7 +228,7 @@ web::putx {
 	  The logging module is extensible through plug-Ins.
 	  <br><br><br>
 	  Find more information in the
-	  {pageLink whitepaper.html -show "Websh white paper"}.
+	  {pageLink whitepaper.ws3 -show "Websh white paper"}.
 
 	</td>
       </tr>

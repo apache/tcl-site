@@ -1,10 +1,6 @@
-## www.websh.com/index.html
-## nca-115-2
 ## $Id$
 
-#web::response -sendheader 0
-
-# source [file join [file dirname [web::request SCRIPT_FILENAME]] websh.com.gen]
+web::response -sendheader 0
 
 startHtmlPage
 startHtmlBody
@@ -48,12 +44,12 @@ web::putx {
 
 {newsBarElement "websh 3.0.0 available:" \
      {pick the {pageLink /downloaddir/websh-3.0.0.tar.gz -show "tarball"}
-	 or browse the {pageLink /download.html -show "download area"}.
+	 or browse the {pageLink /download.ws3 -show "download area"}.
      }
 }
 
 {newsBarElement "Examples" \
-     { Check out the<br> {pageLink /examples.html -show "live examples"}<br>
+     { Check out the<br> {pageLink /examples.ws3 -show "live examples"}<br>
 of Webshell applications.
      }
 }

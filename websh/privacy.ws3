@@ -1,5 +1,3 @@
-## www.websh.com/privacy.html
-## nca-115-2
 ## $Id$
 
 web::response -sendheader 0

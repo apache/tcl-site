@@ -199,16 +199,6 @@ proc newsBarElementGrey {title {desc ""}} {
 }
 
 
-proc pageLink {url args} {
-    set showName $url
-    foreach {arg value} $args {
-	switch -- $arg \
-	    -show { set showName $value} \
-	    -pre { set url "http://$url" }
-    }
-    web::put "<a href=\"$url\">$showName</a>"
-}
-
 proc uppfeil {link args} {
     set aName ""
     set text ""

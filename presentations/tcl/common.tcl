@@ -24,6 +24,9 @@ if { ! [info exists ::mtime] || $::mtime < $statinfo(mtime) } {
 	set ::urls [getorder]
 	if { [var exists index] } {
 	    set ::index [var get index]
+	    if { ! [string is integer $::index] } {
+		error "Index must be a number!"
+	    }
 	} else {
 	    set ::index 0
 	}

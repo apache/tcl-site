@@ -1,0 +1,109 @@
+
+body {
+    font-family: Arial, sans-serif;
+    font-style: normal;
+    font-size: 200%;
+    #    color: #ffffff;
+    #    background-color: #000000;
+    #    background: url(logo.png)
+}
+
+body.splash {
+    font-size: 300%;
+    #    background: url(logo.gif);
+    background-position: bottom center;
+    background-repeat: no-repeat;
+}
+
+
+A:link {
+    color: #2277ee;
+}
+A:visited {
+    color : #cc3300;
+}
+A:hover {
+    color : #000000 ;
+    background-color : #aaaaaa
+}
+
+LI {
+    margin-bottom: 0.5em;
+}
+
+#UL LI { list-style-image: url(bullet1.png) }
+#UL UL LI { list-style-image: url(bullet2.png) }
+
+LI LI { font-size: smaller }
+
+h1 {
+    color: #0000aa;
+    text-align: center;
+}
+
+h1.splash {
+    color: #cc3300;
+}
+
+h2.splash {
+    color: #2277ee;
+}
+
+h3 {
+    font-family: Arial, sans-serif;
+}
+
+b {
+    font-weight: bold;
+}
+
+td {
+    font-size: 200%;
+}
+th {
+    font-size: 200%;
+}
+
+code {
+    color: #00aa00;
+}
+
+div.box {
+    font-size: smaller;
+    border-width: medium;
+    padding: 0.25em;
+    background-color: #dddddd;
+}
+
+pre {
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #000000;
+    margin: 1em;
+    padding: 1em;
+}
+
+span.string {
+    color: #696969;
+}
+
+span.function-name {
+    color: #87cefa;
+}
+
+span.keyword {
+    color: #00ffff;
+}
+
+span.comment {
+    color: #ff7f24;
+} /* font-lock-comment-face */
+span.variable-name {
+    color: #228b22;
+} /* font-lock-variable-name-face */
+span.type {
+    color: #4682b4;
+} /* font-lock-type-face */
+span.builtin {
+    color: #b0c4de;
+} /* font-lock-builtin-face */

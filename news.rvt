@@ -13,6 +13,15 @@
 	  <td valign="top">
 	    <h2>News and Status</h2>
 
+
+	    <p>
+	      <b>6 August, 2002:</b> The <a href="websh/">Websh</a>
+	      and <a href="rivet/">Apache Rivet</a> projects are now
+	      live on the new web site.  A big thankyou to <a
+	      href="http://www.covalent.net">Covalent</a> for hosting
+	      us for the past couple of years!
+	    </p>
+
 	    <p>
 	      <b>29 January, 2002:</b> All Apache Tcl mailing lists
 	      are now on-line at <a

@@ -50,13 +50,7 @@
 	    <p>If you are interested in helping out, please go to the
 	    <a href="contact.ttml">contact</a> page and send some email.</p>
 
-	    <p align="center">
-	      <a href="http://www.apache.org/"><img src="../apache_pb.gif"
-						  alt="Powered by Apache" border="0"
-						  width="259"
-						  height="32"></a>
-	    </p>
-	    
+	    <? powered ?>	    
 	  </td>
 	</tr>
     </table>

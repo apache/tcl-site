@@ -38,13 +38,7 @@
 	      Hosting services and equipment provided by <b><a href="http://www.covalent.net">Covalent Technologies</a></b>.
 	    </p>
 
-	    <p align="center">
-	      <a href="http://www.apache.org/"><img src="../apache_pb.gif"
-						  alt="Powered by Apache" border="0"
-						  width="259"
-						  height="32"></a>
-	    </p>
-	    
+	    <? powered ?>
 	  </td>
 	</tr>
     </table>

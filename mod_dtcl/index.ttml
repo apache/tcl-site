@@ -26,7 +26,7 @@
 	      seperates content from code.
 	    </p>
 	    <p>
-	      <a href="http://tcl.activestate.com/">Tcl</a> is a very
+	      <a href="http://www.tcl-tk.net/">Tcl</a> is a very
 	      common scripting language with many years of development
 	      invested in it. Because Tcl is such a widely used
 	      language, there is a large amount of documentation for
@@ -35,13 +35,7 @@
 	      create images, access databases, and so forth.
 	    </p>
 
-	    <p align="center">
-	      <a href="http://www.apache.org/"><img src="../apache_pb.gif"
-						  alt="Powered by Apache" border="0"
-						  width="259"
-						  height="32"></a>
-	    </p>
-	    
+	    <? powered ?>
 	  </td>
 	</tr>
     </table>

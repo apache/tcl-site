@@ -268,7 +268,7 @@ proc navbar_supp {{where 0}} {
              "faq.ws3#generic" "generic questions" 1 \
              "faq.ws3#technical" "tech questions" 1} \
         {navBarElement "subscribe.ws3" "mailing list" [expr $where != 2]}
-        {navBarElement "http://nagoya.apache.org/bugzilla/" "bug tracking system" [expr $where != 3]}
+        {navBarElement "http://issues.apache.org/bugzilla/" "bug tracking system" [expr $where != 3]}
         </table>
         </td>
     }

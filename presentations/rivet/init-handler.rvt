@@ -1,0 +1,28 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>Global Init Handler</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body>
+    <? prevnext "<h1>Global Init Handler</h1>" ?>
+
+    This is executed in the 'parent' process, so its effects are truly
+    global.  In Rivet, we only add a string to the Apache version:
+
+    <pre>
+<span class="type">MODULE_VAR_EXPORT</span> <span class="type">void</span>
+<span class="function-name">Rivet_InitHandler</span>(server_rec *s, pool *p)
+{
+#<span class="builtin">ifndef</span> <span class="variable-name">HIDE_RIVET_VERSION</span>
+    ap_add_version_component(<span class="string">&quot;Rivet / &quot;</span>RIVET_VERSION);
+#<span class="builtin">else</span>
+    ap_add_version_component(<span class="string">&quot;Rivet&quot;</span>);
+#<span class="builtin">endif</span> <span class="comment">/* !HIDE_RIVET_VERSION */</span>
+}
+</pre>
+
+    <?footer?>
+  </body>
+</html>

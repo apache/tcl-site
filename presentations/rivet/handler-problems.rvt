@@ -1,0 +1,36 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>Handler Problems to Overcome</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body>
+    <? prevnext "<h1>Handler Problems to Overcome</h1>" ?>
+
+    In order to create a system that is fast and easy to use that
+    doesn't surprise the user, we had a few problems to solve:
+    <ol>
+      <li>Keep each page 'seperate' - if you set a variable in
+      foo.rvt, you don't want to see it again in bar.rvt.</li>
+      <li>Provide a way to share global data for those who need to
+      access it.  Persistent database connections, or sockets, for
+      example.</li>
+      <li>
+	Provide clean integration of Tcl and HTML, in order to make
+	quick and dirty templating possible, and easy.
+      </li>
+      <li>
+	Let users use 'normal' Tcl scripts.  One of the big advantages
+	Tcl has (over, say, PHP) is that it is a multi-purpose
+	language.  It's not restricted to just the web.  Rivet
+	attempts to make it possible to take ordinary Tcl code and run
+	it in Rivet without changes, which means there is more code
+	available to use.
+      </li>
+      <li>Keep the whole system fast!</li>
+    </ol>
+
+    <?footer?>
+  </body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>Apache Architecture</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body>
+    <? prevnext "<h1>Apache Architecture</h1>" ?>
+
+    <p>Parent server launches children as load requires.  Note that
+    Apache does <b>not</b> fork one child per request!  Multiple
+    children run select loops to accept and deal with requests.
+    Apache 2.0 supports multiple architectures, including several that
+    use threads.
+    </p>
+
+    <p align="center"><img src="arch.png" alt="Apache Architecture"></p>
+
+    <?footer?>
+  </body>
+</html>

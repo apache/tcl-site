@@ -1,0 +1,30 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>Conclusion</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body>
+    <? prevnext "<h1>Conclusion</h1>" ?>
+
+    <p>Unfortunately, within a limited time, it's impossible to cover
+    all the intricacies and possibilities that Apache and Tcl offer,
+    but I hope to have shown that using these two systems lets you do
+    some very powerful things.  </p>
+
+    <p>It may not seem like it in just an hour, but Rivet is
+    simple. It is less than 5000 lines of code, and yet it provides
+    most of what PHP does, with easily 1/10th the code.  It does this
+    by carefully reutilizing everything it can from Apache and
+    Tcl.</p>
+
+    <p>
+      I hope that by showing you some of what is possible, you will be
+      able to further explore, and hopefully create something new and
+      interesting!
+    </p>
+
+    <?footer?>
+  </body>
+</html>

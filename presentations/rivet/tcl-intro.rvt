@@ -1,0 +1,21 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>Tcl</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body>
+    <? prevnext "<h1>Tcl</h1>" ?>
+
+    <p>
+      Tcl stands for "Tool Command Language".  It was created in the
+      late 80'ies, by John Ousterhout, then a professor at the
+      University of California at Berkeley, as a replacement for the
+      many small extension languages he was writing for his
+      applications.  From the very beginning, Tcl was engineered to be
+      combined with other systems.
+    </p>
+  <?footer?>
+</body>
+</html>

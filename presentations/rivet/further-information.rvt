@@ -1,0 +1,30 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>For More Information</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body>
+    <? prevnext "<h1>For More Information</h1>" ?>
+
+For more information:
+
+    <table align="center" width="%90">
+      <tr><td>Apache Tcl project</td><td><a
+	      href="http://tcl.apache.org/">http://tcl.apache.org/</a>
+	  </td></tr>
+      <tr><td>This Presentation</td><td><a
+	      href="http://tcl.apache.org/presentations/rivet/">http://tcl.apache.org/presentations/rivet/</a>
+	  </td></tr>
+      <tr><td>Apache web server</td><td><a
+	      href="http://httpd.apache.org/">http://httpd.apache.org/</a>
+	  </td></tr>
+      <tr><td>Tcl</td><td><a href="http://www.tcl.tk/">http://www.tcl.tk/</a>
+	  </td></tr>
+      <tr><td>David N. Welton</td><td>davidw@apache.org</td></tr>
+    </table>
+
+    <?footer?>
+  </body>
+</html>

@@ -10,6 +10,7 @@ web::putx {
     <tr valign="top">
     {navbar_docu 1}
     <td width="610">
+    {web::put {
 <a name="1"><a href="#toc"><h1>1 Introduction</h1></a>
 
 This white paper describes the key features of Websh, details it's
@@ -707,7 +708,7 @@ Copyright (C) 2001, 2002 by The Apache Software Foundation.<br>
 All rights reserved.<br>
 
 You may always find an up-to-date version of the Websh white paper
-at <a href="http://tcl.apache.org/websh/">http://tcl.apache.org/websh/</a>.
+at <a href="http://tcl.apache.org/websh/">http://tcl.apache.org/websh/</a>.}}
     </td>
   </tr>
   </table>

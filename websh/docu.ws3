@@ -14,16 +14,14 @@ web::putx {
     This is your one-stop shop for all Websh documentation.
     <h2>White Paper</h2>
 
-    The white paper outlines how Websh is used, describes
-    its architecture, and explains design decisions.<br>
-    <a href="whitepaper.ws3">html</a>
+    The <a href="whitepaper.ws3">white paper</a> outlines how Websh is 
+    used, describes its architecture, and explains design decisions.
 
     <h2>Quick Reference</h2>
 
     Know how to use Websh, but keep forgetting the
-    syntax? The quick reference has everything you need to
-    know.<br>
-    <a href="quickref.html">html</a>
+    syntax? The <a href="quickref.ws3">quick reference</a> has 
+    everything you need to know.<br>
 
     <h2>Code Examples</h2>
 

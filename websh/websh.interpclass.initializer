@@ -260,13 +260,9 @@ proc navbar_docu {{where 0}} {
     web::putx {
 	{navBarStart}
         {navBarElement "docu.ws3" "documentation" [expr $where != 0]}
-        {navBarElement "whitepaper.ws3" "white paper" [expr $where != 1] \
-             "whitepaper.ws3#toc" "index" 1}
-        {navBarElement "quickref.ws3" "quick reference" [expr $where != 2] \
-             "quickref.ws3#toc" "index" 1}
-        {#navBarElement "tutorial.ws3" "tutorial" 2}
+        {navBarElement "whitepaper.ws3" "white paper" [expr $where != 1]}
+        {navBarElement "quickref.ws3" "quick reference" [expr $where != 2]}
         {navBarElement "examples.ws3" "examples" [expr $where != 4]}
-        {#navBarElement "reference.ws3" "reference" 2}
 	{navBarEnd}
     }
 }

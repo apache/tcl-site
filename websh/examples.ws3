@@ -10,11 +10,11 @@ putHeader 2
 
 web::putx {
     <table border="0" cellpadding="0" cellspacing="0" width="770">
-    {headRow 3 "webshell example code"}
+    {headRow 3 "Websh example code"}
     <tr valign="top">
     {navbar_docu 4}
     <td width="610">
-This section presents a selection of sample webshell applications.
+This section presents a selection of sample Websh applications.
 All applications are described in detail on this page and come with
 richly documented source code. For simplicity, they are all-in-one
 files. Plus, they are on-line and ready to use. For each application

@@ -1,0 +1,32 @@
+## www.websh.com/support.html
+## nca-115-2
+## $Id$
+
+web::response -sendheader 0
+
+startHtmlPage
+startHtmlBody
+putHeader 4
+
+web::putx {
+    <table border="0" cellpadding="0" cellspacing="0" width="770">
+    {headRow 4 "resources"}
+    <tr valign="top">
+    {navbar_ress 0}
+    <td width="455">
+    <img height="160" width="150" src="images/ausschnitt_ressources.gif" vspace="40" align="left" alt="graphics"><br>
+    On this page, we compile links to webshell related resources and
+    tools.
+    <h2>Tcl</h2>
+    {pageLink www.tcl.tk -pre}
+    <h2>Tcl and Apache</h2>
+    {pageLink tcl.apache.org -pre}
+    <h2>Apache</h2>
+    {pageLink www.apache.org -pre}
+    </td>
+    {newsbar_ress}
+  </tr>
+  </table>
+}
+
+finishPage 4

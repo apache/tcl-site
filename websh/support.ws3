@@ -1,0 +1,46 @@
+## www.websh.com/support.html
+## nca-115-2
+## $Id$
+
+web::response -sendheader 0
+
+startHtmlPage
+startHtmlBody
+putHeader 3
+
+web::putx {
+    <table border="0" cellpadding="0" cellspacing="0" width="770">
+    {headRow 4 "support"}
+    <tr valign="top">
+    {navbar_supp}
+    <td width="455">
+      <img height="160" width="150" src="images/ausschnitt_support.gif" align="left" alt="graphics">
+      Netcetera knows that no tool is useful without documentation
+      and support. That's why we are committed to high-quality support
+      for webshell. We work hard to keep {pageLink websh.com -pre}
+      up-to-date with all information you need. Here, you can find
+      the {pageLink whitepaper.html -show "webshell white paper"} and
+      the {pageLink quickref.html -show "quick reference"} as well as
+      a list of {pageLink faq.html -show "frequently asked questions"}.
+      <br><br>
+
+      In addition, we offer <b>free e-mail support</b>. Contact us at
+      {emailSupportLink}. Our engineers are committed to deliver
+      high-quality support in no time.
+      <br><br>
+
+      If you consider webshell as a tool for your Internet business,
+      you might be interested in our <b>maintenance contracts</b>.
+      Contact us at {emailInfoLink} for a specially tailored offer.
+      <br><br>
+
+      It is our goal to deliver first-quality service. Please feel
+      free to {emailLink support@websh.com "contact us"} and let us
+      know what you think about webshell.
+    </td>
+    {newsbar_supp}
+  </tr>
+  </table>
+}
+
+finishPage 3

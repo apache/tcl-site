@@ -1,0 +1,49 @@
+## www.websh.com/download.html
+## nca-115-2
+## $Id$
+
+web::response -sendheader 0
+
+startHtmlPage
+startHtmlBody
+putHeader 5
+
+web::putx {
+
+    <table border="0" cellpadding="0" cellspacing="0" width="770">
+    {headRow 3 "download"}
+    <tr valign="top">
+    {navbar_down 0}
+    <td width="610">
+    <img height="160" width="270" src="images/ausschnitt_download.gif" align="left" alt="graphics">
+    We have source and binaries available for download:
+    <DL>
+    <DT>{pageLink /downloaddir/websh-3.0.0.tar.gz -show "websh-3.0.0.tar.gz"}
+    <DD>new: 3.0 release (204kB)
+    <DT>{pageLink /downloaddir/websh-3.0.0.tgz -show "websh-3.0.0.tgz"}
+    <DD>FreeBSD package of websh 3.0.0 (121kB)
+    <DT>{pageLink /downloaddir/websh3.tar.gz -show " websh3.tar.gz"}
+    <DD>FreeBSD port of websh 3.0.0 (2kB)
+    <DT>{pageLink /downloaddir/websh-3.0b2-1.i386.rpm -show "websh-3.0b2-1.i386.rpm"}
+    <DD>rpm for beta-2 (121kB)<br>
+    This Red Hat Package file requires Tcl 8.2 or higher to be installed
+    on your Linux system (for your convenience, we have the Tcl 8.2.2
+    rpm available {pageLink /downloaddir/tcl-8.2.2-2.rh6.1.i386.rpm -show "here"}).
+    <DT>&nbsp;
+    <DD>&nbsp;
+    <DT>{pageLink /downloaddir/websh-3.0b1.zip -show "websh-3.0b1.zip"}
+    <DD>Windows/NT binary (1MB)
+    </DL>
+
+     <br><br>
+
+      If you would like to be notified when new versions of webshell
+      become available for download, you can subscribe to the webshell
+      newsletter at {pageLink /subscribe.html -show "http://websh.com/subscribe.html"}.
+
+    </td>
+     </tr>
+   </table>
+}
+
+finishPage 5

@@ -1,0 +1,25 @@
+## www.websh.com/whitepaper.html
+## nca-115-2
+## $Id$
+
+
+web::response -sendheader 0
+
+startHtmlPage
+startHtmlBody
+putHeader 2
+
+web::putx {
+    <table border="0" cellpadding="0" cellspacing="0" width="770">
+    {headRow 3 "webshell example code"}
+    <tr valign="top">
+    {navbar_docu 4}
+    <td width="610">
+      {includeFile examples.pre}
+    </td>
+  </tr>
+  </table>
+}
+
+finishPage 2
+

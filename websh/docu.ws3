@@ -1,0 +1,50 @@
+## www.websh.com/docu.html
+## nca-115-2
+## $Id$
+
+web::response -sendheader 0
+
+startHtmlPage
+startHtmlBody
+putHeader 2
+
+web::putx {
+    <table border="0" cellpadding="0" cellspacing="0" width="770">
+    {headRow 3 "documentation"}
+    <tr valign="top">
+    {navbar_docu}
+    <td width="610">
+    This is your one-stop shop for all webshell documentation.
+    <h2>White Paper</h2>
+
+    The white paper outlines how webshell is used, describes
+    its architecture, and explains design decisions.<br>
+    <a href="whitepaper.ws3">html</a> | 
+    <a href="downloaddir/websh30a2-whitepaper.pdf">pdf</a> | 
+    <a href="downloaddir/websh30b2-whitepaper.txt">text</a><br>
+
+    <h2>Quick Reference</h2>
+
+    Know how to use webshell, but keep forgetting the
+    syntax ? The quick reference has everything you need to
+    know.<br>
+    <a href="quickref.html">html</a> | 
+    <a href="downloaddir/websh30b1-quickref.pdf">pdf</a> |
+    <a href="downloaddir/websh30b2-quickref.txt">txt</a>
+
+    <h2>Code Examples</h2>
+
+    The <a href="examples.html">example</a> page demonstates
+    webshell features - you can both look at the code and play
+    with the application.
+
+      <h2 class="grey">Reference</h2>
+
+      Also, we are compiling the webshell reference, a thorough
+      technical documentation of webshell.
+    </td>
+    </tr>
+    </table>
+}
+
+finishPage 2

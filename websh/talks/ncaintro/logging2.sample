@@ -1,0 +1,13 @@
+web::logfilter add *.alert-debug
+web::logdest   add *.alert-error   command serious
+web::logdest   add *.warning-debug command normal
+
+proc serious {msg} {
+    web::put "<font color=\"#ff0000\">$msg</font><br>"
+}   
+proc normal {msg} {
+    web::put "$msg<br>"
+}   
+
+web::log demo.info  "normal message"
+web::log demo.alert "error message"

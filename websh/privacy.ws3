@@ -1,0 +1,31 @@
+## www.websh.com/privacy.html
+## nca-115-2
+## $Id$
+
+web::response -sendheader 0
+
+startHtmlPage
+startHtmlBody
+putHeader 0
+
+web::putx {
+    <table border="0" cellpadding="0" cellspacing="0" width="770">
+    {headRow 3 "Our Privacy Policy"}
+    <tr valign="top">
+    {navbar_null}
+    <td width="455">
+
+    At {pageLink websh.com -pre} you have <b>full control</b> over
+    your personal information.<br>
+
+    We do not track who you are or what you are doing at this site, we
+    do not use cookies, and we are not giving information away about
+    you (which is easy, since we do not collect information in the
+    first place).
+
+    </td>
+    </tr>
+    </table>
+}
+
+finishPage

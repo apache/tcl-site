@@ -1,0 +1,25 @@
+## www.websh.com/contact.html
+## nca-115-2
+## $Id$
+
+web::response -sendheader 0
+
+startHtmlPage
+startHtmlBody
+putHeader 0
+
+web::putx {
+    <table border="0" cellpadding="0" cellspacing="0" width="770">
+    {headRow 2 "contact"}
+    <tr valign="top">
+    {navbar_null}
+    <td width="300">
+    WebSH is a product of the Apache Software Foundation's <a href="http://tcl.apache.org/">Apache Tcl</a> group.<br>
+    To contact the WebSH developers, send email <a href="mailto:websh-dev@tcl.apache.org">websh-dev@tcl.apache.org</a>.
+    </td>
+  </tr>
+  </table>
+}
+
+finishPage
+

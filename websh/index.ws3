@@ -1,0 +1,71 @@
+## www.websh.com/index.html
+## nca-115-2
+## $Id$
+
+#web::response -sendheader 0
+
+# source [file join [file dirname [web::request SCRIPT_FILENAME]] websh.com.gen]
+
+startHtmlPage
+startHtmlBody
+putHeader 0 0
+
+web::putx {
+    <table border="0" cellpadding="0" cellspacing="0" width="770">
+      <tr height="30">
+        <td width="300" rowspan="2" valign="top"><img height="380" width="300" src="images/headline.gif" alt="Headline"></td>
+        <td width="315" height="30"><h1>Welcome</h1></td>
+        <td width="10" rowspan="2"></td>
+        <td width="140" height="30"><h1>News</h1>
+        </td>
+      </tr>
+      <tr valign="top">
+        <td width="315"><img height="160" width="120" src="images/drei_klein.gif" align="left">
+          The Internet is growing rapidly. Daily you find new
+          applications and new home-pages - new opportunities for
+          success and profit.  The basic technologies behind the
+          Internet, however, have remained stable for years.  Only on
+          a solid basis can you build new stuff.<br>
+          <br>
+<!--          Since 1996, Netcetera's success has been based on webshell.
+          This rapid development environment for building powerful web
+          applications is rock solid, but by no means a monolith: the
+          webshell rather is the glue to assemble complex
+          applications.  Netcetera continues this traditionally
+          innovative concept with webshell 3.<br>
+          <br>
+-->
+        </td>
+        <td width="140">
+          <table border="0" cellpadding="0" cellspacing="0" width="145">
+          {newsBarElement "Newsletter" \
+          {<FORM action="/bin/mail/websh_news?cmd=subscribe" method="POST">
+         <INPUT TYPE="TEXT" SIZE="10" MAXLENGTH="35" NAME="user">
+         <INPUT type="submit" value="join">
+         </FORM>
+     }
+}
+
+{newsBarElement "websh 3.0.0 available:" \
+     {pick the {pageLink /downloaddir/websh-3.0.0.tar.gz -show "tarball"}
+	 or browse the {pageLink /download.html -show "download area"}.
+     }
+}
+
+{newsBarElement "Examples" \
+     { Check out the<br> {pageLink /examples.html -show "live examples"}<br>
+of Webshell applications.
+     }
+}
+
+
+
+</table>
+<br>
+</td>
+</tr>
+</table>
+}
+
+finishPage
+

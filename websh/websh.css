@@ -1,0 +1,14 @@
+/* www.websh.com/style.css - cascading styles sheet */
+/* nca-115-2 */
+/* $Id$ */
+body, p, td, th {color:#000000;font-size:10pt;font-family:Verdana,Helvetica,Arial,sans-serif}
+pre, tt {font-family:Courier,monospace}
+.nav {color:#006699;}
+.parahead {color:#006699}
+.news {color:#CC0000}
+.blue {color:#006699}
+.grey {color:#666666}
+.nomargin {margin-top:0.0em;margin-bottom:0.0em;}
+h1 {color:#006699;font-size:14pt;margin-top:12pt;margin-bottom:10pt;}
+h2 {color:#006699;font-size:12pt;margin-top:12pt;margin-bottom:10pt;}
+h3 {color:#006699;font-size:10pt}

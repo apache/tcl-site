@@ -1,0 +1,238 @@
+## www.websh.com/product.html
+## nca-115-2
+## $Id$
+
+web::response -sendheader 0
+
+startHtmlPage
+startHtmlBody
+putHeader 1
+
+web::putx {
+    <table border="0" cellpadding="0" cellspacing="0" width="770">
+    {headRow 4 "webshell described" "characteristics"}
+    <tr valign="top">
+    {navbar_prod 0}
+    <td width="455">
+      <img height="160" width="150" src="images/ausschnitt_product.gif" align="left" alt="graphics">
+
+      webshell is a rapid development environment for building
+      powerful, fast, and reliable web applications. webshell is
+      versatile and handles everything from HTML generation to
+      data-base driven one-to-one page customization. We have been
+      using it for years for virtually all our customer projects,
+      which typically are E-commerce shops or electronic banking
+      applications. webshell is extensible and portable, and its
+      comprehensive set of commands is quickly learned.
+
+      <h2>Open Source Software</h2>
+
+      webshell is released as open source software. The source code as
+      well as binaries for a selection of platforms are available for
+      download for free. webshell users have full control over and
+      insight into webshell. This is protection of investment.
+
+      <h2>Apache 2 module</h2>
+
+      webshell is scalable.  Its CGI interface ensures that webshell
+      can be employed virtually everywhere, using off-the-shelf web
+      servers.  If performance is key, the webshell Apache 2 module
+      gives you lightening-fast one-to-one content.  And the nice
+      thing: for both the CGI environment and for the Apache 2 module,
+      you use exactly the same webshell application.  <br><br>
+    </td>
+    <td width="10"></td>
+    <td width="145">
+      <table border="0" cellpadding="0" cellspacing="0" width="145">
+      {redPointElement "Open Source"}
+      {redPointElement "Apache 2 module"}
+      {redPointElement "Tcl Extension"}
+      {redPointElement "Thread Safe"}
+      {redPointElement "Modular Design"}
+      {redPointElement "Extensible"}
+      <tr>
+        <td colspan="2" height="30">
+          <br><h1>key features</h1>
+        </td>
+      </tr>
+      {redPointElement "web transaction state management"}
+      {redPointElement "session management"}
+      {redPointElement "strong encryption (extensible)"}
+      {redPointElement "fast logging facility (extensible)"}
+      </table>
+    </td>
+  </tr>
+    {uppfeil product.html -text "webshell history" -aName history}
+    <tr valign="top">
+      <td width="10"></td>
+      <td width="150"></td>
+      <td width="455">
+	The development of Websh began in 1996. Websh
+	has since been successfully used in virtually all customer
+	projects of Netcetera. Why does a technology-driven company
+	like Netcetera rely on a tool with such a slow release cycle ?
+	Good design pays off.<br><br>
+
+	While the Internet changes at a rapid pace, the underlying
+	technologies remain stable, and Websh has been built to
+	handle them. The practical experience gained from the
+	day-to-day use of Websh has now been channeled into the
+	current release, Websh 3.  <br><br>
+    </td>
+    </tr>
+    {uppfeil product.html -text "Based on Tcl" -aName tcl}
+    <tr valign="top">
+    <tr valign="top">
+      <td width="10"></td>
+      <td width="150"></td>
+      <td width="455">
+	  Websh is based on the Tool Command Language (Tcl,
+	  pronounced &quot;tickle&quot;). Tcl is a fast, comprehensive
+	  scripting language as well as a library.  The Tcl
+	  development started 1987 at the University of California at
+	  Berkeley with John K.Ousterhout. Today, Ousterhout is CEO of
+	  "Scriptics Corporation", which continues to develop Tcl, and
+	  markets value added products for Tcl.<br><br>
+
+	  The decision to build Websh on top of Tcl has several
+	  advantages which can be summarized as
+	  &quot;flexibility&quot;. <b>Figure 1</b> gives an overview
+	  of the Websh Architecture.<br><br>
+
+	  <img src="images/ws3ov.gif" alt="Websh Architecture"><br>
+	  <b>Figure 1</b> - Websh Architecture<br><br><br>
+
+	  Most Web-based applications need to separate items with a
+	  high change rate from other, static parts. In other words,
+	  <b class=blue>configurability</b>&nbsp; is needed.  For
+	  example, HTML output must be changeable without the need to
+	  recompile the application.<br><br>
+
+	  Using Tcl as an embedded system, such configurable parts can
+	  be designed as Tcl code snipplets and configuration files.
+	  <br><br><br>
+
+	  Web-based applications demand a high degree of flexibility
+	  or <b class=blue>extensibility</b>&nbsp;.  In particular, it
+	  must be straight-forward to add new functionality.  Websh
+	  does not manage data base access, for example, but rather
+	  relies on proven Tcl extensions for this task. Choosing Tcl
+	  for Websh thus ensures the extensibility of Websh
+	  itself.
+	  <br><br><br>
+
+	  Finally, Web-based applications must be deployable on a wide
+	  range of platforms. Tcl has been ported to all important
+	  operating systems. Embedding Tcl thus ensures the <b
+	  class=blue>portability</b>&nbsp; of Websh.  <br><br><br>
+
+    </td>
+    </tr>
+    {uppfeil product.html -text "Websh Design" -aName design}
+    <tr valign="top">
+    <tr valign="top">
+      <td width="10"></td>
+      <td width="150"></td>
+      <td width="455">
+
+	  Websh has a modular design, particularly for thread
+	  safety.Each module manages its own data, and locking
+	  mechanisms are used where needed. Websh modules are
+	  extensible through plug-Ins.<br>
+
+	  <b>Figure 2</b> gives an overview of the Websh
+	  modules. In the following, each module is shortly
+	  described.<br> <img src="images/ws3arch.gif" alt="Websh 3
+	  Design"><br>
+
+	  <b>Figure 2</b> - Websh 3 modules<br>
+
+	  <h2>request and url management</h2>
+
+	  The Websh application developer does not need to get
+	  involved with the details of the HTTP protocol or the
+	  parsing of data.  Rather, he concentrates on the application
+	  logic and leaves the rest to Websh.  This module parses
+	  input from the browser, e.g.  HTML form data, and makes it
+	  available to Websh. <br><br>
+
+	  One of the distinctive features of Websh is its state
+	  management capability. Web-based applications often need to
+	  carry information from one HTTP transaction to the next.  As
+	  an example, the user will choose his preferred language.
+	  Applications for electronic commerce systems, Internet
+	  banking and so on also need mechanisms to identify and group
+	  transactions into longer transactions which cover more than
+	  one single HTTP request and its response. This Websh
+	  module introduces state.
+
+	  <h2>session management</h2>
+
+	  Websh provides sessions for transaction data management as
+	  well. For example, a Websh application would store the
+	  items in a "shopping cart" in a session context. The session
+	  management module handles session data, which can be stored
+	  on the client side using Netscape cookies; or on the server
+	  side using the file system (fs), a data base management
+	  system (DBMS), or the Netcetera cache manager (ncm).  The
+	  module provides a uniform interface to access the session
+	  context regardless of the storage used.  It is implemented
+	  in Tcl and makes extensive use of namespaces.
+
+	  <h2>output management</h2>
+
+	  Websh provides commands to format HTTP-compliant output
+	  to be sent back to the client. output can be directed to Tcl
+	  channels or to Tcl variables for buffering purposes. The
+	  output management module is fully configurable to give the
+	  user control over the generated output.
+
+	  <h2>conversion</h2>
+
+	  Need HTML compliant input ? Want to send data via an URL, or
+	  in a form field ? This module converts umlauts to their
+	  proper HTML entities or their URI encoded equivalent, for
+	  example.  As do all Websh modules, the conversion module
+	  manages its data on its own, thus ensuring thread safety.
+
+
+	  <h2>security by encryption</h2>
+
+	  The proper handling of sensitive data is crucial for banking
+	  or E-commerce applications. Three aspects are important:
+	  Data transfer, data storage, and session hijacking. This
+	  Websh module provides the commands to encode and decode
+	  data, and to manage pass-phrases and encryption methods.
+	  <br><br>
+
+	  Websh relies on well-known and well-tested encryption
+	  methods, which are made available to Websh by means of
+	  plug-ins.<br>
+
+	  <h2>messages on streams</h2>
+
+    This Websh module implements a simple protocol to facilitate
+    communication over Tcl channels. Particularly, it is used for
+    communication over TCP/IP connections.
+
+	  <h2>logging facility</h2>
+
+	  Web applications need a versatile logging mechanism to
+	  report errors and other information. In fact, Websh
+	  itself makes heavy use of the logging facility. Logging must
+	  be easy to use, fast, and extensible. Typically, Websh
+	  applications handle hundreds of requests per second, and the
+	  logging facility has been designed with this kind of load in
+	  mind.  <br><br>
+
+	  The logging module is extensible through plug-Ins.
+	  <br><br><br>
+	  Find more information in the
+	  {pageLink whitepaper.html -show "Websh white paper"}.
+
+	</td>
+      </tr>
+    </table>
+    }
+
+finishPage 1

@@ -1,0 +1,124 @@
+This section presents a selection of sample webshell applications.
+All applications are described in detail on this page and come with
+richly documented source code. For simplicity, they are all-in-one
+files. Plus, they are on-line and ready to use. For each application
+discussed below, you will find the corresponding links which present
+the code and the live application. Both links will open a new browser
+window. You can therefore easily browse through the examples, and look
+at the code and the live example simultaneously.
+
+%%%TOC
+
+
+== hello world ==
+
+In order to get a first impression, let's look at a simple example.
+All it does is printing "Hello, world". It consists of one websh
+command, =\web::put\=.  Basically, =\web::put\= works like Tcl's
+=\puts\= command. In addition to printing the text, it does send HTTP
+headers when invoked for the first time.\\
+%%%HTML <a href="/examples/helloworld.html" onclick="javascript:window.open('','source','width=500,height=400,directories=no,location=no,menubar=no,scrollbars=yes,status=no,toolbar=no,resizable=yes');" target="source")>source</a>
+ | 
+%%%HTML <a href="/bin/examples/helloworld" onclick="javascript:window.open('','example','width=500,height=400,directories=no,location=no,menubar=no,scrollbars=yes,status=no,toolbar=no,resizable=yes');" target="example")>live example</a>
+ | 
+=(/examples/helloworld.ws3)(download)=
+
+== command dispatching ==
+
+Now, let's look at one of the main features of websh: the command
+dispatching. This allows you to produce all your HTML page from one
+and the same source code. This example produces two HTML pages, the
+"greetings" page and a "price list" page (even though, for simplicity,
+the price list is empty). It uses =\web::dispatch\= to switch into one
+of these pages, and =\web::cmdurl\= to produce URLs pointing to each
+of these pages.\\
+%%%HTML <a href="/examples/dispatch_1.html" onclick="javascript:window.open('','source','width=500,height=400,directories=no,location=no,menubar=no,scrollbars=yes,status=no,toolbar=no,resizable=yes');" target="source")>source</a>
+ | 
+%%%HTML <a href="/bin/examples/dispatch_1" onclick="javascript:window.open('','example','width=500,height=400,directories=no,location=no,menubar=no,scrollbars=yes,status=no,toolbar=no,resizable=yes');" target="example")>live example</a>
+ | 
+=(/examples/dispatch_1.ws3)(download)=
+
+== image ==
+
+This example demonstrates how to return an image instead of the
+normal "text/html" mime type.\\
+%%%HTML <a href="/examples/image.html" onclick="javascript:window.open('','source','width=500,height=400,directories=no,location=no,menubar=no,scrollbars=yes,status=no,toolbar=no,resizable=yes');" target="source")>source</a>
+ | 
+%%%HTML <a href="/bin/examples/image" onclick="javascript:window.open('','example','width=500,height=400,directories=no,location=no,menubar=no,scrollbars=yes,status=no,toolbar=no,resizable=yes');" target="example")>live example</a>
+ | 
+=(/examples/image.ws3)(download)=
+
+== confirmation form ==
+
+This example demonstrates a confirmation form. The user is promted a form to
+enter, say,  order information. The information is validated and, if sucessfull,
+an e-mail is sent back to the user.\\
+%%%HTML <a href="/examples/emailform.html" onclick="javascript:window.open('','source','width=500,height=400,directories=no,location=no,menubar=no,scrollbars=yes,status=no,toolbar=no,resizable=yes');" target="source")>source</a>
+ | 
+%%%HTML <a href="/bin/examples/emailform" onclick="javascript:window.open('','example','width=500,height=400,directories=no,location=no,menubar=no,scrollbars=yes,status=no,toolbar=no,resizable=yes');" target="example")>live example</a>
+ | 
+=(/examples/emailform.ws3)(download)=
+
+== checkbox form ==
+
+This example demonstrates how to handle checkboxes. The user is promted a form to
+select checkboxes, to display date informations. \\
+%%%HTML <a href="/examples/checkbox.html" onclick="javascript:window.open('','source','width=500,height=400,directories=no,location=no,menubar=no,scrollbars=yes,status=no,toolbar=no,resizable=yes');" target="source")>source</a>
+ | 
+%%%HTML <a href="/bin/examples/checkbox" onclick="javascript:window.open('','example','width=500,height=400,directories=no,location=no,menubar=no,scrollbars=yes,status=no,toolbar=no,resizable=yes');" target="example")>live example</a>
+ | 
+=(/examples/checkbox.ws3)(download)=
+
+== upload file ==
+
+This example demonstrates a upload form. The user is promted a form to
+enter, local file. The file is validated and, if sucessfull,
+the server shows in a confirmation the uploaded data back to the user.\\
+%%%HTML <a href="/examples/upload.html" onclick="javascript:window.open('','source','width=500,height=400,directories=no,location=no,menubar=no,scrollbars=yes,status=no,toolbar=no,resizable=yes');" target="source")>source</a>
+ | 
+%%%HTML <a href="/bin/examples/upload" onclick="javascript:window.open('','example','width=500,height=400,directories=no,location=no,menubar=no,scrollbars=yes,status=no,toolbar=no,resizable=yes');" target="example")>live example</a>
+ | 
+=(/examples/upload.ws3)(download)=
+
+== sessions ==
+
+This example demonstrates file-based server-side sessions. Suppose a
+customer visits this application for the first time. The application
+creates a new session file using =\state::init\= and stores the
+session id in the query string. From now on, =\state::init\= will know
+the session id and re-load the session context - the application
+"remembers" the customers settings across multiple HTTP requests using
+a session id embedded in all generated URLs. For simplicity, we do not
+add shopping items to a shopping cart in this example, but just save
+the data of two forms which are presented to the customer. This
+involves a little bit of form handling, and this example also
+demonstrates error handling in case of unexpected input. But let's
+look at the example.\\
+%%%HTML <a href="/examples/session_form.html" onclick="javascript:window.open('','source','width=500,height=400,directories=no,location=no,menubar=no,scrollbars=yes,status=no,toolbar=no,resizable=yes');" target="source")>source</a>
+ | 
+%%%HTML <a href="/bin/examples/session_form" onclick="javascript:window.open('','example','width=500,height=400,directories=no,location=no,menubar=no,scrollbars=yes,status=no,toolbar=no,resizable=yes');" target="example")>live example</a>
+ | 
+=(/examples/session_form.ws3)(download)=
+
+== cookie ==
+
+This example demonstrates how to use cookies. It is very similar to the
+session example above.\\
+%%%HTML <a href="/examples/cookie.html" onclick="javascript:window.open('','source','width=500,height=400,directories=no,location=no,menubar=no,scrollbars=yes,status=no,toolbar=no,resizable=yes');" target="source")>source</a> | 
+%%%HTML <a href="/bin/examples/cookie" onclick="javascript:window.open('','example','width=500,height=400,directories=no,location=no,menubar=no,scrollbars=yes,status=no,toolbar=no,resizable=yes');" target="example")>live example</a> | 
+=(/examples/cookie.ws3)(download)=
+
+== memory game ==
+
+This is a more complex example. You know the game "memory", right ?
+The goal is to find matching pictures with the least possible number
+of tries. The application keeps track of the number of your tries for
+a given game and level and compares it with the "hall of fame".  This
+version does not use sessions except for the "hall of fame", and
+stores all information in the URL, which makes the output a little bit
+bulky.  Have fun.\\
+%%%HTML <a href="/examples/memory.html" onclick="javascript:window.open('','source','width=500,height=400,directories=no,location=no,menubar=no,scrollbars=yes,status=no,toolbar=no,resizable=yes');" target="source")>source</a>
+ | 
+%%%HTML <a href="/bin/examples/memory" onclick="javascript:window.open('','example','width=500,height=400,directories=no,location=no,menubar=no,scrollbars=yes,status=no,toolbar=no,resizable=yes');" target="example")>live example</a>
+ | 
+=(/examples/memory.ws3)(download)=

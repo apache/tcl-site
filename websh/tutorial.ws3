@@ -1,0 +1,50 @@
+## www.websh.com/tutorial.html
+## nca-115-2
+## $Id$
+
+web::response -sendheader 0
+
+startHtmlPage
+startHtmlBody
+putHeader 2
+
+web::putx {
+
+<!-- body -->
+    <table border="0" cellpadding="0" cellspacing="0" width="770">
+    {headRow 3 "tutorial"}
+    <tr valign="top">
+    {navbar_docu 3}
+    <td width="610">
+      <!-- main content starts here -->
+    <h1>Tutorial</h1>
+This tutorial demonstrates the first steps with
+webshell. We assume that you are familiar with Tcl syntax.
+The task is to build a HTML form to gather information
+from users.
+<h2>Challenge</h2>
+<ul>
+<li>the form must at least supply three fields: a name, an address and an 
+  e-mail address (the address field should be a <b><tt>&lt;textarea&gt;</tt></b> 
+  field)
+<li>the confirmation after submission must repeat the input
+<li>the webshell application must check for valid e-mail addressed
+</ul>
+<h2>Solution</h2>
+Here is an <a href="example_form.ws3">example</a>.
+
+
+
+
+
+      <!-- main content ends here -->
+    </td>
+  </tr>
+  </table>
+}
+
+
+
+finishPage 2
+
+

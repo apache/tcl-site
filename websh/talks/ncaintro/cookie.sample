@@ -1,0 +1,19 @@
+web::cookiecontext mycookie
+
+web::command default {
+
+    mycookie::init cookiesample
+
+    set cnt [mycookie::cget cnt 0]
+
+    set  newcnt $cnt
+    incr newcnt
+
+    mycookie::cset cnt $newcnt
+
+    mycookie::commit
+
+    web::put "looks like this is your visit Nr $cnt"
+}
+
+web::dispatch

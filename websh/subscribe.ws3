@@ -1,0 +1,41 @@
+## www.websh.com/subscribe.html
+## nca-115-2
+## $Id$
+
+web::response -sendheader 0
+
+startHtmlPage
+startHtmlBody
+putHeader 0
+
+web::putx {
+    <table border="0" cellpadding="0" cellspacing="0" width="770">
+    {headRow 3 "webshell newsletter"}
+    <tr valign="top">
+    {navbar_null}
+    <td width="610">
+      Netcetera edits the webshell newsletter.<br><br>
+      You can subscribe
+      for the newsletter by simply adding your e-mail address below.<br>
+    <FORM action="/bin/mail/websh_news?cmd=subscribe" method="POST">
+    <INPUT TYPE="TEXT" SIZE="40" MAXLENGTH="60" NAME="user">
+    <INPUT type="submit" value="subscribe">
+    </FORM>
+    <br>
+    Alternatively, you can subscribe for the newsletter by sending
+    sending an e-mail to {emailLink majordomo@netcetera.ch}
+with <tt>subscribe websh-news</tt> in the body of the message.
+<br><br><br>
+
+If at any time you would like to unsubscribe from this newsletter,
+you may do so at {pageLink www.websh.com/unsubscribe.html -pre}, or by
+sending an e-mail to {emailLink majordomo@netcetera.ch} with
+<tt>unsubscribe websh-news</tt> in the body of the message.
+<br><br><br>
+Thank you for you interest in webshell.
+    </td>
+    </tr>
+    </table>
+}
+
+finishPage

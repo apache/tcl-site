@@ -1,0 +1,16 @@
+web::initializer {
+    web::put "<tt>initializing code...</tt><br>"
+    # open DB handle
+    web::command default {
+	web::put "<tt>"
+        web::put "max requests allowed for this interpreter:&nbsp;"
+	web::put "[web::interpclasscfg [web::interpcfg] maxrequests]<br>"
+        web::put "current request handled by this interpreter:&nbsp;"
+	web::put "[web::interpcfg numrequests]<br>"
+	web::put "</tt>"
+    }
+}
+web::finalizer {
+    # close DB handle
+}
+web::dispatch

@@ -1,0 +1,24 @@
+## www.websh.com/faq.html
+## nca-115-2
+## $Id$
+
+web::response -sendheader 0
+
+startHtmlPage
+startHtmlBody
+putHeader 3
+
+web::putx {
+    <table border="0" cellpadding="0" cellspacing="0" width="770">
+    {headRow 4 "frequently asked questions"}
+    <tr valign="top">
+    {navbar_supp 1}
+    <td width="455">
+      {includeFile faq.pre}
+    </td>
+    {newsbar_supp}
+  </tr>
+  </table>
+}
+
+finishPage 3

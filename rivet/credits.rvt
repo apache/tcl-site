@@ -1,0 +1,37 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<!-- $Id$ -->
+<html>
+  <head>
+    <title>Apache Rivet Credits</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <? title "Apache Rivet Credits" ?>
+
+    <table border="0">
+	<tr>
+	  <? include navbar.html ?>
+	  <td class="main" valign="top">
+	    <p>
+	      <b>Apache Rivet</b> owes its existance to a lot of
+	      people.  First and foremost, to the people behind the <a
+	      href="http://httpd.apache.org/contributors/">Apache Web
+	      Server</a> and the <a
+	      href="http://www.tcl-tk.net/community/coreteam/index.html">Tool
+	      Command Language</a>.
+	    </p>
+	    <p>
+	      The two primary authors of the Rivet code are Damon
+	      Courtney and <a
+	      href="http://people.debian.org/~davidw/">David
+	      Welton</a>.
+	    </p>
+	  </td>
+	</tr>
+    </table>
+
+<? title "&nbsp;" ?>
+
+  </body>
+</html>
+

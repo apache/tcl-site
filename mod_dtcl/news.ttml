@@ -11,9 +11,16 @@
     <table border="0">
 	<tr>
 	  <? include navbar.html ?>
-	  
-	  <td valign="top"> 
+
+	  <td valign="top">
 	    <h2>News & Status</h2>
+
+	    <p>
+	      <b>January 29, 2002:</b> The Apache Tcl mailing list
+	      archives are now available from: <a
+	      href="http://www.apachelabs.org">www.apachelabs.org</a>.
+	      Thanks to Justin Erenkrantz!
+	    </p>
 
 	    <p>
 	      <b>December 9, 2001:</b> Added mod_dtcl and tcl <a

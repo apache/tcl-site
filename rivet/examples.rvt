@@ -6,19 +6,30 @@
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <? source examples.tcl ?>
     <? title "Apache Rivet Examples" ?>
 
     <table border="0">
 	<tr>
 	  <? include navbar.html ?>
 
-	  <td valign="top">
-	    <a href="examples.rvt?helloworld=1">Hello World</a>
-	    <? helloworld ?>
+	  <td class="main" valign="top">
+	    Let's have a look at what the folks at Sun(TM) say about
+	    Tcl(TM):
+
+	    <table border="1">
+	      <tbody>
+		<tr>
+		  <td>
+		    <?
+		    ?>
+		  </td>
+		</tr>
+	      </tbody>
+	    </table>
+
 	  </td>
 	</tr>
+
     </table>
-    <? powered ?>
   </body>
 </html>

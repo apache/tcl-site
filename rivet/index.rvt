@@ -15,8 +15,8 @@
 	  <td class="main" valign="top">
 
 	    <p>
-	      <b>Apache Rivet</b> is a powerful, consistent, fast, and
-	      robust solution to creating web applications:
+	      <b>Apache Rivet</b> is a powerful, flexible, consistent,
+	      fast, and robust solution to creating web applications:
 	    </p>
 	    <p>
 	      <b>Powerful</b>: Apache Rivet puts the Tool Command
@@ -26,6 +26,14 @@
 	      is glue them together to create unique and useful
 	      applications.  Rivet unites this power with the Apache
 	      web server.
+	    </p>
+	    <p>
+	      <b>Flexible</b>: The original design constraints for Tcl
+	      required that it be flexible enough to be inserted and
+	      function in an extreme variety of environments.  That's
+	      still true today, and makes Tcl, and as a consequence,
+	      Apache Rivet, easy to integrate into your business to
+	      leverage existing systems.
 	    </p>
 	    <p>
 	      <b>Consistent</b>: The Tool Command Language is
@@ -58,5 +66,8 @@
 	  </td>
 	</tr>
     </table>
+
+<? title "&nbsp;" ?>
+
   </body>
 </html>

@@ -1,0 +1,36 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<!-- $Id$ -->
+<html>
+  <head>
+    <title>Download Apache Rivet</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <? title "Download Apache Rivet" ?>
+
+    <table border="0">
+	<tr>
+	  <? include navbar.html ?>
+	  <td class="main" valign="top">
+	    <p>
+	      <b>Apache Rivet</b> is available ...
+	    </p>
+	    <p>
+	      It is also possible to fetch the latest versions of
+	      Rivet from Apache's CVS:
+	    </p>
+	    <p>
+	      <code>cvs
+		-d:pserver:anoncvs@cvs.apache.org:/home/cvspublic
+		login
+	      </code><br>(using the password "anoncvs")
+	    </p>
+	    <p><code>cvs&nbsp;-d:pserver:anoncvs@cvs.apache.org:/home/cvspublic&nbsp;checkout&nbsp;tcl-rivet</code></p>
+	  </td>
+	</tr>
+    </table>
+
+<? title "&nbsp;" ?>
+
+  </body>
+</html>

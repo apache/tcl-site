@@ -23,13 +23,11 @@
 	      <li>Security review: I would like someone with security background to
   thoroughly go over the code.</li>
 
-	      <li>Someone to make RPMs as new versions come out.</li>
-
 	      <li>Standalone dtcl, so that it may be run from the
 	      command line, for testing, or as a CGI.</li>
 
 	      <li>Script timeouts: set limits on the length of time a
-  script will run before it returns or dies.</li>
+		script will run before it returns or dies.</li>
 
 	      <li>More commands available for scripters (see PHP for
 	      examples), as well as more Tcl level commands and
@@ -41,6 +39,12 @@
 	      versions, and so on, to sites such as Freshmeat.</li>
 
 	      <li>A logo created by someone with an artistic bent.</li>
+
+	      <li>Generic (usable by anyone) software that runs on
+	      mod_dtcl may be hosted in an upcoming section of this
+	      site.  Let us know if you have written something cool
+	      with mod_dtcl that you'd like to share with the
+	      world!</li>
 
 	      <li>More test cases are always welcome.</li>
 	    </ul>

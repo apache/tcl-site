@@ -1,0 +1,52 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+  <head>
+    <title>Apache Tcl</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <? title ?>
+    <table border="0">
+	<tr>
+	  <? navbar ?>
+	  <td valign="top">
+	    <h2>Credits</h2>
+	    <p>
+	      Current Members of the Project Maintainership Committee:
+	    </p>
+	    <ul>
+	      <li>Ronnie Brunner</li>
+	      <li>Damon Courtney</li>
+	      <li>Dirk-Willem van Gulik</li>
+	      <li><a href="mailto:mlink@apache.org">Michael Link</a></li>
+	      <li>Daniel Ridruejo</li>
+	      <li><a href="http://www.dedasys.com/davidw/">David Welton</a></li>
+	    </ul>
+	    <p>We would also like to thank the following for their
+	    time, help and or contributions:</p>
+
+	    <ul>
+	      <li><a href="http://www.apache.org/">Apache Software Foundation</a></li>
+	      <li><a href="http://www.phaseit.net">Cameron
+		  Laird</a></li>
+	      <li><a href="http://www.covalent.net/">Covalent Technologies</a></li>
+	    </ul>
+
+	    <p>
+	      Contributions for individual projects are credited on
+	      the pages associated with those projects.
+	    </p>
+
+	    <h2>Contact Information</h2>
+	    <p>
+	      If you are trying to contact an individual project,
+	      please see the respective page for detailed information.
+	      For general Apache Tcl questions, send email to <a
+	      href="mailto:general@tcl.apache.org">general@tcl.apache.org</a>.
+	      </p>
+	  </td>
+	</tr>
+    </table>
+    <? powered ?>
+  </body>
+</html>

@@ -33,13 +33,7 @@
 
 	    </ul>
 	    <p>
-	      <a href="download/">mod_dtcl source code</a> 
-<+
-set fl [ lindex [ glob download/mod_dtcl*tar.gz] end ]
-set sz [ expr { [ file size $fl ] / 1024 } ]
-hputs "( $sz KB )"
-+>
-
+	      <a href="download/">mod_dtcl source code</a>
 	    </p>
 
 	    <p><b>Get mod_dtcl from Anonymous CVS:</b></p>

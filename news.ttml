@@ -20,6 +20,11 @@
 	  <td valign="top"> 
 	    <h2>News and Status</h2>
 
+	    <p><b>12 February, 2001</b> <a
+	    href="apache-tcl-press-release.txt">Press release</a>
+	    discussing Apache Tcl sent out.
+	    </p>
+
 	    <p>
 	      <b>21 December, 2000</b> tcl.apache.org was unavailable
 	      for a few days due to problems with Covalent's ISP.

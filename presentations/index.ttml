@@ -30,7 +30,10 @@
 	      href="tcl.tgz">(tarball)</a><br>
 		Presentation on the Tcl programming language and the Tk toolkit.		
 	      </li>
-	      <li>mod_dtcl Presentation: coming soon!</li>
+	      <li>mod_dtcl Presentation: <a href="dtcl/">(live)</a> <a
+	      href="dtcl.tgz">(tarball)</a><br>
+		mod_dtcl presentation.
+	      </li>
 	    </ul>
 	  </td>
 	</tr>

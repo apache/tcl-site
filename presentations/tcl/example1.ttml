@@ -1,0 +1,28 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>Example 1</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body>
+    <? prevnext "<h1>Example 1</h1>" ?>
+
+    <p></p>
+    <table align=center>
+      <tbody>
+	<tr>
+	  <td>
+
+<PRE>
+<B><FONT COLOR="#A020F0">proc</FONT></B> <B><FONT COLOR="#0000FF">fac</FONT></B> {<FONT COLOR="#B8860B">x</FONT>} {
+    <B><FONT COLOR="#A020F0">if</FONT></B> { $<FONT COLOR="#B8860B">x</FONT> &lt;= 1 } { <B><FONT COLOR="#A020F0">return</FONT></B> 1 }
+    <B><FONT COLOR="#A020F0">expr</FONT></B> { $<FONT COLOR="#B8860B">x</FONT> * [fac [<B><FONT COLOR="#A020F0">expr</FONT></B> $<FONT COLOR="#B8860B">x</FONT> - 1]] }
+}
+</PRE>
+	  </td>
+	</tr>
+      </tbody>
+    </table>
+  </body>
+</html>

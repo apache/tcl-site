@@ -1,0 +1,32 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>Lightweight</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body>
+    <? prevnext "<h1>Lightweight</h1>" ?>
+	Tcl is relatively easy on system resources:
+    <p>
+      ls:<br>
+      <code>
+	1036724 /usr/lib/libperl.so.5.6.1<br>
+	790044&nbsp;&nbsp;/usr/lib/libpython2.1.so.0.0<br>
+	648648&nbsp;&nbsp;/usr/lib/libtcl8.3.so.1<br>
+      </code>
+    </p>
+    <p>
+      ps:<br>
+      <code>
+	VSZ&nbsp;&nbsp;RSS<br>
+	3856 1860 python<br>
+	3476 1200 perl<br>
+	2916 1252 tclsh<br>
+      </code>
+    </p>      
+    It has to be, if it's going to be embedded in your program!
+      
+
+  </body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>Tcl, Un Grande Piccolo Linguaggio</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  
+  <body class="splash">
+    <? prevnext {<h1 align="center" class="splash">Tcl, Un Grande Piccolo Linguaggio</h1>} ?>
+    
+    <h2 align="center" class="splash">David N. Welton</h2>
+    <p align="center">
+      <a href="mailto:davidw@dedasys.com">davidw@dedasys.com</a>
+    </p>
+    
+
+    <a></a>
+  </body>
+</html>

@@ -1,0 +1,25 @@
+Tcl - Tool Command Language
+
+ Towards the end of the 80ies, UC Berkeley professor John Ousterhout
+ realized that writing small scripting/configuration languages for his
+ applications was a time-consuming endeavour, and thus created one
+ language that could be used for embedding and extending his
+ programs.  Since then, Tcl has grown and matured, and continues to be
+ one of the best scripting languages available because it is flexible
+ enough to be used for an impressive array of tasks, from the web, to
+ EDA's, to automated testing.  This talk gives an overview of the
+ features of the Tcl system, like its extensibility (both in Tcl and
+ in C), flexibility, the Tk graphical toolkit, and more.
+
+Tcl - Tool Command Language
+
+ Alla fine degli anni 80, John Ousterhout, professore a UC Berkeley
+ capi` che scrivere piccoli linguaggi di scripting e/o configurazione
+ per i suoi programmi gli portava via troppo tempo, e cosi` creo` un
+ unico linguaggio da usare con tutto.  Tcl e` cresciuto e maturato e
+ continua ad essere uno dei linguaggi migliori di scripting per il
+ fatto di essere abbastanza flessibile da usare per una varieta`
+ impressionante di ambienti, dal web, agli EDA, al testing.  Il talk
+ si propone come sopraluogo dei features di questo sistema, come la
+ sua estensibilita` (anche in C), flessibilita`, il sistema grafico
+ Tk, e altre cose ancora.

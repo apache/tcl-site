@@ -1,0 +1,26 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>Powerful</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body>
+    <? prevnext "<h1>Tcl is Powerful</h1>" ?>
+
+    Tcl's power lies in its extensibility and flexibility.
+    <p>
+      The core language gives you a lot - and extensions give you the rest.
+    <p>
+    <ul>      
+      <li>Object orientation: [incr Tcl]</li>
+      <li>Web: mod_dtcl, AOLServer, tclhttpd</li>
+      <li>Database: postgresql, oracle, mysql, etc...</li>
+      <li>Data structures: graphs, trees</li>
+      <li>Testing: tcltest</li>
+      <li>System Administration: expect, scotty (SNMP)</li>
+      <li>Unix facilities: TclX</li>
+    </ul>
+
+  </body>
+</html>

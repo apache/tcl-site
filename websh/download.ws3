@@ -17,7 +17,7 @@ web::putx {
 
     &nbsp;&nbsp;&nbsp;&nbsp;{
 
-	set srcfile [lindex [file tail [glob -nocomplain [getDocFileName download/*gz]]] end]
+	set srcfile [lindex [file tail [glob -nocomplain [getDocFileName download/websh*gz]]] end]
 	if {![string length $srcfile]} {
 	    web::put "<span class=\"blue\">source code currently unavailable</span>"
 	} else {

@@ -48,10 +48,10 @@
 	    <p>
 	      Or, the quick and dirty way to get mod_dtcl via anoncvs:<br>
 	      <code>cvs
-	      -d:pserver:anoncvs@www.apache.org:/home/cvspublic
+	      -d:pserver:anoncvs@cvs.apache.org:/home/cvspublic
 	      login</code> (password anoncvs)<br>
 	      <code>cvs
-		-d:pserver:anoncvs@www.apache.org:/home/cvspublic
+		-d:pserver:anoncvs@cvs.apache.org:/home/cvspublic
 		checkout tcl-moddtcl</code><br>
 	    </p>
 

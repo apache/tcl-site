@@ -15,9 +15,6 @@
       <a href="tcl/">Tcl</a>: The Tcl core itself.
     </p>
     <p>
-      <a href="tcl-moddtcl/">mod_dtcl</a>: mod_dtcl - Tcl for Apache 1.3.
-    </p>
-    <p>
       <a href="tcl-modtcl/">mod_tcl</a>: mod_tcl - Tcl for Apache 2.0.
     </p>
     <p>

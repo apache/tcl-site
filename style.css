@@ -6,7 +6,6 @@ body {
 }
 
 p {
-    font-size: smaller;
 }
 
 A:link { color: #cc3300 }
@@ -48,15 +47,9 @@ code {
      color: #006600;
 }
 
-div.box {
-    font-size: smaller;
-    border-width: medium;
-    padding: 0.3em;
-    background-color: #dddddd;
-}
-
 table.main {
     width: 100%;
+    font-size: smaller;
 }
 
 table.lists td {
@@ -77,10 +70,8 @@ table.nav {
 }
 
 table.nav td {
-//    background-color: #aaaaff;
     font-weight: bold;
     padding: .3em;
-    font-size: smaller;
 }
 
 li {
@@ -92,3 +83,29 @@ blockquote {
     font-size: smaller;
     font-style: italic;
 }
+
+pre.code {
+    padding: 1ex;
+}
+
+td.code {
+    background-color: black;
+    color: white;
+    border: solid white 1em;
+}
+
+span.type {
+    color: #4682b4;
+} /* font-lock-type-face */
+span.variable-name {
+    color: #228b22;
+} /* font-lock-variable-name-face */
+span.comment {
+    color: #ff7f24;
+} /* font-lock-comment-face */
+span.keyword {
+    color: #00ffff;
+} /* font-lock-keyword-face */
+span.function-name {
+    color: #87cefa;
+} /* font-lock-function-name-face */

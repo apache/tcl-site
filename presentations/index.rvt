@@ -26,13 +26,8 @@
 	      redistribute, or otherwise do as you wish.
 	    </p>
 	    <ul>
-	      <li>Tcl Presentation: <a href="tcl/">(live)</a> <a
-	      href="tcl.tgz">(tarball)</a><br>
+	      <li>Tcl Presentation: <a href="tcl/"></a><br>
 		Presentation on the Tcl programming language and the Tk toolkit.
-	      </li>
-	      <li>mod_dtcl Presentation: <a href="dtcl/">(live)</a> <a
-	      href="dtcl.tgz">(tarball)</a><br>
-		mod_dtcl presentation.
 	      </li>
 	      <li>
 		Apache Tcl Presentation: <a
@@ -40,6 +35,13 @@
 
 		The present and future of Apache Tcl, and why Tcl is
 		such a logical fit for doing web content.
+	      </li>
+	      <li>Rivet Presentation: <a href="rivet">(live)</a><br>
+
+		About Rivet, the successor to mod_dtcl and NeoWebScript.
+	      </li>
+	      <li>mod_dtcl Presentation: <a href="dtcl/">(live)</a><br>
+		What mod_dtcl is and how it works.
 	      </li>
 	    </ul>
 	  </td>

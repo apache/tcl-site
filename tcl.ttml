@@ -5,13 +5,7 @@
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <table width="100%" border="0">
-	<tr>
-	  <td align="center" valign="top">
-	    <a href="http://tcl.apache.org/"><h1>Apache Tcl Project</h1></a>
-	  </td>
-	</tr>
-    </table>
+    <? title ?>
 
     <table width="100%" border="0">
 	<tr>
@@ -34,14 +28,14 @@
 	      <b>Tcl Links</b>
 	    </p>
 	    <ul>
-	      <li><a href="http://dev.ajubasolutions.com/">Tcl
-	      Developer Xchange (dev.scriptics.com)</a></li>
+	      <li><a href="http://tcl.activestate.com/">Tcl
+		  Developer Xchange (tcl.activestate.com)</a></li>
 	      <li>Why use Tcl? <a
-	      href="http://dev.ajubasolutions.com/advocacy/">Tcl advocacy page</a>.</li>
+	      href="http://tcl.activestate.com/advocacy/">Tcl advocacy page</a>.</li>
 	      <li><a href="http://www.arsdigita.com/books/tcl/index">A tutorial for Tcl on the web</a></li>
 	      <li>Get started with Tcl. Tcl Tutorials at:
 	      <a
-	      href="http://dev.ajubasolutions.com/resource/doc/start/">http://dev.ajubasolutions.com/resource/doc/start/</a></li>
+	      href="http://tcl.activestate.com/resource/doc/start/">http://tcl.activestate.com/resource/doc/start/</a></li>
 	      <li>
 		<a
 		href="http://sourceforge.net/foundry/tcl-foundry/">Tcl

@@ -1,0 +1,12 @@
+# ---------------------------------------------------------------------------
+# main application dispatcher
+# $Id$
+# ---------------------------------------------------------------------------
+
+# only get the code on the first request
+web::initializer {
+    web::include [web::config interpclass].initializer
+}
+
+# process the actual web page
+web::include [web::config script]

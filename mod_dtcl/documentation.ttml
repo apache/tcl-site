@@ -1,5 +1,5 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
-
+<!-- $Id -->
 <html>
   <head>
     <title>Apache Tcl</title>
@@ -19,6 +19,7 @@
 	  <+ include navbar.html +>
 	  
 	  <td valign="top"> 
+
 	    <+ include documentation.html +>
 
 	    <p align="center">

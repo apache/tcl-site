@@ -13,7 +13,7 @@
       The core language gives you a lot - and extensions give you the rest.
     <p>
     <ul>      
-      <li>Object orientation: [incr Tcl]</li>
+      <li>Object oriented programming: [incr Tcl]</li>
       <li>Web: mod_dtcl, AOLServer, tclhttpd</li>
       <li>Database: postgresql, oracle, mysql, etc...</li>
       <li>Data structures: graphs, trees</li>
@@ -21,6 +21,11 @@
       <li>System Administration: expect, scotty (SNMP)</li>
       <li>Unix facilities: TclX</li>
     </ul>
+
+    Tcl is fast - it's byte compiled at run time, like Python.  It
+    also has a lot of high level things that you would expect in a
+    scripting language - lists, hash tables, easy to use socket
+    commands, etc...
 
   </body>
 </html>

@@ -13,17 +13,17 @@ quickly and easily create graphical tools, in a semi object oriented
 fashion.
 
 <PRE>
-<B><FONT COLOR="#A020F0">label</FONT></B> .result -<B><FONT COLOR="#A020F0">text</FONT></B> <B><FONT COLOR="#BC8F8F">&quot;Result&quot;</FONT></B>
-<B><FONT COLOR="#A020F0">entry</FONT></B> .input 
+<B><FONT COLOR="#A020F0">label</FONT></B> .result -textvariable Result -anchor e
+<B><FONT COLOR="#A020F0">entry</FONT></B> .input -textvariable Input
 
-<B><FONT COLOR="#A020F0">grid</FONT></B> .result -sticky news
-<B><FONT COLOR="#A020F0">grid</FONT></B> .input -sticky news
+<B><FONT COLOR="#A020F0">pack</FONT></B> .result -fill both -expand 1
+<B><FONT COLOR="#A020F0">pack</FONT></B> .input -fill both -expand 1
 
 <B><FONT COLOR="#A020F0">bind</FONT></B> .input &lt;Return&gt; {
-    <B><FONT COLOR="#A020F0">if</FONT></B> {[<B><FONT COLOR="#A020F0">catch</FONT></B> {
-	.result configure -<B><FONT COLOR="#A020F0">text</FONT></B> [<B><FONT COLOR="#A020F0">expr</FONT></B> [.input get]]
-    } err]} {
-	.result configure -<B><FONT COLOR="#A020F0">text</FONT></B> $<FONT COLOR="#B8860B">err</FONT>
+    <B><FONT COLOR="#A020F0">if</FONT></B> { [<B><FONT COLOR="#A020F0">catch</FONT></B> {
+	<B><FONT COLOR="#A020F0">set</FONT></B> Result [<B><FONT COLOR="#A020F0">expr</FONT></B> $<FONT COLOR="#B8860B">Input</FONT>]
+    } err] } {
+	<B><FONT COLOR="#A020F0">set</FONT></B> Result $<FONT COLOR="#B8860B">err</FONT>
     }
 }</PRE>
 

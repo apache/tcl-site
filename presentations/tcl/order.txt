@@ -6,11 +6,13 @@ motivation
 easy
 example1 
 flexibility
-lightweight
 embeddable
 ccommand
 extensible
 powerful
+lightweight
+multiplatform
+commercial
 webserver
 tk
 tkintro

@@ -1,13 +1,13 @@
-label .result -text "Result"
-entry .input 
+label .result -textvariable Result -anchor e
+entry .input -textvariable Input
 
-grid .result -sticky news
-grid .input -sticky news
+pack .result -fill both -expand 1
+pack .input -fill both -expand 1
 
 bind .input <Return> {
-    if {[catch {
-	.result configure -text [expr [.input get]]
-    } err]} {
-	.result configure -text $err
+    if { [catch {
+	set Result [expr $Input]
+    } err] } {
+	set Result $err
     }
 }

@@ -54,14 +54,14 @@
 	      write Tcl extensions in no time.
 	    </p>
 	    <p>
-	      <b>Robust</b>: Created in the late 80'ies by
-	      U.C. Berkeley professor John Ousterhout, Tcl has stood
-	      the test of time, being used in such notable companies
-	      as IBM, Oracle, Cisco, AOL, and many, many others.
-	      There is a core group of maintainers who oversee the
-	      development and maintainance of the Tool Command
-	      Language, so that it continues to improve, yet maintains
-	      its rock-solid nature.
+	      <b>Robust</b>: Created in the late 80's by U.C. Berkeley
+	      professor John Ousterhout, Tcl has stood the test of
+	      time, being used in such notable companies as IBM,
+	      Oracle, Cisco, AOL, and many, many others.  There is a
+	      core group of maintainers who oversee the development
+	      and maintainance of the Tool Command Language, so that
+	      it continues to improve, yet maintains its rock-solid
+	      nature.
 	    </p>
 	  </td>
 	</tr>

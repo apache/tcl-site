@@ -569,8 +569,6 @@ proc finishPage {{where 0}} {
 		web::put {&nbsp;<span class="blue">download area</span>&nbsp;|}
 	    }
 	    web::put {&nbsp;<a href="copyright.ws3">copyright statement</a>&nbsp;|}
-	    web::put {&nbsp;<a href="privacy.ws3">privacy policy</a>}
-
 	}
         <br>
         <span class="klein"><b>&copy; Websh - by {web::put {<a href="http://www.apache.org">The Apache Software Foundation</a>}}</b></span></td>

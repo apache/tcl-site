@@ -8,23 +8,40 @@
   <body>
     <? prevnext "<h1>Multiplatform, Multilingual</h1>" ?>
 
-    Tcl is very adaptable - that's one of its goals - to be able to
-    run anywhere.  Sure, we've heard that before, somewhere, but Tcl
-    really does:
-    <ul>
-      <li>Unix</li>
-      <li>Windows</li>
-      <li>MacOS</li>
-      <li>Others:
-	<ul>
-	  <li>VMS</li>
-	  <li>DOS</li>
-	  <li>Amiga</li>
-	  <li>QNX</li>
-	  <li>VxWorks</li>
-	</ul>
-      </li>
-    </ul>
+    <table>
+      <tbody>
+	<tr>
+	  <td>
+	    Tcl is very adaptable - that's one of its goals - to be
+	    able to run anywhere.  Sure, we've heard that before,
+	    somewhere, but Tcl really does:
+
+	    <ul>
+	      <li>Unix</li>
+	      <li>Windows</li>
+	      <li>MacOS</li>
+	      <li>Others:
+		<ul>
+		  <li>VMS</li>
+		  <li>DOS</li>
+		  <li>Amiga</li>
+		  <li>QNX</li>
+		  <li>VxWorks</li>
+		</ul>
+	      </li>
+	    </ul>
+
+	  </td>
+
+	  <td valign="bottom">Tcl also does very well in multilingual
+	    environments.  A great deal of effort has been put into
+	    internationalization.  Tcl uses and deals well with a
+	    large variety of character sets, including, of course,
+	    unicode.</td>
+	</tr>
+      </tbody>
+    </table>
+
 
   </body>
 </html>

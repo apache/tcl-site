@@ -6,7 +6,7 @@
   </head>
 
   <body class="splash">
-    <? prevnext {<img src="logo.gif" alt="Apache Tcl"></img>} ?>
+    <? prevnext {<h1 align="center" class="splash">Apache Tcl</h1>} ?>
 
     <h2 align="center" class="splash">David N. Welton</h2>
     <p align="center">

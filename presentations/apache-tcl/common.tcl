@@ -14,13 +14,11 @@ if { ! [info exists ::mtime] || $::mtime < $statinfo(mtime) } {
 
     proc ::makeindex {} {
 	puts "<ul>"
-	set i 0
 	foreach fl [getorder] {
-	    set flttml "$fl.rvt?index=$i"
+	    set flttml "$fl.rvt"
 	    puts [subst {
 		<li style="font-size:small ; list-style-type:square ; list-style-image: none"><a href="$flttml">$fl</a></li>
 	    }]
-	    incr i
 	}
 	puts "</ul>"
     }

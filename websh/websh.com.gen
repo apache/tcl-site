@@ -307,8 +307,7 @@ proc navbar_supp {{where 0}} {
              "faq.ws3#technical" "technical questions" 1 \
              "faq.ws3#toc" "index" 1}
         {navBarElement "subscribe.ws3" "mailing list" 1}
-        {navBarElement "http://nagoya.apache.org/bugzilla/" "bug submission" [expr $where != 3]}
-        {navBarElement {/bin/bugdb" onclick="javascript:window.open('','bugdb','width=500,height=400,directories=no,location=no,menubar=no,scrollbars=yes,status=no,toolbar=no,resizable=yes');" target="bugdb} "bug tracking" 2}
+        {navBarElement "http://nagoya.apache.org/bugzilla/" "bug tracking system" [expr $where != 3]}
         </table>
         </td>
     }

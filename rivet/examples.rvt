@@ -1,0 +1,24 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+
+<html>
+  <head>
+    <title>Apache Rivet Examples</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <? source examples.tcl ?>
+    <? title "Apache Rivet Examples" ?>
+
+    <table border="0">
+	<tr>
+	  <? include navbar.html ?>
+
+	  <td valign="top">
+	    <a href="examples.rvt?helloworld=1">Hello World</a>
+	    <? helloworld ?>
+	  </td>
+	</tr>
+    </table>
+    <? powered ?>
+  </body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<!-- $Id$ -->
+<html>
+  <head>
+    <title></title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <? title "" ?>
+
+    <table border="0">
+	<tr>
+	  <? include navbar.html ?>
+	  <td class="main" valign="top">
+	    <p>
+	      <b>Apache Rivet</b> blah blah blah.
+	    </p>
+	  </td>
+	</tr>
+    </table>
+  </body>
+</html>

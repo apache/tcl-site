@@ -1,0 +1,62 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<!-- $Id$ -->
+<html>
+  <head>
+    <title>Apache Rivet</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <? title "Apache Rivet" ?>
+
+    <table border="0">
+	<tr>
+	  <? include navbar.html ?>
+
+	  <td class="main" valign="top">
+
+	    <p>
+	      <b>Apache Rivet</b> is a powerful, consistent, fast, and
+	      robust solution to creating web applications:
+	    </p>
+	    <p>
+	      <b>Powerful</b>: Apache Rivet puts the Tool Command
+	      Language in the hands of the programmer, allowing him or
+	      her to manipulate data easily and concisely.  Millions
+	      of lines of Tcl code already exist - all you have to do
+	      is glue them together to create unique and useful
+	      applications.  Rivet unites this power with the Apache
+	      web server.
+	    </p>
+	    <p>
+	      <b>Consistent</b>: The Tool Command Language is
+	      integrated with Apache Rivet in such a way as to provide
+	      you with an easy-to-learn interface that won't surprise
+	      you.  Because of this, you can use the same, elegant
+	      programming language for your web applications, GUI's
+	      (with the Tk toolkit), and quick'n'dirty system
+	      administration tasks.  Very simple!
+	    </p>
+	    <p>
+	      <b>Fast</b>: A dedicated team of programmers works to
+	      make sure Apache Rivet locks in tightly with both Tcl
+	      and Apache, ensuring that you get as much performance as
+	      your hardware can handle.  Where you need to squeeze out
+	      the last bit of speed, the Tool Command Language
+	      provides you with a high-quality C API which lets you
+	      write Tcl extensions in no time.
+	    </p>
+	    <p>
+	      <b>Robust</b>: Created in the late 80'ies by
+	      U.C. Berkeley professor John Ousterhout, Tcl has stood
+	      the test of time, being used in such notable companies
+	      as IBM, Oracle, Cisco, AOL, and many, many others.
+	      There is a core group of maintainers who oversee the
+	      development and maintainance of the Tool Command
+	      Language, so that it continues to improve, yet maintains
+	      its rock-solid nature.
+	    </p>
+	  </td>
+	</tr>
+    </table>
+  </body>
+</html>

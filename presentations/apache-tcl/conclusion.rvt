@@ -8,18 +8,23 @@
   <body>
     <? prevnext "<h1>Conclusion</h1>" ?>
 
-    <p>Thanks for listening!</p>
+    <p>Unfortunately, within a limited time, it's impossible to cover
+    all the intricacies and possibilities that Apache and Tcl offer,
+    but I hope to have shown that using these two systems lets you do
+    some very powerful things.  </p>
 
-    <p>More information is available here:
+    <p>It may not seem like it in just an hour, but Rivet is
+    simple. It is less than 5000 lines of code, and yet it provides
+    most of what PHP does, with easily 1/10th the code.  It does this
+    by carefully reutilizing everything it can from Apache and
+    Tcl.</p>
+
+    <p>
+      I hope that by showing you some of what is possible, you will be
+      able to further explore, and hopefully create something new and
+      interesting!
     </p>
-    <ul>
-      <li><a href="http://tcl.apache.org">http://tcl.apache.org</a></li>
-      <li><a href="http://www.tcl.tk">http://www.tcl.tk</a></li>
-    </ul>
-    <p>I can be reached at <a
-	href="mailto:davidw@dedasys.com">davidw@dedasys.com</a> -
-	please feel free to write.</p>
 
-  <?footer?>
-</body>
+    <?footer?>
+  </body>
 </html>

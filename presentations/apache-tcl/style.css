@@ -10,7 +10,9 @@ body {
 
 body.splash {
     font-size: 300%;
-    background: url(logo.gif);
+    #    background: url(logo.gif);
+    background-position: bottom center;
+    background-repeat: no-repeat;
 }
 
 
@@ -27,10 +29,6 @@ A:hover {
 
 LI {
     margin-bottom: 0.5em;
-}
-
-pre {
-    font-weight: bold;
 }
 
 #UL LI { list-style-image: url(bullet1.png) }
@@ -76,3 +74,36 @@ div.box {
     padding: 0.25em;
     background-color: #dddddd;
 }
+
+pre {
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #000000;
+    margin: 1em;
+    padding: 1em;
+}
+
+span.string {
+    color: #696969;
+}
+
+span.function-name {
+    color: #87cefa;
+}
+
+span.keyword {
+    color: #00ffff;
+}
+
+span.comment {
+    color: #ff7f24;
+} /* font-lock-comment-face */
+span.variable-name {
+    color: #228b22;
+} /* font-lock-variable-name-face */
+span.type {
+    color: #4682b4;
+} /* font-lock-type-face */
+span.builtin {
+    color: #b0c4de;
+} /* font-lock-builtin-face */

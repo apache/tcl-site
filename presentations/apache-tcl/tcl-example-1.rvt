@@ -1,0 +1,57 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>Tcl Example</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+    <!--
+      pre {
+        color: #ffffff;
+        background-color: #000000;
+        margin: 1em;
+        padding: 1em;
+      } /* default */
+      span.string {
+        color: #696969;
+      } /* font-lock-string-face */
+      span.function-name {
+        color: #87cefa;
+      } /* font-lock-function-name-face */
+      span.keyword {
+        color: #00ffff;
+      } /* font-lock-keyword-face */
+    -->
+    </style>
+
+  </head>
+
+  <body>
+    <? prevnext "<h1>Tcl Example</h1>" ?>
+
+  </head>
+  <body>
+
+Here is a tiny (and incorrect) web server in Tcl:
+
+<pre>
+<span class="keyword">proc</span> <span class="function-name">Serve</span> {chan addr port} {
+    fconfigure $chan -translation {auto binary}
+    set line [gets $chan]
+    <span class="keyword">if</span> { [catch { set fl [open <span class="string">&quot;.[lindex $line 1]&quot;</span> r] } err] } {
+        puts $chan <span class="string">&quot;HTTP/1.0 404 Not Found\r\n&quot;</span>
+    } <span class="keyword">else</span> {
+        puts $chan <span class="string">&quot;HTTP/1.0 200 OK&quot;</span>
+	puts $chan <span class="string">&quot;Content-Type: text/html\r\n\r\n[read $fl]&quot;</span>
+    }
+    close $chan
+}
+
+set sk [socket -server Serve 5151]
+fconfigure $sk -buffering line
+vwait forever
+</pre>
+
+
+    <?footer?>
+  </body>
+</html>

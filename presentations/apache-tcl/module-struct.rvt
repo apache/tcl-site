@@ -1,0 +1,40 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>The 'module' struct</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body>
+    <? prevnext "<h1>The 'module' struct</h1>" ?>
+
+<pre>
+<span class="type">module</span> MODULE_VAR_EXPORT <span class="variable-name">rivet_module</span> =
+{
+    STANDARD_MODULE_STUFF,
+    Rivet_InitHandler,		<span class="comment">/* initializer */</span>
+    Rivet_CreateDirConfig,	<span class="comment">/* dir config creater */</span>
+    Rivet_MergeDirConfig,       <span class="comment">/* dir merger default is override */</span>
+    Rivet_CreateConfig,         <span class="comment">/* server config */</span>
+    Rivet_MergeConfig,          <span class="comment">/* merge server config */</span>
+    rivet_cmds,                 <span class="comment">/* command table */</span>
+    rivet_handlers,		<span class="comment">/* handlers */</span>
+    NULL,			<span class="comment">/* filename translation */</span>
+    NULL,			<span class="comment">/* check_user_id */</span>
+    NULL,			<span class="comment">/* check auth */</span>
+    NULL,			<span class="comment">/* check access */</span>
+    NULL,			<span class="comment">/* type_checker */</span>
+    NULL,			<span class="comment">/* fixups */</span>
+    NULL,			<span class="comment">/* logger */</span>
+    NULL,			<span class="comment">/* header parser */</span>
+    Rivet_ChildInit,            <span class="comment">/* child_init */</span>
+    Rivet_ChildExit,            <span class="comment">/* child_exit */</span>
+    NULL			<span class="comment">/* post read-request */</span>
+};
+</pre>
+
+
+
+    <?footer?>
+  </body>
+</html>

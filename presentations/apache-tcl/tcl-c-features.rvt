@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>Tcl's C API Features</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body>
+    <? prevnext "<h1>Tcl's C API Features</h1>" ?>
+
+    Tcl is easy to extend in C, and extremely powerful - you get
+    access to lots of things:
+
+    <table style="font-size: 38%;">
+      <tbody>
+	<tr valign="top">
+	  <td>
+	    <ul>
+	      <li>Variables
+		<ul>
+		  <li>From C</li>
+		  <li>To C</li>
+		  <li>Tie Tcl variable to C variable</li>
+		  <li>Trace variables</li>
+		</ul>
+	      </li>
+	    </ul>
+
+	    <ul><li>Interpreters
+		<ul>
+		  <li>Seperate interpreters</li>
+		  <li>Slave interpreters/shared resources</li></ul>
+	      </li></ul>
+
+	    <ul><li>Threads
+		<ul>
+		  <li>Create/Destroy</li>
+		  <li>Associate data</li></ul>
+	      </li></ul>
+
+
+	  </td>
+	  <td>
+	    <ul><li>IO/Channels
+		<ul>
+		  <li>Create new channel types</li>
+		  <li>Stacked channels</li>
+		  <li>Buffering</li>
+		  <li>Asynchronous</li></ul>
+	      </li>
+	    </ul>
+
+	    <ul><li>Event Loop
+		<ul>
+		  <li>Associate events with actions</li>
+		  <li>Idle events</li></ul>
+	      </li></ul>
+
+	    <ul><li>Operating System Interaction
+		<ul>
+		  <li>Filesystem</li>
+		  <li>Processes</li></ul>
+	      </li></ul>
+
+	  </td>
+
+	  <td>
+	    <ul><li>Timers
+		<ul>
+		  <li>Schedule events</li></ul>
+	      </li></ul>
+	    <ul><li>Commands
+		<ul>
+		  <li>Create commands</li></ul>
+	      </li></ul>
+	    <ul><li>Hash Tables
+		<ul>
+		  <li>Create and use hash tables at the C level</li></ul>
+	      </li></ul>
+	    <ul>
+	      <li>Internationalization
+		<ul>
+		  <li>Translate to/from different character sets</li>
+		</ul>
+	      </li>
+	    </ul>
+	  </td>
+	</tr>
+      </tbody>
+    </table>
+
+  </body>
+</html>

@@ -1,0 +1,64 @@
+"Apache's web server and Tcl are both very flexible systems that give
+the programmer tools to extend and modify them in interesting, unique
+and powerful ways.  We will talk about the many possibilities offered
+by Apache and Tcl's C API's, briefly introduce the Tcl programming
+language and its concept of acting as a command language for
+lower-level components, and also discuss some interesting aspects of
+integrating Apache and Tcl."
+
+*Apache Introduction
+
+*About Apache
+
+*Tcl Introcution
+
+*Why Tcl (ousterhout's motives)
+
+*Tcl Features
+
+*Writing an Apache module
+
+*Apache 1.3
+**Loadable vs Static modules
+
+*module struct
+
+*InitHandler
+
+*ChildInit
+**Do Tcl initialization.
+**ChildExit
+***Do Tcl Cleanup
+
+*Configuration stuff
+**Hierarchy diagram.
+**ServerConfig
+**DirConfig
+**UserConfig
+
+*Apache Directives
+
+*Handlers
+**Connect files with code to handle them.
+***This is where the 'exciting' stuff happens.
+
+*Integrating Tcl
+
+*Creating interpreters (ChildInit).
+**Multiple interpreters for different virtual hosts.
+**Set up commands in each interpreter.
+**Run any ChildInit scripts.
+
+*Tcl Handlers
+**Problems:
+***Keep each page 'seperate'.
+***Share global data, but only if you really want to.
+***Present a way to embed Tcl in HTML.
+***Use 'normal' Tcl scripts.
+***Speed.
+**Our answers
+***namespace request {}
+***<? ?> parsed into 'puts' commands.
+***Channel layer.
+***Cacheing.
+

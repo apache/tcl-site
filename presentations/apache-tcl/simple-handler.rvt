@@ -1,0 +1,37 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>Simple Handler</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body>
+    <? prevnext "<h1>Simple Handler</h1>" ?>
+
+To give you an idea of what a handler really does, let's make a really
+    simple one:
+
+    <pre>
+<span class="keyword">static</span> <span class="type">int</span> <span class="function-name">Send_Page</span>(request_rec *r)
+{
+    <span class="keyword">if</span> (r-&gt;method_number != M_GET &amp;&amp; r-&gt;method_number != M_POST) {
+	<span class="keyword">return</span> DECLINED;
+    }
+    ap_rputs(<span class="string">&quot;Hello, Braga!&quot;</span>, r);
+    <span class="keyword">return</span> OK;
+}
+</pre>
+
+And associate it with a type:
+
+<pre>
+<span class="keyword">const</span> handler_rec <span class="variable-name">hello_handlers</span>[] =
+{
+    {<span class="string">&quot;application/x-hello-world&quot;</span>, Send_Page},
+    {NULL}
+};
+</pre>
+
+    <?footer?>
+  </body>
+</html>

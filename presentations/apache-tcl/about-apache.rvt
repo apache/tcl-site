@@ -1,0 +1,28 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>About Apache</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body>
+    <? prevnext "<h1>About Apache</h1>" ?>
+    <p>
+      The Apache web server was first created by a group of sysadmins
+      who were using the NCSA server and had created patches to enhance
+      and improve it.  Thus, "A Patchy" web server.
+    </p>
+    <p>
+      The Apache Software Foundation now encompasses a large variety
+      of diverse projects in addition to Tcl: the web server, XML,
+      Java, Perl, PHP, APR, Python, and is a non-profit corporation
+      registered in the U.S., with members throughout the world.
+    </p>
+    <p>
+      The ASF consists of 60-some members, and hundreds of
+      "committers" - those who have the rights to make changes to
+      different projects' code.
+    </p>
+  <?footer?>
+</body>
+</html>

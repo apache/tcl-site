@@ -1,0 +1,29 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>Tcl Namespaces</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body>
+    <? prevnext "<h1>Tcl Namespaces</h1>" ?>
+
+    Tcl namespaces follow a hierarchy, and in terms of syntax, use
+    '::' to seperate namespaces.  Each namespace can have variables
+    that are local to it.
+
+<pre>
+namespace <span class="keyword">eval</span> foo {
+    set foovar 1
+    namespace <span class="keyword">eval</span> bar {
+	set barvar 1
+    }
+}
+
+puts $::foo::bar::barvar
+puts $::foo::foovar
+</pre>
+
+    <?footer?>
+  </body>
+</html>

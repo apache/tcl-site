@@ -13,7 +13,7 @@ web::putx {
     {navbar_null}
     <td width="455">
 
-    At {pageLink websh.com -pre} you have <b>full control</b> over
+    At {pageLink tcl.apache.org/websh -pre} you have <b>full control</b> over
     your personal information.<br>
 
     We do not track who you are or what you are doing at this site, we

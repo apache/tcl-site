@@ -545,7 +545,7 @@ proc _getNextInputLine {fh} {
     sypsub _curLine "/" italicify
 
     #
-    # an explicit link w/o text: "=(http://websh.com)="
+    # an explicit link w/o text: "=(http://tcl.apache.org/websh)="
     #
     if { [regsub -all {\=\(([^\)]+)\)\=} $_curLine \
 	      "[hrefify \\1]" tmp] } {
@@ -553,7 +553,7 @@ proc _getNextInputLine {fh} {
     }
 
     #
-    # an explicit link: "=(http://websh.com)(the cool websh site)="
+    # an explicit link: "=(http://tcl.apache.org)(the cool tcl web site)="
     #
     if { [regsub -all {\=\(([^\)]+)\)\(([^\)]+)\)\=} $_curLine \
 	      "[hrefify \\1 \\2]" tmp] } {

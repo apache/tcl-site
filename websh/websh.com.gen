@@ -34,17 +34,17 @@ proc emailLink {email {showName ""}} {
     pageLink mailto:$email -show $showName
 }
 
-proc emailFeedbackLink {} {
-    emailLink support@websh.com feedback
-}
+# proc emailFeedbackLink {} {
+#     emailLink support@websh.com feedback
+# }
 
-proc emailSupportLink {} {
-    emailLink support@websh.com
-}
+# proc emailSupportLink {} {
+#     emailLink support@websh.com
+# }
 
-proc emailInfoLink {} {
-    emailLink info@websh.com
-}
+# proc emailInfoLink {} {
+#    emailLink info@websh.com
+# }
 
 proc headRow {type mainTitle {rightTitle ""}} {
 
@@ -344,18 +344,6 @@ proc newsbar_supp {} {
         <td width="10"><br></td>
         <td width="145">
         <table border="0" cellpadding="0" cellspacing="0" width="145">
-        {newsBarElement "free e-mail support" \
-             "For Websh support, simply send an e-mail to {emailSupportLink}"
-        }
-        {newsBarElement "maintenance contracts" \
-             {Netcetera offers specially tailored maintenance contracts.
-                 For inquiries, contact us at {emailInfoLink}.}
-        }
-        {newsBarElement "Feedback" \
-	     {{emailLink support@websh.com "Please let us know"}
-		 what you think about Websh. Your feedback
-		 will help us make a great product even better.}
-        }
 	</table>
 	</td>
     }
@@ -411,7 +399,7 @@ proc startHtmlBody {} {
 proc putHeader {{mainSectionNr 0} {quickNaviNr 1}} {
     web::putx {
         <map name="grafik_navi">
-        <area href="mailto:info@websh.com" coords="94,2,154,26" shape="rect">
+        <area href="mailto:websh-user@tcl.apache.org" coords="94,2,154,26" shape="rect">
         <area href="" coords="4,2,64,26" shape="rect">
         <area href="contact.ws3" coords="184,2,244,26" shape="rect">
         </map>

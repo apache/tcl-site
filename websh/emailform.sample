@@ -124,7 +124,7 @@ We have recieved the following information:}
     append emailtxt [web::formvar addr]
     append emailtxt {
 
-Find more information about Webshell at http://websh.com
+Find more information about Webshell at http://tcl.apache.org/websh/
 
 The team.
     }
@@ -134,7 +134,7 @@ The team.
     if { [catch {
 	# Open pipe for e-mail
 	set fh [open "| /usr/lib/sendmail [web::formvar email]" w]
-	puts $fh "From: info@websh.com"
+	puts $fh "From: info@tcl.apache.org"
 	puts $fh "Subject: websh3 sample application - sample confirmation"
 	puts $fh ""
 	puts $fh $emailtxt

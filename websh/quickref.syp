@@ -20,7 +20,7 @@ used value when a new value is set.
 
 
 In addition to the examples given here you might find
-=(http://websh.com/examples.html)= a usefull source of information.
+=(http://tcl.apache.org/websh/examples.html)= a usefull source of information.
 
 == configuration ==
 
@@ -115,7 +115,7 @@ is produced in the query string.
     ==D scheme
         include the protocol, only "http" and "https" are currently supported
     ==D host
-        include the host name, e.g. "websh.com"
+        include the host name, e.g. "tcl.apache.org/websh"
     ==D port
         include the port, e.g. "80"\\
         Trying to set this item without host will throw
@@ -134,7 +134,7 @@ Note that there are two more commands that control the output of
 
 --- ---------------------------------------------------------------------------
 web::cmdurl -notimestamp -urlformat [list scheme host scriptname pathinfo querystring] "test"
-==> http://websh.com/bin/returnmail/member?XDZuRD2rnsfHjFH
+==> http://tcl.apache.org/websh/bin/returnmail/member?XDZuRD2rnsfHjFH
 --- ---------------------------------------------------------------------------
 
 -- web::cmdurlcfg --
@@ -304,7 +304,7 @@ is as follows:
 
 -- Examples --
 
-See =(http://websh.com/examples.html)= for several sample
+See =(http://tcl.apache.org/websh/examples.html)= for several sample
 application demonstrating the session management of Webshell.
 
 == request data handling ==
@@ -1200,7 +1200,7 @@ respect to this information or its use.
 
 
 The original version of this document can always be found
-at =(http://websh.com)=.
+at =(http://tcl.apache.org/websh)=.
 
 --- 
 $Id$

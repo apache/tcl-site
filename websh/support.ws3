@@ -27,7 +27,6 @@ web::putx {
       <br><br>
 
     </td>
-    {newsbar_supp}
   </tr>
   </table>
 }

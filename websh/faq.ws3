@@ -14,7 +14,6 @@ web::putx {
     <td width="455">
       {includeFile faq.pre}
     </td>
-    {newsbar_supp}
   </tr>
   </table>
 }

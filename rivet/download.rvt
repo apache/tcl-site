@@ -13,7 +13,12 @@
 	  <? include navbar.html ?>
 	  <td class="main" valign="top">
 	    <p>
-	      <b>Apache Rivet</b> is still under development - you can
+	      The latest stable <b>Rivet</b> release may be downloaded
+	      from the links provided at this page: <a
+	      href="http://www.apache.org/dyn/closer.cgi/tcl/rivet">http://www.apache.org/dyn/closer.cgi/tcl/rivet</a>
+	    </p>
+	    <p>
+	      <b>Apache Rivet</b> is actively developed - you can
 	      always get the most recent version out of CVS.
 	    </p>
 	    <p>
@@ -23,10 +28,6 @@
 	      </code><br>(using the password "anoncvs")
 	    </p>
 	    <p><code>cvs&nbsp;-d:pserver:anoncvs@cvs.apache.org:/home/cvspublic&nbsp;checkout&nbsp;tcl-rivet</code></p>
-	    <p>
-	      The latest version is available for <a
-	      href="download/">download</a>.
-	    </p>
 	    <p>
 	      In addition, for your convenience, snapshots of the CVS
 	      tree are available here: <a

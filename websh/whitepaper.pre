@@ -1,0 +1,698 @@
+<a name="1"><a href="#toc"><h1>1 Introduction</h1></a>
+
+This white paper describes the key features of Websh, details it's
+architecture, and motivates design decisions.  The white paper gives
+an overview of Websh and does not replace a technical reference.
+
+<br><br>
+Websh is a rapid development environment for building powerful and
+reliable web applications. It is a standard Tcl extension and is
+released as Open Source Software. Websh is versatile and handles
+everything from HTML generation to data-base driven one-to-one page
+customization. Netcetera, has been using it for years for virtually
+all their customer projects, which are typically E-commerce shops or
+electronic banking applications.  Websh is extensible and portable,
+and its comprehensive set of commands is easily learned.  Websh can
+be used in a standard CGI environment or as Apache 2 module.  Websh
+provides a set of commands for
+
+<ul>
+<li>web transaction state management</li>
+<li>session management (server-side sessions; various storage</li>
+managers)
+<li>HTML form handling</li>
+<li>encryption</li>
+<li>logging</li>
+</ul>
+
+<br>
+<a name="toc"><a href="#toc"><h1>2 Table of Contents</h1></a>
+<br>1&nbsp;<a href="#1"><b>Introduction</b></a><br>
+<br>2&nbsp;<a href="#toc"><b>Table of Contents</b></a><br>
+<br>3&nbsp;<a href="#28"><b>Architecture</b></a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;3.1 <a href="#34"><b>based on Tcl</b></a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;3.2 <a href="#73"><b>Tcl</b></a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;3.3 <a href="#139"><b>Environment</b></a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;3.4 <a href="#203"><b>Design</b></a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.4.1 <a href="#"><b>request and URL management</b></a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.4.2 <a href="#"><b>session context management</b></a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.4.3 <a href="#"><b>output management</b></a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.4.4 <a href="#"><b>conversion</b></a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.4.5 <a href="#"><b>security by encryption</b></a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.4.6 <a href="#"><b>messages on streams</b></a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.4.7 <a href="#"><b>logging facility</b></a><br>
+<br>4&nbsp;<a href="#400"><b>Hello, world!</b></a><br>
+<br>5&nbsp;<a href="#416"><b>Flow of control</b></a><br>
+<br>6&nbsp;<a href="#467"><b>Commands</b></a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;6.1 <a href="#474"><b>request and url management</b></a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;6.2 <a href="#484"><b>session management</b></a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;6.3 <a href="#490"><b>output management</b></a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;6.4 <a href="#497"><b>conversion</b></a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;6.5 <a href="#506"><b>messages</b></a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;6.6 <a href="#512"><b>encryption</b></a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;6.7 <a href="#517"><b>logging</b></a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;6.8 <a href="#523"><b>misc</b></a><br>
+<br>7&nbsp;<a href="#533"><b>Security issues</b></a><br>
+<br>8&nbsp;<a href="#609"><b>Requirements</b></a><br>
+<br>9&nbsp;<a href="# "><b>Copyright</b></a><br>
+
+<a name="28"><a href="#toc"><h1>3 Architecture</h1></a>
+
+Websh is a standard Tcl extension, written in C and in Tcl.
+It is strictly modularized and thread safe. This section
+gives an overview of the Websh architecture.
+
+<a name="34"><a href="#toc"><h2>3.1 based on Tcl</h2></a>
+
+Websh is based on the Tool Command Language (Tcl).  Tcl is a fast,
+comprehensive scripting language as well as a library.
+
+The decision to build Websh on top of Tcl has several
+advantages which can be summarized with
+&quot;flexibility&quot;: configurability, extensability, and portability.
+This is illustrated in Figure 1.
+
+<center><img src="images/ws3ov.gif" alt=""></center><br>
+<b>Figure 1</b> -  Websh Architecture <br><br>
+
+Most Web-based applications need to separate items with a high change
+rate from other, static parts.  Often, the rapidly changing components
+are those related to any aspect of output rendering (e.g., HTML
+generation) and input processing.  Application logic, on the other
+hand, remains rather constant.  Therefore, Web-based applications need
+to support easy modification of the frequently changing parts.  For
+example, one wishes to modify HTML output without the need to
+recompile the entire application.  This means that a high level of
+configuration flexibility is needed.
+	    
+
+Using Tcl as an embedded system, such configurable parts can be
+designed as Tcl code snipplets, configuration files and so on.  The
+application can call and interpret Tcl code whenever necessary.  The
+Tcl code itself can call back the C-based application and use the
+library routines.  This offers a high degree of scalablity.
+
+<br><br>
+Using a scripting language for web application development thus has
+many advantages over traditional approaches.  The potential drawback
+of an interpreted language is slower execution as compared with a
+compiled program.  Experience has shown, however, that the advantage
+of flexibility is much more important than these potential differences
+in execution speed.
+
+<br><br>
+<a name="73"><a href="#toc"><h2>3.2 Tcl</h2></a>
+
+The Tool Command Language (Tcl, pronounced &quot;tickle&quot;), was created by
+John Ousterhout.  Tcl development started 1987 at the University
+of California at Berkeley.  Today, Ousterhout is CEO of &quot;Scriptics
+Corporation&quot;, which continues to develop Tcl, and markets value added
+products for Tcl.  Worldwide, about half a million programmers rely on
+Tcl.
+
+<br><br>
+The Tcl platform was designed with the philosophy in mind
+that one should actually
+use two or more languages when designing large software systems.  One for
+manipulating complex internal data structures or where performance is key,
+and another, such as Tcl, for writing smallish scripts that tie together
+the other pieces, providing hooks for the user to extend. 
+
+<br><br>
+For the Tcl-script writer, ease of learning, ease of programming and
+ease of glueing are more important than performance or facilities for
+complex data structures and algorithms. Tcl was designed to make it
+easy to drop into a lower language when you come across tasks that
+make more sense at a lower level. In this way, the core functionality
+can remain small and one needs only to bring along pieces that one
+particularly wants or needs.
+
+<br><br>
+Tcl is actually two things: a language and a library.  First, Tcl is a
+powerful textual language, intended primarily for issuing commands to
+interactive programs such as text editors, debuggers, illustrators,
+and shells.  It has a simple syntax and is programmable, allowing Tcl
+users to write command procedures to extend the built-in set of
+commands.  Further more, the library provides a wide range of
+functions for OS abstraction and container management, which can be
+used without the Tcl language itself.
+
+<br><br>
+Second, Tcl is a library package that can be embedded in application
+programs.  The Tcl library consists of a parser for the Tcl language,
+routines to implement the Tcl built-in commands, and procedures that allow
+applications to extend Tcl.  The application program generates Tcl
+commands and passes them to the Tcl parser for execution.  The parser
+executes built-in commands directly, and uses the call-back method for
+application-specific commands. 
+
+<br><br>
+This design allows three-tiered applications, having a middle-tier that
+represents &quot;business objects&quot;.  The middle tier is the C-application, while
+the third tier consists mainly of the Tcl code, which renders various views
+of the business objects for the display e.g.  in browsers.  Embedding Tcl
+gives Websh the flexibility needed in Web environments.  It allows
+combining state-of-the-art software engineering with the speed of HTML
+publishing and separates these two development cycles. 
+
+<br><br>
+Tcl has been ported to all major operating systems.  It is easily
+extensible, and Tcl extensions like Websh can profit from
+third-party extensions as well.  Additional functionality, e.g.,
+application-specific commands written in C/C++, can be dynamically
+added using shared libraries (on Unix platforms) or dynamic link
+libraries (Microsoft Windows platforms).  Such libraries are used, for
+example, for database connectivity.  This makes change management much
+easier, since modules are clearly separated, ensures quick loading of
+code, and does not affect a running system.
+
+<br><br>
+<a name="139"><a href="#toc"><h2>3.3 Environment</h2></a>
+
+Websh is a Tcl extension.  It can be run as a stand-alone application,
+or it can be dynamically loaded into a Tcl application.  In a Web
+environment, Websh is run in a CGI environment (Common Gateway
+Interface) or as Apache 2 module. 
+
+Websh has been designed to ease the implementation of dynamic
+content within WWW servers.  There are several techniques in use to
+provide such dynamic content:
+
+<ul>
+<li>Server-side includes (SSI): This technique is available with several</li>
+WWW servers (HTTP servers). It based on a custom extension to
+HTML, which is parsed by the server whenever the corresponding
+document is requested. These extensions contain directives for
+conditional text and text substitution. This technique is only
+suitable for applications where text substitution is possible,
+that is, for simple replacements in the document. It also strongly
+depends on the server software used, as there is no widely
+accepted standard for the syntax. Products using this technique
+include ASP or JSP.
+</ul>
+
+<ul>
+<li>Custom HTTP servers: Most off-the-shelf WWW-servers serve static</li>
+contents from a repository, which typically is a file system or a
+database management system. It might make sense for some
+applications to manage the HTTP-protocol themselves, i.e., to act
+as custom HTTP servers, having the full freedom on how the results
+of HTTP requests are returned. This technique is the most
+flexible. However, there is much application overhead introduced
+in properly (and efficiently) handling HTTP-requests, that this
+method is only sensible for very specific applications.
+</ul>
+
+<ul>
+<li>CGI-Applications: Often dynamic content is managed using the Common</li>
+Gateway Interface (CGI). The widespread use of CGI is basically
+due to its simplicity. The CGI specification relies on
+POSIX-compliant execution of child processes. Parameter passing
+happens via command line arguments, environment variables and
+standard I/O. CGI has become the most popular technique for
+dynamic content because it is standardized (not by an official
+standardization body, but as an &quot;industry-standard&quot;).
+</ul>
+
+<ul>
+<li>Embedded handlers and modules: Most current WWW server software</li>
+products support a direct extension through a specific API (e.g.,
+NSAPI for Netscape products, ISAPI with Microsoft Information
+Server, &quot;modules&quot; for Apache-based Products). This method is
+probably the most efficient, since there is a tight binding
+between server and extension. On the other hand, this solution is
+dependent on the WWW server used. Java servlets can be considered
+to fall into this category.
+</ul>
+
+<br><br>
+Websh employes the latter two techniques.  Its CGI interface
+ensures that Websh can be employed virtually anywhere, using
+off-the-shelf web servers.  If performance is key, Websh can be run
+as a Apache 2 module.  In this case, the server does not spend time
+spawning child processes, and communication between web server and
+Websh directly uses the Apache API, which is considerably faster
+than in the CGI case.  In addition, Websh applications can be split
+into two parts, the command definition and the command call part, and
+Apache 2 can keep the command definition part in memory.  This
+eliminates the need to re-read most parts of a Websh application
+for every HTTP request, and further increases the responsivness of the
+Websh application.
+
+<a name="203"><a href="#toc"><h2>3.4 Design</h2></a>
+
+Websh is strictly modularized, particularly for thread safety. Each
+module manages its own data, and locking mechanisms are used where
+needed.  Websh modules are extensible through plug-Ins.  This
+section gives an overview of the Websh modules and shortly
+describes their function and design.
+
+<dl>
+<dt><b>request and url management</b>
+<dd>
+handles input from the HTTP protocol, and state
+<dt><b>session management</b>
+<dd>
+session data handling. On the client-side using Netscape cookies,
+and on the server-side using various storage managers
+(file system, data base, main-memory chache)
+<dt><b>output management</b>
+<dd>
+sending data back to the browser
+<dt><b>conversion</b>
+<dd>
+HTML- and URI-compliant encoding of data
+<dt><b>encryption</b>
+<dd>
+security by strong encryption
+<dt><b>messages</b>
+<dd>
+communication over TCP/IP sockets
+<dt><b>logging</b>
+<dd>
+distribution of log messages
+</dl>
+
+The Websh design is illustrated in Figure 2.
+
+<center><img src="images/ws3arch.gif" alt=""></center><br>
+<b>Figure 2</b> -  Websh Design <br><br>
+
+<a name=""><a href="#toc"><h3>3.4.1 request and URL management</h3></a>
+
+The Websh application developer does not need to get involved with the
+details of the HTTP protocol or the parsing of data.  Rather, he
+concentrates on the application logic and leaves the rest to Websh. 
+This module parses input from the browser, e.g. HTML form data, and makes it
+available to Websh. In addition, it adds state to the HTTP protocol
+using the querystring.
+
+One of the distinctive features of Websh is its state management
+capability.  HTTP as a protocol is usually stateless (unless the secure
+variant SSL is used).  By protocol definition, there is no information
+which lives from access to access.  This design has many advantages, like
+simple client-server application design.  If state is needed, however, it
+makes application development more difficult. 
+
+Web-based applications often need to carry information from one HTTP
+transaction to the next.  As an example, a user might have a preferred
+language.  Applications for electronic commerce systems, Internet
+banking an so on also need mechanisms to identify and group
+transactions into longer transactions which cover more than one single
+HTTP request and its response.  In other words, state needs to be
+introduced.
+
+Typically, there are three methods in use to identify state:
+
+<ul>
+<li>Encoding of state information in the URL</li>
+<li>Encoding of state information in hidden form fields</li>
+<li>Using Netscape Cookies.</li>
+</ul>
+
+Websh is designed to use all of these methods.  However, the first is
+Webshs preferred method.  The reason to rely mainly on the URL is that
+both hidden form fields and cookies have disadvantages:
+
+<ul>
+<li>Hidden fields are only usable in forms. However, there are </li>
+frequently cases
+where state needs to be preserved without explicitly requiring
+forms. Moreover, the state might be required to be &quot;bookmarkable&quot;
+<li>Firewall setups can filter cookie information from the HTTP-stream in</li>
+order to avoid external information from entering an organization. 
+Also, the user can disable cookies, and not all browsers 
+support cookies.
+</ul>
+
+URL encoding, on the other hand, has the disadvantage that it produces
+somewhat long URLs.  Experience has shown that the advantages more
+than compensate for this drawback.
+
+<a name=""><a href="#toc"><h3>3.4.2 session context management</h3></a>
+
+We have described above why web applications need state information.
+Often, more information is needed than simply preferences. In these
+cases, Websh relies on its session management module.
+
+The session management module handles session data, which can be stored on
+the client side using Netscape cookies, or on the server side using the
+file system (fs), a data base management system (DBMS), or the Netcetera
+cache manager (ncm).  The module provides a uniform interface to access the
+session context regardless of the storage used.  It is implemented in Tcl
+and makes extensive use of namespaces. 
+
+<a name=""><a href="#toc"><h3>3.4.3 output management</h3></a>
+
+Websh provides a set of commands to format HTTP-compliant output to
+be sent back to the client.  Output can be directed to Tcl channels or to
+Tcl variables for buffering purposes.  The technique of buffering output is
+typically used to prepend additional information to the output
+after the data have been processed. For example, one would like a table
+of contents to a text document.
+
+<br><br>
+Also this module has been designed with the philosophy in mind
+that the application developer does not need to
+care about the details of the HTTP protocol.  As an example, he does not
+track whether the MIME headers have been sent or not.  Websh takes care
+of that. 
+
+<br><br>
+If the developer needs control over the HTTP output, the configuration
+facility of the output management module gives her full control over the
+output.  Of course, the output module is fully configurable, as are 
+all Websh modules.
+
+<a name=""><a href="#toc"><h3>3.4.4 conversion</h3></a>
+
+Need HTML compliant input ?  Want to send data via URL, or in a form
+field ?  The conversion module makes sure that your data are properly
+formatted, converting umlauts to their proper HTML entities or their
+URI encoded equivalent, for example.  Like every Websh module, this
+module manages its data on its own.  In order to ensure thread safety,
+no Websh module maintains global or static variables.  Such
+variables would be shared across multiple Tcl interpreters and cause
+conflicts.  Each time an interpreter loads Websh and thus this
+module, the module-specific data like the look-up tables for the
+conversions will be set up, and destroyed again when the interpreter
+is deleted.  The disadvantage of this design, the duplication of data
+in the memory of one process, is compensated by the long-term
+stability of the process resulting from clean memory management.
+
+<br><br>
+<a name=""><a href="#toc"><h3>3.4.5 security by encryption</h3></a>
+
+The proper handling of sensitive data is crucial for banking or
+E-commerce applications. Three aspects are important: Data
+transfer, data storage, and session hijacking. The first of
+these aspects, data transfer, is not Websh's task. Websh
+assumes that data transfer is secured whenever needed, for
+example by means of SSL, and Websh deliberately chooses not
+to provide any additional functionality here.
+
+<br><br>
+Handling of sensitive data, on the other hand, is the task of Websh
+and the Websh application.  This is why Websh comes with a
+strong encryption sub-system to store data securely.  By default,
+Websh encrypts the state information in every URL it generates.
+The level of security is chosen by the application developer.  She
+selects both the encryption method and the encryption key.  For highly
+sensitive data, the application developer might not even know the
+pass-phrase to decrypt data from the productive environment.
+
+<br><br>
+Websh relies on well-known and well-tested encryption methods,
+which are made available to Websh by means of plug-ins.  Currently,
+there are plug-Ins available for the IDEA and the blowfish encryption
+methods, as well as for a simple encryption method for day-to-day use.
+
+<br><br>
+Webshs encryption module protects data with a checksum to prevent
+cipher tampering.  For decryption, Webshs encryption sub-system
+uses a auto-detection system to determine the encryption method.
+
+<br><br>
+Note that Websh provides the framework to handle sensitive
+data properly. The level of security, however, is determined by
+the developer of a Websh application.
+
+<br><br>
+<a name=""><a href="#toc"><h3>3.4.6 messages on streams</h3></a>
+
+This Websh module implements a simple protocol to facilitate
+message-based communication over Tcl channels.  Particularly, it is
+used for communication over TCP/IP connections.
+
+<a name=""><a href="#toc"><h3>3.4.7 logging facility</h3></a>
+
+Like all service applications, web applications need a versatile
+logging mechanism to report errors and state.  In fact, Websh
+itself makes heavy use of the logging facility.  Logging must be easy
+to use, fast, and extensible.  Typically, Websh applications handle
+hundreds of requests per second, and the logging facility has been
+designed with this kind of load in mind.
+
+<br><br>
+The Websh logging module manages a list of filters and a list of
+destinations.  Each log message comes with a &amp;quot;address&amp;quot; consisting
+of a tag and a level, which is compared against two filters before the
+message is delivered to its destination.  First, an overall filter
+determines whether or not Websh needs to process the message. Then, a second,
+per-destination filter determines whether or not the message has to be sent
+to the log destination.
+
+<br><br>
+The Websh logging module is fully extensible through plug-Ins. 
+Out-of-the-box, Websh comes with plug-Ins to log to files, syslog, 
+Tcl channels, and Tcl
+commands.  The latter gives the application developer a simple mechanism to
+extend the logging module by writing Tcl commands.
+
+<a name="400"><a href="#toc"><h1>4 Hello, world!</h1></a>
+
+The following example demonstrates a very simple Websh script which
+produces the simple message <i>Hello, world</i>
+<pre>
+------------------------------------------------------------
+#!websh3
+web::command default { 
+  web::put &quot;Hello, world!\n&quot;
+}
+web::dispatch
+------------------------------------------------------------
+</pre>
+
+This script can be used as is as a CGI application. Websh
+takes care of MIME-headers and other details of the HTTP
+protocol.
+
+<a name="416"><a href="#toc"><h1>5 Flow of control</h1></a>
+
+<br><br>
+The flow of control of a Websh application is as follows:
+
+<ol>
+<li>Declaration and definition stage: Websh reads and evaluates</li>
+the script. The command procedures defined
+by web::command and all helper procedures are not executed
+immediately, however (see below).
+<li>Configuration stage: Additional configuration information is</li>
+read. This happens after declaration, in order to allow specific
+applications to override configuration settings and also to allow
+logging parameters to be set in the declaration stage. This
+allows problems in the configuration (e.g., incorrect configuration
+information, configuration files cannot be accessed etc.) to be
+logged accordingly.
+<li>Initialization stage: Internal data structures are initialized,</li>
+depending on the type of call (e.g., as CGI-application, as
+stand-alone script). If the call was as a result of an HTTP-POST
+message, any HTML form data is collected. At the
+end of the initialization stage, all information provided by the
+client is available to the application.
+<li>Command dispatch: Based on the command selector, the appropriate</li>
+web::command is executed. If there is no command selector
+supplied, the default command is called.
+<li>Termination stage: Application data is cleaned-up, all streams are</li>
+flushed and control is returned to the caller.  
+</ol>
+
+<br><br>
+The command-dispatch stage makes it possible for one script to deal with
+many actions and states of an application.  For example, one script can
+generate many different pages within an application.  That way,
+Websh programmers can keep the focus on the application as a whole, 
+rather than writing one script per page.  This is especially important for the
+somewhat special transaction characteristics of Web-applications. 
+
+<br><br>
+In forms-based applications, a transaction, from the application's
+point of view, is cut into two half-transactions.  The first half
+renders an HTML page with the corresponding form, while the second
+part handles the data transmitted to the application.  Both parts are
+only glued together by the state management of Websh.  However, it
+is never known in advance when in time the second half of the
+transaction will be executed (someone can open a form for edit and
+then &quot;forget&quot; to submit it).  The strong separation of these long
+transactions into two halves is characteristic for Web-based
+applications and differs from from traditional GUI applications where
+both half steps, the display of a dialog and the collection of the
+input, are usually executed in strong association (e.g., within the
+same method of the application).
+
+<a name="467"><a href="#toc"><h1>6 Commands</h1></a>
+
+This section lists the main commands of Websh. For a complete
+overview, you may want to look at the
+<a href="quickref.html">Quick Reference</a>.
+
+<br><br>
+<a name="474"><a href="#toc"><h2>6.1 request and url management</h2></a>
+
+<ul>
+<li>::web::cmdurl</li>
+<li>::web::cmdurlcfg</li>
+<li>::web::dispatch</li>
+<li>::web::formvar</li>
+<li>::web::param</li>
+<li>::web::command</li>
+<li>::web::getcommand</li>
+</ul>
+
+<a name="484"><a href="#toc"><h2>6.2 session management</h2></a>
+
+<ul>
+<li>::web::cookiecontext</li>
+<li>::web::filecontext</li>
+<li>::web::filecounter</li>
+</ul>
+
+<a name="490"><a href="#toc"><h2>6.3 output management</h2></a>
+
+<ul>
+<li>::web::put</li>
+<li>::web::putx</li>
+<li>::web::putxfile</li>
+<li>::web::output</li>
+</ul>
+
+<a name="497"><a href="#toc"><h2>6.4 conversion</h2></a>
+
+<ul>
+<li>::web::htmlify</li>
+<li>::web::dehtmlify</li>
+<li>::web::uriencode</li>
+<li>::web::uridecode</li>
+<li>::web::ascii64</li>
+<li>::web::ascii85</li>
+</ul>
+
+<a name="506"><a href="#toc"><h2>6.5 messages</h2></a>
+
+<ul>
+<li>::web::send</li>
+<li>::web::recv</li>
+<li>::web::msgflag</li>
+</ul>
+
+<a name="512"><a href="#toc"><h2>6.6 encryption</h2></a>
+
+<ul>
+<li>::web::encrypt</li>
+<li>::web::decrypt</li>
+</ul>
+
+<a name="517"><a href="#toc"><h2>6.7 logging</h2></a>
+
+<ul>
+<li>::web::log</li>
+<li>::web::logdest</li>
+<li>::web::logfilter</li>
+</ul>
+
+<a name="523"><a href="#toc"><h2>6.8 misc</h2></a>
+
+<ul>
+<li>::web::config</li>
+<li>::web::include</li>
+<li>::web::lockfile</li>
+<li>::web::unlockfile</li>
+<li>::web::readfile</li>
+<li>::web::tempfile</li>
+<li>::web::copyright</li>
+</ul>
+
+<a name="533"><a href="#toc"><h1>7 Security issues</h1></a>
+
+Web-applications are subject to security issues as are all networked
+applications.  Furthermore, these applications are often deployed in the
+Internet, making the security issues even more important.  In the context
+of Websh there are four different topics with the overall security
+issues discussed here:
+
+<ul>
+<li>Can Websh applications be used to gain unauthorized</li>
+access to a computer ?
+<li>What levels of stability do these applications show, i.e., do Websh</li>
+applications often fail ?
+<li>How does Websh manage user authentication and user</li>
+authorization ?
+<li>How is sensitive data handeled ?</li>
+</ul>
+
+<br><br>
+Websh does not offer any direct solution to these problems. Rather,
+Websh is designed to avoid problems (intrusion, stability) and
+allow simple inclusion of various authentication and data encryption
+models.
+
+<br><br>
+The problem of gaining unauthorized access is too important to be
+solved by the tool used for application development. Therefore, the
+design of Websh assumes that the surrounding system architecture,
+i.e., Web server and Firewall handle these issues.  This means, that
+the Web server is responsible to execute CGI applications with
+suitable low privileges, in Unix environments typically by setting the
+effective UID to an unprivileged user and executing the
+CGI-application in a chroot-environment.
+
+<br><br>
+However, a Websh-developer can introduce security holes. The
+flexibility of Websh clearly allows dangerous things to be
+programmed.  Therefore, security issues have to be checked with every
+application.
+
+<br><br>
+The stability issue has rather different characteristics than the
+intrusion problems, but it is nontheless very important. Unstable
+applications typically &quot;get touched&quot; very often, leading to generally
+less secure systems. Also, crashing applications can impair a system's
+stability if the applications take unexpected execution paths. The
+design of Websh is lead by the idea to provide a simple, flexible
+and easy-to-understand framework. Compared to other products, Websh
+deliberately prefers transparency over high integration and
+automation.  This simplicity and flexibility, somehow similar to the
+Unix model, leads to a high stability of the overall system.  At the
+time of this writing, Websh has been in production for almost four
+years, without any major stability problems so far.
+
+<br><br>
+User authentication is a third security domain important in many
+Web-based applications. The design of Websh deliberately does not
+include any specific method for user authentication. The reason for
+this decision is that the specific authentication method needed
+largely depends on the context of the application. Some applications
+might authenticate users using a host system, others need specific
+one-time-password schemes, and some applications might even rely on
+authentication schemes provided by Web-servers and -browsers. The
+extensibility of Websh allows various authentication schemes to be
+adopted.
+
+<br><br>
+Finally, the importance of the secure handling of sensitive data is
+becoming more and more recognized. Here, Websh provides a extensible
+encryption module which allows one to easily encrypt data before
+storing, and to decrypt the data after reading. For example, a simple
+encryption is used by default for the querystring generation, which
+might contain sensible information. The encryption module uses
+checksums to ensure the full transmission of encrypted text and
+timestamps in order to ensure unique data. 
+The encryption sub-system of Websh is easily extensible by 
+plug-Ins which can be loaded when needed.
+
+<a name="609"><a href="#toc"><h1>8 Requirements</h1></a>
+
+Tcl 8.2.2 or higher
+
+<br><br>
+For use as a web application, a web server supporting CGI is
+needed. The Websh module for Apache 2 requires Apache 2.
+
+<a name=" "><a href="#toc"><h1>9 Copyright</h1></a>
+
+Copyright (C) 2000 by Netcetera AG.<br>
+Copyright (C) 2001, 2002 by The Apache Software Foundation.<br>
+All rights reserved.<br>
+
+You may always find an up-to-date version of the Websh white paper
+at <a href="http://tcl.apache.org/websh/">http://tcl.apache.org/websh/</a>.

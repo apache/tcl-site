@@ -18,18 +18,14 @@ web::putx {
 
     The white paper outlines how Websh is used, describes
     its architecture, and explains design decisions.<br>
-    <a href="whitepaper.ws3">html</a> | 
-    <a href="downloaddir/websh30a2-whitepaper.pdf">pdf</a> | 
-    <a href="downloaddir/websh30b2-whitepaper.txt">text</a><br>
+    <a href="whitepaper.ws3">html</a>
 
     <h2>Quick Reference</h2>
 
     Know how to use Websh, but keep forgetting the
     syntax ? The quick reference has everything you need to
     know.<br>
-    <a href="quickref.html">html</a> | 
-    <a href="downloaddir/websh30b1-quickref.pdf">pdf</a> |
-    <a href="downloaddir/websh30b2-quickref.txt">txt</a>
+    <a href="quickref.html">html</a>
 
     <h2>Code Examples</h2>
 
@@ -37,10 +33,6 @@ web::putx {
     Websh features - you can both look at the code and play
     with the application.
 
-      <h2 class="grey">Reference</h2>
-
-      Also, we are compiling the Websh reference, a thorough
-      technical documentation of Websh.
     </td>
     </tr>
     </table>

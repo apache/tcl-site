@@ -1,0 +1,30 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>Multiplatform, Multilingual</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body>
+    <? prevnext "<h1>Multiplatform, Multilingual</h1>" ?>
+
+    Tcl is very adaptable - that's one of its goals - to be able to
+    run anywhere.  Sure, we've heard that before, somewhere, but Tcl
+    really does:
+    <ul>
+      <li>Unix</li>
+      <li>Windows</li>
+      <li>MacOS</li>
+      <li>Others:
+	<ul>
+	  <li>VMS</li>
+	  <li>DOS</li>
+	  <li>Amiga</li>
+	  <li>QNX</li>
+	  <li>VxWorks</li>
+	</ul>
+      </li>
+    </ul>
+
+  </body>
+</html>

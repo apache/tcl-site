@@ -1,0 +1,20 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>Free, Commercial</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body>
+    <? prevnext "<h1>Free and Commercial</h1>" ?>
+    
+    Tcl is distributed under a BSD-style license, meaning you are
+    truly free to do pretty much anything you want with it, as long as
+    you give credit.
+
+    Because of this, and it's high quality, Tcl is used by a variety
+    of corporations and organizations, including Oracle, Sybase,
+    Cisco, AOL, NASA, CNET, Cygnus (Redhat) and many more...
+
+  </body>
+</html>

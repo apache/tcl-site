@@ -16,7 +16,12 @@
 	    <h2>News & Status</h2>
 
 	    <p>
-	      <b>Noverber 26, 2001:</b> The mailing list archives can
+	      <b>December 9, 2001:</b> Added mod_dtcl and tcl <a
+	      href="/presentations/">presentations</a>.
+	    </p>
+
+	    <p>
+	      <b>November 26, 2001:</b> The mailing list archives can
 	      be found at <a
 	      href="http://marc.theaimsgroup.com/?l=apache-moddtcl&r=1&w=2">marc.theaimsgroup.com</a>.
 	      Hopefully the ASF will create a solution for all ASF

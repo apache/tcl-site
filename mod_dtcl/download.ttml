@@ -28,8 +28,8 @@
 	      href="http://www.debian.org/Packages/unstable/web/libapache-mod-dtcl.html">http://www.debian.org/Packages/unstable/web/libapache-mod-dtcl.html</a></li>
 	      <li>FreeBSD: <a
 	      href="http://www.freebsd.org/ports/www.html#mod_dtcl-0.8.1.1">http://www.freebsd.org/ports/www.html#mod_dtcl-0.8.1.1</a></li>
-	      <li>Windows NT DLL: <a href="ApacheModuleDtcl.dll">ApacheModuleDtcl.dll</a>
-	    (provided by Craig Huckabee) (slightly out of date)</li>
+	      <li>Windows NT .zip: <a href="mod_dtcl.zip">mod_dtcl.zip</a>
+	    (provided by Craig Huckabee)</li>
 
 	    </ul>
 	    <p>

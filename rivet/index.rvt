@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="../style.css">
   </head>
   <body>
-    <? title "Apache Rivet" ?>
+    <? rivettitle "Apache Rivet" ?>
 
     <table class="main">
 	<tr>

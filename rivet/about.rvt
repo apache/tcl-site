@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="../style.css">
   </head>
   <body>
-    <? title "About Us - Contact" ?>
+    <? rivettitle "About Us - Contact" ?>
 
     <table class="main">
 	<tr>

@@ -7,7 +7,7 @@
   <body>
     <? title ?>
 
-    <table width="75%" border="0">
+    <table>
 	<tr>
 	  <? include navbar.html ?>
 	  
@@ -18,9 +18,9 @@
 	      efforts.  These projects combine the power of the Apache
 	      web server with the capabilities of the time-tested Tcl
 	      scripting language.  Currently, we host the <a
-	      href="http://tcl.apache.org/mod_dtcl/">mod_dtcl</a>
+	      href="mod_dtcl/">mod_<b>d</b>tcl</a>, <a href="mod_tcl/mod_tcl.html">mod_tcl</a>,
 	      and the
-	      <a href="http://tcl.apache.org/neowebscript/">neowebscript</a>
+	      <a href="neowebscript/">neowebscript</a>
               projects, and will have more soon.
 	    </p>
 

@@ -7,12 +7,16 @@
   </head>
   <body>
     <? title ?>
-    <table width="75%" border="0">
+    <table border="0">
 	<tr>
 	  <? include navbar.html ?>
 	  <td valign="top"> 
 	    <h2>News and Status</h2>
 
+	    <p><b>2 June, 2001</b>
+	      Some updates to the look and feel of the site - more to
+	      come, hopefully. Suggestions welcome!
+	    </p>
 
 	    <p><b>17 April, 2001</b>
 	      tcl.apache.org was down over the weekend as covalent

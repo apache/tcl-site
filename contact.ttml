@@ -6,9 +6,9 @@
   </head>
   <body>
     <? title ?>
-    <table width="75%" border="0">
+    <table border="0">
 	<tr>
-
+	  
 	  <? include navbar.html ?>
 	  <td valign="top"> 
 	    <h2>Contact Information</h2>

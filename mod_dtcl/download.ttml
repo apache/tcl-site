@@ -9,7 +9,7 @@
 
     <? title mod_dtcl ?>
 
-    <table width="75%" border="0">
+    <table border="0">
 	<tr>
 	  <? include navbar.html ?>
 	  

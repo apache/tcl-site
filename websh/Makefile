@@ -7,7 +7,7 @@
 
 .SUFFIXES: .ws3 .html .syp .pre .sample
 
-WEBSH3 = websh3
+WEBSH3 = /usr/lib/cgi-bin/websh3.10
 
 WEBHOME = /wwwdev/websh
 
@@ -146,7 +146,7 @@ examples.pre: examples.syp
 
 .ws3.html: websh.com.gen
 	@echo "  == Building $@ =="
-	websh3 $< > $@
+	$(WEBSH3) $< > $@
 
 
 .syp.pre: websh.com.gen

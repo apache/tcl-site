@@ -8,11 +8,13 @@ putHeader 0
 
 web::putx {
     <table border="0" cellpadding="0" cellspacing="0" width="770">
-    {headRow 3 "Websh newsletter"}
+    {headRow 3 "Websh Mailing Lists"}
     <tr valign="top">
     {navbar_null}
     <td width="610">
-    There is a mailing list for Websh users at <a href="mailto:websh-user@tcl.apache.org">websh-user@tcl.apache.org</a>.  You may subscribe by sending mail to  <a href="mailto:websh-user-subscribe@tcl.apache.org">websh-user-subscribe@tcl.apache.org</a>, and unsubscribe via  <a href="mailto:websh-user-unsubscribe@tcl.apache.org">websh-user-unsubscribe@tcl.apache.org</a>.
+    There is a mailing list for Websh users at {emailLink websh-user@tcl.apache.org}.  You may subscribe by sending mail to  {emailLink websh-user-subscribe@tcl.apache.org}, and unsubscribe via  {emailLink websh-user-unsubscribe@tcl.apache.org}.
+    <p>
+    If you are interested in the development of Websh, there is also a list for the discussion of Websh work-in-progress.  {emailLink websh-dev@tcl.apache.org} to post, {emailLink websh-dev-subscribe@tcl.apache.org} to subscribe, and {emailLink websh-dev-unsubscribe@tcl.apache.org}.
     </td>
     </tr>
     </table>

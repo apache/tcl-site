@@ -1,0 +1,42 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+
+<html>
+  <head>
+    <title>Contact information for mod_dtcl</title>
+    <link rel="stylesheet" href="../style.css">
+  </head>
+  <body>
+    <table width="100%" border="0">
+	<tr>
+	  <td align="center" valign="top">
+	    <a href="http://tcl.apache.org/mod_dtcl/"><h1>mod_dtcl</h1></a>
+	  </td>
+	</tr>
+    </table>
+
+    <table width="75%" border="0">
+	<tr>
+	  <+ include navbar.html +>
+	  
+	  <td valign="top"> 
+	    <h2>Contact information for mod_dtcl</h2>
+	    <p>
+	      All enquiries regarding mod_dtcl (both usage and
+	      development) should be directed towards the mailing list
+	      at FIXME.  It is not necessary to be subscribed to the
+	      mailing list to post, although you might want to set a
+	      reply-to.
+	    </p>
+
+	    <p align="center">
+	      <a href="http://www.apache.org/"><img src="../apache_pb.gif"
+						  alt="Powered by Apache" border="0"
+						  width="259"
+						  height="32"></a>
+	    </p>
+	    
+	  </td>
+	</tr>
+    </table>
+  </body>
+</html>

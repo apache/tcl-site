@@ -1,0 +1,48 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+
+<html>
+  <head>
+    <title>Download mod_dtcl</title>
+    <link rel="stylesheet" href="../style.css">
+  </head>
+  <body>
+    <table width="100%" border="0">
+	<tr>
+	  <td align="center" valign="top">
+	    <a href="http://tcl.apache.org/mod_dtcl/"><h1>mod_dtcl</h1></a>
+	  </td>
+	</tr>
+    </table>
+
+    <table width="75%" border="0">
+	<tr>
+	  <+ include navbar.html +>
+	  
+	  <td valign="top"> 
+	    <h2>Download mod_dtcl</h2>
+	    <p>
+	      Pre-built packages:	      
+	    </p>
+	    <ul>
+	      <li>Debian GNU/Linux: <a
+	      href="http://www.debian.org/Packages/unstable/web/libapache-mod-dtcl.html">http://www.debian.org/Packages/unstable/web/libapache-mod-dtcl.html</a></li>
+	      <li>FreeBSD: <a
+	      href="http://www.freebsd.org/ports/www.html#mod_dtcl-0.8.1.1">http://www.freebsd.org/ports/www.html#mod_dtcl-0.8.1.1</a></li>
+	      <li>Windows NT DLL: <a href="ApacheModuleDtcl.dll">ApacheModuleDtcl.dll</a>
+	    (provided by Craig Huckabee)</li>
+
+	    </ul>
+	    <p>
+	      <a href="mod_dtcl.tar.gz">mod_dtcl source code</a>
+	    </p>
+	    <p align="center">
+	      <a href="http://www.apache.org/"><img src="../apache_pb.gif"
+						  alt="Powered by Apache" border="0"
+						  width="259"
+						  height="32"></a>
+	    </p>
+	  </td>
+	</tr>
+    </table>
+  </body>
+</html>

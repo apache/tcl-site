@@ -1,0 +1,37 @@
+body {
+    font-family: Arial, sans-serif;
+    font-style: normal;
+    color: #000000;
+    background-color: #FFFFFF;
+}
+
+A:link { color: #cc3300 }
+A:visited { color : #003399; }
+
+h1 {
+    font-family: Arial, sans-serif;
+    color: #000000;
+}
+
+h2 {
+    font-family: Arial, sans-serif;
+}
+
+h3 {
+    font-family: Arial, sans-serif;
+}
+b {
+    font-weight: bold;
+}
+
+td {
+    font-family: Arial, sans-serif;
+    color: #000000;
+}
+
+code {
+     color: #006600;
+}
+
+li {
+}

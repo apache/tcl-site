@@ -1,0 +1,41 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+
+<html>
+  <head>
+    <title>Apache Tcl</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <table width="100%" border="0">
+	<tr>
+	  <td align="center" valign="top">
+	    <a href="http://tcl.apache.org/"><h1>Apache Tcl Projects</h1></a>
+	  </td>
+	</tr>
+    </table>
+
+    <table width="75%" border="0">
+	<tr>
+	  <+ include navbar.html +>
+	  
+	  <td valign="top"> 
+	    <h2>Individual Projects</h2>
+	    <p>
+	      <a href="mod_dtcl/">mod_dtcl</a> enables the use of Tcl
+	      as an HTML-embedded scripting language, similar to
+	      PHP. It is fast, light, and lets you use the extensive
+	      codebase of existing Tcl code on the web.
+	    </p>
+
+	    <p align="center">
+	      <a href="http://www.apache.org/"><img src="apache_pb.gif"
+						  alt="Powered by Apache" border="0"
+						  width="259"
+						  height="32"></a>
+	    </p>
+	    
+	  </td>
+	</tr>
+    </table>
+  </body>
+</html>

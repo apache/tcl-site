@@ -1,0 +1,65 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+
+<html>
+  <head>
+    <title>Contributing to mod_dtcl</title>
+    <link rel="stylesheet" href="../style.css">
+  </head>
+  <body>
+    <table width="100%" border="0">
+	<tr>
+	  <td align="center" valign="top">
+	    <a href="http://tcl.apache.org/mod_dtcl/"><h1>mod_dtcl</h1></a>
+	  </td>
+	</tr>
+    </table>
+
+    <table width="75%" border="0">
+	<tr>
+	  <+ include navbar.html +>
+	  
+	  <td valign="top"> 
+	    <h2>Contributing to mod_dtcl</h2>
+	    <p>In addition to the TODO list below, help is very
+	    welcome with documentation, be it better explanations of
+	    dtcl commands, internals, or help with the web pages.
+	    </p>
+	    <b>TODO List</b><br>
+	    <ul>
+	      <li>Security review: I would like someone with security background to
+  thoroughly go over the code.</li>
+
+	      <li>Script timeouts: set limits on the length of time a script will run
+  before it returns or dies.</li>
+
+	      <li>More commands available for scripters (see PHP for examples).</li>
+
+
+	      <li>File uploads.  This is tricky, but necessary.</li>
+
+	      <li>Possible configuration options: possible safe mode.</li>
+
+
+	      <li>Further internationalization (multibyte languages such as Japanese).</li>
+
+	      <li>Nicer logo - artists welcome!</li>
+
+
+	      <li>Automated test suite - Dtcl pages + Tcl scripts which test them.</li>
+	    </ul>
+
+	    <p>If you are interested in helping out, please go to the
+	    <a href="contact.ttml">contact</a> page and send some email.</p>
+
+	    <p align="center">
+	      <a href="http://www.apache.org/"><img src="../apache_pb.gif"
+						  alt="Powered by Apache" border="0"
+						  width="259"
+						  height="32"></a>
+	    </p>
+	    
+	  </td>
+	</tr>
+    </table>
+  </body>
+</html>

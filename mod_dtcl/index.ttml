@@ -1,0 +1,47 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+
+<html>
+  <head>
+    <title>Apache Tcl</title>
+    <link rel="stylesheet" href="../style.css">
+  </head>
+  <body>
+    <table width="100%" border="0">
+	<tr>
+	  <td align="center" valign="top">
+	    <a href="http://tcl.apache.org/mod_dtcl/"><h1>mod_dtcl</h1></a>
+	  </td>
+	</tr>
+    </table>
+
+    <table width="75%" border="0">
+	<tr>
+	  <+ include navbar.html +>
+	  
+	  <td valign="top"> 
+
+	    <p>
+	      mod_dtcl is an Open Source implementation of server
+	      parsed Tcl, running under Apache. It allows you to
+	      tightly integrate HTML with <a
+	      href="http://dev.scriptics.com">Tcl</a>, a widely used
+	      scripting language with many years of development
+	      invested in it. Because Tcl is such a widely used
+	      language, there is a large amount of documentation for
+	      it, both on the net and books. There are also many
+	      external Tcl modules that you can load into mod_dtcl, to
+	      create images, access databases, and so forth.
+	    </p>
+
+	    <p align="center">
+	      <a href="http://www.apache.org/"><img src="../apache_pb.gif"
+						  alt="Powered by Apache" border="0"
+						  width="259"
+						  height="32"></a>
+	    </p>
+	    
+	  </td>
+	</tr>
+    </table>
+  </body>
+</html>

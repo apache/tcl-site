@@ -275,9 +275,8 @@ proc navbar_supp {{where 0}} {
         {navBarElement "support.ws3" "support" [expr $where != 0]}
         {navBarElement "faq.ws3" "faq" [expr $where != 1] \
              "faq.ws3#generic" "generic questions" 1 \
-             "faq.ws3#technical" "technical questions" 1 \
-             "faq.ws3#toc" "index" 1}
-        {navBarElement "subscribe.ws3" "mailing list" 1}
+             "faq.ws3#technical" "tech questions" 1} \
+        {navBarElement "subscribe.ws3" "mailing list" [expr $where != 2]}
         {navBarElement "http://nagoya.apache.org/bugzilla/" "bug tracking system" [expr $where != 3]}
         </table>
         </td>
@@ -539,7 +538,11 @@ proc finishPage {{where 0}} {
 	    } else {
 		web::put {&nbsp;<span class="blue">download area</span>&nbsp;|}
 	    }
-	    web::put {&nbsp;<a href="copyright.ws3">copyright statement</a>}
+	    if {$where != 6 } {
+		web::put {&nbsp;<a href="copyright.ws3">copyright statement</a>}
+	    } else {
+		web::put {&nbsp;<span class="blue">copyright statement</span>}
+	    }
 	}
 	</td></tr>
         <tr valign="top">

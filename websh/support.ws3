@@ -13,12 +13,11 @@ web::putx {
       <img height="160" width="150" src="images/ausschnitt_support.gif" align="left" alt="graphics">
 
     No tool is useful without documentation
-    and support. That's why we are committed to high-quality support
-    for Websh. We work hard to keep the site
+    and support. We work hard to keep the site
     up-to-date with all information you need. Here, you can find
     the {pageLink whitepaper.ws3 -show "Websh white paper"} and
     the {pageLink quickref.ws3 -show "quick reference"} as well as
-      a list of {pageLink faq.ws3 -show "frequently asked questions"}.
+    a list of {pageLink faq.ws3 -show "frequently asked questions"}.
       <br><br>
 
     In addition, email support is available.  Have a look at the {pageLink subscribe.ws3 -show "Mailing Lists"} for more information on subscribing to Websh mailing lists.

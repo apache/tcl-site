@@ -11,7 +11,8 @@ web::putx {
     <tr valign="top">
     {navbar_null}
     <td width="455">
-    Websh is distributed under the terms of the Apache Software License:
+    Websh was first developed by <a href="http://www.netceterach">Netcetera AG</a> of Zurich, Switzerland and was contributed to the ASF in 2001.<br>
+    Websh is now distributed under the terms of the Apache Software License:
 <pre>
 /* ====================================================================
  * The Apache Software License, Version 1.1
@@ -76,4 +77,4 @@ web::putx {
     </table>
 }
 
-finishPage
+finishPage 6

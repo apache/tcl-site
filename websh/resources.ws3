@@ -12,14 +12,16 @@ web::putx {
     {navbar_ress 0}
     <td width="455">
     <img height="160" width="150" src="images/ausschnitt_ressources.gif" vspace="40" align="left" alt="graphics"><br>
-    On this page, we compile links to Websh related resources and
-    tools.
+    The following links show Websh related resourses and tools.
+
     <h2>Tcl</h2>
     {pageLink www.tcl.tk -pre}
-    <h2>Tcl and Apache</h2>
+    <h2>Apache Tcl</h2>
     {pageLink tcl.apache.org -pre}
     <h2>Apache</h2>
     {pageLink www.apache.org -pre}
+
+    <p>&nbsp;<p>
     </td>
     {
 #newsbar_ress

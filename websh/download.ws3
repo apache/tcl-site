@@ -13,12 +13,22 @@ web::putx {
     <td width="610">
     <img height="160" width="270" src="images/ausschnitt_download.gif" align="left" alt="graphics">
 
-    Download the source code:<br>
+    Download the latest source code:<p>
 
-    {
-	set srcfile [file tail [glob [getDocFileName download/*gz]]]
-	web::put "<a href=\"download/$srcfile\">$srcfile</a>"
+    &nbsp;&nbsp;&nbsp;&nbsp;{
+
+	set srcfile [lindex [file tail [glob -nocomplain [getDocFileName download/*gz]]] end]
+	if {![string length $srcfile]} {
+	    web::put "<span class=\"blue\">source code currently unavailable</span>"
+	} else {
+	    web::put "<a href=\"download/$srcfile\">$srcfile</a>"
+	}
     }
+
+    <p>
+    Or visit the download directory for an index of all downloads:<p>
+
+    &nbsp;&nbsp;&nbsp;&nbsp;<a href="download/">download directory</a>
 
     <p>
     If you would like to be notified when new versions of Websh

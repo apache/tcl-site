@@ -10,9 +10,16 @@ web::putx {
     <tr valign="top">
     {navbar_supp 1}
     <td width="455">
-<a name=" generic"><a href="#toc"><h1>1 Generic Questions</h1></a>
+<a name="toc"></a><a name="generic"></a><h1>1 Generic Questions</h1>
 
-<a name=" whatis"><a href="#toc"><h2>1.1 What is Websh ?</h2></a>
+<a href="#whatis">1.1 What is Websh?</a><br>
+<a href="#version">1.2 What is the current version?</a><br>
+<a href="#price">1.3 What does Websh cost?</a><br>
+<a href="#download">1.4 Where can I download Websh?</a><br>
+<a href="#why">1.5 Why should I use Websh?</a><br>
+<a href="#mailinglist">1.6 Is there a mailing list?</a><br>
+
+<a name="whatis"><a href="#toc"><h2>1.1 What is Websh?</h2></a>
 
 Websh is a rapid development environment for building powerful and
 reliable web applications. It is a standard Tcl extension and is
@@ -22,41 +29,41 @@ customization. Netcetera AG, has been using it for years for virtually
 all their customer projects, which typically are E-commerce shops or
 electronic banking applications.
 
-<a name=" version"><a href="#toc"><h2>1.2 What is the current version ?</h2></a>
+<a name="version"><a href="#toc"><h2>1.2 What is the current version?</h2></a>
 
-Currently, we are finalizing version 3 of Websh. The beta-2
-release of Websh is available for download.
+Currently, version 3.5 of Websh has been released.
 
-<a name=" price"><a href="#toc"><h2>1.3 What does Websh cost ?</h2></a>
+<a name="price"><a href="#toc"><h2>1.3 What does Websh cost?</h2></a>
 
 Nothing. It's free. Websh is released as Open Source.
 
-<a name=" download"><a href="#toc"><h2>1.4 Where can I download Websh ?</h2></a>
+<a name="download"><a href="#toc"><h2>1.4 Where can I download Websh?</h2></a>
 
-The beta-2 release of Websh is available for download at the
+The latest release of Websh is available for download at the
 <a href="download.ws3">download area</a> of this site.
 
-<a name=" why"><a href="#toc"><h2>1.5 Why should I use Websh ?</h2></a>
+<a name="why"><a href="#toc"><h2>1.5 Why should I use Websh?</h2></a>
 
 In today's E-commerce environment, flexibility and short
 time-to-market are key characteristics for successful
 business. E-commerce, in other words, calls for a solid basis on which
 applications can be built. For exactly this purpose we have designed
 Websh.
-
-<br><br>
+<p>
 Websh helps you to create high-quality web applications with light
 time constraints. It is fast, versatile, scalable, and easy to learn.
 With Websh, you have a win-win situation for developers and
 customers.
 
-<a name=" mailinglist"><a href="#toc"><h2>1.6 Is there a mailing list ?</h2></a>
+<a name="mailinglist"><a href="#toc"><h2>1.6 Is there a mailing list?</h2></a>
 
-<br><br>
-<br><br>
-<a name=" technical"><a href="#toc"><h1>2 Technical Questions</h1></a>
+Sure. Visit the <a href="subscribe.ws3">subscribe</a> page on this site to get more information.
 
-<a name=" logging"><a href="#toc"><h2>2.1 How do I use the logging facility ?</h2></a>
+<a name="technical"><h1>2 Technical Questions</h1></a>
+
+<a href="#logging">2.1 How do I use the logging facility?</a><br>
+
+<a name="logging"><a href="#toc"><h2>2.1 How do I use the logging facility?</h2></a>
 
 Before Websh sends a message to a log destination, the message
 needs to pass two filters. That's why you need to specify a level when

@@ -75,3 +75,6 @@ web::command default {
 
 # dispatch
 web::dispatch
+
+# cleanup context after request (to prevent session crosstalk)
+state::delete

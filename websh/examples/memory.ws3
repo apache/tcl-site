@@ -23,8 +23,8 @@
 #
 
 # turn logging on
-web::logfilter add memory.-debug
-web::logdest add memory.-debug file [file join / tmp memory.log]
+#web::logfilter add memory.-debug
+#web::logdest add memory.-debug file [file join / tmp memory.log]
 
 # config: map level number to X-Y dimensions
 set _levels(1) [list 1 2]
@@ -601,6 +601,7 @@ web::command default {
 # also, we use -hook to execute code just before web::dispatch will
 # call the web::command command. Here, we set the default level to 5
 # if it is not yet known.
-web::dispatch -track [list l c r] -hook {
-    web::cmdurlcfg -set l [web::cmdurlcfg l 5]
-}
+web::dispatch -track [list l c r] -hook {web::cmdurlcfg -set l [web::cmdurlcfg l 5]}
+
+# cleanup context after the request (prevent session crosstalk)
+mctx::delete

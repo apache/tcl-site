@@ -1,0 +1,67 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+  <head>
+    <title>Apache Tcl</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <table width="100%" border="0">
+	<tr>
+	  <td align="center" valign="top">
+	    <a href="http://tcl.apache.org/"><h1>Apache Tcl Project</h1></a>
+	  </td>
+	</tr>
+    </table>
+
+    <table width="100%" border="0">
+	<tr>
+	  <+ include navbar.html +>
+	  <td valign="top"> 
+	    <h2>The Tcl Language</h2>
+	    <p>
+	      Tcl (the "tool command language", pronounced "tickle")
+	      is an open source, cross-platform scripting language
+	      created by John K. Ousterhout at the University of
+	      California at Berkeley in 1988.  Originally conceived as
+	      a reusable, embeddable language core for tools being
+	      developed by Dr. Ousterhout and his colleagues, it has
+	      come to be much more.  It is widely used in applications
+	      including web scripting, test automation, network/system
+	      management, EDA and CAD, and in a variety of other
+	      fields.
+	    </p>
+	    <p>
+	      <b>Tcl Links</b>
+	    </p>
+	    <ul>
+	      <li><a href="http://dev.ajubasolutions.com/">Tcl
+	      Developer Xchange (dev.scriptics.com)</a></li>
+	      <li>Why use Tcl? <a
+	      href="http://dev.ajubasolutions.com/advocacy/">Tcl advocacy page</a>.</li>
+	      <li><a href="http://www.arsdigita.com/books/tcl/index">A tutorial for Tcl on the web</a></li>
+	      <li>Get started with Tcl. Tcl Tutorials at:
+	      <a
+	      href="http://dev.ajubasolutions.com/resource/doc/start/">http://dev.ajubasolutions.com/resource/doc/start/</a></li>
+	      <li>
+		<a
+		href="http://sourceforge.net/foundry/tcl-foundry/">Tcl
+		Foundry</a> at SourceForge.
+	      </li>
+	      <li>
+		<a href="http://tcl.sourceforge.net/">Tcl Project</a>
+		on SourceForge.
+	      </li>
+
+	    </ul>
+	    <p align="center">
+	      <a href="http://www.apache.org/"><img src="apache_pb.gif"
+						  alt="Powered by Apache" border="0"
+						  width="259"
+						  height="32"></a>
+	    </p>
+	    
+	  </td>
+	</tr>
+    </table>
+  </body>
+</html>

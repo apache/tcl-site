@@ -3,6 +3,7 @@
   <head>
     <title>Apache Tcl</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="SHORTCUT ICON" href="http://tcl.apache.org/favicon.ico">
   </head>
   <body>
     <? title ?>

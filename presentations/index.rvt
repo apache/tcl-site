@@ -7,7 +7,7 @@
   <body>
     <? title ?>
 
-    <table>
+    <table class="main">
 	<tr>
 	  <? include [file join .. newnav.html] ?>
 
@@ -26,7 +26,7 @@
 	      redistribute, or otherwise do as you wish.
 	    </p>
 	    <ul>
-	      <li>Tcl Presentation: <a href="tcl/"></a><br>
+	      <li>Tcl Presentation: <a href="tcl/">(live)</a><br>
 		Presentation on the Tcl programming language and the Tk toolkit.
 	      </li>
 	      <li>

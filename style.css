@@ -52,6 +52,7 @@ table.main {
     font-size: smaller;
 }
 
+/*
 table.lists td {
     font-size: smaller;
     background-color: #aaaaaa;
@@ -64,6 +65,7 @@ table.lists th {
     background-color: #aaaaff;
     padding: .5em;
 }
+*/
 
 table.nav {
 
@@ -75,7 +77,7 @@ table.nav td {
 }
 
 li {
-     font-size: smaller;
+/*      font-size: smaller;  */
      margin-bottom: 0.5em;
 }
 

@@ -10,7 +10,7 @@ body {
 
 body.splash {
     font-size: 300%;
-    background: url(logo.gif);
+    background: url(logo.gif) no-repeat bottom;
 }
 
 

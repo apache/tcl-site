@@ -35,7 +35,7 @@ hputs "Hello world"
 Produces:
 <p>
 
-<+
+<?
 headers setcookie "foo" "bar"
 
 # once buffering is switched off, it is no longer possible to
@@ -43,7 +43,7 @@ headers setcookie "foo" "bar"
 buffered off
 
 hputs "hello world" 
-+>
+?>
 
 <p>
 
@@ -68,11 +68,11 @@ hputs "hello world"
 Produces:
 <p>
 
-<+ if { 1 } { +>
+<? if { 1 } { ?>
 
 <h2> True </h2>
 
-<+ } +>
+<? } ?>
 </td></tr>
 
 <tr><td><hr><b>Loops:</b>
@@ -95,14 +95,14 @@ LOOP&lt;br>
 </td></tr>
 
 <tr><td>Produces:<p>
-<+
+<?
 set x 0
 while { $x < 5 } { 
  hputs "\$x = $x<br>"
  incr x
-+>
+?>
 LOOP<BR>
-<+ } +>
+<? } ?>
 </td></tr>
 
 <tr><td><hr><b>Variables (environmental as well as those passed to the script)</b><p>
@@ -143,7 +143,7 @@ if { [ array exists COOKIES ] } {
 </td></tr>
 
 <tr><td>Produces:<p>
-<+
+<?
 hgetvars
 if { [ array exists VARS ] } {
     hputs "<ul>"
@@ -170,7 +170,7 @@ if { [ array exists COOKIES ] } {
     hputs "</ul>"
 }
 
-+>
+?>
 </td></tr>
 
 <tr><td><hr><b>Create a table on the fly</b><p>
@@ -200,7 +200,7 @@ hputs "&lt;/table&gt;\n"
 </td></tr>
 
 <tr><td>Produces:<p>
-<+
+<?
 
 set listone { 1 2 3 4 5 6 7 8 }
 set listtwo { 1 2 3 4 5 6 7 8 }
@@ -216,7 +216,7 @@ foreach { a } $listone  {
     hputs "</tr>\n"
 }
 hputs "</table>\n"
-+>
+?>
 </td></tr>
 
 <tr><td><hr>
@@ -229,7 +229,7 @@ There are many, many other things you can do with mod_dtcl.  You can, if everyth
 
 </table>
 
-<+ dtcl_info +>
+<? dtcl_info ?>
 
 
 <p>

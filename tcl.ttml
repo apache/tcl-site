@@ -15,7 +15,7 @@
 
     <table width="100%" border="0">
 	<tr>
-	  <+ include navbar.html +>
+	  <? include navbar.html ?>
 	  <td valign="top"> 
 	    <h2>The Tcl Language</h2>
 	    <p>

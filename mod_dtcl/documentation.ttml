@@ -16,11 +16,11 @@
 
     <table width="75%" border="0">
 	<tr>
-	  <+ include navbar.html +>
+	  <? include navbar.html ?>
 	  
 	  <td valign="top"> 
 
-	    <+ include documentation.html +>
+	    <? include documentation.html ?>
 
 	    <p align="center">
 	      <a href="http://www.apache.org/">

@@ -8,11 +8,11 @@
   <body>
     <? title mod_dtcl ?>
 
-    <table border="0">
+    <table class="main">
 	<tr>
 	  <? include navbar.html ?>
-	  
-	  <td valign="top"> 
+
+	  <td valign="top">
 
 	    <p>
 	      <b>mod_dtcl</b> is an Open Source implementation of server

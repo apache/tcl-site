@@ -7,7 +7,7 @@
   <body>
     <? title ?>
 
-    <table border="0">
+    <table class="main">
 	<tr>
 	  <? navbar ?>
 	  <td valign="top">

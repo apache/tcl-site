@@ -2,16 +2,23 @@
 <!-- $Id$ -->
 <html>
   <head>
-    <title>Apache Rivet Credits</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Apache Rivet Contact</title>
+    <link rel="stylesheet" href="../style.css">
   </head>
   <body>
-    <? title "Apache Rivet Credits" ?>
+    <? title "About Us - Contact" ?>
 
-    <table border="0">
+    <table class="main">
 	<tr>
 	  <? include navbar.html ?>
 	  <td class="main" valign="top">
+	    <h2>Contact</h2>
+	    <p>
+	      To contact the <b>Apache Rivet</b> team, please write to
+	      our mailing list, at <a
+	      href="mailto:rivet-dev@tcl.apache.org">rivet-dev@tcl.apache.org</a>.
+	    </p>
+	    <h2>Credits</h2>
 	    <p>
 	      <b>Apache Rivet</b> owes its existance to a lot of
 	      people.  First and foremost, to the people behind the <a
@@ -26,6 +33,7 @@
 	      href="http://www.dedasys.com/davidw/">David
 	      Welton</a>.
 	    </p>
+
 	  </td>
 	</tr>
     </table>
@@ -34,4 +42,3 @@
 
   </body>
 </html>
-

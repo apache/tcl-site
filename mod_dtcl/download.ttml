@@ -9,14 +9,14 @@
 
     <? title mod_dtcl ?>
 
-    <table border="0">
+    <table class="main">
 	<tr>
 	  <? include navbar.html ?>
-	  
-	  <td valign="top"> 
+
+	  <td valign="top">
 	    <h2>Download mod_dtcl</h2>
 	    <p>
-	      <b>Pre-built packages</b>:	      
+	      <b>Pre-built packages</b>:
 	    </p>
 	    <ul>
 	      <li>Debian GNU/Linux: <a
@@ -40,7 +40,7 @@ cd ..
 	      and <a
 	      href="<? hputs $srpmurl ?>"><? hputs $srpm ?></a>
 	      (provided by Simon Greaves)</li>
-	      
+
 	      <li>FreeBSD: <a
 	      href="http://www.freebsd.org/cgi/ports.cgi?query=mod_dtcl">http://www.freebsd.org/cgi/ports.cgi?query=mod_dtcl</a></li>
 

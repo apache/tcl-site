@@ -6,13 +6,15 @@
   </head>
   <body>
     <? title ?>
-    <table border="0">
+    <table class="main">
 	<tr>
 	  <? navbar ?>
 	  <td valign="top">
 	    <h2>Credits</h2>
 	    <p>
-	      Current Members of the Project Maintainership Committee:
+	      Current Members of the Project Maintainership Committee
+	      - these are the people who are responsible for running
+	      and overseeing the project:
 	    </p>
 	    <ul>
 	      <li>Ronnie Brunner</li>
@@ -37,13 +39,89 @@
 	      the pages associated with those projects.
 	    </p>
 
-	    <h2>Contact Information</h2>
+	    <h2>Mailing Lists</h2>
 	    <p>
-	      If you are trying to contact an individual project,
-	      please see the respective page for detailed information.
-	      For general Apache Tcl questions, send email to <a
-	      href="mailto:general@tcl.apache.org">general@tcl.apache.org</a>.
-	      </p>
+	      These are the mailing lists for the Apache Tcl projects.
+	      <b>Please</b> use them instead of contacting individuals
+	      directly so that your conversation will be archived, and
+	      others may benefit from your questions.
+	    </p>
+	    <p>
+	      It is possible to subscribe to any of these lists by
+8	      sending a message to:
+	      <tt style="font-size:
+		larger">list<b>-subscribe@tcl.apache.org</b></tt>.
+	    </p>
+	    <table class="lists">
+	      <tbody>
+		<tr>
+		  <th>
+		    <a
+		    href="mailto:general@tcl.apache.org">general@tcl.apache.org</a>
+		  </th>
+		  <td>
+		    For general questions about Apache Tcl that
+		    don't regard any specific project.
+		  </td>
+		</tr>
+		<tr>
+		  <th>
+		    <a href="mailto:mod_dtcl@tcl.apache.org">mod_dtcl@tcl.apache.org</a>
+		  </th>
+		  <td>
+		    User/developer list for mod_dtcl.
+		  </td>
+		</tr>
+		<tr>
+		  <th>
+		    <a href="mailto:mod_tcl-dev@tcl.apache.org">mod_tcl-dev@tcl.apache.org</a>
+		  </th>
+		  <td>
+		    List for the discussion of mod_tcl development.
+		  </td>
+		</tr>
+		<tr>
+		  <th>
+		    <a href="mailto:rivet-dev@tcl.apache.org">rivet-dev@tcl.apache.org</a>
+		  </th>
+		  <td>
+		    Developer list for Rivet.
+		  </td>
+		</tr>
+		<tr>
+		  <th>
+		    <a href="mailto:rivet-user@tcl.apache.org">rivet-user@tcl.apache.org</a>
+		  </th>
+		  <td>
+		    User list for Rivet.
+		  </td>
+		</tr>
+		<tr>
+		  <th>
+		    <a href="mailto:websh-dev@tcl.apache.org">websh-dev@tcl.apache.org</a>
+		  </th>
+		  <td>
+		    Developer list for Websh.
+		  </td>
+		</tr>
+		<tr>
+		  <th>
+		    <a href="mailto:websh-user@tcl.apache.org">websh-user@tcl.apache.org</a>
+		  </th>
+		  <td>
+		    User list for Websh.
+		  </td>
+		</tr>
+		<tr>
+		  <th>
+		    <a href="mailto:mod_dtcl@tcl.apache.org">mod_dtcl@tcl.apache.org</a>
+		  </th>
+		  <td>
+		    User/developer list for mod_dtcl.
+		  </td>
+		</tr>
+	      </tbody>
+	    </table>
 	  </td>
 	</tr>
     </table>

@@ -1,0 +1,11 @@
+2002-11-01  David N. Welton  <davidw@dedasys.com>
+
+	* Started changelog to list what's been done with the site.
+
+	* Rivet now uses /style.css.
+
+	* Changed stylesheet extensively.
+
+	* Rivet now uses about.rvt instead of credits/contact .rvt.
+
+	* Eliminated .ttml files in root directory.

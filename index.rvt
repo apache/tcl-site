@@ -7,7 +7,7 @@
   <body>
     <? title ?>
 
-    <table>
+    <table class="main">
 	<tr>
 	  <? navbar ?>
 

@@ -3,12 +3,12 @@
 <html>
   <head>
     <title>Download Apache Rivet</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style.css">
   </head>
   <body>
     <? title "Download Apache Rivet" ?>
 
-    <table border="0">
+    <table class="main">
 	<tr>
 	  <? include navbar.html ?>
 	  <td class="main" valign="top">

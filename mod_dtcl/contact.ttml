@@ -8,7 +8,7 @@
 
     <? title mod_dtcl ?>
 
-    <table border="0">
+    <table class="main">
 	<tr>
 	  <? include navbar.html ?>
 

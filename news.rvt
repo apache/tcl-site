@@ -7,12 +7,19 @@
   </head>
   <body>
     <? title ?>
-    <table border="0">
+    <table class="main">
 	<tr>
 	  <? navbar ?>
 	  <td valign="top">
 	    <h2>News and Status</h2>
 
+	    <p>
+	      <b>18-21 November, 2002:</b> Come join us at <a
+	      href="http://www.apachecon.com">ApacheCon</a>!  David
+	      Welton will be speaking about Apache Tcl, and it would
+	      be great to see a lot of people there who are interested
+	      in the project(s).
+	    </p>
 
 	    <p>
 	      <b>6 August, 2002:</b> The <a href="websh/">Websh</a>

@@ -11,7 +11,14 @@ p {
 
 A:link { color: #cc3300 }
 A:visited { color : #003399; }
-A:hover { color : #000000 ; background-color : #aaaaaa }
+A:hover {
+    color : #ffffff ;
+    background-color : #000000;
+}
+
+A:link, A:visited, A:active {
+    text-decoration: none;
+}
 
 h1 {
     font-family: Arial, sans-serif;
@@ -42,13 +49,46 @@ code {
 }
 
 div.box {
- font-size: smaller;
- border-width: medium;
- padding: 0.25em;
- background-color: #dddddd;
+    font-size: smaller;
+    border-width: medium;
+    padding: 0.3em;
+    background-color: #dddddd;
+}
+
+table.main {
+    width: 100%;
+}
+
+table.lists td {
+    font-size: smaller;
+    background-color: #aaaaaa;
+    padding: .5em;
+}
+
+table.lists th {
+    text-align: left;
+    font-size: smaller;
+    background-color: #aaaaff;
+    padding: .5em;
+}
+
+table.nav {
+    border-left-width: thick;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    border-style: solid;
+}
+
+table.nav td {
+    background-color: #aaaaff;
+    font-weight: bold;
+    padding: .3em;
+    font-size: smaller;
 }
 
 li {
      font-size: smaller;
      margin-bottom: 0.5em;
 }
+

@@ -11,7 +11,7 @@
     Which project does what?  Which of mod_dtcl, neowebscript or
     mod_tcl is right for your needs?
 
-    <table>
+    <table class="main">
       <tbody>
 
 	<tr>

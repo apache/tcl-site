@@ -6,10 +6,10 @@ proc navbar { } {
 
 proc title { {txt "Apache Tcl Project"} } {
     puts {
-	<table width="100%" border="0">
+	<table align="center" width="63%" border="0">
 	<tr>
 	<td align="center" valign="top">
-	<h1>
+	<h1 style="padding: .3em;">
     }
     puts "$txt"
     puts {
@@ -17,6 +17,7 @@ proc title { {txt "Apache Tcl Project"} } {
 	</td>
 	</tr>
 	</table>
+	<hr>
     }
 }
 

@@ -1,0 +1,1025 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+
+	<head>
+		<meta http-equiv="content-type" content="text/html;charset=ISO-8859-1">
+		<title>mod_tcl - Apache Web Server Module</title>
+		<meta name="keywords" content="mod_tcl, tcl, tcl/tk, Apache, unix">
+	</head>
+
+	<body bgcolor="#ffffff">
+		<table width="100%" border="0" cellspacing="0" cellpadding="4" background="gfx/nav-bg.gif">
+			<tr>
+				<td width="48"><img src="gfx/puzzle-peice-48.png" alt="" height="48" width="48" border="0"></td>
+				<td><font size="4" face="Geneva,Arial,Helvetica,Verdana">mod_tcl</font></td>
+				<td align="right"><font size="4" face="Geneva,Arial,Helvetica,Verdana">Apache Web Server Module</font></td>
+			</tr>
+		</table>
+		<table width="100%" border="0" cellspacing="1" cellpadding="0" bgcolor="gray">
+			<tr>
+				<td>
+					<table width="100%" border="0" cellspacing="0" cellpadding="2" bgcolor="#f5f5f5">
+						<tr>
+							<td align="center" nowrap><font size="2" face="Geneva,Arial,Helvetica,Verdana"><a href="#install">Installation</a></font></td>
+							<td align="center" nowrap><a href="#configure"><font size="2" face="Geneva,Arial,Helvetica,Verdana">Configuration</font></a></td>
+							<td align="center" nowrap><font size="2" face="Geneva,Arial,Helvetica,Verdana"><a href="#writing">Writing Scripts</a></font></td>
+							<td align="center" nowrap><font size="2" face="Geneva,Arial,Helvetica,Verdana"><a href="#api">API</a></font></td>
+							<td align="center" nowrap><font size="2" face="Geneva,Arial,Helvetica,Verdana"><a href="#resources">Resources</a></font></td>
+							<td align="center" nowrap><font size="2" face="Geneva,Arial,Helvetica,Verdana"><a href="http://www.apache.org">Apache Software Foundation</a></font></td>
+							<td align="center" nowrap><a href="http://tcl.apache.org"><font size="2" face="Geneva,Arial,Helvetica,Verdana">Apache Tcl Project</font></a></td>
+							<td align="center" nowrap><font size="2" face="Geneva,Arial,Helvetica,Verdana"><a href="http://www.tcl.tk">Tcl/Tk</a></font></td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+		</table>
+		<br>
+		<font size="1" face="Lucida Grande,Times New Roman,Georgia,Times">
+			<table width="100%" border="0" cellspacing="0" cellpadding="4">
+				<tr>
+					<td>
+						<p><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times"><b>Latest Info</b></font></p>
+						<ul>
+							<li type="square"><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">mod_tcl 1.0 has been released.</font>
+							<li type="square"><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">I recommend using Tcl 8.4 since it supports WideInt (64-bit) integers, and Apache 2.0 now uses 64-bit wide integers for some variables.</font>
+							<li type="square"><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Runs on Solaris 9 sparcv9 ABI which is the 64-bit ABI, I assume it will run on others as well. (used gcc 3.1.1 with</font><font size="3" face="Lucida Grande,Times New Roman,Georgia,Times"><tt> -m64</tt></font><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">)</font>
+							<li type="square"><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">You can now use </font><font size="3" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>--with-tcldir=path_to_tclConfig.sh</tt></font><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times"> in </font><font size="3" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>./configure</tt></font>
+							<li type="square"><font size="3" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>./configure</tt></font><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times"> also adds </font><font size="3" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>-R&lt;tcl_library_path&gt;</tt></font><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times"> to linker phase. Just in case you don't have </font><font size="3" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>/usr/local/lib</tt></font><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times"> setup as default.</font>
+						</ul>
+						<p><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times"><b>Tested Platforms</b><br>
+							</font></p>
+						<pre>SunOS-5.8/gcc-3.0.2/tcl-8.3.4/Apache-2.0.28
+SunOS-5.8/gcc-3.0.4/tcl-8.4b1/Apache-2.0.39
+SunOS-5.9/gcc-3.1.1/tcl-8.4b1/Apache-2.0.40
+SunOS-5.9/gcc-3.1.1/tcl-8.4.0/Apache-2.0.40
+</pre>
+						<p><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Technical related email can be sent to <a href="mailto:mod_tcl-dev@tcl.apache.org">mod_tcl-dev@tcl.apache.org</a> (including bugs).  If your running mod_tcl on another platform besides Solaris with no problems send in an email and it will be added to the <i>Tested Platforms</i> list.</font></p>
+					</td>
+					<td align="right" valign="top">
+						<table border="0" cellspacing="0" cellpadding="4" align="right">
+							<tr>
+								<td><a href="downloads/mod_tcl.tar.gz"><img src="gfx/download-btn-52.png" alt="" height="52" width="52" border="0"><br>
+										<font size="1" face="Lucida Grande,Times New Roman,Georgia,Times">Download</font></a></td>
+								<td nowrap><font size="5" face="Geneva,Arial,Helvetica,Verdana">mod_tcl 1.0</font></td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+		</font>
+		<hr noshade>
+		<p><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">mod_tcl includes a Tcl interpreter into an Apache web servers memory space, thus combining Tcl and Apache web server together.  This allows Apache to run Tcl scripts natively without having to reload a Tcl interpreter every time the script is run.  The Tcl scripts are cached in the Tcl interpreter until the script file modification time changes or Apache web server is restarted.  Tcl scripts using mod_tcl execute much faster than traditional CGI scripts because they can avoid the initialization penalties that traditional CGI scripts incur each time they are executed.  mod_tcl only needs to initialize an interpreter once at Apache web server startup.  Additionally mod_tcl exports the Apache API which allows a programmer to have complete control over http requests that CGI scripts can not provide.<br>
+			</font>
+		<p><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">
+				mod_tcl is an Apache module in its own right, but it can also be used as an interface for writing Apache modules in Tcl versus C.  Existing Tcl packages whether written in C or Tcl can be easily integrated into mod_tcl scripts.  This allows a large collection of existing Tcl packages to be used without having to rewrite functionality or incur a performance hit by using an alternative execution model like CGI.<br>
+			</font></p>
+		<p><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times"><a name="install"></a><b>Building and Installing Apache with mod_tcl</b><br>
+			</font></p>
+		<p><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">
+				mod_tcl is configured using the Apache 2.0 configuration system.  Normally a vanilla install of Apache doesn&#146;t require a rebuild of the configuration system, but since mod_tcl requires libraries not usually built into Apache it is necessary to rebuild the configure script using GNU autoconf.  If the GNU autoconf tools are not installed on the system then they can be downloaded from a GNU distribution site, for more information check the GNU autoconf website <a href="http://www.gnu.org/software/autoconf/">http://www.gnu.org/software/autoconf/</a>.  Please note that GNU autoconf also requires a recent release of an m4 macro processor which can also be found at a GNU distribution site.  The next step is to download the mod_tcl source from the Apache Tcl project web site at <a href="http://tcl.apache.org">http://tcl.apache.org</a> or from anonymous CVS.  The following CVS commands will checkout the mod_tcl source from cvs.apache.org, no sandbox is required as this will download all the source to the tcl-modtcl directory.  The CVS login password is </font><font size="3" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>anoncvs</tt></font><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">.<br>
+			</font></p>
+		<pre>$ cvs -d:pserver:anoncvs@cvs.apache.org:/home/cvspublic login
+(Logging in to anoncvs@cvs.apache.org)
+CVS password: &lt;enter anoncvs&gt;
+$ cvs -d:pserver:anoncvs@cvs.apache.org:/home/cvspublic checkout tcl-modtcl</pre>
+		<font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">
+				If mod_tcl is downloaded from the Apache Tcl project web site then the package must be un-archived and moved to the Apache 2.0 modules directory.  If CVS is used the directory must be renamed to </font><font size="3" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>mod_tcl</tt></font><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times"> from </font><font size="3" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>tcl-modtcl</tt></font><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times"> and then moved to the Apache 2.0 modules directory.  It is important to note that the directory that contains the mod_tcl source must be named </font><font size="3" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>mod_tcl</tt></font><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times"> otherwise the Apache configuration system will not recognize mod_tcl.  The following example assumes the Apache 2.0 source distribution is located in the same directory where the mod_tcl source was acquired through CVS.<br>
+		</font>
+		<pre>$ mv tcl-modtcl httpd-2.0.42/modules/mod_tcl</pre>
+		<p><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">
+				Now the Apache configuration system is ready to be rebuilt and include mod_tcl.  Change directory to the root level of the Apache 2.0 source and rebuild the configuration system.<br>
+			</font></p>
+		<pre>$ cd httpd-2.0.42
+$ autoconf
+$ autoheader</pre>
+		<p><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">
+				
+				Running the configure script with the help flag will show that mod_tcl configuration macros have been assimilated into the Apache configuration system.<br>
+			</font></p>
+		<pre>$ ./configure --help | grep tcl
+--disable-tcl embedded tcl interpreter
+--with-tcldir=DIR Tcl config tclConfig.sh<font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">
+</font></pre>
+		<p><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">
+				
+				mod_tcl is enabled by default once the Apache configuration has been rebuilt.  If it is necessary to disable mod_tcl then this may be accomplished with the </font><font size="3" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>--disable-tcl</tt></font><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times"> option passed to the configure script.<br>
+			</font></p>
+		<p><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">
+				
+				The </font><font size="3" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>--with-tcldir=DIR</tt></font><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times"> will specify a non-default location to find the </font><font size="3" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>tclConfig.sh</tt></font><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times"> file, usually located in the tcl directory in a library location.  (ie </font><font size="3" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>/usr/local/lib/tcl8.4</tt></font><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">).</font><br>
+		</p>
+		<p><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">The next step is to configure the Apache build process by running the configure script.  During configuration we will see status output, the mod_tcl configuration status output will look similar to the following.<br>
+			</font></p>
+		<pre>checking whether to enable mod_tcl... yes (default)
+checking for tcl.h... yes
+checking for inttypes.h... yes
+checking for int_types.h... no
+checking for sys/mman.h... (cached) yes
+checking for asprintf... no
+checking for mmap... (cached) yes
+checking for tclConfig.sh in /usr/local/lib... yes
+checking for tcl version... 8.3
+</pre>
+		<p><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">If the </font><font size="3" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>tcl.h</tt></font><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times"> header file was not found extra include paths may be required when compiling Apache 2.0, or a Tcl distribution may not be installed on the system.  If Tcl is not installed on the system it can be downloaded from <a href="http://www.tcl.tk">http://www.tcl.tk</a>.  Configuration will fail if the </font><font size="3" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>tclConfig.sh</tt></font><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times"> file is not found or the major Tcl version installed is less than 8.0.  It is recommended that the latest Tcl version be used, note for 64-bit support Tcl 8.4 is required.  If Tcl is installed and configuration was unable to find the </font><font size="3" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>tclConfig.sh</tt></font><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times"> file then the </font><font size="3" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>--with-tcldir=DIR</tt></font><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times"> configuration option should be used to help configuration locate the </font><font size="3" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>tclConfig.sh</tt></font><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times"> file.  By default mod_tcl configuration assumes the </font><font size="3" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>tclConfig.sh</tt></font><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times"> will be found in the directories </font><font size="3" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>/usr/lib</tt></font><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times"> or </font><font size="3" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>/usr/local/lib</tt></font><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">.</font><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times"><br>
+			</font></p>
+		<p><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">
+				
+				Additional modifications to configuration can be made in the </font><font size="3" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>config.m4</tt></font><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times"> file found in the </font><font size="3" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>mod_tcl</tt></font><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times"> directory.  If any modifications have been made to the </font><font size="3" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>config.m4</tt></font><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times"> file then </font><font size="3" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>autoconf</tt></font><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times"> and </font><font size="3" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>autoheader</tt></font><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times"> will have to be run again.<br>
+			</font></p>
+		<p><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">
+				
+				After configuration has completed the Apache web server can be compiled.  Change directory to the root level of the Apache 2.0 source distribution and execute the following commands.<br>
+			</font></p>
+		<pre>$ make
+$ make install<font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">
+</font></pre>
+		<p><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">
+				
+				This will compile Apache 2.0 with mod_tcl and install the distribution in the location specified at configuration time.  The Apache 2.0 binary will contain a statically linked mod_tcl module which may also statically link Tcl libraries depending on your Tcl installation.<br>
+			</font></p>
+		<p><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times"><a name="configure"></a><b>Configuring mod_tcl in Apache Configure Files</b><br>
+			</font></p>
+		<p><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">
+				
+				In order to use mod_tcl in Apache 2.0 some mod_tcl configuration directives are required in the Apache 2.0 configuration file, usually called httpd.conf.  mod_tcl is made active by activating one of the module hook calls.  There are ten hook calls in total corresponding to the available hook calls in the Apache API.  All hooks require an argument of the entire physical path to the file that contains the hook procedure except the content handler hook called </font><font size="3" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>Tcl_Hook_Handler</tt></font><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">.  Every hook does require an argument specifying the name of the procedure to be called.  mod_tcl configuration directives are valid within Apache </font><font size="3" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>&lt;Directory&gt; &lt;/Directory&gt;</tt></font><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times"> or </font><font size="3" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>&lt;Location&gt; &lt;/Location&gt;</tt></font><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times"> blocks.<br>
+			</font></p>
+		<table border="0" cellspacing="0" cellpadding="1">
+			<tr>
+				<td bgcolor="gray">
+					<table border="0" cellspacing="2" cellpadding="2" bgcolor="#f5f5f5">
+						<tr>
+							<td colspan="2" align="left"><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times"><b>mod_tcl Hook Configuration Directives in Order of Execution</b></font>
+								<hr noshade>
+							</td>
+						</tr>
+						<tr>
+							<td><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>Tcl_Hook_Post_Read_Request</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Enables the post read request handler for request setup.</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>Tcl_Hook_Translate_Name</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Enables the translate name handler for URI to file translation.</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>Tcl_Hook_Header_Parser</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Enables the header parser handler for parsing http headers.</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>Tcl_Hook_Access_Checker</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Enables the access checker.</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>Tcl_Hook_Check_User_ID</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Enables the check user id handler.</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>Tcl_Hook_Auth_Checker</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Enables the auth checker.</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>Tcl_Hook_Type_Checker</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Enables the type checker.</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>Tcl_Hook_Fixups</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Enables a fix up handler.</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>Tcl_Hook_Handler</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Enables the content handler for delivery of data to client.</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>Tcl_Hook_Log_Transaction</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Enables the log transaction handler.</font></td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+		</table>
+		<p><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Chances are the </font><font size="3" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>Tcl_Hook_Handler</tt></font><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times"> configuration directive will be the most commonly one used.  This is the handler that actually delivers the content and does most of the work.  This handler also does not require a file name argument passed to it, this is because many different script files may contain individual content handlers.  If the other phases of request processing were allowed to operate this way the request process would be much more complex, and mixing different file types with mod_tcl scripts would be impossible.
+
+In addition to the hook directives there are also configuration directives for pre setting variables in scripts.  The </font><font size="3" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>Tcl_Var</tt></font><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times"> directive is used when we want to set scalar variables or array variables. </font><font size="3" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>Tcl_ListVar</tt></font><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times"> is used to create a list.<br>
+			</font></p>
+		<pre>&lt;Directory /&gt;
+    Tcl_Var my_number 7
+    Tcl_Var my_array my_value1 10
+    Tcl_Var my_array my_value2 20
+    Tcl_ListVar my_list 1
+    Tcl_ListVar my_list 2
+    Tcl_ListVar my_list 3
+&lt;/Directory&gt;</pre>
+		<p><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">In the above example </font><font size="3" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>my_number</tt></font><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times"> is a scalar variable with value </font><font size="3" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>7</tt></font><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">, </font><font size="3" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>my_array</tt></font><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times"> is an associative array with 2 elements, and </font><font size="3" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>my_list</tt></font><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times"> is a list with value </font><font size="3" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>{1,2,3}</tt></font><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">. Variables set from the configuration file are automatically set in the calling scripts namespace, so the Tcl keyword variable will be required when using these variables. These variables are only initialized once in a files namespace. If code within one of the handlers is called and modifies the variables then they will be permanently modified until Apache is restarted. Variables will remain persistent in the Tcl interpreter even if a script is reloaded because it was modified. The following example demonstrates a simple configuration setup for using mod_tcl in a virtual host directive.<br>
+			</font></p>
+		<pre><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times"> </font>&lt;VirtualHost 127.0.0.1&gt;
+    ServerName any.host
+    DocumentRoot &quot;/any.host&quot;
+
+    &lt;Directory /&gt;
+        Options FollowSymLinks
+        AllowOverride None
+    &lt;/Directory&gt;
+
+    &lt;Directory /any.host&gt;
+        # allow files ending with the extenstion .tm to use mod_tcl as a content handler
+        AddHandler tcl-handler tm
+        Tcl_Hook_Handler content_handler
+    &lt;/Directory&gt;
+&lt;/VirtualHost&gt;</pre>
+		<p><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">This configuration example will allow any mixed files in the /any.host directory and will execute any script with a filename ending in </font><font size="3" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>.tm</tt></font><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times"> to be executed by mod_tcl. This allows us to mix html and mod_tcl scripts together in the same directory.<br>
+			</font></p>
+		<p><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times"> <a name="writing"></a><b>Writing mod_tcl Scripts</b> <br>
+			</font></p>
+		<p><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Once configuration is set up we are ready to start writing the actual mod_tcl script that will contain the necessary handlers. Using the previous configuration example we will assume that we are going to write a mod_tcl script called </font><font size="3" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>hello.tm</tt></font><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times"> in the </font><font size="3" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>/any.host</tt></font><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times"> directory.<br>
+			</font></p>
+		<pre>namespace import -force ::apache::*
+
+proc content_handler { } {
+    variable ::apache::OK
+
+    ap_send_http_header
+    rputs &#147;hello world.&#148;
+    
+    return $OK
+}</pre>
+		<p><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">When this script is run it will print hello world in the clients browser. There are several items to pay attention to in this script. One the first line is a namespace import of everything in the </font><font size="3" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>::apache</tt></font><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times"> namespace into the current namespace. This allows us to use the Apache API functions (ie. </font><font size="3" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>rputs</tt></font><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">) without having to prefix </font><font size="3" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>::apache::</tt></font><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">. It is not necessary to import the Apache API like this but it will make it easier if the Apache API is referenced frequently. Even if the Apache API is imported it is still necessary to declare variables in procedures from other namespaces (ie.  </font><font size="3" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>::apache::OK</tt></font><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">). The </font><font size="3" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>ap_send_http_header</tt></font><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times"> function will send http headers to the client browser, even if we don&#146;t define any headers Apache will send default headers. The </font><font size="3" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>rputs</tt></font><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times"> command operates almost identically to the Tcl command </font><font size="3" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>puts</tt></font><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">, instead of writing to a file descriptor </font><font size="3" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>rputs</tt></font><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times"> writes to the clients browser. </font><font size="3" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>rputs</tt></font><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times"> can not write to different file descriptors. After every handler is run it must return with a value that signifies the outcome of the request phase. The seven most common return values are: </font><font size="3" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>OK</tt></font><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">, </font><font size="3" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>DECLINED</tt></font><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">, </font><font size="3" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>DONE</tt></font><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">, </font><font size="3" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>HTTP_INTERNAL_SERVER_ERROR</tt></font><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">, </font><font size="3" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>HTTP_BAD_REQUEST</tt></font><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">, </font><font size="3" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>HTTP_MOVED_TEMPORARILY</tt></font><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">, and </font><font size="3" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>HTTP_NOT_FOUND</tt></font><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">.<br>
+			</font></p>
+		<p><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times"> <a name="api"></a><b>The Apache API in mod_tcl<br>
+				</b></font></p>
+		<p><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Now that we understand the basics of writing a mod_tcl script we can take the next step and explore the Apache API in mod_tcl. All Apache API functions are implemented using the </font><font size="3" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>Tcl_CreateObjCommand()</tt></font><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times"> Tcl API function, this is why Tcl 8.0 is required. Using Tcl objects instead of strings increases the efficiency of the request phases. The Apache API implementation in mod_tcl can be broken done as follows. All Apache API procedures are declared in the </font><font size="3" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>::apache</tt></font><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times"> namespace. </font></p>
+		<table border="0" cellspacing="0" cellpadding="1" bgcolor="gray">
+			<tr>
+				<td>
+					<table border="0" cellspacing="0" cellpadding="2" bgcolor="#f5f5f5">
+						<tr>
+							<td colspan="3"><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times"><b>http_core.h Procedures
+										<hr noshade>
+									</b></font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>ap_allow_options</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">returns integer</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">requires no arguments</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>ap_allow_overrides</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">returns integer</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">requires no arguments</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>ap_default_type</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">returns string</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">requires no arguments</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>ap_document_root</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">returns string</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">requires no arguments</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>ap_get_remote_host</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">returns string</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">requires integer argument</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>ap_get_remote_logname</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">returns string</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">requires no arguments</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>ap_construct_url</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">returns string</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">requires uri string argument</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>ap_get_server_name</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">returns strings</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">requires no arguments</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>ap_get_server_port</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">returns integer</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">requires no arguments</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>ap_get_limit_req_body</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">returns long</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">requires no arguments</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>ap_get_limit_xml_body</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">returns integer</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">requires no arguments</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>ap_custom_response</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">returns nothing</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">requires integer and string arguments</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>ap_exists_config_define</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">returns integer</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">requires string argument</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>ap_auth_type</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">returns string</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">requires no arguments</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>ap_auth_name</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">returns string</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">requires no arguments</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>ap_satisfies</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">returns integer</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">requires no arguments</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>ap_requires</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">returns list</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">requires no arguments</font></td>
+						</tr>
+						<tr>
+							<td colspan="3"><br>
+								<font size="2" face="Lucida Grande,Times New Roman,Georgia,Times"><b>http_log.h Procedures
+										<hr noshade>
+									</b></font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>ap_log_error</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">returns nothings</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">requires level integer; status integer and log string arguments</font></td>
+						</tr>
+						<tr>
+							<td colspan="3"><br>
+								<font size="2" face="Lucida Grande,Times New Roman,Georgia,Times"><b>http_protocol.h Procedures
+										<hr noshade>
+									</b></font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>ap_send_http_header</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">returns nothing</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">requires no arguments</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>ap_send_http_trace</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">returns integer</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">requires no arguments</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>ap_send_http_options</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">returns integer</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">requires no arguments</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>ap_finalize_request_protocol</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">returns nothing</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">requires no arguments</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>ap_send_error_response</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">returns nothing</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">requires recursive error integer</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>ap_set_content_length</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">returns nothing</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">requires length integer</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>ap_set_keepalive</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">returns integer</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">requires no arguments</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>ap_rationalize_mtime</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">returns integer</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">requires mtime integer</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>ap_make_etag</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">returns string</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">requires force_weak integer</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>ap_set_etag</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">returns nothing</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">requires no arguments</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>ap_set_last_modified</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">returns nothing</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">requires no arguments</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>ap_meets_conditions</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">returns integer</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">require no arguments</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>ap_rputs</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">returns nothing</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">accepts &#150;nonewline option; requires string</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>ap_rwrite</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">returns nothing</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">requires data</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>ap_rflush</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">returns nothing</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">requires no arguments</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>ap_get_status_line</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">returns string</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">requires status intger</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>ap_setup_client_block</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">returns integer</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">requires read policy integer</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>ap_get_client_block</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">returns integer and sets variable R to returned data</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">requires bufsiz integer</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>ap_discard_request_body</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">returns integer</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">requires no arguments</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>ap_note_auth_failure</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">returns nothing</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">requires no arguments</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>ap_note_basic_auth_failure</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">returns nothing</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">requires no arguments</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>ap_note_digest_auth_failure</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">returns nothing</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">requires no arguments</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>ap_get_basic_auth_pw</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">returns integer and sets variable R to string</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">requires no arguments</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>ap_parse_uri</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">returns nothing</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">requires uri string</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>ap_method_number_of</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">returns integer</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">requires method string</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>ap_method_name_of</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">returns string</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">requires method integer</font></td>
+						</tr>
+						<tr>
+							<td colspan="3"><br>
+								<font size="2" face="Lucida Grande,Times New Roman,Georgia,Times"><b>http_request.h</b></font><font size="3" face="Lucida Grande,Times New Roman,Georgia,Times"><b><tt>
+											<hr noshade>
+										</tt></b></font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>ap_internal_redirect</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">returns nothing</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">requires uri string</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>ap_internal_redirect_handler</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">returns nothing</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">requires uri string</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>ap_some_auth_required</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">returns integer</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">requires no arguments</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>ap_update_mtime</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">returns nothing</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">requires dependency mtime integer</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>ap_allow_methods</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">returns nothing</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">requires reset intger and methods string</font></td>
+						</tr>
+						<tr>
+							<td colspan="3"><br>
+								<font size="2" face="Lucida Grande,Times New Roman,Georgia,Times"><b>httpd.h
+										<hr noshade>
+									</b></font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>ap_get_server_version</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">returns string</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">requires no arguments</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>ap_add_version_component</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">returns no arguments</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">requires version string</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>ap_get_server_built</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">returns string</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">requires no arguments</font></td>
+						</tr>
+						<tr>
+							<td colspan="3"><br>
+								<font size="2" face="Lucida Grande,Times New Roman,Georgia,Times"><b>util_script.h
+										<hr noshade>
+									</b></font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>ap_create_environment</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">returns nothing and sets variable env</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">requires no arguments</font></td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+		</table>
+		<p><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">There are also some utility procedures defined for interacting with large output, reading </font><font size="3" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>POST</tt></font><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times"> requests, and reading and setting variables in Apache </font><font size="3" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>request_rec</tt></font><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times"> structures.  The first utility function is abort.  The abort procedure accepts a string argument which will be displayed in the error message, abort returns nothing and will immediately abort processing of the handler and return a </font><font size="3" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>HTTP_INTERNAL_SERVER_ERROR</tt></font><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">.  The read_post procedure will read </font><font size="3" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>POST</tt></font><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times"> requests, it accepts no arguments and returns nothing.  </font><font size="3" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>read_post</tt></font><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times"> will set an array named pram in the local namespace with all the read data from the </font><font size="3" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>POST</tt></font><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">.  There is also a special procedure called </font><font size="3" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>output</tt></font><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times"> which helps write large amounts of data to a client.  The </font><font size="3" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>output</tt></font><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times"> procedure essentially calls </font><font size="3" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>rputs</tt></font><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times"> for each line, multiple lines must be contained within curly braces (like this: </font><font size="3" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>output { &#133; }</tt></font><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">).  The next two procedures read and write variables to the </font><font size="3" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>request_rec</tt></font><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times"> structure in the Apache API.  To read </font><font size="3" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>request_rec</tt></font><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times"> variables we use the command </font><font size="3" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>r</tt></font><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">, to set </font><font size="3" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>request_rec</tt></font><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times"> variables we use the command </font><font size="3" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>r_set</tt></font><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">.  All variables are readable but not all variables are writable.<br>
+			</font></p>
+		<table border="0" cellspacing="0" cellpadding="1" bgcolor="gray">
+			<tr>
+				<td>
+					<table border="0" cellspacing="0" cellpadding="2" bgcolor="#f5f5f5">
+						<tr>
+							<td colspan="3"><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times"><b>r Procedure Arguments
+										<hr noshade>
+									</b></font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>allowed</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Returns integer</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Requires 64-bit integer</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>allowed_methods</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Returns list of strings</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Requires list of strings</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>allowed_xmethods</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Returns list of strings</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Requires list of strings</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>ap_auth_type</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Returns string</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Requires string</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>args</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Returns string</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Requires string </font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>assbackwards</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Returns integer</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Requires integer </font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>boundary</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Returns string</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Not writable</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>bytes_sent</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Returns integer</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Not writable</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>chunked</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Returns integer</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Not writable</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>clength</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Returns long integer</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Not writable</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>content_encoding</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Returns string</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Requires string</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>content_type</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Returns string</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Requires string </font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>err_headers_out</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Returns list of strings and sets err_headers_out array</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Requires header name and value string</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>expecting_100</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Returns integer</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Not writable</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>filename</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Returns string</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Requires string</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>handler</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Returns string</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Not writable</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>headers_in</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Returns list of strings and sets headers_in array</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Not writable</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>headers_out</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Returns list of strings and sets headers_out array</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Requires header name and value string </font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>header_only</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Returns integer</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Requires integer </font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>hostname</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Returns string</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Not writable</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>method</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Returns string</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Not writable</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>method_number</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Returns integer</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Not writable</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>mtime</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Returns integer</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Not writable</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>notes</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Returns list of strings and sets notes array</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Requires note name and value string</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>no_cache</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Returns integer</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Requires integer</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>no_local_copy</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Returns integer</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Requires integer </font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>parsed_uri</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Returns list of strings</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Requires string</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>path_info</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Returns string</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Requires string</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>protocol</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Returns string</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Requires string</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>proto_num</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Returns integer</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Requires integer</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>proxyreq</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Returns integer</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Requires integer</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>range</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Returns string</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Not writable</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>read_body</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Returns integer</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Not writable</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>read_chunked</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Returns integer</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Not writable</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>read_length</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Returns long integer</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Not writable</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>remaining</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Returns long integer</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Not writable</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>request_time</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Returns long integer</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Not writable</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>sent_bodyct</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Returns integer</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Not writable</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>status</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Returns integer</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Not writable</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>status_line</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Returns string</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Not writable</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>subprocess_env</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Returns list of strings and sets subprocess_env array</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Requires name and value string</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>the_request</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Returns string</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Requires string </font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>unparsed_uri</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Returns string</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Requires string</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>uri</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Returns string</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Requires string </font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>user</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Returns string</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Requires string </font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>vlist_validator</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Returns string</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Requires string</font></td>
+						</tr>
+						<tr>
+							<td colspan="3"><br>
+								<font size="2" face="Lucida Grande,Times New Roman,Georgia,Times"><b>r connection Procedure Arguments
+										<hr noshade>
+									</b></font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>remote_ip</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Returns string</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Not writable</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>remote_host</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Returns string</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Not writable</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>remote_logname</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Returns string</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Not writable</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>aborted</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Returns integer</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Not writable</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>keepalive</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Returns integer</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Not writable</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>doublereverse</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Returns integer</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Not writable</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>keepalives</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Returns integer</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Not writable</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>local_ip</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Returns string</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Not writable</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>local_host</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Returns string</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Not writable</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>id</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Returns string</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Not writable</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>notes</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Returns list of strings and sets connection_notes array</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Requires note name and value string</font></td>
+						</tr>
+						<tr>
+							<td colspan="3"><br>
+								<b><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">r server Procedure Arguments
+										<hr noshade>
+									</font></b></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>defn_name</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Returns string</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Not writable</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>defn_line_number</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Returns integer</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Not writable</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>server_admin</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Returns string</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Not writable</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>server_hostname</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Returns string</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Not writable</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>port</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Returns integer</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Not writable</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>error_fname</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Returns string</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Not writable</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>loglevel</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Returns string</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Not writable</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>is_virtual</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Returns string</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Not writable</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>addrs</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Returns list</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Not writable</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>timeout</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Returns integer</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Not writable</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>keep_alive_timeout</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Returns integer</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Not writable</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>keep_alive_max</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Returns integer</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Not writable</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>keep_alive</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Returns integer</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Not writable</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>path</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Returns string</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Not writable</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>names</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Returns list of strings</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Not writable</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>wild_names</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Returns list of strings</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Not writable</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>limit_req_line</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Returns integer</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Not writable</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>limit_req_fieldsize</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Returns integer</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Not writable</font></td>
+						</tr>
+						<tr>
+							<td align="right"><font size="3" color="red" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>limit_req_fields</tt></font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Returns integer</font></td>
+							<td><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">Not writable</font></td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+		</table>
+		<p><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">The following script will illustrate portions of mod_tcl that will be most commonly used.</font><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times"><br>
+			</font></p>
+		<pre>proc content_handler { } {
+    variable pram
+    variable env
+    variable ::apache::OK
+    variable ::apache::M_POST
+
+    if { [r method_number] == $M_POST } {
+        read_post
+    }
+
+    r_set content_type &quot;text/html&quot;
+
+    ap_create_environment
+
+    set env_list [array names env]
+    set prm_list [array names pram]
+
+    ap_send_http_header
+
+    rputs &quot;&lt;HR&gt;&lt;B&gt;Environment&lt;/B&gt;&lt;BR&gt;&lt;BR&gt;&quot;
+
+    foreach i $env_list {
+        rputs &quot;$i=$env($i)&lt;BR&gt;&quot;
+    }
+
+    rputs &quot;&lt;HR&gt;&lt;B&gt;Posted Variables&lt;/B&gt;&lt;BR&gt;&lt;BR&gt;&quot;
+
+    foreach i $prm_list {
+        rputs &quot;$i=$pram($i)&lt;BR&gt;&quot;
+    }
+
+    rputs &quot;&lt;HR&gt;&quot;
+
+    output {
+        &lt;CENTER&gt;
+        &lt;FORM METHOD=POST ACTION=[r uri]&gt;
+        &lt;INPUT TYPE=text NAME=user_input&gt;
+        &lt;INPUT TYPE=submit&gt;
+        &lt;/FORM&gt;
+        &lt;BR&gt;
+        [ap_get_server_version], [ap_get_server_built]
+        &lt;/CENTER&gt;
+    }
+
+    return $OK
+}
+</pre>
+		<p><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">
+				Looking at this script we see that the </font><font size="3" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>[r method_number]</tt></font><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times"> function is useful in determining the type of request being processed. </font><font size="3" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>M_POST</tt></font><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times"> is an Apache API constant that specifies a request as an http </font><font size="3" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>POST</tt></font><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times"> request type. There are several other request types defined in the Apache API also, the other most useful one is probably </font><font size="3" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>M_GET</tt></font><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">. If the request processed in the above script is a </font><font size="3" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>POST </tt></font><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">then we make a call to </font><font size="3" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>read_post</tt></font><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times"> to parse the </font><font size="3" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>POST</tt></font><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times"> data and store the results in the array pram.  Next we initialize the environment with a call to </font><font size="3" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>[ap_create_environment]</tt></font><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">, this will set up the </font><font size="3" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>env</tt></font><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times"> array with environment variables.  Notice that Apache will add environment variables that correspond to CGI parameters, this is useful for emulating CGI functionality and allows porting of CGI scripts to be more flexible.  The </font><font size="3" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>content_handler</tt></font><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times"> in the above script will essentially print environment variables and any </font><font size="3" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>pram</tt></font><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times"> variables that were set from a </font><font size="3" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>POST</tt></font><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times"> request. The remainder of the script uses the provided </font><font size="3" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>output</tt></font><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times"> procedure to send a block of HTML to the client, notice that procedure calls in </font><font size="3" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>output</tt></font><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times"> will work as expected.<br>
+			</font></p>
+		<hr noshade>
+		<p><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times"><a name="resources"></a><b>Additional Resources</b><br>
+			</font></p>
+		<p><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">
+				mod_tcl is part of the Tcl Apache Project located at <a href="http://tcl.apache.org">http://tcl.apache.org</a>.  Information about the Tcl Apache Project and other Apache modules using Tcl can be found here.  Information on general Tcl topics and development is located at <a href="http://www.tcl.tk">http://www.tcl.tk</a>.<br>
+			</font></p>
+	</body>
+
+</html>

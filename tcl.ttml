@@ -61,7 +61,11 @@
 		<a href="http://www.comanche.org">Comanche</a> is a
 		GUI for Apache configuration written in Tcl/Tk.
 	      </li>
-
+	      <li>
+		<a href="/presentations/">Presentation</a> - a
+		presentation on the Tcl programming language and Tk
+		graphical toolkit.
+	      </li>
 	    </ul>
 	  </td>
 	</tr>

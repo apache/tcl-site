@@ -1,0 +1,134 @@
+<!DOCTYPE html PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<HTML>
+<HEAD>
+<TITLE>upload</TITLE>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#1F00FF" ALINK="#FF0000" VLINK="#9900DD">
+<A NAME="top">
+<A NAME="file1">
+<H1>upload.ws3</H1>
+
+<PRE>
+<I><FONT COLOR="#B22222"># This example demonstrates you how &quot;file upload&quot;: sending
+</FONT></I><I><FONT COLOR="#B22222"># a file to the server thru a html form.
+</FONT></I>
+<I><FONT COLOR="#B22222"># allow file upload
+</FONT></I><I><FONT COLOR="#B22222"># uploadfilesize defines the maximum file size upload
+</FONT></I><I><FONT COLOR="#B22222"># in this case 100 bytes
+</FONT></I>web::config uploadfilesize 100
+
+<I><FONT COLOR="#B22222"># utility command to handle an HTML page
+</FONT></I><B><FONT COLOR="#A020F0">proc</FONT></B> <B><FONT COLOR="#0000FF">page</FONT></B> {<FONT COLOR="#B8860B">title code</FONT>} {
+    web::putx {&lt;html&gt;&lt;head&gt;&lt;title&gt;{web::put $<FONT COLOR="#B8860B">title</FONT>}&lt;/title&gt;&lt;/head&gt;
+	&lt;body bgcolor=<B><FONT COLOR="#BC8F8F">&quot;#ffffff&quot;</FONT></B> <B><FONT COLOR="#A020F0">text</FONT></B>=<B><FONT COLOR="#BC8F8F">&quot;#000000&quot;</FONT></B>&gt;
+	&lt;h3&gt;{web::put $<FONT COLOR="#B8860B">title</FONT>}&lt;/h3&gt;
+    }
+    <B><FONT COLOR="#A020F0">uplevel</FONT></B> $<FONT COLOR="#B8860B">code</FONT>
+    web::put <B><FONT COLOR="#BC8F8F">&quot;&lt;/body&gt;&lt;/html&gt;\n&quot;</FONT></B>
+}
+
+<I><FONT COLOR="#B22222"># utility command to handle an html form
+</FONT></I><B><FONT COLOR="#A020F0">proc</FONT></B> <B><FONT COLOR="#0000FF">form</FONT></B> {<FONT COLOR="#B8860B">page code</FONT>} {
+    web::put <B><FONT COLOR="#BC8F8F">&quot;&lt;form enctype=\&quot;multipart/form-data\&quot; method=\&quot;post\&quot; action=\&quot;[web::cmdurl $page]\&quot;&gt;&quot;</FONT></B>
+    <B><FONT COLOR="#A020F0">uplevel</FONT></B> $<FONT COLOR="#B8860B">code</FONT>
+    web::put <B><FONT COLOR="#BC8F8F">&quot;&lt;/form&gt;&quot;</FONT></B>
+}
+
+<B><FONT COLOR="#A020F0">proc</FONT></B> <B><FONT COLOR="#0000FF">showForm</FONT></B> {<FONT COLOR="#B8860B">error</FONT>} {
+
+    <I><FONT COLOR="#B22222"># generate a page with Title &quot;File upload example&quot;
+</FONT></I>    page <B><FONT COLOR="#BC8F8F">&quot;File upload example&quot;</FONT></B> {
+	<I><FONT COLOR="#B22222"># generate a form with action &quot;submit&quot;
+</FONT></I>	form <B><FONT COLOR="#BC8F8F">&quot;submit&quot;</FONT></B> {
+	    web::putx {{
+		    <I><FONT COLOR="#B22222"># if &quot;error&quot; flag is set, show the red error message asking for input
+</FONT></I>		    <B><FONT COLOR="#A020F0">if</FONT></B> {$<FONT COLOR="#B8860B">error</FONT> == 1} {
+			web::put <B><FONT COLOR="#BC8F8F">&quot;&lt;font color=\&quot;\#990000\&quot;&gt;If you'd like to upload a file,\n you have to insert the path and file name &lt;br&gt;&lt;/font&gt;&quot;</FONT></B>
+		    }
+		}
+		&lt;b&gt;File:&lt;/b&gt; &lt;input type=<B><FONT COLOR="#BC8F8F">&quot;file&quot;</FONT></B> size=<B><FONT COLOR="#BC8F8F">&quot;30&quot;</FONT></B> name=<B><FONT COLOR="#BC8F8F">&quot;upload&quot;</FONT></B> value=<B><FONT COLOR="#BC8F8F">&quot;{web::put [web::formvar upload]}&quot;</FONT></B>&gt; &amp;nbsp;&amp;nbsp; &lt;input type=<B><FONT COLOR="#BC8F8F">&quot;submit&quot;</FONT></B> name=<B><FONT COLOR="#BC8F8F">&quot;ok&quot;</FONT></B> value=<B><FONT COLOR="#BC8F8F">&quot;Send&quot;</FONT></B>&gt;
+	    }
+	}
+    }
+}
+
+<I><FONT COLOR="#B22222"># validator:
+</FONT></I><I><FONT COLOR="#B22222">#
+</FONT></I><I><FONT COLOR="#B22222"># make sure we have a name that is more than 1. 
+</FONT></I><B><FONT COLOR="#A020F0">proc</FONT></B> <B><FONT COLOR="#0000FF">checkFormData</FONT></B> {<FONT COLOR="#B8860B"></FONT>} {
+<I><FONT COLOR="#B22222"># string lenght gets the lenght
+</FONT></I><I><FONT COLOR="#B22222"># &quot;lindex [...] 1&quot; is getting the first line from the list in the variable
+</FONT></I>    <B><FONT COLOR="#A020F0">if</FONT></B>  { [<B><FONT COLOR="#A020F0">string</FONT></B> length [<B><FONT COLOR="#A020F0">lindex</FONT></B> [web::formvar upload] 1]] &lt; 1} {
+ 	<I><FONT COLOR="#B22222"># return error code
+</FONT></I> 	<B><FONT COLOR="#A020F0">return</FONT></B> 1
+     }
+     <I><FONT COLOR="#B22222"># looks good: no error
+</FONT></I>     <B><FONT COLOR="#A020F0">return</FONT></B> 0
+}
+
+
+<B><FONT COLOR="#A020F0">proc</FONT></B> <B><FONT COLOR="#0000FF">showConfirmationPage</FONT></B> {<FONT COLOR="#B8860B"></FONT>} {
+
+    <I><FONT COLOR="#B22222"># gets return value from list upload
+</FONT></I>    <B><FONT COLOR="#A020F0">set</FONT></B> localname [<B><FONT COLOR="#A020F0">lindex</FONT></B> [web::formvar upload] 0]
+    <B><FONT COLOR="#A020F0">set</FONT></B> remotename [<B><FONT COLOR="#A020F0">lindex</FONT></B> [web::formvar upload] 1]
+    <B><FONT COLOR="#A020F0">set</FONT></B> NumBytesTruncated [<B><FONT COLOR="#A020F0">lindex</FONT></B> [web::formvar upload] 2]
+
+    <I><FONT COLOR="#B22222"># open pipe for reading uploaded file
+</FONT></I>    <B><FONT COLOR="#A020F0">set</FONT></B> fh [<B><FONT COLOR="#A020F0">open</FONT></B> $<FONT COLOR="#B8860B">localname</FONT> r]
+    <B><FONT COLOR="#A020F0">set</FONT></B> chunk [<B><FONT COLOR="#A020F0">read</FONT></B> $<FONT COLOR="#B8860B">fh</FONT> 10]
+    close $<FONT COLOR="#B8860B">fh</FONT>
+
+    page <B><FONT COLOR="#BC8F8F">&quot;File upload example&quot;</FONT></B> {
+
+	web::putx {
+	    &lt;b&gt;We have received your <B><FONT COLOR="#A020F0">file</FONT></B>. Thank you.&lt;br&gt;&lt;br&gt;
+	    Technical information:&lt;/b&gt;
+	    &lt;br&gt;
+	    &lt;table border=<B><FONT COLOR="#BC8F8F">&quot;0&quot;</FONT></B> width=<B><FONT COLOR="#BC8F8F">&quot;300&quot;</FONT></B>&gt;
+
+	    &lt;tr&gt;
+	    &lt;td width=<B><FONT COLOR="#BC8F8F">&quot;100&quot;</FONT></B>&gt;
+	    File-path:&lt;/td&gt;&lt;td width=<B><FONT COLOR="#BC8F8F">&quot;200&quot;</FONT></B>&gt;{web::put [web::htmlify $<FONT COLOR="#B8860B">localname</FONT>]}&lt;/td&gt;&lt;/tr&gt;
+	    &lt;tr&gt;
+	    &lt;td width=<B><FONT COLOR="#BC8F8F">&quot;100&quot;</FONT></B>&gt;
+	    Localpath:&lt;/td&gt;&lt;td width=<B><FONT COLOR="#BC8F8F">&quot;200&quot;</FONT></B>&gt;{web::put [web::htmlify $<FONT COLOR="#B8860B">remotename</FONT>]}&lt;/td&gt;&lt;/tr&gt;
+	    &lt;tr&gt;
+	    &lt;td width=<B><FONT COLOR="#BC8F8F">&quot;300&quot;</FONT></B> colspan=<B><FONT COLOR="#BC8F8F">&quot;2&quot;</FONT></B>&gt;
+	    We have configured websh3 to allow a maximum <B><FONT COLOR="#A020F0">file</FONT></B> size of 100 bytes. Therefore 
+	    we have truncated the received <B><FONT COLOR="#A020F0">file</FONT></B> by {web::put $<FONT COLOR="#B8860B">NumBytesTruncated</FONT>} bytes.
+	    &lt;/td&gt;&lt;/tr&gt;
+	    &lt;tr&gt;
+	    &lt;td width=<B><FONT COLOR="#BC8F8F">&quot;100&quot;</FONT></B>&gt;Start of content:&lt;/td&gt;&lt;td width=<B><FONT COLOR="#BC8F8F">&quot;200&quot;</FONT></B>&gt;{web::put [web::htmlify $<FONT COLOR="#B8860B">chunk</FONT>]}&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+	    &lt;a href=<B><FONT COLOR="#BC8F8F">&quot;upload&quot;</FONT></B>&gt;upload another <B><FONT COLOR="#A020F0">file</FONT></B>&lt;/a&gt; 
+	}
+
+    }
+}
+
+<I><FONT COLOR="#B22222"># register the &quot;default&quot; command
+</FONT></I><I><FONT COLOR="#B22222">#
+</FONT></I><I><FONT COLOR="#B22222"># See confirmation form example.
+</FONT></I>web::command default {
+    showForm 0
+}
+
+<I><FONT COLOR="#B22222"># register command &quot;submit&quot;
+</FONT></I><I><FONT COLOR="#B22222">#
+</FONT></I><I><FONT COLOR="#B22222"># This is the &quot;action&quot; of our form. See confirmation form example.
+</FONT></I>
+web::command submit {
+
+    <B><FONT COLOR="#A020F0">if</FONT></B> { [<B><FONT COLOR="#A020F0">set</FONT></B> res [checkFormData]] == 0 } {
+	showConfirmationPage
+    } else {
+	showForm $<FONT COLOR="#B8860B">res</FONT>
+    }
+}
+
+<I><FONT COLOR="#B22222">#see dispatch example
+</FONT></I>web::dispatch</PRE>
+<HR>
+<ADDRESS>Generated by <A HREF="http://www.iki.fi/~mtr/genscript/">GNU enscript 1.6.3</A>.</ADDRESS>
+</BODY>
+</HTML>

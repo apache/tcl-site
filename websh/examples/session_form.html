@@ -1,0 +1,165 @@
+<!DOCTYPE html PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<HTML>
+<HEAD>
+<TITLE>session_form</TITLE>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#1F00FF" ALINK="#FF0000" VLINK="#9900DD">
+<A NAME="top">
+<A NAME="file1">
+<H1>session_form.ws3</H1>
+
+<PRE>
+<I><FONT COLOR="#B22222"># This example shows how persistent sessions can be stored
+</FONT></I><I><FONT COLOR="#B22222"># on the server.
+</FONT></I><I><FONT COLOR="#B22222"># It shows two HTML forms which have one input field each.
+</FONT></I><I><FONT COLOR="#B22222"># You can switch between these two forms using the submit
+</FONT></I><I><FONT COLOR="#B22222"># buttons. All data given in the form
+</FONT></I>
+<I><FONT COLOR="#B22222"># Define a memory context to hold some configuration variables.
+</FONT></I><I><FONT COLOR="#B22222"># The next statement makes a context called 'config' to hold
+</FONT></I><I><FONT COLOR="#B22222"># these data. It is a cleaner way than making global variables
+</FONT></I><I><FONT COLOR="#B22222"># because it declares them clearly to be configuration vars.
+</FONT></I>web::context config
+
+<I><FONT COLOR="#B22222"># Now set some configuration variables. Usually put the session
+</FONT></I><I><FONT COLOR="#B22222"># state files in a directory not accessible through the Web server.
+</FONT></I>config::cset stateDirectory /tmp/webshstate/
+
+<I><FONT COLOR="#B22222"># Create a file counter that generates the session ids. We take
+</FONT></I><I><FONT COLOR="#B22222"># here an easy number generator, which produces sequential numbers
+</FONT></I><I><FONT COLOR="#B22222"># and stores the actual counter value in a file
+</FONT></I>web::filecounter idGenerator -<B><FONT COLOR="#A020F0">filename</FONT></B> [<B><FONT COLOR="#A020F0">file</FONT></B> <B><FONT COLOR="#A020F0">join</FONT></B> [config::cget stateDirectory] counter]
+
+<I><FONT COLOR="#B22222"># Create a file context named 'state'. The option '-path' defines
+</FONT></I><I><FONT COLOR="#B22222"># where the session contexts are stored. '-attachto' defines an
+</FONT></I><I><FONT COLOR="#B22222"># URL parameter name that might contain an existing session.
+</FONT></I><I><FONT COLOR="#B22222"># (This parameter name could in fact be extracted using
+</FONT></I><I><FONT COLOR="#B22222"># 'web::param sid' whenever the session is initalized.)
+</FONT></I>web::filecontext state -path [<B><FONT COLOR="#A020F0">file</FONT></B> <B><FONT COLOR="#A020F0">join</FONT></B> [config::cget stateDirectory] %s] -attachto sid -idgen <B><FONT COLOR="#BC8F8F">&quot;idGenerator nextval&quot;</FONT></B>
+
+<I><FONT COLOR="#B22222"># Make sure the session state directory exists
+</FONT></I><B><FONT COLOR="#A020F0">file</FONT></B> mkdir [config::cget stateDirectory]
+
+
+<B><FONT COLOR="#A020F0">proc</FONT></B> <B><FONT COLOR="#0000FF">form</FONT></B> {<FONT COLOR="#B8860B">page code</FONT>} {
+    <I><FONT COLOR="#B22222"># Produces a HTML FORM tag. Nested form variables must be output
+</FONT></I>    <I><FONT COLOR="#B22222"># in 'code'.
+</FONT></I>    <I><FONT COLOR="#B22222"># The 'page' parameter describes the web::command to call when
+</FONT></I>    <I><FONT COLOR="#B22222"># the form is submitted.
+</FONT></I>    web::put <B><FONT COLOR="#BC8F8F">&quot;&lt;html&gt;&lt;head&gt;&lt;title&gt;Session Example&lt;/title&gt;&lt;/head&gt;&quot;</FONT></B>
+    web::put <B><FONT COLOR="#BC8F8F">&quot;&lt;body bgcolor=\&quot;#FFFFFF\&quot;&gt;&quot;</FONT></B>
+    <I><FONT COLOR="#B22222"># form starts here
+</FONT></I>    web::put <B><FONT COLOR="#BC8F8F">&quot;&lt;form method=\&quot;POST\&quot; action=\&quot;[web::cmdurl $page]\&quot;&gt;&quot;</FONT></B>
+    <B><FONT COLOR="#A020F0">uplevel</FONT></B> $<FONT COLOR="#B8860B">code</FONT>
+    web::put <B><FONT COLOR="#BC8F8F">&quot;&lt;/form&gt;&quot;</FONT></B>
+    web::put <B><FONT COLOR="#BC8F8F">&quot;&lt;/body&gt;&lt;/html&gt;&quot;</FONT></B>
+}
+
+
+<B><FONT COLOR="#A020F0">proc</FONT></B> <B><FONT COLOR="#0000FF">putErrorMessage</FONT></B> {<FONT COLOR="#B8860B">msg</FONT>} {
+    <I><FONT COLOR="#B22222"># emit an error message in red.
+</FONT></I>    web::put <B><FONT COLOR="#BC8F8F">&quot;&lt;p&gt;&lt;font color=\&quot;\#ff0000\&quot;&gt;[web::htmlify $msg]&lt;/font&gt;&lt;/p&gt;&quot;</FONT></B>
+}
+
+
+<B><FONT COLOR="#A020F0">proc</FONT></B> <B><FONT COLOR="#0000FF">pageOne</FONT></B> {<FONT COLOR="#B8860B">{errorMessage &quot;&quot;}</FONT>} {
+    <I><FONT COLOR="#B22222"># Display page one of our HTML form.
+</FONT></I>    form processPageOne {
+        <B><FONT COLOR="#A020F0">if</FONT></B> {[<B><FONT COLOR="#A020F0">string</FONT></B> length $<FONT COLOR="#B8860B">errorMessage</FONT>]} {
+            putErrorMessage $<FONT COLOR="#B8860B">errorMessage</FONT>
+        }
+        web::put <B><FONT COLOR="#BC8F8F">&quot;Numbers only: &lt;input type=\&quot;text\&quot; name=\&quot;a\&quot; value=\&quot;[web::htmlify [state::cget a]]\&quot;&gt;&quot;</FONT></B>
+        web::put <B><FONT COLOR="#BC8F8F">&quot;&lt;input type=\&quot;submit\&quot; value=\&quot;Page 2\&quot;&gt;&quot;</FONT></B>
+    }
+}
+
+
+<B><FONT COLOR="#A020F0">proc</FONT></B> <B><FONT COLOR="#0000FF">pageTwo</FONT></B> {<FONT COLOR="#B8860B">{errorMessage &quot;&quot;}</FONT>} {
+    <I><FONT COLOR="#B22222"># Display page two of our HTML form.
+</FONT></I>    form processPageTwo {
+        <B><FONT COLOR="#A020F0">if</FONT></B> {[<B><FONT COLOR="#A020F0">string</FONT></B> length $<FONT COLOR="#B8860B">errorMessage</FONT>]} {
+            putErrorMessage $<FONT COLOR="#B8860B">errorMessage</FONT>
+        }
+        web::put <B><FONT COLOR="#BC8F8F">&quot;Not empty: &lt;input type=\&quot;text\&quot; name=\&quot;b\&quot; value=\&quot;[web::htmlify [state::cget b]]\&quot;&gt;&quot;</FONT></B>
+        web::put <B><FONT COLOR="#BC8F8F">&quot;&lt;input type=\&quot;submit\&quot; value=\&quot;Page 1\&quot;&gt;&quot;</FONT></B>
+    }
+}
+
+
+<B><FONT COLOR="#A020F0">proc</FONT></B> <B><FONT COLOR="#0000FF">saveAllFields</FONT></B> {<FONT COLOR="#B8860B"></FONT>} {
+    <I><FONT COLOR="#B22222"># Save all form fields to state context.
+</FONT></I>    <I><FONT COLOR="#B22222"># web::formvar without parameters returns a list of HTML form
+</FONT></I>    <I><FONT COLOR="#B22222"># variables sent to this script. web::formvar with the name
+</FONT></I>    <I><FONT COLOR="#B22222"># of a field returns its value, if the field does not exist
+</FONT></I>    <I><FONT COLOR="#B22222"># it returns an empty list (or an optional 2nd parameter 'default
+</FONT></I>    <I><FONT COLOR="#B22222"># value').
+</FONT></I>    <I><FONT COLOR="#B22222"># For clarity, we do not handle multiple fields with the same
+</FONT></I>    <I><FONT COLOR="#B22222"># name correctly here. If a HTML field is given twice or more
+</FONT></I>    <I><FONT COLOR="#B22222"># 'web::formvar -count &lt;fieldname&gt;' would give us the field count
+</FONT></I>    <I><FONT COLOR="#B22222"># 'web::formvar &lt;fieldname&gt;' returns then a list of n values.
+</FONT></I>    <B><FONT COLOR="#A020F0">foreach</FONT></B> field [web::formvar names] {
+        state::cset $<FONT COLOR="#B8860B">field</FONT> [web::formvar $<FONT COLOR="#B8860B">field</FONT>]
+    }
+}
+
+
+<I><FONT COLOR="#B22222"># Define two dispatched commands to each show one page of the
+</FONT></I><I><FONT COLOR="#B22222"># (mini) form. The names of theses application commands will
+</FONT></I><I><FONT COLOR="#B22222"># be used in the submit action of the form with 'web::cmdurl'.
+</FONT></I>web::command processPageOne {
+    state::init
+    <B><FONT COLOR="#A020F0">if</FONT></B> {![<B><FONT COLOR="#A020F0">regexp</FONT></B> {^[0-9]+$} [web::formvar a]]} {
+        <I><FONT COLOR="#B22222"># The input field does not contain only digits, so show page one again
+</FONT></I>        <I><FONT COLOR="#B22222"># including an error message.
+</FONT></I>        pageOne <B><FONT COLOR="#BC8F8F">&quot;Please enter a number.&quot;</FONT></B>
+    } else {
+        <I><FONT COLOR="#B22222"># Everything ok, so save the form field to persistant session
+</FONT></I>        <I><FONT COLOR="#B22222"># and proceed with page two.
+</FONT></I>        saveAllFields
+        state::commit
+        pageTwo
+    }
+}
+
+
+web::command processPageTwo {
+    state::init
+    <B><FONT COLOR="#A020F0">if</FONT></B> {![<B><FONT COLOR="#A020F0">string</FONT></B> length [web::formvar b]]} {
+        <I><FONT COLOR="#B22222"># The input field is empty, so show page two again
+</FONT></I>        <I><FONT COLOR="#B22222"># including an error message.
+</FONT></I>        pageTwo <B><FONT COLOR="#BC8F8F">&quot;Please fill in field.&quot;</FONT></B>
+    } else {
+        <I><FONT COLOR="#B22222"># Everything ok, so save the form field to persistant session
+</FONT></I>        <I><FONT COLOR="#B22222"># and proceed with page one.
+</FONT></I>        saveAllFields
+        state::commit
+        pageOne
+    }
+}
+
+
+<I><FONT COLOR="#B22222"># Define the default command to show page one.
+</FONT></I>web::command default {
+    <I><FONT COLOR="#B22222"># Initialize a fresh state.
+</FONT></I>    state::init
+    <I><FONT COLOR="#B22222"># Show page one initially.
+</FONT></I>    pageOne
+}
+
+
+<I><FONT COLOR="#B22222"># Dispatch to one of the web::commands according to a parameter in the
+</FONT></I><I><FONT COLOR="#B22222"># URL. This parameter was set using 'web::cmdurl' in the FORM tag in
+</FONT></I><I><FONT COLOR="#B22222"># procedure 'form'.
+</FONT></I><I><FONT COLOR="#B22222"># At the very beginning we don't have a command in the URL. Then the
+</FONT></I><I><FONT COLOR="#B22222"># web::command default is called.
+</FONT></I><I><FONT COLOR="#B22222"># The '-track' parameter is used to take over the URL parameter 'sid'
+</FONT></I><I><FONT COLOR="#B22222"># from &quot;incoming&quot; URLs to &quot;outgoing&quot; URLs. This parameters holds
+</FONT></I><I><FONT COLOR="#B22222"># the session id and makes a session survive
+</FONT></I><I><FONT COLOR="#B22222"># web::dispatch processes the URL - i.e. extracts parameters from the
+</FONT></I><I><FONT COLOR="#B22222"># URL - and handles HTML form input sent to this script.
+</FONT></I>web::dispatch -track sid
+</PRE>
+<HR>
+<ADDRESS>Generated by <A HREF="http://www.iki.fi/~mtr/genscript/">GNU enscript 1.6.3</A>.</ADDRESS>
+</BODY>
+</HTML>

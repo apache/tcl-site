@@ -12,7 +12,7 @@ web::context config
 
 # Now set some configuration variables. Usually put the session
 # state files in a directory not accessible through the Web server.
-config::cset stateDirectory ./states
+config::cset stateDirectory /tmp/webshstate/
 
 # Create a file counter that generates the session ids. We take
 # here an easy number generator, which produces sequential numbers
@@ -21,8 +21,8 @@ web::filecounter idGenerator -filename [file join [config::cget stateDirectory] 
 
 # Create a file context named 'state'. The option '-path' defines
 # where the session contexts are stored. '-attachto' defines an
-# URL parameter name that might contain an existing session. 
-# (This parameter name could in fact be extracted using 
+# URL parameter name that might contain an existing session.
+# (This parameter name could in fact be extracted using
 # 'web::param sid' whenever the session is initalized.)
 web::filecontext state -path [file join [config::cget stateDirectory] %s] -attachto sid -idgen "idGenerator nextval"
 

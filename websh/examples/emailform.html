@@ -1,0 +1,233 @@
+<!DOCTYPE html PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<HTML>
+<HEAD>
+<TITLE>emailform</TITLE>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#1F00FF" ALINK="#FF0000" VLINK="#9900DD">
+<A NAME="top">
+<A NAME="file1">
+<H1>emailform.ws3</H1>
+
+<PRE>
+<I><FONT COLOR="#B22222"># &quot;order&quot; form example
+</FONT></I><I><FONT COLOR="#B22222">#
+</FONT></I><I><FONT COLOR="#B22222"># The &quot;customer&quot; fills out a form, say an order form.
+</FONT></I><I><FONT COLOR="#B22222"># The form data is validated and a confirmation page
+</FONT></I><I><FONT COLOR="#B22222"># displayed. ALso, a confirmation e-mail is sent to the
+</FONT></I><I><FONT COLOR="#B22222"># customer.
+</FONT></I><I><FONT COLOR="#B22222">#
+</FONT></I><I><FONT COLOR="#B22222"># In addition, logging is used.
+</FONT></I>
+
+<I><FONT COLOR="#B22222"># turn on logging
+</FONT></I><I><FONT COLOR="#B22222">#
+</FONT></I><I><FONT COLOR="#B22222"># web::logfilter determines which log messages will be sent to the log
+</FONT></I><I><FONT COLOR="#B22222"># destination.  The rule here is: let all log messages pass which have
+</FONT></I><I><FONT COLOR="#B22222"># facilities that match &quot;*&quot; and which have a level up to and including
+</FONT></I><I><FONT COLOR="#B22222"># level &quot;debug&quot;
+</FONT></I>web::logfilter add *.-debug
+
+<I><FONT COLOR="#B22222"># define where to send log messages to. Here we use a file
+</FONT></I><I><FONT COLOR="#B22222"># and again define a log destination based filter, which is again
+</FONT></I><I><FONT COLOR="#B22222"># &quot;*.-debug&quot; as above
+</FONT></I>web::logdest add *.-debug <B><FONT COLOR="#A020F0">file</FONT></B> ../../logs/emailform.log
+
+
+<I><FONT COLOR="#B22222"># utility command to handle an HTML page
+</FONT></I><B><FONT COLOR="#A020F0">proc</FONT></B> <B><FONT COLOR="#0000FF">page</FONT></B> {<FONT COLOR="#B8860B">title code</FONT>} {
+    web::putx {&lt;html&gt;&lt;head&gt;&lt;title&gt;{web::put $<FONT COLOR="#B8860B">title</FONT>}&lt;/title&gt;&lt;/head&gt;
+	&lt;body bgcolor=<B><FONT COLOR="#BC8F8F">&quot;#ffffff&quot;</FONT></B> <B><FONT COLOR="#A020F0">text</FONT></B>=<B><FONT COLOR="#BC8F8F">&quot;#000000&quot;</FONT></B>&gt;
+	&lt;h1&gt;{web::put $<FONT COLOR="#B8860B">title</FONT>}&lt;/h1&gt;
+    }
+    <B><FONT COLOR="#A020F0">uplevel</FONT></B> $<FONT COLOR="#B8860B">code</FONT>
+    web::put <B><FONT COLOR="#BC8F8F">&quot;&lt;/body&gt;&lt;/html&gt;\n&quot;</FONT></B>
+}
+
+<I><FONT COLOR="#B22222"># utility command to handle an html form
+</FONT></I><B><FONT COLOR="#A020F0">proc</FONT></B> <B><FONT COLOR="#0000FF">form</FONT></B> {<FONT COLOR="#B8860B">page code</FONT>} {
+    web::put <B><FONT COLOR="#BC8F8F">&quot;&lt;form method=\&quot;post\&quot; action=\&quot;[web::cmdurl $page]\&quot;&gt;&quot;</FONT></B>
+    <B><FONT COLOR="#A020F0">uplevel</FONT></B> $<FONT COLOR="#B8860B">code</FONT>
+    web::put <B><FONT COLOR="#BC8F8F">&quot;&lt;/form&gt;&quot;</FONT></B>
+}
+
+<I><FONT COLOR="#B22222"># define the form where address is entered
+</FONT></I><B><FONT COLOR="#A020F0">proc</FONT></B> <B><FONT COLOR="#0000FF">showForm</FONT></B> {<FONT COLOR="#B8860B">error</FONT>} {
+
+    <I><FONT COLOR="#B22222"># generate a page with Title &quot;Form&quot;
+</FONT></I>    page <B><FONT COLOR="#BC8F8F">&quot;Order Form&quot;</FONT></B> {
+	<I><FONT COLOR="#B22222"># generate a form with action &quot;submit&quot;
+</FONT></I>	form <B><FONT COLOR="#BC8F8F">&quot;submit&quot;</FONT></B> {
+	    web::putx {
+		&lt;dl&gt;
+		&lt;dt&gt;&lt;b&gt;Name:&lt;/b&gt; {
+		    <I><FONT COLOR="#B22222"># if &quot;error&quot; flag is set, show the red error message asking for input
+</FONT></I>		    <B><FONT COLOR="#A020F0">if</FONT></B> {$<FONT COLOR="#B8860B">error</FONT> == 1} {
+			web::put <B><FONT COLOR="#BC8F8F">&quot;&lt;font color=\&quot;\#990000\&quot;&gt;Please enter your name&lt;/font&gt;\n&quot;</FONT></B>
+		    }
+		}
+		&lt;dd&gt;&lt;input type=<B><FONT COLOR="#BC8F8F">&quot;text&quot;</FONT></B> name=<B><FONT COLOR="#BC8F8F">&quot;name&quot;</FONT></B> value=<B><FONT COLOR="#BC8F8F">&quot;{web::put [web::htmlify [web::formvar name]]}&quot;</FONT></B> size=<B><FONT COLOR="#BC8F8F">&quot;30&quot;</FONT></B>&gt;&lt;p&gt;
+		&lt;dt&gt;&lt;b&gt;Address:&lt;/b&gt;
+		&lt;dd&gt;&lt;textarea name=<B><FONT COLOR="#BC8F8F">&quot;addr&quot;</FONT></B> rows=<B><FONT COLOR="#BC8F8F">&quot;4&quot;</FONT></B> cols=<B><FONT COLOR="#BC8F8F">&quot;30&quot;</FONT></B> wrap=<B><FONT COLOR="#BC8F8F">&quot;auto&quot;</FONT></B>&gt;{web::put [web::htmlify [web::formvar addr]]}&lt;/textarea&gt;&lt;p&gt;
+		&lt;dt&gt;&lt;b&gt;E-Mail:&lt;/b&gt; {
+		    <I><FONT COLOR="#B22222"># if &quot;error&quot; flag is set, ask for valid e-mail address
+</FONT></I>		    <B><FONT COLOR="#A020F0">if</FONT></B> {$<FONT COLOR="#B8860B">error</FONT> == 2} {
+			web::put <B><FONT COLOR="#BC8F8F">&quot;&lt;font color=\&quot;\#990000\&quot;&gt;Please enter a valid email addres&lt;/font&gt;\n&quot;</FONT></B>
+		    }
+		}
+		&lt;dd&gt;&lt;input type=<B><FONT COLOR="#BC8F8F">&quot;text&quot;</FONT></B> name=<B><FONT COLOR="#BC8F8F">&quot;email&quot;</FONT></B> value=<B><FONT COLOR="#BC8F8F">&quot;{web::put [web::htmlify [web::formvar email]]}&quot;</FONT></B> size=<B><FONT COLOR="#BC8F8F">&quot;30&quot;</FONT></B>&gt;&lt;p&gt;
+		&lt;/dl&gt;
+		&lt;input type=<B><FONT COLOR="#BC8F8F">&quot;submit&quot;</FONT></B> name=<B><FONT COLOR="#BC8F8F">&quot;ok&quot;</FONT></B> value=<B><FONT COLOR="#BC8F8F">&quot;Send&quot;</FONT></B>&gt;
+	    }
+	}
+    }
+}
+
+<I><FONT COLOR="#B22222"># validator:
+</FONT></I><I><FONT COLOR="#B22222">#
+</FONT></I><I><FONT COLOR="#B22222"># make sure we have a name of non-zero length.
+</FONT></I><I><FONT COLOR="#B22222"># Also, make sure the e-mail address is not completely wrong.
+</FONT></I><B><FONT COLOR="#A020F0">proc</FONT></B> <B><FONT COLOR="#0000FF">checkFormData</FONT></B> {<FONT COLOR="#B8860B"></FONT>} {
+
+    <I><FONT COLOR="#B22222"># check if a value is in the name field
+</FONT></I>    <B><FONT COLOR="#A020F0">if</FONT></B>  { [<B><FONT COLOR="#A020F0">string</FONT></B> length [web::formvar name]]  &lt; 1} {
+	<I><FONT COLOR="#B22222"># return error code
+</FONT></I>	<B><FONT COLOR="#A020F0">return</FONT></B> 1
+    }
+
+    <I><FONT COLOR="#B22222"># log (facility: emailform, level: debug)
+</FONT></I>    web::log emailform.debug {name [web::formvar name] is valid}
+
+    <I><FONT COLOR="#B22222"># check email
+</FONT></I>    <B><FONT COLOR="#A020F0">set</FONT></B> email [web::formvar email]
+
+    <I><FONT COLOR="#B22222"># make sure we have alpha-numeric stuff separated by &quot;@&quot;
+</FONT></I>    <B><FONT COLOR="#A020F0">if</FONT></B> {![<B><FONT COLOR="#A020F0">regexp</FONT></B> -nocase {^([a-z0-9]+)@([a-z0-9]+)\.+([a-z]+)$} \
+	      $<FONT COLOR="#B8860B">email</FONT> email name domain]} {
+	<I><FONT COLOR="#B22222"># return error code
+</FONT></I>	<B><FONT COLOR="#A020F0">return</FONT></B> 2
+    }
+
+    <I><FONT COLOR="#B22222"># check length of domain
+</FONT></I>    <B><FONT COLOR="#A020F0">if</FONT></B> {[<B><FONT COLOR="#A020F0">string</FONT></B> length $<FONT COLOR="#B8860B">domain</FONT>] &lt; 3} {
+	<B><FONT COLOR="#A020F0">return</FONT></B> 2
+    }
+
+    web::log emailform.debug {email [web::formvar email] is valid}
+
+    <I><FONT COLOR="#B22222"># looks good: no error
+</FONT></I>    <B><FONT COLOR="#A020F0">return</FONT></B> 0
+}
+
+<I><FONT COLOR="#B22222"># sendEmail
+</FONT></I><I><FONT COLOR="#B22222">#
+</FONT></I><I><FONT COLOR="#B22222"># create the e-mail message and send it to the given e-mail address
+</FONT></I><B><FONT COLOR="#A020F0">proc</FONT></B> <B><FONT COLOR="#0000FF">sendEmail</FONT></B> {<FONT COLOR="#B8860B"></FONT>} {
+
+    <B><FONT COLOR="#A020F0">set</FONT></B> emailtxt {
+
+Thank you <B><FONT COLOR="#A020F0">for</FONT></B> your submission.
+
+We have recieved the following information:}
+    <B><FONT COLOR="#A020F0">append</FONT></B> emailtxt <B><FONT COLOR="#BC8F8F">&quot;\nName:\n[web::formvar name]\n&quot;</FONT></B>
+    <B><FONT COLOR="#A020F0">append</FONT></B> emailtxt <B><FONT COLOR="#BC8F8F">&quot;Address:\n&quot;</FONT></B>
+    <B><FONT COLOR="#A020F0">append</FONT></B> emailtxt [web::formvar addr]
+    <B><FONT COLOR="#A020F0">append</FONT></B> emailtxt {
+
+Find more information about Webshell at http://tcl.apache.org/websh/
+
+The team.
+    }
+    <I><FONT COLOR="#B22222"># log message
+</FONT></I>    web::log emailform.debug <B><FONT COLOR="#BC8F8F">&quot;e-mail: $emailtxt&quot;</FONT></B>
+
+    <B><FONT COLOR="#A020F0">if</FONT></B> { [<B><FONT COLOR="#A020F0">catch</FONT></B> {
+	<I><FONT COLOR="#B22222"># Open pipe for e-mail
+</FONT></I>	<B><FONT COLOR="#A020F0">set</FONT></B> fh [<B><FONT COLOR="#A020F0">open</FONT></B> <B><FONT COLOR="#BC8F8F">&quot;| /usr/lib/sendmail [web::formvar email]&quot;</FONT></B> w]
+	<B><FONT COLOR="#A020F0">puts</FONT></B> $<FONT COLOR="#B8860B">fh</FONT> <B><FONT COLOR="#BC8F8F">&quot;From: info@tcl.apache.org&quot;</FONT></B>
+	<B><FONT COLOR="#A020F0">puts</FONT></B> $<FONT COLOR="#B8860B">fh</FONT> <B><FONT COLOR="#BC8F8F">&quot;Subject: websh3 sample application - sample confirmation&quot;</FONT></B>
+	<B><FONT COLOR="#A020F0">puts</FONT></B> $<FONT COLOR="#B8860B">fh</FONT> <B><FONT COLOR="#BC8F8F">&quot;&quot;</FONT></B>
+	<B><FONT COLOR="#A020F0">puts</FONT></B> $<FONT COLOR="#B8860B">fh</FONT> $<FONT COLOR="#B8860B">emailtxt</FONT>
+	close $<FONT COLOR="#B8860B">fh</FONT>
+    } cmsg ] } {
+
+	showErrorPage
+    }
+}
+
+
+<B><FONT COLOR="#A020F0">proc</FONT></B> <B><FONT COLOR="#0000FF">showErrorPage</FONT></B> {<FONT COLOR="#B8860B"></FONT>} {
+
+    page <B><FONT COLOR="#BC8F8F">&quot;Error&quot;</FONT></B> {
+
+	web::putx {
+	    &lt;h3&gt;Error&lt;/h3&gt;
+	    An <B><FONT COLOR="#A020F0">error</FONT></B> occurred <B><FONT COLOR="#A020F0">while</FONT></B> processing your request.
+	    Please {web::put &lt;a href=\<B><FONT COLOR="#BC8F8F">&quot;[web::cmdurl default]\&quot;&gt;try&lt;/a&gt;} again
+	    &lt;br&gt;&lt;br&gt;
+	    If the problem persists, please contact the
+	    {web::put &lt;a href=\&quot;mailto:webmaster@tcl.apache.org\&quot;&gt;webmaster&lt;/a&gt;}.
+	}
+    }
+}
+
+proc showConfirmationPage {} {
+
+    page &quot;</FONT></B>Confirmation<B><FONT COLOR="#BC8F8F">&quot; {
+
+	web::putx {
+	    &lt;h3&gt;Thank you for your order&lt;/h3&gt;
+	    We have recieved the following information:
+	    &lt;dl&gt;
+	    &lt;dt&gt;&lt;b&gt;Name:&lt;/b&gt;
+	    &lt;dd&gt;{web::put [web::htmlify [web::formvar name]]}&lt;p&gt;
+	    &lt;dt&gt;&lt;b&gt;Address:&lt;/b&gt;
+	    &lt;dd&gt;{
+		# take care of linebreaks in address
+		regsub -all &quot;</FONT></B>\r\n<B><FONT COLOR="#BC8F8F">&quot; [web::htmlify [web::formvar addr]] &quot;</FONT></B>&lt;br&gt;<B><FONT COLOR="#BC8F8F">&quot; addr
+		web::put $addr
+	    }&lt;p&gt;
+	    &lt;dt&gt;&lt;b&gt;E-Mail:&lt;/b&gt;
+	    &lt;dd&gt;{web::put [web::htmlify [web::formvar email]]}&lt;p&gt;
+	    &lt;/dl&gt;
+	    You should recieve a confirmation by e-mail shortly.
+	    &lt;br&gt;
+	    {web::put &lt;a href=\&quot;[web::cmdurl default]\&quot;&gt;Order more&lt;/a&gt;}
+	    cool stuff.
+	}
+    }
+}
+
+# register the &quot;</FONT></B>default<B><FONT COLOR="#BC8F8F">&quot; command
+#
+# This command will be used whenever no specific command has been specified.
+# We use it to show an empty form for address submission.
+web::command default {
+    showForm 0
+}
+
+
+# register command &quot;</FONT></B>submit<B><FONT COLOR="#BC8F8F">&quot;
+#
+# This is the &quot;</FONT></B>action<B><FONT COLOR="#BC8F8F">&quot; of our form. The form data is validated. If
+# the formdata is incomplete or invalid, the form is re-displayed with
+# an error info, where the original input is displayed as well.
+#
+# If the data is valid, the confirmation page is shown and
+# an e-mail is sent to the specified address.
+
+web::command submit {
+
+    if { [set res [checkFormData]] == 0 } {
+	sendEmail
+	showConfirmationPage
+    } else {
+	showForm $res
+    }
+}
+
+
+web::dispatch</FONT></B></PRE>
+<HR>
+<ADDRESS>Generated by <A HREF="http://www.iki.fi/~mtr/genscript/">GNU enscript 1.6.3</A>.</ADDRESS>
+</BODY>
+</HTML>

@@ -1,0 +1,616 @@
+<!DOCTYPE html PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<HTML>
+<HEAD>
+<TITLE>memory</TITLE>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#1F00FF" ALINK="#FF0000" VLINK="#9900DD">
+<A NAME="top">
+<A NAME="file1">
+<H1>memory.ws3</H1>
+
+<PRE>
+<I><FONT COLOR="#B22222">#
+</FONT></I><I><FONT COLOR="#B22222"># short intro
+</FONT></I><I><FONT COLOR="#B22222">#
+</FONT></I><I><FONT COLOR="#B22222"># game &quot;memory&quot;: the player is supposed N pairs of pictures with the
+</FONT></I><I><FONT COLOR="#B22222"># least possible amount of tries. We thus keep track of:
+</FONT></I><I><FONT COLOR="#B22222"># s the current status of the pictures
+</FONT></I><I><FONT COLOR="#B22222">#   0 backside up
+</FONT></I><I><FONT COLOR="#B22222">#   1 front up
+</FONT></I><I><FONT COLOR="#B22222">#   2 permanently open
+</FONT></I><I><FONT COLOR="#B22222"># i the array of pictures used for this game
+</FONT></I><I><FONT COLOR="#B22222">#   (varies with each reshufflement)
+</FONT></I><I><FONT COLOR="#B22222"># l the current level (translates into N)
+</FONT></I><I><FONT COLOR="#B22222"># h which pictures have been &quot;hit&quot;, ie selected by the player
+</FONT></I><I><FONT COLOR="#B22222"># r the refresh rate
+</FONT></I><I><FONT COLOR="#B22222">#
+</FONT></I><I><FONT COLOR="#B22222"># the application needs to
+</FONT></I><I><FONT COLOR="#B22222"># * reshuffle --&gt; generate new i
+</FONT></I><I><FONT COLOR="#B22222"># * find matching --&gt; check/modify status
+</FONT></I><I><FONT COLOR="#B22222"># * change level --&gt; keep track of l and reshuffle
+</FONT></I><I><FONT COLOR="#B22222"># * show help text
+</FONT></I><I><FONT COLOR="#B22222"># * change refresh rate
+</FONT></I><I><FONT COLOR="#B22222"># * keep track of best player
+</FONT></I><I><FONT COLOR="#B22222">#
+</FONT></I>
+<I><FONT COLOR="#B22222"># turn logging on
+</FONT></I>web::logfilter add memory.-debug
+web::logdest add memory.-debug <B><FONT COLOR="#A020F0">file</FONT></B> [<B><FONT COLOR="#A020F0">file</FONT></B> <B><FONT COLOR="#A020F0">join</FONT></B> / tmp memory.log]
+
+<I><FONT COLOR="#B22222"># config: map level number to X-Y dimensions
+</FONT></I><B><FONT COLOR="#A020F0">set</FONT></B> _levels(1) [<B><FONT COLOR="#A020F0">list</FONT></B> 1 2]
+<B><FONT COLOR="#A020F0">set</FONT></B> _levels(2) [<B><FONT COLOR="#A020F0">list</FONT></B> 1 4]
+<B><FONT COLOR="#A020F0">set</FONT></B> _levels(3) [<B><FONT COLOR="#A020F0">list</FONT></B> 2 5]
+<B><FONT COLOR="#A020F0">set</FONT></B> _levels(4) [<B><FONT COLOR="#A020F0">list</FONT></B> 3 6]
+<B><FONT COLOR="#A020F0">set</FONT></B> _levels(5) [<B><FONT COLOR="#A020F0">list</FONT></B> 4 7]
+<B><FONT COLOR="#A020F0">set</FONT></B> _levels(6) [<B><FONT COLOR="#A020F0">list</FONT></B> 5 8]
+<B><FONT COLOR="#A020F0">set</FONT></B> _levels(7) [<B><FONT COLOR="#A020F0">list</FONT></B> 6 9]
+
+<I><FONT COLOR="#B22222"># setup file context
+</FONT></I>web::filecontext mctx -path [<B><FONT COLOR="#A020F0">file</FONT></B> <B><FONT COLOR="#A020F0">join</FONT></B> / tmp %s.ctx]
+
+<I><FONT COLOR="#B22222"># formatLink -- helper function to generate hrefs
+</FONT></I><B><FONT COLOR="#A020F0">proc</FONT></B> <B><FONT COLOR="#0000FF">formatLink</FONT></B> {<FONT COLOR="#B8860B">url {show &quot;&quot;}</FONT>} {
+
+    <B><FONT COLOR="#A020F0">if</FONT></B> {$<FONT COLOR="#B8860B">show</FONT> == <B><FONT COLOR="#BC8F8F">&quot;&quot;</FONT></B>} { <B><FONT COLOR="#A020F0">set</FONT></B> show $<FONT COLOR="#B8860B">url</FONT> }
+    <B><FONT COLOR="#A020F0">return</FONT></B> <B><FONT COLOR="#BC8F8F">&quot;&lt;a href=\&quot;$url\&quot;&gt;$show&lt;/a&gt;&quot;</FONT></B>
+}
+
+<I><FONT COLOR="#B22222"># putLink -- helper function to output links
+</FONT></I><B><FONT COLOR="#A020F0">proc</FONT></B> <B><FONT COLOR="#0000FF">putLink</FONT></B> {<FONT COLOR="#B8860B">url {show &quot;&quot;}</FONT>} {
+
+    web::put [formatLink $<FONT COLOR="#B8860B">url</FONT> $<FONT COLOR="#B8860B">show</FONT>]
+}
+
+<I><FONT COLOR="#B22222"># putLinkHtmlified -- helper function to output links
+</FONT></I><B><FONT COLOR="#A020F0">proc</FONT></B> <B><FONT COLOR="#0000FF">putLinkHtmlified</FONT></B> {<FONT COLOR="#B8860B">url show</FONT>} {
+
+    web::put [formatLink $<FONT COLOR="#B8860B">url</FONT> [web::htmlify $<FONT COLOR="#B8860B">show</FONT>]]
+}
+
+<I><FONT COLOR="#B22222"># commandList -- add &quot;commands&quot; line to HTML page
+</FONT></I><B><FONT COLOR="#A020F0">proc</FONT></B> <B><FONT COLOR="#0000FF">commandList</FONT></B> {<FONT COLOR="#B8860B"></FONT>} {
+
+
+    web::put <B><FONT COLOR="#BC8F8F">&quot;&lt;tt&gt;&quot;</FONT></B>
+
+    putLinkHtmlified [web::cmdurl decrementLevel] <B><FONT COLOR="#BC8F8F">&quot;&lt;&quot;</FONT></B>
+    web::put <B><FONT COLOR="#BC8F8F">&quot; | &quot;</FONT></B>
+
+    putLinkHtmlified [web::cmdurl incrementLevel] <B><FONT COLOR="#BC8F8F">&quot;&gt;&quot;</FONT></B>
+    web::put <B><FONT COLOR="#BC8F8F">&quot; | &quot;</FONT></B>
+
+    putLinkHtmlified [web::cmdurl reset] <B><FONT COLOR="#BC8F8F">&quot;x&quot;</FONT></B>
+    web::put <B><FONT COLOR="#BC8F8F">&quot; | &quot;</FONT></B>
+
+    putLinkHtmlified [web::cmdurl new] new
+    web::put <B><FONT COLOR="#BC8F8F">&quot; | &quot;</FONT></B>
+
+    putLinkHtmlified [web::cmdurl help] <B><FONT COLOR="#BC8F8F">&quot;?&quot;</FONT></B>
+    web::put <B><FONT COLOR="#BC8F8F">&quot; | &quot;</FONT></B>
+
+    putLinkHtmlified [web::cmdurl incrRefreshTime] <B><FONT COLOR="#BC8F8F">&quot;+&quot;</FONT></B>
+    web::put <B><FONT COLOR="#BC8F8F">&quot; | &quot;</FONT></B>
+
+    putLinkHtmlified [web::cmdurl decrRefreshTime] <B><FONT COLOR="#BC8F8F">&quot;-&quot;</FONT></B>
+
+    <I><FONT COLOR="#B22222"># load hall of fame
+</FONT></I>    mctx::init memory
+
+    <I><FONT COLOR="#B22222"># get the lowest number of tries for this level from the session context
+</FONT></I>    <I><FONT COLOR="#B22222"># why do I use web::cmdurlcfg here instead of web::param ?
+</FONT></I>    <I><FONT COLOR="#B22222"># I do not want to bother about the level when I generate a URL
+</FONT></I>    <I><FONT COLOR="#B22222"># using web::cmdurl - I keep it in the static parameters (managed
+</FONT></I>    <I><FONT COLOR="#B22222"># by web::cmdurlcfg).
+</FONT></I>    <B><FONT COLOR="#A020F0">set</FONT></B> best [mctx::cget hof([web::cmdurlcfg l]) <B><FONT COLOR="#BC8F8F">&quot;n/a&quot;</FONT></B>]
+
+    web::put <B><FONT COLOR="#BC8F8F">&quot;&amp;nbsp;&amp;nbsp;(level: [web::cmdurlcfg l], [web::cmdurlcfg c] tries, best: $best)&quot;</FONT></B>
+    web::put <B><FONT COLOR="#BC8F8F">&quot;&lt;/tt&gt;\n&quot;</FONT></B>
+
+    web::put <B><FONT COLOR="#BC8F8F">&quot;&lt;br&gt;\n&quot;</FONT></B>
+}
+
+<I><FONT COLOR="#B22222"># page -- helper function to produce an  HTML page
+</FONT></I><B><FONT COLOR="#A020F0">proc</FONT></B> <B><FONT COLOR="#0000FF">page</FONT></B> {<FONT COLOR="#B8860B">title code</FONT>} {
+
+    <I><FONT COLOR="#B22222"># HTML header stuff
+</FONT></I>    web::put <B><FONT COLOR="#BC8F8F">&quot;
+	&lt;html&gt;
+	&lt;head&gt;
+	  &lt;title&gt;$title&lt;/title&gt;
+        &lt;/head&gt;
+        &lt;body bgcolor=\&quot;#ffffff\&quot;&gt;
+    &quot;</FONT></B>
+    web::put <B><FONT COLOR="#BC8F8F">&quot;&lt;br&gt;\n&quot;</FONT></B>
+
+    <I><FONT COLOR="#B22222"># depends on the caller
+</FONT></I>    <B><FONT COLOR="#A020F0">uplevel</FONT></B> 1 $<FONT COLOR="#B8860B">code</FONT>
+
+    <I><FONT COLOR="#B22222"># add list of commands
+</FONT></I>    web::put <B><FONT COLOR="#BC8F8F">&quot;&lt;hr&gt;\n&quot;</FONT></B>
+    commandList
+
+    <I><FONT COLOR="#B22222"># footer and end-of-HTML
+</FONT></I>    web::put <B><FONT COLOR="#BC8F8F">&quot;
+	&lt;hr&gt;&lt;font size=\&quot;-2\&quot;&gt;&lt;tt&gt;
+	[web::copyright -version]&lt;/tt&gt;&lt;/font&gt;&lt;br&gt;
+	&lt;/BODY&gt;
+        &lt;/HTML&gt;
+    &quot;</FONT></B>
+}
+
+<I><FONT COLOR="#B22222"># table -- helper function to output a HTML table
+</FONT></I><B><FONT COLOR="#A020F0">proc</FONT></B> <B><FONT COLOR="#0000FF">table</FONT></B> {<FONT COLOR="#B8860B">code</FONT>} {
+
+    web::put {&lt;table border=<B><FONT COLOR="#BC8F8F">&quot;0&quot;</FONT></B> cellspacing=<B><FONT COLOR="#BC8F8F">&quot;0&quot;</FONT></B> cellpadding=<B><FONT COLOR="#BC8F8F">&quot;0&quot;</FONT></B>&gt;}
+    web::put <B><FONT COLOR="#BC8F8F">&quot;\n&quot;</FONT></B>
+
+    <B><FONT COLOR="#A020F0">uplevel</FONT></B> 1 $<FONT COLOR="#B8860B">code</FONT>
+    web::put <B><FONT COLOR="#BC8F8F">&quot;\n&lt;/table&gt;\n&quot;</FONT></B>
+}
+
+<I><FONT COLOR="#B22222"># tablerow --
+</FONT></I><B><FONT COLOR="#A020F0">proc</FONT></B> <B><FONT COLOR="#0000FF">tablerow</FONT></B> {<FONT COLOR="#B8860B">code {bgcolor {}}</FONT>} {
+    <B><FONT COLOR="#A020F0">if</FONT></B> {[<B><FONT COLOR="#A020F0">string</FONT></B> length $<FONT COLOR="#B8860B">bgcolor</FONT>] } {
+	web::put <B><FONT COLOR="#BC8F8F">&quot;&lt;tr bgcolor=\&quot;$bgcolor\&quot;&gt;\n&quot;</FONT></B>
+    } else {
+	web::put <B><FONT COLOR="#BC8F8F">&quot;&lt;tr&gt;\n&quot;</FONT></B>
+    }
+    <B><FONT COLOR="#A020F0">uplevel</FONT></B> 1 $<FONT COLOR="#B8860B">code</FONT>
+    web::put <B><FONT COLOR="#BC8F8F">&quot;\n&lt;/tr&gt;\n&quot;</FONT></B>
+}
+
+<I><FONT COLOR="#B22222"># tablecell --
+</FONT></I><B><FONT COLOR="#A020F0">proc</FONT></B> <B><FONT COLOR="#0000FF">tablecell</FONT></B> {<FONT COLOR="#B8860B">code</FONT>} {
+
+    web::put <B><FONT COLOR="#BC8F8F">&quot;&lt;td&gt;\n&quot;</FONT></B>
+    <B><FONT COLOR="#A020F0">uplevel</FONT></B> 1 $<FONT COLOR="#B8860B">code</FONT>
+    web::put <B><FONT COLOR="#BC8F8F">&quot;\n&lt;/td&gt;\n&quot;</FONT></B>
+}
+
+<I><FONT COLOR="#B22222"># image --
+</FONT></I><B><FONT COLOR="#A020F0">proc</FONT></B> <B><FONT COLOR="#0000FF">image</FONT></B> {<FONT COLOR="#B8860B">gif</FONT>} {
+
+    <B><FONT COLOR="#A020F0">set</FONT></B> res <B><FONT COLOR="#BC8F8F">&quot;&lt;img src=\&quot;/websh/images/memory/$gif\&quot; width=\&quot;50\&quot; height=\&quot;50\&quot; vspace=\&quot;0\&quot; hspace=\&quot;0\&quot;&quot;</FONT></B>
+    <B><FONT COLOR="#A020F0">append</FONT></B> res <B><FONT COLOR="#BC8F8F">&quot;border=\&quot;1\&quot; ALIGN=\&quot;middle\&quot;&gt;&quot;</FONT></B>
+    <B><FONT COLOR="#A020F0">return</FONT></B> $<FONT COLOR="#B8860B">res</FONT>
+}
+
+
+
+<I><FONT COLOR="#B22222"># validateImg -- check current game status
+</FONT></I><B><FONT COLOR="#A020F0">proc</FONT></B> <B><FONT COLOR="#0000FF">validateImg</FONT></B> {<FONT COLOR="#B8860B">vImg vStatus</FONT>} {
+
+    <B><FONT COLOR="#A020F0">global</FONT></B> _levels
+
+    <B><FONT COLOR="#A020F0">upvar</FONT></B> $<FONT COLOR="#B8860B">vImg</FONT> img
+    <B><FONT COLOR="#A020F0">upvar</FONT></B> $<FONT COLOR="#B8860B">vStatus</FONT> status
+
+
+    <I><FONT COLOR="#B22222"># no images - this calls for a new game. Reshuffle.
+</FONT></I>    <B><FONT COLOR="#A020F0">if</FONT></B> { [<B><FONT COLOR="#A020F0">string</FONT></B> length $<FONT COLOR="#B8860B">img</FONT>] &lt; 2} {
+
+	<I><FONT COLOR="#B22222"># reset try counter
+</FONT></I>	web::cmdurlcfg -<B><FONT COLOR="#A020F0">set</FONT></B> c 0
+
+	<I><FONT COLOR="#B22222"># get current level
+</FONT></I>	<B><FONT COLOR="#A020F0">set</FONT></B> tmp $<FONT COLOR="#B8860B">_levels</FONT>([web::cmdurlcfg l])
+
+	<I><FONT COLOR="#B22222"># reshuffle (number of images depends on level)
+</FONT></I>	<B><FONT COLOR="#A020F0">set</FONT></B> numImg [<B><FONT COLOR="#A020F0">expr</FONT></B> ([<B><FONT COLOR="#A020F0">lindex</FONT></B> $<FONT COLOR="#B8860B">tmp</FONT> 0] * [<B><FONT COLOR="#A020F0">lindex</FONT></B> $<FONT COLOR="#B8860B">tmp</FONT> 1]) / 2]
+
+	<B><FONT COLOR="#A020F0">for</FONT></B> {<B><FONT COLOR="#A020F0">set</FONT></B> i 0} {$<FONT COLOR="#B8860B">i</FONT> &lt; $<FONT COLOR="#B8860B">numImg</FONT>} {<B><FONT COLOR="#A020F0">incr</FONT></B> i} {
+
+	    <B><FONT COLOR="#A020F0">set</FONT></B> timg [<B><FONT COLOR="#A020F0">format</FONT></B> %2.2d $<FONT COLOR="#B8860B">i</FONT>]
+
+	    <I><FONT COLOR="#B22222"># for this image, generate two random numbers which will
+</FONT></I>	    <I><FONT COLOR="#B22222"># determine the position of the image in the game
+</FONT></I>
+	    <B><FONT COLOR="#A020F0">while</FONT></B> {1} {
+		<B><FONT COLOR="#A020F0">set</FONT></B> r1 [<B><FONT COLOR="#A020F0">expr</FONT></B> rand()]
+		<B><FONT COLOR="#A020F0">if</FONT></B> { ![<B><FONT COLOR="#A020F0">info</FONT></B> exists shuffle($<FONT COLOR="#B8860B">r1</FONT>)] } { <B><FONT COLOR="#A020F0">break</FONT></B> }
+	    }
+
+	    <B><FONT COLOR="#A020F0">while</FONT></B> {1} {
+		<B><FONT COLOR="#A020F0">set</FONT></B> r2 [<B><FONT COLOR="#A020F0">expr</FONT></B> rand()]
+		<B><FONT COLOR="#A020F0">if</FONT></B> { ![<B><FONT COLOR="#A020F0">info</FONT></B> exists shuffle($<FONT COLOR="#B8860B">r2</FONT>)] } { <B><FONT COLOR="#A020F0">break</FONT></B> }
+	    }
+
+	    <B><FONT COLOR="#A020F0">set</FONT></B> shuffle($<FONT COLOR="#B8860B">r1</FONT>) $<FONT COLOR="#B8860B">timg</FONT>
+	    <B><FONT COLOR="#A020F0">set</FONT></B> shuffle($<FONT COLOR="#B8860B">r2</FONT>) $<FONT COLOR="#B8860B">timg</FONT>
+	}
+
+	<I><FONT COLOR="#B22222"># compile string which describes game outline
+</FONT></I>	<B><FONT COLOR="#A020F0">set</FONT></B> img <B><FONT COLOR="#BC8F8F">&quot;&quot;</FONT></B>
+
+	<B><FONT COLOR="#A020F0">foreach</FONT></B> tmp [<B><FONT COLOR="#A020F0">array</FONT></B> names shuffle] {
+
+	    <B><FONT COLOR="#A020F0">append</FONT></B> img $<FONT COLOR="#B8860B">shuffle</FONT>($<FONT COLOR="#B8860B">tmp</FONT>)
+	}
+
+	<I><FONT COLOR="#B22222"># and set status of every image to &quot;closed&quot;
+</FONT></I>	<B><FONT COLOR="#A020F0">set</FONT></B> status [<B><FONT COLOR="#A020F0">string</FONT></B> repeat <B><FONT COLOR="#BC8F8F">&quot;0&quot;</FONT></B> [<B><FONT COLOR="#A020F0">expr</FONT></B> {$<FONT COLOR="#B8860B">numImg</FONT> * 2}]]
+    }
+}
+
+<I><FONT COLOR="#B22222"># listOpen -- helper function to list currently open pictures
+</FONT></I><B><FONT COLOR="#A020F0">proc</FONT></B> <B><FONT COLOR="#0000FF">listOpen</FONT></B> {<FONT COLOR="#B8860B">vStatus {val 1}</FONT>} {
+
+    <B><FONT COLOR="#A020F0">upvar</FONT></B> $<FONT COLOR="#B8860B">vStatus</FONT> status
+
+    <B><FONT COLOR="#A020F0">set</FONT></B> i 0
+    <B><FONT COLOR="#A020F0">set</FONT></B> res <B><FONT COLOR="#BC8F8F">&quot;&quot;</FONT></B>
+    <B><FONT COLOR="#A020F0">foreach</FONT></B> tmp [<B><FONT COLOR="#A020F0">split</FONT></B> $<FONT COLOR="#B8860B">status</FONT> <B><FONT COLOR="#BC8F8F">&quot;&quot;</FONT></B>] {
+
+	<B><FONT COLOR="#A020F0">if</FONT></B> { $<FONT COLOR="#B8860B">tmp</FONT> == $<FONT COLOR="#B8860B">val</FONT> } {<B><FONT COLOR="#A020F0">lappend</FONT></B> res $<FONT COLOR="#B8860B">i</FONT>}
+	<B><FONT COLOR="#A020F0">incr</FONT></B> i
+    }
+    <B><FONT COLOR="#A020F0">return</FONT></B> $<FONT COLOR="#B8860B">res</FONT>
+}
+
+<I><FONT COLOR="#B22222"># countOpen -- helper to count all pictures that have a given status
+</FONT></I><B><FONT COLOR="#A020F0">proc</FONT></B> <B><FONT COLOR="#0000FF">countOpen</FONT></B> {<FONT COLOR="#B8860B">vStatus {val 1}</FONT>} {
+
+    <B><FONT COLOR="#A020F0">upvar</FONT></B> $<FONT COLOR="#B8860B">vStatus</FONT> status
+
+    <B><FONT COLOR="#A020F0">set</FONT></B> res [listOpen status $<FONT COLOR="#B8860B">val</FONT>]
+    <B><FONT COLOR="#A020F0">return</FONT></B> [<B><FONT COLOR="#A020F0">llength</FONT></B> $<FONT COLOR="#B8860B">res</FONT>]
+}
+
+
+<I><FONT COLOR="#B22222"># doMatch -- helper to decide if two selected images match
+</FONT></I><B><FONT COLOR="#A020F0">proc</FONT></B> <B><FONT COLOR="#0000FF">doMatch</FONT></B> {<FONT COLOR="#B8860B">vImg vOpens</FONT>} {
+
+    <B><FONT COLOR="#A020F0">upvar</FONT></B> $<FONT COLOR="#B8860B">vImg</FONT> img
+    <B><FONT COLOR="#A020F0">upvar</FONT></B> $<FONT COLOR="#B8860B">vOpens</FONT> opens
+
+    <B><FONT COLOR="#A020F0">set</FONT></B> img1 [getImageFromArray img [<B><FONT COLOR="#A020F0">lindex</FONT></B> $<FONT COLOR="#B8860B">opens</FONT> 0]]
+    <B><FONT COLOR="#A020F0">set</FONT></B> img2 [getImageFromArray img [<B><FONT COLOR="#A020F0">lindex</FONT></B> $<FONT COLOR="#B8860B">opens</FONT> 1]]
+
+    <B><FONT COLOR="#A020F0">if</FONT></B> {[<B><FONT COLOR="#A020F0">string</FONT></B> equal $<FONT COLOR="#B8860B">img1</FONT> $<FONT COLOR="#B8860B">img2</FONT>]} {
+
+	<B><FONT COLOR="#A020F0">set</FONT></B> res [<B><FONT COLOR="#A020F0">list</FONT></B> 1]
+	<B><FONT COLOR="#A020F0">lappend</FONT></B> res [<B><FONT COLOR="#A020F0">lindex</FONT></B> $<FONT COLOR="#B8860B">opens</FONT> 0]
+	<B><FONT COLOR="#A020F0">lappend</FONT></B> res [<B><FONT COLOR="#A020F0">lindex</FONT></B> $<FONT COLOR="#B8860B">opens</FONT> 1]
+
+    } else {
+
+	<B><FONT COLOR="#A020F0">set</FONT></B> res [<B><FONT COLOR="#A020F0">list</FONT></B> 0]
+	<B><FONT COLOR="#A020F0">lappend</FONT></B> res [<B><FONT COLOR="#A020F0">lindex</FONT></B> $<FONT COLOR="#B8860B">opens</FONT> 0]
+	<B><FONT COLOR="#A020F0">lappend</FONT></B> res [<B><FONT COLOR="#A020F0">lindex</FONT></B> $<FONT COLOR="#B8860B">opens</FONT> 1]
+    }
+    <B><FONT COLOR="#A020F0">return</FONT></B> $<FONT COLOR="#B8860B">res</FONT>
+}
+
+<I><FONT COLOR="#B22222"># getImageFromArray -- helper to extract two letters from string
+</FONT></I><B><FONT COLOR="#A020F0">proc</FONT></B> <B><FONT COLOR="#0000FF">getImageFromArray</FONT></B> {<FONT COLOR="#B8860B">vImg pos</FONT>} {
+
+    <B><FONT COLOR="#A020F0">upvar</FONT></B> $<FONT COLOR="#B8860B">vImg</FONT> img
+
+    <B><FONT COLOR="#A020F0">return</FONT></B> [<B><FONT COLOR="#A020F0">string</FONT></B> range $<FONT COLOR="#B8860B">img</FONT> [<B><FONT COLOR="#A020F0">expr</FONT></B> $<FONT COLOR="#B8860B">pos</FONT>*2] [<B><FONT COLOR="#A020F0">expr</FONT></B> $<FONT COLOR="#B8860B">pos</FONT>*2 + 1]]
+}
+
+<I><FONT COLOR="#B22222"># getStat -- helper to pick status for a given picture
+</FONT></I><B><FONT COLOR="#A020F0">proc</FONT></B> <B><FONT COLOR="#0000FF">getStat</FONT></B> {<FONT COLOR="#B8860B">vStatus pos</FONT>} {
+
+    <B><FONT COLOR="#A020F0">upvar</FONT></B> $<FONT COLOR="#B8860B">vStatus</FONT> status
+
+    <B><FONT COLOR="#A020F0">return</FONT></B> [<B><FONT COLOR="#A020F0">string</FONT></B> index $<FONT COLOR="#B8860B">status</FONT> $<FONT COLOR="#B8860B">pos</FONT>]
+}
+
+<I><FONT COLOR="#B22222"># setStat -- set status
+</FONT></I><B><FONT COLOR="#A020F0">proc</FONT></B> <B><FONT COLOR="#0000FF">setStat</FONT></B> {<FONT COLOR="#B8860B">vStatus pos {new 0}</FONT>} {
+
+    <B><FONT COLOR="#A020F0">upvar</FONT></B> $<FONT COLOR="#B8860B">vStatus</FONT> status
+
+    <B><FONT COLOR="#A020F0">set</FONT></B> res [<B><FONT COLOR="#A020F0">string</FONT></B> range $<FONT COLOR="#B8860B">status</FONT> 0 [<B><FONT COLOR="#A020F0">expr</FONT></B> $<FONT COLOR="#B8860B">pos</FONT> - 1]]
+    <B><FONT COLOR="#A020F0">set</FONT></B> res $<FONT COLOR="#B8860B">res</FONT>$<FONT COLOR="#B8860B">new</FONT>
+    <B><FONT COLOR="#A020F0">set</FONT></B> res $<FONT COLOR="#B8860B">res</FONT>[<B><FONT COLOR="#A020F0">string</FONT></B> range \
+		     $<FONT COLOR="#B8860B">status</FONT> [<B><FONT COLOR="#A020F0">expr</FONT></B> $<FONT COLOR="#B8860B">pos</FONT> + 1] [<B><FONT COLOR="#A020F0">string</FONT></B> length $<FONT COLOR="#B8860B">status</FONT>]]
+    <B><FONT COLOR="#A020F0">set</FONT></B> status $<FONT COLOR="#B8860B">res</FONT>
+}
+
+<I><FONT COLOR="#B22222"># toggleStat -- toggle status: switch 0-&gt;1 or 1-&gt;0, but keep 2 at 2
+</FONT></I><B><FONT COLOR="#A020F0">proc</FONT></B> <B><FONT COLOR="#0000FF">toggleStat</FONT></B> {<FONT COLOR="#B8860B">vStatus pos</FONT>} {
+
+    <B><FONT COLOR="#A020F0">upvar</FONT></B> $<FONT COLOR="#B8860B">vStatus</FONT> status
+
+    <B><FONT COLOR="#A020F0">set</FONT></B> cur [getStat status $<FONT COLOR="#B8860B">pos</FONT>]
+
+
+    <B><FONT COLOR="#A020F0">if</FONT></B> {$<FONT COLOR="#B8860B">cur</FONT> == 0} {
+	setStat status $<FONT COLOR="#B8860B">pos</FONT> 1
+    } elseif { $<FONT COLOR="#B8860B">cur</FONT> == 2 } {
+	setStat status $<FONT COLOR="#B8860B">pos</FONT> 2
+    } else {
+	setStat status $<FONT COLOR="#B8860B">pos</FONT> 0
+    }
+}
+
+
+<I><FONT COLOR="#B22222"># findMatching -- see if the user did find two matching images
+</FONT></I><B><FONT COLOR="#A020F0">proc</FONT></B> <B><FONT COLOR="#0000FF">findMatching</FONT></B> {<FONT COLOR="#B8860B">vImg vStatus</FONT>} {
+
+    <B><FONT COLOR="#A020F0">upvar</FONT></B> $<FONT COLOR="#B8860B">vImg</FONT> img
+    <B><FONT COLOR="#A020F0">upvar</FONT></B> $<FONT COLOR="#B8860B">vStatus</FONT> status
+
+    <I><FONT COLOR="#B22222"># in case only one is open, we prevent closing it again
+</FONT></I>    <B><FONT COLOR="#A020F0">set</FONT></B> tmp [listOpen status 1]
+    <B><FONT COLOR="#A020F0">set</FONT></B> onlyone -1
+    <B><FONT COLOR="#A020F0">if</FONT></B> { [<B><FONT COLOR="#A020F0">llength</FONT></B> $<FONT COLOR="#B8860B">tmp</FONT>] == 1 } {
+
+	<B><FONT COLOR="#A020F0">set</FONT></B> onlyone [<B><FONT COLOR="#A020F0">lindex</FONT></B> $<FONT COLOR="#B8860B">tmp</FONT> 0]
+    }
+
+
+    <I><FONT COLOR="#B22222"># which ones are selected ?
+</FONT></I>    <B><FONT COLOR="#A020F0">set</FONT></B> hitlst [web::param h]
+    <B><FONT COLOR="#A020F0">foreach</FONT></B> tmp $<FONT COLOR="#B8860B">hitlst</FONT> {
+
+	<I><FONT COLOR="#B22222"># if it is not the single one that is already open, flip it
+</FONT></I>	<B><FONT COLOR="#A020F0">if</FONT></B> {$<FONT COLOR="#B8860B">tmp</FONT> != $<FONT COLOR="#B8860B">onlyone</FONT>} {
+	    toggleStat status $<FONT COLOR="#B8860B">tmp</FONT>
+	}
+    }
+
+    <I><FONT COLOR="#B22222"># now, how many are open, really ?
+</FONT></I>    <B><FONT COLOR="#A020F0">set</FONT></B> opens [listOpen status]
+    <B><FONT COLOR="#A020F0">set</FONT></B> Nopen [<B><FONT COLOR="#A020F0">llength</FONT></B> $<FONT COLOR="#B8860B">opens</FONT>]
+
+    <I><FONT COLOR="#B22222"># more than two open ? (no tricks !)
+</FONT></I>    <B><FONT COLOR="#A020F0">if</FONT></B> { $<FONT COLOR="#B8860B">Nopen</FONT> &gt; 2 } {
+
+	<B><FONT COLOR="#A020F0">foreach</FONT></B> tmp $<FONT COLOR="#B8860B">opens</FONT> {
+	    setStat status $<FONT COLOR="#B8860B">tmp</FONT> 0
+	}
+
+    } elseif { $<FONT COLOR="#B8860B">Nopen</FONT> == 2 } {
+
+	<I><FONT COLOR="#B22222"># get current try counter (or 0 if not set) ...
+</FONT></I>	<B><FONT COLOR="#A020F0">set</FONT></B> tmp [web::cmdurlcfg c 0]
+	<I><FONT COLOR="#B22222"># ... and increment it and store it back as static parameter
+</FONT></I>	web::cmdurlcfg -<B><FONT COLOR="#A020F0">set</FONT></B> c [<B><FONT COLOR="#A020F0">incr</FONT></B> tmp]
+
+	<I><FONT COLOR="#B22222"># do the two selected pictures match ?
+</FONT></I>	<B><FONT COLOR="#A020F0">set</FONT></B> tmp [doMatch img opens]
+
+	<B><FONT COLOR="#A020F0">if</FONT></B> { [<B><FONT COLOR="#A020F0">lindex</FONT></B> $<FONT COLOR="#B8860B">tmp</FONT> 0] == 1 } {
+
+	    <I><FONT COLOR="#B22222"># yes, open permanently
+</FONT></I>	    setStat status [<B><FONT COLOR="#A020F0">lindex</FONT></B> $<FONT COLOR="#B8860B">tmp</FONT> 1] 2
+	    setStat status [<B><FONT COLOR="#A020F0">lindex</FONT></B> $<FONT COLOR="#B8860B">tmp</FONT> 2] 2
+
+
+	} else {
+
+	    <I><FONT COLOR="#B22222"># no. use the refresh feature
+</FONT></I>
+	    <B><FONT COLOR="#A020F0">set</FONT></B> opens [listOpen status]
+
+	    <I><FONT COLOR="#B22222"># add img and status as static parameters
+</FONT></I>	    <I><FONT COLOR="#B22222"># (ensure that we have status and img in the URL)
+</FONT></I>	    web::cmdurlcfg -<B><FONT COLOR="#A020F0">set</FONT></B> s $<FONT COLOR="#B8860B">status</FONT>
+	    web::cmdurlcfg -<B><FONT COLOR="#A020F0">set</FONT></B> i $<FONT COLOR="#B8860B">img</FONT>
+
+	    <I><FONT COLOR="#B22222"># for refresh: simulate clicks on the two open pictures
+</FONT></I>	    <I><FONT COLOR="#B22222"># that will close them
+</FONT></I>	    <B><FONT COLOR="#A020F0">set</FONT></B> tmp [web::cmdurl <B><FONT COLOR="#BC8F8F">&quot;&quot;</FONT></B> [<B><FONT COLOR="#A020F0">list</FONT></B> h [<B><FONT COLOR="#A020F0">lindex</FONT></B> $<FONT COLOR="#B8860B">opens</FONT> 0] h [<B><FONT COLOR="#A020F0">lindex</FONT></B> $<FONT COLOR="#B8860B">opens</FONT> 1]]]
+
+	    <I><FONT COLOR="#B22222"># add the HTTP &quot;refresh&quot; header, using the parameter r for the
+</FONT></I>	    <I><FONT COLOR="#B22222"># refresh time (using 2 sec as default)
+</FONT></I>	    web::response -<B><FONT COLOR="#A020F0">set</FONT></B> Refresh <B><FONT COLOR="#BC8F8F">&quot;[web::cmdurlcfg r 2];URL=$tmp&quot;</FONT></B>
+	}
+    }
+
+    <I><FONT COLOR="#B22222"># add img and status as static parameters
+</FONT></I>    <I><FONT COLOR="#B22222"># (ensure that we have status and img in the URL)
+</FONT></I>    web::cmdurlcfg -<B><FONT COLOR="#A020F0">set</FONT></B> s $<FONT COLOR="#B8860B">status</FONT>
+    web::cmdurlcfg -<B><FONT COLOR="#A020F0">set</FONT></B> i $<FONT COLOR="#B8860B">img</FONT>
+}
+
+<I><FONT COLOR="#B22222"># display table with memory
+</FONT></I><B><FONT COLOR="#A020F0">proc</FONT></B> <B><FONT COLOR="#0000FF">showMemory</FONT></B> {<FONT COLOR="#B8860B"></FONT>} {
+
+    <B><FONT COLOR="#A020F0">global</FONT></B> _levels
+    <B><FONT COLOR="#A020F0">global</FONT></B> _cache
+
+    <I><FONT COLOR="#B22222"># get current status from URL
+</FONT></I>    <B><FONT COLOR="#A020F0">set</FONT></B> status [web::param s]
+
+    <I><FONT COLOR="#B22222"># get current game outline from URL
+</FONT></I>    <B><FONT COLOR="#A020F0">set</FONT></B> img [web::param i]
+
+    <I><FONT COLOR="#B22222"># asses status of game
+</FONT></I>    validateImg img status
+
+    <I><FONT COLOR="#B22222"># do we have any matching images ?
+</FONT></I>    findMatching img status
+
+    <I><FONT COLOR="#B22222"># no more closed ? --&gt; game over --&gt; perhaps we need to update hof
+</FONT></I>    <B><FONT COLOR="#A020F0">if</FONT></B> { [countOpen status 0] == 0} {
+
+	mctx::init memory
+	<B><FONT COLOR="#A020F0">set</FONT></B> best [mctx::cget hof([web::cmdurlcfg l]) -1]
+
+	<B><FONT COLOR="#A020F0">if</FONT></B> { ($<FONT COLOR="#B8860B">best</FONT> == -1) ||
+	     ([web::cmdurlcfg c] &lt; $<FONT COLOR="#B8860B">best</FONT>) } {
+	    mctx::cset hof([web::cmdurlcfg l]) [web::cmdurlcfg c]
+	    mctx::commit
+	}
+    }
+
+    <I><FONT COLOR="#B22222"># get X-Y dimension for game outline from level
+</FONT></I>    <B><FONT COLOR="#A020F0">set</FONT></B> tmp $<FONT COLOR="#B8860B">_levels</FONT>([web::cmdurlcfg l 5])
+    <B><FONT COLOR="#A020F0">set</FONT></B> numX [<B><FONT COLOR="#A020F0">lindex</FONT></B> $<FONT COLOR="#B8860B">tmp</FONT> 0]
+    <B><FONT COLOR="#A020F0">set</FONT></B> numY [<B><FONT COLOR="#A020F0">lindex</FONT></B> $<FONT COLOR="#B8860B">tmp</FONT> 1]
+
+    <I><FONT COLOR="#B22222"># output HTML page
+</FONT></I>    page <B><FONT COLOR="#BC8F8F">&quot;memory game&quot;</FONT></B> {
+
+	<I><FONT COLOR="#B22222"># output HTML table
+</FONT></I>	table {
+
+	    <I><FONT COLOR="#B22222"># table rows
+</FONT></I>	    <B><FONT COLOR="#A020F0">for</FONT></B> {<B><FONT COLOR="#A020F0">set</FONT></B> i 0} {$<FONT COLOR="#B8860B">i</FONT> &lt; $<FONT COLOR="#B8860B">numX</FONT>} {<B><FONT COLOR="#A020F0">incr</FONT></B> i} {
+
+		tablerow {
+
+		    <B><FONT COLOR="#A020F0">for</FONT></B> {<B><FONT COLOR="#A020F0">set</FONT></B> j 0} {$<FONT COLOR="#B8860B">j</FONT> &lt; $<FONT COLOR="#B8860B">numY</FONT>} {<B><FONT COLOR="#A020F0">incr</FONT></B> j} {
+
+			<B><FONT COLOR="#A020F0">set</FONT></B> tmpCnt [<B><FONT COLOR="#A020F0">expr</FONT></B> $<FONT COLOR="#B8860B">i</FONT> * $<FONT COLOR="#B8860B">numY</FONT> + $<FONT COLOR="#B8860B">j</FONT>]
+
+			<B><FONT COLOR="#A020F0">set</FONT></B> timg [getImageFromArray img $<FONT COLOR="#B8860B">tmpCnt</FONT>]
+
+			<B><FONT COLOR="#A020F0">set</FONT></B> curImgStat [getStat status $<FONT COLOR="#B8860B">tmpCnt</FONT>]
+
+			<I><FONT COLOR="#B22222"># table cells
+</FONT></I>
+			tablecell {
+
+			    <B><FONT COLOR="#A020F0">if</FONT></B> {$<FONT COLOR="#B8860B">curImgStat</FONT> == 0} {
+
+				<I><FONT COLOR="#B22222"># show backside
+</FONT></I>				<I><FONT COLOR="#B22222">#
+</FONT></I>				<I><FONT COLOR="#B22222"># actually, it is a link back to the CGI app,
+</FONT></I>				<I><FONT COLOR="#B22222"># recursion of some sort.
+</FONT></I>				<I><FONT COLOR="#B22222">#
+</FONT></I>				<I><FONT COLOR="#B22222"># from parameter h, showMemory will know which
+</FONT></I>				<I><FONT COLOR="#B22222"># picture the player did select
+</FONT></I>				putLink [web::cmdurl <B><FONT COLOR="#BC8F8F">&quot;&quot;</FONT></B> h $<FONT COLOR="#B8860B">tmpCnt</FONT>] \
+				    [<B><FONT COLOR="#A020F0">image</FONT></B> back.gif]
+
+			    } elseif {$<FONT COLOR="#B8860B">curImgStat</FONT> == 2} {
+
+				<I><FONT COLOR="#B22222"># two matching found - no link any more, just the image
+</FONT></I>				web::put [<B><FONT COLOR="#A020F0">image</FONT></B> $<FONT COLOR="#B8860B">timg</FONT>.jpg]
+
+			    } else {
+
+				<I><FONT COLOR="#B22222"># show front side
+</FONT></I>				putLink [web::cmdurl <B><FONT COLOR="#BC8F8F">&quot;&quot;</FONT></B> h $<FONT COLOR="#B8860B">tmpCnt</FONT>] \
+				    [<B><FONT COLOR="#A020F0">image</FONT></B> $<FONT COLOR="#B8860B">timg</FONT>.jpg]
+			    }
+			}
+		    }
+		}
+	    }
+	}
+    }
+}
+
+<I><FONT COLOR="#B22222"># web::command help -- display help text
+</FONT></I>web::command help {
+
+    page <B><FONT COLOR="#BC8F8F">&quot;memory game - help text&quot;</FONT></B> {
+
+	web::put <B><FONT COLOR="#BC8F8F">&quot;&lt;tt&gt;&quot;</FONT></B>
+	web::put <B><FONT COLOR="#BC8F8F">&quot;Memory -- find the matching images.&quot;</FONT></B>
+	web::put <B><FONT COLOR="#BC8F8F">&quot;&lt;p&gt;&quot;</FONT></B>
+	web::put <B><FONT COLOR="#BC8F8F">&quot;You can see the hidden image by clicking on its back side. &quot;</FONT></B>
+	web::put <B><FONT COLOR="#BC8F8F">&quot;When you have found two matching images, they will remain open &quot;</FONT></B>
+	web::put <B><FONT COLOR="#BC8F8F">&quot;from then on. If two images do not match, they will be &quot;</FONT></B>
+	web::put <B><FONT COLOR="#BC8F8F">&quot;closed again.&quot;</FONT></B>
+	web::put <B><FONT COLOR="#BC8F8F">&quot;&lt;p&gt;&quot;</FONT></B>
+	web::put <B><FONT COLOR="#BC8F8F">&quot;If the images close again too quickly on your system, &quot;</FONT></B>
+	web::put <B><FONT COLOR="#BC8F8F">&quot;you can make the images stay open longer with the &quot;</FONT></B>
+	web::put <B><FONT COLOR="#BC8F8F">&quot;&amp;quot;+&amp;quot; command (&amp;quot;-&amp;quot; to close them &quot;</FONT></B>
+	web::put <B><FONT COLOR="#BC8F8F">&quot;more quickly).&quot;</FONT></B>
+	web::put <B><FONT COLOR="#BC8F8F">&quot;&lt;p&gt;&quot;</FONT></B>
+	web::put <B><FONT COLOR="#BC8F8F">&quot;&amp;quot;new&amp;quot; shuffels the images again. &quot;</FONT></B>
+	web::put <B><FONT COLOR="#BC8F8F">&quot;&amp;quot;&amp;times;&amp;quot; restarts the game from the beginning.&quot;</FONT></B>
+	web::put <B><FONT COLOR="#BC8F8F">&quot;&lt;/tt&gt;&lt;p&gt;&quot;</FONT></B>
+    }
+}
+
+
+<I><FONT COLOR="#B22222"># web::command decrementLevel -- reduce level and show game
+</FONT></I>web::command decrementLevel {
+
+    <I><FONT COLOR="#B22222"># I do not want to have to bother about the level when I generate
+</FONT></I>    <I><FONT COLOR="#B22222"># URLs using web::cmdurl. So, I put level to the static parameters
+</FONT></I>    <I><FONT COLOR="#B22222"># and let web::dispatch track it.
+</FONT></I>    <I><FONT COLOR="#B22222"># That's why web::cmdurlcfg is used here, instead of web::param.
+</FONT></I>
+    <B><FONT COLOR="#A020F0">set</FONT></B> level [web::cmdurlcfg l 5]
+    <B><FONT COLOR="#A020F0">if</FONT></B> {$<FONT COLOR="#B8860B">level</FONT> &gt; 1} {<B><FONT COLOR="#A020F0">incr</FONT></B> level -1}
+    web::cmdurlcfg -<B><FONT COLOR="#A020F0">set</FONT></B> l $<FONT COLOR="#B8860B">level</FONT>
+
+    <I><FONT COLOR="#B22222"># changing the level implies resetting the game
+</FONT></I>    web::param -<B><FONT COLOR="#A020F0">set</FONT></B> i <B><FONT COLOR="#BC8F8F">&quot;&quot;</FONT></B>
+
+    showMemory
+}
+
+<I><FONT COLOR="#B22222"># web::command incrementLevel -- increase level and show game
+</FONT></I>web::command incrementLevel {
+
+    <B><FONT COLOR="#A020F0">set</FONT></B> level [web::cmdurlcfg l 5]
+    <B><FONT COLOR="#A020F0">if</FONT></B> {$<FONT COLOR="#B8860B">level</FONT> &lt; 7} {<B><FONT COLOR="#A020F0">incr</FONT></B> level}
+    web::cmdurlcfg -<B><FONT COLOR="#A020F0">set</FONT></B> l $<FONT COLOR="#B8860B">level</FONT>
+
+    <I><FONT COLOR="#B22222"># changing the level implies resetting the game
+</FONT></I>    web::param -<B><FONT COLOR="#A020F0">set</FONT></B> i <B><FONT COLOR="#BC8F8F">&quot;&quot;</FONT></B>
+
+    showMemory
+}
+
+<I><FONT COLOR="#B22222"># web::command incrRefreshTime -- increase refresh time
+</FONT></I>web::command incrRefreshTime {
+
+    <B><FONT COLOR="#A020F0">set</FONT></B> r [web::cmdurlcfg r 2]
+    <B><FONT COLOR="#A020F0">if</FONT></B> {$<FONT COLOR="#B8860B">r</FONT> &lt; 30} {<B><FONT COLOR="#A020F0">incr</FONT></B> r 2}
+    web::cmdurlcfg -<B><FONT COLOR="#A020F0">set</FONT></B> r $<FONT COLOR="#B8860B">r</FONT>
+
+    showMemory
+}
+
+<I><FONT COLOR="#B22222"># web::command decrRefreshTime -- decrease refresh time
+</FONT></I>web::command decrRefreshTime {
+
+    <B><FONT COLOR="#A020F0">set</FONT></B> r [web::cmdurlcfg r 2]
+    <B><FONT COLOR="#A020F0">if</FONT></B> {$<FONT COLOR="#B8860B">r</FONT> &gt; 2} {<B><FONT COLOR="#A020F0">incr</FONT></B> r -2}
+    web::cmdurlcfg -<B><FONT COLOR="#A020F0">set</FONT></B> r $<FONT COLOR="#B8860B">r</FONT>
+
+    showMemory
+}
+
+<I><FONT COLOR="#B22222"># web::command new -- new game on the same level (reshuffle)
+</FONT></I>web::command new {
+
+    web::param -<B><FONT COLOR="#A020F0">set</FONT></B> i <B><FONT COLOR="#BC8F8F">&quot;&quot;</FONT></B>
+
+    showMemory
+}
+
+<I><FONT COLOR="#B22222"># web::command reset -- back to the defaults
+</FONT></I>web::command reset {
+
+    web::param -<B><FONT COLOR="#A020F0">set</FONT></B> i <B><FONT COLOR="#BC8F8F">&quot;&quot;</FONT></B>
+    web::cmdurlcfg -<B><FONT COLOR="#A020F0">set</FONT></B> l 5
+
+    showMemory
+}
+
+<I><FONT COLOR="#B22222"># web::command default -- if nothing is specified, use this one
+</FONT></I>web::command default {
+
+    showMemory
+}
+
+<I><FONT COLOR="#B22222"># web::dispatch -- decide which command to call
+</FONT></I><I><FONT COLOR="#B22222">#
+</FONT></I><I><FONT COLOR="#B22222"># here, we use the tracking feature of dispatch. Whenever dispatch
+</FONT></I><I><FONT COLOR="#B22222"># finds a parameter from the -track list, it copies it over to the
+</FONT></I><I><FONT COLOR="#B22222"># static parameters
+</FONT></I><I><FONT COLOR="#B22222">#
+</FONT></I><I><FONT COLOR="#B22222"># also, we use -hook to execute code just before web::dispatch will
+</FONT></I><I><FONT COLOR="#B22222"># call the web::command command. Here, we set the default level to 5
+</FONT></I><I><FONT COLOR="#B22222"># if it is not yet known.
+</FONT></I>web::dispatch -track [<B><FONT COLOR="#A020F0">list</FONT></B> l c r] -hook {
+    web::cmdurlcfg -<B><FONT COLOR="#A020F0">set</FONT></B> l [web::cmdurlcfg l 5]
+}
+</PRE>
+<HR>
+<ADDRESS>Generated by <A HREF="http://www.iki.fi/~mtr/genscript/">GNU enscript 1.6.3</A>.</ADDRESS>
+</BODY>
+</HTML>

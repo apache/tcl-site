@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<HTML>
+<HEAD>
+<TITLE>checkbox</TITLE>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#1F00FF" ALINK="#FF0000" VLINK="#9900DD">
+<A NAME="top">
+<A NAME="file1">
+<H1>checkbox.ws3</H1>
+
+<PRE>
+<I><FONT COLOR="#B22222">#
+</FONT></I><I><FONT COLOR="#B22222"># This Example shows you how to handle checkboxes in a form.
+</FONT></I><I><FONT COLOR="#B22222">#
+</FONT></I>
+<I><FONT COLOR="#B22222"># set flag
+</FONT></I><B><FONT COLOR="#A020F0">set</FONT></B> first_load <B><FONT COLOR="#BC8F8F">&quot;on&quot;</FONT></B>
+
+
+<I><FONT COLOR="#B22222"># see confirmation form example
+</FONT></I><B><FONT COLOR="#A020F0">proc</FONT></B> <B><FONT COLOR="#0000FF">page</FONT></B> {<FONT COLOR="#B8860B">title code</FONT>} {
+    web::putx {&lt;html&gt;&lt;head&gt;&lt;title&gt;{web::put $<FONT COLOR="#B8860B">title</FONT>}&lt;/title&gt;&lt;/head&gt;
+	&lt;body bgcolor=<B><FONT COLOR="#BC8F8F">&quot;#ffffff&quot;</FONT></B> <B><FONT COLOR="#A020F0">text</FONT></B>=<B><FONT COLOR="#BC8F8F">&quot;#000000&quot;</FONT></B>&gt;
+	&lt;h3&gt;{web::put $<FONT COLOR="#B8860B">title</FONT>}&lt;/h3&gt;
+    }
+    <B><FONT COLOR="#A020F0">uplevel</FONT></B> $<FONT COLOR="#B8860B">code</FONT>
+    web::put <B><FONT COLOR="#BC8F8F">&quot;&lt;/body&gt;&lt;/html&gt;\n&quot;</FONT></B>
+}
+
+<I><FONT COLOR="#B22222"># see confirmation form example
+</FONT></I><B><FONT COLOR="#A020F0">proc</FONT></B> <B><FONT COLOR="#0000FF">form</FONT></B> {<FONT COLOR="#B8860B">page code</FONT>} {
+    web::put <B><FONT COLOR="#BC8F8F">&quot;&lt;form enctype=\&quot;text/html\&quot; method=\&quot;post\&quot; action=\&quot;[web::cmdurl $page]\&quot;&gt;&quot;</FONT></B>
+    <B><FONT COLOR="#A020F0">uplevel</FONT></B> $<FONT COLOR="#B8860B">code</FONT>
+    web::put <B><FONT COLOR="#BC8F8F">&quot;&lt;/form&gt;&quot;</FONT></B>
+}
+
+<B><FONT COLOR="#A020F0">proc</FONT></B> <B><FONT COLOR="#0000FF">showForm</FONT></B> {<FONT COLOR="#B8860B">error</FONT>} {
+    <B><FONT COLOR="#A020F0">global</FONT></B> first_load
+    <I><FONT COLOR="#B22222"># generate a page with Title &quot;File upload example&quot;
+</FONT></I>     page <B><FONT COLOR="#BC8F8F">&quot;checkbox example&quot;</FONT></B> {
+	<I><FONT COLOR="#B22222"># generate a form with action &quot;submit&quot;
+</FONT></I>		<I><FONT COLOR="#B22222"># the return value of a checkbox is no value or &quot;on&quot;
+</FONT></I>	form <B><FONT COLOR="#BC8F8F">&quot;submit&quot;</FONT></B> {
+<I><FONT COLOR="#B22222"># web::match is used to search the value &quot;on&quot; in the variables time_flag and firstload.
+</FONT></I><I><FONT COLOR="#B22222"># If the value is found it returns a checked.
+</FONT></I>	    web::putx {
+		&lt;br&gt;Please choose the information that should be displayed.&lt;br&gt;&lt;br&gt;
+		Time
+ 		&lt;input name=<B><FONT COLOR="#BC8F8F">&quot;time_flag&quot;</FONT></B> type=<B><FONT COLOR="#BC8F8F">&quot;checkbox&quot;</FONT></B> {web::put [web::match <B><FONT COLOR="#BC8F8F">&quot;checked&quot;</FONT></B> [web::formvar time_flag $<FONT COLOR="#B8860B">first_load</FONT>] <B><FONT COLOR="#BC8F8F">&quot;on&quot;</FONT></B>]}&gt;
+		Day
+		&lt;input name=<B><FONT COLOR="#BC8F8F">&quot;day_flag&quot;</FONT></B> type=<B><FONT COLOR="#BC8F8F">&quot;checkbox&quot;</FONT></B> {web::put [web::match <B><FONT COLOR="#BC8F8F">&quot;checked&quot;</FONT></B> [web::formvar day_flag $<FONT COLOR="#B8860B">first_load</FONT>] <B><FONT COLOR="#BC8F8F">&quot;on&quot;</FONT></B>]}&gt;
+		Date
+		&lt;input name=<B><FONT COLOR="#BC8F8F">&quot;date_flag&quot;</FONT></B> type=<B><FONT COLOR="#BC8F8F">&quot;checkbox&quot;</FONT></B> {web::put [web::match <B><FONT COLOR="#BC8F8F">&quot;checked&quot;</FONT></B> [web::formvar date_flag $<FONT COLOR="#B8860B">first_load</FONT>] <B><FONT COLOR="#BC8F8F">&quot;on&quot;</FONT></B>]}&gt;
+		&lt;br&gt;
+		{<B><FONT COLOR="#A020F0">set</FONT></B> output [web::match <B><FONT COLOR="#BC8F8F">&quot;%T &amp;nbsp;&quot;</FONT></B> [web::formvar time_flag $<FONT COLOR="#B8860B">first_load</FONT>] <B><FONT COLOR="#BC8F8F">&quot;on&quot;</FONT></B>]}
+		{<B><FONT COLOR="#A020F0">append</FONT></B> output [web::match <B><FONT COLOR="#BC8F8F">&quot;%A &amp;nbsp;&quot;</FONT></B> [web::formvar day_flag $<FONT COLOR="#B8860B">first_load</FONT>] <B><FONT COLOR="#BC8F8F">&quot;on&quot;</FONT></B>]}
+		{<B><FONT COLOR="#A020F0">append</FONT></B> output [web::match <B><FONT COLOR="#BC8F8F">&quot;%d.%m.%Y&quot;</FONT></B> [web::formvar date_flag $<FONT COLOR="#B8860B">first_load</FONT>] <B><FONT COLOR="#BC8F8F">&quot;on&quot;</FONT></B>]}
+		{web::put [<B><FONT COLOR="#A020F0">clock</FONT></B> <B><FONT COLOR="#A020F0">format</FONT></B> [<B><FONT COLOR="#A020F0">clock</FONT></B> seconds] -<B><FONT COLOR="#A020F0">format</FONT></B> $<FONT COLOR="#B8860B">output</FONT>]}
+		&lt;br&gt;
+		&lt;input type=<B><FONT COLOR="#BC8F8F">&quot;submit&quot;</FONT></B> name=<B><FONT COLOR="#BC8F8F">&quot;ok&quot;</FONT></B> value=<B><FONT COLOR="#BC8F8F">&quot;Send&quot;</FONT></B>&gt;
+	    }
+	}
+    }
+}
+
+
+<I><FONT COLOR="#B22222"># see confirmation form example
+</FONT></I>web::command default {
+    showForm 0
+}
+
+
+<I><FONT COLOR="#B22222"># With the set first_load 0 we know that the showForm is not displayed
+</FONT></I><I><FONT COLOR="#B22222"># the first time.
+</FONT></I><I><FONT COLOR="#B22222"># See also confirmation form example.
+</FONT></I>
+web::command submit {
+	<B><FONT COLOR="#A020F0">set</FONT></B> first_load 0
+	showForm 0
+}
+
+<I><FONT COLOR="#B22222">#see dispatch example
+</FONT></I>web::dispatch</PRE>
+<HR>
+<ADDRESS>Generated by <A HREF="http://www.iki.fi/~mtr/genscript/">GNU enscript 1.6.3</A>.</ADDRESS>
+</BODY>
+</HTML>

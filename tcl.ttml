@@ -41,10 +41,17 @@
 		href="http://sourceforge.net/foundry/tcl-foundry/">Tcl
 		Foundry</a> at SourceForge.
 	      </li>
+
 	      <li>
 		<a href="http://tcl.sourceforge.net/">Tcl Project</a>
 		on SourceForge.
 	      </li>
+
+	      <li>
+		<a href="sources/">Tcl, mod_dtcl and mod_tcl sources</a>
+		HTMLized.
+	      </li>
+	      
 	      <li>
 		<a href="http://mini.net/tcl/0.html/">Tcl Wiki</a>, an
 		interactive site frequented by many Tcl developers.

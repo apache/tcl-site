@@ -11,47 +11,15 @@
     <table border="0">
 	<tr>
 	  <? include navbar.html ?>
-	  
-	  <td valign="top"> 
+
+	  <td valign="top">
 	    <h2>Contributing to mod_dtcl</h2>
-	    <p>In addition to the TODO list below, help is very
-	    welcome with documentation, be it better explanations of
-	    dtcl commands, internals, or help with the web pages.
+	    <p>
+	      mod_dtcl is in maintenance mode, and new development is
+	      being done on <a href="../rivet/">Apache Rivet</a>.
+	      Anything you may wish to contribute is still welcome,
+	      but any major changes will only be undertaken in Rivet.
 	    </p>
-	    <b>TODO List</b><br>
-	    <ul>
-	      <li>Security review: I would like someone with security background to
-  thoroughly go over the code.</li>
-
-	      <li>Standalone dtcl, so that it may be run from the
-	      command line, for testing, or as a CGI.</li>
-
-	      <li>Script timeouts: set limits on the length of time a
-		script will run before it returns or dies.</li>
-
-	      <li>More commands available for scripters (see PHP for
-	      examples), as well as more Tcl level commands and
-	      'widgets'.</li>
-
-	      <li>Possible configuration options: safe mode.</li>
-
-	      <li>"Publicity" person to post announcements of new
-	      versions, and so on, to sites such as Freshmeat.</li>
-
-	      <li>A logo created by someone with an artistic bent.</li>
-
-	      <li>Generic (usable by anyone) software that runs on
-	      mod_dtcl may be hosted in an upcoming section of this
-	      site.  Let us know if you have written something cool
-	      with mod_dtcl that you'd like to share with the
-	      world!</li>
-
-	      <li>More test cases are always welcome.</li>
-	    </ul>
-
-	    <p>If you are interested in helping out, please go to the
-	    <a href="contact.ttml">contact</a> page and send some email.</p>
-
 	  </td>
 	</tr>
     </table>

@@ -1,3 +1,8 @@
+2002-11-04  David N. Welton  <davidw@dedasys.com>
+
+	* about.rvt: Added 'about' section that talks a little bit about
+	what we are as a project.
+
 2002-11-01  David N. Welton  <davidw@dedasys.com>
 
 	* newnav.html: Fixed mod_tcl link I broke last night.

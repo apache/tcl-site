@@ -92,3 +92,7 @@ li {
      margin-bottom: 0.5em;
 }
 
+blockquote {
+    font-size: smaller;
+    font-style: italic;
+}

@@ -1,5 +1,7 @@
 2002-11-01  David N. Welton  <davidw@dedasys.com>
 
+	* newnav.html: Fixed mod_tcl link I broke last night.
+
 	* Started changelog to list what's been done with the site.
 
 	* Rivet now uses /style.css.

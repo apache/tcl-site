@@ -1,0 +1,65 @@
+body {
+    font-family: Arial, sans-serif;
+    font-style: normal;
+    font-size: 200%;
+    color: #ffffff;
+    background-color: #000000;
+}
+
+body.splash {
+    font-size: 300%;
+}
+
+
+A:link { color: #003366; }
+A:visited { color : #cc3300; }
+A:hover { color : #000000 ; background-color : #aaaaaa }
+
+LI {
+   margin-bottom: 0.5em; 
+}
+
+UL LI { list-style-image: url(bullet1.png) }
+UL UL LI { list-style-image: url(bullet2.png) }
+
+LI LI { font-size: smaller }
+
+h1 {
+    color: #0055aa;
+    text-align: center;
+}
+
+h1.splash {
+    color: #cc3300;    
+}
+
+h2.splash {
+    color: #003399
+}
+
+h3 {
+    font-family: Arial, sans-serif;
+}
+
+b {
+    font-weight: bold;
+}
+
+td {
+    font-size: 200%;
+}
+th {
+    font-size: 200%;
+}
+
+code {
+     color: #00aa00;
+}
+
+div.box {
+    font-size: smaller;
+    border-width: medium;
+    padding: 0.25em;
+    background-color: #dddddd;
+}
+

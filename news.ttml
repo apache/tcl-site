@@ -20,6 +20,13 @@
 	  <td valign="top"> 
 	    <h2>News and Status</h2>
 
+
+	    <p><b>17 April, 2001</b>
+	      tcl.apache.org was down over the weekend as covalent
+	      moved to their new office.  Many thanks to them for
+	      hosting the site!
+	    </p>
+
 	    <p>
 	      <b>10 March, 2001</b> <a href="http://tcl.apache.org/neowebscript/">NeoWebScript</a>
 	      joins the Apache Tcl project.

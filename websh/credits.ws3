@@ -1,0 +1,52 @@
+## nca-115-2
+## $Id$
+
+startHtmlPage
+startHtmlBody
+putHeader 0
+
+web::putx {
+    <table border="0" cellpadding="0" cellspacing="0" width="770">
+    {headRow 3 "credits"}
+    <tr valign="top">
+    {navbar_null}
+    <td width="455">
+
+    <h2>Websh 3.5 (current maintainers)</h2>
+    In alphabetical order:<br>
+    Ronnie Brunner<br>
+    Simon Hefti<br>
+    David Welton<br>
+
+    <h2>Websh 3.0 (2000 - 2001)</h2>
+    In order of contribution:<br>
+    Simon Hefti<br>
+    Ronnie Brunner<br>
+    Stefan F&uuml;glistaler<br>
+    Andrej Vckovski<br>
+
+    <h2>Websh 2.0 (1998 - 2000)</h2>
+    In order of contribution:<br>
+    Ronnie Brunner<br>
+    Andrej Vckovski<br>
+    Joachim Hagger<br>
+    Peter Kohler<br>
+
+    <h2>Websh 1.0 (1995 - 1997)</h2>
+    In order of contribution:<br>
+    Andrej Vckovski (the father of Websh)<br>
+    Joachim Hagger<br>
+    Ronnie Brunner<br>
+
+    <h2>Sponsors</h2>
+    Websh was originally developed by 
+    <a href="http://www.netcetera.ch">Netcetera AG</a>, which still
+    sponsors and supports maintenance and development of Websh.
+
+    </td>
+    </tr>
+    </table>
+    <p>
+}
+
+finishPage 7

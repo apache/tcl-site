@@ -49,5 +49,6 @@ div.box {
 }
 
 li {
-   margin-bottom: 0.5em;
+     font-size: smaller;
+     margin-bottom: 0.5em;
 }

@@ -16,6 +16,12 @@
 	    <h2>News & Status</h2>
 
 	    <p>
+	      <b>August 13, 2002</b> <a href="../rivet/">Apache
+	      Rivet</a> is now on the Apache Tcl site.  mod_dtcl will
+	      at some point be phased out in favor of Rivet.
+	    </p>
+
+	    <p>
 	      <b>January 29, 2002:</b> The Apache Tcl mailing list
 	      archives are now available from: <a
 	      href="http://www.apachelabs.org">www.apachelabs.org</a>.

@@ -24,7 +24,9 @@
 	      Apache Tcl is an umbrella for Tcl-Apache integration
 	      efforts.  These projects combine the power of the Apache
 	      web server with the capabilities of the time-tested Tcl
-	      scripting language.
+	      scripting language.  Currently, we host the <a
+	      href="http://tcl.apache.org/mod_dtcl/">mod_dtcl</a>
+	      project, and will have more soon.
 	    </p>
 
 	    <p align="center">

@@ -20,8 +20,20 @@
 	  
 	  <td valign="top"> 
 	    <h2>News & Status</h2>
+
 	    <p>
-	      <b>FIXME, 2000:</b> mod_dtcl is released as an official
+	      <b>December 8, 2000:</b> The mod_dtcl code in CVS has
+	      file upload capabilities, as well as support for
+	      per-virtual-server Tcl interpreters.
+	    </p>
+
+	    <p>
+	      <b>December 8, 2000:</b> tcl.apache.org is now linked
+	      from the Apache site!
+	    </p>
+
+	    <p>
+	      <b>November 10, 2000:</b> mod_dtcl is released as an official
 	      Apache Software Foundation project under the umbrella of
 	      Apache Tcl.
 	    </p>

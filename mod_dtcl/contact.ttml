@@ -23,10 +23,14 @@
 	    <p>
 	      All enquiries regarding mod_dtcl (both usage and
 	      development) should be directed towards the mailing list
-	      at FIXME.  It is not necessary to be subscribed to the
+	      at <a href="mailto:mod_dtcl@tcl.apache.org">mod_dtcl@tcl.apache.org</a>.  It is not necessary to be subscribed to the
 	      mailing list to post, although you might want to set a
 	      reply-to.
 	    </p>
+	    <p>To subscribe to the mailing list, send an empty email
+	    to <a
+	    href="mailto:mod_dtcl-subscribe@tcl.apache.org">mod_dtcl-subscribe@tcl.apache.org</a>.</p>
+
 
 	    <p align="center">
 	      <a href="http://www.apache.org/"><img src="../apache_pb.gif"

@@ -29,12 +29,34 @@
 	      <li>FreeBSD: <a
 	      href="http://www.freebsd.org/ports/www.html#mod_dtcl-0.8.1.1">http://www.freebsd.org/ports/www.html#mod_dtcl-0.8.1.1</a></li>
 	      <li>Windows NT DLL: <a href="ApacheModuleDtcl.dll">ApacheModuleDtcl.dll</a>
-	    (provided by Craig Huckabee)</li>
+	    (provided by Craig Huckabee) (slightly out of date)</li>
 
 	    </ul>
 	    <p>
-	      <a href="mod_dtcl.tar.gz">mod_dtcl source code</a>
+	      <a href="download/">mod_dtcl source code</a> 
+<+
+set fl [ lindex [ glob download/mod_dtcl*tar.gz] end ]
+set sz [ expr { [ file size $fl ] / 1024 } ]
+hputs "( $sz KB )"
++>
+
 	    </p>
+
+	    <p><b>Get mod_dtcl from Anonymous CVS:</b></p>
+	    <p>
+	      <a href="http://dev.apache.org/anoncvs.txt">Detailed
+	      instructions</a> on the use of anonymous CVS.
+	    </p>
+	    <p>
+	      Or, the quick and dirty way to get mod_dtcl via anoncvs:<br>
+	      <code>cvs
+	      -d:pserver:anoncvs@www.apache.org:/home/cvspublic
+	      login</code> (password anoncvs)<br>
+	      <code>cvs
+		-d:pserver:anoncvs@www.apache.org:/home/cvspublic
+		checkout mod_dtcl</code><br>
+	    </p>
+
 	    <p align="center">
 	      <a href="http://www.apache.org/"><img src="../apache_pb.gif"
 						  alt="Powered by Apache" border="0"

@@ -29,6 +29,8 @@
 	      <li>Security review: I would like someone with security background to
   thoroughly go over the code.</li>
 
+	      <li>Someone to make RPMs as new versions come out.</li>
+
 	      <li>Script timeouts: set limits on the length of time a script will run
   before it returns or dies.</li>
 

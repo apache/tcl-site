@@ -62,6 +62,23 @@
 	      the pages associated with those projects.
 	    </p>
 
+	    <h2>Join Us!</h2>
+	    <p>
+	      The Apache Tcl group is interested in bringing new
+	      Tcl-related projects on board.  What we are looking for
+	      is good code, and a good comunity around the software.
+	      Your project doesn't necessarily have to be related to
+	      the Apache web server!  Please contact the PMC (see
+	      below) if you are interested in discussing a code
+	      donation.
+	    </p>
+	    <p>
+	      And, of course, we are always looking for motivated and
+	      talented volunteers who are keen to help out with our
+	      existing projects.  The best place to start is the
+	      mailing list for the project that interests you.
+	    </p>
+
 	    <h2>Mailing Lists</h2>
 	    <p>
 	      These are the mailing lists for the Apache Tcl projects.
@@ -71,9 +88,8 @@
 	    </p>
 	    <p>
 	      It is possible to subscribe to any of these lists by
-8	      sending a message to:
-	      <tt style="font-size:
-		larger">list<b>-subscribe@tcl.apache.org</b></tt>.
+	      sending a message to: <tt style="font-size:
+	      larger">list<b>-subscribe@tcl.apache.org</b></tt>.
 	    </p>
 	    <table class="lists">
 	      <tbody>

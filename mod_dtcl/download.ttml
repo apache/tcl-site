@@ -26,11 +26,13 @@
 	    <ul>
 	      <li>Debian GNU/Linux: <a
 	      href="http://www.debian.org/Packages/unstable/web/libapache-mod-dtcl.html">http://www.debian.org/Packages/unstable/web/libapache-mod-dtcl.html</a>
-	      (provided by Simon Greaves)</li>
+	      </li>
 
 	      <li>Redhat GNU/Linux: <a
-	      href="mod_dtcl-0.10.0-1.i386.rpm">mod_dtcl-0.10.0-1.i386.rpm</a>
-	      and <a href="mod_dtcl-0.10.0-1.src.rpm">mod_dtcl-0.10.0-1.src.rpm</a></li>
+	      href="mod_dtcl-0.10.1-1.i386.rpm">mod_dtcl-0.10.0-1.i386.rpm</a>
+	      and <a
+	      href="mod_dtcl-0.10.1-1.src.rpm">mod_dtcl-0.10.0-1.src.rpm</a>
+	      (provided by Simon Greaves)</li>
 
 	      <li>FreeBSD: <a
 	      href="http://www.freebsd.org/ports/www.html#mod_dtcl-0.8.1.1">http://www.freebsd.org/ports/www.html#mod_dtcl-0.8.1.1</a></li>

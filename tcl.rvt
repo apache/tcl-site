@@ -31,11 +31,12 @@
 	      <li><a href="http://www.tcl.tk/">Tcl
 		  Developer Xchange (www.tcl.tk)</a></li>
 	      <li>Why use Tcl? <a
-	      href="http://www.tcl.tk/advocacy/">Tcl advocacy page</a>.</li>
-	      <li><a href="http://www.arsdigita.com/books/tcl/index">A tutorial for Tcl on the web</a></li>
+		  href="http://www.tcl.tk/advocacy/">Tcl advocacy page</a>.</li>
+
 	      <li>Get started with Tcl. Tcl Tutorials at:
-	      <a
-	      href="http://www.tcl.tk/resource/doc/start/">http://www.tcl.tk/resource/doc/start/</a></li>
+		<a
+		  href="http://www.tcl.tk/resource/doc/start/">http://www.tcl.tk/resource/doc/start/</a>
+	      </li>
 
 	      <li>
 		<a href="http://wiki.tcl.tk/">Tcl Wiki</a>, an
@@ -44,8 +45,8 @@
 
 	      <li>
 		<a
-		href="http://sourceforge.net/foundry/tcl-foundry/">Tcl
-		Foundry</a> at SourceForge.
+		  href="http://sourceforge.net/foundry/tcl-foundry/">Tcl
+		  Foundry</a> at SourceForge.
 	      </li>
 
 	      <li>

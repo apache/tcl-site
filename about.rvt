@@ -78,6 +78,12 @@
 	    <table class="lists">
 	      <tbody>
 		<tr>
+		  <th>Post</th>
+		  <th>Description</th>
+		  <th>Archive</th>
+		  <th>Subscribe</th>
+		</tr>
+		<tr>
 		  <th>
 		    <a
 		    href="mailto:general@tcl.apache.org">general@tcl.apache.org</a>
@@ -85,6 +91,13 @@
 		  <td>
 		    For general questions about Apache Tcl that
 		    don't regard any specific project.
+		  </td>
+		  <td>
+		    <a
+		      href="http://nagoya.apache.org/eyebrowse/SummarizeList?listId=112">general@tcl.apache.org</a></td>
+		  <td>
+		    <a
+		      href="mailto:general-subscribe@tcl.apache.org">general-subscribe@tcl.apache.org</a>
 		  </td>
 		</tr>
 		<tr>
@@ -94,13 +107,49 @@
 		  <td>
 		    User/developer list for mod_dtcl.
 		  </td>
+		  <td>
+		    <a
+		      href="http://nagoya.apache.org/eyebrowse/SummarizeList?listId=115">mod_dtcl@tcl.apache.org</a>
+		  </td>
+		  <td>
+		    <a
+		      href="mailto:mod_dtcl-subscribe@tcl.apache.org">mod_dtcl-subscribe@tcl.apache.org</a>
+		  </td>
 		</tr>
+
+		<tr>
+		  <th>
+		    <a href="mailto:mod_dtcl-cvs@tcl.apache.org">mod_dtcl-cvs@tcl.apache.org</a>
+		  </th>
+		  <td>
+		    mod_dtcl CVS commits.
+		  </td>
+		  <td>
+		    <a
+		      href="http://nagoya.apache.org/eyebrowse/SummarizeList?listId=116">mod_dtcl-cvs@tcl.apache.org</a>
+		  </td>
+		  <td>
+		    <a
+		      href="mailto:mod_dtcl-cvs-subscribe@tcl.apache.org">mod_dtcl-cvs-subscribe@tcl.apache.org</a>
+		  </td>
+
+		</tr>
+
+
 		<tr>
 		  <th>
 		    <a href="mailto:mod_tcl-dev@tcl.apache.org">mod_tcl-dev@tcl.apache.org</a>
 		  </th>
 		  <td>
 		    List for the discussion of mod_tcl development.
+		  </td>
+		  <td>
+		    <a
+		      href="http://nagoya.apache.org/eyebrowse/SummarizeList?listId=117">mod_tcl-dev@tcl.apache.org</a>
+		  </td>
+		  <td>
+		    <a
+		      href="mailto:mod_tcl-dev-subscribe@tcl.apache.org">mod_tcl-dev-subscribe@tcl.apache.org</a>
 		  </td>
 		</tr>
 		<tr>
@@ -110,6 +159,14 @@
 		  <td>
 		    Developer list for Rivet.
 		  </td>
+		  <td>
+		    <a
+		      href="http://nagoya.apache.org/eyebrowse/SummarizeList?listId=118">rivet-dev@tcl.apache.org</a>
+		  </td>
+		  <td>
+		    <a
+		      href="mailto:rivet-dev-subscribe@tcl.apache.org">rivet-dev-subscribe@tcl.apache.org</a>
+		  </td>
 		</tr>
 		<tr>
 		  <th>
@@ -117,6 +174,14 @@
 		  </th>
 		  <td>
 		    User list for Rivet.
+		  </td>
+		  <td>
+		    <a
+		      href="http://nagoya.apache.org/eyebrowse/SummarizeList?listId=119">rivet-user@tcl.apache.org</a>
+		  </td>
+		  <td>
+		    <a
+		      href="mailto:rivet-user-subscribe@tcl.apache.org">rivet-user-subscribe@tcl.apache.org</a>
 		  </td>
 		</tr>
 		<tr>
@@ -126,6 +191,14 @@
 		  <td>
 		    Developer list for Websh.
 		  </td>
+		  <td>
+		    <a
+		      href="http://nagoya.apache.org/eyebrowse/SummarizeList?listId=122">websh-dev@tcl.apache.org</a>
+		  </td>
+		  <td>
+		    <a
+		      href="mailto:websh-dev-subscribe@tcl.apache.org">websh-dev-subscribe@tcl.apache.org</a>
+		  </td>
 		</tr>
 		<tr>
 		  <th>
@@ -134,14 +207,16 @@
 		  <td>
 		    User list for Websh.
 		  </td>
-		</tr>
-		<tr>
-		  <th>
-		    <a href="mailto:mod_dtcl@tcl.apache.org">mod_dtcl@tcl.apache.org</a>
-		  </th>
 		  <td>
-		    User/developer list for mod_dtcl.
+<!--		    <a
+		      href="http://nagoya.apache.org/eyebrowse/SummarizeList?listId=119">websh-user@tcl.apache.org</a> -->
+		      --
 		  </td>
+		  <td>
+		    <a
+		      href="mailto:websh-user-subscribe@tcl.apache.org">websh-user-subscribe@tcl.apache.org</a>
+		  </td>
+
 		</tr>
 
 		<tr>
@@ -155,8 +230,9 @@
 		    sure.  Most likely, you should write to the
 		    general list instead, as it's open to all.
 		  </td>
+		  <td>Not archived publically.</td>
+		  <td>For private discussions only.</td>
 		</tr>
-
 	      </tbody>
 	    </table>
 	  </td>

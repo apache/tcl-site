@@ -13,11 +13,8 @@
 	  <? include navbar.html ?>
 	  <td class="main" valign="top">
 	    <p>
-	      <b>Apache Rivet</b> is currently under heavy
-	      development, and is therefore only available via CVS.
-	      Basic instructions for logging on and checking out the
-	      code follow.  For more information, please see a more
-	      complete guide to CVS.
+	      <b>Apache Rivet</b> is still under development - you can
+	      always get the most recent version out of CVS.
 	    </p>
 	    <p>
 	      <code>cvs
@@ -26,6 +23,10 @@
 	      </code><br>(using the password "anoncvs")
 	    </p>
 	    <p><code>cvs&nbsp;-d:pserver:anoncvs@cvs.apache.org:/home/cvspublic&nbsp;checkout&nbsp;tcl-rivet</code></p>
+	    <p>
+	      For your convenience, the latest version is available
+	      for <a href="download/">download</a>.
+	    </p>
 	  </td>
 	</tr>
     </table>

@@ -22,11 +22,11 @@ These are some examples, rather limited ones, of what can be done with mod_dtcl.
 <tr><td><hr><b>Hello world</b></td></tr>
 <tr><td bgcolor=gray><pre>
 
-&lt;+
+&lt;?
 headers setcookie "foo" "bar" # we have to put this before any 'hputs' statements
 
 hputs "Hello world"
-+&gt;
+?&gt;
 
 </pre>
 </td></tr>
@@ -56,11 +56,11 @@ hputs "hello world"
 
 <tr><td bgcolor=gray><pre>
 
-&lt;+ if { 1 } { +&gt;
+&lt;? if { 1 } { ?&gt;
 
 &lt;h2> True &lt;/h2>
 
-&lt;+ }  +&gt;
+&lt;? }  ?&gt;
 
 </td></tr></pre>
 
@@ -80,16 +80,16 @@ Produces:
 
 <tr><td bgcolor=gray><pre>
 
-&lt;+ 
+&lt;? 
 set x 0 
 while { $x &lt; 5 } { 
  hputs "\$x = $x&lt;br>"
  incr x
-+&gt;
+?&gt;
 
 LOOP&lt;br>
 
-&lt;+ }  +&gt;
+&lt;? }  ?&gt;
 
 </pre>
 </td></tr>
@@ -109,7 +109,7 @@ LOOP<BR>
 </td></tr>
 <tr><td bgcolor=gray><pre>
 
-&lt;+ 
+&lt;? 
  hgetvars
 if { [ array exists VARS ] } {
     hputs "&lt; ul>"
@@ -137,7 +137,7 @@ if { [ array exists COOKIES ] } {
     hputs "&lt;/ul>"
 }
 
-+&gt;
+?&gt;
 
 </pre>
 </td></tr>
@@ -177,7 +177,7 @@ if { [ array exists COOKIES ] } {
 </td></tr>
 <tr><td bgcolor=gray><pre>
 
-&lt;+
+&lt;?
 
 set listone { 1 2 3 4 5 6 7 8 }
 set listtwo { 1 2 3 4 5 6 7 8 }
@@ -193,7 +193,7 @@ foreach { a } $listone  {
     hputs "&lt;/tr&gt;\n"
 }
 hputs "&lt;/table&gt;\n"
-+&gt;
+?&gt;
 
 
 </pre>

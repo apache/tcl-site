@@ -23,10 +23,21 @@
 	      href="http://www.debian.org/Packages/unstable/web/libapache-mod-dtcl.html">http://www.debian.org/Packages/unstable/web/libapache-mod-dtcl.html</a>
 	      </li>
 
+<?
+
+set rpmurl [ glob download/*.i386.rpm ]
+set srpmurl [ glob download/*.src.rpm ]
+cd download/
+set rpm [ glob *.i386.rpm ]
+set srpm [ glob *.src.rpm ]
+cd ..
+
+?>
+
 	      <li>Redhat GNU/Linux: <a
-	      href="download/mod_dtcl-0.10.1-1.i386.rpm">mod_dtcl-0.10.1-1.i386.rpm</a>
+	      href="<? hputs $rpmurl ?>"><? hputs $rpm ?></a>
 	      and <a
-	      href="download/mod_dtcl-0.10.1-1.src.rpm">mod_dtcl-0.10.1-1.src.rpm</a>
+	      href="<? hputs $srpmurl ?>"><? hputs $srpm ?></a>
 	      (provided by Simon Greaves)</li>
 
 	      <li>FreeBSD: <a

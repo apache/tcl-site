@@ -261,7 +261,7 @@ proc navbar_docu {{where 0}} {
 	{navBarStart}
         {navBarElement "docu.ws3" "documentation" [expr $where != 0]}
         {navBarElement "whitepaper.ws3" "white paper" [expr $where != 1]}
-        {navBarElement "quickref.ws3" "quick reference" [expr $where != 2]}
+        {navBarElement "quickref/" "quick reference" [expr $where != 2]}
         {navBarElement "examples.ws3" "examples" [expr $where != 4]}
 	{navBarEnd}
     }

@@ -537,7 +537,7 @@ same method of the application).
 
 This section lists the main commands of Websh. For a complete
 overview, you may want to look at the
-<a href="quickref.html">Quick Reference</a>.
+<a href="quickref/">Quick Reference</a>.
 
 <br><br>
 <a name="474"><a href="#toc"><h2>6.1 request and url management</h2></a>

@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head><meta content="text/html; charset=ISO-8859-1" http-equiv="Content-Type"><title>Data encryption</title><meta name="generator" content="DocBook XSL Stylesheets V1.50.0"><link rel="home" href="index.html" title="Websh Reference"><link rel="up" href="index.html" title="Websh Reference"><link rel="previous" href="file_handling_and_file_IO.html" title="File handling and file I/O"><link rel="next" href="uri-html-_en-decoding.html" title="Uri-/html- en-/decoding"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Data encryption</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="file_handling_and_file_IO.html">Prev</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="uri-html-_en-decoding.html">Next</a></td></tr></table><hr></div><div class="section"><div class="titlepage"><div><hr><h2 class="title" style="clear: both"><a name="data_encryption"></a>Data encryption</h2></div></div><p style="width:90%">
+      Encrypt (<span style="font-family:monospace"><b>web::encrypt</b></span>) and decrypt
+      (<span style="font-family:monospace"><b>web::decrypt</b></span>) data. By default, the
+      built-in, weak encryption is used. encryption is extensible by
+      plug-Ins.  The encryption module tries all plug-Ins from a list
+      until the first plug-In was able to en-/decrypt the input.  See
+      <span style="font-family:monospace"><b>web::config</b></span> for the configuration of the
+      plug-Ins to be used.
+    </p><div class="section"><div class="titlepage"><div><h3 class="title"><a name="web::encrypt"></a>web::encrypt</h3></div></div><p style="width:90%">
+
+
+	</p><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><tt>web::encrypt</tt></span>  <tt><span style="text-decoration:underline"><i><tt>data</tt></i></span></tt></span></div><p style="width:90%">
+	Returns encrypted data.
+
+      </p></div><div class="section"><div class="titlepage"><div><h3 class="title"><a name="web::decrypt"></a>web::decrypt</h3></div></div><p style="width:90%">
+
+
+	</p><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><tt>web::decrypt</tt></span>  <tt><span style="text-decoration:underline"><i><tt>data</tt></i></span></tt></span></div><p style="width:90%">
+
+	Returns decrypted data.
+
+	</p><div class="example"><p class="title"><b>Example 11. web::encrypt</b></p><pre style="background:#bbffbb ; width:75%" class="programlisting">
+	    % web::encrypt &quot;Hello, world!&quot;
+	    XDIVAhkgkxRjcfA7UTwpD7
+	    % web::decrypt [web::encrypt &quot;Hello, world!&quot;]
+	    Hello, world!
+	    %
+	  </pre></div><p style="width:90%">
+      </p></div><div class="section"><div class="titlepage"><div><h3 class="title"><a name="encryption_plug-in_D"></a>Encryption plug-in D</h3></div></div><p style="width:90%">
+
+      </p></div><div class="section"><div class="titlepage"><div><h3 class="title"><a name="web::encryptd"></a>web::encryptd</h3></div></div><p style="width:90%">
+
+	By default, Websh uses this plug-In for weak data
+	encryption for encryption (<span style="font-family:monospace"><b>web::encryptd</b></span>)
+	and decryption (<span style="font-family:monospace"><b>web::decryptd</b></span>).  The
+	encryption key is managed with
+	<span style="font-family:monospace"><b>web::crpytdkey</b></span>.
+
+      </p><p style="width:90%">
+
+	</p><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><tt>web::encryptd</tt></span>  <tt><span style="text-decoration:underline"><i><tt>data</tt></i></span></tt></span></div><p style="width:90%">
+
+	Returns encrypted  <tt><span style="text-decoration:underline"><i><tt>data</tt></i></span></tt>.
+
+      </p></div><div class="section"><div class="titlepage"><div><h3 class="title"><a name="web::decryptd"></a>web::decryptd</h3></div></div><p style="width:90%">
+
+
+	</p><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><tt>web::decryptd</tt></span>  <tt><span style="text-decoration:underline"><i><tt>data</tt></i></span></tt></span></div><p style="width:90%">
+
+	Returns decrypted  <tt><span style="text-decoration:underline"><i><tt>data</tt></i></span></tt>.
+
+      </p></div><div class="section"><div class="titlepage"><div><h3 class="title"><a name="web::cryptdkey"></a>web::cryptdkey</h3></div></div><p style="width:90%">
+
+	</p><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><tt>web::cryptdkey</tt></span>  ?<tt><span style="text-decoration:underline"><i><tt>key</tt></i></span></tt>?</span></div><p style="width:90%">
+
+	Sets the new key for encryption. If no argument is given,
+	resets to the default key. This command does not return the
+	currently active key, in difference to other configuration
+	commands of Websh.
+
+      </p></div><div class="section"><div class="titlepage"><div><h3 class="title"><a name="encryption_plug-in_interface_"></a>Encryption plug-in interface</h3></div></div><p style="width:90%">
+	<span class="emphasis"><em>For plug-in developers only</em></span>
+      </p><p style="width:90%">
+	The encryption plug-in is required to implement the interface
+	described below (note that to activate your plugin, use <span style="font-family:monospace"><b>web::config encryptchain</b></span> and <span style="font-family:monospace"><b>web::config decryptchain</b></span> respectively):
+	</p><div class="itemizedlist"><ul type="disc"><li><div style="margin-bottom:6">
+	      <span style="font-family:monospace"><b>web::yourencrypt</b></span> accepts one argument
+	      web::yourencrypt takes a string as input and generates a
+	      string which must be URI compliant.
+	    </div></li><li><div style="margin-bottom:6">
+	      <span style="font-family:monospace"><b>web::yourdecrypt</b></span> accepts one argument
+	      web::yourdecrypt takes a string as input and returns a
+	      string.
+	    </div></li><li><div style="margin-bottom:6">symmetry: <span class="emphasis"><em><span style="font-family:monospace"><b>$in ==
+		  [web::yourdecrypt [web::yourencrypt
+		  $in]]</b></span></em></span>
+	    </div></li><li><div style="margin-bottom:6">
+	      error messaging: <span class="emphasis"><em>TCL_OK</em></span> for
+	      success. <span class="emphasis"><em>TCL_ERROR</em></span> for any error
+	      during en-/decryption. <span class="emphasis"><em>TCL_CONTINUE</em></span>
+	      for unknown encryption type (pass on to next method).
+	    </div></li></ul></div><p style="width:90%">
+      </p></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="file_handling_and_file_IO.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="index.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="uri-html-_en-decoding.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">File handling and file I/O </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Uri-/html- en-/decoding</td></tr></table></div></body></html>

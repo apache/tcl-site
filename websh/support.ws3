@@ -16,7 +16,7 @@ web::putx {
     and support. We work hard to keep the site
     up-to-date with all information you need. Here, you can find
     the {pageLink whitepaper.ws3 -show "Websh white paper"} and
-    the {pageLink quickref.ws3 -show "quick reference"} as well as
+    the {pageLink quickref/ -show "quick reference"} as well as
     a list of {pageLink faq.ws3 -show "frequently asked questions"}.
       <br><br>
 

@@ -1,0 +1,49 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head><meta content="text/html; charset=ISO-8859-1" http-equiv="Content-Type"><title>File handling and file I/O</title><meta name="generator" content="DocBook XSL Stylesheets V1.50.0"><link rel="home" href="index.html" title="Websh Reference"><link rel="up" href="index.html" title="Websh Reference"><link rel="previous" href="context_handling.html" title="Context handling"><link rel="next" href="data_encryption.html" title="Data encryption"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">File handling and file I/O</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="context_handling.html">Prev</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="data_encryption.html">Next</a></td></tr></table><hr></div><div class="section"><div class="titlepage"><div><hr><h2 class="title" style="clear: both"><a name="file_handling_and_file_IO"></a>File handling and file I/O</h2></div></div><div class="section"><div class="titlepage"><div><h3 class="title"><a name="web::include"></a>web::include</h3></div></div><p style="width:90%">
+
+	</p><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><tt>web_include</tt></span>  <tt><span style="text-decoration:underline"><i><tt>fileName</tt></i></span></tt> ?<tt><span style="text-decoration:underline"><i><tt>msg</tt></i></span></tt>?</span></div><p style="width:90%">
+
+	If the file <tt><span style="text-decoration:underline">fileName</span></tt> exists, it is sourced (must be a
+	script). Otherwise if the library fileName+&quot;shared lib extension&quot;
+	exists, it is loaded (must be a shared library). Returns 0 on success,
+	1 otherwise. If an error occurs, an error message is written to <tt><span style="text-decoration:underline">msg</span></tt>.
+
+      </p></div><div class="section"><div class="titlepage"><div><h3 class="title"><a name="web::readfile"></a>web::readfile</h3></div></div><p style="width:90%">
+
+
+	</p><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><tt>web::readfile</tt></span>  <tt><span style="text-decoration:underline"><i><tt>file</tt></i></span></tt> <tt><span style="text-decoration:underline"><i><tt>varName</tt></i></span></tt> <tt><span style="text-decoration:underline"><i><tt>msg</tt></i></span></tt></span></div><p style="width:90%">
+
+	<tt><span style="text-decoration:underline">file</span></tt> is read and written to
+	<tt><span style="text-decoration:underline">varName</span></tt>. Returns 0 on success, 1
+	otherwise. If an error occurs, an error message is written to
+	the variable <tt><span style="text-decoration:underline">msg</span></tt>.
+
+      </p></div><div class="section"><div class="titlepage"><div><h3 class="title"><a name="web::lockfile_and_web::unlockfile"></a>web::lockfile and web::unlockfile</h3></div></div><p style="width:90%">
+	</p><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><tt>web::lockfile</tt></span>  <tt><span style="text-decoration:underline"><i><tt>fh</tt></i></span></tt></span></div><p style="width:90%">
+	</p><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><tt>web::unlockfile</tt></span>  <tt><span style="text-decoration:underline"><i><tt>fh</tt></i></span></tt></span></div><p style="width:90%">
+
+	Interface to lockf(). lockf() works best on local filesystems.
+	Please read the documentation of lockf on your system to learn
+	about the problems and limitations of file locking. Note that
+	web::lockfile also performs a seek() and resets the file
+	cursor to the beginning of the file.
+
+	<span class="emphasis"><em>Note</em></span> that the file needs to be open for
+	writing.
+
+      </p></div><div class="section"><div class="titlepage"><div><h3 class="title"><a name="web::truncatefile"></a>web::truncatefile</h3></div></div><p style="width:90%">
+
+
+	</p><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><tt>web::truncatefile</tt></span>  <tt><span style="text-decoration:underline"><i><tt>fh</tt></i></span></tt></span></div><p style="width:90%">
+
+	Interface to truncate(). Truncates a file based on the file
+	handle, while Tcl's file commands are based on file
+	names. This is used to truncate a file while holding the lock.
+
+      </p></div><div class="section"><div class="titlepage"></div><div class="example"><p class="title"><b>Example 10. web::lockfile</b></p><pre style="background:#bbffbb ; width:75%" class="programlisting">
+	  set fh [open [web::tempfile] w]
+	  web::lockfile $fh
+	  puts $fh foo
+	  web::unlockfile $fh
+	  close $fh
+	</pre></div></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="context_handling.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="index.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="data_encryption.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Context handling </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Data encryption</td></tr></table></div></body></html>

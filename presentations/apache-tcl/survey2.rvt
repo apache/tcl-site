@@ -21,6 +21,18 @@ if { [var exists Total] } {
     set Total 1
 }
 
+if { ! [string is integer $Total] || ! [string is integer $TclUsers] } {
+    error "Only integers, please"
+}
+
+if { $TclUsers > 200 } {
+    set TclUsers 200
+}
+
+if { $Total > 200 } {
+    set Total 200
+}
+
 if { $TclUsers > $Total } {
     set Total $TclUsers
 }

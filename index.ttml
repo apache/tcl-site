@@ -3,6 +3,7 @@
   <head>
     <title>Apache Tcl</title>
     <link rel="stylesheet" href="style.css">
+    <meta HTTP-EQUIV="REFRESH" content="1;URL=http://tcl.apache.org/">
   </head>
   <body>
     <? title ?>

@@ -3,23 +3,71 @@
   <head>
     <title>Example Tcl Code</title>
     <link rel="stylesheet" href="style.css">
+    <script language="javascript" type="text/javascript">
+      function MouseOn(el) {
+      el.OldBG = el.style.getPropertyValue("background-color");
+      el.OldColor = el.style.getPropertyValue("color");
+      el.style.setProperty("background-color", '#ffffff', "");
+      el.style.setProperty("color", '#000000', "");
+      }
+      function MouseOff(el) {
+      el.style.setProperty("color", el.OldColor, "");
+      el.style.setProperty("background-color", el.OldBG, "");
+      }
+    </script>
   </head>
 
   <body>
     <? prevnext "<h1>Example Tcl Code</h1>" ?>
 
+<?
+
+proc dospan {txt} {
+    return [format {<span onmouseover="MouseOn(this)" onmouseout="MouseOff(this)">%s</span>} $txt]
+}
+
+proc pdospan {txt} {
+    puts -nonewline [dospan $txt]
+}
+
+set Code {
+if { [var exists customerid] } {
+    array set customer [get_customer_info $customerid]
+    puts "Welcome, Mr. $customer(Surname)"
+} else {
+    puts "Hi, would you like to register a new account?"
+}
+}
+
+puts "<hr>"
+foreach el $Code {
+    if {[llength $el] > 1} {
+	set el [string map {\n <br> " " &nbsp;} $el]
+	puts [dospan "{ $el }"]
+    } else {
+	puts "[dospan $el]"
+    }
+}
+puts "<hr>"
+
+?>
+
+
     So, Dave, show us the code...
 
-    <PRE>
+<b>
 
-<B><FONT COLOR="#A020F0">if</FONT></B> { [var exists customerid] } {
-    <B><FONT COLOR="#A020F0">array</FONT></B> <B><FONT COLOR="#A020F0">set</FONT></B> customer [get_customer_info $<FONT COLOR="#B8860B">customerid</FONT>]
-    <B><FONT COLOR="#A020F0">puts</FONT></B> <B><FONT COLOR="#BC8F8F">&quot;Welcome, Mr. $customer(Surname)&quot;</FONT></B>
+<pre>
+<? pdospan {if { [var exists customerid] }} ?> {
+    array set customer <? pdospan {[get_customer_info $customerid]} ?>
+    puts "Welcome, Mr. <? pdospan {$customer(Surname)} ?>"
 } else {
-    <B><FONT COLOR="#A020F0">puts</FONT></B> <B><FONT COLOR="#BC8F8F">&quot;Hi, would you like to register a new account?&quot;</FONT></B>
-}</PRE>
+    puts "Hi, would you like to register a new account?"
+}
+</pre>
+</b>
 
-Simple enough...
+Simple enough!
 
 
   </body>

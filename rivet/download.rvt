@@ -13,11 +13,8 @@
 	  <? include navbar.html ?>
 	  <td class="main" valign="top">
 	    <p>
-	      <b>Apache Rivet</b> is available ...
-	    </p>
-	    <p>
-	      It is also possible to fetch the latest versions of
-	      Rivet from Apache's CVS:
+	      <b>Apache Rivet</b> is currently under heavy
+	      development, and is therefore only available via CVS.
 	    </p>
 	    <p>
 	      <code>cvs

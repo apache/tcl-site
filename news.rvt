@@ -14,6 +14,13 @@
 	    <h2>News and Status</h2>
 
 	    <p>
+	      <b>28 May, 2003:</b> New site live.  Rivet has
+	      officially superceded mod_dtcl and NeoWebScript,
+	      although those pages will of course still be accessible
+	      for the time being.
+	    </p>
+
+	    <p>
 	      <b>18-21 November, 2002:</b> Come join us at <a
 	      href="http://www.apachecon.com">ApacheCon</a>!  David
 	      Welton will be speaking about Apache Tcl, and it would

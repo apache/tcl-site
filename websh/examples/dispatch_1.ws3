@@ -1,0 +1,27 @@
+# register the websh command "pricelist"
+web::command pricelist {
+
+    # web::put sends string to the default output channel
+    # (stdout in the CGI case), including HTTP headers
+    web::put {<tt><h2>price list</h2></tt>}
+
+    # web::cmdurl produces a URL with querystring. In this case,
+    # we just want to switch back to "default", that's why we omit
+    # an explicit command name and just use ""
+    web::put "<a href=\"[web::cmdurl ""]\">back</a>"
+}
+
+# register the websh command "default"
+web::command default {
+    # welcome note
+    web::put {<tt><h2>hello, customer</h2></tt>}
+    # link to an other HTML page of this application, the price list.
+    # We generate the URL using web::cmdurl and specify the command
+    # to be used: it is called pricelist and has been defined above.
+    web::put "<a href=\"[web::cmdurl pricelist]\">price list</a>"
+}
+
+# do the command dispatching
+# this will switch into "pricelist" or "default" depending on
+# the query_string
+web::dispatch

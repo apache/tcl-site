@@ -1,0 +1,72 @@
+#
+# This Example shows you how to handle checkboxes in a form.
+#
+
+# set flag
+set first_load "on"
+
+
+# see confirmation form example
+proc page {title code} {
+    web::putx {<html><head><title>{web::put $title}</title></head>
+	<body bgcolor="#ffffff" text="#000000">
+	<h3>{web::put $title}</h3>
+    }
+    uplevel $code
+    web::put "</body></html>\n"
+}
+
+# see confirmation form example
+proc form {page code} {
+    web::put "<form enctype=\"text/html\" method=\"post\" action=\"[web::cmdurl $page]\">"
+    uplevel $code
+    web::put "</form>"
+}
+
+proc showForm {error} {
+    global first_load
+    # generate a page with Title "File upload example"
+     page "checkbox example" {
+	# generate a form with action "submit"
+		# the return value of a checkbox is no value or "on"
+	form "submit" {
+# web::match is used to search the value "on" in the variables time_flag and firstload.
+# If the value is found it returns a checked.
+	    web::putx {
+		<br>Please choose the information that should be displayed.<br><br>
+		Time
+ 		<input name="time_flag" type="checkbox" {web::put [web::match "checked" [web::formvar time_flag $first_load] "on"]}>
+		Day
+		<input name="day_flag" type="checkbox" {web::put [web::match "checked" [web::formvar day_flag $first_load] "on"]}>
+		Date
+		<input name="date_flag" type="checkbox" {web::put [web::match "checked" [web::formvar date_flag $first_load] "on"]}>
+		<br>
+		{set output [web::match "%T &nbsp;" [web::formvar time_flag $first_load] "on"]}
+		{append output [web::match "%A &nbsp;" [web::formvar day_flag $first_load] "on"]}
+		{append output [web::match "%d.%m.%Y" [web::formvar date_flag $first_load] "on"]}
+		{web::put [clock format [clock seconds] -format $output]}
+		<br>
+		<input type="submit" name="ok" value="Send">
+	    }
+	}
+    }
+}
+
+
+# see confirmation form example
+web::command default {
+    showForm 0
+}
+
+
+# With the set first_load 0 we know that the showForm is not displayed
+# the first time.
+# See also confirmation form example.
+
+web::command submit {
+	set first_load 0
+	showForm 0
+}
+
+#see dispatch example
+web::dispatch

@@ -1,0 +1,218 @@
+# "order" form example
+#
+# The "customer" fills out a form, say an order form.
+# The form data is validated and a confirmation page
+# displayed. ALso, a confirmation e-mail is sent to the
+# customer.
+#
+# In addition, logging is used.
+
+
+# turn on logging
+#
+# web::logfilter determines which log messages will be sent to the log
+# destination.  The rule here is: let all log messages pass which have
+# facilities that match "*" and which have a level up to and including
+# level "debug"
+web::logfilter add *.-debug
+
+# define where to send log messages to. Here we use a file
+# and again define a log destination based filter, which is again
+# "*.-debug" as above
+web::logdest add *.-debug file ../../logs/emailform.log
+
+
+# utility command to handle an HTML page
+proc page {title code} {
+    web::putx {<html><head><title>{web::put $title}</title></head>
+	<body bgcolor="#ffffff" text="#000000">
+	<h1>{web::put $title}</h1>
+    }
+    uplevel $code
+    web::put "</body></html>\n"
+}
+
+# utility command to handle an html form
+proc form {page code} {
+    web::put "<form method=\"post\" action=\"[web::cmdurl $page]\">"
+    uplevel $code
+    web::put "</form>"
+}
+
+# define the form where address is entered
+proc showForm {error} {
+
+    # generate a page with Title "Form"
+    page "Order Form" {
+	# generate a form with action "submit"
+	form "submit" {
+	    web::putx {
+		<dl>
+		<dt><b>Name:</b> {
+		    # if "error" flag is set, show the red error message asking for input
+		    if {$error == 1} {
+			web::put "<font color=\"\#990000\">Please enter your name</font>\n"
+		    }
+		}
+		<dd><input type="text" name="name" value="{web::put [web::htmlify [web::formvar name]]}" size="30"><p>
+		<dt><b>Address:</b>
+		<dd><textarea name="addr" rows="4" cols="30" wrap="auto">{web::put [web::htmlify [web::formvar addr]]}</textarea><p>
+		<dt><b>E-Mail:</b> {
+		    # if "error" flag is set, ask for valid e-mail address
+		    if {$error == 2} {
+			web::put "<font color=\"\#990000\">Please enter a valid email addres</font>\n"
+		    }
+		}
+		<dd><input type="text" name="email" value="{web::put [web::htmlify [web::formvar email]]}" size="30"><p>
+		</dl>
+		<input type="submit" name="ok" value="Send">
+	    }
+	}
+    }
+}
+
+# validator:
+#
+# make sure we have a name of non-zero length.
+# Also, make sure the e-mail address is not completely wrong.
+proc checkFormData {} {
+
+    # check if a value is in the name field
+    if  { [string length [web::formvar name]]  < 1} {
+	# return error code
+	return 1
+    }
+
+    # log (facility: emailform, level: debug)
+    web::log emailform.debug {name [web::formvar name] is valid}
+
+    # check email
+    set email [web::formvar email]
+
+    # make sure we have alpha-numeric stuff separated by "@"
+    if {![regexp -nocase {^([a-z0-9]+)@([a-z0-9]+)\.+([a-z]+)$} \
+	      $email email name domain]} {
+	# return error code
+	return 2
+    }
+
+    # check length of domain
+    if {[string length $domain] < 3} {
+	return 2
+    }
+
+    web::log emailform.debug {email [web::formvar email] is valid}
+
+    # looks good: no error
+    return 0
+}
+
+# sendEmail
+#
+# create the e-mail message and send it to the given e-mail address
+proc sendEmail {} {
+
+    set emailtxt {
+
+Thank you for your submission.
+
+We have recieved the following information:}
+    append emailtxt "\nName:\n[web::formvar name]\n"
+    append emailtxt "Address:\n"
+    append emailtxt [web::formvar addr]
+    append emailtxt {
+
+Find more information about Webshell at http://tcl.apache.org/websh/
+
+The team.
+    }
+    # log message
+    web::log emailform.debug "e-mail: $emailtxt"
+
+    if { [catch {
+	# Open pipe for e-mail
+	set fh [open "| /usr/lib/sendmail [web::formvar email]" w]
+	puts $fh "From: info@tcl.apache.org"
+	puts $fh "Subject: websh3 sample application - sample confirmation"
+	puts $fh ""
+	puts $fh $emailtxt
+	close $fh
+    } cmsg ] } {
+
+	showErrorPage
+    }
+}
+
+
+proc showErrorPage {} {
+
+    page "Error" {
+
+	web::putx {
+	    <h3>Error</h3>
+	    An error occurred while processing your request.
+	    Please {web::put <a href=\"[web::cmdurl default]\">try</a>} again
+	    <br><br>
+	    If the problem persists, please contact the
+	    {web::put <a href=\"mailto:webmaster@tcl.apache.org\">webmaster</a>}.
+	}
+    }
+}
+
+proc showConfirmationPage {} {
+
+    page "Confirmation" {
+
+	web::putx {
+	    <h3>Thank you for your order</h3>
+	    We have recieved the following information:
+	    <dl>
+	    <dt><b>Name:</b>
+	    <dd>{web::put [web::htmlify [web::formvar name]]}<p>
+	    <dt><b>Address:</b>
+	    <dd>{
+		# take care of linebreaks in address
+		regsub -all "\r\n" [web::htmlify [web::formvar addr]] "<br>" addr
+		web::put $addr
+	    }<p>
+	    <dt><b>E-Mail:</b>
+	    <dd>{web::put [web::htmlify [web::formvar email]]}<p>
+	    </dl>
+	    You should recieve a confirmation by e-mail shortly.
+	    <br>
+	    {web::put <a href=\"[web::cmdurl default]\">Order more</a>}
+	    cool stuff.
+	}
+    }
+}
+
+# register the "default" command
+#
+# This command will be used whenever no specific command has been specified.
+# We use it to show an empty form for address submission.
+web::command default {
+    showForm 0
+}
+
+
+# register command "submit"
+#
+# This is the "action" of our form. The form data is validated. If
+# the formdata is incomplete or invalid, the form is re-displayed with
+# an error info, where the original input is displayed as well.
+#
+# If the data is valid, the confirmation page is shown and
+# an e-mail is sent to the specified address.
+
+web::command submit {
+
+    if { [set res [checkFormData]] == 0 } {
+	sendEmail
+	showConfirmationPage
+    } else {
+	showForm $res
+    }
+}
+
+
+web::dispatch

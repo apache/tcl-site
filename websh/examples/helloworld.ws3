@@ -1,0 +1,3 @@
+# Hello world
+
+web::put "Hello, world"

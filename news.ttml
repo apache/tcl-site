@@ -10,8 +10,15 @@
     <table border="0">
 	<tr>
 	  <? include navbar.html ?>
-	  <td valign="top"> 
+	  <td valign="top">
 	    <h2>News and Status</h2>
+
+	    <p>
+	      <b>29 January, 2002:</b> All Apache Tcl mailing lists
+	      are now on-line at <a
+	      href="http://www.apachelabs.org">www.apachelabs.org</a>.
+	      Thanks to Justin Erenkrantz!
+	    </p>
 
 	    <p><b>11 October, 2001</b>
 	      There are a fair amount of visitors from .jp addresses.

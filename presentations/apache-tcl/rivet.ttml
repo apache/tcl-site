@@ -1,0 +1,30 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>Apache Rivet</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body>
+    <? prevnext "<h1>Apache Rivet</h1>" ?>
+
+    The most recent of the Apache Tcl projects, Rivet is the evolution
+    of mod_dtcl and NeoWebScript, together, being worked on by David
+    Welton and Damon Courtney.
+
+    <ul>
+      <li>
+	Design goals:
+	<ul>
+	  <li>Fast</li>
+	  <li>Light</li>
+	  <li>Simple</li>
+	  <li>Powerful</li>
+	  <li>Extensions available</li>
+	  <li>Take advantage of Tcl and Apache features</li>
+	</ul>
+      </li>
+
+
+  </body>
+</html>

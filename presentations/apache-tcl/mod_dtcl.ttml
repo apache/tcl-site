@@ -1,0 +1,27 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>mod_dtcl</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body>
+    <? prevnext "<h1>mod_dtcl</h1>" ?>
+
+    <ul>
+      <li>Created in 1998 - one of the first open source Tcl/Web
+      products.</li>
+      <li>Apache Tcl created in late 2000.</li>
+      <li>
+	Design goals:
+	<ul>
+	  <li>Fast</li>
+	  <li>Light</li>
+	  <li>Simple</li>
+	  <li>Incorporate the good ideas of PHP</li>
+	</ul>
+      </li>
+    </ul>
+
+  </body>
+</html>

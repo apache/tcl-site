@@ -1,0 +1,35 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>Another Example</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body>
+    <? prevnext "<h1>Another Example</h1>" ?>
+
+<PRE>
+<B><FONT COLOR="#A020F0">proc</FONT></B> <B><FONT COLOR="#0000FF">greeting</FONT></B> {<FONT COLOR="#B8860B"></FONT>} {
+    <B><FONT COLOR="#A020F0">switch</FONT></B> $<FONT COLOR="#B8860B">HTTP_ACCEPT_LANGUAGE</FONT> {
+	en {
+	    <B><FONT COLOR="#A020F0">return</FONT></B> <B><FONT COLOR="#BC8F8F">&quot;Hello, how is it going?&quot;</FONT></B>
+	}
+	it {
+	    <B><FONT COLOR="#A020F0">return</FONT></B> <B><FONT COLOR="#BC8F8F">&quot;Buon giorno, come va?&quot;</FONT></B>
+	}
+	fr {
+	    <B><FONT COLOR="#A020F0">return</FONT></B> <B><FONT COLOR="#BC8F8F">&quot;Bonjour, comment &ccedil;a va?&quot;</FONT></B>
+	}
+	de {
+	    <B><FONT COLOR="#A020F0">return</FONT></B> <B><FONT COLOR="#BC8F8F">&quot;Guten Tag, wie geht's?&quot;</FONT></B>
+	}
+	zt {
+	    <B><FONT COLOR="#A020F0">return</FONT></B> <B><FONT COLOR="#BC8F8F">&quot;Gr&uuml;ezi, wi gaat's?&quot;</FONT></B>
+	}
+    }
+}
+
+<B><FONT COLOR="#A020F0">puts</FONT></B> [greeting]</PRE>
+
+  </body>
+</html>

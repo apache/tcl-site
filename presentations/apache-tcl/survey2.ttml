@@ -1,0 +1,68 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>Tcl Users</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body>
+    <?
+prevnext "<h1>Tcl Users</h1>"
+
+if { [var exists TclUsers] } {
+    set TclUsers [var get TclUsers]
+} else {
+    set TclUsers 1
+}
+
+if { [var exists Total] } {
+    set Total [var get Total]
+} else {
+    set Total 1
+}
+
+if { $TclUsers > $Total } {
+    set Total $TclUsers
+}
+
+puts "There are $TclUsers Tcl users and $Total
+    people in attendance, give or take a few."
+
+    ?>
+
+    <p></p>
+
+    <table width="%100" border="0" cellspacing="0">
+      <tbody>
+	<tr>
+<?
+
+set i 0
+while { $i < $TclUsers } {
+    puts {<td bgcolor="red">&nbsp;</td>}
+    incr i
+}
+while {$i < $Total } {
+    puts {<td bgcolor="blue">&nbsp;</td>}
+    incr i
+}
+
+?>
+	</tr>
+      </tbody>
+    </table>
+
+    <table width="%100">
+      <tbody>
+	<tr>
+	  <td align="left">%0</td>
+	  <td align="right">%100</td>
+	</tr>
+      </tbody>
+    </table>
+
+<!--      <img src="graph.tcl?TclUsers=<? puts -nonewline $TclUsers ?>&Total=<? puts -nonewline $Total ?>" alt="Pie Chart"> -->
+
+
+  </body>
+</html>

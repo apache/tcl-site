@@ -1,0 +1,24 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>Tcl Libraries and Extensions</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body>
+    <? prevnext "<h1>Tcl Libraries and Extensions</h1>" ?>
+
+    <p>A good language is important, but if you are trying to do
+    something in a hurry, you need good libraries (any Scheme fans
+    here?).</p>
+
+    <p>
+      Tcl has a lot of code available!  And what's more, you can use
+      it with your web-based programs (XML, database access, image
+      libraries), but you can then take the same code, and use it
+      elsewhere.
+    </p>
+
+
+  </body>
+</html>

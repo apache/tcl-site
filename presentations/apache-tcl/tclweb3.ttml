@@ -1,0 +1,28 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>Tcl and the Web</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body>
+    <? prevnext "<h1>Tcl and the Web</h1>" ?>
+
+    <p>
+      Tcl is easy to learn, yet quite powerful.
+    </p>
+
+    <p>
+      If you just want to make a simple site, or if you have
+      inexperienced programmers working, ease of use is a very
+      positive aspect of Tcl.  New users can get up to speed quickly,
+      and be doing useful work in no time.
+    </p>
+    <p>
+      If you have a very complex, database driven site, Tcl is able to
+      handle it with no problems.  Remember - it's not just a language
+      for web sites, so it's generic and modular enough to work for
+      large, complex programs.
+    </p>
+  </body>
+</html>

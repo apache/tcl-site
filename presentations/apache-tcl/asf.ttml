@@ -1,0 +1,32 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>Apache Tcl</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body>
+    <? prevnext "<h1>Apache Tcl</h1>" ?>
+
+    <ul>
+      <li>Apache Tcl was officially launched early in 2001, as an Apache
+	Software Foundation project, with David Welton as the "Vice
+	President".  It now includes 5 different projects and 7
+	developers.</li>
+
+      <li>All the projects are run as "Free Software" or "Open Source"
+	projects - they are a meritocracy.  Anyone is welcome to help out,
+	and efforts of all kinds are appreciated.
+      </li>
+
+      <li>
+	How does one get involved? It's easy - read the mailing lists,
+	learn about what needs doing, and then start working.  When
+	you are recognized as having made significant contributions,
+	you get write access in the CVS repository.  After sustained
+	and important contributions, you may then become a member of
+	the ASF.
+      </li>
+    </ul>
+  </body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>Example Tcl Code</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body>
+    <? prevnext "<h1>Example Tcl Code</h1>" ?>
+
+    So, Dave, show us the code...
+
+    <PRE>
+
+<B><FONT COLOR="#A020F0">if</FONT></B> { [var exists customerid] } {
+    <B><FONT COLOR="#A020F0">array</FONT></B> <B><FONT COLOR="#A020F0">set</FONT></B> customer [get_customer_info $<FONT COLOR="#B8860B">customerid</FONT>]
+    <B><FONT COLOR="#A020F0">puts</FONT></B> <B><FONT COLOR="#BC8F8F">&quot;Welcome, Mr. $customer(Surname)&quot;</FONT></B>
+} else {
+    <B><FONT COLOR="#A020F0">puts</FONT></B> <B><FONT COLOR="#BC8F8F">&quot;Hi, would you like to register a new account?&quot;</FONT></B>
+}</PRE>
+
+Simple enough...
+
+
+  </body>
+</html>

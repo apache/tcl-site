@@ -11,8 +11,8 @@
     <table border="0">
 	<tr>
 	  <? include navbar.html ?>
-	  
-	  <td valign="top"> 
+
+	  <td valign="top">
 	    <h2>Contact information for mod_dtcl</h2>
 	    <p>
 	      All enquiries regarding mod_dtcl (both usage and
@@ -26,7 +26,7 @@
 	    href="mailto:mod_dtcl-subscribe@tcl.apache.org">mod_dtcl-subscribe@tcl.apache.org</a>.</p>
 
 	    <p>
-	      The list archives can be found (for now) at <a href="http://www.apachelabs.org">www.apachelabs.org</a>.
+	      The list archives can be found (for now) at <a href="http://marc.theaimsgroup.com/?l=apache-moddtcl&r=1&w=2">marc.theaimsgroup.com</a>.
 	    </p>
 	  </td>
 	</tr>

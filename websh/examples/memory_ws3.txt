@@ -1,0 +1,600 @@
+#
+# short intro
+#
+# game "memory": the player is supposed N pairs of pictures with the
+# least possible amount of tries. We thus keep track of:
+# s the current status of the pictures
+#   0 backside up
+#   1 front up
+#   2 permanently open
+# i the array of pictures used for this game
+#   (varies with each reshufflement)
+# l the current level (translates into N)
+# h which pictures have been "hit", ie selected by the player
+# r the refresh rate
+#
+# the application needs to
+# * reshuffle --> generate new i
+# * find matching --> check/modify status
+# * change level --> keep track of l and reshuffle
+# * show help text
+# * change refresh rate
+# * keep track of best player
+#
+
+# turn logging on
+web::logfilter add memory.-debug
+web::logdest add memory.-debug file [file join / tmp memory.log]
+
+# config: map level number to X-Y dimensions
+set _levels(1) [list 1 2]
+set _levels(2) [list 1 4]
+set _levels(3) [list 2 5]
+set _levels(4) [list 3 6]
+set _levels(5) [list 4 7]
+set _levels(6) [list 5 8]
+set _levels(7) [list 6 9]
+
+# setup file context
+web::filecontext mctx -path [file join / tmp %s.ctx]
+
+# formatLink -- helper function to generate hrefs
+proc formatLink {url {show ""}} {
+
+    if {$show == ""} { set show $url }
+    return "<a href=\"$url\">$show</a>"
+}
+
+# putLink -- helper function to output links
+proc putLink {url {show ""}} {
+
+    web::put [formatLink $url $show]
+}
+
+# putLinkHtmlified -- helper function to output links
+proc putLinkHtmlified {url show} {
+
+    web::put [formatLink $url [web::htmlify $show]]
+}
+
+# commandList -- add "commands" line to HTML page
+proc commandList {} {
+
+
+    web::put "<tt>"
+
+    putLinkHtmlified [web::cmdurl decrementLevel] "<"
+    web::put " | "
+
+    putLinkHtmlified [web::cmdurl incrementLevel] ">"
+    web::put " | "
+
+    putLinkHtmlified [web::cmdurl reset] "x"
+    web::put " | "
+
+    putLinkHtmlified [web::cmdurl new] new
+    web::put " | "
+
+    putLinkHtmlified [web::cmdurl help] "?"
+    web::put " | "
+
+    putLinkHtmlified [web::cmdurl incrRefreshTime] "+"
+    web::put " | "
+
+    putLinkHtmlified [web::cmdurl decrRefreshTime] "-"
+
+    # load hall of fame
+    mctx::init memory
+
+    # get the lowest number of tries for this level from the session context
+    # why do I use web::cmdurlcfg here instead of web::param ?
+    # I do not want to bother about the level when I generate a URL
+    # using web::cmdurl - I keep it in the static parameters (managed
+    # by web::cmdurlcfg).
+    set best [mctx::cget hof([web::cmdurlcfg l]) "n/a"]
+
+    web::put "&nbsp;&nbsp;(level: [web::cmdurlcfg l], [web::cmdurlcfg c] tries, best: $best)"
+    web::put "</tt>\n"
+
+    web::put "<br>\n"
+}
+
+# page -- helper function to produce an  HTML page
+proc page {title code} {
+
+    # HTML header stuff
+    web::put "
+	<html>
+	<head>
+	  <title>$title</title>
+        </head>
+        <body bgcolor=\"#ffffff\">
+    "
+    web::put "<br>\n"
+
+    # depends on the caller
+    uplevel 1 $code
+
+    # add list of commands
+    web::put "<hr>\n"
+    commandList
+
+    # footer and end-of-HTML
+    web::put "
+	<hr><font size=\"-2\"><tt>
+	[web::copyright -version]</tt></font><br>
+	</BODY>
+        </HTML>
+    "
+}
+
+# table -- helper function to output a HTML table
+proc table {code} {
+
+    web::put {<table border="0" cellspacing="0" cellpadding="0">}
+    web::put "\n"
+
+    uplevel 1 $code
+    web::put "\n</table>\n"
+}
+
+# tablerow --
+proc tablerow {code {bgcolor {}}} {
+    if {[string length $bgcolor] } {
+	web::put "<tr bgcolor=\"$bgcolor\">\n"
+    } else {
+	web::put "<tr>\n"
+    }
+    uplevel 1 $code
+    web::put "\n</tr>\n"
+}
+
+# tablecell --
+proc tablecell {code} {
+
+    web::put "<td>\n"
+    uplevel 1 $code
+    web::put "\n</td>\n"
+}
+
+# image --
+proc image {gif} {
+
+    set res "<img src=\"/websh/images/memory/$gif\" width=\"50\" height=\"50\" vspace=\"0\" hspace=\"0\""
+    append res "border=\"1\" ALIGN=\"middle\">"
+    return $res
+}
+
+
+
+# validateImg -- check current game status
+proc validateImg {vImg vStatus} {
+
+    global _levels
+
+    upvar $vImg img
+    upvar $vStatus status
+
+
+    # no images - this calls for a new game. Reshuffle.
+    if { [string length $img] < 2} {
+
+	# reset try counter
+	web::cmdurlcfg -set c 0
+
+	# get current level
+	set tmp $_levels([web::cmdurlcfg l])
+
+	# reshuffle (number of images depends on level)
+	set numImg [expr ([lindex $tmp 0] * [lindex $tmp 1]) / 2]
+
+	for {set i 0} {$i < $numImg} {incr i} {
+
+	    set timg [format %2.2d $i]
+
+	    # for this image, generate two random numbers which will
+	    # determine the position of the image in the game
+
+	    while {1} {
+		set r1 [expr rand()]
+		if { ![info exists shuffle($r1)] } { break }
+	    }
+
+	    while {1} {
+		set r2 [expr rand()]
+		if { ![info exists shuffle($r2)] } { break }
+	    }
+
+	    set shuffle($r1) $timg
+	    set shuffle($r2) $timg
+	}
+
+	# compile string which describes game outline
+	set img ""
+
+	foreach tmp [array names shuffle] {
+
+	    append img $shuffle($tmp)
+	}
+
+	# and set status of every image to "closed"
+	set status [string repeat "0" [expr {$numImg * 2}]]
+    }
+}
+
+# listOpen -- helper function to list currently open pictures
+proc listOpen {vStatus {val 1}} {
+
+    upvar $vStatus status
+
+    set i 0
+    set res ""
+    foreach tmp [split $status ""] {
+
+	if { $tmp == $val } {lappend res $i}
+	incr i
+    }
+    return $res
+}
+
+# countOpen -- helper to count all pictures that have a given status
+proc countOpen {vStatus {val 1}} {
+
+    upvar $vStatus status
+
+    set res [listOpen status $val]
+    return [llength $res]
+}
+
+
+# doMatch -- helper to decide if two selected images match
+proc doMatch {vImg vOpens} {
+
+    upvar $vImg img
+    upvar $vOpens opens
+
+    set img1 [getImageFromArray img [lindex $opens 0]]
+    set img2 [getImageFromArray img [lindex $opens 1]]
+
+    if {[string equal $img1 $img2]} {
+
+	set res [list 1]
+	lappend res [lindex $opens 0]
+	lappend res [lindex $opens 1]
+
+    } else {
+
+	set res [list 0]
+	lappend res [lindex $opens 0]
+	lappend res [lindex $opens 1]
+    }
+    return $res
+}
+
+# getImageFromArray -- helper to extract two letters from string
+proc getImageFromArray {vImg pos} {
+
+    upvar $vImg img
+
+    return [string range $img [expr $pos*2] [expr $pos*2 + 1]]
+}
+
+# getStat -- helper to pick status for a given picture
+proc getStat {vStatus pos} {
+
+    upvar $vStatus status
+
+    return [string index $status $pos]
+}
+
+# setStat -- set status
+proc setStat {vStatus pos {new 0}} {
+
+    upvar $vStatus status
+
+    set res [string range $status 0 [expr $pos - 1]]
+    set res $res$new
+    set res $res[string range \
+		     $status [expr $pos + 1] [string length $status]]
+    set status $res
+}
+
+# toggleStat -- toggle status: switch 0->1 or 1->0, but keep 2 at 2
+proc toggleStat {vStatus pos} {
+
+    upvar $vStatus status
+
+    set cur [getStat status $pos]
+
+
+    if {$cur == 0} {
+	setStat status $pos 1
+    } elseif { $cur == 2 } {
+	setStat status $pos 2
+    } else {
+	setStat status $pos 0
+    }
+}
+
+
+# findMatching -- see if the user did find two matching images
+proc findMatching {vImg vStatus} {
+
+    upvar $vImg img
+    upvar $vStatus status
+
+    # in case only one is open, we prevent closing it again
+    set tmp [listOpen status 1]
+    set onlyone -1
+    if { [llength $tmp] == 1 } {
+
+	set onlyone [lindex $tmp 0]
+    }
+
+
+    # which ones are selected ?
+    set hitlst [web::param h]
+    foreach tmp $hitlst {
+
+	# if it is not the single one that is already open, flip it
+	if {$tmp != $onlyone} {
+	    toggleStat status $tmp
+	}
+    }
+
+    # now, how many are open, really ?
+    set opens [listOpen status]
+    set Nopen [llength $opens]
+
+    # more than two open ? (no tricks !)
+    if { $Nopen > 2 } {
+
+	foreach tmp $opens {
+	    setStat status $tmp 0
+	}
+
+    } elseif { $Nopen == 2 } {
+
+	# get current try counter (or 0 if not set) ...
+	set tmp [web::cmdurlcfg c 0]
+	# ... and increment it and store it back as static parameter
+	web::cmdurlcfg -set c [incr tmp]
+
+	# do the two selected pictures match ?
+	set tmp [doMatch img opens]
+
+	if { [lindex $tmp 0] == 1 } {
+
+	    # yes, open permanently
+	    setStat status [lindex $tmp 1] 2
+	    setStat status [lindex $tmp 2] 2
+
+
+	} else {
+
+	    # no. use the refresh feature
+
+	    set opens [listOpen status]
+
+	    # add img and status as static parameters
+	    # (ensure that we have status and img in the URL)
+	    web::cmdurlcfg -set s $status
+	    web::cmdurlcfg -set i $img
+
+	    # for refresh: simulate clicks on the two open pictures
+	    # that will close them
+	    set tmp [web::cmdurl "" [list h [lindex $opens 0] h [lindex $opens 1]]]
+
+	    # add the HTTP "refresh" header, using the parameter r for the
+	    # refresh time (using 2 sec as default)
+	    web::response -set Refresh "[web::cmdurlcfg r 2];URL=$tmp"
+	}
+    }
+
+    # add img and status as static parameters
+    # (ensure that we have status and img in the URL)
+    web::cmdurlcfg -set s $status
+    web::cmdurlcfg -set i $img
+}
+
+# display table with memory
+proc showMemory {} {
+
+    global _levels
+    global _cache
+
+    # get current status from URL
+    set status [web::param s]
+
+    # get current game outline from URL
+    set img [web::param i]
+
+    # asses status of game
+    validateImg img status
+
+    # do we have any matching images ?
+    findMatching img status
+
+    # no more closed ? --> game over --> perhaps we need to update hof
+    if { [countOpen status 0] == 0} {
+
+	mctx::init memory
+	set best [mctx::cget hof([web::cmdurlcfg l]) -1]
+
+	if { ($best == -1) ||
+	     ([web::cmdurlcfg c] < $best) } {
+	    mctx::cset hof([web::cmdurlcfg l]) [web::cmdurlcfg c]
+	    mctx::commit
+	}
+    }
+
+    # get X-Y dimension for game outline from level
+    set tmp $_levels([web::cmdurlcfg l 5])
+    set numX [lindex $tmp 0]
+    set numY [lindex $tmp 1]
+
+    # output HTML page
+    page "memory game" {
+
+	# output HTML table
+	table {
+
+	    # table rows
+	    for {set i 0} {$i < $numX} {incr i} {
+
+		tablerow {
+
+		    for {set j 0} {$j < $numY} {incr j} {
+
+			set tmpCnt [expr $i * $numY + $j]
+
+			set timg [getImageFromArray img $tmpCnt]
+
+			set curImgStat [getStat status $tmpCnt]
+
+			# table cells
+
+			tablecell {
+
+			    if {$curImgStat == 0} {
+
+				# show backside
+				#
+				# actually, it is a link back to the CGI app,
+				# recursion of some sort.
+				#
+				# from parameter h, showMemory will know which
+				# picture the player did select
+				putLink [web::cmdurl "" h $tmpCnt] \
+				    [image back.gif]
+
+			    } elseif {$curImgStat == 2} {
+
+				# two matching found - no link any more, just the image
+				web::put [image $timg.jpg]
+
+			    } else {
+
+				# show front side
+				putLink [web::cmdurl "" h $tmpCnt] \
+				    [image $timg.jpg]
+			    }
+			}
+		    }
+		}
+	    }
+	}
+    }
+}
+
+# web::command help -- display help text
+web::command help {
+
+    page "memory game - help text" {
+
+	web::put "<tt>"
+	web::put "Memory -- find the matching images."
+	web::put "<p>"
+	web::put "You can see the hidden image by clicking on its back side. "
+	web::put "When you have found two matching images, they will remain open "
+	web::put "from then on. If two images do not match, they will be "
+	web::put "closed again."
+	web::put "<p>"
+	web::put "If the images close again too quickly on your system, "
+	web::put "you can make the images stay open longer with the "
+	web::put "&quot;+&quot; command (&quot;-&quot; to close them "
+	web::put "more quickly)."
+	web::put "<p>"
+	web::put "&quot;new&quot; shuffels the images again. "
+	web::put "&quot;&times;&quot; restarts the game from the beginning."
+	web::put "</tt><p>"
+    }
+}
+
+
+# web::command decrementLevel -- reduce level and show game
+web::command decrementLevel {
+
+    # I do not want to have to bother about the level when I generate
+    # URLs using web::cmdurl. So, I put level to the static parameters
+    # and let web::dispatch track it.
+    # That's why web::cmdurlcfg is used here, instead of web::param.
+
+    set level [web::cmdurlcfg l 5]
+    if {$level > 1} {incr level -1}
+    web::cmdurlcfg -set l $level
+
+    # changing the level implies resetting the game
+    web::param -set i ""
+
+    showMemory
+}
+
+# web::command incrementLevel -- increase level and show game
+web::command incrementLevel {
+
+    set level [web::cmdurlcfg l 5]
+    if {$level < 7} {incr level}
+    web::cmdurlcfg -set l $level
+
+    # changing the level implies resetting the game
+    web::param -set i ""
+
+    showMemory
+}
+
+# web::command incrRefreshTime -- increase refresh time
+web::command incrRefreshTime {
+
+    set r [web::cmdurlcfg r 2]
+    if {$r < 30} {incr r 2}
+    web::cmdurlcfg -set r $r
+
+    showMemory
+}
+
+# web::command decrRefreshTime -- decrease refresh time
+web::command decrRefreshTime {
+
+    set r [web::cmdurlcfg r 2]
+    if {$r > 2} {incr r -2}
+    web::cmdurlcfg -set r $r
+
+    showMemory
+}
+
+# web::command new -- new game on the same level (reshuffle)
+web::command new {
+
+    web::param -set i ""
+
+    showMemory
+}
+
+# web::command reset -- back to the defaults
+web::command reset {
+
+    web::param -set i ""
+    web::cmdurlcfg -set l 5
+
+    showMemory
+}
+
+# web::command default -- if nothing is specified, use this one
+web::command default {
+
+    showMemory
+}
+
+# web::dispatch -- decide which command to call
+#
+# here, we use the tracking feature of dispatch. Whenever dispatch
+# finds a parameter from the -track list, it copies it over to the
+# static parameters
+#
+# also, we use -hook to execute code just before web::dispatch will
+# call the web::command command. Here, we set the default level to 5
+# if it is not yet known.
+web::dispatch -track [list l c r] -hook {
+    web::cmdurlcfg -set l [web::cmdurlcfg l 5]
+}

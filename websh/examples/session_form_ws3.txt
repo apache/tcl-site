@@ -1,0 +1,149 @@
+# This example shows how persistent sessions can be stored
+# on the server.
+# It shows two HTML forms which have one input field each.
+# You can switch between these two forms using the submit
+# buttons. All data given in the form
+
+# Define a memory context to hold some configuration variables.
+# The next statement makes a context called 'config' to hold
+# these data. It is a cleaner way than making global variables
+# because it declares them clearly to be configuration vars.
+web::context config
+
+# Now set some configuration variables. Usually put the session
+# state files in a directory not accessible through the Web server.
+config::cset stateDirectory /tmp/webshstate/
+
+# Create a file counter that generates the session ids. We take
+# here an easy number generator, which produces sequential numbers
+# and stores the actual counter value in a file
+web::filecounter idGenerator -filename [file join [config::cget stateDirectory] counter]
+
+# Create a file context named 'state'. The option '-path' defines
+# where the session contexts are stored. '-attachto' defines an
+# URL parameter name that might contain an existing session.
+# (This parameter name could in fact be extracted using
+# 'web::param sid' whenever the session is initalized.)
+web::filecontext state -path [file join [config::cget stateDirectory] %s] -attachto sid -idgen "idGenerator nextval"
+
+# Make sure the session state directory exists
+file mkdir [config::cget stateDirectory]
+
+
+proc form {page code} {
+    # Produces a HTML FORM tag. Nested form variables must be output
+    # in 'code'.
+    # The 'page' parameter describes the web::command to call when
+    # the form is submitted.
+    web::put "<html><head><title>Session Example</title></head>"
+    web::put "<body bgcolor=\"#FFFFFF\">"
+    # form starts here
+    web::put "<form method=\"POST\" action=\"[web::cmdurl $page]\">"
+    uplevel $code
+    web::put "</form>"
+    web::put "</body></html>"
+}
+
+
+proc putErrorMessage {msg} {
+    # emit an error message in red.
+    web::put "<p><font color=\"\#ff0000\">[web::htmlify $msg]</font></p>"
+}
+
+
+proc pageOne {{errorMessage ""}} {
+    # Display page one of our HTML form.
+    form processPageOne {
+        if {[string length $errorMessage]} {
+            putErrorMessage $errorMessage
+        }
+        web::put "Numbers only: <input type=\"text\" name=\"a\" value=\"[web::htmlify [state::cget a]]\">"
+        web::put "<input type=\"submit\" value=\"Page 2\">"
+    }
+}
+
+
+proc pageTwo {{errorMessage ""}} {
+    # Display page two of our HTML form.
+    form processPageTwo {
+        if {[string length $errorMessage]} {
+            putErrorMessage $errorMessage
+        }
+        web::put "Not empty: <input type=\"text\" name=\"b\" value=\"[web::htmlify [state::cget b]]\">"
+        web::put "<input type=\"submit\" value=\"Page 1\">"
+    }
+}
+
+
+proc saveAllFields {} {
+    # Save all form fields to state context.
+    # web::formvar without parameters returns a list of HTML form
+    # variables sent to this script. web::formvar with the name
+    # of a field returns its value, if the field does not exist
+    # it returns an empty list (or an optional 2nd parameter 'default
+    # value').
+    # For clarity, we do not handle multiple fields with the same
+    # name correctly here. If a HTML field is given twice or more
+    # 'web::formvar -count <fieldname>' would give us the field count
+    # 'web::formvar <fieldname>' returns then a list of n values.
+    foreach field [web::formvar names] {
+        state::cset $field [web::formvar $field]
+    }
+}
+
+
+# Define two dispatched commands to each show one page of the
+# (mini) form. The names of theses application commands will
+# be used in the submit action of the form with 'web::cmdurl'.
+web::command processPageOne {
+    state::init
+    if {![regexp {^[0-9]+$} [web::formvar a]]} {
+        # The input field does not contain only digits, so show page one again
+        # including an error message.
+        pageOne "Please enter a number."
+    } else {
+        # Everything ok, so save the form field to persistant session
+        # and proceed with page two.
+        saveAllFields
+        state::commit
+        pageTwo
+    }
+}
+
+
+web::command processPageTwo {
+    state::init
+    if {![string length [web::formvar b]]} {
+        # The input field is empty, so show page two again
+        # including an error message.
+        pageTwo "Please fill in field."
+    } else {
+        # Everything ok, so save the form field to persistant session
+        # and proceed with page one.
+        saveAllFields
+        state::commit
+        pageOne
+    }
+}
+
+
+# Define the default command to show page one.
+web::command default {
+    # Initialize a fresh state.
+    state::init
+    # Show page one initially.
+    pageOne
+}
+
+
+# Dispatch to one of the web::commands according to a parameter in the
+# URL. This parameter was set using 'web::cmdurl' in the FORM tag in
+# procedure 'form'.
+# At the very beginning we don't have a command in the URL. Then the
+# web::command default is called.
+# The '-track' parameter is used to take over the URL parameter 'sid'
+# from "incoming" URLs to "outgoing" URLs. This parameters holds
+# the session id and makes a session survive
+# web::dispatch processes the URL - i.e. extracts parameters from the
+# URL - and handles HTML form input sent to this script.
+web::dispatch -track sid

@@ -1,0 +1,47 @@
+# gif sample - return a image/gif instead of text/html
+#
+# this example demonstrates how to use cookies with websh3
+#
+
+web::command image {
+
+    set nr [format %2.2d [expr int(rand() * 13)]]
+
+    # open a file (JPEG is a binary format)
+    set fh [open [GetFileName [file join .. images memory $nr.jpg]] r]
+    fconfigure $fh -translation binary
+    set img [read $fh]
+    close $fh
+
+    # set HTTP header to "image/jpeg" instead of "text/html"
+    array set headers [web::response -set header]
+    set headers(Content-Type) image/jpeg
+    web::response -set header [array get headers]
+
+    # because we return a img, change to binary again
+    fconfigure [web::response] -translation binary
+
+    # output
+    web::put $img
+}
+
+# produce the page of this sample application
+proc page {} {
+
+    web::put "<html><head><title>Image Example</title></head>"
+    web::put "<body bgcolor=\"#FFFFFF\">"
+
+    # the images: returned by the same app, but a different command
+    web::put "<img src=\"[web::cmdurl image]\" width=\"50\" height=\"50\"\"><br>"
+    web::put "<a href=\"[web::cmdurl default]\">next</a>"
+    # properly close html code
+    web::put "</body></html>"
+}
+
+web::command default {
+
+    page
+}
+
+# dispatch (see "dispatch_example")
+web::dispatch

@@ -1,0 +1,119 @@
+# This example demonstrates you how "file upload": sending
+# a file to the server thru a html form.
+
+# allow file upload
+# uploadfilesize defines the maximum file size upload
+# in this case 100 bytes
+web::config uploadfilesize 100
+
+# utility command to handle an HTML page
+proc page {title code} {
+    web::putx {<html><head><title>{web::put $title}</title></head>
+	<body bgcolor="#ffffff" text="#000000">
+	<h3>{web::put $title}</h3>
+    }
+    uplevel $code
+    web::put "</body></html>\n"
+}
+
+# utility command to handle an html form
+proc form {page code} {
+    web::put "<form enctype=\"multipart/form-data\" method=\"post\" action=\"[web::cmdurl $page]\">"
+    uplevel $code
+    web::put "</form>"
+}
+
+proc showForm {error} {
+
+    # generate a page with Title "File upload example"
+    page "File upload example" {
+	# generate a form with action "submit"
+	form "submit" {
+	    web::putx {{
+		    # if "error" flag is set, show the red error message asking for input
+		    if {$error == 1} {
+			web::put "<font color=\"\#990000\">If you'd like to upload a file,\n you have to insert the path and file name <br></font>"
+		    }
+		}
+		<b>File:</b> <input type="file" size="30" name="upload" value="{web::put [web::formvar upload]}"> &nbsp;&nbsp; <input type="submit" name="ok" value="Send">
+	    }
+	}
+    }
+}
+
+# validator:
+#
+# make sure we have a name that is more than 1. 
+proc checkFormData {} {
+# string lenght gets the lenght
+# "lindex [...] 1" is getting the first line from the list in the variable
+    if  { [string length [lindex [web::formvar upload] 1]] < 1} {
+ 	# return error code
+ 	return 1
+     }
+     # looks good: no error
+     return 0
+}
+
+
+proc showConfirmationPage {} {
+
+    # gets return value from list upload
+    set localname [lindex [web::formvar upload] 0]
+    set remotename [lindex [web::formvar upload] 1]
+    set NumBytesTruncated [lindex [web::formvar upload] 2]
+
+    # open pipe for reading uploaded file
+    set fh [open $localname r]
+    set chunk [read $fh 10]
+    close $fh
+
+    page "File upload example" {
+
+	web::putx {
+	    <b>We have received your file. Thank you.<br><br>
+	    Technical information:</b>
+	    <br>
+	    <table border="0" width="300">
+
+	    <tr>
+	    <td width="100">
+	    File-path:</td><td width="200">{web::put [web::htmlify $localname]}</td></tr>
+	    <tr>
+	    <td width="100">
+	    Localpath:</td><td width="200">{web::put [web::htmlify $remotename]}</td></tr>
+	    <tr>
+	    <td width="300" colspan="2">
+	    We have configured websh3 to allow a maximum file size of 100 bytes. Therefore 
+	    we have truncated the received file by {web::put $NumBytesTruncated} bytes.
+	    </td></tr>
+	    <tr>
+	    <td width="100">Start of content:</td><td width="200">{web::put [web::htmlify $chunk]}</td></tr></table>
+	    <a href="upload">upload another file</a> 
+	}
+
+    }
+}
+
+# register the "default" command
+#
+# See confirmation form example.
+web::command default {
+    showForm 0
+}
+
+# register command "submit"
+#
+# This is the "action" of our form. See confirmation form example.
+
+web::command submit {
+
+    if { [set res [checkFormData]] == 0 } {
+	showConfirmationPage
+    } else {
+	showForm $res
+    }
+}
+
+#see dispatch example
+web::dispatch

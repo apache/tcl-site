@@ -2,6 +2,7 @@
 <html>
 <!-- $Id$ -->
 <title>mod_dtcl examples</title>
+    <link rel="stylesheet" href="../style.css">
 <body bgcolor=white>
 
 <table bgcolor=black width=100%>
@@ -117,8 +118,8 @@ LOOP<BR>
  hgetvars
 if { [ array exists VARS ] } {
     hputs "&lt; ul>"
-    foreach { vr } [ array names VARS ]  {
-        hputs "&lt;li>(VARS) $vr = $VARS($vr)"
+    foreach { var val } [ var all ]  {
+        hputs "&lt;li>(VARS) $var = $val"
     }
     hputs "&lt;/ul>"
 }
@@ -151,8 +152,8 @@ if { [ array exists COOKIES ] } {
 hgetvars
 if { [ array exists VARS ] } {
     hputs "<ul>"
-    foreach { vr } [ array names VARS ]  {
-        hputs "<li>(VARS) $vr = $VARS($vr)"
+    foreach { var val } [ var all ]  {
+        hputs "<li>(VARS) $var = $val"
     }
     hputs "</ul>"
 }

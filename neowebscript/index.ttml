@@ -1,0 +1,44 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+
+<html>
+  <head>
+    <title>NeoWebScript</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <table width="100%" border="0">
+	<tr>
+	  <td align="center" valign="top">
+	    <h1>NeoWebScript</h1>
+	  </td>
+	</tr>
+    </table>
+
+    <table width="75%" border="0">
+	<tr>
+	  <+ include navbar.html +>
+	  
+	  <td valign="top"> 
+
+	    <p>
+NeoWebScript is an open source scripting module for the Apache webserver.
+Based on the Tcl programming language, it has a number of powerful features,
+including the ability to embed Tcl code into HTML pages, access and manipulate
+databases, and generate graphics on-the-fly, among many others.
+</p>
+<p>
+NeoWebScript is currently hosted at SourceForge.
+</p>
+
+	    <p align="center">
+	      <a href="http://www.apache.org/"><img src="../apache_pb.gif"
+						  alt="Powered by Apache" border="0"
+						  width="259"
+						  height="32"></a>
+	    </p>
+	    
+	  </td>
+	</tr>
+    </table>
+  </body>
+</html>

@@ -26,6 +26,12 @@
 	      PHP. It is fast, light, and lets you use the extensive
 	      codebase of existing Tcl code on the web.
 	    </p>
+	    <p>
+	      <a href="neowebscript/">neowebscript</a> also enables the use 
+	      of Tcl as an HTML-embedded scripting language.
+	      It uses safe interpreters for security, supports db files,
+	      can generate graphics on-the-fly, and other stuff.
+	    </p>
 
 	    <p align="center">
 	      <a href="http://www.apache.org/"><img src="apache_pb.gif"

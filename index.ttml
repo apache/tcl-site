@@ -26,7 +26,9 @@
 	      web server with the capabilities of the time-tested Tcl
 	      scripting language.  Currently, we host the <a
 	      href="http://tcl.apache.org/mod_dtcl/">mod_dtcl</a>
-	      project, and will have more soon.
+	      and the
+	      <a href="http://tcl.apache.org/neowebscript/">neowebscript</a>
+              projects, and will have more soon.
 	    </p>
 
 	    <p align="center">

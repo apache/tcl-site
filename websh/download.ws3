@@ -16,7 +16,7 @@ web::putx {
     Download the source code:<br>
 
     {
-	set srcfile [file tail [glob [GetFileName download/*gz]]]
+	set srcfile [file tail [glob [getDocFileName download/*gz]]]
 	web::put "<a href=\"download/$srcfile\">$srcfile</a>"
     }
 

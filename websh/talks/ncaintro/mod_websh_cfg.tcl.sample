@@ -1,9 +1,0 @@
-web::interpclasscfg /home/hefti/myprojects/installed/apache-1.3.14/htdocs/i.ws3 maxrequests 10
-web::interpclasscfg /home/hefti/myprojects/installed/apache-1.3.14/htdocs/embed.ws3 maxrequests 3
-    
-proc web::interpmap {f} {
-    if {[string match *.wsp $f]} {
-    	return /home/hefti/myprojects/installed/apache-1.3.14/conf/wsp.tcl
-    }
-    return $f
-}

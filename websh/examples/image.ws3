@@ -8,7 +8,7 @@ web::command image {
     set nr [format %2.2d [expr int(rand() * 13)]]
 
     # open a file (JPEG is a binary format)
-    set fh [open [GetFileName [file join .. images memory $nr.jpg]] r]
+    set fh [open [file join [web::config document_root] images memory $nr.jpg] r]
     fconfigure $fh -translation binary
     set img [read $fh]
     close $fh

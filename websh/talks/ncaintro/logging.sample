@@ -1,7 +1,0 @@
-web::logfilter add *.alert-debug
-# web::logdest add *.alert-debug file /my/file.log
-web::logdest   add *.alert-debug channel [web::response]
-
-web::put "<h1>Log Demo</h1><br>"
-web::log demo.alert "a log message"
-

@@ -1,8 +1,0 @@
-web::interpclasscfg /path/to/my/shop.ws3 maxrequests 10
-    
-proc web::interpmap {f} {
-    if {[string match *.wsp $f]} {
-    	return /path/to/my/wsphandler
-    }
-    return $f
-}

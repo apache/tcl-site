@@ -22,9 +22,9 @@ if (document.images) {
 	down_b.src ="buttons/b_down_b.gif";
 }
 
-function wechsel(bild,kennung) {
+function swap(img, type) {
 
 	if(document.images) {
-		document[bild].src = "buttons/" + kennung + ".gif";
+		document[img].src = "buttons/" + type + ".gif";
 	}
 }

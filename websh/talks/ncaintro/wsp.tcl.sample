@@ -1,2 +1,0 @@
-web::config putxmarkup tag
-web::putxfile [web::request SCRIPT_FILENAME]

@@ -19,7 +19,7 @@ web::command <B><FONT COLOR="#A020F0">image</FONT></B> {
     <B><FONT COLOR="#A020F0">set</FONT></B> nr [<B><FONT COLOR="#A020F0">format</FONT></B> %2.2d [<B><FONT COLOR="#A020F0">expr</FONT></B> int(rand() * 13)]]
 
     <I><FONT COLOR="#B22222"># open a file (JPEG is a binary format)
-</FONT></I>    <B><FONT COLOR="#A020F0">set</FONT></B> fh [<B><FONT COLOR="#A020F0">open</FONT></B> [GetFileName [<B><FONT COLOR="#A020F0">file</FONT></B> <B><FONT COLOR="#A020F0">join</FONT></B> .. images memory $<FONT COLOR="#B8860B">nr</FONT>.jpg]] r]
+</FONT></I>    <B><FONT COLOR="#A020F0">set</FONT></B> fh [<B><FONT COLOR="#A020F0">open</FONT></B> [<B><FONT COLOR="#A020F0">file</FONT></B> <B><FONT COLOR="#A020F0">join</FONT></B> [web::config document_root] images memory $<FONT COLOR="#B8860B">nr</FONT>.jpg] r]
     <B><FONT COLOR="#A020F0">fconfigure</FONT></B> $<FONT COLOR="#B8860B">fh</FONT> -translation binary
     <B><FONT COLOR="#A020F0">set</FONT></B> img [<B><FONT COLOR="#A020F0">read</FONT></B> $<FONT COLOR="#B8860B">fh</FONT>]
     close $<FONT COLOR="#B8860B">fh</FONT>

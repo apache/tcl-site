@@ -11,7 +11,7 @@ web::putx {
     <tr valign="top">
     {navbar_null}
     <td width="300">
-    WebSH is a product of the Apache Software Foundation's <a href="http://tcl.apache.org/">Apache Tcl</a> group.<br>
+    Websh is a product of the Apache Software Foundation's <a href="http://tcl.apache.org/">Apache Tcl</a> group.<br>
     For more information about how to send email to the Websh lists, go to the {pageLink subscribe.ws3 -show "Mailing Lists"} page.
     </td>
   </tr>

@@ -21,15 +21,15 @@ web::putx {
     <h2>Quick Reference</h2>
 
     Know how to use Websh, but keep forgetting the
-    syntax ? The quick reference has everything you need to
+    syntax? The quick reference has everything you need to
     know.<br>
     <a href="quickref.html">html</a>
 
     <h2>Code Examples</h2>
 
-    The <a href="examples.ws3">example</a> page demonstates
+    The <a href="examples.ws3">examples</a> page demonstrates
     Websh features - you can both look at the code and play
-    with the application.
+    with the samle applications.
 
     </td>
     </tr>

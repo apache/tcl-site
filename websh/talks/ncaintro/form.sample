@@ -1,8 +1,0 @@
-web::command default {
-    web::put "<form method=\"POST\" action=\"[web::cmdurl {}]\" enctype=\"multipart/form-data\">\n"
-    web::put "param 'user': [web::param user n/a]<br>"
-    web::put "<input type=\"text\" name=\"name\" value=\"[web::formvar name {n/a}]\">"
-    web::put "<input type=\"submit\" value=\"save\">"
-    web::put "</form>\n"
-}
-web::dispatch

@@ -32,7 +32,7 @@ web::putx {
 }
 
 {newsBarElement "Examples" \
-     { Check out the<br> {pageLink /websh//examples.ws3 -show "live examples"}<br>
+     { Check out the<br> {pageLink /websh/examples.ws3 -show "live examples"}<br>
 of Websh applications.
      }
 }

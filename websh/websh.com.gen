@@ -1,6 +1,0 @@
-# main application dispatcher
-web::initializer {
-    web::include [web::config interpclass].initializer
-}
-# process the actual web page
-web::include [web::config script]

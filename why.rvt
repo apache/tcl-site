@@ -12,7 +12,7 @@
 	  <? navbar ?>
 	  <td valign="top">
 
-	    <h2 align="center">Why Tcl?</h2>
+	    <h2>Why Tcl?</h2>
 
 	    <p><b>Flexible</b>: Tcl lets you program in the way you
 	      want.  For example, you can program in a style that fits

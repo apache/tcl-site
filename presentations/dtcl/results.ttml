@@ -1,0 +1,31 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>Produces</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body>
+    <? prevnext "<h1>Produces...</h1>" ?>
+
+    <?
+set i 1
+puts "<table>"
+
+while { $i <= 8 } {
+    puts "<tr>"
+    for {set j 1} {$j <= 8} {incr j} {
+	set num [ expr {$i * $j * 4 - 1} ]
+	puts [ format "<td bgcolor=%2x%2x%2x > $num $num $num </td>" \
+		$num $num $num ]
+    }
+    incr i
+    puts "</tr>"
+}
+
+puts "</table>"
+    ?>
+
+
+  </body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>PHP</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body>
+    <? prevnext "<h1>PHP</h1>" ?>
+
+    PHP is the example that mod_dtcl follows, but has a big
+    limitation: it only runs on the web!  It has a number of good
+    features - it is small, light, reasonably fast, and is easy for
+    non programmers to use.  However, it has the disadvantage of being
+    originally created for one and only one use, making it difficult
+    to use elsewhere.
+
+  </body>
+</html>

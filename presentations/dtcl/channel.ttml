@@ -1,0 +1,18 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>Apache IO Channel</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body>
+    <? prevnext "<h1>Apache IO Channel</h1>" ?>
+
+    When creating mod_dtcl, it was considered desirable to be able to
+    run normal Tcl scripts with as little modifications as possible.
+    In order to deal with standard output, mod_dtcl uses an in-memory
+    file channel that then uses Apache's output functions.  'puts
+    "foobar"' works in mod_dtcl.
+
+  </body>
+</html>

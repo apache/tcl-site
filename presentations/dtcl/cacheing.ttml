@@ -1,0 +1,17 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>Cacheing</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body>
+    <? prevnext "<h1>Cacheing</h1>" ?>
+
+    When a .ttml page is first loaded, the byte-compiled Tcl code is
+    inserted into a cache, so that the next time the page is hit, it
+    is not necessary to recompile the code, or even open the file
+    again.
+
+  </body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>mod_perl</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body>
+    <? prevnext "<h1>mod_perl</h1>" ?>
+
+    mod_perl takes a different approach - it lets you access all the
+    functionality of Apache with Perl.  This makes it rather large,
+    and at times difficult to install and use for simple things, like
+    templates.  It is very powerful, but with this power comes a lot
+    of complexity, and responsibility...
+
+  </body>
+</html>

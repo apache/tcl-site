@@ -19,10 +19,11 @@
 	<ul>
 	  <li>Rapid Application Development using Tcl</li>
 	  <li>Provide complete Web Application Environment</li>
-	  <li>Independant of Apache</li>
+	  <li>Independant of Apache (it also works as a CGI)</li>
 	</ul>
       </li>
     </ul>
 
-  </body>
+  <?footer?>
+</body>
 </html>

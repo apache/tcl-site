@@ -18,5 +18,6 @@
 
     All free software covered by the Apache Software Foundation license.
 
-  </body>
+  <?footer?>
+</body>
 </html>

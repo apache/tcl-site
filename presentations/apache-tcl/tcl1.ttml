@@ -16,9 +16,6 @@
       applications.  From the very beginning, Tcl was engineered to be
       combined with other systems.
     </p>
-    <p>
-      Tcl is now maintained by the "Tcl Core Team", lead by Jeff Hobbs.
-    </p>
-
-  </body>
+  <?footer?>
+</body>
 </html>

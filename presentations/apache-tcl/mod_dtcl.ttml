@@ -12,6 +12,7 @@
       <li>Created in 1998 - one of the first open source Tcl/Web
       products.</li>
       <li>Apache Tcl created in late 2000.</li>
+      <li>To be replaced by Rivet</li>
       <li>
 	Design goals:
 	<ul>
@@ -23,5 +24,6 @@
       </li>
     </ul>
 
-  </body>
+  <?footer?>
+</body>
 </html>

@@ -14,14 +14,15 @@
     </p>
     <p>
       The Apache Software Foundation now encompasses a large variety
-      of diverse projects: the web server, XML, Java, Perl, PHP, APR,
-      and is a non-profit corporation registered in the U.S., with
-      members throughout the world.
+      of diverse projects in addition to Tcl: the web server, XML,
+      Java, Perl, PHP, APR, Python, and is a non-profit corporation
+      registered in the U.S., with members throughout the world.
     </p>
     <p>
       The ASF consists of 60-some members, and hundreds of
       "committers" - those who have the rights to make changes to
       different projects' code.
     </p>
-  </body>
+  <?footer?>
+</body>
 </html>

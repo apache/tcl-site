@@ -27,5 +27,6 @@
       </li>
 
 
-  </body>
+  <?footer?>
+</body>
 </html>

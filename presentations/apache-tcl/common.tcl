@@ -12,6 +12,17 @@ if { ! [info exists ::mtime] || $::mtime < $statinfo(mtime) } {
 	return $ret
     }
 
+    proc ::makeindex {} {
+	puts "<ul>"
+	foreach fl [getorder] {
+	    set flttml "$fl.ttml"
+	    puts [subst {
+		<li style="font-size:small ; list-style-type:square ; list-style-image: none"><a href="$flttml">$fl</a></li>
+	    }]
+	}
+	puts "</ul>"
+    }
+
     proc ::nexturl { } {
 	return "[lindex $::urls $::next].ttml?index=$::next"
     }
@@ -55,5 +66,14 @@ if { ! [info exists ::mtime] || $::mtime < $statinfo(mtime) } {
 	}
 	puts [subst $str]
     }
+
+    proc ::footer {} {
+	puts {
+	    <p align="center" style="font-size:small">
+	    <a href="list.ttml">INDEX</a>
+	    </p>
+	}
+    }
+
     set ::mtime $statinfo(mtime)
 }

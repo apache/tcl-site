@@ -1,0 +1,22 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title></title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body>
+    <? prevnext "<h1>Apache Tcl</h1>" ?>
+
+    <p>
+      Our projects aren't just related by the fact that we all use Tcl
+      - the Apache Tcl projects share a common philosophy that "simple
+      things should be easy, and hard things should be possible" (to
+      borrow a quote - it works well for them!).  We all arrived at
+      Tcl not because it's the only tool in our box, but because for
+      us it is the right tool.
+    </p>
+
+    <?footer?>
+  </body>
+</html>

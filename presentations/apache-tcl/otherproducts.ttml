@@ -21,5 +21,6 @@
 
     </ul>
 
-  </body>
+  <?footer?>
+</body>
 </html>

@@ -1,0 +1,30 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>Initialization</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body>
+    <? prevnext "<h1>Initialization</h1>" ?>
+
+    <ul>
+      <li>Apache configuration directives.<br>
+	Rivet provides a variety of Apache configuration directives to
+	enable the user to run code at a variety of points in Apache's
+	life cycle.
+	<ul>
+	  <li>Global Init and Exit</li>
+	  <li>Child Init and Exit</li>
+
+	  <li>"Before" and "After" scripts to run before and after
+	  pages</li>
+	</ul>
+      </li>
+      <li>Multiple interpreters for different virtual hosts.</li>
+      <li>File upload control</li>
+    </ul>
+
+    <?footer?>
+  </body>
+</html>

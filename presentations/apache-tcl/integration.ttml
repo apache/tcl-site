@@ -1,0 +1,21 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>Integrating Apache and Tcl</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body>
+    <? prevnext "<h1>Integrating Apache and Tcl</h1>" ?>
+
+    <p>
+      Both Apache and Tcl have C API's that provide the programmer
+      with low-level access to a large amount of the two systems'
+      functionality.  They are both a pleasure to work with, and
+      linking them up has been a lot of fun!  Specific examples from
+      Rivet follow.
+    </p>
+
+    <?footer?>
+  </body>
+</html>

@@ -64,5 +64,6 @@ while {$i < $Total } {
 <!--      <img src="graph.tcl?TclUsers=<? puts -nonewline $TclUsers ?>&Total=<? puts -nonewline $Total ?>" alt="Pie Chart"> -->
 
 
-  </body>
+  <?footer?>
+</body>
 </html>

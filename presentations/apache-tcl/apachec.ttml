@@ -1,0 +1,41 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>Apache C Highlights</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body>
+    <? prevnext "<h1>Apache C Highlights</h1>" ?>
+
+    <p>
+      Apache's C API is quite extensive, and merits one or more talks
+      of its own, but here are a few things we have found particularly
+      useful.  A big thanks to all the httpd developers!
+    </p>
+
+    <ul>
+      <li>pools
+	<ul>
+	  <li>A memory management system that simplifies life a
+	  lot for the module author!</li>
+	</ul>
+      </li>
+      <li>apreq
+	<ul>
+	  <li>good system for dealing with user-supplied data -
+	  cookies, GET and POST variables, etc...</li>
+	</ul>
+      </li>
+      <li>apxs
+	<ul>
+	  <li>Useful for building extensions - gives you the compile
+	  options you need to find and use the same build environment
+	  as Apache.</li>
+	</ul>
+      </li>
+    </ul>
+
+    <?footer?>
+  </body>
+</html>

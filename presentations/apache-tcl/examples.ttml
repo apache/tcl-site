@@ -70,5 +70,6 @@ puts "<hr>"
 Simple enough!
 
 
-  </body>
+  <?footer?>
+</body>
 </html>

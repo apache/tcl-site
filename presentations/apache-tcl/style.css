@@ -2,9 +2,9 @@ body {
     font-family: Arial, sans-serif;
     font-style: normal;
     font-size: 200%;
-    color: #ffffff;
-    background-color: #000000;
-    background: url(logoLarge.png)
+#    color: #ffffff;
+#    background-color: #000000;
+#    background: url(logoLarge.png)
 }
 
 body.splash {
@@ -20,13 +20,17 @@ LI {
    margin-bottom: 0.5em;
 }
 
-UL LI { list-style-image: url(bullet1.png) }
-UL UL LI { list-style-image: url(bullet2.png) }
+pre { 
+      font-weight: bold;
+}
+
+#UL LI { list-style-image: url(bullet1.png) }
+#UL UL LI { list-style-image: url(bullet2.png) }
 
 LI LI { font-size: smaller }
 
 h1 {
-    color: #2277ee;
+    color: #0000aa;
     text-align: center;
 }
 

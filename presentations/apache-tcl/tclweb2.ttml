@@ -22,5 +22,6 @@
       abstraction.</li>
       <li>Easy to combine with C.</li>
     </ul>
-  </body>
+  <?footer?>
+</body>
 </html>

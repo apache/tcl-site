@@ -24,5 +24,6 @@
       for web sites, so it's generic and modular enough to work for
       large, complex programs.
     </p>
-  </body>
+  <?footer?>
+</body>
 </html>

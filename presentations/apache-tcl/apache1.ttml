@@ -26,5 +26,6 @@
 	</ul>
       </li>
     </ul>
-  </body>
+  <?footer?>
+</body>
 </html>

@@ -8,9 +8,8 @@
   <body class="splash">
     <? prevnext {<h1 align="center" class="splash">Apache Tcl</h1>} ?>
 
-    <h2 align="center" class="splash">David N. Welton</h2>
-    <p align="center">
-      <a href="mailto:davidw@apache.org">davidw@apache.org</a>
-    </p>
-  </body>
+    <? makeindex ?>
+
+  <?footer?>
+</body>
 </html>

@@ -1,0 +1,26 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>Tcl and the Web</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body>
+    <? prevnext "<h1>Tcl and the Web</h1>" ?>
+
+    <p>
+      The web (and XML, for that matter) is primarily text oriented,
+      so a language that's good at dealing with text is well suited to
+      the web, and much, much faster to develop with than a low-level
+      language like C.
+    </p>
+
+    <p>
+      There are a lot of people out there who just want to create
+      simple dynamic web pages.  A good language should accomodate
+      them, as well as more experienced programmers.
+    </p>
+
+    <?footer?>
+  </body>
+</html>

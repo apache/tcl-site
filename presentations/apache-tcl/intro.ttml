@@ -8,11 +8,13 @@
   <body>
     <? prevnext "<h1>Apache Tcl Introduction</h1>" ?>
 
-    Apache Tcl is the name of the project that, surprisingly, manages
-    the integration of the Tcl programming language with the Apache
-    web server.
+    Apache Tcl is, of course, the name for the projects which have the
+    Apache web server and Tcl language in common, but more than that, we
+    have all arrived at this junction between Apache and Tcl because we
+    have found it to be the optimal solution.
 
     <p align="center"><img src="prato.jpg" alt="Prato della Valle"></p>
 
+    <? footer ?>
   </body>
 </html>

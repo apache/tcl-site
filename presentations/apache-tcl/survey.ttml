@@ -28,6 +28,6 @@
       </p>
 
     </form>
-
+    <?footer?>
   </body>
 </html>

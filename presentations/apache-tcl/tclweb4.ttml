@@ -20,5 +20,6 @@
     </p>
 
 
-  </body>
+  <?footer?>
+</body>
 </html>

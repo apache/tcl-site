@@ -11,8 +11,9 @@
     <p align="center">
       <img src="clouds1.jpg" alt="Clouds in Padova" align="middle">
     </p>
-    <p>
-      Something interesting to look at...
+    <p align="center" style="font-size:smaller">
+      Piazza delle Erbe, Padova, Italia
     </p>
-  </body>
+  <?footer?>
+</body>
 </html>

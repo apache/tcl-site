@@ -31,5 +31,6 @@
 
 <B><FONT COLOR="#A020F0">puts</FONT></B> [greeting]</PRE>
 
-  </body>
+  <?footer?>
+</body>
 </html>

@@ -8,17 +8,18 @@
   <body>
     <? prevnext "<h1>Conclusion</h1>" ?>
 
-    <p>Go forth, and Tcl!</p>
+    <p>Thanks for Listening</p>
 
-    <p>More information can be had here:
+    <p>More information is available here:
     </p>
     <ul>
-      <li><a href="http://www.tcl.tk">http://www.tcl.tk</a></li>
       <li><a href="http://tcl.apache.org">http://tcl.apache.org</a></li>
+      <li><a href="http://www.tcl.tk">http://www.tcl.tk</a></li>
     </ul>
     <p>I can be reached at <a href="mailto:davidw@dedasys.com">davidw@dedasys.com</a></p>
 
     <p>Thanks for listening!</p>
 
-  </body>
+  <?footer?>
+</body>
 </html>

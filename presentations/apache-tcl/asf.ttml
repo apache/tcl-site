@@ -28,5 +28,6 @@
 	the ASF.
       </li>
     </ul>
-  </body>
+  <?footer?>
+</body>
 </html>

@@ -1,12 +1,12 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html><head><meta content="text/html; charset=ISO-8859-1" http-equiv="Content-Type"><title>Logging</title><meta name="generator" content="DocBook XSL Stylesheets V1.50.0"><link rel="home" href="index.html" title="Websh Reference"><link rel="up" href="index.html" title="Websh Reference"><link rel="previous" href="response_data_handling.html" title="Response data handling"><link rel="next" href="context_handling.html" title="Context handling"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Logging</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="response_data_handling.html">Prev</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="context_handling.html">Next</a></td></tr></table><hr></div><div class="section"><div class="titlepage"><div><hr><h2 class="title" style="clear: both"><a name="logging"></a>Logging</h2></div></div><p style="width:90%">
+<html><head><meta content="text/html; charset=ISO-8859-1" http-equiv="Content-Type"><title>Logging</title><meta name="generator" content="DocBook XSL Stylesheets V1.52.1"><link rel="home" href="index.html" title="Websh Reference"><link rel="up" href="index.html" title="Websh Reference"><link rel="previous" href="response_data_handling.html" title="Response data handling"><link rel="next" href="context_handling.html" title="Context handling"><link rel="article" href="index.html" title="Websh Reference"><link rel="subsection" href="logging.html#web::logdest" title="web::logdest"><link rel="subsection" href="logging.html#web::logfilter" title="web::logfilter"><link rel="subsection" href="logging.html#web::log" title="web::log"><link rel="subsection" href="logging.html#log_plug-ins" title="Log plug-ins"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Logging</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="response_data_handling.html">Prev</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="context_handling.html">Next</a></td></tr></table><hr></div><div class="section"><div class="titlepage"><div><hr><h2 class="title" style="clear: both"><a name="logging"></a>Logging</h2></div></div><p style="width:90%">
       Logging consists of two parts. <span style="font-family:monospace"><b>web::log</b></span>
       issues a logging message, while
       <span style="font-family:monospace"><b>web::logfilter</b></span> and
       <span style="font-family:monospace"><b>web::logdest</b></span> determine where to send a
       message. Websh uses a two-step filtering. First, Websh
       determines whether it should handle a message, or not, using the
-      filters configured with &quot;web::logfilter&quot;. Then,
+      filters configured with <span style="font-family:monospace"><b>web::logfilter</b></span>. Then,
       Websh determines which message is to be sent where, using the
       filters configured with <span style="font-family:monospace"><b>web::logdest</b></span>.
     </p><p style="width:90%">
@@ -17,79 +17,79 @@
       </p><div class="itemizedlist"><ul type="disc"><li><div style="margin-bottom:6">alert</div></li><li><div style="margin-bottom:6">error</div></li><li><div style="margin-bottom:6">warning</div></li><li><div style="margin-bottom:6">info</div></li><li><div style="margin-bottom:6">debug</div></li></ul></div><p style="width:90%">
     </p><div class="section"><div class="titlepage"><div><h3 class="title"><a name="web::logdest"></a>web::logdest</h3></div></div><p style="width:90%">
 
-	</p><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><tt>web::logdest</tt></span>  <tt><span style="text-decoration:underline"><i><tt>subcommand</tt></i></span></tt> ?<tt><span style="text-decoration:underline"><i><tt>options</tt></i></span></tt>? <tt><span style="text-decoration:underline"><i><tt>level</tt></i></span></tt> <tt><span style="text-decoration:underline"><i><tt>plugin</tt></i></span></tt></span></div><p style="width:90%">
+	</p><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><tt>web::logdest</tt></span>  <i><tt>subcommand</tt></i> ?<i><tt>options</tt></i>? <i><tt>level</tt></i> <i><tt>plugin</tt></i></span></div><p style="width:90%">
 
-	Subcommands are: <tt><span style="text-decoration:underline">add</span></tt>,
-	<tt><span style="text-decoration:underline">delete</span></tt>, and <tt><span style="text-decoration:underline">names</span></tt>.  Options
-	are: <tt><span style="text-decoration:underline">-maxchar</span></tt>, and
-	<tt><span style="text-decoration:underline">-format</span></tt>.
+	Subcommands are: <tt>add</tt>,
+	<tt>delete</tt>, and <tt>names</tt>.  Options
+	are: <tt>-maxchar</tt>, and
+	<tt>-format</tt>.
       </p><p style="width:90%">
 
-	Known plug-ins are: <tt><span style="text-decoration:underline">file</span></tt>,
-	<tt><span style="text-decoration:underline">syslog</span></tt>, <tt><span style="text-decoration:underline">command</span></tt>,
-	<tt><span style="text-decoration:underline">channel</span></tt>, and
-	<tt><span style="text-decoration:underline">apache</span></tt>. <span class="emphasis"><em>Note</em></span>: the
+	Known plug-ins are: <tt>file</tt>,
+	<tt>syslog</tt>, <tt>command</tt>,
+	<tt>channel</tt>, and
+	<tt>apache</tt>. <span class="emphasis"><em>Note</em></span>: the
 	plugins may have indiviudal options
-	(<tt><span style="text-decoration:underline">-unbuffered</span></tt>), see documentation below.
+	(<tt>-unbuffered</tt>), see documentation below.
 
 	The format string consits of format specifications for
 	<tt>fprintf()</tt> plus: <tt>p</tt> (process id), <tt>t</tt> (thread id), <tt>n</tt> (log level), <tt>f</tt> (log type), and <tt>m</tt> (the message).
 
       </p><p style="width:90%">
-	<pre style="background:#bbffbb ; width:75%" class="programlisting">
-	  web::logdest add -maxchar 25 -format &quot;%x %X \$l \$m&quot; *.-debug command logTest</pre>
+	</p><pre style="background:#bbffbb ; width:75%" class="programlisting">
+	  web::logdest add -maxchar 25 -format &quot;%x %X \$l \$m&quot; *.-debug command logTest</pre><p style="width:90%">
       </p></div><div class="section"><div class="titlepage"><div><h3 class="title"><a name="web::logfilter"></a>web::logfilter</h3></div></div><p style="width:90%">
 
 
-	</p><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><tt>web::logfilter</tt></span>  <tt><span style="text-decoration:underline">subcommand</span></tt> <tt><span style="text-decoration:underline">args</span></tt></span></div><p style="width:90%">
+	</p><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><tt>web::logfilter</tt></span>  subcommand args</span></div><p style="width:90%">
 
-	Subcommands are: <tt><span style="text-decoration:underline">add</span></tt>,
-	<tt><span style="text-decoration:underline">delete</span></tt>, and <tt><span style="text-decoration:underline">names</span></tt>.
+	Subcommands are: <tt>add</tt>,
+	<tt>delete</tt>, and <tt>names</tt>.
       </p><p style="width:90%">
 	Add a filter to the list.
 	</p><div class="variablelist"><dl><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><b>web::logfilter</b></span>
-	      <tt><span style="text-decoration:underline">add</span></tt> <tt><span style="text-decoration:underline"><i><tt>level</tt></i></span></tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
+	      <tt>add</tt> <tt><i><tt>level</tt></i></tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
 		add a level to the list.
 	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><b>web::logfilter</b></span>
-	      <tt><span style="text-decoration:underline">delete</span></tt>
-	      ?<tt><span style="text-decoration:underline"><i><tt>name</tt></i></span></tt>?</span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
-		remove a <tt><span style="text-decoration:underline">name</span></tt> from list, or remove all
-		filters if <tt><span style="text-decoration:underline">name</span></tt> is omitted.
+	      <tt>delete</tt>
+	      ?<tt><i><tt>name</tt></i></tt>?</span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
+		remove a <tt>name</tt> from list, or remove all
+		filters if <tt>name</tt> is omitted.
 	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><b>web::logfilter</b></span>
-	      <tt><span style="text-decoration:underline"><i><tt>names</tt></i></span></tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
+	      <tt><i><tt>names</tt></i></tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
 		list all filters that have been set.
 	      </div></div></dd></dl></div><p style="width:90%">
 
       </p></div><div class="section"><div class="titlepage"><div><h3 class="title"><a name="web::log"></a>web::log</h3></div></div><p style="width:90%">
 
-	</p><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><tt>web::log</tt></span>  <tt><span style="text-decoration:underline"><i><tt>level</tt></i></span></tt> <tt><span style="text-decoration:underline"><i><tt><i><tt>msg</tt></i></tt></i></span></tt></span></div><p style="width:90%">
+	</p><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><tt>web::log</tt></span>  <i><tt>level</tt></i> <i><tt>msg</tt></i></span></div><p style="width:90%">
 
 	Issue a log message.  It is possible, should the user so
 	desire, to have the <span style="font-family:monospace"><b>web::log</b></span> run
 	<span style="font-family:monospace"><b>subst</b></span> on its arguments.  This behaviour is
 	turned off by default, and can be turned on by doing:
-	<pre style="background:#bbffbb ; width:75%" class="programlisting">web::config logsubst 1</pre>.
+	</p><pre style="background:#bbffbb ; width:75%" class="programlisting">web::config logsubst 1</pre><p style="width:90%">.
       </p></div><div class="section"><div class="titlepage"><div><h3 class="title"><a name="log_plug-ins"></a>Log plug-ins</h3></div></div><div class="section"><div class="titlepage"><div><h4 class="title"><a name="file"></a>File</h4></div></div><p style="width:90%">
 
-	  </p><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><tt>web::logdest</tt></span>   <tt>add</tt>  <tt><span style="text-decoration:underline"><i><tt>destination</tt></i>.-<i><tt>level</tt></i></span></tt> <tt><span style="text-decoration:underline">file</span></tt> ?<tt><span style="text-decoration:underline"><i><tt>options</tt></i></span></tt>? <tt><span style="text-decoration:underline"><i><tt>filename</tt></i></span></tt></span></div><p style="width:90%">
-	  Option is: <tt><span style="text-decoration:underline">-unbuffered</span></tt>
+	  </p><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><tt>web::logdest</tt></span>   add  <i><tt>destination</tt></i>.-<i><tt>level</tt></i> file ?<i><tt>options</tt></i>? <i><tt>filename</tt></i></span></div><p style="width:90%">
+	  Option is: <tt>-unbuffered</tt>
 	</p></div><div class="section"><div class="titlepage"><div><h4 class="title"><a name="syslog"></a>Syslog</h4></div></div><p style="width:90%">
 
-	  </p><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><tt>web::logdest</tt></span>   <tt>add</tt>  <tt><span style="text-decoration:underline">*.-debug</span></tt> <tt><span style="text-decoration:underline">syslog</span></tt> ?<tt><span style="text-decoration:underline"><i><tt>level</tt></i></span></tt>?</span></div><p style="width:90%">
+	  </p><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><tt>web::logdest</tt></span>   add  *.-debug syslog ?<i><tt>level</tt></i>?</span></div><p style="width:90%">
 
 	  See the man page for syslog for levels on your system. Typical: 10.
 
 	</p></div><div class="section"><div class="titlepage"><div><h4 class="title"><a name="command"></a>Command</h4></div></div><p style="width:90%">
 
-	  </p><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><tt>web::logdest</tt></span>   <tt>add</tt>  <tt><span style="text-decoration:underline">*.-debug</span></tt>  <tt>command</tt>  <tt><span style="text-decoration:underline"><i><tt>cmdName</tt></i></span></tt></span></div><p style="width:90%">
+	  </p><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><tt>web::logdest</tt></span>   add  *.-debug  command  <i><tt>cmdName</tt></i></span></div><p style="width:90%">
 	</p></div><div class="section"><div class="titlepage"><div><h4 class="title"><a name="channel"></a>Channel</h4></div></div><p style="width:90%">
 
 
-	  </p><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><tt>web::logdest</tt></span>   <tt>add</tt>  <tt><span style="text-decoration:underline">*.-debug</span></tt>  <tt>channel</tt>  ?<tt><span style="text-decoration:underline"><i><tt>options</tt></i></span></tt>? <tt><span style="text-decoration:underline"><i><tt>channel</tt></i></span></tt></span></div><p style="width:90%">
-	  Option is: <tt><span style="text-decoration:underline">-unbuffered</span></tt>
-	</p></div><div class="section"><div class="titlepage"><div><h4 class="title"><a name="apache"></a>Apache</h4></div></div><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><tt>web::logdest</tt></span>   <tt>add</tt>  <tt><span style="text-decoration:underline">*.-debug</span></tt>  <tt>apache</tt> </span></div><p style="width:90%">
+	  </p><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><tt>web::logdest</tt></span>   add  *.-debug  channel  ?<i><tt>options</tt></i>? <i><tt>channel</tt></i></span></div><p style="width:90%">
+	  Option is: <tt>-unbuffered</tt>
+	</p></div><div class="section"><div class="titlepage"><div><h4 class="title"><a name="apache"></a>Apache</h4></div></div><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><tt>web::logdest</tt></span>   add  *.-debug  apache </span></div><p style="width:90%">
 	  Available in mod_websh only.
-	</p></div><div class="section"><div class="titlepage"><div><h4 class="title"><a name="id5348904"></a></h4></div></div><div class="example"><p class="title"><b>Example 7. web::log</b></p><pre style="background:#bbffbb ; width:75%" class="programlisting">
+	</p></div><div class="section"><div class="titlepage"><div><h4 class="title"><a name="id293027"></a></h4></div></div><div class="example"><a name="id293032"></a><p class="title"><b>Example 8. web::log</b></p><pre style="background:#bbffbb ; width:75%" class="programlisting">
 	    % web::logfilter add *.-debug
 	    logfilter0
 	    % web::logdest add *.-debug channel stdout

@@ -1,65 +1,65 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html><head><meta content="text/html; charset=ISO-8859-1" http-equiv="Content-Type"><title>Context handling</title><meta name="generator" content="DocBook XSL Stylesheets V1.50.0"><link rel="home" href="index.html" title="Websh Reference"><link rel="up" href="index.html" title="Websh Reference"><link rel="previous" href="logging.html" title="Logging"><link rel="next" href="file_handling_and_file_IO.html" title="File handling and file I/O"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Context handling</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="logging.html">Prev</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="file_handling_and_file_IO.html">Next</a></td></tr></table><hr></div><div class="section"><div class="titlepage"><div><hr><h2 class="title" style="clear: both"><a name="context_handling"></a>Context handling</h2></div></div><div class="section"><div class="titlepage"><div><h3 class="title"><a name="web::context"></a>web::context</h3></div></div><p style="width:90%">
+<html><head><meta content="text/html; charset=ISO-8859-1" http-equiv="Content-Type"><title>Context handling</title><meta name="generator" content="DocBook XSL Stylesheets V1.52.1"><link rel="home" href="index.html" title="Websh Reference"><link rel="up" href="index.html" title="Websh Reference"><link rel="previous" href="logging.html" title="Logging"><link rel="next" href="file_handling_and_file_IO.html" title="File handling and file I/O"><link rel="article" href="index.html" title="Websh Reference"><link rel="subsection" href="context_handling.html#web::context" title="web::context"><link rel="subsection" href="context_handling.html#web::filecontext" title="web::filecontext"><link rel="subsection" href="context_handling.html#web::cookiecontext" title="web::cookiecontext"><link rel="subsection" href="context_handling.html#web::filecounter" title="web::filecounter"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Context handling</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="logging.html">Prev</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="file_handling_and_file_IO.html">Next</a></td></tr></table><hr></div><div class="section"><div class="titlepage"><div><hr><h2 class="title" style="clear: both"><a name="context_handling"></a>Context handling</h2></div></div><div class="section"><div class="titlepage"><div><h3 class="title"><a name="web::context"></a>web::context</h3></div></div><p style="width:90%">
 	Creation
-	</p><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><tt>web::context</tt></span>  <tt><span style="text-decoration:underline"><i><tt>name</tt></i></span></tt></span></div><p style="width:90%">
-	Creates a namespace <tt><span style="text-decoration:underline">name</span></tt> with the following
+	</p><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><tt>web::context</tt></span>  <i><tt>name</tt></i></span></div><p style="width:90%">
+	Creates a namespace <tt>name</tt> with the following
 	commands:
 
-	</p><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><tt><i><tt>name</tt></i>::subcommand</tt></span>  <tt><span style="text-decoration:underline"><i><tt>args</tt></i></span></tt></span></div><p style="width:90%">
+	</p><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><tt><i><tt>name</tt></i>::subcommand</tt></span>  <i><tt>args</tt></i></span></div><p style="width:90%">
 
-	Subcommands are: <tt><span style="text-decoration:underline">cset</span></tt>,
-	<tt><span style="text-decoration:underline">cappend</span></tt>, <tt><span style="text-decoration:underline">clappend</span></tt>,
-	<tt><span style="text-decoration:underline">cget</span></tt>, <tt><span style="text-decoration:underline">cexists</span></tt>,
-	<tt><span style="text-decoration:underline">cunset</span></tt>, <tt><span style="text-decoration:underline">carray</span></tt>,
-	<tt><span style="text-decoration:underline">cnames</span></tt>, and <tt><span style="text-decoration:underline">dump</span></tt>.
+	Subcommands are: <tt>cset</tt>,
+	<tt>cappend</tt>, <tt>clappend</tt>,
+	<tt>cget</tt>, <tt>cexists</tt>,
+	<tt>cunset</tt>, <tt>carray</tt>,
+	<tt>cnames</tt>, and <tt>dump</tt>.
 
 	Manages data of the context. The subcommands behave like the
 	Tcl commands with similar names.
 
 	</p><div class="variablelist"><dl><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><b><i><tt>name</tt></i>::cset</b></span>
-	      <tt><span style="text-decoration:underline"><i><tt>key</tt></i></span></tt> <tt><span style="text-decoration:underline"><i><tt>value</tt></i></span></tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
-		store <tt><span style="text-decoration:underline">value</span></tt>.
+	      <tt><i><tt>key</tt></i></tt> <tt><i><tt>value</tt></i></tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
+		store <tt>value</tt>.
 	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><b><i><tt>name</tt></i>::cappend</b></span>
-	      <tt><span style="text-decoration:underline"><i><tt>key</tt></i></span></tt> <tt><span style="text-decoration:underline"><i><tt>value</tt></i></span></tt>
-	      ?<tt><span style="text-decoration:underline"><i><tt>value</tt></i></span></tt>?
-	      ?<tt><span style="text-decoration:underline"><i><tt>...</tt></i></span></tt>?</span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
-		append <tt><span style="text-decoration:underline">value</span></tt> to existing value for
-		<tt><span style="text-decoration:underline">key</span></tt>.
+	      <tt><i><tt>key</tt></i></tt> <tt><i><tt>value</tt></i></tt>
+	      ?<tt><i><tt>value</tt></i></tt>?
+	      ?<tt><i><tt>...</tt></i></tt>?</span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
+		append <tt>value</tt> to existing value for
+		<tt>key</tt>.
 	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><b><i><tt>name</tt></i>::clappend</b></span>
-	      <tt><span style="text-decoration:underline"><i><tt>key</tt></i></span></tt> <tt><span style="text-decoration:underline"><i><tt>value</tt></i></span></tt>
-	      ?<tt><span style="text-decoration:underline"><i><tt>value</tt></i></span></tt>?
-	      ?<tt><span style="text-decoration:underline"><i><tt>...</tt></i></span></tt>?</span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
-		append <tt><span style="text-decoration:underline">value</span></tt> to existing list of
-		values for <tt><span style="text-decoration:underline">key</span></tt>.
+	      <tt><i><tt>key</tt></i></tt> <tt><i><tt>value</tt></i></tt>
+	      ?<tt><i><tt>value</tt></i></tt>?
+	      ?<tt><i><tt>...</tt></i></tt>?</span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
+		append <tt>value</tt> to existing list of
+		values for <tt>key</tt>.
 	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><b><i><tt>name</tt></i>::cget</b></span>
-	      <tt><span style="text-decoration:underline"><i><tt>key</tt></i></span></tt>
-	      ?<tt><span style="text-decoration:underline"><i><tt>default</tt></i></span></tt>?</span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
-		access the value for key <tt><span style="text-decoration:underline">key</span></tt>, or
-		return <tt><span style="text-decoration:underline">default</span></tt> if
-		<tt><span style="text-decoration:underline">key</span></tt> does not exist in the context. If
-		<tt><span style="text-decoration:underline">default</span></tt> is omitted, an empty string
-		is returned if <tt><span style="text-decoration:underline">key</span></tt> is unknown.
+	      <tt><i><tt>key</tt></i></tt>
+	      ?<tt><i><tt>default</tt></i></tt>?</span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
+		access the value for key <tt>key</tt>, or
+		return <tt>default</tt> if
+		<tt>key</tt> does not exist in the context. If
+		<tt>default</tt> is omitted, an empty string
+		is returned if <tt>key</tt> is unknown.
 	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><b><i><tt>name</tt></i>::cexists</b></span>
-	      <tt><span style="text-decoration:underline"><i><tt>key</tt></i></span></tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
-		returns true (1) if <tt><span style="text-decoration:underline">key</span></tt> exists in
+	      <tt><i><tt>key</tt></i></tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
+		returns true (1) if <tt>key</tt> exists in
 		context, false (0) otherwise.
 	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><b><i><tt>name</tt></i>::cunset</b></span>
-	      <tt><span style="text-decoration:underline"><i><tt>key</tt></i></span></tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
-		remove <tt><span style="text-decoration:underline">key</span></tt> from context.
+	      <tt><i><tt>key</tt></i></tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
+		remove <tt>key</tt> from context.
 	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><b><i><tt>name</tt></i>::carray</b></span>
-	      <tt><span style="text-decoration:underline"><i><tt>option</tt></i></span></tt> <tt><span style="text-decoration:underline"><i><tt>key</tt></i></span></tt>
-	      <tt><span style="text-decoration:underline"><i><tt>arg</tt></i></span></tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
+	      <tt><i><tt>option</tt></i></tt> <tt><i><tt>key</tt></i></tt>
+	      <tt><i><tt>arg</tt></i></tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
 		array manipulation as known from the Tcl command
 		<span class="emphasis"><em>array</em></span>.
 	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><b><i><tt>name</tt></i>::cnames</b></span>
-	      ?<tt><span style="text-decoration:underline"><i><tt>pattern</tt></i></span></tt>?</span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
+	      ?<tt><i><tt>pattern</tt></i></tt>?</span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
 		lists existing keys of context matching
-		<tt><span style="text-decoration:underline">pattern</span></tt>.
+		<tt>pattern</tt>.
 	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><b><i><tt>name</tt></i>::dump</b></span></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
 		serialize context.
 	      </div></div></dd></dl></div><p style="width:90%">
 
-	</p><div class="example"><p class="title"><b>Example 8. web::context</b></p><pre style="background:#bbffbb ; width:75%" class="programlisting">
+	</p><div class="example"><a name="id293666"></a><p class="title"><b>Example 9. web::context</b></p><pre style="background:#bbffbb ; width:75%" class="programlisting">
 	    % web::context sc
 	    % sc::cset lang FR
 	    FR
@@ -71,49 +71,49 @@
       </p></div><div class="section"><div class="titlepage"><div><h3 class="title"><a name="web::filecontext"></a>web::filecontext</h3></div></div><p style="width:90%">
 
 	Creation:
-	</p><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><tt>web::filecontext</tt></span>  <tt><span style="text-decoration:underline"><i><tt>name</tt></i></span></tt> ?<tt><span style="text-decoration:underline"><i><tt>options</tt></i></span></tt>?</span></div><p style="width:90%">
+	</p><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><tt>web::filecontext</tt></span>  <i><tt>name</tt></i> ?<i><tt>options</tt></i>?</span></div><p style="width:90%">
 
-	Options are: <tt><span style="text-decoration:underline">-perm</span></tt>, <tt><span style="text-decoration:underline">-path</span></tt>,
-	<tt><span style="text-decoration:underline">-crypt</span></tt>, <tt><span style="text-decoration:underline">-idgen</span></tt>, and
-	<tt><span style="text-decoration:underline">-attachto</span></tt>.
+	Options are: <tt>-perm</tt>, <tt>-path</tt>,
+	<tt>-crypt</tt>, <tt>-idgen</tt>, and
+	<tt>-attachto</tt>.
 
-	Creates a namespace <tt><span style="text-decoration:underline">name</span></tt> to manage file-based
+	Creates a namespace <tt>name</tt> to manage file-based
 	context data:
 
 
-	</p><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><tt><i><tt>name</tt></i>::subcommand</tt></span>  <tt><span style="text-decoration:underline"><i><tt>args</tt></i></span></tt></span></div><p style="width:90%">
+	</p><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><tt><i><tt>name</tt></i>::subcommand</tt></span>  <i><tt>args</tt></i></span></div><p style="width:90%">
 
-	Subcommands are: <tt><span style="text-decoration:underline">cset</span></tt>,
-	<tt><span style="text-decoration:underline">cappend</span></tt>, <tt><span style="text-decoration:underline">clappend</span></tt>,
-	<tt><span style="text-decoration:underline">cget</span></tt>, <tt><span style="text-decoration:underline">cexists</span></tt>,
-	<tt><span style="text-decoration:underline">cunset</span></tt>, <tt><span style="text-decoration:underline">carray</span></tt>,
-	<tt><span style="text-decoration:underline">cnames</span></tt>, <tt><span style="text-decoration:underline">init</span></tt>,
-	<tt><span style="text-decoration:underline">new</span></tt>, <tt><span style="text-decoration:underline">commit</span></tt>,
-	<tt><span style="text-decoration:underline">invalidate</span></tt>, and <tt><span style="text-decoration:underline">id</span></tt>.
+	Subcommands are: <tt>cset</tt>,
+	<tt>cappend</tt>, <tt>clappend</tt>,
+	<tt>cget</tt>, <tt>cexists</tt>,
+	<tt>cunset</tt>, <tt>carray</tt>,
+	<tt>cnames</tt>, <tt>init</tt>,
+	<tt>new</tt>, <tt>commit</tt>,
+	<tt>invalidate</tt>, and <tt>id</tt>.
 
 	Manages file-based context data. The subcommands have their
 	familiar behaviour of the Tcl commands with similar
-	names. Please refer to the section <a href="context_handling.html#context_handling" title="Context handling">context management</a> for a
-	description of the commands <tt><span style="text-decoration:underline">cset</span></tt>,
-	<tt><span style="text-decoration:underline">cappend</span></tt>, <tt><span style="text-decoration:underline">clappend</span></tt>,
-	<tt><span style="text-decoration:underline">cget</span></tt>, <tt><span style="text-decoration:underline">cexists</span></tt>,
-	<tt><span style="text-decoration:underline">cunset</span></tt>, <tt><span style="text-decoration:underline">carray</span></tt>, and
-	<tt><span style="text-decoration:underline">cnames</span></tt>.
+	names. Please refer to the section <a href="context_handling.html" title="Context handling">context management</a> for a
+	description of the commands <tt>cset</tt>,
+	<tt>cappend</tt>, <tt>clappend</tt>,
+	<tt>cget</tt>, <tt>cexists</tt>,
+	<tt>cunset</tt>, <tt>carray</tt>, and
+	<tt>cnames</tt>.
 
 	</p><div class="variablelist"><dl><dt><span style="background:#bbbbff"><span class="term">
 	      <span style="font-family:monospace"><b><i><tt>name</tt></i>::init</b></span>
-	      ?<tt><span style="text-decoration:underline"><i><tt>id</tt></i></span></tt>?
+	      ?<tt><i><tt>id</tt></i></tt>?
 	    </span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
 		load an existing session context with id
-		<tt><span style="text-decoration:underline">id</span></tt>, or create a new one, if
+		<tt>id</tt>, or create a new one, if
 		possible. Automation depends on the settings of the
 		actual context manager settings, see
 		below.</div><div style="margin-bottom:6"> If you specify an
-		<tt><span style="text-decoration:underline">id</span></tt>, you must decide when to create a
+		<tt>id</tt>, you must decide when to create a
 		new file and when to use the old one, if any, by
 		yourself.
 	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><b><i><tt>name</tt></i>::new</b></span>
-	      ?<tt><span style="text-decoration:underline"><i><tt>id</tt></i></span></tt>?</span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
+	      ?<tt><i><tt>id</tt></i></tt>?</span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
 		create a new session context. Automation depends on
 		the settings of the actual context manager settings,
 		see below.
@@ -126,14 +126,14 @@
 	      </div></div></dd></dl></div><p style="width:90%">
 
 	Options:
-	</p><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><tt>web::filecontext</tt></span>  <tt><span style="text-decoration:underline"><i><tt>name</tt></i></span></tt> <tt><span style="text-decoration:underline">-perm</span></tt> <tt><span style="text-decoration:underline"><i><tt>perm</tt></i></span></tt></span></div><p style="width:90%">
+	</p><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><tt>web::filecontext</tt></span>  <i><tt>name</tt></i> -perm <i><tt>perm</tt></i></span></div><p style="width:90%">
 
 	set the file permissions of the session context files
-	<tt><span style="text-decoration:underline">perm</span></tt> is an unix-like octal value like 0644.
+	<tt>perm</tt> is an unix-like octal value like 0644.
 
 	</p><div class="variablelist"><dl><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><b>web::filecontext</b></span>
-	      <tt><span style="text-decoration:underline"><i><tt>name</tt></i></span></tt> <tt><span style="text-decoration:underline">-path</span></tt>
-	      <tt><span style="text-decoration:underline"><i><tt>path</tt></i></span></tt>
+	      <tt><i><tt>name</tt></i></tt> <tt>-path</tt>
+	      <tt><i><tt>path</tt></i></tt>
 	    </span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
 		specify where to store session context files and how
 		to name them. Suppose that the session id is 99.
@@ -141,24 +141,24 @@
 		would then cause filecontext to save the session
 		context as <tt>../data/s99.dat</tt>.
 	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><b>web::filecontext</b></span>
-	      <tt><span style="text-decoration:underline"><i><tt>name</tt></i></span></tt> <tt><span style="text-decoration:underline">-crypt</span></tt>
-	      <tt><span style="text-decoration:underline">boolean</span></tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
+	      <tt><i><tt>name</tt></i></tt> <tt>-crypt</tt>
+	      <tt>boolean</tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
 		Flag to turn crypting of session context on and off.
 		Default is on.
 	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><b>web::filecontext</b></span>
-	      <tt><span style="text-decoration:underline"><i><tt>name</tt></i></span></tt> <tt><span style="text-decoration:underline">-idgen</span></tt>
-	      <tt><span style="text-decoration:underline"><i><tt>idgen</tt></i></span></tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
-		Sets command <tt><span style="text-decoration:underline">idgen</span></tt> to find a new
+	      <tt><i><tt>name</tt></i></tt> <tt>-idgen</tt>
+	      <tt><i><tt>idgen</tt></i></tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
+		Sets command <tt>idgen</tt> to find a new
 		session id. See doc of
 		<span style="font-family:monospace"><b>web::filecounter</b></span> below for an
 		implementation provided with Websh.
 	      </div><div style="margin-bottom:6">
-		<tt><span style="text-decoration:underline">idgen</span></tt> is used in case that no
-		<tt><span style="text-decoration:underline">id</span></tt> argument has been passed to
-		<tt><span style="text-decoration:underline">init</span></tt> or <tt><span style="text-decoration:underline">new</span></tt>.
+		<tt>idgen</tt> is used in case that no
+		<tt>id</tt> argument has been passed to
+		<tt>init</tt> or <tt>new</tt>.
 	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><b>web::filecontext</b></span>
-	      <tt><span style="text-decoration:underline"><i><tt>name</tt></i></span></tt> <tt><span style="text-decoration:underline">-attachto</span></tt>
-	      <tt><span style="text-decoration:underline"><i><tt>idparam</tt></i></span></tt>
+	      <tt><i><tt>name</tt></i></tt> <tt>-attachto</tt>
+	      <tt><i><tt>idparam</tt></i></tt>
 	    </span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
 		the next using the querystring (this is one reason why
 		the querystring is encrypted). After web::dispatch has
@@ -166,7 +166,7 @@
 		current session id, if any. <span class="emphasis"><em>Note</em></span>
 		that you can maintain several sessions in parallel,
 		and attach every session to its own
-		<tt><span style="text-decoration:underline">idparam</span></tt>.
+		<tt>idparam</tt>.
 	      </div><div style="margin-bottom:6">
 		Using <span class="emphasis"><em>web::dispatch -track</em></span>
 		further automates the passing of session ids from
@@ -182,34 +182,33 @@
 
 	Creation:
 
-	</p><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><tt>web::cookiecontext</tt></span>  <tt><span style="text-decoration:underline"><i><tt>name</tt></i></span></tt> ?<tt><span style="text-decoration:underline"><i><tt>options</tt></i></span></tt>?</span></div><p style="width:90%">
+	</p><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><tt>web::cookiecontext</tt></span>  <i><tt>name</tt></i> ?<i><tt>options</tt></i>?</span></div><p style="width:90%">
 
-	Options are: <tt><span style="text-decoration:underline">-expires</span></tt>,
-	<tt><span style="text-decoration:underline">-path</span></tt>, <tt><span style="text-decoration:underline">-domain</span></tt>,
-	<tt><span style="text-decoration:underline">-secure</span></tt>, <tt><span style="text-decoration:underline">-crypt</span></tt>, and
-	<tt><span style="text-decoration:underline">-channel</span></tt>.
+	Options are: <tt>-expires</tt>,
+	<tt>-path</tt>, <tt>-domain</tt>,
+	<tt>-secure</tt>, <tt>-crypt</tt>, and
+	<tt>-channel</tt>.
 
-	Creates a namespace <tt><span style="text-decoration:underline">name</span></tt> to manage
+	Creates a namespace <tt>name</tt> to manage
 	cookie-based context data:
 
-	</p><div class="variablelist"><dl><dt><span style="background:#bbbbff"></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
-		<span style="font-family:monospace"><b><i><tt>name</tt></i>::subcommand</b></span>
-		<tt><span style="text-decoration:underline"><i><tt>args</tt></i></span></tt></div><div style="margin-bottom:6">
-		Subcommands are: <tt><span style="text-decoration:underline">cset</span></tt>,
-		<tt><span style="text-decoration:underline">cappend</span></tt>, <tt><span style="text-decoration:underline">clappend</span></tt>,
-		<tt><span style="text-decoration:underline">cget</span></tt>, <tt><span style="text-decoration:underline">cexists</span></tt>,
-		<tt><span style="text-decoration:underline">cunset</span></tt>, <tt><span style="text-decoration:underline">carray</span></tt>,
-		<tt><span style="text-decoration:underline">cnames</span></tt>, <tt><span style="text-decoration:underline">init</span></tt>,
-		<tt><span style="text-decoration:underline">new</span></tt>, <tt><span style="text-decoration:underline">commit</span></tt>,
-		<tt><span style="text-decoration:underline">invalidate</span></tt>, and <tt><span style="text-decoration:underline">id</span></tt>.
+	</p><div class="variablelist"><dl><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><b><i><tt>name</tt></i>::subcommand</b></span>
+		<tt><i><tt>args</tt></i></tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
+		Subcommands are: <tt>cset</tt>,
+		<tt>cappend</tt>, <tt>clappend</tt>,
+		<tt>cget</tt>, <tt>cexists</tt>,
+		<tt>cunset</tt>, <tt>carray</tt>,
+		<tt>cnames</tt>, <tt>init</tt>,
+		<tt>new</tt>, <tt>commit</tt>,
+		<tt>invalidate</tt>, and <tt>id</tt>.
 	      </div></div></dd></dl></div><p style="width:90%">
 
 	</p><div class="variablelist"><dl><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><b><i><tt>name</tt></i>::init</b></span>
-	      ?<tt><span style="text-decoration:underline"><i><tt>id</tt></i></span></tt>?</span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
+	      ?<tt><i><tt>id</tt></i></tt>?</span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
 		load an existing session context (cookie must have
 		been sent by the client).
 	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><b><i><tt>name</tt></i>::new</b></span>
-	      ?<tt><span style="text-decoration:underline"><i><tt>id</tt></i></span></tt>?</span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
+	      ?<tt><i><tt>id</tt></i></tt>?</span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
 		create a new session context.
 	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><b><i><tt>name</tt></i>::commit</b></span></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
 		send a cookie.
@@ -222,43 +221,43 @@
 	Options:
 
 	</p><div class="variablelist"><dl><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><b>web::cookiecontext</b></span>
-	      <tt><span style="text-decoration:underline"><i><tt>name</tt></i></span></tt> <tt><span style="text-decoration:underline">-expires</span></tt>
-	      <tt><span style="text-decoration:underline"><i><tt>time</tt></i></span></tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
+	      <tt><i><tt>name</tt></i></tt> <tt>-expires</tt>
+	      <tt><i><tt>time</tt></i></tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
 		set the expiration date of the cookie. Possible values
-		for <tt><span style="text-decoration:underline">time</span></tt> are <span class="emphasis"><em>day</em></span>
+		for <tt>time</tt> are <span class="emphasis"><em>day</em></span>
 		(lifetime: one day), <span class="emphasis"><em>week</em></span>,
 		<span class="emphasis"><em>today</em></span>,
 		<span class="emphasis"><em>seconds</em></span> (time in seconds since
 		1-1-1970) or <span class="emphasis"><em>date-string</em></span>.
 	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><b>web::cookiecontext</b></span>
-	      <tt><span style="text-decoration:underline"><i><tt>name</tt></i></span></tt> <tt><span style="text-decoration:underline">-path</span></tt>
-	      <tt><span style="text-decoration:underline"><i><tt>path</tt></i></span></tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
-		set the <tt><span style="text-decoration:underline">path</span></tt> property of the cookie.
+	      <tt><i><tt>name</tt></i></tt> <tt>-path</tt>
+	      <tt><i><tt>path</tt></i></tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
+		set the <tt>path</tt> property of the cookie.
 	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><b>web::cookiecontext</b></span>
-	      <tt><span style="text-decoration:underline"><i><tt>name</tt></i></span></tt> <tt><span style="text-decoration:underline">-domain</span></tt>
-	      <tt><span style="text-decoration:underline"><i><tt>domain</tt></i></span></tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
-		set the <tt><span style="text-decoration:underline">domain</span></tt> property of the cookie.
+	      <tt><i><tt>name</tt></i></tt> <tt>-domain</tt>
+	      <tt><i><tt>domain</tt></i></tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
+		set the <tt>domain</tt> property of the cookie.
 	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><b>web::cookiecontext</b></span>
-	      <tt><span style="text-decoration:underline"><i><tt>name</tt></i></span></tt>
-	      <tt><span style="text-decoration:underline">-secure</span></tt> <tt><span style="text-decoration:underline">boolean</span></tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
-		set the <tt><span style="text-decoration:underline">secure</span></tt> property of the cookie.
+	      <tt><i><tt>name</tt></i></tt>
+	      <tt>-secure</tt> <tt>boolean</tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
+		set the <tt>secure</tt> property of the cookie.
 	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><b>web::cookiecontext</b></span>
-	      <tt><span style="text-decoration:underline"><i><tt>name</tt></i></span></tt> <tt><span style="text-decoration:underline">-crypt</span></tt>
-	      <tt><span style="text-decoration:underline">boolean</span></tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
+	      <tt><i><tt>name</tt></i></tt> <tt>-crypt</tt>
+	      <tt>boolean</tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
 		Flag to turn crypting of cookie context on and off.
 		Default is on.
 	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><b>web::cookiecontext</b></span>
-	      <tt><span style="text-decoration:underline"><i><tt>name</tt></i></span></tt> <tt><span style="text-decoration:underline">-channel</span></tt>
-	      <tt><span style="text-decoration:underline"><i><tt>channelName</tt></i></span></tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
+	      <tt><i><tt>name</tt></i></tt> <tt>-channel</tt>
+	      <tt><i><tt>channelName</tt></i></tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
 		The response object to send the cookie to (see also
 		<span style="font-family:monospace"><b>web::response</b></span>).
 	      </div></div></dd></dl></div><p style="width:90%">
 
 	Because cookies are client-based, in principle no id is
-	needed. Websh uses <tt><span style="text-decoration:underline">id</span></tt> to name the cookie,
+	needed. Websh uses <tt>id</tt> to name the cookie,
 	however, and the <span style="font-family:monospace"><b>new</b></span>,
 	<span style="font-family:monospace"><b>init</b></span>, and <span style="font-family:monospace"><b>load</b></span> commands
-	still require the <tt><span style="text-decoration:underline">id</span></tt> argument. (fixme: any
+	still require the <tt>id</tt> argument. (fixme: any
 	changes?) Please note that property settings of a cookie
 	context can only be changed <span class="emphasis"><em>before</em></span>
 	anything is output on the respective channel.
@@ -270,51 +269,51 @@
 
 	</p><div class="variablelist"><dl><dt><span style="background:#bbbbff"><span class="term">Creation:</span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
 		<span style="font-family:monospace"><b>web::filecounter</b></span>
-		<tt><span style="text-decoration:underline"><i><tt>name</tt></i></span></tt> <tt><span style="text-decoration:underline">-filename</span></tt>
-		<tt><span style="text-decoration:underline"><i><tt>fname</tt></i></span></tt>
-		?<tt><span style="text-decoration:underline"><i><tt>options</tt></i></span></tt>?
+		<tt><i><tt>name</tt></i></tt> <tt>-filename</tt>
+		<tt><i><tt>fname</tt></i></tt>
+		?<tt><i><tt>options</tt></i></tt>?
 	      </div><div style="margin-bottom:6">
-		Options are: <tt><span style="text-decoration:underline">-min</span></tt>,
-		<tt><span style="text-decoration:underline">-max</span></tt>, <tt><span style="text-decoration:underline">-seed</span></tt>,
-		<tt><span style="text-decoration:underline">-incr</span></tt>, <tt><span style="text-decoration:underline">-mask</span></tt>,
-		<tt><span style="text-decoration:underline">-wrap</span></tt>
-	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><tt><span style="text-decoration:underline">-filename</span></tt>
-	      <tt><span style="text-decoration:underline"><i><tt>filename</tt></i></span></tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
-		uses <tt><span style="text-decoration:underline">filename</span></tt> to store the current
+		Options are: <tt>-min</tt>,
+		<tt>-max</tt>, <tt>-seed</tt>,
+		<tt>-incr</tt>, <tt>-mask</tt>,
+		<tt>-wrap</tt>
+	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><tt>-filename</tt>
+	      <tt><i><tt>filename</tt></i></tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
+		uses <tt>filename</tt> to store the current
 		value (no default)
-	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><tt><span style="text-decoration:underline">-min</span></tt> <tt><span style="text-decoration:underline"><i><tt>value</tt></i></span></tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
+	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><tt>-min</tt> <tt><i><tt>value</tt></i></tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
 		uses this value as a minimum at start and after wrap,
 		if wrap is true (default is 0).
-	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><tt><span style="text-decoration:underline">-max</span></tt> <tt><span style="text-decoration:underline"><i><tt>value</tt></i></span></tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
+	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><tt>-max</tt> <tt><i><tt>value</tt></i></tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
 		uses this value as a maximum, if wrap is true (default is 2147483647).
-	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><tt><span style="text-decoration:underline">-seed</span></tt> <tt><span style="text-decoration:underline"><i><tt>value</tt></i></span></tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
+	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><tt>-seed</tt> <tt><i><tt>value</tt></i></tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
 		if persistent file does not yet exists, use this value
 		as a starting point (default is 0).
-	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><tt><span style="text-decoration:underline">-incr</span></tt> <tt><span style="text-decoration:underline"><i><tt>value</tt></i></span></tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
+	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><tt>-incr</tt> <tt><i><tt>value</tt></i></tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
 		uses this value as an increment for each 'nextval'
 		(default is 1).
-	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><tt><span style="text-decoration:underline">-perms</span></tt>
-	      <tt><span style="text-decoration:underline"><i><tt>value</tt></i></span></tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
+	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><tt>-perms</tt>
+	      <tt><i><tt>value</tt></i></tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
 		sets the permissions on the newly created files
 		(default is 0644).
-	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><tt><span style="text-decoration:underline">-wrap</span></tt>
-	      <tt><span style="text-decoration:underline">boolean</span></tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
+	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><tt>-wrap</tt>
+	      <tt>boolean</tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
 		indicates whether this counter should wrap around its
 		values (from min to max) (default is false).
 	      </div></div></dd></dl></div><p style="width:90%">
 
-	After creation, a new command <tt><span style="text-decoration:underline">name</span></tt> is
+	After creation, a new command <tt>name</tt> is
 	registered with the following two subcommands:
 
-	</p><div class="variablelist"><dl><dt><span style="background:#bbbbff"><span class="term"><tt><span style="text-decoration:underline"><i><tt>name</tt></i></span></tt> nextval</span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
+	</p><div class="variablelist"><dl><dt><span style="background:#bbbbff"><span class="term"><tt><i><tt>name</tt></i></tt> nextval</span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
 		return the next value.
-	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><tt><span style="text-decoration:underline"><i><tt>name</tt></i></span></tt> curval</span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
+	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><tt><i><tt>name</tt></i></tt> curval</span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
 		return the current value, that is, the value that the
 		last call to &quot;nextval&quot; reported (as opposed
 		to the current value in the file).
 	      </div></div></dd></dl></div><p style="width:90%">
 
-      </p><div class="example"><p class="title"><b>Example 9. web::filecounter</b></p><pre style="background:#bbffbb ; width:75%" class="programlisting">
+      </p><div class="example"><a name="id295424"></a><p class="title"><b>Example 10. web::filecounter</b></p><pre style="background:#bbffbb ; width:75%" class="programlisting">
 	  % web::filecounter handleName -filename &quot;test.dat&quot;
 	  handleName
 	  % # from now on, use handleName &lt;curval|nextval|config&gt;

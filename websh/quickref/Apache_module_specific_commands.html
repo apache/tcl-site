@@ -1,5 +1,5 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html><head><meta content="text/html; charset=ISO-8859-1" http-equiv="Content-Type"><title>Apache module specific commands</title><meta name="generator" content="DocBook XSL Stylesheets V1.50.0"><link rel="home" href="index.html" title="Websh Reference"><link rel="up" href="index.html" title="Websh Reference"><link rel="previous" href="inter-process_and_-system_communication.html" title="Inter-process/-system communication"><link rel="next" href="misc_commands.html" title="Miscellaneous commands"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Apache module specific commands</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="inter-process_and_-system_communication.html">Prev</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="misc_commands.html">Next</a></td></tr></table><hr></div><div class="section"><div class="titlepage"><div><hr><h2 class="title" style="clear: both"><a name="Apache_module_specific_commands"></a>Apache module specific commands</h2></div></div><p style="width:90%">
+<html><head><meta content="text/html; charset=ISO-8859-1" http-equiv="Content-Type"><title>Apache module specific commands</title><meta name="generator" content="DocBook XSL Stylesheets V1.52.1"><link rel="home" href="index.html" title="Websh Reference"><link rel="up" href="index.html" title="Websh Reference"><link rel="previous" href="inter-process_and_-system_communication.html" title="Inter-process/-system communication"><link rel="next" href="misc_commands.html" title="Miscellaneous commands"><link rel="article" href="index.html" title="Websh Reference"><link rel="subsection" href="Apache_module_specific_commands.html#web::initializer" title="web::initializer"><link rel="subsection" href="Apache_module_specific_commands.html#web::finalizer" title="web::finalizer"><link rel="subsection" href="Apache_module_specific_commands.html#web::finalize" title="web::finalize"><link rel="subsection" href="Apache_module_specific_commands.html#web::maineval" title="web::maineval"><link rel="subsection" href="Apache_module_specific_commands.html#web::interpclasscfg" title="web::interpclasscfg"><link rel="subsection" href="Apache_module_specific_commands.html#web::interpcfg" title="web::interpcfg"><link rel="subsection" href="Apache_module_specific_commands.html#web::interpmap" title="web::interpmap"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Apache module specific commands</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="inter-process_and_-system_communication.html">Prev</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="misc_commands.html">Next</a></td></tr></table><hr></div><div class="section"><div class="titlepage"><div><hr><h2 class="title" style="clear: both"><a name="Apache_module_specific_commands"></a>Apache module specific commands</h2></div></div><p style="width:90%">
       Note that these commands are implemented as dummies in the CGI
       version of Websh only. They don't do anything except for
       web::initializer and web::finalizer, which just evaluate the
@@ -7,7 +7,7 @@
     </p><div class="section"><div class="titlepage"><div><h3 class="title"><a name="web::initializer"></a>web::initializer</h3></div></div><p style="width:90%">
 
 
-	</p><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><tt>web::initializer</tt></span>  <tt><span style="text-decoration:underline"><i><tt>code</tt></i></span></tt></span></div><p style="width:90%">
+	</p><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><tt>web::initializer</tt></span>  <i><tt>code</tt></i></span></div><p style="width:90%">
 
 	This code is executed only when a new interpreter is created.
 	Note that the &quot;main&quot; Websh script can
@@ -17,13 +17,13 @@
       </p></div><div class="section"><div class="titlepage"><div><h3 class="title"><a name="web::finalizer"></a>web::finalizer</h3></div></div><p style="width:90%">
 
 
-	</p><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><tt>web::finalizer</tt></span>  <tt><span style="text-decoration:underline"><i><tt>code</tt></i></span></tt></span></div><p style="width:90%">
+	</p><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><tt>web::finalizer</tt></span>  <i><tt>code</tt></i></span></div><p style="width:90%">
 
 	Register code to be exectuted when the interpreter for this
 	Websh script is deleted. <span style="font-family:monospace"><b>web::dofinalize</b></span>
-	will then call each <tt><span style="text-decoration:underline">code</span></tt> block that has been
+	will then call each <tt>code</tt> block that has been
 	registered, starting with the most recently added
-	<tt><span style="text-decoration:underline">code</span></tt>.
+	<tt>code</tt>.
 
       </p></div><div class="section"><div class="titlepage"><div><h3 class="title"><a name="web::finalize"></a>web::finalize</h3></div></div><p style="width:90%">
 
@@ -32,24 +32,24 @@
 
 	Execute finalizer code that has been registerd using
 	<span style="font-family:monospace"><b>web::finalizer</b></span>, starting with the most
-	recently added <tt><span style="text-decoration:underline">code</span></tt>.  Note that this command
+	recently added <tt>code</tt>.  Note that this command
 	is executed automatically and does not have to be called
 	manually. However, it can be used as a hook, when the
 	interpreter is deleted:
 
-	</p><div class="example"><p class="title"><b>Example 13. web::finalize</b></p><pre style="background:#bbffbb ; width:75%" class="programlisting">
+	</p><div class="example"><a name="id297091"></a><p class="title"><b>Example 14. web::finalize</b></p><pre style="background:#bbffbb ; width:75%" class="programlisting">
 	    rename web::finalize web::finalize.orig
 	    proc web::myFinalize {} {
-	    # code to eval before finalize.orig
-	    finalize.orig
-	    # code to eval after finalize.orig
+	        # code to eval before finalize.orig
+	        finalize.orig
+	        # code to eval after finalize.orig
 	    }
 	  </pre></div><p style="width:90%">
 
       </p></div><div class="section"><div class="titlepage"><div><h3 class="title"><a name="web::maineval"></a>web::maineval</h3></div></div><p style="width:90%">
 
 
-	</p><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><tt>web::maineval</tt></span>  <tt><span style="text-decoration:underline"><i><tt>code</tt></i></span></tt></span></div><p style="width:90%">
+	</p><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><tt>web::maineval</tt></span>  <i><tt>code</tt></i></span></div><p style="width:90%">
 
 	Execute code in the &quot;main&quot; interpreter of mod_websh. (Note
 	that this is synchronized, i.e. the main interpreter is locked for
@@ -61,71 +61,71 @@
       </p></div><div class="section"><div class="titlepage"><div><h3 class="title"><a name="web::interpclasscfg"></a>web::interpclasscfg</h3></div></div><p style="width:90%">
 
 
-	</p><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><tt>web::interpclasscfg</tt></span>  <tt><span style="text-decoration:underline"><i><tt>classid</tt></i></span></tt> <tt><span style="text-decoration:underline"><i><tt>property</tt></i></span></tt> ?<tt><span style="text-decoration:underline"><i><tt>value</tt></i></span></tt>?</span></div><p style="width:90%">
+	</p><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><tt>web::interpclasscfg</tt></span>  <i><tt>classid</tt></i> <i><tt>property</tt></i> ?<i><tt>value</tt></i>?</span></div><p style="width:90%">
 
-	Properties are: <tt><span style="text-decoration:underline">maxrequests</span></tt>,
-	<tt><span style="text-decoration:underline">maxttl</span></tt>, <tt><span style="text-decoration:underline">maxidletime</span></tt>
+	Properties are: <tt>maxrequests</tt>,
+	<tt>maxttl</tt>, <tt>maxidletime</tt>
 
 	Set or accesses properties of the interpreter class
-	<tt><span style="text-decoration:underline">classid</span></tt>.
+	<tt>classid</tt>.
 
 	</p><div class="variablelist"><dl><dt><span style="background:#bbbbff"><span class="term">
 	      <span style="font-family:monospace"><b>web::interpclasscfg</b></span>
-	      <tt><span style="text-decoration:underline"><i><tt>classid</tt></i></span></tt>
-	      <tt><span style="text-decoration:underline">maxrequests</span></tt>
-	      ?<tt><span style="text-decoration:underline"><i><tt>value</tt></i></span></tt>?
+	      <tt><i><tt>classid</tt></i></tt>
+	      <tt>maxrequests</tt>
+	      ?<tt><i><tt>value</tt></i></tt>?
 	    </span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
 		gets or sets the maximum number of requests
 		interpreters of this class should handle. If
-		<tt><span style="text-decoration:underline">value</span></tt> is 0, handle an unlimited
+		<tt>value</tt> is 0, handle an unlimited
 		number of requests. Default: 1.
 	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><b>web::interpclasscfg</b></span>
-	      <tt><span style="text-decoration:underline"><i><tt>classid</tt></i></span></tt>
-	      <tt><span style="text-decoration:underline">maxttl</span></tt>
-	      ?<tt><span style="text-decoration:underline"><i><tt>value</tt></i></span></tt>?</span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
+	      <tt><i><tt>classid</tt></i></tt>
+	      <tt>maxttl</tt>
+	      ?<tt><i><tt>value</tt></i></tt>?</span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
 		gets or sets the maximum number of seconds
 		interpreters of this class should live. If
-		<tt><span style="text-decoration:underline">value</span></tt> is 0, it lives
+		<tt>value</tt> is 0, it lives
 		forever. Default: 0.
 	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><b>web::interpclasscfg</b></span>
-	      <tt><span style="text-decoration:underline"><i><tt>classid</tt></i></span></tt> <tt><span style="text-decoration:underline">maxidletime</span></tt>
-	      ?<tt><span style="text-decoration:underline"><i><tt>value</tt></i></span></tt>?
+	      <tt><i><tt>classid</tt></i></tt> <tt>maxidletime</tt>
+	      ?<tt><i><tt>value</tt></i></tt>?
 	    </span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
 		gets or sets the maximum number of seconds
 		interpreters of this class should live beeing idle. If
-		<tt><span style="text-decoration:underline">value</span></tt> is 0, no idle timeout is
+		<tt>value</tt> is 0, no idle timeout is
 		assumed. Default: 0.
 	      </div></div></dd></dl></div><p style="width:90%">
 
       </p></div><div class="section"><div class="titlepage"><div><h3 class="title"><a name="web::interpcfg"></a>web::interpcfg</h3></div></div><p style="width:90%">
 
 
-	</p><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><tt>web::interpcfg</tt></span>  ?<tt><span style="text-decoration:underline"><i><tt>property</tt></i></span></tt>? ?<tt><span style="text-decoration:underline"><i><tt>value</tt></i></span></tt>?</span></div><p style="width:90%">
+	</p><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><tt>web::interpcfg</tt></span>  ?<i><tt>property</tt></i>? ?<i><tt>value</tt></i>?</span></div><p style="width:90%">
 
-	Properties are: <tt><span style="text-decoration:underline">numreq</span></tt>,
-	<tt><span style="text-decoration:underline">retire</span></tt>, <tt><span style="text-decoration:underline">starttime</span></tt>,
-	<tt><span style="text-decoration:underline">lastusedtime</span></tt>
+	Properties are: <tt>numreq</tt>,
+	<tt>retire</tt>, <tt>starttime</tt>,
+	<tt>lastusedtime</tt>
 
 	Sets or accesses properties of the current interpreter.
 
 	</p><div class="variablelist"><dl><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><b>web::interpcfg</b></span></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
-		    returns <tt><span style="text-decoration:underline">classid</span></tt> of current
+		    returns <tt>classid</tt> of current
 		    interpreter.
 		  </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><b>web::interpcfg</b></span>
-		  <tt><span style="text-decoration:underline">numreq</span></tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
+		  <tt>numreq</tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
 		    gets the number of requests handled by this
 		    interpreter.
 		  </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><b>web::interpcfg</b></span>
-		  <tt><span style="text-decoration:underline">retire</span></tt>
-		  ?<tt><span style="text-decoration:underline">boolean</span></tt>?</span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
+		  <tt>retire</tt>
+		  ?<tt>boolean</tt>?</span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
 		    gets or sets the flag indicating this interpreter
 		    should be removed after handling the current request.
 		  </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><b>web::interpcfg</b></span>
-		  <tt><span style="text-decoration:underline">starttime</span></tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
+		  <tt>starttime</tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
 		    returns the time in seconds since the epoch, this
 		    interpreter was started.
 		  </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><b>web::interpcfg</b></span>
-		  <tt><span style="text-decoration:underline">lastusedtime</span></tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
+		  <tt>lastusedtime</tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
 		    returns the time in seconds since the epoch, this
 		    interpreter was last used (starttime in case of first
 		    request).
@@ -134,7 +134,7 @@
       </p></div><div class="section"><div class="titlepage"><div><h3 class="title"><a name="web::interpmap"></a>web::interpmap</h3></div></div><p style="width:90%">
 
 
-	</p><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><tt>web::interpmap</tt></span> <tt><span style="text-decoration:underline"><i><tt>filename</tt></i></span></tt></span></div><p style="width:90%">
+	</p><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><tt>web::interpmap</tt></span>  <i><tt>filename</tt></i></span></div><p style="width:90%">
 
 	Hook to define interpreter classes depending on the requested file.
 	Note that this hook must be defined in the Websh configuration file
@@ -146,26 +146,26 @@
 	The return value of that command is the name of the interpreter class
 	and at the same time the filename of the script for this interpreter
 	class.
-      </p><div class="section"><div class="titlepage"><div><h4 class="title"><a name="id5352675"></a>Example</h4></div></div><p style="width:90%">
-	  <pre style="background:#bbffbb ; width:75%" class="programlisting">
+      </p><div class="section"><div class="titlepage"><div><h4 class="title"><a name="id297684"></a>Example</h4></div></div><p style="width:90%">
+	  </p><pre style="background:#bbffbb ; width:75%" class="programlisting">
 	    proc web::interpmap {filename} {
-	    if {[string match &quot;/path/to/myApp&quot; $filename]} {
-	    # this is my special app
-	    return /real/path/to/myApp
+	        if {[string match &quot;/path/to/myApp&quot; $filename]} {
+	            # this is my special app
+	            return /real/path/to/myApp
+	        }
+	        if {[string match &quot;*.ws3&quot;]} {
+	            # scripts have their own interp class
+	            return $filename
+	        }
+	        # default: all templates are handled by my handler
+	        return /my/special/template/handler
 	    }
-	    if {[string match &quot;*.ws3&quot;]} {
-	    # scripts have their own interp class
-	    return $filename
-	    }
-	    # default: all templates are handled by my handler
-	    return /my/special/template/handler
-	    }
-	  </pre>
-	</p></div><p style="width:90%">
+	  </pre><p style="width:90%">
+	</p><p style="width:90%">
         The default implementation of web::interpmap is
-	<pre style="background:#bbffbb ; width:75%" class="programlisting">
+	</p><pre style="background:#bbffbb ; width:75%" class="programlisting">
 	  proc web::interpmap {filename} {return $filename}
-	</pre>
+	</pre><p style="width:90%">
         which sets up a separate interpreter class for every requested URL
 	and takes the file itself as script.
-      </p></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="inter-process_and_-system_communication.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="index.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="misc_commands.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Inter-process/-system communication </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Miscellaneous commands</td></tr></table></div></body></html>
+      </p></div></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="inter-process_and_-system_communication.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="index.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="misc_commands.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Inter-process/-system communication </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Miscellaneous commands</td></tr></table></div></body></html>

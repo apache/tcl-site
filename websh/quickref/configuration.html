@@ -1,40 +1,40 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html><head><meta content="text/html; charset=ISO-8859-1" http-equiv="Content-Type"><title>Configuration</title><meta name="generator" content="DocBook XSL Stylesheets V1.50.0"><link rel="home" href="index.html" title="Websh Reference"><link rel="up" href="index.html" title="Websh Reference"><link rel="previous" href="index.html" title="Websh Reference"><link rel="next" href="command_dispatching_and_session_management.html" title="Command dispatching and session management"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Configuration</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="index.html">Prev</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="command_dispatching_and_session_management.html">Next</a></td></tr></table><hr></div><div class="section"><div class="titlepage"><div><hr><h2 class="title" style="clear: both"><a name="configuration"></a>Configuration</h2></div></div><div class="section"><div class="titlepage"><div><h3 class="title"><a name="web::config"></a>web::config</h3></div></div><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><tt>web::config</tt></span>  <tt><span style="text-decoration:underline"><i><tt>key</tt></i></span></tt> ?<tt><span style="text-decoration:underline"><i><tt>value</tt></i></span></tt>?</span></div><p style="width:90%">
-	If <tt><span style="text-decoration:underline"><i><tt>value</tt></i></span></tt> is
+<html><head><meta content="text/html; charset=ISO-8859-1" http-equiv="Content-Type"><title>Configuration</title><meta name="generator" content="DocBook XSL Stylesheets V1.52.1"><link rel="home" href="index.html" title="Websh Reference"><link rel="up" href="index.html" title="Websh Reference"><link rel="previous" href="index.html" title="Websh Reference"><link rel="next" href="command_dispatching_and_session_management.html" title="Command dispatching and session management"><link rel="article" href="index.html" title="Websh Reference"><link rel="subsection" href="configuration.html#web::config" title="web::config"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Configuration</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="index.html">Prev</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="command_dispatching_and_session_management.html">Next</a></td></tr></table><hr></div><div class="section"><div class="titlepage"><div><hr><h2 class="title" style="clear: both"><a name="configuration"></a>Configuration</h2></div></div><div class="section"><div class="titlepage"><div><h3 class="title"><a name="web::config"></a>web::config</h3></div></div><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><tt>web::config</tt></span>  <i><tt>key</tt></i> ?<i><tt>value</tt></i>?</span></div><p style="width:90%">
+	If <tt><i><tt>value</tt></i></tt> is
 	ommitted, the current value of
-	<tt><span style="text-decoration:underline"><i><tt>key</tt></i></span></tt> is returned.
-      </p><div class="variablelist"><dl><dt><span style="background:#bbbbff"><span class="term"><tt><span style="text-decoration:underline">uploadfilesize</span></tt>
-	    ?<tt><span style="text-decoration:underline"><i><tt>size</tt></i></span></tt>?</span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
+	<tt><i><tt>key</tt></i></tt> is returned.
+      </p><div class="variablelist"><dl><dt><span style="background:#bbbbff"><span class="term"><tt>uploadfilesize</tt>
+	    ?<tt><i><tt>size</tt></i></tt>?</span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
 	      Sets the maximum number of bytes allowed to be uploaded.
 	      Default: 0.
-	    </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><tt><span style="text-decoration:underline">cmdparam</span></tt> ?<tt><span style="text-decoration:underline"><i><tt>name</tt></i></span></tt>?</span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
+	    </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><tt>cmdparam</tt> ?<tt><i><tt>name</tt></i></tt>?</span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
 	      Name of the <span style="font-family:monospace"><b>web::command</b></span> parameter in
 	      the URL. Default: &quot;cmd&quot;.
-	    </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><tt><span style="text-decoration:underline">timeparam</span></tt> ?<tt><span style="text-decoration:underline"><i><tt>name</tt></i></span></tt>?</span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
+	    </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><tt>timeparam</tt> ?<tt><i><tt>name</tt></i></tt>?</span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
 	      Name of the timestamp parameter in the URL. Default:
 	      &quot;t&quot;.
-	    </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><tt><span style="text-decoration:underline">logsubst</span></tt> ?<tt><span style="text-decoration:underline">boolean</span></tt>?</span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
+	    </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><tt>logsubst</tt> ?<tt>boolean</tt>?</span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
 	      Turns substitution of log messages on or off. Default:
 	      off.
-	    </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><tt><span style="text-decoration:underline">putxmarkup</span></tt>
-	    ?<tt><span style="text-decoration:underline">brace|tag</span></tt>?</span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
+	    </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><tt>putxmarkup</tt>
+	    ?<tt>brace|tag</tt>?</span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
 	      Sets the markup characters for sections to be eval'd in
-	      web::putx and web::putxfile commands to either curly
-	      braces ({ ... }) or special tags (&lt;?
+	      <span style="font-family:monospace"><b>web::putx</b></span> and <span style="font-family:monospace"><b>web::putxfile</b></span>
+              commands to either curly braces ({ ... }) or special tags (&lt;?
 	      ... ?&gt;). Please note that when using the tags &lt;?
 	      ?&gt;, they cannot be nested. Default: brace.
-	    </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><tt><span style="text-decoration:underline">version</span></tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
+	    </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><tt>version</tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
 	      Returns the version info string.
-	    </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><tt><span style="text-decoration:underline">copyright</span></tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
+	    </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><tt>copyright</tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
 	      Returns a copyright message string.
-	    </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><tt><span style="text-decoration:underline">encryptchain</span></tt> ?<tt><span style="text-decoration:underline"><i><tt>list</tt></i></span></tt>?</span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
+	    </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><tt>encryptchain</tt> ?<tt><i><tt>list</tt></i></tt>?</span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
 	      defines which commands should be tried, in sequence, to
 	      encrypt a message. Default: &quot;web::encryptd&quot;.
-	    </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><tt><span style="text-decoration:underline">decryptchain</span></tt> ?<tt><span style="text-decoration:underline"><i><tt>list</tt></i></span></tt>?</span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
+	    </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><tt>decryptchain</tt> ?<tt><i><tt>list</tt></i></tt>?</span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
 	      defines which commands should be tried, in sequence, to
 	      decrypt a message. Default: &quot;web::decryptd&quot;.
-	    </div></div></dd></dl></div></div><div class="example"><p class="title"><b>Example 1. web::config</b></p><pre style="background:#bbffbb ; width:75%" class="programlisting">
+	    </div></div></dd></dl></div><div class="example"><a name="id218194"></a><p class="title"><b>Example 1. web::config</b></p><pre style="background:#bbffbb ; width:75%" class="programlisting">
 	% web::config decryptchain
 	web::encryptd
 	%
-      </pre></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="index.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="index.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="command_dispatching_and_session_management.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Websh Reference </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Command dispatching and session management</td></tr></table></div></body></html>
+      </pre></div></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="index.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="index.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="command_dispatching_and_session_management.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Websh Reference </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Command dispatching and session management</td></tr></table></div></body></html>

@@ -1,29 +1,33 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html><head><meta content="text/html; charset=ISO-8859-1" http-equiv="Content-Type"><title>Inter-process/-system communication</title><meta name="generator" content="DocBook XSL Stylesheets V1.50.0"><link rel="home" href="index.html" title="Websh Reference"><link rel="up" href="index.html" title="Websh Reference"><link rel="previous" href="uri-html-_en-decoding.html" title="Uri-/html- en-/decoding"><link rel="next" href="Apache_module_specific_commands.html" title="Apache module specific commands"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Inter-process/-system communication</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="uri-html-_en-decoding.html">Prev</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="Apache_module_specific_commands.html">Next</a></td></tr></table><hr></div><div class="section"><div class="titlepage"><div><hr><h2 class="title" style="clear: both"><a name="inter-process_and_-system_communication"></a>Inter-process/-system communication</h2></div></div><p style="width:90%">
+<html><head><meta content="text/html; charset=ISO-8859-1" http-equiv="Content-Type"><title>Inter-process/-system communication</title><meta name="generator" content="DocBook XSL Stylesheets V1.52.1"><link rel="home" href="index.html" title="Websh Reference"><link rel="up" href="index.html" title="Websh Reference"><link rel="previous" href="uri-html-_en-decoding.html" title="Uri-/html- en-/decoding"><link rel="next" href="Apache_module_specific_commands.html" title="Apache module specific commands"><link rel="article" href="index.html" title="Websh Reference"><link rel="subsection" href="inter-process_and_-system_communication.html#web::send" title="web::send"><link rel="subsection" href="inter-process_and_-system_communication.html#web::recv" title="web::recv"><link rel="subsection" href="inter-process_and_-system_communication.html#web::msgflag" title="web::msgflag"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Inter-process/-system communication</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="uri-html-_en-decoding.html">Prev</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="Apache_module_specific_commands.html">Next</a></td></tr></table><hr></div><div class="section"><div class="titlepage"><div><hr><h2 class="title" style="clear: both"><a name="inter-process_and_-system_communication"></a>Inter-process/-system communication</h2></div></div><p style="width:90%">
       Send to and receive from sockets.
     </p><div class="section"><div class="titlepage"><div><h3 class="title"><a name="web::send"></a>web::send</h3></div></div><p style="width:90%">
 
 
-	</p><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><tt>web::send</tt></span>  <tt><span style="text-decoration:underline"><i><tt>channel</tt></i></span></tt> <tt><span style="text-decoration:underline"><i><tt>cmdNr</tt></i></span></tt> <tt><span style="text-decoration:underline"><i><tt>message</tt></i></span></tt> ?<tt><span style="text-decoration:underline"><i><tt>flags</tt></i></span></tt>?</span></div><p style="width:90%">
+	</p><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><tt>web::send</tt></span>  <i><tt>channel</tt></i> <i><tt>cmdNr</tt></i> <i><tt>message</tt></i> ?<i><tt>flags</tt></i>?</span></div><p style="width:90%">
 
-	Send the command <tt><span style="text-decoration:underline">cmdNr</span></tt> and the message
-	<tt><span style="text-decoration:underline">message</span></tt> to channel
-	<tt><span style="text-decoration:underline">channelName</span></tt> using the flags
-	<tt><span style="text-decoration:underline">flags</span></tt>. The command numbers are application
-	specific. If #<tt><span style="text-decoration:underline">flags</span></tt> is used, flags is the
-	numeric (integer) representation of the flags is to be set. If
-	the # is omitted, <tt><span style="text-decoration:underline">flags</span></tt> is a list of symbolic
-	flags. Currently, there is only one flag: &quot;multiple&quot;
-	or &quot;noflush&quot; with the same meaning, indicating that
-	there is more to follow and no automatic flush on the channel
-	should be done.
-
+	Send the command
+	<tt><i><tt>cmdNr</tt></i></tt> and the
+	message <tt><i><tt>message</tt></i></tt> to
+	channel
+	<tt><i><tt>channelName</tt></i></tt> using
+	the flags
+	<tt><i><tt>flags</tt></i></tt>. The command
+	numbers are application specific. If
+	<tt>#<i><tt>flags</tt></i></tt> is used,
+	flags is the numeric (integer) representation of the flags is
+	to be set. If the # is omitted,
+	<tt><i><tt>flags</tt></i></tt> is a list of
+	symbolic flags. Currently, there is only one flag:
+	<tt>multiple</tt> or <tt>noflush</tt> with the
+	same meaning, indicating that there is more to follow and no
+	automatic flush on the channel should be done.
       </p></div><div class="section"><div class="titlepage"><div><h3 class="title"><a name="web::recv"></a>web::recv</h3></div></div><p style="width:90%">
 
 
-	</p><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><tt>web::recv</tt></span>  <tt><span style="text-decoration:underline"><i><tt>channel</tt></i></span></tt> <tt><span style="text-decoration:underline"><i><tt>cmdVarName</tt></i></span></tt> <tt><span style="text-decoration:underline"><i><tt>msgVarName</tt></i></span></tt> <tt><span style="text-decoration:underline"><i><tt>flagVarName</tt></i></span></tt></span></div><p style="width:90%">
+	</p><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><tt>web::recv</tt></span>  <i><tt>channel</tt></i> <i><tt>cmdVarName</tt></i> <i><tt>msgVarName</tt></i> <i><tt>flagVarName</tt></i></span></div><p style="width:90%">
 
-	Receives a message from <tt><span style="text-decoration:underline">channelName</span></tt>. The
+	Receives a message from <tt>channelName</tt>. The
 	other arguments are the names of the corresponding variables
 	which will contain the message.  The flags are returned
 	numeric. (To handle these flags, use the web::msgflag
@@ -31,21 +35,21 @@
 
       </p></div><div class="section"><div class="titlepage"><div><h3 class="title"><a name="web::msgflag"></a>web::msgflag</h3></div></div><p style="width:90%">
 
-	</p><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><tt>web::msgflag</tt></span>  ?<tt><span style="text-decoration:underline"><i><tt>flags</tt></i></span></tt>? ?<tt><span style="text-decoration:underline"><i><tt>testflags</tt></i></span></tt>?</span></div><p style="width:90%">
+	</p><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><tt>web::msgflag</tt></span>  ?<i><tt>flags</tt></i>? ?<i><tt>testflags</tt></i>?</span></div><p style="width:90%">
 
 	Set or test flags.
 
 	</p><div class="variablelist"><dl><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><b>web::msgflag</b></span></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
 		returns a list of all known message flags.
 	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><b>web::msgflag</b></span>
-	      <tt><span style="text-decoration:underline"><i><tt>flags</tt></i></span></tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
+	      <tt><i><tt>flags</tt></i></tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
 		returns the integer representation of the flags listed
-		in <tt><span style="text-decoration:underline">flags</span></tt>.
+		in <tt>flags</tt>.
 	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><b>web::msgflag</b></span>
-	      <tt><span style="text-decoration:underline"><i><tt>flags</tt></i></span></tt>
-	      <tt><span style="text-decoration:underline"><i><tt>testflags</tt></i></span></tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
-		returns 1, if the flags in <tt><span style="text-decoration:underline">testflags</span></tt>
-		are set in <tt><span style="text-decoration:underline">flags</span></tt>.
+	      <tt><i><tt>flags</tt></i></tt>
+	      <tt><i><tt>testflags</tt></i></tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
+		returns 1, if the flags in <tt>testflags</tt>
+		are set in <tt>flags</tt>.
 	      </div></div></dd></dl></div><p style="width:90%">
 
       </p><p style="width:90%">

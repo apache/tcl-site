@@ -28,11 +28,11 @@ All it does is printing &quot;Hello, world&quot;. It consists of one websh
 command, <tt>web::put</tt>.  Basically, <tt>web::put</tt> works like Tcl's
 <tt>puts</tt> command. In addition to printing the text, it does send HTTP
 headers when invoked for the first time.<br>
-<a href="/examples/helloworld.html" onclick="javascript:window.open('','source','width=500,height=400,directories=no,location=no,menubar=no,scrollbars=yes,status=no,toolbar=no,resizable=yes');" target="source")>source</a>
- | 
-<a href="/bin/examples/helloworld" onclick="javascript:window.open('','example','width=500,height=400,directories=no,location=no,menubar=no,scrollbars=yes,status=no,toolbar=no,resizable=yes');" target="example")>live example</a>
- | 
-<a href="/examples/helloworld.ws3">download</a>
+<a href="examples/helloworld.html" onclick="javascript:window.open('','source','width=500,height=400,directories=no,location=no,menubar=no,scrollbars=yes,status=no,toolbar=no,resizable=yes');" target="source")>source</a>
+ |
+<a href="examples/helloworld.ws3" onclick="javascript:window.open('','example','width=500,height=400,directories=no,location=no,menubar=no,scrollbars=yes,status=no,toolbar=no,resizable=yes');" target="example")>live example</a>
+ |
+<a href="examples/helloworld_ws3.txt">download</a>
 
 <a name="26"><a href="#toc"><h1>3 command dispatching</h1></a>
 
@@ -43,53 +43,53 @@ and the same source code. This example produces two HTML pages, the
 the price list is empty). It uses <tt>web::dispatch</tt> to switch into one
 of these pages, and <tt>web::cmdurl</tt> to produce URLs pointing to each
 of these pages.<br>
-<a href="/examples/dispatch_1.html" onclick="javascript:window.open('','source','width=500,height=400,directories=no,location=no,menubar=no,scrollbars=yes,status=no,toolbar=no,resizable=yes');" target="source")>source</a>
- | 
-<a href="/bin/examples/dispatch_1" onclick="javascript:window.open('','example','width=500,height=400,directories=no,location=no,menubar=no,scrollbars=yes,status=no,toolbar=no,resizable=yes');" target="example")>live example</a>
- | 
-<a href="/examples/dispatch_1.ws3">download</a>
+<a href="examples/dispatch_1.html" onclick="javascript:window.open('','source','width=500,height=400,directories=no,location=no,menubar=no,scrollbars=yes,status=no,toolbar=no,resizable=yes');" target="source")>source</a>
+ |
+<a href="examples/dispatch_1.ws3" onclick="javascript:window.open('','example','width=500,height=400,directories=no,location=no,menubar=no,scrollbars=yes,status=no,toolbar=no,resizable=yes');" target="example")>live example</a>
+ |
+<a href="examples/dispatch_1_ws3.txt">download</a>
 
 <a name="41"><a href="#toc"><h1>4 image</h1></a>
 
 This example demonstrates how to return an image instead of the
 normal &quot;text/html&quot; mime type.<br>
-<a href="/examples/image.html" onclick="javascript:window.open('','source','width=500,height=400,directories=no,location=no,menubar=no,scrollbars=yes,status=no,toolbar=no,resizable=yes');" target="source")>source</a>
- | 
-<a href="/bin/examples/image" onclick="javascript:window.open('','example','width=500,height=400,directories=no,location=no,menubar=no,scrollbars=yes,status=no,toolbar=no,resizable=yes');" target="example")>live example</a>
- | 
-<a href="/examples/image.ws3">download</a>
+<a href="examples/image.html" onclick="javascript:window.open('','source','width=500,height=400,directories=no,location=no,menubar=no,scrollbars=yes,status=no,toolbar=no,resizable=yes');" target="source")>source</a>
+ |
+<a href="examples/image.ws3" onclick="javascript:window.open('','example','width=500,height=400,directories=no,location=no,menubar=no,scrollbars=yes,status=no,toolbar=no,resizable=yes');" target="example")>live example</a>
+ |
+<a href="examples/image_ws3.txt">download</a>
 
 <a name="51"><a href="#toc"><h1>5 confirmation form</h1></a>
 
 This example demonstrates a confirmation form. The user is promted a form to
 enter, say,  order information. The information is validated and, if sucessfull,
 an e-mail is sent back to the user.<br>
-<a href="/examples/emailform.html" onclick="javascript:window.open('','source','width=500,height=400,directories=no,location=no,menubar=no,scrollbars=yes,status=no,toolbar=no,resizable=yes');" target="source")>source</a>
- | 
-<a href="/bin/examples/emailform" onclick="javascript:window.open('','example','width=500,height=400,directories=no,location=no,menubar=no,scrollbars=yes,status=no,toolbar=no,resizable=yes');" target="example")>live example</a>
- | 
-<a href="/examples/emailform.ws3">download</a>
+<a href="examples/emailform.html" onclick="javascript:window.open('','source','width=500,height=400,directories=no,location=no,menubar=no,scrollbars=yes,status=no,toolbar=no,resizable=yes');" target="source")>source</a>
+ |
+<a href="examples/emailform.ws3" onclick="javascript:window.open('','example','width=500,height=400,directories=no,location=no,menubar=no,scrollbars=yes,status=no,toolbar=no,resizable=yes');" target="example")>live example</a>
+ |
+<a href="examples/emailform_ws3.txt">download</a>
 
 <a name="62"><a href="#toc"><h1>6 checkbox form</h1></a>
 
 This example demonstrates how to handle checkboxes. The user is promted a form to
 select checkboxes, to display date informations. <br>
-<a href="/examples/checkbox.html" onclick="javascript:window.open('','source','width=500,height=400,directories=no,location=no,menubar=no,scrollbars=yes,status=no,toolbar=no,resizable=yes');" target="source")>source</a>
- | 
-<a href="/bin/examples/checkbox" onclick="javascript:window.open('','example','width=500,height=400,directories=no,location=no,menubar=no,scrollbars=yes,status=no,toolbar=no,resizable=yes');" target="example")>live example</a>
- | 
-<a href="/examples/checkbox.ws3">download</a>
+<a href="examples/checkbox.html" onclick="javascript:window.open('','source','width=500,height=400,directories=no,location=no,menubar=no,scrollbars=yes,status=no,toolbar=no,resizable=yes');" target="source")>source</a>
+ |
+<a href="examples/checkbox.ws3" onclick="javascript:window.open('','example','width=500,height=400,directories=no,location=no,menubar=no,scrollbars=yes,status=no,toolbar=no,resizable=yes');" target="example")>live example</a>
+ |
+<a href="examples/checkbox_ws3.txt">download</a>
 
 <a name="72"><a href="#toc"><h1>7 upload file</h1></a>
 
 This example demonstrates a upload form. The user is promted a form to
 enter, local file. The file is validated and, if sucessfull,
 the server shows in a confirmation the uploaded data back to the user.<br>
-<a href="/examples/upload.html" onclick="javascript:window.open('','source','width=500,height=400,directories=no,location=no,menubar=no,scrollbars=yes,status=no,toolbar=no,resizable=yes');" target="source")>source</a>
- | 
-<a href="/bin/examples/upload" onclick="javascript:window.open('','example','width=500,height=400,directories=no,location=no,menubar=no,scrollbars=yes,status=no,toolbar=no,resizable=yes');" target="example")>live example</a>
- | 
-<a href="/examples/upload.ws3">download</a>
+<a href="examples/upload.html" onclick="javascript:window.open('','source','width=500,height=400,directories=no,location=no,menubar=no,scrollbars=yes,status=no,toolbar=no,resizable=yes');" target="source")>source</a>
+ |
+<a href="examples/upload.ws3" onclick="javascript:window.open('','example','width=500,height=400,directories=no,location=no,menubar=no,scrollbars=yes,status=no,toolbar=no,resizable=yes');" target="example")>live example</a>
+ |
+<a href="examples/upload_ws3.txt">download</a>
 
 <a name="83"><a href="#toc"><h1>8 sessions</h1></a>
 
@@ -105,19 +105,19 @@ the data of two forms which are presented to the customer. This
 involves a little bit of form handling, and this example also
 demonstrates error handling in case of unexpected input. But let's
 look at the example.<br>
-<a href="/examples/session_form.html" onclick="javascript:window.open('','source','width=500,height=400,directories=no,location=no,menubar=no,scrollbars=yes,status=no,toolbar=no,resizable=yes');" target="source")>source</a>
- | 
-<a href="/bin/examples/session_form" onclick="javascript:window.open('','example','width=500,height=400,directories=no,location=no,menubar=no,scrollbars=yes,status=no,toolbar=no,resizable=yes');" target="example")>live example</a>
- | 
-<a href="/examples/session_form.ws3">download</a>
+<a href="examples/session_form.html" onclick="javascript:window.open('','source','width=500,height=400,directories=no,location=no,menubar=no,scrollbars=yes,status=no,toolbar=no,resizable=yes');" target="source")>source</a>
+ |
+<a href="examples/session_form.ws3" onclick="javascript:window.open('','example','width=500,height=400,directories=no,location=no,menubar=no,scrollbars=yes,status=no,toolbar=no,resizable=yes');" target="example")>live example</a>
+ |
+<a href="examples/session_form_ws3.txt">download</a>
 
 <a name="103"><a href="#toc"><h1>9 cookie</h1></a>
 
 This example demonstrates how to use cookies. It is very similar to the
 session example above.<br>
-<a href="/examples/cookie.html" onclick="javascript:window.open('','source','width=500,height=400,directories=no,location=no,menubar=no,scrollbars=yes,status=no,toolbar=no,resizable=yes');" target="source")>source</a> | 
-<a href="/bin/examples/cookie" onclick="javascript:window.open('','example','width=500,height=400,directories=no,location=no,menubar=no,scrollbars=yes,status=no,toolbar=no,resizable=yes');" target="example")>live example</a> | 
-<a href="/examples/cookie.ws3">download</a>
+<a href="examples/cookie.html" onclick="javascript:window.open('','source','width=500,height=400,directories=no,location=no,menubar=no,scrollbars=yes,status=no,toolbar=no,resizable=yes');" target="source")>source</a> |
+<a href="examples/cookie.ws3" onclick="javascript:window.open('','example','width=500,height=400,directories=no,location=no,menubar=no,scrollbars=yes,status=no,toolbar=no,resizable=yes');" target="example")>live example</a> |
+<a href="examples/cookie_ws3.txt">download</a>
 
 <a name="111"><a href="#toc"><h1>10 memory game</h1></a>
 
@@ -128,8 +128,8 @@ a given game and level and compares it with the &quot;hall of fame&quot;.  This
 version does not use sessions except for the &quot;hall of fame&quot;, and
 stores all information in the URL, which makes the output a little bit
 bulky.  Have fun.<br>
-<a href="/examples/memory.html" onclick="javascript:window.open('','source','width=500,height=400,directories=no,location=no,menubar=no,scrollbars=yes,status=no,toolbar=no,resizable=yes');" target="source")>source</a>
- | 
-<a href="/bin/examples/memory" onclick="javascript:window.open('','example','width=500,height=400,directories=no,location=no,menubar=no,scrollbars=yes,status=no,toolbar=no,resizable=yes');" target="example")>live example</a>
- | 
-<a href="/examples/memory.ws3">download</a>
+<a href="examples/memory.html" onclick="javascript:window.open('','source','width=500,height=400,directories=no,location=no,menubar=no,scrollbars=yes,status=no,toolbar=no,resizable=yes');" target="source")>source</a>
+ |
+<a href="examples/memory.ws3" onclick="javascript:window.open('','example','width=500,height=400,directories=no,location=no,menubar=no,scrollbars=yes,status=no,toolbar=no,resizable=yes');" target="example")>live example</a>
+ |
+<a href="examples/memory_ws3.txt">download</a>

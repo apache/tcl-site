@@ -323,16 +323,16 @@ The following example shows Apache Rivet at work.
 
 This example shows us several features of Tcl.  In reality, the Tcl
 code used here is entirely generic. The only thing that tells us that
-it is used in Rivet, are the <? and ?> delimiters that indicate that
-the particular section of the file should be parsed as Tcl code, and
-not HTML.  The table (see below) which results from this code is
-created by the two for loops, which set and then increment their
-respective variables.  The value used to determine the shade of gray
-for a particular cell is calculated by the \textbf{expr} command, and
-is in turn used in the \textbf{format} command, which sets up both the
-bgcolor to use for the cell.  Note that the numbers to be displayed in
-the cell are interpolated directly in the string, and are not handled
-by the format command.
+it is used in Rivet, are the $<$? and ?$>$
+delimiters that indicate that the particular section of the file
+should be parsed as Tcl code, and not HTML.  The table (see below)
+which results from this code is created by the two for loops, which
+set and then increment their respective variables.  The value used to
+determine the shade of gray for a particular cell is calculated by the
+\textbf{expr} command, and is in turn used in the \textbf{format}
+command, which sets up both the bgcolor to use for the cell.  Note
+that the numbers to be displayed in the cell are interpolated directly
+in the string, and are not handled by the format command.
 
 \includegraphics[scale=1.0]{./table.ps}
 
@@ -418,7 +418,7 @@ which is then executed, as well as stored in the cache.  If it is
 available in cache, the script is executed directly, without having to
 touch the disk at all to reload it.  Naturally the cache size is
 configurable via an Apache directive.  The parser works by
-transforming chunks of HTML - everything outside of the <? ?> tags -
+transforming chunks of HTML - everything outside of the $<$? ?$>$ tags -
 into large \textbf{puts} statements, which can then be executed along
 with the rest of the Tcl code as one large script.
 

@@ -15,6 +15,9 @@
 	    <p>
 	      <b>Apache Rivet</b> is currently under heavy
 	      development, and is therefore only available via CVS.
+	      Basic instructions for logging on and checking out the
+	      code follow.  For more information, please see a more
+	      complete guide to CVS.
 	    </p>
 	    <p>
 	      <code>cvs

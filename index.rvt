@@ -19,8 +19,10 @@
 	      web server with the capabilities of the mature, robust
 	      and flexible Tcl scripting language.  Currently, we host
 	      the <a href="mod_dtcl/">mod_<b>d</b>tcl</a>, <a
-	      href="mod_tcl/mod_tcl.html">mod_tcl</a>, and the <a
-	      href="neowebscript/">neowebscript</a> projects.
+	      href="mod_tcl/mod_tcl.html">mod_tcl</a>, <a
+	      href="neowebscript/">neowebscript</a>, <a
+	      href="rivet/">Apache Rivet</a>, and <a
+	      href="websh">Websh</a> projects.
 	    </p>
 	    <p>
 	      Go to the <a href="projects.rvt">projects</a> page for

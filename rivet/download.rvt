@@ -24,8 +24,13 @@
 	    </p>
 	    <p><code>cvs&nbsp;-d:pserver:anoncvs@cvs.apache.org:/home/cvspublic&nbsp;checkout&nbsp;tcl-rivet</code></p>
 	    <p>
-	      For your convenience, the latest version is available
-	      for <a href="download/">download</a>.
+	      The latest version is available for <a
+	      href="download/">download</a>.
+	    </p>
+	    <p>
+	      In addition, for your convenience, snapshots of the CVS
+	      tree are available here: <a
+	      href="http://cvs.apache.org/snapshots/tcl-rivet/">http://cvs.apache.org/snapshots/tcl-rivet/</a>
 	    </p>
 	  </td>
 	</tr>

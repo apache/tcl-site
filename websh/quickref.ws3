@@ -5,32 +5,24 @@ startHtmlPage
 startHtmlBody
 putHeader 2
 
-# include download/quickref.html on the fly
-set quickref [file join [web::config document_root] websh download quickref.html]
-
-proc putStrippedQR {qr} {
-    if {![web::readfile $qr content msg]} {
-	# strip header
-	regsub -all {.*<body [^>]*>} $content "" content
-	# strip footer
-	regsub -all {</body>.*} $content "" content
-	# put the rest
-	web::put $content
-	unset content
-    } else {
-	web::put "<h2>Quick Reference</h2>
-The quick reference is not available at this time"
-    }
-
-}
-
 web::putx {
     <table border="0" cellpadding="0" cellspacing="0" width="770">
-    {headRow 3 "documentation"}
+    {headRow 3 "quick reference"}
     <tr valign="top">
     {navbar_docu 2}
     <td width="610">
-    {putStrippedQR $quickref}
+
+    <h2>Download</h2>
+
+    Download the quick reference as tar file:<br>
+    <a href="download/quickref-3.5.0.tar.gz">quickref-3.5.0.tar.gz</a>
+
+
+    <h2>Online</h2>
+
+    Browse the quick reference online:<br>
+    <a href="quickref/">http://tcl.apache.org/websh/quickref/</a>
+    <p>&nbsp;
     
     </td>
     </tr>

@@ -1,14 +1,18 @@
 # stuff common to all pages
 
+proc navbar { } {
+    include newnav.html
+}
+
 proc title { {txt "Apache Tcl Project"} } {
-    hputs {
+    puts {
 	<table width="100%" border="0">
 	<tr>
 	<td align="center" valign="top">
 	<h1>
     }
-    hputs "$txt"
-    hputs {
+    puts "$txt"
+    puts {
 	</h1>
 	</td>
 	</tr>
@@ -17,7 +21,7 @@ proc title { {txt "Apache Tcl Project"} } {
 }
 
 proc powered { } {
-    hputs {
+    puts {
 	<table align="center" width="100%">
 	<tr>
 	<td align="left">

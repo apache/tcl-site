@@ -284,20 +284,25 @@
 	  Note that these variables may be lists if more than one file
 	  is uploaded at a time.<br>
 	  <code><b>$::request::UPLOAD(filename)</b></code><br>
-	  The filename of the uploaded file.
+	  The filename of the uploaded file.<br>
+
 	  <code><b>$::request::UPLOAD(name)</b></code><br>
-	  The form variable name of the upload.
+	  The form variable name of the upload.<br>
+
 	  <code><b>$::request::UPLOAD(size)</b></code><br>
-	  The size of the uploaded file.
+	  The size of the uploaded file.<br>
+
 	  <code><b>$::request::UPLOAD(type)</b></code><br>
-	  The content type of the file upload. <i>Not always available!</i>
+	  The content type of the file upload. <i>Not always available!</i><br>
+
 	  <code><b>$::request::UPLOAD(channelname)</b></code><br>
 	  The name of a Tcl channel which may be used to manipulate
 	  the uploaded file.  If Dtcl_UploadFilesToVar is set, this
-	  variable doesn't get created.
+	  variable doesn't get created.<br>
+
 	  <code><b>$::request::UPLOAD(data)</b></code><br>
 	  Contents of the uploaded file, if Dtcl_UploadFilesToVar is
-	  set.
+	  set.<br>
 	</li>
 
       </ul>

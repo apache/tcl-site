@@ -11,10 +11,10 @@ web::putx {
     {navbar_supp 2}
     <td width="610">
     There is a mailing list for Websh users at {emailLink websh-user@tcl.apache.org}.  You may subscribe by sending mail to  {emailLink websh-user-subscribe@tcl.apache.org}, and unsubscribe via  {emailLink websh-user-unsubscribe@tcl.apache.org}.<br>
-    There is also a web interface to the archived list at {pageLink http://nagoya.apache.org/eyebrowse/SummarizeList?listId=213}
+    There is also a web interface to the {pageLink http://nagoya.apache.org/eyebrowse/SummarizeList?listId=213 -show "archived websh-user list"}.
     <p>
     If you are interested in the development of Websh, there is also a list for the discussion of Websh work-in-progress. Use {emailLink websh-dev@tcl.apache.org} to post, {emailLink websh-dev-subscribe@tcl.apache.org} to subscribe, and {emailLink websh-dev-unsubscribe@tcl.apache.org} to unsubscribe from the list.<br>
-    There is also a web interface to the archived list at {pageLink http://nagoya.apache.org/eyebrowse/SummarizeList?listId=122}
+    There is also a web interface to the {pageLink http://nagoya.apache.org/eyebrowse/SummarizeList?listId=122 -show "archived websh-dev list"}.
     </td>
     </tr>
     </table>

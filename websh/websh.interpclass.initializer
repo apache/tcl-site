@@ -239,11 +239,12 @@ proc navbar_prod {{where 0}} {
              "#history" "history" 1 \
              "#tcl" "based on Tcl" 1 \
              "#design" "design" 1}
-        {navBarElement "TBD" "Websh in action" 2}
-        {navBarElement "TBD" "success stories" 2}
-        {navBarElement "TBD" "comparison chart" 2}
 	{navBarEnd}
     }
+#        {navBarElement "TBD" "Websh in action" 2}
+#        {navBarElement "TBD" "success stories" 2}
+#        {navBarElement "TBD" "comparison chart" 2}
+
 }
 
 proc navbar_docu {{where 0}} {

@@ -96,11 +96,11 @@
 	    &lt;tr&gt;
 	    &lt;td width=<B><FONT COLOR="#BC8F8F">&quot;300&quot;</FONT></B> colspan=<B><FONT COLOR="#BC8F8F">&quot;2&quot;</FONT></B>&gt;
 	    We have configured websh3 to allow a maximum <B><FONT COLOR="#A020F0">file</FONT></B> size of 100 bytes. Therefore 
-	    we have truncated the received <B><FONT COLOR="#A020F0">file</FONT></B> by {web::put $<FONT COLOR="#B8860B">NumBytesTruncated</FONT>} bytes.
+	    we have truncated the received <B><FONT COLOR="#A020F0">file</FONT></B> by {web::put [web::htmlify $<FONT COLOR="#B8860B">NumBytesTruncated</FONT>]} bytes.
 	    &lt;/td&gt;&lt;/tr&gt;
 	    &lt;tr&gt;
 	    &lt;td width=<B><FONT COLOR="#BC8F8F">&quot;100&quot;</FONT></B>&gt;Start of content:&lt;/td&gt;&lt;td width=<B><FONT COLOR="#BC8F8F">&quot;200&quot;</FONT></B>&gt;{web::put [web::htmlify $<FONT COLOR="#B8860B">chunk</FONT>]}&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-	    &lt;a href=<B><FONT COLOR="#BC8F8F">&quot;upload&quot;</FONT></B>&gt;upload another <B><FONT COLOR="#A020F0">file</FONT></B>&lt;/a&gt; 
+	    &lt;a href=<B><FONT COLOR="#BC8F8F">&quot;{web::put [web::cmdurl default]}&quot;</FONT></B>&gt;upload another <B><FONT COLOR="#A020F0">file</FONT></B>&lt;/a&gt; 
 	}
 
     }

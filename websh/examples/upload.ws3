@@ -85,11 +85,11 @@ proc showConfirmationPage {} {
 	    <tr>
 	    <td width="300" colspan="2">
 	    We have configured websh3 to allow a maximum file size of 100 bytes. Therefore 
-	    we have truncated the received file by {web::put $NumBytesTruncated} bytes.
+	    we have truncated the received file by {web::put [web::htmlify $NumBytesTruncated]} bytes.
 	    </td></tr>
 	    <tr>
 	    <td width="100">Start of content:</td><td width="200">{web::put [web::htmlify $chunk]}</td></tr></table>
-	    <a href="upload">upload another file</a> 
+	    <a href="{web::put [web::cmdurl default]}">upload another file</a> 
 	}
 
     }

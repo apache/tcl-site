@@ -16,21 +16,15 @@
 	    <p>
 	      Apache Tcl is an umbrella for Tcl-Apache integration
 	      efforts.  These projects combine the power of the Apache
-	      web server with the capabilities of the time-tested Tcl
-	      scripting language.  Currently, we host the <a
-	      href="mod_dtcl/">mod_<b>d</b>tcl</a>, <a href="mod_tcl/mod_tcl.html">mod_tcl</a>,
-	      and the
-	      <a href="neowebscript/">neowebscript</a>
-              projects, and will have more soon.
+	      web server with the capabilities of the mature, robust
+	      and flexible Tcl scripting language.  Currently, we host
+	      the <a href="mod_dtcl/">mod_<b>d</b>tcl</a>, <a
+	      href="mod_tcl/mod_tcl.html">mod_tcl</a>, and the <a
+	      href="neowebscript/">neowebscript</a> projects.
 	    </p>
-
-	    <p align="center">
-	      <a href="http://www.apache.org/"><img src="apache_pb.gif"
-						  alt="Powered by Apache" border="0"
-						  width="259"
-						  height="32"></a>
-	    </p>
-	    
+	    <p>New to Tcl?  Curious about it's advantages?  Have a
+	      look at <a href="why.ttml">Why Tcl?</a></p>
+	    <? powered ?>
 	  </td>
 	</tr>
     </table>

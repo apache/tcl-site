@@ -55,12 +55,7 @@
 	      a motion to create Apache Tcl Project.  <a href="http://www.apache.org/foundation/records/minutes/2000/board_minutes_2000_07_24.txt.NY">Link</a>
 	    </p>
 
-	    <p align="center">
-	      <a href="http://www.apache.org/"><img src="apache_pb.gif"
-						  alt="Powered by Apache" border="0"
-						  width="259"
-						  height="32"></a>
-	    </p>
+	    <? powered ?>
 	    
 	  </td>
 	</tr>

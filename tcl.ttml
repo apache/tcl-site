@@ -46,17 +46,17 @@
 		on SourceForge.
 	      </li>
 	      <li>
+		<a href="http://mini.net/tcl/0.html/">Tcl Wiki</a>, an
+		interactive site frequented by many Tcl developers.
+	      </li>
+
+	      <li>
 		<a href="http://www.comanche.org">Comanche</a> is a
 		GUI for Apache configuration written in Tcl/Tk.
 	      </li>
 
 	    </ul>
-	    <p align="center">
-	      <a href="http://www.apache.org/"><img src="apache_pb.gif"
-						  alt="Powered by Apache" border="0"
-						  width="259"
-						  height="32"></a>
-	    </p>
+	    <? powered ?>
 	    
 	  </td>
 	</tr>

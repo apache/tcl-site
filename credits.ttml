@@ -37,12 +37,7 @@
 	      the pages associated with those projects.
 	    </p>
 
-	    <p align="center">
-	      <a href="http://www.apache.org/"><img src="apache_pb.gif"
-						  alt="Powered by Apache" border="0"
-						  width="259"
-						  height="32"></a>
-	    </p>
+	    <? powered ?>
 	    
 	  </td>
 	</tr>

@@ -18,13 +18,7 @@
 	      information.  To contact the Apache Tcl group, send mail
 	      to <a href="mailto:pmc@tcl.apache.org">pmc@tcl.apache.org</a>.
 	    </p>
-
-	    <p align="center">
-	      <a href="http://www.apache.org/"><img src="apache_pb.gif"
-						  alt="Powered by Apache" border="0"
-						  width="259"
-						  height="32"></a>
-	    </p>
+	    <? powered ?>
 	    
 	  </td>
 	</tr>

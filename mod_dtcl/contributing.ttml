@@ -41,7 +41,11 @@
 
 	      <li>Possible configuration options: safe mode.</li>
 
-	      <li>Further internationalization (multibyte languages such as Japanese).</li>
+	      <li>Further internationalization (multibyte languages
+	      such as Japanese).</li>
+
+	      <li>"Publicity" person to post announcements of new
+	      versions, and so on, to sites such as Freshmeat.</li>
 
 	      <li>Nicer logo - artists welcome!</li>
 

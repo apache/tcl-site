@@ -31,6 +31,11 @@
 	      work.  We're looking for something that combines the Tcl
 	      and Apache feathers.
 	    </p>
+	    <p>
+	      If you are interested in working on or improving this
+	      website, the code is available from Apache's anonymous
+	      CVS.  You will need mod_dtcl.
+	    </p>
 
 	    <p align="center">
 	      <a href="http://www.apache.org/"><img src="apache_pb.gif"

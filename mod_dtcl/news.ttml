@@ -16,6 +16,11 @@
 	    <h2>News & Status</h2>
 
 	    <p>
+	      <b>Noverber 3, 2001:</b> mod_dtcl 0.11.5 release -
+	      Small content-type bug fixed.
+	    </p>
+
+	    <p>
 	      <b>October 15, 2001:</b> mod_dtcl 0.11.4 release -
 	      Parse bug fixed, windows makefile updates, Debian script updates.
 	    </p>

@@ -1,0 +1,10 @@
+Compatibility
+-------------
+
+Important note: although Websh was developed to run under both Unix and 
+Windows, the current release (3.5.0) does not support Windows properly.
+To compile Websh under Windows, a few minor changes have to be made to 
+header files and the make file.
+
+The next release (3.5.1) will feature out-of-the-box compilation for 
+Windows again.

@@ -36,9 +36,17 @@ web::putx {
     user mailing list at {pageLink subscribe.ws3 -show "Mailing Lists"}.
     </p>
 
+    <p>
+    <b>Important note</b>: although Websh was developed to run under both 
+    Unix and Windows, the current release (3.5.0) does not support Windows 
+    properly. To compile Websh under Windows, a few minor changes have to 
+    be made to header files and the make file.<br>
+    The next release (3.5.1) will feature out-of-the-box compilation for 
+    Windows again.
+    </p>
     </td>
-     </tr>
-   </table>
+    </tr>
+    </table>
 }
 
 finishPage 5

@@ -16,7 +16,7 @@ web::putx {
 
     No tool is useful without documentation
     and support. That's why we are committed to high-quality support
-    for Websh. We work hard to keep {pageLink tcl.apache.org/websh -pre}
+    for Websh. We work hard to keep the site
     up-to-date with all information you need. Here, you can find
     the {pageLink whitepaper.ws3 -show "Websh white paper"} and
     the {pageLink quickref.ws3 -show "quick reference"} as well as

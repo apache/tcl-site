@@ -1,10 +1,10 @@
 == Generic Questions == generic
 
--- What is webshell ? -- whatis
+-- What is Websh ? -- whatis
 
-webshell is a rapid development environment for building powerful and
+Websh is a rapid development environment for building powerful and
 reliable web applications. It is a standard Tcl extension and is
-released as Open Source Software. webshell is versatile and handles
+released as Open Source Software. Websh is versatile and handles
 everything from HTML generation to data-base driven one-to-one page
 customization. Netcetera AG, has been using it for years for virtually
 all their customer projects, which typically are E-commerce shops or
@@ -12,30 +12,30 @@ electronic banking applications.
 
 -- What is the current version ? -- version
 
-Currently, we are finalizing version 3 of webshell. The beta-2
-release of webshell is available for download.
+Currently, we are finalizing version 3 of Websh. The beta-2
+release of Websh is available for download.
 
--- What does webshell cost ? -- price
+-- What does Websh cost ? -- price
 
-Nothing. It's free. webshell is released as Open Source.
+Nothing. It's free. Websh is released as Open Source.
 
--- Where can I download webshell ? -- download
+-- Where can I download Websh ? -- download
 
-The beta-2 release of webshell is available for download at the
+The beta-2 release of Websh is available for download at the
 =(download.ws3)(download area)= of this site.
 
--- Why should I use webshell ? -- why
+-- Why should I use Websh ? -- why
 
 In today's E-commerce environment, flexibility and short
 time-to-market are key characteristics for successful
 business. E-commerce, in other words, calls for a solid basis on which
 applications can be built. For exactly this purpose we have designed
-webshell.
+Websh.
 
 
-webshell helps you to create high-quality web applications with light
+Websh helps you to create high-quality web applications with light
 time constraints. It is fast, versatile, scalable, and easy to learn.
-With webshell, you have a win-win situation for developers and
+With Websh, you have a win-win situation for developers and
 customers.
 
 -- Is there a mailing list ? -- mailinglist
@@ -46,9 +46,9 @@ customers.
 
 -- How do I use the logging facility ? -- logging
 
-Before webshell sends a message to a log destination, the message
+Before Websh sends a message to a log destination, the message
 needs to pass two filters. That's why you need to specify a level when
-you issue a log message. First, webshell decides whether or not to
+you issue a log message. First, Websh decides whether or not to
 handle the log message. Then, it scrolls through the list of
 registered log destinations and compares the log message level against
 the filter of each log destination. The message is sent to the log
@@ -74,7 +74,7 @@ web::logdest add foo.warning-info file foo_warn.log
 web::logdest add foo.debug file foo_dbg.log
 --- 
 
-This sequence of commands tells webshell to handle all messages
+This sequence of commands tells Websh to handle all messages
 in the range "warning" to "debug", if the level string is
 "foo", and to discard any other messages. Messages of level
 "debug" are then written to file "foo_dbg.log", while

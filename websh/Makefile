@@ -1,8 +1,4 @@
 # Makefile -- preliminary make file
-# nca-115-2
-#
-# (c) 1999 netcetera AG (simon.hefti@netcetera.ch)
-#
 # $Id$
 
 .SUFFIXES: .ws3 .html .syp .pre .sample

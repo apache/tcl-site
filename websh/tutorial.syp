@@ -1,13 +1,13 @@
-== webshell tutorial ==
+== Websh tutorial ==
 
 This tutorial demonstrates the first steps with
-webshell. We assume that you are familiar with Tcl syntax.
+Websh. We assume that you are familiar with Tcl syntax.
 
--- webshell concepts --
+-- Websh concepts --
 
-In the following, we will use the webshell concepts
+In the following, we will use the Websh concepts
 for command dispatching, output management, formvar management, and
-logging. The respective webshell commands we will use are
+logging. The respective Websh commands we will use are
 
 ==* web::command
 ==* web::cmdurl

@@ -35,9 +35,9 @@ web::putx {
 
      <br><br>
 
-      If you would like to be notified when new versions of webshell
-      become available for download, you can subscribe to the webshell
-      newsletter at {pageLink /subscribe.html -show "subscribe.ws3"}.
+      If you would like to be notified when new versions of Websh
+      become available for download, you can subscribe to the Websh
+    user mailing list at {pageLink subscribe.ws3 -show "Mailing Lists"}.
 
     </td>
      </tr>

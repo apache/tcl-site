@@ -14,7 +14,7 @@ web::putx {
     {navbar_ress 0}
     <td width="455">
     <img height="160" width="150" src="images/ausschnitt_ressources.gif" vspace="40" align="left" alt="graphics"><br>
-    On this page, we compile links to webshell related resources and
+    On this page, we compile links to Websh related resources and
     tools.
     <h2>Tcl</h2>
     {pageLink www.tcl.tk -pre}
@@ -23,7 +23,9 @@ web::putx {
     <h2>Apache</h2>
     {pageLink www.apache.org -pre}
     </td>
-    {newsbar_ress}
+    {
+#newsbar_ress
+    }
   </tr>
   </table>
 }

@@ -9,12 +9,12 @@ putHeader 0
 
 web::putx {
     <table border="0" cellpadding="0" cellspacing="0" width="770">
-    {headRow 2 "contact"}
+    {headRow 2 "Contact"}
     <tr valign="top">
     {navbar_null}
     <td width="300">
     WebSH is a product of the Apache Software Foundation's <a href="http://tcl.apache.org/">Apache Tcl</a> group.<br>
-    To contact the WebSH developers, send email <a href="mailto:websh-dev@tcl.apache.org">websh-dev@tcl.apache.org</a>.
+    For more information about how to send email to the Websh lists, go to the {pageLink subscribe.ws3 -show "Mailing Lists"} page.
     </td>
   </tr>
   </table>

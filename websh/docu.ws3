@@ -13,10 +13,10 @@ web::putx {
     <tr valign="top">
     {navbar_docu}
     <td width="610">
-    This is your one-stop shop for all webshell documentation.
+    This is your one-stop shop for all Websh documentation.
     <h2>White Paper</h2>
 
-    The white paper outlines how webshell is used, describes
+    The white paper outlines how Websh is used, describes
     its architecture, and explains design decisions.<br>
     <a href="whitepaper.ws3">html</a> | 
     <a href="downloaddir/websh30a2-whitepaper.pdf">pdf</a> | 
@@ -24,7 +24,7 @@ web::putx {
 
     <h2>Quick Reference</h2>
 
-    Know how to use webshell, but keep forgetting the
+    Know how to use Websh, but keep forgetting the
     syntax ? The quick reference has everything you need to
     know.<br>
     <a href="quickref.html">html</a> | 
@@ -34,13 +34,13 @@ web::putx {
     <h2>Code Examples</h2>
 
     The <a href="examples.ws3">example</a> page demonstates
-    webshell features - you can both look at the code and play
+    Websh features - you can both look at the code and play
     with the application.
 
       <h2 class="grey">Reference</h2>
 
-      Also, we are compiling the webshell reference, a thorough
-      technical documentation of webshell.
+      Also, we are compiling the Websh reference, a thorough
+      technical documentation of Websh.
     </td>
     </tr>
     </table>

@@ -50,7 +50,7 @@ web::putx {
 
 {newsBarElement "Examples" \
      { Check out the<br> {pageLink /examples.ws3 -show "live examples"}<br>
-of Webshell applications.
+of Websh applications.
      }
 }
 

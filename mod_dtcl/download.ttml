@@ -54,7 +54,7 @@ hputs "( $sz KB )"
 	      login</code> (password anoncvs)<br>
 	      <code>cvs
 		-d:pserver:anoncvs@www.apache.org:/home/cvspublic
-		checkout mod_dtcl</code><br>
+		checkout tcl-mod_dtcl</code><br>
 	    </p>
 
 	    <p align="center">

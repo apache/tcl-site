@@ -19,6 +19,13 @@
 	  <+ include navbar.html +>
 	  <td valign="top"> 
 	    <h2>News and Status</h2>
+
+	    <p>
+	      <b>21 December, 2000</b> tcl.apache.org was unavailable
+	      for a few days due to problems with Covalent's ISP.
+	      They deserve thanks for the resources this site runs on:-)
+	    </p>
+
 	    <p>
 	      <b>07 December, 2000</b> tcl.apache.org is now linked
 	      from <a href="http://www.apache.org">www.apache.org</a>.

@@ -372,16 +372,15 @@ proc putHeader {{mainSectionNr 0} {quickNaviNr 1}} {
     }
     if {$quickNaviNr == 0} {
         web::putx {
-            <td width="500" bgcolor="#006699"><img height="50" width="300" src="images/grafik_navi.gif" alt="quick navigation" border="0" usemap="#grafik_navi"><img height="50" width="200" src="images/grafik_index.gif" alt="drawing"></td>
+            <td width="500" bgcolor="#006699"><img height="50" width="300" src="images/grafik_navi.gif" alt="" border="0" usemap="#grafik_navi"><img height="50" width="200" src="images/grafik_index.gif" alt=""></td>
         }
     } else {
         web::putx {
-            <!-- quick navigation --><!-- map --><!-- technical drawing  -->
-            <td width="500" bgcolor="#006699"><img height="50" width="300" src="images/grafik_navi_home.gif" alt="quick navigation" border="0" usemap="#grafik_navi"><img height="50" width="200" src="images/grafik_index.gif" alt="drawing"></td>
+            <td width="500" bgcolor="#006699"><img height="50" width="300" src="images/grafik_navi_home.gif" alt="" border="0" usemap="#grafik_navi"><img height="50" width="200" src="images/grafik_index.gif" alt=""></td>
         }
     }
     web::putx {
-        <td><img height="50" width="270" src="images/logo.gif" alt="websh"></td>
+        <td><img height="50" width="270" src="images/logo.gif" alt="Websh"></td>
 	<td width="5000" bgcolor="#000000">&nbsp;</td>
         </tr>
         <tr>
@@ -514,9 +513,9 @@ proc finishPage {{where 0}} {
         <td width="760">
 	{
 	    if {$where != 1 } {
-		web::put {<a href="product.ws3">product description</a>&nbsp;|}
+		web::put {<a href="product.ws3">description</a>&nbsp;|}
 	    } else {
-		web::put {<span class="blue">product description</span>&nbsp;|}
+		web::put {<span class="blue">description</span>&nbsp;|}
 	    }
 	    if {$where != 2 } {
 		web::put {&nbsp;<a href="docu.ws3">documentation</a>&nbsp;|}
@@ -534,14 +533,19 @@ proc finishPage {{where 0}} {
 		web::put {&nbsp;<span class="blue">resources</span>&nbsp;|}
 	    }
 	    if {$where != 5 } {
-		web::put {&nbsp;<a href="download.ws3">download area</a>&nbsp;|}
+		web::put {&nbsp;<a href="download.ws3">download</a>&nbsp;|}
 	    } else {
-		web::put {&nbsp;<span class="blue">download area</span>&nbsp;|}
+		web::put {&nbsp;<span class="blue">download</span>&nbsp;|}
+	    }
+	    if {$where != 7 } {
+		web::put {&nbsp;<a href="credits.ws3">credits</a>&nbsp;|}
+	    } else {
+		web::put {&nbsp;<span class="blue">credits</span>&nbsp;|}
 	    }
 	    if {$where != 6 } {
-		web::put {&nbsp;<a href="copyright.ws3">copyright statement</a>}
+		web::put {&nbsp;<a href="copyright.ws3">copyright</a>}
 	    } else {
-		web::put {&nbsp;<span class="blue">copyright statement</span>}
+		web::put {&nbsp;<span class="blue">copyright</span>}
 	    }
 	}
 	</td></tr>

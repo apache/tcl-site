@@ -14,10 +14,10 @@
 	    <h2>Contact Information</h2>
 	    <p>
 	      If you are trying to contact an individual project,
-	      please see the respective page for detailed
-	      information.  To contact the Apache Tcl group, send mail
-	      to <a href="mailto:pmc@tcl.apache.org">pmc@tcl.apache.org</a>.
-	    </p>	    
+	      please see the respective page for detailed information.
+	      For general Apache Tcl questions, send email to <a
+	      href="mailto:general@tcl.apache.org">general@tcl.apache.org</a>.
+	      </p>
 	  </td>
 	</tr>
     </table>

@@ -13,10 +13,12 @@ web::putx {
     <td width="610">
     <img height="160" width="270" src="images/ausschnitt_download.gif" align="left" alt="graphics">
 
-    {
-	web::put "<a href=\"[glob download/*gz]\">[file basename [glob download/*gz]</a>"
-    }
+    Download the source code:<br>
 
+    {
+	set srcfile [file tail [glob [GetFileName download/*gz]]]
+	web::put "<a href=\"download/$srcfile\">$srcfile</a>"
+    }
 
     <p>
     If you would like to be notified when new versions of Websh

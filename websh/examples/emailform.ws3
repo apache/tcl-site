@@ -90,7 +90,7 @@ proc checkFormData {} {
     set email [web::formvar email]
 
     # make sure we have alpha-numeric stuff separated by "@"
-    if {![regexp -nocase {^([a-z0-9]+)@([a-z0-9]+)\.+([a-z]+)$} \
+    if {![regexp -nocase {^([a-z._0-9-]+)@([a-z._0-9-]+)\.+([a-z]+)$} \
 	      $email email name domain]} {
 	# return error code
 	return 2
@@ -112,14 +112,16 @@ proc checkFormData {} {
 # create the e-mail message and send it to the given e-mail address
 proc sendEmail {} {
 
-    # disabled for security reasons, and because there is no sendmail on www.apache.org ;-)
-    return
+    # disabled for security reasons, and because there is no 
+    # sendmail on www.apache.org ;-)
+    return 1
 
     set emailtxt {
 
 Thank you for your submission.
 
 We have recieved the following information:}
+
     append emailtxt "\nName:\n[web::formvar name]\n"
     append emailtxt "Address:\n"
     append emailtxt [web::formvar addr]
@@ -141,9 +143,9 @@ The team.
 	puts $fh $emailtxt
 	close $fh
     } cmsg ] } {
-
-	showErrorPage
+	return 0
     }
+    return 1
 }
 
 
@@ -152,12 +154,11 @@ proc showErrorPage {} {
     page "Error" {
 
 	web::putx {
-	    <h3>Error</h3>
 	    An error occurred while processing your request.
 	    Please {web::put "<a href=\"[web::cmdurl default]\">try</a>"} again
 	    <br><br>
 	    If the problem persists, please contact the
-	    {web::put "<a href=\"mailto:webmaster@tcl.apache.org\">webmaster</a>"}.
+	    {web::put "<a href=\"mailto:webmaster@websh.com\">webmaster</a>"}.
 	}
     }
 }
@@ -181,9 +182,10 @@ proc showConfirmationPage {} {
 	    <dt><b>E-Mail:</b>
 	    <dd>{web::put [web::htmlify [web::formvar email]]}<p>
 	    </dl>
-	    You should recieve a confirmation by e-mail shortly.<br>
-	  <b>Note: to prevent misue, sending the actual email is disabled, so please don't wait for the mail ;-)</b>
-	    <br>
+	    You should recieve a confirmation by e-mail shortly.
+
+	    <p><b>Note: to prevent misue, sending the actual email is disabled, so please don't wait for the mail ;-)</b></p>
+
 	    {web::put "<a href=\"[web::cmdurl default]\">Order more</a>"}
 	    cool stuff.
 	}
@@ -211,8 +213,11 @@ web::command default {
 web::command submit {
 
     if { [set res [checkFormData]] == 0 } {
-	sendEmail
-	showConfirmationPage
+	if {[sendEmail]} {
+	    showConfirmationPage
+	} else {
+	    showErrorPage
+	}
     } else {
 	showForm $res
     }

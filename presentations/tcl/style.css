@@ -17,7 +17,7 @@ A:visited { color : #cc3300; }
 A:hover { color : #000000 ; background-color : #aaaaaa }
 
 LI {
-   margin-bottom: 0.5em; 
+   margin-bottom: 0.5em;
 }
 
 UL LI { list-style-image: url(bullet1.png) }
@@ -31,7 +31,7 @@ h1 {
 }
 
 h1.splash {
-    color: #cc3300;    
+    color: #cc3300;
 }
 
 h2.splash {

@@ -5,6 +5,10 @@ body {
     background-color: #FFFFFF;
 }
 
+p {
+    font-size: smaller;
+}
+
 A:link { color: #cc3300 }
 A:visited { color : #003399; }
 A:hover { color : #000000 ; background-color : #aaaaaa }
@@ -44,6 +48,6 @@ div.box {
  background-color: #dddddd;
 }
 
-li { 
-   margin-bottom: 0.5em; 
+li {
+   margin-bottom: 0.5em;
 }

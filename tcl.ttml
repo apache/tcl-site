@@ -10,7 +10,7 @@
     <table border="0">
 	<tr>
 	  <? include navbar.html ?>
-	  <td valign="top"> 
+	  <td valign="top">
 	    <h2>The Tcl Language</h2>
 	    <p>
 	      Tcl (the "tool command language", pronounced "tickle")
@@ -35,7 +35,13 @@
 	      <li><a href="http://www.arsdigita.com/books/tcl/index">A tutorial for Tcl on the web</a></li>
 	      <li>Get started with Tcl. Tcl Tutorials at:
 	      <a
-	      href="http://www.tcl.tk/resource/doc/start/">http://www.tcl-tk.net/resource/doc/start/</a></li>
+	      href="http://www.tcl.tk/resource/doc/start/">http://www.tcl.tk/resource/doc/start/</a></li>
+
+	      <li>
+		<a href="http://wiki.tcl.tk/">Tcl Wiki</a>, an
+		interactive site frequented by many Tcl developers.
+	      </li>
+
 	      <li>
 		<a
 		href="http://sourceforge.net/foundry/tcl-foundry/">Tcl
@@ -53,18 +59,13 @@
 	      </li>
 
 	      <li>
-		<a href="http://mini.net/tcl/0.html/">Tcl Wiki</a>, an
-		interactive site frequented by many Tcl developers.
-	      </li>
-
-	      <li>
-		<a href="http://www.comanche.org">Comanche</a> is a
+		<a href="http://www.comanche.org/">Comanche</a> is a
 		GUI for Apache configuration written in Tcl/Tk.
 	      </li>
 	      <li>
-		<a href="/presentations/">Presentation</a> - a
-		presentation on the Tcl programming language and Tk
-		graphical toolkit.
+		<a href="/presentations/">Presentations</a> -
+		presentations on the Tcl programming language and Tk
+		graphical toolkit, and on mod_dtcl.
 	      </li>
 	    </ul>
 	  </td>

@@ -8,15 +8,13 @@ web::command image {
     set nr [format %2.2d [expr int(rand() * 13)]]
 
     # open a file (JPEG is a binary format)
-    set fh [open [file join [web::config document_root] images memory $nr.jpg] r]
+    set fh [open [file join [web::config document_root] websh images memory $nr.jpg] r]
     fconfigure $fh -translation binary
     set img [read $fh]
     close $fh
 
     # set HTTP header to "image/jpeg" instead of "text/html"
-    array set headers [web::response -set header]
-    set headers(Content-Type) image/jpeg
-    web::response -set header [array get headers]
+    web::response -set Content-Type image/jpeg
 
     # because we return a img, change to binary again
     fconfigure [web::response] -translation binary

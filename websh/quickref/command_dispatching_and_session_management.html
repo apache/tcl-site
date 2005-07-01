@@ -1,35 +1,35 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html><head><meta content="text/html; charset=ISO-8859-1" http-equiv="Content-Type"><title>Command dispatching and session management</title><meta name="generator" content="DocBook XSL Stylesheets V1.52.2"><link rel="home" href="index.html" title="Websh Reference"><link rel="up" href="index.html" title="Websh Reference"><link rel="previous" href="configuration.html" title="Configuration"><link rel="next" href="request_data_handling.html" title="Request data handling"><link rel="article" href="index.html" title="Websh Reference"><link rel="subsection" href="command_dispatching_and_session_management.html#web::command" title="web::command"><link rel="subsection" href="command_dispatching_and_session_management.html#web::getcommand" title="web::getcommand"><link rel="subsection" href="command_dispatching_and_session_management.html#web::cmdurl" title="web::cmdurl"><link rel="subsection" href="command_dispatching_and_session_management.html#web::cmdurlcfg" title="web::cmdurlcfg"><link rel="subsection" href="command_dispatching_and_session_management.html#management_of_static_parameters" title="Management of static parameters"><link rel="subsection" href="command_dispatching_and_session_management.html#configuration_for_web_cmdurl" title="Configuration for web::cmdurl"><link rel="subsection" href="command_dispatching_and_session_management.html#web::dispatch" title="web::dispatch"><link rel="subsection" href="command_dispatching_and_session_management.html#session_management" title="Session management"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Command dispatching and session management</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="configuration.html">Prev</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="request_data_handling.html">Next</a></td></tr></table><hr></div><div class="section"><div class="titlepage"><div><hr><h2 class="title" style="clear: both"><a name="command_dispatching_and_session_management"></a>Command dispatching and session management</h2></div></div><p style="width:90%">
+<html><head><meta content="text/html; charset=ISO-8859-1" http-equiv="Content-Type"><title>Command dispatching and session management</title><meta name="generator" content="DocBook XSL Stylesheets V1.68.1"><link rel="start" href="index.html" title="Websh Reference"><link rel="up" href="index.html" title="Websh Reference"><link rel="prev" href="configuration.html" title="Configuration"><link rel="next" href="request_data_handling.html" title="Request data handling"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Command dispatching and session management</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="configuration.html">Prev</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="request_data_handling.html">Next</a></td></tr></table><hr></div><div class="section" lang="en"><div class="titlepage"><div><div><hr><h2 class="title" style="clear: both"><a name="command_dispatching_and_session_management"></a>Command dispatching and session management</h2></div></div></div><p style="width:90%">
       Websh provides a command dispatching mechanism to produce,
       for example, different HTML pages within one &quot;application&quot;,
       which is most likely one file on the file system. The name of
       the command to be used for a particular page is encoded in the
-      querystring (see <span style="font-family:monospace"><b>web::cmdurl</b></span> for details on
+      querystring (see <span style="font-family:monospace"><span><strong class="command">web::cmdurl</strong></span></span> for details on
       how to produce such querystrings).  Command dispatching is
-      initiated with the command <span style="font-family:monospace"><b>web::dispatch</b></span>.
-      Commands are defined with <span style="font-family:monospace"><b>web::command</b></span>.
-    </p><div class="section"><div class="titlepage"><div><h3 class="title"><a name="web::command"></a>web::command</h3></div></div><p style="width:90%">
-	</p><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><tt>web::command</tt></span>  ?<i><tt>cmdName</tt></i>? <i><tt>cmdBody</tt></i></span></div><p style="width:90%">
+      initiated with the command <span style="font-family:monospace"><span><strong class="command">web::dispatch</strong></span></span>.
+      Commands are defined with <span style="font-family:monospace"><span><strong class="command">web::command</strong></span></span>.
+    </p><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="web::command"></a>web::command</h3></div></div></div><p style="width:90%">
+	</p><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><code class="command">web::command</code></span>  ?<em class="replaceable"><code>cmdName</code></em>? <em class="replaceable"><code>cmdBody</code></em></span></div><p style="width:90%">
 
 	Registers <tt>cmdBody</tt> as
 	<tt>cmdName</tt>. If <tt>cmdName</tt> is
 	omitted, &quot;default&quot; is used.
 
-      </p></div><div class="section"><div class="titlepage"><div><h3 class="title"><a name="web::getcommand"></a>web::getcommand</h3></div></div><p style="width:90%">
+      </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="web::getcommand"></a>web::getcommand</h3></div></div></div><p style="width:90%">
 
 
-	</p><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><tt>web::getcommand</tt></span>  ?<i><tt>cmdName</tt></i>?</span></div><p style="width:90%">
+	</p><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><code class="command">web::getcommand</code></span>  ?<em class="replaceable"><code>cmdName</code></em>?</span></div><p style="width:90%">
 
 	Retrieves the body of the command <tt>commandName</tt>
 	or of the command &quot;default&quot; if
 	<tt>cmdName</tt> is omitted.
 
-      </p></div><div class="section"><div class="titlepage"><div><h3 class="title"><a name="web::cmdurl"></a>web::cmdurl</h3></div></div><p style="width:90%">
+      </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="web::cmdurl"></a>web::cmdurl</h3></div></div></div><p style="width:90%">
 
 
-	</p><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><tt>web::cmdurl</tt></span>  ?<i><tt>options</tt></i>? <i><tt>cmdName</tt></i> ?<i><tt>key-value-list</tt></i>?</span></div><p style="width:90%">
+	</p><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><code class="command">web::cmdurl</code></span>  ?<em class="replaceable"><code>options</code></em>? <em class="replaceable"><code>cmdName</code></em> ?<em class="replaceable"><code>key-value-list</code></em>?</span></div><p style="width:90%">
 
-	</p><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><tt>web::cmdurl</tt></span>  ?<i><tt>options</tt></i>? <i><tt>cmdName</tt></i> ?<i><tt>k1 v1 ... kN vN</tt></i>?</span></div><p style="width:90%">
+	</p><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><code class="command">web::cmdurl</code></span>  ?<em class="replaceable"><code>options</code></em>? <em class="replaceable"><code>cmdName</code></em> ?<em class="replaceable"><code>k1 v1 ... kN vN</code></em>?</span></div><p style="width:90%">
       </p><p style="width:90%">
 	Options are: <tt>-notimestamp</tt>, and
 	<tt>-urlformat</tt>
@@ -38,20 +38,20 @@
 	self-referencing, but the exact output is subject to
 	configuration. The querystring is encrypted, using the
 	encryption method specified by configuration (see
-	<span style="font-family:monospace"><b>web::config</b></span>). If <tt>cmdName</tt>
+	<span style="font-family:monospace"><span><strong class="command">web::config</strong></span></span>). If <tt>cmdName</tt>
 	is &quot;&quot;, no command parameter is produced in the query
 	string.
 
 	</p><div class="variablelist"><dl><dt><span style="background:#bbbbff"><span class="term"><tt>-notimestamp</tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
 		do not add a timestamp to the URL.
-	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><tt>-urlformat</tt> <tt><i><tt>list</tt></i></tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
+	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><tt>-urlformat</tt> <tt><em class="replaceable"><code>list</code></em></tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
 		specify what items will be used to format just this
-		URL.  Default is: <span style="font-family:monospace"><b>{scriptname pathinfo
-		  querystring}</b></span>.
+		URL.  Default is: <span style="font-family:monospace"><span><strong class="command">{scriptname pathinfo
+		  querystring}</strong></span></span>.
 	      </div><div style="margin-bottom:6">
-		Note: Use <span style="font-family:monospace"><b>web::cmdurlcfg</b></span> to define the
+		Note: Use <span style="font-family:monospace"><span><strong class="command">web::cmdurlcfg</strong></span></span> to define the
 		url format for all URLs produced by
-		<span style="font-family:monospace"><b>web::cmdurl</b></span> in one request.
+		<span style="font-family:monospace"><span><strong class="command">web::cmdurl</strong></span></span> in one request.
 	      </div><div style="margin-bottom:6">
 		<div class="variablelist"><dl><dt><span style="background:#bbbbff"><span class="term"><tt>scheme</tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
 			include the protocol, only &quot;http&quot;
@@ -75,22 +75,22 @@
 		      </div></div></dd></dl></div>
 		<div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p style="width:90%">
 		    Note that there are two more commands that control
-		    the output of <span style="font-family:monospace"><b>web::cmdurl</b></span>:
-		    <span style="font-family:monospace"><b>web::config</b></span> <tt>cmdparam</tt> and
-		    <span style="font-family:monospace"><b>web::config</b></span> <tt>timeparam</tt>.
+		    the output of <span style="font-family:monospace"><span><strong class="command">web::cmdurl</strong></span></span>:
+		    <span style="font-family:monospace"><span><strong class="command">web::config</strong></span></span> <tt>cmdparam</tt> and
+		    <span style="font-family:monospace"><span><strong class="command">web::config</strong></span></span> <tt>timeparam</tt>.
 		  </p></div>
 	      </div></div></dd></dl></div><p style="width:90%">
-      </p><div class="example"><a name="id220815"></a><p class="title"><b>Example 2. web::cmdurl</b></p><pre style="background:#bbffbb ; width:75%" class="programlisting">
+      </p><div class="example"><a name="id2851692"></a><p class="title"><b>Example 2. web::cmdurl</b></p><pre style="background:#bbffbb ; width:75%" class="programlisting">
 	  % web::cmdurl -notimestamp -urlformat [list scheme host scriptname pathinfo querystring] &quot;test&quot;
 	  http://websh.com/bin/returnmail/member?XDZuRD2rnsfHjFH
 	  %
-	</pre></div></div><div class="section"><div class="titlepage"><div><h3 class="title"><a name="web::cmdurlcfg"></a>web::cmdurlcfg</h3></div></div><p style="width:90%">
-	</p><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><tt>web::cmdurlcfg</tt></span>  ?<i><tt>option</tt></i>? ?<i><tt>key</tt></i>? ?<i><tt>value</tt></i>?</span></div><p style="width:90%">
+	</pre></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="web::cmdurlcfg"></a>web::cmdurlcfg</h3></div></div></div><p style="width:90%">
+	</p><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><code class="command">web::cmdurlcfg</code></span>  ?<em class="replaceable"><code>option</code></em>? ?<em class="replaceable"><code>key</code></em>? ?<em class="replaceable"><code>value</code></em>?</span></div><p style="width:90%">
       </p><p style="width:90%">
 	Command options are exactly like those of
-	<span style="font-family:monospace"><b>web::param</b></span>.
+	<span style="font-family:monospace"><span><strong class="command">web::param</strong></span></span>.
       </p><p style="width:90%">
-	</p><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><tt>web::cmdurlcfg</tt></span>  <i><tt>option</tt></i> ?<i><tt>value</tt></i>?</span></div><p style="width:90%">
+	</p><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><code class="command">web::cmdurlcfg</code></span>  <em class="replaceable"><code>option</code></em> ?<em class="replaceable"><code>value</code></em>?</span></div><p style="width:90%">
       </p><p style="width:90%">
 	Options are <tt>-scheme</tt>,
 	<tt>-host</tt>, <tt>-port</tt>,
@@ -102,38 +102,38 @@
 	returned.  Otherwise, the <tt>value</tt> is stored.
 
 	Configuration for web::cmdurl.  This command serves two purposes:
-	</p><div class="orderedlist"><ol type="1"><li><div style="margin-bottom:6">management of static parameters</div></li><li><div style="margin-bottom:6">configuration for <span style="font-family:monospace"><b>web::cmdurl</b></span></div></li></ol></div><p style="width:90%">
+	</p><div class="orderedlist"><ol type="1"><li><div style="margin-bottom:6">management of static parameters</div></li><li><div style="margin-bottom:6">configuration for <span style="font-family:monospace"><span><strong class="command">web::cmdurl</strong></span></span></div></li></ol></div><p style="width:90%">
 	By &quot;static parameters&quot;, we mean those which are set for every
 	page, instead of set on a per-page basis.
-      </p></div><div class="section"><div class="titlepage"><div><h3 class="title"><a name="management_of_static_parameters"></a>Management of static parameters</h3></div></div><p style="width:90%">
+      </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="management_of_static_parameters"></a>Management of static parameters</h3></div></div></div><p style="width:90%">
         In addition to the easy way of tracking parameters using 
-        <span style="font-family:monospace"><b>web::dispatch -track ...</b></span>, specific values
-        for parameters can be set using <span style="font-family:monospace"><b>web::cmdurlcfg</b></span>:
+        <span style="font-family:monospace"><span><strong class="command">web::dispatch -track ...</strong></span></span>, specific values
+        for parameters can be set using <span style="font-family:monospace"><span><strong class="command">web::cmdurlcfg</strong></span></span>:
 
 	In order to explicitly set, retrieve, append or unset static 
-        parameters, use the syntax of the <span style="font-family:monospace"><b>web::param</b></span>
+        parameters, use the syntax of the <span style="font-family:monospace"><span><strong class="command">web::param</strong></span></span>
         command, for example:
-	</p><div class="variablelist"><dl><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><b>web::cmdurlcfg</b></span> -set
-	      <tt><i><tt>key</tt></i></tt>
-	      <tt><i><tt>value</tt></i></tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
+	</p><div class="variablelist"><dl><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><span><strong class="command">web::cmdurlcfg</strong></span></span> -set
+	      <tt><em class="replaceable"><code>key</code></em></tt>
+	      <tt><em class="replaceable"><code>value</code></em></tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
 		add the static parameter <tt>key</tt>.
-	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><b>web::cmdurlcfg</b></span> -names</span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
+	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><span><strong class="command">web::cmdurlcfg</strong></span></span> -names</span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
 		returns a list of all known static parameters.
 	      </div></div></dd></dl></div><p style="width:90%">
 
       </p><p style="width:90%">
-	<span class="emphasis"><em>Important</em></span>: <span style="font-family:monospace"><b>web::cmdurl</b></span>
+	<span class="emphasis"><em>Important</em></span>: <span style="font-family:monospace"><span><strong class="command">web::cmdurl</strong></span></span>
 	compares every key from the static parameters (see
-	<span style="font-family:monospace"><b>web::cmdurlcfg</b></span>) against the keys from the
+	<span style="font-family:monospace"><span><strong class="command">web::cmdurlcfg</strong></span></span>) against the keys from the
 	command line. The static parameter is only used if there is no
 	parameter of the same name given on the command line.
-      </p></div><div class="section"><div class="titlepage"><div><h3 class="title"><a name="configuration_for_web_cmdurl"></a>Configuration for <span style="font-family:monospace"><b>web::cmdurl</b></span></h3></div></div><p style="width:90%">
+      </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="configuration_for_web_cmdurl"></a>Configuration for <span style="font-family:monospace"><span><strong class="command">web::cmdurl</strong></span></span></h3></div></div></div><p style="width:90%">
 
-	</p><div class="variablelist"><dl><dt><span style="background:#bbbbff"><span class="term"><tt>-protocol</tt> ?<tt><i><tt>value</tt></i></tt>?</span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
+	</p><div class="variablelist"><dl><dt><span style="background:#bbbbff"><span class="term"><tt>-protocol</tt> ?<span class="optional"><tt><em class="replaceable"><code>value</code></em></tt></span>?</span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
 		protocol to be used. Defaults to the scheme used to
 		access the page, which is overridden if the user gives
 		sets a value.
-	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><tt>-servername</tt> ?<tt><i><tt>value</tt></i></tt>?</span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
+	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><tt>-servername</tt> ?<span class="optional"><tt><em class="replaceable"><code>value</code></em></tt></span>?</span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
 		server name to be used. Default: taken from request.
 	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><tt>-port</tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
 		port number to be used. Default: 80.
@@ -142,9 +142,9 @@
 	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><tt>-pathinfo</tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
 		path info (path after scriptname). Default: taken from
 		request.
-	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><tt>-urlformat</tt> <tt><i><tt>list</tt></i></tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
+	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><tt>-urlformat</tt> <tt><em class="replaceable"><code>list</code></em></tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
 		changes the urlformat permanently. See
-		<span style="font-family:monospace"><b>web::cmdurl</b></span> for the description of
+		<span style="font-family:monospace"><span><strong class="command">web::cmdurl</strong></span></span> for the description of
 		this option.
 	      </div></div></dd></dl></div><p style="width:90%">
 
@@ -159,14 +159,14 @@
 
       </p><p style="width:90%">
 	Note that setting a value to an empty string amounts to
-	<span style="font-family:monospace"><b>unset</b></span>.
+	<span style="font-family:monospace"><span><strong class="command">unset</strong></span></span>.
 
 	<span class="emphasis"><em>Note also</em></span>: web::cmdurl compares every key
 	from the static parameters see --&gt;(web::cmdurlcfg) against
 	the keys from the command line. The static parameter is only
 	used if there is no such parameter on the command line.
 
-      </p><div class="example"><a name="id218653"></a><p class="title"><b>Example 3. web::cmdurl</b></p><pre style="background:#bbffbb ; width:75%" class="programlisting">
+      </p><div class="example"><a name="id2849316"></a><p class="title"><b>Example 3. web::cmdurl</b></p><pre style="background:#bbffbb ; width:75%" class="programlisting">
 	  % web::cmdurl &quot;&quot;
 	  ?XDqPtk34XvyPh41gUBo
 	  % web::cmdurlcfg -scriptname bin/test_script
@@ -176,10 +176,10 @@
 	  % web::cmdurl &quot;&quot;
 	  ?XDqPtk34XvyPh41gUBo
 	  %
-	</pre></div></div><div class="section"><div class="titlepage"><div><h3 class="title"><a name="web::dispatch"></a>web::dispatch</h3></div></div><p style="width:90%">
+	</pre></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="web::dispatch"></a>web::dispatch</h3></div></div></div><p style="width:90%">
 
 
-	</p><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><tt>web::dispatch</tt></span>  ?<i><tt>options</tt></i>?</span></div><p style="width:90%">
+	</p><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><code class="command">web::dispatch</code></span>  ?<em class="replaceable"><code>options</code></em>?</span></div><p style="width:90%">
 
 	Options are: <tt>-cmd</tt>,
 	<tt>-querystring</tt>, <tt>-postdata</tt>,
@@ -187,55 +187,52 @@
       </p><p style="width:90%">
       Parse information and call a command.
       </p><p style="width:90%">
-	</p><div class="variablelist"><dl><dt><span style="background:#bbbbff"><span class="term"><tt>-cmd</tt> <tt><i><tt>cmdName</tt></i></tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
+	</p><div class="variablelist"><dl><dt><span style="background:#bbbbff"><span class="term"><tt>-cmd</tt> <tt><em class="replaceable"><code>cmdName</code></em></tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
 		switch into command <tt>cmdName</tt>. If
 		<tt>cmdName</tt> is an empty string, no
 		command is called. By default,
 		<tt>cmdName</tt> is taken from the
 		querystring.
 	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><tt>-querystring</tt>
-	      <tt><i><tt>string</tt></i></tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
+	      <tt><em class="replaceable"><code>string</code></em></tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
 		parse <tt>string</tt> as the querystring. If
 		<tt>string</tt> is an empty string,
 		querystring parsing is turned off. By default,
 		querystring is taken from the request data (CGI
 		environment or apache module request object).
-	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><tt>-postdata</tt> <tt><i><tt>string</tt></i></tt>
-	      ?<tt><i><tt>content_type</tt></i></tt>?</span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
-		parse <tt>string</tt> as POST data input with
-		type <tt>content_type</tt>.
-		<tt>content_type</tt> can be <tt>application/x-www-form-urlencoded</tt>
-		or <tt>multipart/form-data;
-		  boundary=xxx</tt>. In the second case,
+	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><tt>-postdata</tt> <tt>&quot;&quot;</tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
+                do not parse any post data.
+	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term">
+	      <tt>-postdata</tt> <tt>?<span class="optional">#</span>?<em class="replaceable"><code>channelName</code></em></tt>
+	      <tt>?<span class="optional"><em class="replaceable"><code>content_length</code></em></span>?</tt>
+	      <tt>?<span class="optional"><em class="replaceable"><code>content_type</code></em></span>?</tt>
+	    </span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
+		parse channel <tt>channelName</tt> (or variable named <tt>channelName</tt> if <tt>#</tt> is given) as POST data input with
+		length <tt>content_length</tt> and type <tt>content_type</tt>.
+		<tt>content_type</tt> can be <code class="literal">application/x-www-form-urlencoded</code>
+		or <code class="literal">multipart/form-data;
+		  boundary=xxx</code>.
+In the case of multipat form data,
 		<tt>content-type</tt> must specify the
 		boundary as well. By default, POST data is taken from
-		the request data.</div><div style="margin-bottom:6"> If
-		<tt>string</tt> is an empty string, postdata
-		parsing is turned off.</div><div style="margin-bottom:6"> Default for
-		<tt>content_type</tt> is
-		&quot;application/x-www-form-urlencoded&quot;.
-	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term">
-	      <tt>-postdata</tt> <tt><i><tt>channelName</tt></i></tt>
-	      <tt><i><tt>content_length</tt></i></tt>
-	      <tt><i><tt>content_type</tt></i></tt>
-	    </span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
-		As above, but reads the POST data from channel
-		<tt>channelName</tt>.
+		the request data.</div><div style="margin-bottom:6"> Default for
+		<tt>content_type</tt> is <code class="literal">application/x-www-form-urlencoded</code>.
+                Default for <tt>content_length</tt> is to read a channel up to EOF or the full content of the variable.
 	      </div><div style="margin-bottom:6">
-		Use the keyword <tt>end</tt> for
+		Use the keyword <code class="literal">end</code> for
 		<tt>content_length</tt> to indicate that
 		Websh should read all content.</div><div style="margin-bottom:6">
-		Examples for <tt>content_type</tt> include:
-		<div class="itemizedlist"><ul type="disc"><li><div style="margin-bottom:6"><tt>multipart/form-data; boundary=xxxx</tt></div></li><li><div style="margin-bottom:6"><tt>application/x-www-form-urlencoded</tt></div></li></ul></div>
-	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><tt>-track</tt> <tt><i><tt>paramKeyList</tt></i></tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
+		Supported content types are:
+		<div class="itemizedlist"><ul type="disc"><li><div style="margin-bottom:6"><code class="literal">multipart/form-data; boundary=xxxx</code></div></li><li><div style="margin-bottom:6"><code class="literal">application/x-www-form-urlencoded</code> (default)</div></li></ul></div>
+	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><tt>-track</tt> <tt><em class="replaceable"><code>paramKeyList</code></em></tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
 		Track a parameter: register it as &quot;static&quot;
 		for the generation of URLs with web::cmdurl. Thus,
 		each parameter with the key in
 		<tt>paramKeyList</tt> will be repeated in
 		every URL generated with web::cmdurl. See the
-		documentation of <span style="font-family:monospace"><b>web::cmdurl</b></span> for
+		documentation of <span style="font-family:monospace"><span><strong class="command">web::cmdurl</strong></span></span> for
 		details.
-	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><tt>-hook</tt> <tt><i><tt>code</tt></i></tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
+	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><tt>-hook</tt> <tt><em class="replaceable"><code>code</code></em></tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
 		Causes web::dispatch to eval <tt>code</tt>
 		just before the command (from any source) is
 		evaluated. When <tt>code</tt> is evaluated,
@@ -249,7 +246,7 @@
 	<tt>-cmd</tt> option, web::dispatch will call the
 	command &quot;default&quot;.
 
-      </p><div class="example"><a name="id219126"></a><p class="title"><b>Example 4. web::command and web::dispatch</b></p><pre style="background:#bbffbb ; width:75%" class="programlisting">
+      </p><div class="example"><a name="id2849767"></a><p class="title"><b>Example 4. web::command and web::dispatch</b></p><pre style="background:#bbffbb ; width:75%" class="programlisting">
 	  % set tst {puts &quot;On the hook&quot;}
 	  puts &quot;On the hook&quot;
 	  % web::command acmd {puts &quot;this is acmd&quot;}
@@ -258,27 +255,34 @@
 	  % web::dispatch -cmd acmd -querystring &quot;&quot; -postdata &quot;&quot; -hook $tst
 	  On the hook
 	  this is acmd
+	  % set data &quot;a=b&amp;c=d&quot;
+	  a=b&amp;c=d
+	  % web::dispatch -cmd &quot;&quot; -querystring &quot;&quot; -postdata #data
+	  % web::formvar a
+	  b
+	  % web::formvar c
+	  d
 	  %
-	</pre></div></div><div class="section"><div class="titlepage"><div><h3 class="title"><a name="session_management"></a>Session management</h3></div></div><p style="width:90%">
+	</pre></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="session_management"></a>Session management</h3></div></div></div><p style="width:90%">
 	Websh session management consits of two parts:
 	</p><div class="itemizedlist"><ul type="disc"><li><div style="margin-bottom:6">session id tracking</div></li><li><div style="margin-bottom:6">session context management</div></li></ul></div><p style="width:90%">
       </p><p style="width:90%">
 	Session context managers are described in detail below
-	(<span style="font-family:monospace"><b>web::filecontext</b></span>,
-	<span style="font-family:monospace"><b>web::cookiecontext</b></span>). Session id tracking is
-	managed by <span style="font-family:monospace"><b>web::dispatch -track</b></span>. The two
+	(<span style="font-family:monospace"><span><strong class="command">web::filecontext</strong></span></span>,
+	<span style="font-family:monospace"><span><strong class="command">web::cookiecontext</strong></span></span>). Session id tracking is
+	managed by <span style="font-family:monospace"><span><strong class="command">web::dispatch -track</strong></span></span>. The two
 	parts are connected with the <tt>-attachto</tt> option
 	of the session context manager.  The control is as follows:
       </p><p style="width:90%">
 	</p><div class="itemizedlist"><ul type="disc"><li><div style="margin-bottom:6">
 	      A user uses the Websh script for the first
-	      time.<span style="font-family:monospace"><b>web::dispatch -track</b></span> will not
+	      time.<span style="font-family:monospace"><span><strong class="command">web::dispatch -track</strong></span></span> will not
 	      see any session id, and, consequently, not set the
-	      static parameter <tt>id</tt>.
+	      static parameter <code class="literal">id</code>.
 	    </div></li><li><div style="margin-bottom:6">
 	      Within the application, the session is initialized using
-	      <span style="font-family:monospace"><b>mgr::init</b></span>. <span style="font-family:monospace"><b>init</b></span>
-	      will find no static parameter <tt>id</tt> (which has been specified at
+	      <span style="font-family:monospace"><span><strong class="command">mgr::init</strong></span></span>. <span style="font-family:monospace"><span><strong class="command">init</strong></span></span>
+	      will find no static parameter <code class="literal">id</code> (which has been specified at
 	      creation time of the session manager using the
 	      <tt>-attachto</tt> option).  Now, it tries to
 	      create a new session id. This will be possible if a
@@ -286,17 +290,17 @@
 	      was created using the <tt>-idgen</tt> option.
 	      From now, on the session id will be a static parameter,
 	      and will therefore be present in every URL generated
-	      with <span style="font-family:monospace"><b>web::cmdurl</b></span>.
+	      with <span style="font-family:monospace"><span><strong class="command">web::cmdurl</strong></span></span>.
 	    </div></li><li><div style="margin-bottom:6">
 	      The next time the user visits the Websh application
 	      using one of these URLs,
-	      <span style="font-family:monospace"><b>web::dispatch</b></span> will detect the
-	      session id, and <span style="font-family:monospace"><b>mgr::init</b></span> will directly load
+	      <span style="font-family:monospace"><span><strong class="command">web::dispatch</strong></span></span> will detect the
+	      session id, and <span style="font-family:monospace"><span><strong class="command">mgr::init</strong></span></span> will directly load
 	      the corresponding session context without generating a
 	      new session id.
 	    </div></li></ul></div><p style="width:90%">
-      </p><div class="example"><a name="id219345"></a><p class="title"><b>Example 5. Examples</b></p><p style="width:90%">
+      </p><div class="example"><a name="id2849978"></a><p class="title"><b>Example 5. Examples</b></p><p style="width:90%">
 	See <a href="http://tcl.apache.org/websh/examples.ws3" target="_top">http://tcl.apache.org/websh/examples.ws3</a>
 	for several sample application demonstrating Websh's
 	session management facilities.
-        </p></div></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="configuration.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="index.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="request_data_handling.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Configuration </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Request data handling</td></tr></table></div></body></html>
+        </p></div></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="configuration.html">Prev</a> </td><td width="20%" align="center"> </td><td width="40%" align="right"> <a accesskey="n" href="request_data_handling.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Configuration </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Request data handling</td></tr></table></div></body></html>

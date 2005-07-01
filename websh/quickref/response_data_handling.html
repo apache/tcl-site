@@ -1,20 +1,20 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html><head><meta content="text/html; charset=ISO-8859-1" http-equiv="Content-Type"><title>Response data handling</title><meta name="generator" content="DocBook XSL Stylesheets V1.52.2"><link rel="home" href="index.html" title="Websh Reference"><link rel="up" href="index.html" title="Websh Reference"><link rel="previous" href="request_data_handling.html" title="Request data handling"><link rel="next" href="logging.html" title="Logging"><link rel="article" href="index.html" title="Websh Reference"><link rel="subsection" href="response_data_handling.html#web::response" title="web::response"><link rel="subsection" href="response_data_handling.html#web::put" title="web::put"><link rel="subsection" href="response_data_handling.html#web::putx" title="web::putx"><link rel="subsection" href="response_data_handling.html#web::putxfile" title="web::putxfile"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Response data handling</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="request_data_handling.html">Prev</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="logging.html">Next</a></td></tr></table><hr></div><div class="section"><div class="titlepage"><div><hr><h2 class="title" style="clear: both"><a name="response_data_handling"></a>Response data handling</h2></div></div><p style="width:90%">
+<html><head><meta content="text/html; charset=ISO-8859-1" http-equiv="Content-Type"><title>Response data handling</title><meta name="generator" content="DocBook XSL Stylesheets V1.68.1"><link rel="start" href="index.html" title="Websh Reference"><link rel="up" href="index.html" title="Websh Reference"><link rel="prev" href="request_data_handling.html" title="Request data handling"><link rel="next" href="logging.html" title="Logging"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Response data handling</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="request_data_handling.html">Prev</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="logging.html">Next</a></td></tr></table><hr></div><div class="section" lang="en"><div class="titlepage"><div><div><hr><h2 class="title" style="clear: both"><a name="response_data_handling"></a>Response data handling</h2></div></div></div><p style="width:90%">
       Websh can send output to any Tcl channel and to global
-      variables (<span style="font-family:monospace"><b>web::put</b></span>). Optionally, data is
+      variables (<span style="font-family:monospace"><span><strong class="command">web::put</strong></span></span>). Optionally, data is
       scanned for Tcl code before it is output to a channel
-      (<span style="font-family:monospace"><b>web::putx</b></span>). Websh manages
+      (<span style="font-family:monospace"><span><strong class="command">web::putx</strong></span></span>). Websh manages
       <span class="emphasis"><em>response objects</em></span> that are related to Tcl
       channels and are identified using the name of the corresponding
       Tcl channel. Configuration is achieved with
-      <span style="font-family:monospace"><b>web::response</b></span>.
-    </p><div class="section"><div class="titlepage"><div><h3 class="title"><a name="web::response"></a>web::response</h3></div></div><p style="width:90%">
+      <span style="font-family:monospace"><span><strong class="command">web::response</strong></span></span>.
+    </p><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="web::response"></a>web::response</h3></div></div></div><p style="width:90%">
 
 
 
-	</p><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><tt>web::response</tt></span> </span></div><p style="width:90%">
-	</p><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><tt>web::response</tt></span>  ?<i><tt>option</tt></i>?</span></div><p style="width:90%">
-	</p><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><tt>web::response</tt></span>  ?<i><tt>subcommand</tt></i>? <i><tt>args</tt></i></span></div><p style="width:90%">
+	</p><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><code class="command">web::response</code></span> </span></div><p style="width:90%">
+	</p><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><code class="command">web::response</code></span>  ?<em class="replaceable"><code>option</code></em>?</span></div><p style="width:90%">
+	</p><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><code class="command">web::response</code></span>  ?<em class="replaceable"><code>subcommand</code></em>? <em class="replaceable"><code>args</code></em></span></div><p style="width:90%">
 
 	Subcommands are <tt>-select</tt>,
 	<tt>-set</tt>, <tt>-lappend</tt>,
@@ -28,19 +28,19 @@
 	properties of the response object, and returns the name of the
 	response object.
       </p><p style="width:90%">
-	</p><div class="variablelist"><dl><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><b>web::response</b></span></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
+	</p><div class="variablelist"><dl><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><span><strong class="command">web::response</strong></span></span></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
 		returns the name of the currently selected response object.
-	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><b>web::response</b></span>
+	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><span><strong class="command">web::response</strong></span></span>
 	      <tt>-select</tt>
-	      ?<tt>#</tt>?<i><tt>channelName</tt></i>
+	      ?<span class="optional"><tt>#</tt></span>?<em class="replaceable"><code>channelName</code></em>
 	    </span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
-		selects <tt><i><tt>channelName</tt></i></tt> as new response
-		object. If the <tt><i><tt>channelName</tt></i></tt> is
+		selects <tt><em class="replaceable"><code>channelName</code></em></tt> as new response
+		object. If the <tt><em class="replaceable"><code>channelName</code></em></tt> is
 		prepended by a <tt>#</tt>, it refers to a global 
-                variable named <tt><i><tt>channelName</tt></i></tt>.
-	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><b>web::response</b></span>
-	      <tt>-set</tt> <tt><i><tt>key</tt></i></tt>
-	      ?<tt><i><tt>value</tt></i></tt>?</span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
+                variable named <tt><em class="replaceable"><code>channelName</code></em></tt>.
+	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><span><strong class="command">web::response</strong></span></span>
+	      <tt>-set</tt> <tt><em class="replaceable"><code>key</code></em></tt>
+	      ?<span class="optional"><tt><em class="replaceable"><code>value</code></em></tt></span>?</span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
 		sets property <tt>key</tt> to
 		<tt>value</tt>, or returns current value if
 		<tt>value</tt> is omitted.  The
@@ -49,31 +49,31 @@
 		name) and <tt>value</tt> the corresponding
 		value of the field (like Content-Type) and their
 		values (like text/html).</div><div style="margin-bottom:6">
-		Example:</div><div style="margin-bottom:6"> <tt>web::response -set Status 200</tt>.
-	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><b>web::response</b></span>
+		Example:</div><div style="margin-bottom:6"> <code class="literal">web::response -set Status 200</code>.
+	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><span><strong class="command">web::response</strong></span></span>
 	      <tt>-names</tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
 		returns the list of known keys.
-	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><b>web::response</b></span>
-	      <tt>-count</tt> <tt><i><tt>key</tt></i></tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
+	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><span><strong class="command">web::response</strong></span></span>
+	      <tt>-count</tt> <tt><em class="replaceable"><code>key</code></em></tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
 		returns number of items in list of <tt>key</tt>.
-	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><b>web::response</b></span>
+	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><span><strong class="command">web::response</strong></span></span>
 	      <tt>-unset</tt>
-	      ?<tt><i><tt>key</tt></i></tt>?</span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
+	      ?<span class="optional"><tt><em class="replaceable"><code>key</code></em></tt></span>?</span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
 		delete the value of <tt>key</tt>, if
 		<tt>key</tt> is given, or all keys.
-	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><b>web::response</b></span>
+	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><span><strong class="command">web::response</strong></span></span>
 	      <tt>-sendheader</tt>
-	      ?<tt>boolean</tt>?</span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
+	      ?<span class="optional"><tt>boolean</tt></span>?</span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
 		Sets the sendheader flag which indicates and controls
 		whether the HTTP headers have been or should be sent.
 		It is initially set to 1 and set to 0 after the first
-		call of <span style="font-family:monospace"><b>web::put</b></span> or
-		<span style="font-family:monospace"><b>web::putx</b></span>. If
+		call of <span style="font-family:monospace"><span><strong class="command">web::put</strong></span></span> or
+		<span style="font-family:monospace"><span><strong class="command">web::putx</strong></span></span>. If
 		<tt>boolean</tt> is omitted, returns the
 		current value.
-	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><b>web::response</b></span>
+	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><span><strong class="command">web::response</strong></span></span>
 	      <tt>-httpresponse</tt>
-	      ?<tt><i><tt>value</tt></i></tt>?</span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
+	      ?<span class="optional"><tt><em class="replaceable"><code>value</code></em></tt></span>?</span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
 		Sets the HTTP response like &quot;HTTP/1.0 200
 		OK&quot; for the given (or default) channel. If no
 		<tt>value</tt> given, returns the the current
@@ -81,11 +81,11 @@
 		mod_websh, Apache replaces the protocol
 		&quot;HTTP/??&quot; in the reponse with
 		&quot;HTTP/1.1&quot;.
-	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><b>web::response</b></span>
+	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><span><strong class="command">web::response</strong></span></span>
 	      <tt>-bytessent</tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
 		returns the number of bytes that have already been sent to this
 		channel.
-	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><b>web::response</b></span>
+	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><span><strong class="command">web::response</strong></span></span>
 	      <tt>-reset</tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
 		resets the 'sendheader' flag for the channel to true,
 		the HTTP response to the default &quot;HTTP/?? 200
@@ -93,11 +93,11 @@
 		names of the query string parameters for the timestamp
 		and the command to their default values (&quot;t&quot;
 		and &quot;cmd&quot;, respectively).
-	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><b>web::response</b></span>
+	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><span><strong class="command">web::response</strong></span></span>
 	      <tt>-resetall</tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
 		performs a 'web::response -reset' on all registered channels.
 	      </div></div></dd></dl></div><p style="width:90%">
-	</p><div class="example"><a name="id293893"></a><p class="title"><b>Example 7. web::response</b></p><pre style="background:#bbffbb ; width:75%" class="programlisting">
+	</p><div class="example"><a name="id2913767"></a><p class="title"><b>Example 7. web::response</b></p><pre style="background:#bbffbb ; width:75%" class="programlisting">
 	    % web::response
 	    stdout
 	    % web::response -select stderr
@@ -116,50 +116,50 @@
 	    % web::put &quot;Hello, world\n&quot;
 	    Content-Type: text/html
 	    Set-Cookie: my cookie that contains data
-	    Generator: websh3.00 (c) Netcetera AG, http://netcetera.ch
+	    Generator: websh3.5.1
 
 	    Hello, world
 	    %
 	  </pre></div><p style="width:90%">
-      </p></div><div class="section"><div class="titlepage"><div><h3 class="title"><a name="web::put"></a>web::put</h3></div></div><p style="width:90%">
+      </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="web::put"></a>web::put</h3></div></div></div><p style="width:90%">
 
-	</p><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><tt>web::put</tt></span>  ?
+	</p><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><code class="command">web::put</code></span>  ?
 	     ?#?
-	    <i><tt>channel</tt></i>
-	  ? <i><tt>text</tt></i></span></div><p style="width:90%">
+	    <em class="replaceable"><code>channel</code></em>
+	  ? <em class="replaceable"><code>text</code></em></span></div><p style="width:90%">
 	Send output to a Tcl channel. No newline is added to
 	output. If
-	?<tt><i><tt>channel</tt></i></tt>?
+	?<span class="optional"><tt><em class="replaceable"><code>channel</code></em></tt></span>?
 	is ommitted, output is sent to the current default
 	channel. The default channel can be changed with
-	<span style="font-family:monospace"><b>web::response <tt>-select</tt>
-	?<tt>#</tt>?<tt><i><tt>channel</tt></i></tt></b></span>.
+	<span style="font-family:monospace"><span><strong class="command">web::response <tt>-select</tt>
+	?<span class="optional"><tt>#</tt></span>?<tt><em class="replaceable"><code>channel</code></em></tt></strong></span></span>.
         The optional hash (&quot;#&quot;) denotes that output should be
 	sent to a global variable named
-	<tt><i><tt>channel</tt></i></tt> instead of
+	<tt><em class="replaceable"><code>channel</code></em></tt> instead of
 	a Tcl channel.
-      </p></div><div class="section"><div class="titlepage"><div><h3 class="title"><a name="web::putx"></a>web::putx</h3></div></div><p style="width:90%">
+      </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="web::putx"></a>web::putx</h3></div></div></div><p style="width:90%">
 
-	</p><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><tt>web::putx</tt></span>  ?
+	</p><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><code class="command">web::putx</code></span>  ?
 	     ?#?
-	    <i><tt>channel</tt></i>
-	  ? <i><tt>text</tt></i></span></div><p style="width:90%">
+	    <em class="replaceable"><code>channel</code></em>
+	  ? <em class="replaceable"><code>text</code></em></span></div><p style="width:90%">
 
 	Writes <tt>text</tt> to the specified channel. Code in
 	curly brackets is eval'd, unless the brackets are escaped by
 	&quot;\&quot;. These markup characters '{...}' can be changed
-	to '&lt;? ... ?&gt;' with 'web::config putxmarkup tag'. The optional hash (&quot;#&quot;) denotes that output should be sent to a global variable named <tt><i><tt>channel</tt></i></tt> instead of a Tcl channel.
+	to '&lt;? ... ?&gt;' with 'web::config putxmarkup tag'. The optional hash (&quot;#&quot;) denotes that output should be sent to a global variable named <tt><em class="replaceable"><code>channel</code></em></tt> instead of a Tcl channel.
 
-      </p></div><div class="section"><div class="titlepage"><div><h3 class="title"><a name="web::putxfile"></a>web::putxfile</h3></div></div><p style="width:90%">
+      </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="web::putxfile"></a>web::putxfile</h3></div></div></div><p style="width:90%">
 
-	</p><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><tt>web::putxfile</tt></span>  ?
+	</p><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><code class="command">web::putxfile</code></span>  ?
 	     ?#?
-	    <i><tt>channel</tt></i>
-	  ? <i><tt>file</tt></i> ?<i><tt>msg</tt></i>?</span></div><p style="width:90%">
-	Like <span style="font-family:monospace"><b>web::putx</b></span>, but takes input from a file.
+	    <em class="replaceable"><code>channel</code></em>
+	  ? <em class="replaceable"><code>file</code></em> ?<em class="replaceable"><code>msg</code></em>?</span></div><p style="width:90%">
+	Like <span style="font-family:monospace"><span><strong class="command">web::putx</strong></span></span>, but takes input from a file.
       </p><p style="width:90%">
 	Returns 0 on success, 1 otherwise. If an error occurs, an
 	error message is written to <tt>msg</tt>. If only two
 	arguments are passed, then <tt>channel</tt> takes
-	precedence. The optional hash (&quot;#&quot;) denotes that output should be sent to a global variable named <tt><i><tt>channel</tt></i></tt> instead of a Tcl channel.
-      </p></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="request_data_handling.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="index.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="logging.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Request data handling </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Logging</td></tr></table></div></body></html>
+	precedence. The optional hash (&quot;#&quot;) denotes that output should be sent to a global variable named <tt><em class="replaceable"><code>channel</code></em></tt> instead of a Tcl channel.
+      </p></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="request_data_handling.html">Prev</a> </td><td width="20%" align="center"> </td><td width="40%" align="right"> <a accesskey="n" href="logging.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Request data handling </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Logging</td></tr></table></div></body></html>

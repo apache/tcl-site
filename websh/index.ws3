@@ -23,6 +23,14 @@ web::putx {
           <br>
         </td>
         <td width="145">
+
+          <table border="0" cellpadding="0" cellspacing="0" width="145">
+            <tr valign="top">
+              <td width="10"></td>
+              <td><a href="http://apachecon.com/2005/US/"><img src="ac2005us.jpg" alt="ApacheCon 2005 US" border="0"></a><br>&nbsp;</td>
+            </tr>
+          </table>
+
           <table border="0" cellpadding="0" cellspacing="0" width="145">
 
 

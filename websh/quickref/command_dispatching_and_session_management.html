@@ -1,5 +1,5 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html><head><meta content="text/html; charset=ISO-8859-1" http-equiv="Content-Type"><title>Command dispatching and session management</title><meta name="generator" content="DocBook XSL Stylesheets V1.68.1"><link rel="start" href="index.html" title="Websh Reference"><link rel="up" href="index.html" title="Websh Reference"><link rel="prev" href="configuration.html" title="Configuration"><link rel="next" href="request_data_handling.html" title="Request data handling"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Command dispatching and session management</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="configuration.html">Prev</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="request_data_handling.html">Next</a></td></tr></table><hr></div><div class="section" lang="en"><div class="titlepage"><div><div><hr><h2 class="title" style="clear: both"><a name="command_dispatching_and_session_management"></a>Command dispatching and session management</h2></div></div></div><p style="width:90%">
+<html><head><meta content="text/html; charset=ISO-8859-1" http-equiv="Content-Type"><title>Command dispatching and session management</title><meta name="generator" content="DocBook XSL Stylesheets V1.68.1"><link rel="start" href="index.html" title="Websh Reference 3.6.0b3"><link rel="up" href="index.html" title="Websh Reference 3.6.0b3"><link rel="prev" href="configuration.html" title="Configuration"><link rel="next" href="request_data_handling.html" title="Request data handling"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Command dispatching and session management</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="configuration.html">Prev</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="request_data_handling.html">Next</a></td></tr></table><hr></div><div class="section" lang="en"><div class="titlepage"><div><div><hr><h2 class="title" style="clear: both"><a name="command_dispatching_and_session_management"></a>Command dispatching and session management</h2></div></div></div><p style="width:90%">
       Websh provides a command dispatching mechanism to produce,
       for example, different HTML pages within one &quot;application&quot;,
       which is most likely one file on the file system. The name of
@@ -80,11 +80,10 @@
 		    <span style="font-family:monospace"><span><strong class="command">web::config</strong></span></span> <tt>timeparam</tt>.
 		  </p></div>
 	      </div></div></dd></dl></div><p style="width:90%">
-      </p><div class="example"><a name="id2851692"></a><p class="title"><b>Example 2. web::cmdurl</b></p><pre style="background:#bbffbb ; width:75%" class="programlisting">
-	  % web::cmdurl -notimestamp -urlformat [list scheme host scriptname pathinfo querystring] &quot;test&quot;
-	  http://websh.com/bin/returnmail/member?XDZuRD2rnsfHjFH
-	  %
-	</pre></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="web::cmdurlcfg"></a>web::cmdurlcfg</h3></div></div></div><p style="width:90%">
+      </p><div class="example"><a name="id273455"></a><p class="title"><b>Example 2. web::cmdurl</b></p><pre style="background:#bbffbb ; width:75%" class="programlisting">
+% web::cmdurl -notimestamp -urlformat [list scheme host scriptname pathinfo querystring] &quot;test&quot;
+http://websh.com/bin/returnmail/member?XDZuRD2rnsfHjFH
+%	</pre></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="web::cmdurlcfg"></a>web::cmdurlcfg</h3></div></div></div><p style="width:90%">
 	</p><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><code class="command">web::cmdurlcfg</code></span>  ?<em class="replaceable"><code>option</code></em>? ?<em class="replaceable"><code>key</code></em>? ?<em class="replaceable"><code>value</code></em>?</span></div><p style="width:90%">
       </p><p style="width:90%">
 	Command options are exactly like those of
@@ -166,17 +165,16 @@
 	the keys from the command line. The static parameter is only
 	used if there is no such parameter on the command line.
 
-      </p><div class="example"><a name="id2849316"></a><p class="title"><b>Example 3. web::cmdurl</b></p><pre style="background:#bbffbb ; width:75%" class="programlisting">
-	  % web::cmdurl &quot;&quot;
-	  ?XDqPtk34XvyPh41gUBo
-	  % web::cmdurlcfg -scriptname bin/test_script
-	  % web::cmdurl &quot;&quot;
-	  bin/test_script?XDqPtk34XvyPh41gUBo
-	  % web::cmdurlcfg -scriptname &quot;&quot;
-	  % web::cmdurl &quot;&quot;
-	  ?XDqPtk34XvyPh41gUBo
-	  %
-	</pre></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="web::dispatch"></a>web::dispatch</h3></div></div></div><p style="width:90%">
+      </p><div class="example"><a name="id271295"></a><p class="title"><b>Example 3. web::cmdurl</b></p><pre style="background:#bbffbb ; width:75%" class="programlisting">
+% web::cmdurl &quot;&quot;
+?XDqPtk34XvyPh41gUBo
+% web::cmdurlcfg -scriptname bin/test_script
+% web::cmdurl &quot;&quot;
+bin/test_script?XDqPtk34XvyPh41gUBo
+% web::cmdurlcfg -scriptname &quot;&quot;
+% web::cmdurl &quot;&quot;
+?XDqPtk34XvyPh41gUBo
+%	</pre></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="web::dispatch"></a>web::dispatch</h3></div></div></div><p style="width:90%">
 
 
 	</p><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><code class="command">web::dispatch</code></span>  ?<em class="replaceable"><code>options</code></em>?</span></div><p style="width:90%">
@@ -203,9 +201,9 @@
 	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><tt>-postdata</tt> <tt>&quot;&quot;</tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
                 do not parse any post data.
 	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term">
-	      <tt>-postdata</tt> <tt>?<span class="optional">#</span>?<em class="replaceable"><code>channelName</code></em></tt>
-	      <tt>?<span class="optional"><em class="replaceable"><code>content_length</code></em></span>?</tt>
-	      <tt>?<span class="optional"><em class="replaceable"><code>content_type</code></em></span>?</tt>
+	      <tt>-postdata</tt> ?<span class="optional"><tt>#</tt></span>?<tt><em class="replaceable"><code>channelName</code></em></tt>
+	      <tt><em class="replaceable"><code>?<span class="optional">content_length</span>?</code></em></tt>
+	      <tt><em class="replaceable"><code>?<span class="optional">content_type</span>?</code></em></tt>
 	    </span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
 		parse channel <tt>channelName</tt> (or variable named <tt>channelName</tt> if <tt>#</tt> is given) as POST data input with
 		length <tt>content_length</tt> and type <tt>content_type</tt>.
@@ -246,24 +244,23 @@ In the case of multipat form data,
 	<tt>-cmd</tt> option, web::dispatch will call the
 	command &quot;default&quot;.
 
-      </p><div class="example"><a name="id2849767"></a><p class="title"><b>Example 4. web::command and web::dispatch</b></p><pre style="background:#bbffbb ; width:75%" class="programlisting">
-	  % set tst {puts &quot;On the hook&quot;}
-	  puts &quot;On the hook&quot;
-	  % web::command acmd {puts &quot;this is acmd&quot;}
-	  % web::dispatch -cmd acmd -querystring &quot;&quot; -postdata &quot;&quot;
-	  this is acmd
-	  % web::dispatch -cmd acmd -querystring &quot;&quot; -postdata &quot;&quot; -hook $tst
-	  On the hook
-	  this is acmd
-	  % set data &quot;a=b&amp;c=d&quot;
-	  a=b&amp;c=d
-	  % web::dispatch -cmd &quot;&quot; -querystring &quot;&quot; -postdata #data
-	  % web::formvar a
-	  b
-	  % web::formvar c
-	  d
-	  %
-	</pre></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="session_management"></a>Session management</h3></div></div></div><p style="width:90%">
+      </p><div class="example"><a name="id271774"></a><p class="title"><b>Example 4. web::command and web::dispatch</b></p><pre style="background:#bbffbb ; width:75%" class="programlisting">
+% set tst {puts &quot;On the hook&quot;}
+puts &quot;On the hook&quot;
+% web::command acmd {puts &quot;this is acmd&quot;}
+% web::dispatch -cmd acmd -querystring &quot;&quot; -postdata &quot;&quot;
+this is acmd
+% web::dispatch -cmd acmd -querystring &quot;&quot; -postdata &quot;&quot; -hook $tst
+On the hook
+this is acmd
+% set data &quot;a=b&amp;c=d&quot;
+a=b&amp;c=d
+% web::dispatch -cmd &quot;&quot; -querystring &quot;&quot; -postdata #data
+% web::formvar a
+b
+% web::formvar c
+d
+%	</pre></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="session_management"></a>Session management</h3></div></div></div><p style="width:90%">
 	Websh session management consits of two parts:
 	</p><div class="itemizedlist"><ul type="disc"><li><div style="margin-bottom:6">session id tracking</div></li><li><div style="margin-bottom:6">session context management</div></li></ul></div><p style="width:90%">
       </p><p style="width:90%">
@@ -299,7 +296,7 @@ In the case of multipat form data,
 	      the corresponding session context without generating a
 	      new session id.
 	    </div></li></ul></div><p style="width:90%">
-      </p><div class="example"><a name="id2849978"></a><p class="title"><b>Example 5. Examples</b></p><p style="width:90%">
+      </p><div class="example"><a name="id271996"></a><p class="title"><b>Example 5. Examples</b></p><p style="width:90%">
 	See <a href="http://tcl.apache.org/websh/examples.ws3" target="_top">http://tcl.apache.org/websh/examples.ws3</a>
 	for several sample application demonstrating Websh's
 	session management facilities.

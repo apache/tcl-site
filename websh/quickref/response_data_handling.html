@@ -1,5 +1,5 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html><head><meta content="text/html; charset=ISO-8859-1" http-equiv="Content-Type"><title>Response data handling</title><meta name="generator" content="DocBook XSL Stylesheets V1.68.1"><link rel="start" href="index.html" title="Websh Reference"><link rel="up" href="index.html" title="Websh Reference"><link rel="prev" href="request_data_handling.html" title="Request data handling"><link rel="next" href="logging.html" title="Logging"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Response data handling</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="request_data_handling.html">Prev</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="logging.html">Next</a></td></tr></table><hr></div><div class="section" lang="en"><div class="titlepage"><div><div><hr><h2 class="title" style="clear: both"><a name="response_data_handling"></a>Response data handling</h2></div></div></div><p style="width:90%">
+<html><head><meta content="text/html; charset=ISO-8859-1" http-equiv="Content-Type"><title>Response data handling</title><meta name="generator" content="DocBook XSL Stylesheets V1.68.1"><link rel="start" href="index.html" title="Websh Reference 3.6.0b3"><link rel="up" href="index.html" title="Websh Reference 3.6.0b3"><link rel="prev" href="request_data_handling.html" title="Request data handling"><link rel="next" href="logging.html" title="Logging"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Response data handling</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="request_data_handling.html">Prev</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="logging.html">Next</a></td></tr></table><hr></div><div class="section" lang="en"><div class="titlepage"><div><div><hr><h2 class="title" style="clear: both"><a name="response_data_handling"></a>Response data handling</h2></div></div></div><p style="width:90%">
       Websh can send output to any Tcl channel and to global
       variables (<span style="font-family:monospace"><span><strong class="command">web::put</strong></span></span>). Optionally, data is
       scanned for Tcl code before it is output to a channel
@@ -97,30 +97,29 @@
 	      <tt>-resetall</tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
 		performs a 'web::response -reset' on all registered channels.
 	      </div></div></dd></dl></div><p style="width:90%">
-	</p><div class="example"><a name="id2913767"></a><p class="title"><b>Example 7. web::response</b></p><pre style="background:#bbffbb ; width:75%" class="programlisting">
-	    % web::response
-	    stdout
-	    % web::response -select stderr
-	    stdout
-	    % web::response
-	    stderr
-	    % web::response -sendheader
-	    1
-	    % web::response -names
-	    Content-Type Generator
-	    % web::response Content-Type
-	    text/html
-	    % web::response -bytessent
-	    0
-	    % web::response -set Set-Cookie &quot;my cookie that contains data&quot;
-	    % web::put &quot;Hello, world\n&quot;
-	    Content-Type: text/html
-	    Set-Cookie: my cookie that contains data
-	    Generator: websh3.5.1
+	</p><div class="example"><a name="id346589"></a><p class="title"><b>Example 7. web::response</b></p><pre style="background:#bbffbb ; width:75%" class="programlisting">
+% web::response
+stdout
+% web::response -select stderr
+stdout
+% web::response
+stderr
+% web::response -sendheader
+1
+% web::response -names
+Content-Type Generator
+% web::response Content-Type
+text/html
+% web::response -bytessent
+0
+% web::response -set Set-Cookie &quot;my cookie that contains data&quot;
+% web::put &quot;Hello, world\n&quot;
+Content-Type: text/html
+Set-Cookie: my cookie that contains data
+Generator: websh3.6.0
 
-	    Hello, world
-	    %
-	  </pre></div><p style="width:90%">
+Hello, world
+%	  </pre></div><p style="width:90%">
       </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="web::put"></a>web::put</h3></div></div></div><p style="width:90%">
 
 	</p><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><code class="command">web::put</code></span>  ?

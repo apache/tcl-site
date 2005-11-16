@@ -1,5 +1,5 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html><head><meta content="text/html; charset=ISO-8859-1" http-equiv="Content-Type"><title>Apache module specific commands</title><meta name="generator" content="DocBook XSL Stylesheets V1.68.1"><link rel="start" href="index.html" title="Websh Reference"><link rel="up" href="index.html" title="Websh Reference"><link rel="prev" href="inter-process_and_-system_communication.html" title="Inter-process/-system communication"><link rel="next" href="misc_commands.html" title="Miscellaneous commands"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Apache module specific commands</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="inter-process_and_-system_communication.html">Prev</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="misc_commands.html">Next</a></td></tr></table><hr></div><div class="section" lang="en"><div class="titlepage"><div><div><hr><h2 class="title" style="clear: both"><a name="Apache_module_specific_commands"></a>Apache module specific commands</h2></div></div></div><p style="width:90%">
+<html><head><meta content="text/html; charset=ISO-8859-1" http-equiv="Content-Type"><title>Apache module specific commands</title><meta name="generator" content="DocBook XSL Stylesheets V1.68.1"><link rel="start" href="index.html" title="Websh Reference 3.6.0b3"><link rel="up" href="index.html" title="Websh Reference 3.6.0b3"><link rel="prev" href="inter-process_and_-system_communication.html" title="Inter-process/-system communication"><link rel="next" href="misc_commands.html" title="Miscellaneous commands"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Apache module specific commands</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="inter-process_and_-system_communication.html">Prev</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="misc_commands.html">Next</a></td></tr></table><hr></div><div class="section" lang="en"><div class="titlepage"><div><div><hr><h2 class="title" style="clear: both"><a name="Apache_module_specific_commands"></a>Apache module specific commands</h2></div></div></div><p style="width:90%">
       Note that these commands are implemented as dummies in the CGI
       version of Websh only. They don't do anything except for
       web::initializer and web::finalizer, which just evaluate the
@@ -14,8 +14,40 @@
 	<span style="font-family:monospace"><span><strong class="command">source</strong></span></span> several modules which each call
 	their initialization code.
 
-      </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="web::finalizer"></a>web::finalizer</h3></div></div></div><p style="width:90%">
+Also note that this code eval'd when it is first requested and read in its normal script sequence, and not prior to any other code in the script.
+      </p><p style="width:90%">
+Calling <span style="font-family:monospace"><span><strong class="command">web::loglevel</strong></span></span> and <span style="font-family:monospace"><span><strong class="command">web::logdest</strong></span></span> in any <span style="font-family:monospace"><span><strong class="command">web::initializer</strong></span></span> will tag these log levels and destinations as not to be deleted, after the request ends. This log condifguration will therefore also be available in the finalizer code, which is only eval'd after
+the last request in the interpreter has been cleaned up.
+      </p><div class="example"><a name="id352289"></a><p class="title"><b>Example 14. logging in web::initializer</b></p><pre style="background:#bbffbb ; width:75%" class="programlisting">
+&gt; cat test.ws3
+web::initializer {
+    web::logdest add user.-debug file -unbuffered /tmp/test.log
+    web::loglevel add *.-debug
+    web::log info &quot;initializing interp&quot;
+}
 
+web::command default {
+    web::log info &quot;command default call number [web::interpcfg  numreq]&quot;
+    web::putxfile /tmp/dummypage.html
+}
+
+
+web::finalizer {
+    web::log info &quot;shutting down interp&quot;
+}
+
+web::dispatch
+
+&gt; # requesting test.ws3 three times over mod_websh:
+&gt; more /tmp/test.log
+10/28/05 14:13:45 [20639] user.info: initializing interp
+10/28/05 14:13:45 [20639] user.info: command default call number 0
+10/28/05 14:13:46 [20639] user.info: command default call number 1
+10/28/05 14:13:47 [20639] user.info: command default call number 2
+10/28/05 14:13:47 [20639] user.info: shutting down interp</pre></div><p style="width:90%">
+Note that in the above example the lifetime of the interpreter class is set to 3 requests. (See command <span style="font-family:monospace"><span><strong class="command">web::interpclasscfg</strong></span></span>.)
+
+      </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="web::finalizer"></a>web::finalizer</h3></div></div></div><p style="width:90%">
 
 	</p><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><code class="command">web::finalizer</code></span>  <em class="replaceable"><code>code</code></em></span></div><p style="width:90%">
 
@@ -37,14 +69,13 @@
 	manually. However, it can be used as a hook, when the
 	interpreter is deleted:
 
-	</p><div class="example"><a name="id2918970"></a><p class="title"><b>Example 14. web::finalize</b></p><pre style="background:#bbffbb ; width:75%" class="programlisting">
-	    rename web::finalize web::finalize.orig
-	    proc web::myFinalize {} {
-	        # code to eval before finalize.orig
-	        finalize.orig
-	        # code to eval after finalize.orig
-	    }
-	  </pre></div><p style="width:90%">
+	</p><div class="example"><a name="id352440"></a><p class="title"><b>Example 15. web::finalize hook</b></p><pre style="background:#bbffbb ; width:75%" class="programlisting">
+rename web::finalize web::finalize.orig
+proc web::myFinalize {} {
+    # code to eval before finalize.orig
+    finalize.orig
+    # code to eval after finalize.orig
+}	  </pre></div><p style="width:90%">
 
       </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="web::maineval"></a>web::maineval</h3></div></div></div><p style="width:90%">
 
@@ -146,26 +177,23 @@
 	The return value of that command is the name of the interpreter class
 	and at the same time the filename of the script for this interpreter
 	class.
-      </p><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="id2919537"></a>Example</h4></div></div></div><p style="width:90%">
+      </p><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="id353023"></a>Example</h4></div></div></div><p style="width:90%">
 	  </p><pre style="background:#bbffbb ; width:75%" class="programlisting">
-	    proc web::interpmap {filename} {
-	        if {[string match &quot;/path/to/myApp&quot; $filename]} {
-	            # this is my special app
-	            return /real/path/to/myApp
-	        }
-	        if {[string match &quot;*.ws3&quot;]} {
-	            # scripts have their own interp class
-	            return $filename
-	        }
-	        # default: all templates are handled by my handler
-	        return /my/special/template/handler
-	    }
-	  </pre><p style="width:90%">
+proc web::interpmap {filename} {
+    if {[string match &quot;/path/to/myApp&quot; $filename]} {
+        # this is my special app
+        return /real/path/to/myApp
+    }
+    if {[string match &quot;*.ws3&quot;]} {
+        # scripts have their own interp class
+        return $filename
+    }
+    # default: all templates are handled by my handler
+    return /my/special/template/handler
+}	  </pre><p style="width:90%">
 	</p><p style="width:90%">
         The default implementation of web::interpmap is
-	</p><pre style="background:#bbffbb ; width:75%" class="programlisting">
-	  proc web::interpmap {filename} {return $filename}
-	</pre><p style="width:90%">
+	</p><pre style="background:#bbffbb ; width:75%" class="programlisting">proc web::interpmap {filename} {return $filename}</pre><p style="width:90%">
         which sets up a separate interpreter class for every requested URL
 	and takes the file itself as script.
       </p></div></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="inter-process_and_-system_communication.html">Prev</a> </td><td width="20%" align="center"> </td><td width="40%" align="right"> <a accesskey="n" href="misc_commands.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Inter-process/-system communication </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Miscellaneous commands</td></tr></table></div></body></html>

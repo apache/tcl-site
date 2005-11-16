@@ -467,13 +467,11 @@ extend the logging module by writing Tcl commands.
 The following example demonstrates a very simple Websh script which
 produces the simple message <i>Hello, world</i>
 <pre>
-------------------------------------------------------------
 #!websh3
 web::command default { 
   web::put &quot;Hello, world!\n&quot;
 }
 web::dispatch
-------------------------------------------------------------
 </pre>
 
 This script can be used as is as a CGI application. Websh
@@ -600,7 +598,7 @@ overview, you may want to look at the
 <ul>
 <li>::web::log</li>
 <li>::web::logdest</li>
-<li>::web::logfilter</li>
+<li>::web::loglevel</li>
 </ul>
 
 <a name="523"><a href="#toc"><h2>6.8 misc</h2></a>

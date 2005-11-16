@@ -1,5 +1,5 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html><head><meta content="text/html; charset=ISO-8859-1" http-equiv="Content-Type"><title>Request data handling</title><meta name="generator" content="DocBook XSL Stylesheets V1.68.1"><link rel="start" href="index.html" title="Websh Reference"><link rel="up" href="index.html" title="Websh Reference"><link rel="prev" href="command_dispatching_and_session_management.html" title="Command dispatching and session management"><link rel="next" href="response_data_handling.html" title="Response data handling"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Request data handling</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="command_dispatching_and_session_management.html">Prev</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="response_data_handling.html">Next</a></td></tr></table><hr></div><div class="section" lang="en"><div class="titlepage"><div><div><hr><h2 class="title" style="clear: both"><a name="request_data_handling"></a>Request data handling</h2></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="web::request"></a>web::request</h3></div></div></div><p style="width:90%">
+<html><head><meta content="text/html; charset=ISO-8859-1" http-equiv="Content-Type"><title>Request data handling</title><meta name="generator" content="DocBook XSL Stylesheets V1.68.1"><link rel="start" href="index.html" title="Websh Reference 3.6.0b3"><link rel="up" href="index.html" title="Websh Reference 3.6.0b3"><link rel="prev" href="command_dispatching_and_session_management.html" title="Command dispatching and session management"><link rel="next" href="response_data_handling.html" title="Response data handling"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Request data handling</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="command_dispatching_and_session_management.html">Prev</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="response_data_handling.html">Next</a></td></tr></table><hr></div><div class="section" lang="en"><div class="titlepage"><div><div><hr><h2 class="title" style="clear: both"><a name="request_data_handling"></a>Request data handling</h2></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="web::request"></a>web::request</h3></div></div></div><p style="width:90%">
 
 	</p><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><code class="command">web::request</code></span>  ?<em class="replaceable"><code>options</code></em>? ?<em class="replaceable"><code>key</code></em>? ?<em class="replaceable"><code>value</code></em>?</span></div><p style="width:90%">
 	</p><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><code class="command">web::request</code></span>  ?<em class="replaceable"><code>key</code></em>? ?<em class="replaceable"><code>default</code></em>?</span></div><p style="width:90%">
@@ -142,16 +142,18 @@
 	is set to 0 if the upload was successful, -1 if upload is disabled 
 	(see <span style="font-family:monospace"><span><strong class="command">web::config uploadfilesize</strong></span></span>) and n &gt; 0 if n
 	Bytes have been truncated, because the file was too big.
-      </p><div class="example"><a name="id2913113"></a><p class="title"><b>Example 6. web::param</b></p><pre style="background:#bbffbb ; width:75%" class="programlisting">
-	  % web::request CONTENT_LENGTH
-	  % web::dispatch -querystring &quot;cmd=default&amp;t=100&quot; -postdata &quot;&quot; -cmd &quot;&quot;
-	  % web::param -names
-	  t cmd
-	  % web::param cmd
-	  default
-	  % web::param -set k v
-	  v
-	  % web::param -names
-	  t cmd k
-	  %
-	</pre></div></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="command_dispatching_and_session_management.html">Prev</a> </td><td width="20%" align="center"> </td><td width="40%" align="right"> <a accesskey="n" href="response_data_handling.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Command dispatching and session management </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Response data handling</td></tr></table></div></body></html>
+      </p><p style="width:90%">
+Note that the temporary files are created with the permissions configured by
+<span style="font-family:monospace"><span><strong class="command">web::config filepermissions</strong></span></span>, which defaults to 0644.
+      </p><div class="example"><a name="id345862"></a><p class="title"><b>Example 6. web::param</b></p><pre style="background:#bbffbb ; width:75%" class="programlisting">
+% web::request CONTENT_LENGTH
+% web::dispatch -querystring &quot;cmd=default&amp;t=100&quot; -postdata &quot;&quot; -cmd &quot;&quot;
+% web::param -names
+t cmd
+% web::param cmd
+default
+% web::param -set k v
+v
+% web::param -names
+t cmd k
+%	</pre></div></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="command_dispatching_and_session_management.html">Prev</a> </td><td width="20%" align="center"> </td><td width="40%" align="right"> <a accesskey="n" href="response_data_handling.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Command dispatching and session management </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Response data handling</td></tr></table></div></body></html>

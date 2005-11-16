@@ -17,7 +17,7 @@ web::putx {
 
     &nbsp;&nbsp;&nbsp;&nbsp;{
 
-	set srcfile [lindex [file tail [glob -nocomplain [getDocFileName download/websh*gz]]] end]
+	set srcfile [file tail [lindex [glob -nocomplain [getDocFileName download/websh-3*gz]] end]]
 	if {![string length $srcfile]} {
 	    web::put "<span class=\"blue\">source code currently unavailable</span>"
 	} else {
@@ -37,12 +37,24 @@ web::putx {
     </p>
 
     <p>
-    <b>Important note</b>: although Websh was developed to run under both 
-    Unix and Windows, the current release (3.5.0) does not support Windows 
-    properly. To compile Websh under Windows, a few minor changes have to 
-    be made to header files and the make file.<br>
-    The next release (3.5.1) will feature out-of-the-box compilation for 
-    Windows again.
+    The Websh source code repository has recently been moved from CVS to
+    Subversion (SVN). To access the latest source from the repository, use the following (read-only) URL:</p>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp;{pageLink http://svn.apache.org/repos/asf/tcl/websh/trunk}.</p>
+    <p>
+    A typical command to checkout the code would be:
+    </p>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp;<tt>svn co http://svn.apache.org/repos/asf/tcl/websh/trunk websh</tt></p>
+
+    </p>
+
+    <p>
+    <b>Important note</b>: The latest release now also features a Windows XP
+    Makefile for Visual Studio nmake. Websh 3.6.0b3 has been tested to work
+    with Sun Solaris 8 and 9, Linux RedHat 8, Suse9.1, Windows XP.
+    Other Unix platforms are likely to work too.
+    Fixes for Mac OS-X 8.2 have been added and will be available in the
+    next release. A preliminary source package is provided here:
+    {pageLink download/websh-trunk-20051116.tar.gz -show websh-trunk-20051116.tar.gz}
     </p>
     </td>
     </tr>

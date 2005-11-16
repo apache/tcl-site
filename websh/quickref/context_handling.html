@@ -1,5 +1,5 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html><head><meta content="text/html; charset=ISO-8859-1" http-equiv="Content-Type"><title>Context handling</title><meta name="generator" content="DocBook XSL Stylesheets V1.68.1"><link rel="start" href="index.html" title="Websh Reference"><link rel="up" href="index.html" title="Websh Reference"><link rel="prev" href="logging.html" title="Logging"><link rel="next" href="file_handling_and_file_IO.html" title="File handling and file I/O"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Context handling</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="logging.html">Prev</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="file_handling_and_file_IO.html">Next</a></td></tr></table><hr></div><div class="section" lang="en"><div class="titlepage"><div><div><hr><h2 class="title" style="clear: both"><a name="context_handling"></a>Context handling</h2></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="web::context"></a>web::context</h3></div></div></div><p style="width:90%">
+<html><head><meta content="text/html; charset=ISO-8859-1" http-equiv="Content-Type"><title>Context handling</title><meta name="generator" content="DocBook XSL Stylesheets V1.68.1"><link rel="start" href="index.html" title="Websh Reference 3.6.0b3"><link rel="up" href="index.html" title="Websh Reference 3.6.0b3"><link rel="prev" href="logging.html" title="Logging"><link rel="next" href="file_handling_and_file_IO.html" title="File handling and file I/O"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Context handling</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="logging.html">Prev</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="file_handling_and_file_IO.html">Next</a></td></tr></table><hr></div><div class="section" lang="en"><div class="titlepage"><div><div><hr><h2 class="title" style="clear: both"><a name="context_handling"></a>Context handling</h2></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="web::context"></a>web::context</h3></div></div></div><p style="width:90%">
 	Creation
 	</p><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><code class="command">web::context</code></span>  <em class="replaceable"><code>name</code></em></span></div><p style="width:90%">
 	Creates a namespace <tt>name</tt> with the following
@@ -62,15 +62,14 @@
 		serialize context.
 	      </div></div></dd></dl></div><p style="width:90%">
 
-	</p><div class="example"><a name="id2915634"></a><p class="title"><b>Example 9. web::context</b></p><pre style="background:#bbffbb ; width:75%" class="programlisting">
-	    % web::context sc
-	    % sc::cset lang FR
-	    FR
-	    % # ... some code ...
-	    % set lang [sc::cget lang EN]
-	    FR
-	    %
-	  </pre></div><p style="width:90%">
+	</p><div class="example"><a name="id348871"></a><p class="title"><b>Example 9. web::context</b></p><pre style="background:#bbffbb ; width:75%" class="programlisting">
+% web::context sc
+% sc::cset lang FR
+FR
+% # ... some code ...
+% set lang [sc::cget lang EN]
+FR
+%	  </pre></div><p style="width:90%">
       </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="web::filecontext"></a>web::filecontext</h3></div></div></div><p style="width:90%">
 
 	Creation:
@@ -133,6 +132,9 @@
 
 	set the file permissions of the session context files
 	<tt>perm</tt> is an unix-like octal value like 0644.
+	If not specified, files are created with the permissions defined
+	in <span style="font-family:monospace"><span><strong class="command">web::config filepermissions</strong></span></span>,
+	which again defaults to 0644.
 
 	</p><div class="variablelist"><dl><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><span><strong class="command">web::filecontext</strong></span></span>
 	      <tt><em class="replaceable"><code>name</code></em></tt> <tt>-path</tt>
@@ -231,11 +233,14 @@
 		<span class="emphasis"><em>seconds</em></span> (time in seconds since
 		1970-01-01) or <span class="emphasis"><em>date-string</em></span> (any
                 time string that Tcl can scan. Note that therefore many 
-                relative times, such as <span class="emphasis"><em>day</em></span>, 
+                relative times, such as <span class="emphasis"><em>24 hours</em></span>, 
 		<span class="emphasis"><em>week</em></span>, <span class="emphasis"><em>2 weeks</em></span>,
 		<span class="emphasis"><em>tomorrow</em></span>, etc.
-		are possible. Default is <span class="emphasis"><em>day</em></span> (i.e. cookie
-		expires in 24 hours. Use <span class="emphasis"><em>-expires &quot;&quot;</em></span> to 
+		are possible. Default is <span class="emphasis"><em>now + 24 hours</em></span> 
+		(i.e. cookie expires in 24 hours. (Please note that the
+		behavior of some of these relative time specifiers changed
+		from Tcl8.4 to Tcl8.5.) Use
+		<span class="emphasis"><em>-expires &quot;&quot;</em></span> to 
 		send a cookie without an expires parameter.
 	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><span><strong class="command">web::cookiecontext</strong></span></span>
 	      <tt><em class="replaceable"><code>name</code></em></tt> <tt>-path</tt>
@@ -287,26 +292,26 @@
 		<tt>-wrap</tt>
 	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><tt>-filename</tt>
 	      <tt><em class="replaceable"><code>filename</code></em></tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
-		uses <tt>filename</tt> to store the current
+		Uses <tt>filename</tt> to store the current
 		value (no default)
 	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><tt>-min</tt> <tt><em class="replaceable"><code>value</code></em></tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
-		uses this value as a minimum at start and after wrap,
+		Uses this value as a minimum at start and after wrap,
 		if wrap is true (default is 0).
 	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><tt>-max</tt> <tt><em class="replaceable"><code>value</code></em></tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
-		uses this value as a maximum, if wrap is true (default is 2147483647).
+		Uses this value as a maximum, if wrap is true (default is 2147483647).
 	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><tt>-seed</tt> <tt><em class="replaceable"><code>value</code></em></tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
-		if persistent file does not yet exists, use this value
+		If persistent file does not yet exists, use this value
 		as a starting point (default is 0).
 	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><tt>-incr</tt> <tt><em class="replaceable"><code>value</code></em></tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
-		uses this value as an increment for each 'nextval'
+		Uses this value as an increment for each 'nextval'
 		(default is 1).
 	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><tt>-perms</tt>
 	      <tt><em class="replaceable"><code>value</code></em></tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
-		sets the permissions on the newly created files
-		(default is 0644).
+		Sets the permissions on the newly created files.
+		(Default is configured in <span style="font-family:monospace"><span><strong class="command">web::config filepermissions</strong></span></span>, which defaults to 0644.)
 	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><tt>-wrap</tt>
 	      <tt>boolean</tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
-		indicates whether this counter should wrap around its
+		Indicates whether this counter should wrap around its
 		values (from min to max) (default is false).
 	      </div></div></dd></dl></div><p style="width:90%">
 
@@ -314,22 +319,21 @@
 	registered with the following two subcommands:
 
 	</p><div class="variablelist"><dl><dt><span style="background:#bbbbff"><span class="term"><tt><em class="replaceable"><code>name</code></em></tt> nextval</span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
-		return the next value.
+		Return the next value.
 	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><tt><em class="replaceable"><code>name</code></em></tt> curval</span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
-		return the current value, that is, the value that the
+		Return the current value, that is, the value that the
 		last call to &quot;nextval&quot; reported (as opposed
 		to the current value in the file).
 	      </div></div></dd></dl></div><p style="width:90%">
 
-      </p><div class="example"><a name="id2917387"></a><p class="title"><b>Example 10. web::filecounter</b></p><pre style="background:#bbffbb ; width:75%" class="programlisting">
-	  % web::filecounter handleName -filename &quot;test.dat&quot;
-	  handleName
-	  % # from now on, use handleName &lt;curval|nextval|config&gt;
-	  % handleName config
-	  file test.dat handle handleName seed 0 min 0 max 2147483647 incr 1 wrap false curr {not valid}
-	  % web::filecounter otherHandleName -filename &quot;othertest.dat&quot; -min 1 -max 10 -seed 1 -incr 2 -wrap 1
-	  otherHandleName
-	  % otherHandleName config
-	  file othertest.dat handle otherHandleName seed 1 min 1 max 10 incr 2 wrap true curr {not valid}
-	  %
-	</pre></div></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="logging.html">Prev</a> </td><td width="20%" align="center"> </td><td width="40%" align="right"> <a accesskey="n" href="file_handling_and_file_IO.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Logging </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> File handling and file I/O</td></tr></table></div></body></html>
+      </p><div class="example"><a name="id350677"></a><p class="title"><b>Example 10. web::filecounter</b></p><pre style="background:#bbffbb ; width:75%" class="programlisting">
+% web::filecounter handleName -filename &quot;test.dat&quot;
+handleName
+% # from now on, use handleName &lt;curval|nextval|config&gt;
+% handleName config
+file test.dat handle handleName seed 0 min 0 max 2147483647 incr 1 wrap false curr {not valid}
+% web::filecounter otherHandleName -filename &quot;othertest.dat&quot; -min 1 -max 10 -seed 1 -incr 2 -wrap 1
+otherHandleName
+% otherHandleName config
+file othertest.dat handle otherHandleName seed 1 min 1 max 10 incr 2 wrap true curr {not valid}
+%	</pre></div></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="logging.html">Prev</a> </td><td width="20%" align="center"> </td><td width="40%" align="right"> <a accesskey="n" href="file_handling_and_file_IO.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Logging </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> File handling and file I/O</td></tr></table></div></body></html>

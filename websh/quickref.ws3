@@ -15,8 +15,14 @@ web::putx {
     <h2>Download</h2>
 
     Download the quick reference as tar file:<br>
-    <a href="download/quickref-3.5.0p2.tar.gz">quickref-3.5.0p2.tar.gz</a>
-
+    {
+	set srcfile [file tail [lindex [glob -nocomplain [getDocFileName download/quickref-3*gz]] end]]
+	if {![string length $srcfile]} {
+	    web::put "<span class=\"blue\">quickref currently unavailable</span>"
+	} else {
+	    web::put "<a href=\"download/$srcfile\">$srcfile</a>"
+	}
+    }
 
     <h2>Online</h2>
 

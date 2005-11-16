@@ -14,13 +14,18 @@ web::putx {
         </td>
       </tr>
       <tr valign="top">
-        <td width="315"><img height="160" width="120" src="images/drei_klein.gif" align="left">
+        <td width="315"><p>
+<img height="160" width="120" src="images/drei_klein.gif" align="left">
           The Internet is growing rapidly. Daily you find new
           applications and new home-pages - new opportunities for
           success and profit.  The basic technologies behind the
           Internet, however, have remained stable for years.  Only on
-          a solid base can you build new stuff.<br>
-          <br>
+          a solid base can you build new stuff.
+    </p>
+    <p>
+    Check out the {pageLink /websh/examples.ws3 -show "live examples"}
+    of Websh applications on this site.
+    </p>
         </td>
         <td width="145">
 
@@ -34,16 +39,14 @@ web::putx {
           <table border="0" cellpadding="0" cellspacing="0" width="145">
 
 
-{newsBarElement "websh 3.5.0 available:" \
-     {pick the {pageLink /websh/download/websh-3.5.0.tar.gz -show "tarball"}
+{newsBarElement "Websh 3.6.0b3 available:" \
+     {pick the {pageLink /websh/download/websh-3.6.0b3.tar.gz -show "tarball"}
 	 or browse the {pageLink /websh/download.ws3 -show "download area"}.
      }
 }
 
-{newsBarElement "Examples" \
-     { Check out the<br> {pageLink /websh/examples.ws3 -show "live examples"}<br>
-of Websh applications.
-     }
+{newsBarElement "Code repository moved to SVN" \
+     {Check the {pageLink download.ws3 -show "download area"} for details.}
 }
 
 

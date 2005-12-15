@@ -31,14 +31,14 @@ web::putx {
 
           <table border="0" cellpadding="0" cellspacing="0" width="145">
 
-{newsBarElement "Websh 3.6.0b3 available:" \
-     {pick the {pageLink /websh/download/websh-3.6.0b3.tar.gz -show "tarball"}
+{newsBarElement "2005-11-24" \
+     {<b>Websh 3.6.0b3 available</b>: Pick the {pageLink /websh/download/websh-3.6.0b3.tar.gz -show "tarball"}
 	 or browse the {pageLink /websh/download.ws3 -show "download area"}.
      }
 }
 
-{newsBarElement "Code repository moved to SVN" \
-     {Check the {pageLink download.ws3 -show "download area"} for details.}
+{newsBarElement "2005-10-16" \
+     {<b>Code repository moved to SVN</b>: Check the {pageLink download.ws3 -show "download area"} for details.}
 }
           </table>
 

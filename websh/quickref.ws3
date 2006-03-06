@@ -14,21 +14,16 @@ web::putx {
 
     <h2>Download</h2>
 
-    Download the quick reference as tar file:<br>
-    {
-	set srcfile [file tail [lindex [glob -nocomplain [getDocFileName download/quickref-3*gz]] end]]
-	if {![string length $srcfile]} {
-	    web::put "<span class=\"blue\">quickref currently unavailable</span>"
-	} else {
-	    web::put "<a href=\"download/$srcfile\">$srcfile</a>"
-	}
-    }
+    <p>Download the quick reference as tar file</p>
+
+    <p>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.apache.org/dyn/closer.cgi/tcl/websh/quickref-3.6.0b4.tar.gz">quickref-3.6.0b4.tar.gz</a>
 
     <h2>Online</h2>
 
-    Browse the quick reference online:<br>
-    <a href="quickref/">http://tcl.apache.org/websh/quickref/</a>
-    <p>&nbsp;
+    <p>Browse the quick reference online</p>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp;<a href="quickref/">http://tcl.apache.org/websh/quickref/</a></p>
+
+    <p>&nbsp;</p>
     
     </td>
     </tr>

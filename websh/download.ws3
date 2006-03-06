@@ -11,24 +11,28 @@ web::putx {
     <tr valign="top">
     {navbar_down 0}
     <td width="610">
-    <img height="160" width="270" src="images/ausschnitt_download.gif" align="left" alt="graphics">
+    <table cellspacing="0" cellpadding="0" border="0">
+    <tr valign="top">
+    <td>
+    <img height="160" width="270" src="images/ausschnitt_download.gif" align="left" alt="graphics"></td>
 
-    Download the latest source code:<p>
+    <td>
+    Download the latest source code from a mirror:<p>
 
-    &nbsp;&nbsp;&nbsp;&nbsp;{
+    &nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.apache.org/dyn/closer.cgi/tcl/websh/source/websh-3.6.0b4-src.tar.gz">websh-3.6.0b4-src.tar.gz</a><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;<a href="http://svn.apache.org/repos/asf/tcl/websh/tags/3.6.0b4/CHANGES">Overview of Changes in 3.6.0b4</a>
 
-	set srcfile [file tail [lindex [glob -nocomplain [getDocFileName download/websh-3*gz]] end]]
-	if {![string length $srcfile]} {
-	    web::put "<span class=\"blue\">source code currently unavailable</span>"
-	} else {
-	    web::put "<a href=\"download/$srcfile\">$srcfile</a>"
-	}
-    }
+    <p>Download the latest quick reference (included in the source):
+
+    <p>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.apache.org/dyn/closer.cgi/tcl/websh/source/quickref-3.6.0b4.tar.gz">quickref-3.6.0b4.tar.gz</a>
+    </td>
+    </tr>
+    </table>
 
     <p>
     Or visit the download directory for an index of all downloads:<p>
 
-    &nbsp;&nbsp;&nbsp;&nbsp;<a href="download/">download directory</a>
+    &nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.apache.org/dyn/closer.cgi/tcl/websh/">mirrored download directory</a>
 
     <p>
     If you would like to be notified when new versions of Websh
@@ -39,7 +43,7 @@ web::putx {
     <p>
     The Websh source code repository has recently been moved from CVS to
     Subversion (SVN). To access the latest source from the repository, use the following (read-only) URL:</p>
-    <p>&nbsp;&nbsp;&nbsp;&nbsp;{pageLink http://svn.apache.org/repos/asf/tcl/websh/trunk}.</p>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp;{pageLink http://svn.apache.org/repos/asf/tcl/websh/trunk}</p>
     <p>
     A typical command to checkout the code would be:
     </p>
@@ -49,12 +53,9 @@ web::putx {
 
     <p>
     <b>Important note</b>: The latest release now also features a Windows XP
-    Makefile for Visual Studio nmake. Websh 3.6.0b3 has been tested to work
-    with Sun Solaris 8 and 9, Linux RedHat 8, Suse9.1, Windows XP.
+    Makefile for Visual Studio nmake. Websh 3.6.0b4 is known to work
+    with Sun Solaris 8 and 9, Linux RedHat 8, Suse9.1, Windows XP, Mac OSX 8.2 und 8.3.
     Other Unix platforms are likely to work too.
-    Fixes for Mac OS-X 8.2 have been added and will be available in the
-    next release. A preliminary source package is provided here:
-    {pageLink download/websh-trunk-20051116.tar.gz -show websh-trunk-20051116.tar.gz}
     </p>
     </td>
     </tr>

@@ -33,9 +33,9 @@
 	      <li>Why use Tcl? <a
 		  href="http://www.tcl.tk/advocacy/">Tcl advocacy page</a>.</li>
 
-	      <li>Get started with Tcl. Tcl Tutorials at:
+	      <li>Get started with Tcl. Tcl tutorials and documentation at:
 		<a
-		  href="http://www.tcl.tk/resource/doc/start/">http://www.tcl.tk/resource/doc/start/</a>
+		  href="http://www.tcl.tk/doc/">http://www.tcl.tk/doc/</a>
 	      </li>
 
 	      <li>
@@ -44,19 +44,8 @@
 	      </li>
 
 	      <li>
-		<a
-		  href="http://sourceforge.net/foundry/tcl-foundry/">Tcl
-		  Foundry</a> at SourceForge.
-	      </li>
-
-	      <li>
 		<a href="http://tcl.sourceforge.net/">Tcl Project</a>
 		on SourceForge.
-	      </li>
-
-	      <li>
-		<a href="sources/">HTMLized Tcl, mod_tcl, Rivet and WebSH source code</a>
-		HTMLized.
 	      </li>
 
 	      <li>

@@ -14,12 +14,35 @@
 	    <h2>News and Status</h2>
 
 	    <p>
+	      <b>24 March 2006</b> Minor updates of this site to reflect
+	      source move to Subversion.
+	    </p>
+
+	    <p>
+	      <b>5 March 2006</b> Websh 3.6.0b4 has been released. Visit
+	      the <a href="/websh/">Websh project home page</a> for details.
+	    </p>
+	    
+	    <p>
+	      <b>16 October 2005</b> All Apache Tcl projects moved from
+	      CVS to SVN (Subversion).
+
+	    </p>
+
+	    <p>
+	      <b>16 October 2005</b> All Apache Tcl projects moved from
+	      CVS to SVN (Subversion).
+
+	    </p>
+
+	    <p>
 	      <b>7 February, 2004</b> Rivet 0.3 released.  Visit the
 	      Rivet site at <a
 	      href="rivet/">http://tcl.apache.org/rivet/</a> to get
 	      the latest code.
 	    </p>
 
+	    <p>
 	      <b>10 June, 2003</b> <a
 	      href="http://www.undersky.ru">Undersky.ru</a> issues a
 	      press release (in Russian) about their decision to use

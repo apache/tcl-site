@@ -19,15 +19,12 @@
 	    </p>
 	    <p>
 	      <b>Apache Rivet</b> is actively developed - you can
-	      always get the most recent version out of CVS.
+	      always get the most recent version from SVN.
 	    </p>
 	    <p>
-	      <code>cvs
-		-d:pserver:anoncvs@cvs.apache.org:/home/cvspublic
-		login
-	      </code><br>(using the password "anoncvs")
+	      <code>svn co http://svn.apache.org/repos/asf/tcl/rivet/trunk rivet
+	      </code>
 	    </p>
-	    <p><code>cvs&nbsp;-d:pserver:anoncvs@cvs.apache.org:/home/cvspublic&nbsp;checkout&nbsp;tcl-rivet</code></p>
 	    <p>
 	      In addition, for your convenience, snapshots of the CVS
 	      tree are available here: <a

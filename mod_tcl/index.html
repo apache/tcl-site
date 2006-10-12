@@ -77,16 +77,20 @@ SunOS-5.9/gcc-3.1.1/tcl-8.4.0/Apache-2.0.40
 		<p><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times"><a name="install"></a><b>Building and Installing Apache with mod_tcl</b><br>
 			</font></p>
 		<p><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">
-				mod_tcl is configured using the Apache 2.0 configuration system.  Normally a vanilla install of Apache doesn&#146;t require a rebuild of the configuration system, but since mod_tcl requires libraries not usually built into Apache it is necessary to rebuild the configure script using GNU autoconf.  If the GNU autoconf tools are not installed on the system then they can be downloaded from a GNU distribution site, for more information check the GNU autoconf website <a href="http://www.gnu.org/software/autoconf/">http://www.gnu.org/software/autoconf/</a>.  Please note that GNU autoconf also requires a recent release of an m4 macro processor which can also be found at a GNU distribution site.  The next step is to download the mod_tcl source from the Apache Tcl project web site at <a href="http://tcl.apache.org">http://tcl.apache.org</a> or from anonymous CVS.  The following CVS commands will checkout the mod_tcl source from cvs.apache.org, no sandbox is required as this will download all the source to the tcl-modtcl directory.  The CVS login password is </font><font size="3" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>anoncvs</tt></font><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">.<br>
+				mod_tcl is configured using the Apache 2.0 configuration system.  Normally a vanilla install of Apache doesn&#146;t require a rebuild of the configuration system, but since mod_tcl requires libraries not usually built into Apache it is necessary to rebuild the configure script using GNU autoconf.  If the GNU autoconf tools are not installed on the system then they can be downloaded from a GNU distribution site, for more information check the GNU autoconf website <a href="http://www.gnu.org/software/autoconf/">http://www.gnu.org/software/autoconf/</a>.  Please note that GNU autoconf also requires a recent release of an m4 macro processor which can also be found at a GNU distribution site.  The next step is to download the mod_tcl source from the Apache Tcl project web site at <a href="http://tcl.apache.org">http://tcl.apache.org</a> or from directly from Subversion (SVN).  The following SVN commands will checkout the mod_tcl source from svn.apache.org, no sandbox is required as this will download all the source to the mod_tcl directory.<br>
 			</font></p>
-		<pre>$ cvs -d:pserver:anoncvs@cvs.apache.org:/home/cvspublic login
-(Logging in to anoncvs@cvs.apache.org)
-CVS password: &lt;enter anoncvs&gt;
-$ cvs -d:pserver:anoncvs@cvs.apache.org:/home/cvspublic checkout tcl-modtcl</pre>
+		<pre>$ svn co http://svn.apache.org/repos/asf/tcl/modtcl/trunk mod_tcl
+</pre>
 		<font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">
-				If mod_tcl is downloaded from the Apache Tcl project web site then the package must be un-archived and moved to the Apache 2.0 modules directory.  If CVS is used the directory must be renamed to </font><font size="3" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>mod_tcl</tt></font><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times"> from </font><font size="3" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>tcl-modtcl</tt></font><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times"> and then moved to the Apache 2.0 modules directory.  It is important to note that the directory that contains the mod_tcl source must be named </font><font size="3" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>mod_tcl</tt></font><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times"> otherwise the Apache configuration system will not recognize mod_tcl.  The following example assumes the Apache 2.0 source distribution is located in the same directory where the mod_tcl source was acquired through CVS.<br>
+To get the tagged version 1.0.1, please check out
+</font>
+		<pre>$ svn co http://svn.apache.org/repos/asf/tcl/modtcl/tags/1.0.1 mod_tcl-1.0.1
+</pre>
+
+		<font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">
+				If mod_tcl is downloaded from the Apache Tcl project web site then the package must be un-archived and moved to the Apache 2.0 modules directory.  If SVN is used the directory must named </font><font size="3" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>mod_tcl</tt></font><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times"> and moved to the Apache 2.0 modules directory.  It is important to note that the directory that contains the mod_tcl source must be named </font><font size="3" face="Lucida Grande,Times New Roman,Georgia,Times"><tt>mod_tcl</tt></font><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times"> otherwise the Apache configuration system will not recognize mod_tcl.  The following example assumes the Apache 2.0 source distribution is located in the same directory where the mod_tcl source was acquired through SVN.<br>
 		</font>
-		<pre>$ mv tcl-modtcl httpd-2.0.42/modules/mod_tcl</pre>
+		<pre>$ mv mod_tcl-1.0.1 httpd-2.0.42/modules/mod_tcl</pre>
 		<p><font size="2" face="Lucida Grande,Times New Roman,Georgia,Times">
 				Now the Apache configuration system is ready to be rebuilt and include mod_tcl.  Change directory to the root level of the Apache 2.0 source and rebuild the configuration system.<br>
 			</font></p>

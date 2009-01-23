@@ -20,7 +20,7 @@ web::putx {
     Download the latest source code from a mirror:<p>
 
     &nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.apache.org/dyn/closer.cgi/tcl/websh/source/websh-3.6.0b4-src.tar.gz">websh-3.6.0b4-src.tar.gz</a><br>
-    &nbsp;&nbsp;&nbsp;&nbsp;<a href="http://svn.apache.org/repos/asf/tcl/websh/tags/3.6.0b4/CHANGES">Overview of Changes in 3.6.0b4</a>
+    &nbsp;&nbsp;&nbsp;&nbsp;<a href="http://svn.apache.org/repos/asf/tcl/websh/tags/3.6.0b4/CHANGES">Overview of changes in 3.6.0b4</a>
 
     <p>Download the latest quick reference (included in the source):
 
@@ -43,11 +43,13 @@ web::putx {
     <p>
     The Websh source code repository has recently been moved from CVS to
     Subversion (SVN). To access the latest source from the repository, use the following (read-only) URL:</p>
-    <p>&nbsp;&nbsp;&nbsp;&nbsp;{pageLink http://svn.apache.org/repos/asf/tcl/websh/trunk}</p>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp;{pageLink http://svn.apache.org/repos/asf/tcl/websh/trunk}
+    &nbsp;&nbsp;&nbsp;&nbsp;<a href="http://svn.apache.org/repos/asf/tcl/websh/trunk/CHANGES">Overview of changes in trunk since last release</a>
+    </p>
     <p>
     A typical command to checkout the code would be:
     </p>
-    <p>&nbsp;&nbsp;&nbsp;&nbsp;<tt>svn co http://svn.apache.org/repos/asf/tcl/websh/trunk websh</tt></p>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp;<tt>svn co http://svn.apache.org/repos/asf/tcl/websh/trunk websh</tt>
 
     </p>
 

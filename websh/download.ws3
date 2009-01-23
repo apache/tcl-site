@@ -43,7 +43,7 @@ web::putx {
     <p>
     The Websh source code repository has recently been moved from CVS to
     Subversion (SVN). To access the latest source from the repository, use the following (read-only) URL:</p>
-    <p>&nbsp;&nbsp;&nbsp;&nbsp;{pageLink http://svn.apache.org/repos/asf/tcl/websh/trunk}
+    <p>&nbsp;&nbsp;&nbsp;&nbsp;{pageLink http://svn.apache.org/repos/asf/tcl/websh/trunk}<br/>
     &nbsp;&nbsp;&nbsp;&nbsp;<a href="http://svn.apache.org/repos/asf/tcl/websh/trunk/CHANGES">Overview of changes in trunk since last release</a>
     </p>
     <p>

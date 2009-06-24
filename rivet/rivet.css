@@ -6,6 +6,11 @@
 }
 
 body {
+
+}
+
+#bigcontainer {
+    padding-right:	4em;
 }
 
 div#pageheadline {
@@ -19,9 +24,6 @@ div#pageheadline {
 }
 
 div.headline {
-}
-
-div#pageheadline .headline {
     font-size:		24pt;
     text-align:		left;
     margin-left:	170px;
@@ -29,11 +31,12 @@ div#pageheadline .headline {
     margin-top:		20px;
     margin-bottom:	20px;
     position:   	relative;
-    width:		25em;
+/*  width:		20em;		*/
     border:		1px solid blue; 
 }
 
 div.decoration {
+    float:		left;
 /*  
     width:	     	100px;
     background-color: 	lightblue; 
@@ -41,7 +44,7 @@ div.decoration {
 }
 
 div#pagecontents {
-    position:	    	absolute;
+/*    position:	    	absolute;	*/
     margin-top:		1em;
     top:	    	105px;
     left:	    	0px;
@@ -84,25 +87,32 @@ span.navitem {
 /*  font-size:	    	70%;		*/
     display:	    	block;
     margin:		0.5em;
-    
 }
 
 div#content {
     margin-top:	    	2px;
     font-size:		10pt;
     position:	    	relative;
-    margin-left:    	162px;
-    margin-right:   	162px;
-/*  border:	    	1px solid red; */
+    margin-left:    	162px;		
+/*  margin-right:   	162px;		*/
+/*  border:	    	1px solid red;  */
     text-align:	    	justify;
     padding:	    	0.5em;
-    width:		60em;
+/*  width:		60em;		*/
     font-family:	Arial,sans-serif;
 /*  background-color:	#ffff99;	*/
 }
 
 #content p {
     margin:		0.8em auto;
+}
+
+.example-contents p {
+    width:		90%;
+}
+
+.example-contents pre {
+    margin:		auto 5% auto 5%;
 }
 
 .foto {
@@ -158,8 +168,6 @@ ul {
     clear:		both;
 }
 
-
-
 code {
     margin:		1em 2em;
     border:		1px dashed black;
@@ -172,8 +180,8 @@ pre.code {
 }
 
 blockquote {
-	font-size: smaller;
-	font-style: italic;
+    font-size:		smaller;
+    font-style:		italic;
 }
 
 span.type {
@@ -181,14 +189,25 @@ span.type {
 }
 
 td {
-	padding:	0.5em;
+    padding:	0.5em;
 }
 
 td.code {
-	font-size: 		smaller;
-	background-color:	black;
-	border:			1em solid white;
-	color:			white;
+    font-size: 		smaller;
+    background-color:	black;
+    border:		1em solid white;
+    color:		white;
+}
+
+.programlisting {
+    background:	    #ccc; 
+    margin:	    2ex; 
+    margin-right:   10%;       
+    padding:	    1ex; 
+    border:	    dashed black 1px ; 
+    white-space:    pre;      
+    font-family:    monospace; 
+    font-size:	    90%;
 }
 
 span.variable-name {

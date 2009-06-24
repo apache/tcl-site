@@ -1,48 +1,56 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
-    
-    <title>Rivet</title>
-    <link rel="stylesheet" href="rivet.css" />
-  </head>
-  <body>
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<title>Rivet</title>
+	<link rel="stylesheet" href="rivet.css" />
+    </head>
+    <body>
     	<!--p align="center"></p -->
 	<!-- ? parray ::rivetweb::html_menu ? -->
-	<div id="pageheadline">
-	    <div class="decoration" style="float: left;"><img src="picts/Rivetlogo_smaller.png" alt="Apache Rivet"></div>
-	    <div class="headline"> Rivet - Webscripting for Tcl'ers </div>
-	</div>
-	<div id="pagecontents">
-	    <div class="navbar navleft"><div class="staticmenu" id="main">
+	<div id="bigcontainer"> 
+	    <div id="pageheadline">
+		<div class="decoration"><img src="picts/Rivetlogo_smaller.png" alt="Apache Rivet" /></div>
+		<div class="headline">Rivet - Webscripting for Tcl'ers</div>
+	    </div>
+	    <div id="pagecontents">
+		<div class="navbar navleft"><div class="staticmenu" id="main">
     <div class="menuheader">Rivet</div>
     <div class="itemcontainer">
         <span class="navitem">
-            <a href="index.html" class="menuitem">
-		Rivet Homepage
-		</a>
+            <a href="index.html" class="menuitem">Rivet Homepage</a>
         </span>
         <span class="navitem">
-            <a href="http://tcl.apache.org/">
-		Apache Tcl Home
-		</a>
+            <a href="http://tcl.apache.org/">Apache Tcl Home</a>
         </span>
         <span class="navitem">
-            <a href="http://www.tcl.tk/"> 
-		The Tcl Language
-		</a>
+            <a href="http://www.tcl.tk/">The Tcl Language</a>
         </span>
         <span class="navitem">
-            <a href="download.html" class="menuitem">
-		Download
-		</a>
+            <a href="static/download.html" class="menuitem">Download</a>
         </span>
         <span class="navitem">
-            <a href="http://tcl.apache.org/rivet/docs/">
-		Documentation
-		</a>
+            <a href="http://tcl.apache.org/rivet/manual/">Documentation</a>
         </span>
         <span class="navitem">
-            <a href="about.html" class="menuitem">
+            <a href="static/hello_world.html" class="menuitem">Examples</a>
+        </span>
+        <span class="navitem">
+            <a href="static/about.html" class="menuitem">
 		About Us - Contact
 		</a>
         </span>
@@ -50,10 +58,10 @@
 </div>
 
 </div>
-	    <div class="navbar navright"></div>
-	    <div id="content"> 
-		<div class="contentheadline"></div>
-<div><pagetext>
+		<div class="navbar navright"></div>
+		<div id="content"> 
+		    <div class="contentheadline"></div>
+		    <div><div>
  <p>
   <b>Apache Rivet</b>
  is a powerful, flexible, consistent,
@@ -66,14 +74,14 @@
 	      her to manipulate data easily and concisely.  Millions
 	      of lines of Tcl code already exist - all you have to do
 	      is glue them together to create unique and useful
-	      applications.  Rivet unites this power with the Apache
+	      applications. Rivet unites this power with the Apache
 	      web server.
 	     </p>
  <p>
   <b>Flexible</b>
 : The original design constraints for Tcl
 	      required that it be flexible enough to be inserted and
-	      function in an extreme variety of environments.  That's
+	      function in an extreme variety of environments. That's
 	      still true today, and makes Tcl, and as a consequence,
 	      Apache Rivet, easy to integrate into your business to
 	      leverage existing systems.
@@ -109,23 +117,24 @@
 	      it continues to improve, yet maintains its rock-solid
 	      nature.
 	     </p>
- <table>
-  <tbody>
-   <tr>
-    <td colspan="2">
-     <hr width="90%"/>
-    </td>
-   </tr>
-   <tr>
-    <td align="center">
-     <b>Rivet Templates (.rvt)</b>
-    </td>
-    <td align="center">
-     <b>Tcl Scripts (.tcl)</b>
-    </td>
-   </tr>
-   <tr>
-    <td width="50%">
+ <p>
+		Rivet can be used in two different ways: in 
+		<a href="static/templates.html">Rivet templates</a>
+ or
+		with pure <a href="static/scripts.html">Tcl scripts</a>
+ </p>
+ <!--table>
+	      <tbody>
+		<tr> 
+		    <td colspan="2"><hr width="90%" /></td>
+		</tr>
+		<tr>
+		    <td align="center"><b>Rivet Templates (.rvt)</b></td>
+		    <td align="center"><b>Tcl Scripts (.tcl)</b></td>
+
+		</tr>
+		<tr>
+		  <td width="50%">
 		    Templates let you add a bit of code to your HTML,
 		    to add dynamic content to it, or speed up creation
 		    of repetitive elements.  Templates are appropriate
@@ -134,7 +143,7 @@
 		    appropriate for the 'display' component of your
 		    complex application.
 		  </td>
-    <td>
+		  <td>
 		    Pure Tcl scripts let you do the heavy lifting to
 		    control your application.  A sensible design
 		    pattern is to put most of your complex logic in
@@ -144,65 +153,70 @@
 		    much Tcl, and only need to call a few simple
 		    commands.
 		  </td>
-   </tr>
-   <tr class="code">
-    <td class="code">
-     <pre class="code">
-      <span class="type">&lt;table&gt;</span>
-        <span class="type">&lt;tbody&gt;</span>
-          <span class="type">&lt;tr&gt;</span>
-             <span class="type">&lt;td&gt;</span>
+		</tr>
+		<tr class="code">
 
+		  <td class="code">
+<pre class="code">
+  <span class="type">&lt;table&gt;</span>
+    <span class="type">&lt;tbody&gt;</span>
+      <span class="type">&lt;tr&gt;</span>
+	<span class="type">&lt;td&gt;</span>
 &lt;?
-<span class="keyword">foreach</span>
- line [chat::model::getlines $user] {
-    puts <span class="string">"$line&lt;br&gt;"</span>
-
-
+<span class="keyword">foreach</span> line [chat::model::getlines $user] {
+    puts <span class="string">&quot;$line&lt;br&gt;&quot;</span>
 }
 ?&gt;
-	     <span class="type">&lt;/td&gt;</span>
-           <span class="type">&lt;/tr&gt;</span>
-         <span class="type">&lt;/tbody&gt;</span>
-      <span class="type">&lt;/table&gt;</span>
-     </pre>
-    </td>
-    <td class="code">
-    <pre class="code">
-    <span class="keyword">proc</span> <span class="function-name">chat::model::getlines</span> {user} {
-      set sk [chat::model::getsock]
-      puts $sk [list user $user cmd get msg <span class="string">""</span>]
-      <span class="keyword">if</span> {![eof $sk]} {
-	  gets $sk data
-	  <span class="keyword">return</span> <span class="string">"$data"</span>
-      } <span class="keyword">else</span> {
-          <span class="keyword">error</span> <span class="string">"Problem with socket"</span>
-      }
+	<span class="type">&lt;/td&gt;</span>
+      <span class="type">&lt;/tr&gt;</span>
+    <span class="type">&lt;/tbody&gt;</span>
+  <span class="type">&lt;/table&gt;</span>
+</pre>
+		  </td>
+
+		  <td class="code">
+<pre class="code">
+<span class="keyword">proc</span> <span class="function-name">chat::model::getlines</span> {user} {
+    set sk [chat::model::getsock]
+    puts $sk [list user $user cmd get msg <span class="string">&quot;&quot;</span>]
+    <span class="keyword">if</span> { ! [eof $sk] } {
+	gets $sk data
+	<span class="keyword">return</span> <span class="string">&quot;$data&quot;</span>
+    } <span class="keyword">else</span> {
+	<span class="keyword">error</span> <span class="string">&quot;Problem with socket&quot;</span>
+
     }
-     </pre>
-    </td>
-   </tr>
-  </tbody>
- </table>
-</pagetext>
+}
+</pre>
+		  </td>
+		</tr>
+	      </tbody>
+	    </table-->
+</div>
 
 </div>
-	    </div>
-	    <div class="clearfloats"></div>
-	    <!--div class="leftaligned">:$Author: Massimo Manghi $</div>
-	    <div class="rightaligned">:</div-->
-	<div>
-	<table align="center" width="100%">
-	<tr><td align="left">
-	    <a href="http://www.apache.org/"><img src="picts/apache_pb.gif" alt="Powered by Apache" border="0" width="259" height="32"></a>
-	</td>
-	<td align="right">
-	    <a href="http://www.tcl.tk/"><img src="picts/tclp.gif" alt="Powered by Tcl" border="0" width="42" height="64"></a>
-	</td>
+		    
+		</div>
+		<div class="clearfloats"></div>
+		<!--div class="leftaligned">:$Author: $</div>
+		<div class="rightaligned">:20-06-2009</div-->
+		<div>
+		    <table align="center" width="100%">
+			<tr>
+			    <td align="left">
+				<a href="http://www.apache.org/">
+				    <img src="picts/apache_pb.gif" 
+					 alt="Powered by Apache" border="0" width="259" height="32"></a>
 
-	</tr>
-	</table>
+			    </td>
+			    <td align="right">
+				<a href="http://www.tcl.tk/">
+				    <img src="picts/tclp.gif" alt="Powered by Tcl" border="0" width="42" height="64"></a>
+			    </td>
+			</tr>
+		    </table>
+		</div>
+	    </div>
 	</div>
-	</div>
-  </body>
+    </body>
 </html>

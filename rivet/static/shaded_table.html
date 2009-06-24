@@ -1,0 +1,156 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<title>A Shaded Table</title>
+	<link rel="stylesheet" href="../rivet.css" />
+    </head>
+    <body>
+    	<!--p align="center"></p -->
+	<!-- ? parray ::rivetweb::html_menu ? -->
+	<div id="bigcontainer"> 
+	    <div id="pageheadline">
+		<div class="decoration"><img src="../picts/Rivetlogo_smaller.png" alt="Apache Rivet" /></div>
+		<div class="headline">A Shaded Table</div>
+	    </div>
+	    <div id="pagecontents">
+		<div class="navbar navleft"><div class="staticmenu" id="main">
+    <div class="menuheader">Rivet</div>
+    <div class="itemcontainer">
+        <span class="navitem">
+            <a href="../index.html" class="menuitem">Rivet Homepage</a>
+        </span>
+        <span class="navitem">
+            <a href="http://tcl.apache.org/">Apache Tcl Home</a>
+        </span>
+        <span class="navitem">
+            <a href="http://www.tcl.tk/">The Tcl Language</a>
+        </span>
+        <span class="navitem">
+            <a href="download.html" class="menuitem">Download</a>
+        </span>
+        <span class="navitem">
+            <a href="http://tcl.apache.org/rivet/manual/">Documentation</a>
+        </span>
+        <span class="navitem">
+            <a href="hello_world.html" class="menuitem">Examples</a>
+        </span>
+        <span class="navitem">
+            <a href="about.html" class="menuitem">
+		About Us - Contact
+		</a>
+        </span>
+    </div>
+</div>
+<div class="staticmenu" id="examples">
+    <div class="menuheader">Examples</div>
+    <div class="itemcontainer">
+        <span class="navitem">
+            <a href="hello_world.html" class="menuitem">Hello world!</a>
+        </span>
+        <span class="navitem">
+            <a href="shaded_table.html" class="menuitem">A shaded table</a>
+        </span>
+        <span class="navitem">
+            <a href="var_access.html" class="menuitem">Variable Access</a>
+        </span>
+        <span class="navitem">
+            <a href="file_upload.html" class="menuitem">File Upload</a>
+        </span>
+        <span class="navitem">
+            <a href="file_download.html" class="menuitem">File Download</a>
+        </span>
+        <span class="navitem">
+            <a href="ajax.html" class="menuitem">XML and Ajax</a>
+        </span>
+    </div>
+</div>
+
+</div>
+		<div class="navbar navright"></div>
+		<div id="content"> 
+		    <div class="contentheadline"></div>
+		    <div><div class="example">
+ <p class="title">
+  <b>Example 2. A Shaded Table</b>
+ </p>
+ <div class="example-contents">
+  <p style="width: 90%">In another simple example, we dynamically generate a table:</p>
+  <pre class="programlisting">&lt;?
+    puts "&lt;table&gt;\n"
+    for {set i 1} { $i &lt;= 8 } {incr i} {
+	puts "&lt;tr&gt;\n"
+	for {set j 1} {$j &lt;= 8} {incr j} {
+	    set num [ expr $i * $j * 4 - 1]
+	    puts [ format "&lt;td bgcolor=\"%02x%02x%02x\" &gt; $num $num $num &lt;/td&gt;\n" \
+		       $num $num $num ]
+	}
+	puts "&lt;/tr&gt;\n"
+    }
+    puts "&lt;/table&gt;\n"
+?&gt;
+</pre>
+  <p style="width:90%">
+			If you read the code, you can see that this is pure Tcl.  We
+			could take the same code, run it outside of Rivet, and it
+			would generate the same HTML!
+		    </p>
+  <p style="width:90%">The result should look something like this:</p>
+  <p>
+   <img src="../picts/table.png"/>
+  </p>
+ </div>
+</div>
+
+</div>
+		    
+		</div>
+		<div class="clearfloats"></div>
+		<!--div class="leftaligned">:$Author: $</div>
+		<div class="rightaligned">:22-06-2009</div-->
+		<div>
+		    <table align="center" width="100%">
+			<tr>
+			    <td align="left">
+				<a href="http://www.apache.org/">
+				    <img src="../picts/apache_pb.gif" 
+					 alt="Powered by Apache" border="0" width="259" height="32"></a>
+
+			    </td>
+			    <td align="right">
+				<a href="http://www.tcl.tk/">
+				    <img src="../picts/tclp.gif" alt="Powered by Tcl" border="0" width="42" height="64"></a>
+			    </td>
+			</tr>
+		    </table>
+		</div>
+	    </div>
+	</div>
+    </body>
+</html>

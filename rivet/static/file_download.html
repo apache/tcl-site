@@ -1,0 +1,219 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<title>File Download</title>
+	<link rel="stylesheet" href="../rivet.css" />
+    </head>
+    <body>
+    	<!--p align="center"></p -->
+	<!-- ? parray ::rivetweb::html_menu ? -->
+	<div id="bigcontainer"> 
+	    <div id="pageheadline">
+		<div class="decoration"><img src="../picts/Rivetlogo_smaller.png" alt="Apache Rivet" /></div>
+		<div class="headline">File Download</div>
+	    </div>
+	    <div id="pagecontents">
+		<div class="navbar navleft"><div class="staticmenu" id="main">
+    <div class="menuheader">Rivet</div>
+    <div class="itemcontainer">
+        <span class="navitem">
+            <a href="../index.html" class="menuitem">Rivet Homepage</a>
+        </span>
+        <span class="navitem">
+            <a href="http://tcl.apache.org/">Apache Tcl Home</a>
+        </span>
+        <span class="navitem">
+            <a href="http://www.tcl.tk/">The Tcl Language</a>
+        </span>
+        <span class="navitem">
+            <a href="download.html" class="menuitem">Download</a>
+        </span>
+        <span class="navitem">
+            <a href="http://tcl.apache.org/rivet/manual/">Documentation</a>
+        </span>
+        <span class="navitem">
+            <a href="hello_world.html" class="menuitem">Examples</a>
+        </span>
+        <span class="navitem">
+            <a href="about.html" class="menuitem">
+		About Us - Contact
+		</a>
+        </span>
+    </div>
+</div>
+<div class="staticmenu" id="examples">
+    <div class="menuheader">Examples</div>
+    <div class="itemcontainer">
+        <span class="navitem">
+            <a href="hello_world.html" class="menuitem">Hello world!</a>
+        </span>
+        <span class="navitem">
+            <a href="shaded_table.html" class="menuitem">A shaded table</a>
+        </span>
+        <span class="navitem">
+            <a href="var_access.html" class="menuitem">Variable Access</a>
+        </span>
+        <span class="navitem">
+            <a href="file_upload.html" class="menuitem">File Upload</a>
+        </span>
+        <span class="navitem">
+            <a href="file_download.html" class="menuitem">File Download</a>
+        </span>
+        <span class="navitem">
+            <a href="ajax.html" class="menuitem">XML and Ajax</a>
+        </span>
+    </div>
+</div>
+
+</div>
+		<div class="navbar navright"></div>
+		<div id="content"> 
+		    <div class="contentheadline"></div>
+		    <div><div class="example">
+ <p class="title">
+  <b>Example 5. File Download</b>
+ </p>
+ <div class="example-contents">
+  <p>
+			In general setting up a data file for being sent over http is as easy as determining the file's 
+			URI and letting Apache's do all that is needed. If this approach fits your design all you have to do 
+			is to keep the downloadable files somewhere within Apache's DocumentRoot (or in any of the directories 
+			Apache has right to access).
+		    </p>
+  <p>
+			When a client sends a request for a file, Apache takes care of determining the filetype, sends appropriate 
+			headers to the client and then the file content. The client is responsible for deciding how to handle the 
+			data accordingly to the <quote>content-type</quote>
+ headers and its internal design. For example when browsers give up 
+			trying to display a certain "content-type" they display a download dialog box asking for directions from the user.
+		      </p>
+  <p>
+			Rivet can help if you have more sofisticated needs. For instance you may be developing an application that uses 
+			webpages to collect input data. This information might be passed on to scripts or programs for processing. 
+			In this case a real file representing the data doesn't exist and the content is generated on demand by the server. 
+			In other circumstances you may need to dynamically inhibit the download of specific files and hide them away, 
+			your scripts may expunge from the pages every link to these files (your pages are dynamic, aren't they?) 
+			and move them out of way, but it looks like a cumbersome solution.
+		    </p>
+  <p>
+			Putting Tcl and Rivet in charge of the whole download mechanism helps in building cleaner and safer approaches 
+			to the download problem.
+		    </p>
+  <p>
+			In this example a procedure checks for the existence of a parameter passed in by the browser. The parameter is 
+			the name (without extension) of a pdf file. Pdf files are stored in a directory whose path is in the 
+			<b>pdf_repository</b>
+ variable. 
+		      </p>
+  <p>
+			This code is reported as an example of how to control the protocol using the headers command.
+		    </p>
+  <pre class="programlisting"># Code example for the transmission of a pdf file. 
+
+if {[var exists pdfname]} {
+    set pdfname [var get pdfname]
+
+# let's build the full path to the pdf file. The 'pdf_repository'
+# directory must be readable by the apache children
+
+    set pdf_full_path [file join $pdf_repository ${pdfname}.pdf]
+    if {[file exists $pdf_full_path]} {
+
+# Before the file is sent we inform the client about the file type and
+# file name. The client can be proposed a filename different from the
+# original one. In this case, this is the point where a new file name
+# must be generated.
+
+        headers type                    "application/pdf"
+        headers add Content-Disposition "attachment; filename=${pdfname}.pdf"
+        headers add Content-Description "PDF Document"
+
+# The pdf is read and stored in a Tcl variable. The file handle is
+# configured for a binary read: we are just shipping raw data to a
+# client. The following 4 lines of code can be replaced by any code
+# that is able to retrieve the data to be sent from any data source
+# (e.g. database, external program, other Tcl code)
+
+        set paper           [open $pdf_full_path r]
+        fconfigure          $paper -translation binary
+        set pdf             [read $paper]
+        close $paper
+
+# Now we got the data: let's tell the client how many bytes we are
+# about to send (useful for the download progress bar of a dialog box)
+
+        headers add Content-Length  [string length $pdf]
+
+# Let's send the actual file content
+
+        puts $pdf
+    } else {
+        source pdf_not_found_error.rvt
+    }
+} else {
+    source parameter_not_defined_error.rvt
+}
+</pre>
+  <p>
+			Before the pdf is sent the procedure sets the Content-Type, Content-Disposition, Content-Description and 
+			Content-Length headers to inform the client about the file type, name and size. Notice that in order to 
+			set the Content-Type header Rivet uses a specialiezed form of the headers command. Headers must be sent before 
+			data gets sent down the output channel. Messing with this prescription causes an error to be raised (in fact 
+			the protocol itself is being violated)
+		    </p>
+ </div>
+</div>
+
+</div>
+		    
+		</div>
+		<div class="clearfloats"></div>
+		<!--div class="leftaligned">:</div>
+		<div class="rightaligned">:</div-->
+		<div>
+		    <table align="center" width="100%">
+			<tr>
+			    <td align="left">
+				<a href="http://www.apache.org/">
+				    <img src="../picts/apache_pb.gif" 
+					 alt="Powered by Apache" border="0" width="259" height="32"></a>
+
+			    </td>
+			    <td align="right">
+				<a href="http://www.tcl.tk/">
+				    <img src="../picts/tclp.gif" alt="Powered by Tcl" border="0" width="42" height="64"></a>
+			    </td>
+			</tr>
+		    </table>
+		</div>
+	    </div>
+	</div>
+    </body>
+</html>

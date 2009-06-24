@@ -1,0 +1,269 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<title>Ajax</title>
+	<link rel="stylesheet" href="../rivet.css" />
+    </head>
+    <body>
+    	<!--p align="center"></p -->
+	<!-- ? parray ::rivetweb::html_menu ? -->
+	<div id="bigcontainer"> 
+	    <div id="pageheadline">
+		<div class="decoration"><img src="../picts/Rivetlogo_smaller.png" alt="Apache Rivet" /></div>
+		<div class="headline">Ajax</div>
+	    </div>
+	    <div id="pagecontents">
+		<div class="navbar navleft"><div class="staticmenu" id="main">
+    <div class="menuheader">Rivet</div>
+    <div class="itemcontainer">
+        <span class="navitem">
+            <a href="../index.html" class="menuitem">Rivet Homepage</a>
+        </span>
+        <span class="navitem">
+            <a href="http://tcl.apache.org/">Apache Tcl Home</a>
+        </span>
+        <span class="navitem">
+            <a href="http://www.tcl.tk/">The Tcl Language</a>
+        </span>
+        <span class="navitem">
+            <a href="download.html" class="menuitem">Download</a>
+        </span>
+        <span class="navitem">
+            <a href="http://tcl.apache.org/rivet/manual/">Documentation</a>
+        </span>
+        <span class="navitem">
+            <a href="hello_world.html" class="menuitem">Examples</a>
+        </span>
+        <span class="navitem">
+            <a href="about.html" class="menuitem">
+		About Us - Contact
+		</a>
+        </span>
+    </div>
+</div>
+<div class="staticmenu" id="examples">
+    <div class="menuheader">Examples</div>
+    <div class="itemcontainer">
+        <span class="navitem">
+            <a href="hello_world.html" class="menuitem">Hello world!</a>
+        </span>
+        <span class="navitem">
+            <a href="shaded_table.html" class="menuitem">A shaded table</a>
+        </span>
+        <span class="navitem">
+            <a href="var_access.html" class="menuitem">Variable Access</a>
+        </span>
+        <span class="navitem">
+            <a href="file_upload.html" class="menuitem">File Upload</a>
+        </span>
+        <span class="navitem">
+            <a href="file_download.html" class="menuitem">File Download</a>
+        </span>
+        <span class="navitem">
+            <a href="ajax.html" class="menuitem">XML and Ajax</a>
+        </span>
+    </div>
+</div>
+
+</div>
+		<div class="navbar navright"></div>
+		<div id="content"> 
+		    <div class="contentheadline"></div>
+		    <div><div class="example">
+ <p class="title">
+  <b>Example 6. XML Messages and Ajax</b>
+ </p>
+ <div class="example-contents">
+  <p>
+			The <b>headers</b>
+ command is crucial for generating XML messages that have to be understood by JavaScript 
+			code used in Ajax applications.
+		      </p>
+  <p>
+			Ajax is a web programming technique that heavily relies on the abilty of JavaScript (and other scriping 
+			languages like VBScript) to manipulate dynamically the HTML structure of a page. In modern browsers 
+			JavaScript code is enabled to send GET or POST requests to the webserver. These requests can request 
+			the server to run scripts (for example Rivet Tcl scripts) that build responses and to be sent back to 
+			the browser. JavaScript code reads asynchronously these responses, elaborates their content and accordingly 
+			modifies the page on display. Ajax helps to build web applications that are more responsive and flexible, 
+			if you can cope with the complexities, subtleties and incompatibilities even among the most common browsers 
+			available. Instead of going through the cycle of request-generation-transfer of a page, Ajax allows the programmer 
+			to request and transmit only the essential data, thus matching the general requirement of separation between data 
+			and user interface (and saving the server from sending over the same html code and graphics when only a 
+			fraction of a page has to be refreshed)
+		    </p>
+  <p>
+			In Ajax applications the communication between client and server is controlled by an instance of a 
+			specialized object. For quite a long time 2 approaches existed, the non-IE world (Firefox,Safari,Opera...) 
+			used the XMLHttpRequest class to create this object, whereas IE (before IE7) used the ActiveXObject class.
+			With the release of IE7 Microsoft introduced native support for XMLHttpRequest class objects thus enabling
+			programmers with a unique method for the development of dynamic pages. 
+		    </p>
+  <p>
+			By creating an instance of this class a POST or GET request can be sent to the server, whose response is 
+			stored in a property ('returnedText') of the communication object. It's become widely customary to encode 
+			in XML messages the response from the server to the browser. A number of XML specification are being used 
+			for this, among which XML-RPC and SOAP are worth to be quoted. Anyway, you can invent your own message 
+			definitions (either based on XML or anything else), but one has to be aware that if the http 
+			headers are properly set and the message returned to the client is a well formed XML fragment, also the 
+			property XMLResponse is set with a reference to an object that represent the  DOM of the XML response. 
+			By means of the XML W3C DOM tree methods and properties you can write scripts that read and manipulate 
+			the data embedded in the XML message.
+		    </p>
+  <p>
+			In this example a Rivet script initializes an array with the essential data regarding a few of the major 
+			composers of the european music. This array plays the role of a database. The script sends back to the 
+			client two types of responses: a catalog of the composers or a single record of a composer.
+		    </p>
+  <pre class="programlisting"># The database array contains xml fragments representing the
+# results of queries to a database. Many databases are now able
+# to produce the results of a query in XML. 
+#
+#array unset composer
+#
+set     composer(1)     "&lt;composer&gt;\n"
+append  composer(1)     "    &lt;first_name&gt;Claudio&lt;/first_name&gt;\n"
+append  composer(1)     "    &lt;last_name&gt;Monteverdi&lt;/last_name&gt;\n"
+append  composer(1)     "    &lt;lifespan&gt;1567-1643&lt;/lifespan&gt;\n"
+append  composer(1)     "    &lt;era&gt;Renaissance/Baroque&lt;/era&gt;\n"
+append  composer(1)     "    &lt;key&gt;1&lt;/key&gt;\n"
+append  composer(1)     "&lt;/composer&gt;\n"
+
+set     composer(2)     "&lt;composer&gt;\n"
+append  composer(2)     "    &lt;first_name&gt;Johann Sebastian&lt;/first_name&gt;\n"
+append  composer(2)     "    &lt;last_name&gt;Bach&lt;/last_name&gt;\n"
+append  composer(2)     "    &lt;lifespan&gt;1685-1750&lt;/lifespan&gt;\n"
+append  composer(2)     "    &lt;era&gt;Baroque&lt;/era&gt;\n"
+append  composer(2)     "    &lt;key&gt;2&lt;/key&gt;\n"
+append  composer(2)     "&lt;/composer&gt;\n"
+
+set     composer(3)     "&lt;composer&gt;\n"
+append  composer(3)     "    &lt;first_name&gt;Ludwig&lt;/first_name&gt;\n"
+append  composer(3)     "    &lt;last_name&gt;van Beethoven&lt;/last_name&gt;\n"
+append  composer(3)     "    &lt;lifespan&gt;1770-1827&lt;/lifespan&gt;\n"
+append  composer(3)     "    &lt;era&gt;Romantic&lt;/era&gt;\n"
+append  composer(3)     "    &lt;key&gt;3&lt;/key&gt;\n"
+append  composer(3)     "&lt;/composer&gt;\n"
+
+set     composer(4)     "&lt;composer&gt;\n"
+append  composer(4)     "    &lt;first_name&gt;Wolfgang Amadaeus&lt;/first_name&gt;\n"
+append  composer(4)     "    &lt;last_name&gt;Mozart&lt;/last_name&gt;\n"
+append  composer(4)     "    &lt;lifespan&gt;1756-1791&lt;/lifespan&gt;\n"
+append  composer(4)     "    &lt;era&gt;Classical&lt;/era&gt;\n"
+append  composer(4)     "    &lt;key&gt;4&lt;/key&gt;\n"
+append  composer(4)     "&lt;/composer&gt;\n"
+
+set     composer(5)     "&lt;composer&gt;\n"
+append  composer(5)     "    &lt;first_name&gt;Robert&lt;/first_name&gt;\n"
+append  composer(5)     "    &lt;last_name&gt;Schumann&lt;/last_name&gt;\n"
+append  composer(5)     "    &lt;lifespan&gt;1810-1856&lt;/lifespan&gt;\n"
+append  composer(5)     "    &lt;era&gt;Romantic&lt;/era&gt;\n"
+append  composer(5)     "    &lt;key&gt;5&lt;/key&gt;\n"
+append  composer(5)     "&lt;/composer&gt;\n"
+
+# we use the 'load' argument in order to determine the type of query
+#
+# load=catalog:             we have to return a list of the names in the database
+# load=composer&amp;res_id=&lt;id&gt;: the script is supposed to return the record
+#                           having &lt;id&gt; as record id
+
+if {[var exists load]} {
+
+# the xml declaration is common to every message (error messages included)
+
+    set xml "&lt;?xml version=\"1.0\" encoding=\"ISO-8859-1\"?&gt;\n"
+    switch [var get load] {
+        catalog {
+            append xml "&lt;catalog&gt;\n"
+            foreach nm [array names composer] {
+                if {[regexp {&lt;last_name&gt;(.+)&lt;/last_name&gt;}   $composer($nm) m last_name] &amp;&amp; \
+                    [regexp {&lt;first_name&gt;(.+)&lt;/first_name&gt;} $composer($nm) m first_name]} {
+                    append xml "    &lt;composer key='$nm'&gt;$first_name $last_name&lt;/composer&gt;\n"
+                }
+            }
+            append xml "&lt;/catalog&gt;"
+        }
+        composer {
+            if {[var exists rec_id]} {
+                set rec_id [var get rec_id]
+                if {[info exists composer($rec_id)]} {
+                    append xml $composer($rec_id)
+                }
+            }
+        }
+    }
+
+# we have to tell the client this is an XML message. Failing to do so
+# would result in an XMLResponse property set to null
+
+    headers type "text/xml"
+    headers add Content-Length [string length $xml]
+    puts $xml
+}
+
+</pre>
+  <p>
+			For sake of brevity the JavaScript and HTML will not listed here. They can be downloaded (along with the Tcl 
+			script) stored in the <a href="http://people.apache.org/~mxmanghi/rivet-ajax.tar.gz">rivet-ajax.tar.gz</a>
+ archive. 
+			By simply opening this tar archive in a directory accessible 
+			by your apache server and pointing your browser to the rivetService.html page you should see a page with a 
+			drop-down list. Every time a different name is picked from the list a new query is sent and logged in the 
+			apache access.log file, even though the html is never reloaded.
+		      </p>
+ </div>
+</div>
+
+</div>
+		    
+		</div>
+		<div class="clearfloats"></div>
+		<!--div class="leftaligned">:$Author: </div>
+		<div class="rightaligned">:20-06-2009</div-->
+		<div>
+		    <table align="center" width="100%">
+			<tr>
+			    <td align="left">
+				<a href="http://www.apache.org/">
+				    <img src="../picts/apache_pb.gif" 
+					 alt="Powered by Apache" border="0" width="259" height="32"></a>
+
+			    </td>
+			    <td align="right">
+				<a href="http://www.tcl.tk/">
+				    <img src="../picts/tclp.gif" alt="Powered by Tcl" border="0" width="42" height="64"></a>
+			    </td>
+			</tr>
+		    </table>
+		</div>
+	    </div>
+	</div>
+    </body>
+</html>

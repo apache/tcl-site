@@ -1,0 +1,176 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<title>File Upload</title>
+	<link rel="stylesheet" href="../rivet.css" />
+    </head>
+    <body>
+    	<!--p align="center"></p -->
+	<!-- ? parray ::rivetweb::html_menu ? -->
+	<div id="bigcontainer"> 
+	    <div id="pageheadline">
+		<div class="decoration"><img src="../picts/Rivetlogo_smaller.png" alt="Apache Rivet" /></div>
+		<div class="headline">File Upload</div>
+	    </div>
+	    <div id="pagecontents">
+		<div class="navbar navleft"><div class="staticmenu" id="main">
+    <div class="menuheader">Rivet</div>
+    <div class="itemcontainer">
+        <span class="navitem">
+            <a href="../index.html" class="menuitem">Rivet Homepage</a>
+        </span>
+        <span class="navitem">
+            <a href="http://tcl.apache.org/">Apache Tcl Home</a>
+        </span>
+        <span class="navitem">
+            <a href="http://www.tcl.tk/">The Tcl Language</a>
+        </span>
+        <span class="navitem">
+            <a href="download.html" class="menuitem">Download</a>
+        </span>
+        <span class="navitem">
+            <a href="http://tcl.apache.org/rivet/manual/">Documentation</a>
+        </span>
+        <span class="navitem">
+            <a href="hello_world.html" class="menuitem">Examples</a>
+        </span>
+        <span class="navitem">
+            <a href="about.html" class="menuitem">
+		About Us - Contact
+		</a>
+        </span>
+    </div>
+</div>
+<div class="staticmenu" id="examples">
+    <div class="menuheader">Examples</div>
+    <div class="itemcontainer">
+        <span class="navitem">
+            <a href="hello_world.html" class="menuitem">Hello world!</a>
+        </span>
+        <span class="navitem">
+            <a href="shaded_table.html" class="menuitem">A shaded table</a>
+        </span>
+        <span class="navitem">
+            <a href="var_access.html" class="menuitem">Variable Access</a>
+        </span>
+        <span class="navitem">
+            <a href="file_upload.html" class="menuitem">File Upload</a>
+        </span>
+        <span class="navitem">
+            <a href="file_download.html" class="menuitem">File Download</a>
+        </span>
+        <span class="navitem">
+            <a href="ajax.html" class="menuitem">XML and Ajax</a>
+        </span>
+    </div>
+</div>
+
+</div>
+		<div class="navbar navright"></div>
+		<div id="content"> 
+		    <div class="contentheadline"></div>
+		    <div><div class="example">
+ <p class="title">
+  <b>Example 4. File Upload</b>
+ </p>
+ <div class="example-contents">
+  <p>
+		    The <b>upload</b>
+ command endows Rivet with an interface to access files transferred over http as 
+		    parts of a multipart form. The following HTML in one file, say, upload.html creates a form with a 
+		    text input entry. By clicking the file chooser button the file browser shows up and the user 
+		    selects the file to be uploaded (the file path will appear in the text input). In order to make 
+		    sure you're uploading the whole file you must combine the action of the enctype and method attributes 
+		    of the <b>form</b>
+ tag in the way shown in the example. Failure to do so would result in the client 
+		    sending only the file's path, rather than the actual contents.
+		  </p>
+  <pre class="programlisting">&lt;form action="foo.rvt" enctype="multipart/form-data" method="post"&gt;
+    &lt;input type="file" name="MyUpload"&gt;&lt;/input&gt;
+    &lt;input type="submit" value="Send File"&gt;&lt;/input&gt;
+&lt;/form&gt;
+</pre>
+  <p> 
+		    In the script invoked by the form (upload.rvt) <b>upload ?argument ...?</b>
+ commands can be used to 
+		    manipulate the various files uploaded.
+		  </p>
+  <pre class="programlisting">&lt;?
+upload save MyUpload /tmp/uploadfiles/file1
+puts "Saved file [upload filename MyUpload] \
+        ([upload size MyUpload] bytes) to server"
+?&gt;
+</pre>
+  <p>
+		    Don't forget that the apache server must have write access to the directory where files are being created. 
+		    The Rivet Apache directives have a substantial impact on the upload process, you have to carefully read the 
+		    docs in order to set the appropriate directives values that would match your requirements. 
+		</p>
+  <p>
+		    It is also important to understand that some upload commands are effective only when used in a mutually 
+		    exclusive way. Apache stores the data in temporary files which are read by the 
+		    <b>upload save ?upload name? ?filename?</b>
+ 
+		    or by the <b>upload data ?upload name?</b>
+ command. Subsequent calls to these 2 commands using the 
+		    same <b>?upload name?</b>
+ argument will return no data on the second call. Likewise upload channel 
+		    ?upload name? will return a Tcl file channel that you can use in regular Tcl scripts only if you 
+		    haven't already read the data, for example with a call to the upload data ?upload name? command.
+		  </p>
+ </div>
+</div>
+
+</div>
+		    
+		</div>
+		<div class="clearfloats"></div>
+		<!--div class="leftaligned">:</div>
+		<div class="rightaligned">:</div-->
+		<div>
+		    <table align="center" width="100%">
+			<tr>
+			    <td align="left">
+				<a href="http://www.apache.org/">
+				    <img src="../picts/apache_pb.gif" 
+					 alt="Powered by Apache" border="0" width="259" height="32"></a>
+
+			    </td>
+			    <td align="right">
+				<a href="http://www.tcl.tk/">
+				    <img src="../picts/tclp.gif" alt="Powered by Tcl" border="0" width="42" height="64"></a>
+			    </td>
+			</tr>
+		    </table>
+		</div>
+	    </div>
+	</div>
+    </body>
+</html>

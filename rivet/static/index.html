@@ -1,0 +1,219 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<title>Rivet</title>
+	<link rel="stylesheet" href="/rivet.css" />
+    </head>
+    <body>
+    	<!--p align="center"></p -->
+	<!-- ? parray ::rivetweb::html_menu ? -->
+	<div id="bigcontainer"> 
+	    <div id="pageheadline">
+		<div class="decoration"><img src="/picts/Rivetlogo_smaller.png" alt="Apache Rivet" /></div>
+		<div class="headline">Rivet - Webscripting for Tcl'ers</div>
+	    </div>
+	    <div id="pagecontents">
+		<div class="navbar navleft"><div class="staticmenu" id="main">
+    <div class="menuheader">Rivet</div>
+    <div class="itemcontainer">
+        <span class="navitem">
+            <a href="index.html" class="menuitem">Rivet Homepage</a>
+        </span>
+        <span class="navitem">
+            <a href="http://tcl.apache.org/">Apache Tcl Home</a>
+        </span>
+        <span class="navitem">
+            <a href="http://www.tcl.tk/">The Tcl Language</a>
+        </span>
+        <span class="navitem">
+            <a href="/static/download.html" class="menuitem">Download</a>
+        </span>
+        <span class="navitem">
+            <a href="http://tcl.apache.org/rivet/manual/">Documentation</a>
+        </span>
+        <span class="navitem">
+            <a href="/static/hello_world.html" class="menuitem">Examples</a>
+        </span>
+        <span class="navitem">
+            <a href="/static/about.html" class="menuitem">
+		About Us - Contact
+		</a>
+        </span>
+    </div>
+</div>
+
+</div>
+		<div class="navbar navright"></div>
+		<div id="content"> 
+		    <div class="contentheadline"></div>
+		    <div><div>
+ <p>
+  <b>Apache Rivet</b>
+ is a powerful, flexible, consistent,
+	      fast, and robust solution to creating web applications:
+	     </p>
+ <p>
+  <b>Powerful</b>
+: Apache Rivet puts the Tool Command
+	      Language in the hands of the programmer, allowing him or
+	      her to manipulate data easily and concisely.  Millions
+	      of lines of Tcl code already exist - all you have to do
+	      is glue them together to create unique and useful
+	      applications. Rivet unites this power with the Apache
+	      web server.
+	     </p>
+ <p>
+  <b>Flexible</b>
+: The original design constraints for Tcl
+	      required that it be flexible enough to be inserted and
+	      function in an extreme variety of environments. That's
+	      still true today, and makes Tcl, and as a consequence,
+	      Apache Rivet, easy to integrate into your business to
+	      leverage existing systems.
+	     </p>
+ <p>
+  <b>Consistent</b>
+: The Tool Command Language is
+	      integrated with Apache Rivet in such a way as to provide
+	      you with an easy-to-learn interface that won't surprise
+	      you.  Because of this, you can use the same, elegant
+	      programming language for your web applications, GUI's
+	      (with the Tk toolkit), and quick'n'dirty system
+	      administration tasks.  Very simple!
+	     </p>
+ <p>
+  <b>Fast</b>
+: A dedicated team of programmers works to
+	      make sure Apache Rivet locks in tightly with both Tcl
+	      and Apache, ensuring that you get as much performance as
+	      your hardware can handle.  Where you need to squeeze out
+	      the last bit of speed, the Tool Command Language
+	      provides you with a high-quality C API which lets you
+	      write Tcl extensions in no time.
+	     </p>
+ <p>
+  <b>Robust</b>
+: Created in the late 80's by U.C. Berkeley
+	      professor John Ousterhout, Tcl has stood the test of
+	      time, being used in such notable companies as IBM,
+	      Oracle, Cisco, AOL, and many, many others.  There is a
+	      core group of maintainers who oversee the development
+	      and maintainance of the Tool Command Language, so that
+	      it continues to improve, yet maintains its rock-solid
+	      nature.
+	     </p>
+ <p>
+		Rivet can be used in two different ways: in 
+		<a href="/static/templates.html">Rivet templates</a>
+ or
+		with pure <a href="/static/scripts.html">Tcl scripts</a>
+ </p>
+ <!--table>
+	      <tbody>
+		<tr> 
+		    <td colspan="2"><hr width="90%" /></td>
+		</tr>
+		<tr>
+		    <td align="center"><b>Rivet Templates (.rvt)</b></td>
+		    <td align="center"><b>Tcl Scripts (.tcl)</b></td>
+
+		</tr>
+		<tr>
+		  <td width="50%">
+		    Templates let you add a bit of code to your HTML,
+		    to add dynamic content to it, or speed up creation
+		    of repetitive elements.  Templates are appropriate
+		    for quick'n'dirty pages, where you just need to do
+		    some scripting quickly.  But they are also
+		    appropriate for the 'display' component of your
+		    complex application.
+		  </td>
+		  <td>
+		    Pure Tcl scripts let you do the heavy lifting to
+		    control your application.  A sensible design
+		    pattern is to put most of your complex logic in
+		    these files, and then parse template files to
+		    display the results.  This means that those who
+		    are creating the HTML files don't have to know
+		    much Tcl, and only need to call a few simple
+		    commands.
+		  </td>
+		</tr>
+		<tr class="code">
+
+		  <td class="code">
+<pre class="code">
+  <span class="type">&lt;table&gt;</span>
+    <span class="type">&lt;tbody&gt;</span>
+      <span class="type">&lt;tr&gt;</span>
+	<span class="type">&lt;td&gt;</span>
+&lt;?
+<span class="keyword">foreach</span> line [chat::model::getlines $user] {
+    puts <span class="string">&quot;$line&lt;br&gt;&quot;</span>
+}
+?&gt;
+	<span class="type">&lt;/td&gt;</span>
+      <span class="type">&lt;/tr&gt;</span>
+    <span class="type">&lt;/tbody&gt;</span>
+  <span class="type">&lt;/table&gt;</span>
+</pre>
+		  </td>
+
+		  <td class="code">
+<pre class="code">
+<span class="keyword">proc</span> <span class="function-name">chat::model::getlines</span> {user} {
+    set sk [chat::model::getsock]
+    puts $sk [list user $user cmd get msg <span class="string">&quot;&quot;</span>]
+    <span class="keyword">if</span> { ! [eof $sk] } {
+	gets $sk data
+	<span class="keyword">return</span> <span class="string">&quot;$data&quot;</span>
+    } <span class="keyword">else</span> {
+	<span class="keyword">error</span> <span class="string">&quot;Problem with socket&quot;</span>
+
+    }
+}
+</pre>
+		  </td>
+		</tr>
+	      </tbody>
+	    </table-->
+</div>
+
+</div>
+		    
+		</div>
+		<div class="clearfloats"></div>
+		<!--div class="leftaligned">:$Author: $</div>
+		<div class="rightaligned">:20-06-2009</div-->
+		<div>
+		    <table align="center" width="100%">
+			<tr>
+			    <td align="left">
+				<a href="http://www.apache.org/"><img src="/picts/apache_pb.gif" alt="Powered by Apache" border="0" width="259" height="32"></a>
+
+			    </td>
+			    <td align="right">
+				<a href="http://www.tcl.tk/"><img src="/picts/tclp.gif" alt="Powered by Tcl" border="0" width="42" height="64"></a>
+			    </td>
+			</tr>
+		    </table>
+		</div>
+	    </div>
+	</div>
+    </body>
+</html>

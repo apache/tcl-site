@@ -107,6 +107,14 @@ div#content {
     margin:		0.8em auto;
 }
 
+#last_modified {
+    border-top:		1px solid #ccc;
+    font-size:		80%;
+    padding:		5px;
+    text-align:		right;
+    margin-top:		2em;
+}
+
 .example-contents p {
     width:		90%;
 }
@@ -155,8 +163,8 @@ div#footer {
     text-align:	 	center;
     font-size:		150%;
     font-weight:	bold;
-    border-bottom:	1px solid black;
-    margin-bottom:	0.5em;
+    border-bottom:	1px solid #ccc;
+    margin-bottom:	1em;
 }
 
 ul {

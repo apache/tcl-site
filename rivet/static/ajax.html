@@ -1,3 +1,29 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
@@ -107,42 +133,53 @@
 			code used in Ajax applications.
 		      </p>
   <p>
-			Ajax is a web programming technique that heavily relies on the abilty of JavaScript (and other scriping 
-			languages like VBScript) to manipulate dynamically the HTML structure of a page. In modern browsers 
-			JavaScript code is enabled to send GET or POST requests to the webserver. These requests can request 
-			the server to run scripts (for example Rivet Tcl scripts) that build responses and to be sent back to 
-			the browser. JavaScript code reads asynchronously these responses, elaborates their content and accordingly 
-			modifies the page on display. Ajax helps to build web applications that are more responsive and flexible, 
-			if you can cope with the complexities, subtleties and incompatibilities even among the most common browsers 
-			available. Instead of going through the cycle of request-generation-transfer of a page, Ajax allows the programmer 
-			to request and transmit only the essential data, thus matching the general requirement of separation between data 
-			and user interface (and saving the server from sending over the same html code and graphics when only a 
-			fraction of a page has to be refreshed)
-		    </p>
+   <b style="border-bottom: 1px solid black;">Brief introduction to Ajax</b>
+   <p>
+			    Ajax is a web programming technique that heavily relies on the abilty of JavaScript to manipulate
+			    data in the background of a web browser. Modern browsers offer to JavaScript library calls that build 
+			    and send http GET/POST requests to a web server demanding that scripts 
+			    (e.g. Tcl scripts run by Rivet) be run with the arguments encoded in the request. These scripts 
+			    produce in response some output and JavaScript can be set up to handle it asynchronously 
+			    to extract information to be displayed on the browser. 
+			    Therefore through Ajax becomes possible (at least in principle) to build web applications that 
+			    are more responsive and flexible:
+			    instead of going through the cycle of request-generation-transfer-display of a whole page, 
+			    Ajax allows the programmer to request from the webserver only the essential data, also in response
+			    of some user interaction. Imagine the case of options or menus of a form that can be dynamically 
+			    and consistently updated depending of other choices the user makes during the interaction with the
+			    page.
+			    Ajax emphasizes the requirement of separation between data and user interface, saves 
+			    the server from sending over the same html code and graphics if only a fraction of a page has to be 
+			    updated, allows the programmer to image dynamical solutions to complex forms and makes possible
+			    to find new innovative approaches to simple problems (e.g. Google tips that show up as you type in
+			    a query). A downside of this approach is the large number of complexities, subtleties and incompatibilities 
+			    that still exist in the way different versions of popular browsers handle the DOM elements of a page.
+			</p>
+   <p>
+			    JavaScript can handle the communication between client and server through an instance of a 
+			    specialized object. For quite a long time 2 approaches existed, the non-IE world (Firefox,Safari,Opera...) 
+			    used the XMLHttpRequest class to create this object, whereas IE (before IE7) used the ActiveXObject class.
+			    With the release of IE7 Microsoft introduced native support for XMLHttpRequest class objects thus enabling
+			    programmers with a unique method for the development of dynamic pages. 
+			</p>
+   <p>
+			    By creating an instance of this class a POST or GET request can be sent to the server and the response is 
+			    stored in a property ('returnedText') of the communication object. It's become widely customary to encode 
+			    these responses in XML messages. You can invent your own message definitions (either based on XML or anything 
+			    else), but one has to be aware that if the http headers are properly set and the message returned to the 
+			    client is a well formed XML fragment, also the property XMLResponse is set with a reference to an object 
+			    that represents the DOM of the XML response. By means of the XML W3C DOM tree methods and properties you 
+			    can read and manipulate the data embedded in the XML message.
+			</p>
+  </p>
   <p>
-			In Ajax applications the communication between client and server is controlled by an instance of a 
-			specialized object. For quite a long time 2 approaches existed, the non-IE world (Firefox,Safari,Opera...) 
-			used the XMLHttpRequest class to create this object, whereas IE (before IE7) used the ActiveXObject class.
-			With the release of IE7 Microsoft introduced native support for XMLHttpRequest class objects thus enabling
-			programmers with a unique method for the development of dynamic pages. 
-		    </p>
-  <p>
-			By creating an instance of this class a POST or GET request can be sent to the server, whose response is 
-			stored in a property ('returnedText') of the communication object. It's become widely customary to encode 
-			in XML messages the response from the server to the browser. A number of XML specification are being used 
-			for this, among which XML-RPC and SOAP are worth to be quoted. Anyway, you can invent your own message 
-			definitions (either based on XML or anything else), but one has to be aware that if the http 
-			headers are properly set and the message returned to the client is a well formed XML fragment, also the 
-			property XMLResponse is set with a reference to an object that represent the  DOM of the XML response. 
-			By means of the XML W3C DOM tree methods and properties you can write scripts that read and manipulate 
-			the data embedded in the XML message.
-		    </p>
-  <p>
-			In this example a Rivet script initializes an array with the essential data regarding a few of the major 
-			composers of the european music. This array plays the role of a database. The script sends back to the 
-			client two types of responses: a catalog of the composers or a single record of a composer.
-		    </p>
-  <pre class="programlisting"># The database array contains xml fragments representing the
+   <b style="border-bottom: 1px solid black;">Browsing a database of classical music composers</b>
+   <p>
+			    In this example a Rivet script initializes an array with the essential data regarding a few of the major 
+			    composers of the european music. This array plays the role of a database. The script sends back to the 
+			    client two types of responses: a catalog of the composers or a single record of a composer.
+			</p>
+   <pre class="programlisting"># The database array contains xml fragments representing the
 # results of queries to a database. Many databases are now able
 # to produce the results of a query in XML. 
 #
@@ -229,15 +266,16 @@ if {[var exists load]} {
 }
 
 </pre>
-  <p>
-			For sake of brevity the JavaScript and HTML will not listed here. They can be downloaded (along with the Tcl 
-			script) stored in the <a href="http://people.apache.org/~mxmanghi/rivet-ajax.tar.gz">rivet-ajax.tar.gz</a>
+   <p>
+			    For sake of brevity the JavaScript and HTML will not listed here. They can be downloaded (along with the Tcl 
+			    script) stored in the <a href="http://people.apache.org/~mxmanghi/rivet-ajax.tar.gz">rivet-ajax.tar.gz</a>
  archive. 
-			By simply opening this tar archive in a directory accessible 
-			by your apache server and pointing your browser to the rivetService.html page you should see a page with a 
-			drop-down list. Every time a different name is picked from the list a new query is sent and logged in the 
-			apache access.log file, even though the html is never reloaded.
-		      </p>
+			    By simply opening this tar archive in a directory accessible 
+			    by your apache server and pointing your browser to the rivetService.html page you should see a page with a 
+			    drop-down list. Every time a different name is picked from the list a new query is sent and logged in the 
+			    apache access.log file, even though the html is never reloaded.
+			   </p>
+  </p>
  </div>
 </div>
 
@@ -246,7 +284,7 @@ if {[var exists load]} {
 		</div>
 		<div class="clearfloats"></div>
 		<!--div class="leftaligned">:$Author: </div>
-		<div class="rightaligned">:20-06-2009</div-->
+		<div class="rightaligned">:02-07-2009</div-->
 		<div>
 		    <table align="center" width="100%">
 			<tr>

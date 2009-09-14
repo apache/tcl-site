@@ -1,31 +1,30 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html><head><meta content="text/html; charset=ISO-8859-1" http-equiv="Content-Type"><title>Logging</title><meta name="generator" content="DocBook XSL Stylesheets V1.68.1"><link rel="start" href="index.html" title="Websh Reference 3.6.0b4"><link rel="up" href="index.html" title="Websh Reference 3.6.0b4"><link rel="prev" href="response_data_handling.html" title="Response data handling"><link rel="next" href="context_handling.html" title="Context handling"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Logging</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="response_data_handling.html">Prev</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="context_handling.html">Next</a></td></tr></table><hr></div><div class="section" lang="en"><div class="titlepage"><div><div><hr><h2 class="title" style="clear: both"><a name="logging"></a>Logging</h2></div></div></div><p style="width:90%">
-      Logging consists of two parts. <span style="font-family:monospace"><span><strong class="command">web::log</strong></span></span>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>Logging</title><meta name="generator" content="DocBook XSL Stylesheets V1.75.1"><link rel="home" href="index.html" title="Websh Reference 3.6.0b5"><link rel="up" href="index.html" title="Websh Reference 3.6.0b5"><link rel="prev" href="response_data_handling.html" title="Response data handling"><link rel="next" href="context_handling.html" title="Context handling"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Logging</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="response_data_handling.html">Prev</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="context_handling.html">Next</a></td></tr></table><hr></div><div class="section" title="Logging"><div class="titlepage"><div><div><hr><h2 class="title" style="clear: both"><a name="logging"></a>Logging</h2></div></div></div><p style="width:90%">
+      Logging consists of two parts. <span style="font-family:monospace"><span class="command"><strong>web::log</strong></span></span>
       issues a logging message, while
-      <span style="font-family:monospace"><span><strong class="command">web::loglevel</strong></span></span> and
-      <span style="font-family:monospace"><span><strong class="command">web::logdest</strong></span></span> determine where to send a
+      <span style="font-family:monospace"><span class="command"><strong>web::loglevel</strong></span></span> and
+      <span style="font-family:monospace"><span class="command"><strong>web::logdest</strong></span></span> determine where to send a
       message. Websh uses a two-step filtering. First, Websh
       determines whether it should handle a message, or not, using the
-      levels configured with <span style="font-family:monospace"><span><strong class="command">web::loglevel</strong></span></span>. Then,
+      levels configured with <span style="font-family:monospace"><span class="command"><strong>web::loglevel</strong></span></span>. Then,
       Websh determines which message is to be sent where, using the
-      the additional filters and destinations configured with <span style="font-family:monospace"><span><strong class="command">web::logdest</strong></span></span>.
-      There is no logging per default. Setting levels with <span style="font-family:monospace"><span><strong class="command">web::loglevel</strong></span></span> is mandatory.
+      the additional filters and destinations configured with <span style="font-family:monospace"><span class="command"><strong>web::logdest</strong></span></span>.
+      There is no logging per default. Setting levels with <span style="font-family:monospace"><span class="command"><strong>web::loglevel</strong></span></span> is mandatory.
     </p><p style="width:90%">
       A filter consists of a tag and a level, separated by a
-      &quot;.&quot;. The tag is free text. Typically, it is the name
-      of the application, say &quot;foo&quot;. Example:
-      &quot;ws3.debug&quot;. Levels are, in order:
-      </p><div class="itemizedlist"><ul type="disc"><li><div style="margin-bottom:6">alert</div></li><li><div style="margin-bottom:6">error</div></li><li><div style="margin-bottom:6">warning</div></li><li><div style="margin-bottom:6">info</div></li><li><div style="margin-bottom:6">debug</div></li></ul></div><p style="width:90%">
-    </p><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="web::logdest"></a>web::logdest</h3></div></div></div><p style="width:90%">
+      ".". The tag is free text. Typically, it is the name
+      of the application, say "foo". Example:
+      "ws3.debug". Levels are, in order:
+      </p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><div style="margin-bottom:6">alert</div></li><li class="listitem"><div style="margin-bottom:6">error</div></li><li class="listitem"><div style="margin-bottom:6">warning</div></li><li class="listitem"><div style="margin-bottom:6">info</div></li><li class="listitem"><div style="margin-bottom:6">debug</div></li></ul></div><p style="width:90%">
+    </p><div class="section" title="web::logdest"><div class="titlepage"><div><div><h3 class="title"><a name="web::logdest"></a>web::logdest</h3></div></div></div><p style="width:90%">
 
 	</p><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><code class="command">web::logdest</code></span>  <em class="replaceable"><code>subcommand</code></em> ?<em class="replaceable"><code>options</code></em>? <em class="replaceable"><code>args</code></em></span></div><p style="width:90%">
 
 	Subcommands are: <tt>add</tt>,
 	<tt>delete</tt>, <tt>names</tt>, and <tt>levels</tt>.  
-      </p><div class="variablelist"><dl><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><span><strong class="command">web::logdest</strong></span></span> <tt>add</tt> ?<span class="optional"><tt><em class="replaceable"><code>options</code></em></tt></span>?
+      </p><div class="variablelist"><dl><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><span class="command"><strong>web::logdest</strong></span></span> <tt>add</tt> ?<span class="optional"><tt><em class="replaceable"><code>options</code></em></tt></span>?
 	  <tt><em class="replaceable"><code>level</code></em></tt> <tt><em class="replaceable"><code>plugin</code></em></tt> ?<span class="optional"><tt><em class="replaceable"><code>plugin-specific options</code></em></tt></span>?</span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
 	Options are: <tt>-maxchar n</tt>, and
-	<tt>-format &quot;format string&quot;</tt>.
+	<tt>-format "format string"</tt>.
 	<code class="literal">-maxchar n</code> truncates the message to a 
 	maximum of <code class="literal">n</code> characters.
       </div><div style="margin-bottom:6">
@@ -34,7 +33,7 @@
 
       </div><div style="margin-bottom:6">
 
-	Default format is <code class="literal">&quot;%x %X [\$p] \$f.\$l: \$m\n&quot;</code>
+	Default format is <code class="literal">"%x %X [\$p] \$f.\$l: \$m\n"</code>
       </div><div style="margin-bottom:6">
 	Known plug-ins are: <tt>file</tt>,
 	<tt>syslog</tt> (Unix only), <tt>command</tt>,
@@ -44,20 +43,20 @@
 	(<tt>-unbuffered</tt>), see documentation below.
       </div><div style="margin-bottom:6">
 	<pre style="background:#bbffbb ; width:75%" class="programlisting">
-web::logdest add -maxchar 25 -format &quot;%x %X \$l \$m\n&quot; *.-debug command logTest</pre>
-      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><span><strong class="command">web::logdest</strong></span></span>
+web::logdest add -maxchar 25 -format "%x %X \$l \$m\n" *.-debug command logTest</pre>
+      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><span class="command"><strong>web::logdest</strong></span></span>
 	      <tt>delete</tt>
 	      ?<span class="optional"><tt><em class="replaceable"><code>name</code></em></tt></span>?</span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
 		remove destination <tt>name</tt> from list, or remove all
 		destinations if <tt>name</tt> is omitted.
-		(The special case <code class="literal">-requests</code> to delete all destinations except the one defined from within <span style="font-family:monospace"><span><strong class="command">web::initializer</strong></span></span> code is only used internally.)
-	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><span><strong class="command">web::logdest</strong></span></span>
+		(The special case <code class="literal">-requests</code> to delete all destinations except the one defined from within <span style="font-family:monospace"><span class="command"><strong>web::initializer</strong></span></span> code is only used internally.)
+	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><span class="command"><strong>web::logdest</strong></span></span>
 	      <tt><em class="replaceable"><code>names</code></em></tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
 		return a list of all destination ids that have been set.
-	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><span><strong class="command">web::loglevel</strong></span></span>
+	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><span class="command"><strong>web::loglevel</strong></span></span>
 	      <tt><em class="replaceable"><code>levels</code></em></tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
 		list all destination ids and their actual log levels in a readable format
-	      </div></div></dd></dl></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="web::loglevel"></a>web::loglevel</h3></div></div></div><p style="width:90%">
+	      </div></div></dd></dl></div></div><div class="section" title="web::loglevel"><div class="titlepage"><div><div><h3 class="title"><a name="web::loglevel"></a>web::loglevel</h3></div></div></div><p style="width:90%">
 
 	</p><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><code class="command">web::loglevel</code></span>  subcommand args</span></div><p style="width:90%">
 
@@ -65,77 +64,77 @@ web::logdest add -maxchar 25 -format &quot;%x %X \$l \$m\n&quot; *.-debug comman
 	<tt>delete</tt>, <tt>names</tt>,
 	and <tt>levels</tt>.
 
-        Levels defined using <span style="font-family:monospace"><span><strong class="command">web::loglevel</strong></span></span> act as a filter for log messages sent by Websh. Only messages that pass at least one level defined using this command are passed to the log destinations configured using <span style="font-family:monospace"><span><strong class="command">web::logdest</strong></span></span>
+        Levels defined using <span style="font-family:monospace"><span class="command"><strong>web::loglevel</strong></span></span> act as a filter for log messages sent by Websh. Only messages that pass at least one level defined using this command are passed to the log destinations configured using <span style="font-family:monospace"><span class="command"><strong>web::logdest</strong></span></span>
       </p><p style="width:90%">
-	</p><div class="variablelist"><dl><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><span><strong class="command">web::loglevel</strong></span></span>
+	</p><div class="variablelist"><dl><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><span class="command"><strong>web::loglevel</strong></span></span>
 	      <tt>add</tt> <tt><em class="replaceable"><code>level</code></em></tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
 		add a level to the list.
-	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><span><strong class="command">web::loglevel</strong></span></span>
+	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><span class="command"><strong>web::loglevel</strong></span></span>
 	      <tt>delete</tt>
 	      ?<span class="optional"><tt><em class="replaceable"><code>name</code></em></tt></span>?</span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
 		remove level <tt>name</tt> from list, or remove all
 		levels if <tt>name</tt> is omitted.
-		(The special case <code class="literal">-requests</code> to delete all levels except the one defined from within <span style="font-family:monospace"><span><strong class="command">web::initializer</strong></span></span> code is only used internally.)
-	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><span><strong class="command">web::loglevel</strong></span></span>
+		(The special case <code class="literal">-requests</code> to delete all levels except the one defined from within <span style="font-family:monospace"><span class="command"><strong>web::initializer</strong></span></span> code is only used internally.)
+	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><span class="command"><strong>web::loglevel</strong></span></span>
 	      <tt><em class="replaceable"><code>names</code></em></tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
 		return a list of all level ids that have been set.
-	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><span><strong class="command">web::loglevel</strong></span></span>
+	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><span class="command"><strong>web::loglevel</strong></span></span>
 	      <tt><em class="replaceable"><code>levels</code></em></tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
 		list all level ids and their actual log levels in a readable format
 	      </div></div></dd></dl></div><p style="width:90%">
 
-      </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="web::log"></a>web::log</h3></div></div></div><p style="width:90%">
+      </p></div><div class="section" title="web::log"><div class="titlepage"><div><div><h3 class="title"><a name="web::log"></a>web::log</h3></div></div></div><p style="width:90%">
 
 	</p><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><code class="command">web::log</code></span>  <em class="replaceable"><code>level</code></em> <em class="replaceable"><code>msg</code></em></span></div><p style="width:90%">
 
 	Issue a log message.  It is possible, should the user so
-	desire, to have the <span style="font-family:monospace"><span><strong class="command">web::log</strong></span></span> run
-	<span style="font-family:monospace"><span><strong class="command">subst</strong></span></span> on its arguments.  This behaviour is
+	desire, to have the <span style="font-family:monospace"><span class="command"><strong>web::log</strong></span></span> run
+	<span style="font-family:monospace"><span class="command"><strong>subst</strong></span></span> on its arguments.  This behaviour is
 	turned off by default, and can be turned on by doing:
 	</p><pre style="background:#bbffbb ; width:75%" class="programlisting">web::config logsubst 1</pre><p style="width:90%">.
-      </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="log_plug-ins"></a>Log plug-ins</h3></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="file"></a>File</h4></div></div></div><p style="width:90%">
+      </p></div><div class="section" title="Log plug-ins"><div class="titlepage"><div><div><h3 class="title"><a name="log_plug-ins"></a>Log plug-ins</h3></div></div></div><div class="section" title="File"><div class="titlepage"><div><div><h4 class="title"><a name="file"></a>File</h4></div></div></div><p style="width:90%">
 
 	  </p><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><code class="command">web::logdest</code></span>   add  <em class="replaceable"><code>destination</code></em>.-<em class="replaceable"><code>level</code></em> file ?<em class="replaceable"><code>options</code></em>? <em class="replaceable"><code>filename</code></em></span></div><p style="width:90%">
 	  Option is: <tt>-unbuffered</tt>
 	</p><p style="width:90%">
-Log messages are sent to the file <tt>filename</tt>, which is opened at in append mode at time of this calls and stys open until this destination is deleted. This is either at the end of the request (mod_websh) or when the interpreter is deleted.
+Log messages are sent to the file <tt>filename</tt>, which is opened in append mode at the time of this call and stays open until this destination is deleted. This is either at the end of the request (mod_websh) or when the interpreter is deleted.
 	</p><p style="width:90%">
-The file opened using the permissions configured with <span style="font-family:monospace"><span><strong class="command">web::config filepermissions</strong></span></span>. Default is 0644.
-	</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="syslog"></a>Syslog</h4></div></div></div><p style="width:90%">
+The file opened using the permissions configured with <span style="font-family:monospace"><span class="command"><strong>web::config filepermissions</strong></span></span>. Default is 0644.
+	</p></div><div class="section" title="Syslog"><div class="titlepage"><div><div><h4 class="title"><a name="syslog"></a>Syslog</h4></div></div></div><p style="width:90%">
 
 	  </p><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><code class="command">web::logdest</code></span>   add  *.-debug syslog ?<em class="replaceable"><code>level</code></em>?</span></div><p style="width:90%">
 	  See the man page for syslog for levels on your system. Typical: 10.
 	  Available under Unix only.
-	</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="command"></a>Command</h4></div></div></div><p style="width:90%">
+	</p></div><div class="section" title="Command"><div class="titlepage"><div><div><h4 class="title"><a name="command"></a>Command</h4></div></div></div><p style="width:90%">
 
 	  </p><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><code class="command">web::logdest</code></span>   add  *.-debug  command  <em class="replaceable"><code>cmdName</code></em></span></div><p style="width:90%">
 	</p><p style="width:90%">
 The log message is sent to a Tcl command taking the message as an argument. E.g.
 	  </p><pre style="background:#bbffbb ; width:75%" class="programlisting">
 % proc logCommand {msg} {
-      puts &quot;---- here comes the message ----&quot;
+      puts "---- here comes the message ----"
       puts -nonewline $msg
-      puts &quot;----- that was the message -----&quot;
+      puts "----- that was the message -----"
 }
 %
 % web::loglevel add *.-debug
 loglevel0
 % web::logdest add *.-debug command logCommand
 logdest0
-% web::log debug &quot; a log message&quot;
+% web::log debug " a log message"
 ---- here comes the message ----
 10/28/05 13:44:26 [20596] user.debug:  a log message
 ----- that was the message -----
 %	  </pre><p style="width:90%">
-	</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="channel"></a>Channel</h4></div></div></div><p style="width:90%">
+	</p></div><div class="section" title="Channel"><div class="titlepage"><div><div><h4 class="title"><a name="channel"></a>Channel</h4></div></div></div><p style="width:90%">
 
 	  </p><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><code class="command">web::logdest</code></span>   add  *.-debug  channel  ?<em class="replaceable"><code>options</code></em>? <em class="replaceable"><code>channel</code></em></span></div><p style="width:90%">
 	  Option is: <tt>-unbuffered</tt>
 	</p><p style="width:90%">
 	Write the message to the Tcl channel <tt>channel</tt>.
-	</p></div><div class="section" lang="en"><div class="titlepage"><div><div><h4 class="title"><a name="apache"></a>Apache</h4></div></div></div><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><code class="command">web::logdest</code></span>   add  *.-debug  apache </span></div><p style="width:90%">
+	</p></div><div class="section" title="Apache"><div class="titlepage"><div><div><h4 class="title"><a name="apache"></a>Apache</h4></div></div></div><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><code class="command">web::logdest</code></span>   add  *.-debug  apache </span></div><p style="width:90%">
 	  Sends the message to the Apache ErrorLog file. Available in mod_websh only.
-	</p></div><div class="section" lang="en"><div class="titlepage"></div><div class="example"><a name="id356622"></a><p class="title"><b>Example 8. web::log</b></p><pre style="background:#bbffbb ; width:75%" class="programlisting">
+	</p></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="id3106461"></a></h4></div></div></div><div class="example"><a name="id3106466"></a><p class="title"><b>Example 11. web::log</b></p><div class="example-contents"><pre style="background:#bbffbb ; width:75%" class="programlisting">
 % web::loglevel add *.-debug
 loglevel0
 % web::logdest add *.-debug channel stdout
@@ -143,7 +142,7 @@ logdest0
 % web::log info {Websh is cool}
 03/01/00 00:00:00 [111] user.info: Websh is cool
 % web::logdest delete
-% web::logdest add -format &quot;--&gt; \$m\n&quot; *.-debug channel stdout
+% web::logdest add -format "--&gt; \$m\n" *.-debug channel stdout
 logdest0
 % web::log info {Websh is cool}
 --&gt; Websh is cool
@@ -151,4 +150,4 @@ logdest0
 % web::logdest add -maxchar 5 *.-debug channel stdout
 % web::log info {Websh is cool}
 03/01/00 00:00:00 [111] user.info: Websh
-%	  </pre></div></div></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="response_data_handling.html">Prev</a> </td><td width="20%" align="center"> </td><td width="40%" align="right"> <a accesskey="n" href="context_handling.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Response data handling </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Context handling</td></tr></table></div></body></html>
+%	  </pre></div></div><br class="example-break"></div></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="response_data_handling.html">Prev</a> </td><td width="20%" align="center"> </td><td width="40%" align="right"> <a accesskey="n" href="context_handling.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Response data handling </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Context handling</td></tr></table></div></body></html>

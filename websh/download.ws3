@@ -19,12 +19,12 @@ web::putx {
     <td>
     Download the latest source code from a mirror:<p>
 
-    &nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.apache.org/dyn/closer.cgi/tcl/websh/source/websh-3.6.0b4-src.tar.gz">websh-3.6.0b4-src.tar.gz</a><br>
-    &nbsp;&nbsp;&nbsp;&nbsp;<a href="http://svn.apache.org/repos/asf/tcl/websh/tags/3.6.0b4/CHANGES">Overview of changes in 3.6.0b4</a>
+    &nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.apache.org/dyn/closer.cgi/tcl/websh/source/websh-3.6.0b5-src.tar.gz">websh-3.6.0b5-src.tar.gz</a><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;<a href="http://svn.apache.org/repos/asf/tcl/websh/tags/3.6.0b5/CHANGES">Overview of changes in 3.6.0b5</a>
 
     <p>Download the latest quick reference (included in the source):
 
-    <p>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.apache.org/dyn/closer.cgi/tcl/websh/source/quickref-3.6.0b4.tar.gz">quickref-3.6.0b4.tar.gz</a>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.apache.org/dyn/closer.cgi/tcl/websh/source/quickref-3.6.0b5.tar.gz">quickref-3.6.0b5.tar.gz</a>
     </td>
     </tr>
     </table>
@@ -55,8 +55,8 @@ web::putx {
 
     <p>
     <b>Important note</b>: The latest release now also features a Windows XP
-    Makefile for Visual Studio nmake. Websh 3.6.0b4 is known to work
-    with Sun Solaris 8 and 9, Linux RedHat 8, Suse9.1, Windows XP, Mac OSX 8.2 und 8.3.
+    Makefile for Visual Studio nmake. Websh 3.6.0b5 is known to work
+    with Sun Solaris 8, 9, and 10, Linux RedHat 8, CenOS 4.6, Suse9.1, Windows XP, Mac OSX 8.2 und 8.3.
     Other Unix platforms are likely to work too.
     </p>
     </td>

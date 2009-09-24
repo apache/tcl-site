@@ -34,7 +34,7 @@ web::putx {
 
           <table border="0" cellpadding="0" cellspacing="0" width="145">
 
-{newsBarElement "2009-09-14" \
+{newsBarElement "2009-09-24" \
      {<b>Websh 3.6.0b5 available</b>: Pick the {pageLink http://www.apache.org/dyn/closer.cgi/tcl/websh/source/websh-3.6.0b5-src.tar.gz -show "tarball"}
 	 or browse the {pageLink /websh/download.ws3 -show "download area"}.
      }

@@ -37,12 +37,12 @@ web::putx {
     <p>
     If you would like to be notified when new versions of Websh
     become available for download, you can subscribe to the Websh
-    user mailing list at {pageLink subscribe.ws3 -show "Mailing Lists"}.
+    user {pageLink subscribe.ws3 -show "mailing list"}.
     </p>
 
     <p>
-    The Websh source code repository has recently been moved from CVS to
-    Subversion (SVN). To access the latest source from the repository, use the following (read-only) URL:</p>
+    To access the latest source from the Subversion repository, use the 
+    following (read-only) URL:</p>
     <p>&nbsp;&nbsp;&nbsp;&nbsp;{pageLink http://svn.apache.org/repos/asf/tcl/websh/trunk}<br/>
     &nbsp;&nbsp;&nbsp;&nbsp;<a href="http://svn.apache.org/repos/asf/tcl/websh/trunk/CHANGES">Overview of changes in trunk since last release</a>
     </p>
@@ -54,9 +54,9 @@ web::putx {
     </p>
 
     <p>
-    <b>Important note</b>: The latest release now also features a Windows XP
-    Makefile for Visual Studio nmake. Websh 3.6.0b5 is known to work
-    with Sun Solaris 8, 9, and 10, Linux RedHat 8, CenOS 4.6, Suse9.1, Windows XP, Mac OSX 8.2 und 8.3.
+    <b>Note</b>: Websh 3.6.0b5 is known to work
+    with Sun Solaris 8, 9, and 10, Linux RedHat 8, CenOS 4.6, Suse9.1, 
+    Windows XP and Vista, Mac OSX 8.2 und 8.3.
     Other Unix platforms are likely to work too.
     </p>
     </td>

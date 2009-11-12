@@ -76,10 +76,14 @@ div.navright {
 
 div.staticmenu {
     margin-top:	    	2px;
+    margin-bottom:	1em;
 /*  border:	    	1px solid blue; */
 }
 
 div.menuheader {
+    border-top:		1px solid black;
+    padding-top:	4px;
+    padding-bottom:	4px;
     background-color: 	#eee;
 }
 
@@ -87,6 +91,16 @@ span.navitem {
 /*  font-size:	    	70%;		*/
     display:	    	block;
     margin:		0.5em;
+}
+
+span.navitem a {
+    text-decoration:	none;
+    padding:		2px;
+}
+
+span.navitem a:hover {
+    background-color:	#eee;
+    border:		1px solid #808080;
 }
 
 div#content {
@@ -184,7 +198,7 @@ code {
 }
 
 pre.code {
-    padding: 1ex;
+    padding:		1ex;
 }
 
 blockquote {
@@ -193,11 +207,11 @@ blockquote {
 }
 
 span.type {
-   color:   #4682B4;
+    color:		#4682B4;
 }
 
 td {
-    padding:	0.5em;
+    padding:		0.5em;
 }
 
 td.code {

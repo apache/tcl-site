@@ -9,6 +9,16 @@ body {
 
 }
 
+#announces {
+/*    border-top:		2px solid black; */
+    border-bottom:	2px solid black;
+    padding:		2.0em auto;
+    font-size:		1.5em; 
+}
+
+#announces>div {
+    margin:		0.7em auto;
+}
 #bigcontainer {
     padding-right:	4em;
 }
@@ -24,7 +34,8 @@ div#pageheadline {
 }
 
 div.headline {
-    font-size:		24pt;
+    moz-box-shadow:		10px 10px 5px #888;
+    font-size:		22pt;
     text-align:		left;
     margin-left:	170px;
     padding:		0.5em;
@@ -63,6 +74,7 @@ div.navbar {
     position:	    	relative;
     padding:	    	2px;
     font-family:	Arial,sans-serif;
+    font-size:		0.8em;
 /*  border:	    	1px dashed Navy; */
 }
 
@@ -247,3 +259,7 @@ span.keyword {
 span.function-name {
 	color: #87cefa;
 } /* font-lock-function-name-face */
+
+li {
+    margin:	1em;
+}

@@ -14,16 +14,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
@@ -44,17 +34,7 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-	<title>A Shaded Table</title>
+	<title>Rivet 2.0: Release Notes and Known Problems</title>
 	<link rel="stylesheet" href="../rivet.css" />
     </head>
     <body>
@@ -65,7 +45,7 @@
 	<div id="bigcontainer"> 
 	    <div id="pageheadline">
 		<div class="decoration"><img src="../picts/Rivetlogo_smaller.png" alt="Apache Rivet" /></div>
-		<div class="headline">A Shaded Table</div>
+		<div class="headline">Rivet 2.0: Release Notes and Known Problems</div>
 	    </div>
 	    <div id="pagecontents">
 		<div class="navbar navleft"><div class="staticmenu" id="main">
@@ -94,26 +74,11 @@
         </span>
     </div>
 </div>
-<div class="staticmenu" id="examples">
-    <div class="menuheader">Examples</div>
+<div class="staticmenu" id="release">
+    <div class="menuheader">Downloads</div>
     <div class="itemcontainer">
         <span class="navitem">
-            <a href="hello_world.html" class="menuitem">Hello world!</a>
-        </span>
-        <span class="navitem">
-            <a href="shaded_table.html" class="menuitem">A shaded table</a>
-        </span>
-        <span class="navitem">
-            <a href="var_access.html" class="menuitem">Variable Access</a>
-        </span>
-        <span class="navitem">
-            <a href="file_upload.html" class="menuitem">File Upload</a>
-        </span>
-        <span class="navitem">
-            <a href="file_download.html" class="menuitem">File Download</a>
-        </span>
-        <span class="navitem">
-            <a href="ajax.html" class="menuitem">XML and Ajax</a>
+            <a href="rn-2_0_0.html" class="menuitem">Rivet 2.0</a>
         </span>
     </div>
 </div>
@@ -122,45 +87,49 @@
 		<div class="navbar navright"></div>
 		<div id="content"> 
 		    <div class="contentheadline"></div>
-		    <div><div class="example">
- <p class="title">
-  <b>Example 2. A Shaded Table</b>
- </p>
- <div class="example-contents">
-  <p style="width: 90%">In another simple example, we dynamically generate a table:</p>
-  <pre class="programlisting">&lt;?
-    puts "&lt;table&gt;\n"
-    for {set i 1} { $i &lt;= 8 } {incr i} {
-	puts "&lt;tr&gt;\n"
-	for {set j 1} {$j &lt;= 8} {incr j} {
-	    set num [ expr $i * $j * 4 - 1]
-	    puts [ format "&lt;td bgcolor=\"%02x%02x%02x\" &gt; $num $num $num &lt;/td&gt;\n" \
-		       $num $num $num ]
-	}
-	puts "&lt;/tr&gt;\n"
-    }
-    puts "&lt;/table&gt;\n"
-?&gt;
-</pre>
-  <p style="width:90%">
-			If you read the code, you can see that this is pure Tcl.  We
-			could take the same code, run it outside of Rivet, and it
-			would generate the same HTML!
-		    </p>
-  <p style="width:90%">The result should look something like this:</p>
-  <p>
-   <img src="../picts/table.png"/>
-  </p>
+		    <div><div>
+ <p>
+		    Rivet 2.0 is available for download from ASF 
+		    <a href="http://www.apache.org/dyn/closer.cgi/tcl/rivet">mirror sites</a>
+. 
+		    Rivet 2.0 has been tested on various releases of Apache taken from both Apache 1.x 
+		    and Apache 2.x server families. 
+		 </p>
+ <p>
+		    Code integrity for this release can be checked using the 
+		    public keys in the <a href="http://www.apache.org/dist/tcl/KEYS">KEYS</a>
+ file
+		 </p>
+ <div>
+  <h4>Known Problems</h4>
+  <ul>
+   <li>
+				    In <tt>INSTALL</tt>
+ the switch <i>--with-tcl=</i>
+ of <tt>configure</tt>
+ is 
+				    erroneously written as <i>--with-tclincludes</i>
+. With <i>--with-tcl=</i>
+ you tell
+				    <tt>configure</tt>
+ where the tclConfig.sh script is located
+			       </li>
+   <li>
+				    Rivet is reported to conflict with cgi scripts on some Linux machines.
+				    Symptom of the problem is when cgi scripts hang forever and don't send 
+				    any content to the client
+			    </li>
+  </ul>
  </div>
 </div>
 
 
 		    </div>
-		    <div id="last_modified">Last Modified: 24-06-2009 16:20:32 UTC</div>
+		    <div id="last_modified">Last Modified: 30-04-2010 07:25:33 UTC</div>
 		</div>
 		<div class="clearfloats"></div>
-		<!--div class="leftaligned">:$Author: $</div>
-		<div class="rightaligned">:24-06-2009 16:20:32</div-->
+		<!--div class="leftaligned">: $Author: Massimo Manghi</div>
+		<div class="rightaligned">:30-04-2010 07:25:33</div-->
 		<div>
 		    <table align="center" width="100%">
 			<tr>

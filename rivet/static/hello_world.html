@@ -138,20 +138,42 @@
  where Apache can find
 		    it, with the following content:
 		  </p>
-  <pre class="programlisting">
-&lt;?
-    puts "Hello world"
-?&gt;		</pre>
+  <pre class="programlisting">&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Hello World&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;pre&gt;
+      &lt;b&gt;&lt;? puts "Hello world" ?&gt;&lt;/b&gt;
+    &lt;/pre&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</pre>
+  <p>
+				You can obtain the same output using the <tt>
+    <a href="http://tcl.apache.org/rivet/manual/html.html">html</a>
+   </tt>
+ command of Rivet			
+			  </p>
+  <pre class="programlisting">&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Hello World&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;&lt;?
+    puts [html "Hello world" pre b]
+?&gt;&lt;/body&gt;
+&lt;/html&gt;
+</pre>
  </div>
 </div>
 
 
 		    </div>
-		    <div id="last_modified">Last Modified: 02-07-2009 15:18:02 UTC</div>
+		    <div id="last_modified">Last Modified: 02-05-2010 22:09:18 UTC</div>
 		</div>
 		<div class="clearfloats"></div>
 		<!--div class="leftaligned">:$Author: $</div>
-		<div class="rightaligned">:02-07-2009 15:18:02</div-->
+		<div class="rightaligned">:02-05-2010 22:09:18</div-->
 		<div>
 		    <table align="center" width="100%">
 			<tr>

@@ -10,7 +10,7 @@ body {
 }
 
 #announces {
-/*    border-top:		2px solid black; */
+/*  border-top:		2px solid black; */
     border-bottom:	2px solid black;
     padding:		2.0em auto;
     font-size:		1.5em; 
@@ -19,6 +19,7 @@ body {
 #announces>div {
     margin:		0.7em auto;
 }
+
 #bigcontainer {
     padding-right:	4em;
 }
@@ -34,20 +35,20 @@ div#pageheadline {
 }
 
 div.headline {
-    moz-box-shadow:		10px 10px 5px #888;
-    font-size:		22pt;
+    moz-box-shadow:	10px 10px 5px #888;
+    font-size:			22pt;
     text-align:		left;
-    margin-left:	170px;
-    padding:		0.5em;
+    margin-left:		170px;
+    padding:			0.5em;
     margin-top:		20px;
     margin-bottom:	20px;
-    position:   	relative;
+    position:   		relative;
 /*  width:		20em;		*/
-    border:		1px solid blue; 
+    border:				1px solid blue; 
 }
 
 div.decoration {
-    float:		left;
+    float:				left;
 /*  
     width:	     	100px;
     background-color: 	lightblue; 
@@ -57,24 +58,24 @@ div.decoration {
 div#pagecontents {
 /*    position:	    	absolute;	*/
     margin-top:		1em;
-    top:	    	105px;
-    left:	    	0px;
+    top:	    			105px;
+    left:	    		0px;
 /*  border:	    	1px solid green; */
 /*  width:	    	804px;		 */
 }
 
 #pagecontents img {
-     border:		1px solid black;
-     padding:		1px;
+     border:			1px solid black;
+     padding:			1px;
 }
 
 div.navbar {
 /*  width:	    	10em;		*/
-    width:		160px;
+    width:				160px;
     position:	    	relative;
     padding:	    	2px;
-    font-family:	Arial,sans-serif;
-    font-size:		0.8em;
+    font-family:		Arial,sans-serif;
+    font-size:			0.8em;
 /*  border:	    	1px dashed Navy; */
 }
 
@@ -87,7 +88,7 @@ div.navright {
 }
 
 div.staticmenu {
-    margin-top:	    	2px;
+    margin-top:	   2px;
     margin-bottom:	1em;
 /*  border:	    	1px solid blue; */
 }

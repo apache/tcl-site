@@ -88,48 +88,71 @@
 		<div id="content"> 
 		    <div class="contentheadline"></div>
 		    <div><div>
- <p>
-		    Rivet 2.0 is available for download from ASF 
-		    <a href="http://www.apache.org/dyn/closer.cgi/tcl/rivet">mirror sites</a>
+ <div>
+  <p>
+					    Rivet 2.0 is available for download from ASF 
+					    <a href="http://www.apache.org/dyn/closer.cgi/tcl/rivet">mirror sites</a>
 . 
-		    Rivet 2.0 has been tested on various releases of Apache taken from both Apache 1.x 
-		    and Apache 2.x server families. 
-		 </p>
- <p>
-		    Code integrity for this release can be checked using the 
-		    public keys in the <a href="http://www.apache.org/dist/tcl/KEYS">KEYS</a>
- file
-		 </p>
+					    Code integrity for this release can be checked using the 
+					    public keys in the <a href="http://www.apache.org/dist/tcl/KEYS">KEYS</a>
+ file.
+					  </p>
+  <p>
+						Rivet 2.0 has been tested on various releases of Apache taken from both Apache 1.x 
+					   and Apache 2.2 server families. <strong>Apache 2.2 servers must be running 
+					   <tt>prefork</tt>
+ as multiprocess model   </strong>
+ though. Rivet doesn't support yet
+					   the runtime specification for mpm currently under development in the 2.3 branch of 
+					   Apache and is incompatible with the 'worker' and 'event' MPMs.
+					  </p>
+ </div>
+ <div>
+  <h4>Installation Issues</h4>
+  <p>
+						Rivet is widely configurable to select custom directories where the module and
+						its associated libraries have to reside.
+					</p>
+  <ul>
+   <li>
+						    In <tt>INSTALL</tt>
+ the switch <i>--with-tcl=</i>
+ of <tt>configure</tt>
+ is 
+						    erroneously written as <i>--with-tclincludes</i>
+. With <i>--with-tcl=</i>
+ you tell
+						    <tt>configure</tt>
+ where the tclConfig.sh script is located
+					       </li>
+   <li>
+					    		Even though you can install Rivet to run pure Tcl scripts, some associated packages
+					    		(namely 'Session' and 'DIO') are written in Itcl, a OO extension of the base language.
+					    		In order to safely run those package, you have to check yourself if the Itcl extension
+					    		installed on your system was build for the same version of Tcl against which 
+					    		you're linking Rivet. 
+					    </li>
+  </ul>
+ </div>
  <div>
   <h4>Known Problems</h4>
   <ul>
    <li>
-				    In <tt>INSTALL</tt>
- the switch <i>--with-tcl=</i>
- of <tt>configure</tt>
- is 
-				    erroneously written as <i>--with-tclincludes</i>
-. With <i>--with-tcl=</i>
- you tell
-				    <tt>configure</tt>
- where the tclConfig.sh script is located
-			       </li>
-   <li>
-				    Rivet is reported to conflict with cgi scripts on some Linux machines.
-				    Symptom of the problem is when cgi scripts hang forever and don't send 
-				    any content to the client
-			    </li>
+						    Rivet is reported to conflict with cgi scripts on some Linux machines.
+						    Symptom of the problem is when cgi scripts hang forever and don't send 
+						    any content to the client
+					    </li>
   </ul>
  </div>
 </div>
 
 
 		    </div>
-		    <div id="last_modified">Last Modified: 30-04-2010 07:25:33 UTC</div>
+		    <div id="last_modified">Last Modified: 02-05-2010 22:09:18 UTC</div>
 		</div>
 		<div class="clearfloats"></div>
 		<!--div class="leftaligned">: $Author: Massimo Manghi</div>
-		<div class="rightaligned">:30-04-2010 07:25:33</div-->
+		<div class="rightaligned">:02-05-2010 22:09:18</div-->
 		<div>
 		    <table align="center" width="100%">
 			<tr>

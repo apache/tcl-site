@@ -58,7 +58,7 @@
 
 
 
-	<title>Hello World</title>
+	<title>Calendar </title>
 	<link rel="stylesheet" href="../css/rivet.css" />
     </head>
     <body>
@@ -69,7 +69,7 @@
 	<div id="bigcontainer"> 
 	    <div id="pageheadline">
 		<div class="decoration"><img src="../picts/Rivetlogo_smaller.png" alt="Apache Rivet" /></div>
-		<div class="headline"><headline>Hello World</headline>
+		<div class="headline"><headline>Calendar </headline>
 </div>
 	    </div>
 	    <div id="pagecontents">
@@ -131,58 +131,76 @@
 		<div id="content"> 
 		    <div class="contentheadline"></div>
 		    <div id="maincontent" style=""><div class="example">
- <a name="hello%20world"/>
  <p class="title">
-  <b>Example 1. Hello World</b>
+  <b>Example 7. The Calendar package</b>
  </p>
- <div class="example-contents">
-  <p>
-		    As with any tool, it's always nice to see something work, so
-		    let's create a small "Hello World" page.
-		</p>
-  <p>
-		    Assuming you have Apache configured correctly, create a file
-		    called <code class="filename">hello.rvt</code>
- where Apache can find
-		    it, with the following content:
-		  </p>
-  <pre class="programlisting">&lt;html&gt;
-  &lt;head&gt;
-    &lt;title&gt;Hello World&lt;/title&gt;
-  &lt;/head&gt;
-  &lt;body&gt;
-    &lt;pre&gt;
-      &lt;b&gt;&lt;? puts "Hello world" ?&gt;&lt;/b&gt;
-    &lt;/pre&gt;
-  &lt;/body&gt;
-&lt;/html&gt;
+ <p>
+					Rivet comes with a <b>Calendar</b>
+ package that provides 3 classes for printing 
+					calendar tables in various forms.       		
+      		 </p>
+ <ol>
+  <li>
+						The <b>Calendar</b>
+ class prints ascii calendar tables
+						<pre class="programlisting">package require Calendar
+
+set c [Calendar #auto]
+set c_txt [$c emit]
+puts $c_txt
+      Jul 2010
+ Su Mo Tu We Th Fr Sa 
+              1  2  3
+  4  5  6  7  8  9 10
+ 11 12 13 14 15 16 17
+ 18 19 20 21 22 23 24
+ 25 26 27 28 29 30 31
 </pre>
-  <p>
-				You can obtain the same output using the <tt>
-    <a href="http://tcl.apache.org/rivet/manual/html.html">html</a>
-   </tt>
- command of Rivet			
-			  </p>
-  <pre class="programlisting">&lt;html&gt;
-  &lt;head&gt;
-    &lt;title&gt;Hello World&lt;/title&gt;
-  &lt;/head&gt;
-  &lt;body&gt;&lt;?
-    puts [html "Hello world" pre b]
-?&gt;&lt;/body&gt;
-&lt;/html&gt;
+  </li>
+  <li>
+						The <b>XmlCalendar</b>
+ class prints a calendar table with XML markup to
+						identify different parts of the table
+					  </li>
+  <li>
+						The <b>HtmlCalendar</b>
+	class	prints an XmlCalendar whose markup has been
+						specialized to be a valid XHTML fragment. The implementation of HtmlCalendar 
+						uses the HTML 'table' tag to format the calendar. Example: the following code
+						<pre class="programlisting">package require Calendar
+
+proc ::cal_cell_attributes { day month year weekday } {
+    if {$weekday == 3} {
+        return [list class curr_wkday]
+    }
+}
+
+set htmlc [HtmlCalendar #auto]
+set html_txt [$htmlc emit -container {table class calendar} -current_weekday 3 \
+                          -cell_function cal_cell_attributes ]
+puts $html_txt
 </pre>
- </div>
+
+						with some CSS styling would print
+						<p>
+    <img src="../picts/calendar.png"/>
+   </p>
+   <p>
+							See the <a href="../manual/calendar_package.html">manual page</a>
+ for package Calendar for further reading						
+						   </p>
+  </li>
+ </ol>
 </div>
 
 
 
 		    </div>
-		    <div id="last_modified">Last Modified: 05-05-2010 14:45:12 UTC</div>
+		    <div id="last_modified">Last Modified: 12-07-2010 18:51:47 UTC</div>
 		</div>
 		<div class="clearfloats"></div>
-		<!--div class="leftaligned">:$Author: $</div>
-		<div class="rightaligned">:05-05-2010 14:45:12</div-->
+		<!--div class="leftaligned">:$Author: massimo.manghi $</div>
+		<div class="rightaligned">:12-07-2010 18:51:47</div-->
 		<div>
 		    <table align="center" width="100%">
 			<tr>

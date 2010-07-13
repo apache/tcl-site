@@ -278,3 +278,7 @@ div.sez {
 div.sez h4 {
     margin-top:	    0.5em;
 }
+
+span.timestamp {
+	font-size:	80%;	
+}

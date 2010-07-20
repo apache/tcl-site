@@ -185,57 +185,36 @@
 			    composers of the european music. This array plays the role of a database. The script sends back to the 
 			    client two types of responses: a catalog of the composers or a single record of a composer.
 			</p>
-   <pre class="programlisting"># The database array contains xml fragments representing the
-# results of queries to a database. Many databases are now able
-# to produce the results of a query in XML. 
-#
-#array unset composer
-#
-set     composer(1)     "&lt;composer&gt;\n"
-append  composer(1)     "    &lt;first_name&gt;Claudio&lt;/first_name&gt;\n"
-append  composer(1)     "    &lt;last_name&gt;Monteverdi&lt;/last_name&gt;\n"
-append  composer(1)     "    &lt;lifespan&gt;1567-1643&lt;/lifespan&gt;\n"
-append  composer(1)     "    &lt;era&gt;Renaissance/Baroque&lt;/era&gt;\n"
-append  composer(1)     "    &lt;key&gt;1&lt;/key&gt;\n"
-append  composer(1)     "&lt;/composer&gt;\n"
+   <pre class="programlisting">#
+# Ajax query servelet: a pseudo database is built into the dictionary 'composers' with the
+# purpose of emulating the role of a real data source. 
+# The script answers with  2 types of responses: a catalog of the record ids and a database 
+# entry matching a given rec_id. The script obviously misses the error handling and the
+# likes. Just an example to see rivet sending xml data to a browser. The full Tcl, JavaScript
+# and HTML code are available from http://people.apache.org/~mxmanghi/rivet-ajax.tar.gz
 
-set     composer(2)     "&lt;composer&gt;\n"
-append  composer(2)     "    &lt;first_name&gt;Johann Sebastian&lt;/first_name&gt;\n"
-append  composer(2)     "    &lt;last_name&gt;Bach&lt;/last_name&gt;\n"
-append  composer(2)     "    &lt;lifespan&gt;1685-1750&lt;/lifespan&gt;\n"
-append  composer(2)     "    &lt;era&gt;Baroque&lt;/era&gt;\n"
-append  composer(2)     "    &lt;key&gt;2&lt;/key&gt;\n"
-append  composer(2)     "&lt;/composer&gt;\n"
+# This example requires Tcl8.5 or Tcl8.4 with package 'dict' 
+# (http://pascal.scheffers.net/software/tclDict-8.5.2.tar.gz)
+# 
 
-set     composer(3)     "&lt;composer&gt;\n"
-append  composer(3)     "    &lt;first_name&gt;Ludwig&lt;/first_name&gt;\n"
-append  composer(3)     "    &lt;last_name&gt;van Beethoven&lt;/last_name&gt;\n"
-append  composer(3)     "    &lt;lifespan&gt;1770-1827&lt;/lifespan&gt;\n"
-append  composer(3)     "    &lt;era&gt;Romantic&lt;/era&gt;\n"
-append  composer(3)     "    &lt;key&gt;3&lt;/key&gt;\n"
-append  composer(3)     "&lt;/composer&gt;\n"
+# A pseudo database. rec_id matches a record in the db
 
-set     composer(4)     "&lt;composer&gt;\n"
-append  composer(4)     "    &lt;first_name&gt;Wolfgang Amadaeus&lt;/first_name&gt;\n"
-append  composer(4)     "    &lt;last_name&gt;Mozart&lt;/last_name&gt;\n"
-append  composer(4)     "    &lt;lifespan&gt;1756-1791&lt;/lifespan&gt;\n"
-append  composer(4)     "    &lt;era&gt;Classical&lt;/era&gt;\n"
-append  composer(4)     "    &lt;key&gt;4&lt;/key&gt;\n"
-append  composer(4)     "&lt;/composer&gt;\n"
-
-set     composer(5)     "&lt;composer&gt;\n"
-append  composer(5)     "    &lt;first_name&gt;Robert&lt;/first_name&gt;\n"
-append  composer(5)     "    &lt;last_name&gt;Schumann&lt;/last_name&gt;\n"
-append  composer(5)     "    &lt;lifespan&gt;1810-1856&lt;/lifespan&gt;\n"
-append  composer(5)     "    &lt;era&gt;Romantic&lt;/era&gt;\n"
-append  composer(5)     "    &lt;key&gt;5&lt;/key&gt;\n"
-append  composer(5)     "&lt;/composer&gt;\n"
+set composers [dict create  1 {first_name Claudio middle_name "" last_name Monteverdi	\
+			       lifespan 1567-1643 era Renaissance/Baroque}		\
+			    2 {first_name Johann middle_name Sebastian last_name Bach	\
+			       lifespan 1685-1750 era Baroque }				\
+			    3 {first_name Ludwig middle_name "" last_name "van Beethoven" \
+			       lifespan 1770-1827 era Classical/Romantic}		\
+			    4 {first_name Wolfgang middle_name Amadeus last_name Mozart	\
+				lifespan 1756-1791 era Classical }			\
+			    5 {first_name Robert middle_name "" last_name Schumann	\
+				lifespan 1810-1856 era Romantic} ]
 
 # we use the 'load' argument in order to determine the type of query
 #
-# load=catalog:             we have to return a list of the names in the database
+# load=catalog:		    we have to return a list of the names in the database
 # load=composer&amp;res_id=&lt;id&gt;: the script is supposed to return the record
-#                           having &lt;id&gt; as record id
+#			    having &lt;id&gt; as record id
 
 if {[var exists load]} {
 
@@ -243,24 +222,34 @@ if {[var exists load]} {
 
     set xml "&lt;?xml version=\"1.0\" encoding=\"ISO-8859-1\"?&gt;\n"
     switch [var get load] {
-        catalog {
-            append xml "&lt;catalog&gt;\n"
-            foreach nm [array names composer] {
-                if {[regexp {&lt;last_name&gt;(.+)&lt;/last_name&gt;}   $composer($nm) m last_name] &amp;&amp; \
-                    [regexp {&lt;first_name&gt;(.+)&lt;/first_name&gt;} $composer($nm) m first_name]} {
-                    append xml "    &lt;composer key='$nm'&gt;$first_name $last_name&lt;/composer&gt;\n"
-                }
-            }
-            append xml "&lt;/catalog&gt;"
-        }
-        composer {
-            if {[var exists rec_id]} {
-                set rec_id [var get rec_id]
-                if {[info exists composer($rec_id)]} {
-                    append xml $composer($rec_id)
-                }
-            }
-        }
+	catalog {
+	    append xml "&lt;catalog&gt;\n"
+	    foreach nm [dict keys $composers] {
+		set first_name [dict get $composers $nm first_name]
+		set middle_name [dict get $composers $nm middle_name]
+		set last_name  [dict get $composers $nm last_name]
+	        append xml "    &lt;composer key=\"$nm\"&gt;$first_name "
+		if {[string length [string trim $middle_name]] &gt; 0} {
+		    append xml "$middle_name "
+		}
+		append xml "$last_name&lt;/composer&gt;\n"
+	    }
+	    append xml "&lt;/catalog&gt;\n"
+	}
+	composer {
+	    append xml "&lt;composer&gt;\n"
+	    if {[var exists rec_id]} {
+		set rec_id [var get rec_id]
+		if {[dict exists $composers $rec_id]} {
+
+		    foreach {k v} [dict get $composers $rec_id] {
+			append xml "&lt;$k&gt;$v&lt;/$k&gt;\n"
+		    }
+
+		}
+	    }
+	    append xml "&lt;/composer&gt;\n"
+	}
     }
 
 # we have to tell the client this is an XML message. Failing to do so
@@ -274,12 +263,16 @@ if {[var exists load]} {
 </pre>
    <p>
 			    For sake of brevity the JavaScript and HTML will not listed here. They can be downloaded (along with the Tcl 
-			    script) stored in the <a href="http://people.apache.org/~mxmanghi/rivet-ajax.tar.gz">rivet-ajax.tar.gz</a>
+			    script) stored in the 
+			    <a href="http://people.apache.org/~mxmanghi/rivet-ajax.tar.gz">rivet-ajax.tar.gz</a>
  archive. 
 			    By simply opening this tar archive in a directory accessible 
 			    by your apache server and pointing your browser to the rivetService.html page you should see a page with a 
 			    drop-down list. Every time a different name is picked from the list a new query is sent and logged in the 
-			    apache access.log file, even though the html is never reloaded.
+			    apache access.log file, even though the html is never reloaded. This example requires Tcl8.5 or Tcl8.4 with 
+			    <a href="http://pascal.scheffers.net/software/tclDict-8.5.2.tar.gz" target="_blank">package 'dict'</a>
+ 
+			    installed
 			   </p>
   </p>
  </div>
@@ -288,11 +281,11 @@ if {[var exists load]} {
 
 
 		    </div>
-		    <div id="last_modified">Last Modified: 05-05-2010 14:45:12 UTC</div>
+		    <div id="last_modified">Last Modified: 20-07-2010 13:11:09 UTC</div>
 		</div>
 		<div class="clearfloats"></div>
 		<!--div class="leftaligned">:$Author: </div>
-		<div class="rightaligned">:05-05-2010 14:45:12</div-->
+		<div class="rightaligned">:20-07-2010 13:11:09</div-->
 		<div>
 		    <table align="center" width="100%">
 			<tr>

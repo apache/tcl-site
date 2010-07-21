@@ -181,8 +181,8 @@
   <p>
    <b style="border-bottom: 1px solid black;">Browsing a database of classical music composers</b>
    <p>
-			    In this example a Rivet script initializes an array with the essential data regarding a few of the major 
-			    composers of the european music. This array plays the role of a database. The script sends back to the 
+			    In this example a Rivet script fills a Tcl dictionary with the essential data regarding a few of the major 
+			    composers of the european music. This dictionary plays the role of a database. The script sends back to the 
 			    client two types of responses: a catalog of the composers or a single record of a composer.
 			</p>
    <pre class="programlisting">#
@@ -262,14 +262,21 @@ if {[var exists load]} {
 
 </pre>
    <p>
-			    For sake of brevity the JavaScript and HTML will not listed here. They can be downloaded (along with the Tcl 
-			    script) stored in the 
+			    For sake of brevity the JavaScript and HTML will not listed here. 
+			    The whole example is at 
 			    <a href="http://people.apache.org/~mxmanghi/rivet-ajax.tar.gz">rivet-ajax.tar.gz</a>
- archive. 
-			    By simply opening this tar archive in a directory accessible 
-			    by your apache server and pointing your browser to the rivetService.html page you should see a page with a 
-			    drop-down list. Every time a different name is picked from the list a new query is sent and logged in the 
-			    apache access.log file, even though the html is never reloaded. This example requires Tcl8.5 or Tcl8.4 with 
+. 
+			    By simply opening this tar archive in a directory accessible by your apache server and 
+			    pointing your browser to <em>rivetService.html</em>
+ you should see a page with a 
+			    drop-down list. Every time a different name is picked from the list a new query is sent and 
+			    the data displayed on the page updated accordingly even though the whole html never gets 
+			    reloaded.
+			    The background exchange between browser and apache rivet can be observed looking at
+			    the apache log file. 
+			   </p>
+   <p>
+			    This example requires Tcl8.5 or Tcl8.4 with 
 			    <a href="http://pascal.scheffers.net/software/tclDict-8.5.2.tar.gz" target="_blank">package 'dict'</a>
  
 			    installed
@@ -281,11 +288,11 @@ if {[var exists load]} {
 
 
 		    </div>
-		    <div id="last_modified">Last Modified: 20-07-2010 13:11:09 UTC</div>
+		    <div id="last_modified">Last Modified: 21-07-2010 13:12:10 UTC</div>
 		</div>
 		<div class="clearfloats"></div>
 		<!--div class="leftaligned">:$Author: </div>
-		<div class="rightaligned">:20-07-2010 13:11:09</div-->
+		<div class="rightaligned">:21-07-2010 13:12:10</div-->
 		<div>
 		    <table align="center" width="100%">
 			<tr>

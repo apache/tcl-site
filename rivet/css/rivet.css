@@ -6,7 +6,7 @@
 }
 
 body {
-
+    background:		white;
 }
 
 #announces {
@@ -33,6 +33,12 @@ div#pageheadline {
 /*  border:		1px solid red;	*/
 /*  width:		805px;		*/
 }
+
+#pageheadline a:link {
+    margin:	0;
+    padding:	2px;
+}
+
 
 div.headline {
     moz-box-shadow:	10px 10px 5px #888;

@@ -210,10 +210,10 @@ ul {
 }
 
 code {
-    margin:		1em 2em;
-    border:		1px dashed black;
+    border-bottom:	1px dashed black;
     background-color:	#f0f0f0;
-    padding:		0.2em 2em;
+    padding:		2px;
+    font-style:		fixed;
 }
 
 pre.code {

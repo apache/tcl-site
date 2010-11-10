@@ -160,17 +160,19 @@
 &lt;/html&gt;
 </pre>
   <p>
-				You can obtain the same output using the <tt>
+				The example can be elaborated, for example using the <tt>
     <a href="http://tcl.apache.org/rivet/manual/html.html">html</a>
    </tt>
- command of Rivet			
+ command			
 			  </p>
-  <pre class="programlisting">&lt;html&gt;
+  <pre class="programlisting">
+&lt;? set hello_message "Hello world" ?&gt;
+&lt;html&gt;
   &lt;head&gt;
-    &lt;title&gt;Hello World&lt;/title&gt;
+    &lt;title&gt;&lt;? puts $hello_message ?&gt;&lt;/title&gt;
   &lt;/head&gt;
   &lt;body&gt;&lt;?
-    puts [html "Hello world" pre b]
+    puts [html $hello_message pre b]
 ?&gt;&lt;/body&gt;
 &lt;/html&gt;
 </pre>
@@ -180,11 +182,11 @@
 
 
 		    </div>
-		    <div id="last_modified">Last Modified: 20-07-2010 13:11:09 UTC</div>
+		    <div id="last_modified">Last Modified: 08-11-2010 13:51:27 UTC</div>
 		</div>
 		<div class="clearfloats"></div>
 		<!--div class="leftaligned">:$Author: massimo.manghi $</div>
-		<div class="rightaligned">:20-07-2010 13:11:09</div-->
+		<div class="rightaligned">:08-11-2010 13:51:27</div-->
 		<div>
 		    <table align="center" width="100%">
 			<tr>

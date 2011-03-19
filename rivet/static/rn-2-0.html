@@ -117,18 +117,70 @@
 			      </p>
  </div>
  <div class="sez">
+  <h4>Release Notes for Rivet 2.0.3 <span class="timestamp">(19-Mar-2011)</span>
+  </h4>
+  <p>
+   <h5>New Features</h5>
+  </p>
+  <p>
+				        Rivet 2.0.3 introduces 2 new configuration directives
+				        <ul>
+    <li>
+				                New configuration directive <strong>AbortScript</strong>
+: 
+				                Tcl script to be run if a <b>abort_page</b>
+ is called 
+				                in a request processing
+				                </li>
+    <li>
+     <strong>AfterEveryScript</strong>
+: A <b>abort_page</b>
+ command stops the
+				                page generation and skips also a configured <strong>AfterScript</strong>
+. 
+				                This new configuration script is to be run anyway, even when
+				                an abort condition takes place, as last script of a single request processing.
+				                </li>
+    <li>
+				                Enhanced form for <strong>abort_page</strong>
+: page generation can
+				                be interrupted by calling <strong>abort_page</strong>
+. The new command 
+				                accepts now an argument whose value can be checked to determine which
+				                condition forced to call the page generation off.
+				                </li>
+    <li>
+				                New command <strong>abort_code</strong>
+: return the value of the
+				                argument passed to <strong>abort_page</strong>
+. Useful in <b>AbortScript</b>
+
+				                or <b>AfterEveryScript</b>
+ code.
+				                </li>
+   </ul>
+  </p>
+  <p>
+   <h5>Problems fixed</h5>
+  </p>
+  <p>
+				        Code for command <strong>apache_table</strong>
+ was ported to Rivet for Apache 1.3
+				      </p>
+ </div>
+ <div class="sez">
   <h4>Release Notes for Rivet 2.0.2 <span class="timestamp">(25-Oct-2010)</span>
   </h4>
   <p>
-					Rivet 2.0.2 is a maintainance release with the main purpose to adjust the 
-					build process in a way that makes straightforward the generation of a Debian package.
+					   Rivet 2.0.2 is a maintainance release with the main purpose to adjust the 
+					   build process in a way that makes straightforward the generation of a Debian package.
 				    </p>
   <p>
-					Rivet (named 
-					<a href="http://packages.qa.debian.org/liba/libapache2-mod-rivet.html">libapache2-mod-rivet</a>
+					   Rivet (named 
+					   <a href="http://packages.qa.debian.org/liba/libapache2-mod-rivet.html">libapache2-mod-rivet</a>
  
-					to follow the Debian Apache policy) is now in Debian.
-					The package is sponsored by Sven Hoexter (Debian Developer). 
+					   to follow the Debian Apache policy) is now in Debian.
+					   The package is sponsored by Sven Hoexter (Debian Developer). 
 				      </p>
  </div>
  <div class="sez">
@@ -214,11 +266,11 @@ ALTER TABLE rivet_session_cache RENAME COLUMN package to package_</pre>
 
 
 		    </div>
-		    <div id="last_modified">Last Modified: 03-12-2010 09:53:14 UTC</div>
+		    <div id="last_modified">Last Modified: 19-03-2011 17:35:20 UTC</div>
 		</div>
 		<div class="clearfloats"></div>
 		<!--div class="leftaligned">: $Author: Massimo Manghi</div>
-		<div class="rightaligned">:03-12-2010 09:53:14</div-->
+		<div class="rightaligned">:19-03-2011 17:35:20</div-->
 		<div>
 		    <table align="center" width="100%">
 			<tr>

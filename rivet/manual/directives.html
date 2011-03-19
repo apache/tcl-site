@@ -6,7 +6,7 @@
       <span style="font-family:monospace"><span class="command"><strong>RivetServerConf</strong></span></span>, meaning that DirConf will
       override UserConf, which will in turn override ServerConf.
     </p><div class="variablelist"><dl><dt><span class="term">
-	  <div class="cmdsynopsis" style="width:80%"><div style="background:#ccccff ; margin:1ex ; padding:.4ex; padding-left: 0.8ex;   word-spacing:1ex "><span style="font-weight:bold ; font-family:monospace">RivetServerConf</span>  (<span style="font-family:monospace; font-weight: bold;">CacheSize</span> | <span style="font-family:monospace; font-weight: bold;">GlobalInitScript</span> | <span style="font-family:monospace; font-weight: bold;">ChildInitScript</span> | <span style="font-family:monospace; font-weight: bold;">ChildExitScript</span> | <span style="font-family:monospace; font-weight: bold;">BeforeScript</span> | <span style="font-family:monospace; font-weight: bold;">AfterScript</span> | <span style="font-family:monospace; font-weight: bold;">ErrorScript</span> | <span style="font-family:monospace; font-weight: bold;">UploadDirectory</span> | <span style="font-family:monospace; font-weight: bold;">UploadMaxSize</span> | <span style="font-family:monospace; font-weight: bold;">UploadFilesToVar</span> | <span style="font-family:monospace; font-weight: bold;">SeparateVirtualInterps</span> | <span style="font-family:monospace; font-weight: bold;">HonorHeaderOnlyRequests</span>)</div></div>
+	  <div class="cmdsynopsis" style="width:80%"><div style="background:#ccccff ; margin:1ex ; padding:.4ex; padding-left: 0.8ex;   word-spacing:1ex "><span style="font-weight:bold ; font-family:monospace">RivetServerConf</span>  (<span style="font-family:monospace; font-weight: bold;">CacheSize</span> | <span style="font-family:monospace; font-weight: bold;">GlobalInitScript</span> | <span style="font-family:monospace; font-weight: bold;">ChildInitScript</span> | <span style="font-family:monospace; font-weight: bold;">ChildExitScript</span> | <span style="font-family:monospace; font-weight: bold;">BeforeScript</span> | <span style="font-family:monospace; font-weight: bold;">AfterScript</span> | <span style="font-family:monospace; font-weight: bold;">ErrorScript</span> | <span style="font-family:monospace; font-weight: bold;">AbortScript</span> | <span style="font-family:monospace; font-weight: bold;">AfterEveryScript</span> | <span style="font-family:monospace; font-weight: bold;">UploadDirectory</span> | <span style="font-family:monospace; font-weight: bold;">UploadMaxSize</span> | <span style="font-family:monospace; font-weight: bold;">UploadFilesToVar</span> | <span style="font-family:monospace; font-weight: bold;">SeparateVirtualInterps</span> | <span style="font-family:monospace; font-weight: bold;">HonorHeaderOnlyRequests</span>)</div></div>
 	</span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:1.5ex ; padding .5ex"><span style="font-family:monospace"><span class="command"><strong>RivetServerConf</strong></span></span> specifies a global
 	    option that is valid for the whole server.  If you have a
 	    virtual host, in some cases, the option specified in the
@@ -94,6 +94,27 @@
 		  In virtual hosts, this option takes precedence over
 		  the global setting.
 		</div></div></dd><dt><span class="term">
+				<div class="cmdsynopsis" style="width:80%"><div style="background:#ccccff ; margin:1ex ; padding:.4ex; padding-left: 0.8ex;   word-spacing:1ex "> <span style="font-family:monospace; font-weight: bold;">AfterEveryScript</span>  ?<span style="font-family:monospace; font-weight: bold;"><em class="replaceable"><code>script</code></em></span>?</div></div>
+	      </span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:1.5ex ; padding .5ex">
+					AfterEveryScript is a script that is to
+					be run anyway before requests processing ends. This script
+					is therefore run both when the content generation script
+					completes successfully and when its execution is interrupted
+					by <a class="xref" href="abort_page.html" title="abort_page">abort_page</a>. The code in this script
+					can tell whether we are running after an abort condition
+					occurred by passing the argument  ?<span style="font-family:monospace; font-weight: bold;">-aborting</span>? to
+					<a class="xref" href="abort_page.html" title="abort_page">abort_page</a> which in turn returns 1 if
+					abort_page had been called earlier in the request processing.
+				</div></div></dd><dt><span class="term">
+				<div class="cmdsynopsis" style="width:80%"><div style="background:#ccccff ; margin:1ex ; padding:.4ex; padding-left: 0.8ex;   word-spacing:1ex "> <span style="font-family:monospace; font-weight: bold;">AbortScript</span>  ?<span style="font-family:monospace; font-weight: bold;"><em class="replaceable"><code>script</code></em></span>?</div></div>
+			</span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:1.5ex ; padding .5ex">
+					Execution of a content generating script can be
+					done by invoking <a class="xref" href="abort_page.html" title="abort_page">abort_page</a>. When 
+					an AbortScript is defined for the page
+					being generated, control is passed to it as a way
+					to undertake specific action that might be necessary
+					to catch resources left dangling by the sudden interruption.				
+				</div></div></dd><dt><span class="term">
 		<div class="cmdsynopsis" style="width:80%"><div style="background:#ccccff ; margin:1ex ; padding:.4ex; padding-left: 0.8ex;   word-spacing:1ex "> <span style="font-family:monospace; font-weight: bold;">UploadDirectory</span>  ?<span style="font-family:monospace; font-weight: bold;"><em class="replaceable"><code>directory</code></em></span>?</div></div>
 	      </span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:1.5ex ; padding .5ex">Directory to place uploaded files.</div><div style="margin-bottom:1.5ex ; padding .5ex">
 		  In virtual hosts, this option takes precedence over

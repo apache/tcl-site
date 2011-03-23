@@ -128,18 +128,22 @@
     <li>
 				                New configuration directive <strong>AbortScript</strong>
 : 
-				                Tcl script to be run if a <b>abort_page</b>
+				                Tcl script to be run if an <b>abort_page</b>
  is called 
 				                in a request processing
 				                </li>
     <li>
-     <strong>AfterEveryScript</strong>
-: A <b>abort_page</b>
+						New configuration directive 
+				                <strong>AfterEveryScript</strong>
+: An <b>abort_page</b>
  command stops the
 				                page generation and skips also a configured <strong>AfterScript</strong>
-. 
-				                This new configuration script is to be run anyway, even when
-				                an abort condition takes place, as last script of a single request processing.
+ to
+						run an <strong>AbortScript</strong>
+. This new configuration script is to 
+						be run anyway, as last script of a single request processing, 
+						whether an abort condition took place during the page
+						generation or the procedure completed successfully.
 				                </li>
     <li>
 				                Enhanced form for <strong>abort_page</strong>
@@ -151,7 +155,7 @@
 				                </li>
     <li>
 				                New command <strong>abort_code</strong>
-: return the value of the
+ returns the value of the
 				                argument passed to <strong>abort_page</strong>
 . Useful in <b>AbortScript</b>
 
@@ -266,11 +270,11 @@ ALTER TABLE rivet_session_cache RENAME COLUMN package to package_</pre>
 
 
 		    </div>
-		    <div id="last_modified">Last Modified: 19-03-2011 17:35:20 UTC</div>
+		    <div id="last_modified">Last Modified: 23-03-2011 08:32:58 UTC</div>
 		</div>
 		<div class="clearfloats"></div>
 		<!--div class="leftaligned">: $Author: Massimo Manghi</div>
-		<div class="rightaligned">:19-03-2011 17:35:20</div-->
+		<div class="rightaligned">:23-03-2011 08:32:58</div-->
 		<div>
 		    <table align="center" width="100%">
 			<tr>

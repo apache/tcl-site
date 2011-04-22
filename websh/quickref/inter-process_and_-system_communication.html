@@ -1,11 +1,11 @@
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>Inter-process/-system communication</title><meta name="generator" content="DocBook XSL Stylesheets V1.75.1"><link rel="home" href="index.html" title="Websh Reference 3.6.0b5"><link rel="up" href="index.html" title="Websh Reference 3.6.0b5"><link rel="prev" href="uri-html-_en-decoding.html" title="Uri-/html- en-/decoding"><link rel="next" href="Apache_module_specific_commands.html" title="Apache module specific commands"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Inter-process/-system communication</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="uri-html-_en-decoding.html">Prev</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="Apache_module_specific_commands.html">Next</a></td></tr></table><hr></div><div class="section" title="Inter-process/-system communication"><div class="titlepage"><div><div><hr><h2 class="title" style="clear: both"><a name="inter-process_and_-system_communication"></a>Inter-process/-system communication</h2></div></div></div><p style="width:90%">
-      Send to and receive from sockets.
-    </p><div class="section" title="web::send"><div class="titlepage"><div><div><h3 class="title"><a name="web::send"></a>web::send</h3></div></div></div><p style="width:90%">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>Inter-process/-system communication</title><meta name="generator" content="DocBook XSL Stylesheets V1.75.1"><link rel="home" href="index.html" title="Websh Reference 3.6.0b5"><link rel="up" href="index.html" title="Websh Reference 3.6.0b5"><link rel="prev" href="uri-html-_en-decoding.html" title="Uri-/html- en-/decoding"><link rel="next" href="Apache_module_specific_commands.html" title="Apache module specific commands"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Inter-process/-system communication</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="uri-html-_en-decoding.html">Prev</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="Apache_module_specific_commands.html">Next</a></td></tr></table><hr></div><div class="section" title="Inter-process/-system communication"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="inter-process_and_-system_communication"></a>Inter-process/-system communication</h2></div></div></div><p style="width:90%">
+      Sends to and receives from sockets.
+    </p><div class="section" title="web::send"><div class="titlepage"><div><div><h3 class="title"><a name="web::send"></a><span style="font-family:monospace"><span class="command"><strong>web::send</strong></span></span></h3></div></div></div><p style="width:90%">
 
 
 	</p><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><code class="command">web::send</code></span>  <em class="replaceable"><code>channel</code></em> <em class="replaceable"><code>cmdNr</code></em> <em class="replaceable"><code>message</code></em> ?<em class="replaceable"><code>flags</code></em>?</span></div><p style="width:90%">
 
-	Send the command
+	Sends the command
 	<tt><em class="replaceable"><code>cmdNr</code></em></tt> and the
 	message <tt><em class="replaceable"><code>message</code></em></tt> to
 	channel
@@ -21,7 +21,7 @@
 	<tt>multiple</tt> or <tt>noflush</tt> with the
 	same meaning, indicating that there is more to follow and no
 	automatic flush on the channel should be done.
-      </p></div><div class="section" title="web::recv"><div class="titlepage"><div><div><h3 class="title"><a name="web::recv"></a>web::recv</h3></div></div></div><p style="width:90%">
+      </p></div><div class="section" title="web::recv"><div class="titlepage"><div><div><h3 class="title"><a name="web::recv"></a><span style="font-family:monospace"><span class="command"><strong>web::recv</strong></span></span></h3></div></div></div><p style="width:90%">
 
 
 	</p><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><code class="command">web::recv</code></span>  <em class="replaceable"><code>channel</code></em> <em class="replaceable"><code>cmdVarName</code></em> <em class="replaceable"><code>msgVarName</code></em> <em class="replaceable"><code>flagVarName</code></em></span></div><p style="width:90%">
@@ -29,25 +29,25 @@
 	Receives a message from <tt>channelName</tt>. The
 	other arguments are the names of the corresponding variables
 	which will contain the message.  The flags are returned
-	numeric. (To handle these flags, use the web::msgflag
-	function).
+	numeric. (To handle these flags, use the 
+	<span style="font-family:monospace"><span class="command"><strong>web::msgflag</strong></span></span>	function).
 
-      </p></div><div class="section" title="web::msgflag"><div class="titlepage"><div><div><h3 class="title"><a name="web::msgflag"></a>web::msgflag</h3></div></div></div><p style="width:90%">
+      </p></div><div class="section" title="web::msgflag"><div class="titlepage"><div><div><h3 class="title"><a name="web::msgflag"></a><span style="font-family:monospace"><span class="command"><strong>web::msgflag</strong></span></span></h3></div></div></div><p style="width:90%">
 
 	</p><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><code class="command">web::msgflag</code></span>  ?<em class="replaceable"><code>flags</code></em>? ?<em class="replaceable"><code>testflags</code></em>?</span></div><p style="width:90%">
 
-	Set or test flags.
+	Sets or tests flags.
 
 	</p><div class="variablelist"><dl><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><span class="command"><strong>web::msgflag</strong></span></span></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
-		returns a list of all known message flags.
+		Returns a list of all known message flags.
 	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><span class="command"><strong>web::msgflag</strong></span></span>
 	      <tt><em class="replaceable"><code>flags</code></em></tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
-		returns the integer representation of the flags listed
+		Returns the integer representation of the flags listed
 		in <tt>flags</tt>.
 	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><span class="command"><strong>web::msgflag</strong></span></span>
 	      <tt><em class="replaceable"><code>flags</code></em></tt>
 	      <tt><em class="replaceable"><code>testflags</code></em></tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
-		returns 1, if the flags in <tt>testflags</tt>
+		Returns 1, if the flags in <tt>testflags</tt>
 		are set in <tt>flags</tt>.
 	      </div></div></dd></dl></div><p style="width:90%">
 

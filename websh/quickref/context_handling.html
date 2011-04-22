@@ -1,4 +1,4 @@
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>Context handling</title><meta name="generator" content="DocBook XSL Stylesheets V1.75.1"><link rel="home" href="index.html" title="Websh Reference 3.6.0b5"><link rel="up" href="index.html" title="Websh Reference 3.6.0b5"><link rel="prev" href="logging.html" title="Logging"><link rel="next" href="file_handling_and_file_IO.html" title="File handling and file I/O"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Context handling</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="logging.html">Prev</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="file_handling_and_file_IO.html">Next</a></td></tr></table><hr></div><div class="section" title="Context handling"><div class="titlepage"><div><div><hr><h2 class="title" style="clear: both"><a name="context_handling"></a>Context handling</h2></div></div></div><div class="section" title="web::context"><div class="titlepage"><div><div><h3 class="title"><a name="web::context"></a>web::context</h3></div></div></div><p style="width:90%">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>Context handling</title><meta name="generator" content="DocBook XSL Stylesheets V1.75.1"><link rel="home" href="index.html" title="Websh Reference 3.6.0b5"><link rel="up" href="index.html" title="Websh Reference 3.6.0b5"><link rel="prev" href="logging.html" title="Logging"><link rel="next" href="file_handling_and_file_IO.html" title="File handling and file I/O"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Context handling</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="logging.html">Prev</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="file_handling_and_file_IO.html">Next</a></td></tr></table><hr></div><div class="section" title="Context handling"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="context_handling"></a>Context handling</h2></div></div></div><div class="section" title="web::context"><div class="titlepage"><div><div><h3 class="title"><a name="web::context"></a><span style="font-family:monospace"><span class="command"><strong>web::context</strong></span></span></h3></div></div></div><p style="width:90%">
 	Creation
 	</p><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><code class="command">web::context</code></span>  <em class="replaceable"><code>name</code></em></span></div><p style="width:90%">
 	Creates a namespace <tt>name</tt> with the following
@@ -18,50 +18,51 @@
 
 	</p><div class="variablelist"><dl><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><span class="command"><strong><em class="replaceable"><code>name</code></em>::cset</strong></span></span>
 	      <tt><em class="replaceable"><code>key</code></em></tt> <tt><em class="replaceable"><code>value</code></em></tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
-		store <tt>value</tt>.
+		Set <tt>key</tt> to <tt>value</tt>.
 	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><span class="command"><strong><em class="replaceable"><code>name</code></em>::cappend</strong></span></span>
 	      <tt><em class="replaceable"><code>key</code></em></tt> <tt><em class="replaceable"><code>value</code></em></tt>
 	      ?<span class="optional"><tt><em class="replaceable"><code>value</code></em></tt></span>?
 	      ?<span class="optional"><tt><em class="replaceable"><code>...</code></em></tt></span>?</span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
-		append <tt>value</tt> to existing value for
+		Appends <tt>value</tt> to existing value for
 		<tt>key</tt>.
 	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><span class="command"><strong><em class="replaceable"><code>name</code></em>::clappend</strong></span></span>
 	      <tt><em class="replaceable"><code>key</code></em></tt> <tt><em class="replaceable"><code>value</code></em></tt>
 	      ?<span class="optional"><tt><em class="replaceable"><code>value</code></em></tt></span>?
 	      ?<span class="optional"><tt><em class="replaceable"><code>...</code></em></tt></span>?</span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
-		append <tt>value</tt> to existing list of
+		Appends <tt>value</tt> to existing list of
 		values for <tt>key</tt>.
 	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><span class="command"><strong><em class="replaceable"><code>name</code></em>::cget</strong></span></span>
 	      <tt><em class="replaceable"><code>key</code></em></tt>
 	      ?<span class="optional"><tt><em class="replaceable"><code>default</code></em></tt></span>?</span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
-		access the value for key <tt>key</tt>, or
-		return <tt>default</tt> if
+		Accesses the value for key <tt>key</tt>, or
+		returns <tt>default</tt> if
 		<tt>key</tt> does not exist in the context. If
 		<tt>default</tt> is omitted, an empty string
 		is returned if <tt>key</tt> is unknown.
 	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><span class="command"><strong><em class="replaceable"><code>name</code></em>::cexists</strong></span></span>
 	      <tt><em class="replaceable"><code>key</code></em></tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
-		returns true (1) if <tt>key</tt> exists in
+		Returns true (1) if <tt>key</tt> exists in
 		context, false (0) otherwise.
 	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><span class="command"><strong><em class="replaceable"><code>name</code></em>::cunset</strong></span></span>
 	      <tt><em class="replaceable"><code>key</code></em></tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
-		remove <tt>key</tt> from context.
+		Removes <tt>key</tt> from context.
 	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><span class="command"><strong><em class="replaceable"><code>name</code></em>::carray</strong></span></span>
 	      <tt><em class="replaceable"><code>option</code></em></tt> <tt><em class="replaceable"><code>key</code></em></tt>
 	      <tt><em class="replaceable"><code>arg</code></em></tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
-		array manipulation as known from the Tcl command
+		Array manipulation as known from the Tcl command
 		<span class="emphasis"><em>array</em></span>.
 	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><span class="command"><strong><em class="replaceable"><code>name</code></em>::cnames</strong></span></span>
 	      ?<span class="optional"><tt><em class="replaceable"><code>pattern</code></em></tt></span>?</span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
-		lists existing keys of context matching
+		Lists existing keys of context matching
 		<tt>pattern</tt>.
 	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><span class="command"><strong><em class="replaceable"><code>name</code></em>::delete</strong></span></span></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
-		delete the context (same as <span style="font-family:monospace"><span class="command"><strong>namespace delete <em class="replaceable"><code>name</code></em></strong></span></span>)
+		Deletes the context (same as <span style="font-family:monospace"><span class="command"><strong>namespace delete
+		<em class="replaceable"><code>name</code></em></strong></span></span>)
 	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><span class="command"><strong><em class="replaceable"><code>name</code></em>::dump</strong></span></span></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
-		serialize context.
+		Serializes context in a "source"-able format.
 	      </div></div></dd></dl></div><p style="width:90%">
 
-	</p><div class="example"><a name="id3106952"></a><p class="title"><b>Example 12. web::context</b></p><div class="example-contents"><pre style="background:#bbffbb ; width:75%" class="programlisting">
+	</p><div class="example"><a name="id2756576"></a><p class="title"><b>Example 12. <span style="font-family:monospace"><span class="command">web::context</span></span></b></p><div class="example-contents"><pre style="background:#bbffbb ; width:75%" class="programlisting">
 % web::context sc
 % sc::cset lang FR
 FR
@@ -69,7 +70,7 @@ FR
 % set lang [sc::cget lang EN]
 FR
 %	  </pre></div></div><p style="width:90%"><br class="example-break">
-      </p></div><div class="section" title="web::filecontext"><div class="titlepage"><div><div><h3 class="title"><a name="web::filecontext"></a>web::filecontext</h3></div></div></div><p style="width:90%">
+      </p></div><div class="section" title="web::filecontext"><div class="titlepage"><div><div><h3 class="title"><a name="web::filecontext"></a><span style="font-family:monospace"><span class="command"><strong>web::filecontext</strong></span></span></h3></div></div></div><p style="width:90%">
 
 	Creation:
 	</p><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><code class="command">web::filecontext</code></span>  <em class="replaceable"><code>name</code></em> ?<em class="replaceable"><code>options</code></em>?</span></div><p style="width:90%">
@@ -105,8 +106,8 @@ FR
 	      <span style="font-family:monospace"><span class="command"><strong><em class="replaceable"><code>name</code></em>::init</strong></span></span>
 	      ?<span class="optional"><tt><em class="replaceable"><code>id</code></em></tt></span>?
 	    </span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
-		load an existing session context with id
-		<tt>id</tt>, or create a new one, if
+		Loads an existing session context with id
+		<tt>id</tt>, or creates a new one, if
 		possible. Automation depends on the settings of the
 		actual context manager settings, see
 		below.</div><div style="margin-bottom:6"> If you specify an
@@ -115,21 +116,21 @@ FR
 		yourself.
 	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><span class="command"><strong><em class="replaceable"><code>name</code></em>::new</strong></span></span>
 	      ?<span class="optional"><tt><em class="replaceable"><code>id</code></em></tt></span>?</span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
-		create a new session context. Automation depends on
+		Creates a new session context. Automation depends on
 		the settings of the actual context manager settings,
 		see below.
 	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><span class="command"><strong><em class="replaceable"><code>name</code></em>::commit</strong></span></span></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
-		make session context persistent.
+		Makes session context persistent.
 	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><span class="command"><strong><em class="replaceable"><code>name</code></em>::id</strong></span></span></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
-		return id of session.
+		Returns id of session.
 	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><span class="command"><strong><em class="replaceable"><code>name</code></em>::invalidate</strong></span></span></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
-		delete session in memory and on file system.
+		Deletes session in memory and on file system.
 	      </div></div></dd></dl></div><p style="width:90%">
 
 	Options:
 	</p><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><code class="command">web::filecontext</code></span>  <em class="replaceable"><code>name</code></em> -perm <em class="replaceable"><code>perm</code></em></span></div><p style="width:90%">
 
-	set the file permissions of the session context files
+	Sets the file permissions of the session context files
 	<tt>perm</tt> is an unix-like octal value like 0644.
 	If not specified, files are created with the permissions defined
 	in <span style="font-family:monospace"><span class="command"><strong>web::config filepermissions</strong></span></span>,
@@ -139,7 +140,7 @@ FR
 	      <tt><em class="replaceable"><code>name</code></em></tt> <tt>-path</tt>
 	      <tt><em class="replaceable"><code>path</code></em></tt>
 	    </span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
-		specify where to store session context files and how
+		Specifies where to store session context files and how
 		to name them. Suppose that the session id is 99.
 		<span class="emphasis"><em>-path [file join .. data s%d.dat]</em></span>
 		would then cause filecontext to save the session
@@ -147,15 +148,15 @@ FR
 	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><span class="command"><strong>web::filecontext</strong></span></span>
 	      <tt><em class="replaceable"><code>name</code></em></tt> <tt>-crypt</tt>
 	      <tt>boolean</tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
-		Flag to turn crypting of session context on and off.
-		Default is on.
+		Sets crypting of session context on or off.
+		Default: on.
 	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><span class="command"><strong>web::filecontext</strong></span></span>
 	      <tt><em class="replaceable"><code>name</code></em></tt> <tt>-idgen</tt>
 	      <tt><em class="replaceable"><code>idgen</code></em></tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
 		Sets command <tt>idgen</tt> to find a new
 		session id. See doc of
 		<span style="font-family:monospace"><span class="command"><strong>web::filecounter</strong></span></span> below for an
-		implementation provided with Websh.
+		implementation provided by Websh.
 	      </div><div style="margin-bottom:6">
 		<tt>idgen</tt> is used in case that no
 		<tt>id</tt> argument has been passed to
@@ -164,15 +165,20 @@ FR
 	      <tt><em class="replaceable"><code>name</code></em></tt> <tt>-attachto</tt>
 	      <tt><em class="replaceable"><code>idparam</code></em></tt>
 	    </span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
-		the next using the querystring (this is one reason why
-		the querystring is encrypted). After web::dispatch has
-		parsed the querystring, web::param will report the
-		current session id, if any. <span class="emphasis"><em>Note</em></span>
+		Causes <span style="font-family:monospace"><span class="command"><strong><em class="replaceable"><code>name</code></em>::init</strong></span></span>
+		to initialize with the id given in the querystring parameter
+		<tt>idparam</tt>. (This is one important reason why
+		the querystring should be encrypted). After
+		<span style="font-family:monospace"><span class="command"><strong>web::dispatch</strong></span></span> has
+		parsed the querystring, <span style="font-family:monospace"><span class="command"><strong>web::param</strong></span></span>
+		will report the	current session id in 
+		<tt>idparam</tt>, if any. <span class="emphasis"><em>Note</em></span>
 		that you can maintain several sessions in parallel,
 		and attach every session to its own
 		<tt>idparam</tt>.
 	      </div><div style="margin-bottom:6">
-		Using <span class="emphasis"><em>web::dispatch -track</em></span>
+		Using
+		<span class="emphasis"><em><span style="font-family:monospace"><span class="command"><strong>web::dispatch -track</strong></span></span></em></span>
 		further automates the passing of session ids from
 		request to request.
 	      </div></div></dd></dl></div><p style="width:90%">
@@ -182,7 +188,7 @@ FR
 	whatever information that you might have stored in the context
 	before you initialized it as a file-based session context.
 
-      </p></div><div class="section" title="web::cookiecontext"><div class="titlepage"><div><div><h3 class="title"><a name="web::cookiecontext"></a>web::cookiecontext</h3></div></div></div><p style="width:90%">
+      </p></div><div class="section" title="web::cookiecontext"><div class="titlepage"><div><div><h3 class="title"><a name="web::cookiecontext"></a><span style="font-family:monospace"><span class="command"><strong>web::cookiecontext</strong></span></span></h3></div></div></div><p style="width:90%">
 
 	Creation:
 
@@ -209,17 +215,17 @@ FR
 
 	</p><div class="variablelist"><dl><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><span class="command"><strong><em class="replaceable"><code>name</code></em>::init</strong></span></span>
 	      ?<span class="optional"><tt><em class="replaceable"><code>id</code></em></tt></span>?</span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
-		load an existing session context (cookie must have
+		Loads an existing session context (cookie must have
 		been sent by the client).
 	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><span class="command"><strong><em class="replaceable"><code>name</code></em>::new</strong></span></span>
 	      ?<span class="optional"><tt><em class="replaceable"><code>id</code></em></tt></span>?</span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
-		create a new session context.
+		Creates a new session context.
 	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><span class="command"><strong><em class="replaceable"><code>name</code></em>::commit</strong></span></span></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
-		send a cookie.
+		Sends a cookie (if no output to the page has been sent yet).
 	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><span class="command"><strong><em class="replaceable"><code>name</code></em>::id</strong></span></span></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
-		return id of session.
+		Returns id of session.
 	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><span class="command"><strong><em class="replaceable"><code>name</code></em>::invalidate</strong></span></span></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
-		delete session in memory and on client side.
+		Deletes session in memory and on client side.
 	      </div></div></dd></dl></div><p style="width:90%">
 
 	Options:
@@ -227,7 +233,7 @@ FR
 	</p><div class="variablelist"><dl><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><span class="command"><strong>web::cookiecontext</strong></span></span>
 	      <tt><em class="replaceable"><code>name</code></em></tt> <tt>-expires</tt>
 	      <tt><em class="replaceable"><code>time</code></em></tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
-		set the expiration date of the cookie. Possible values
+		Sets the expiration date of the cookie. Possible values
 		for <tt>time</tt> are
 		<span class="emphasis"><em>seconds</em></span> (time in seconds since
 		1970-01-01) or <span class="emphasis"><em>date-string</em></span> (any
@@ -244,24 +250,24 @@ FR
 	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><span class="command"><strong>web::cookiecontext</strong></span></span>
 	      <tt><em class="replaceable"><code>name</code></em></tt> <tt>-path</tt>
 	      <tt><em class="replaceable"><code>path</code></em></tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
-		set the <tt>path</tt> property of the cookie.
+		Sets the <tt>path</tt> property of the cookie.
 	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><span class="command"><strong>web::cookiecontext</strong></span></span>
 	      <tt><em class="replaceable"><code>name</code></em></tt> <tt>-domain</tt>
 	      <tt><em class="replaceable"><code>domain</code></em></tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
-		set the <tt>domain</tt> property of the cookie.
+		Sets the <tt>domain</tt> property of the cookie.
 	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><span class="command"><strong>web::cookiecontext</strong></span></span>
 	      <tt><em class="replaceable"><code>name</code></em></tt>
 	      <tt>-secure</tt> <tt>boolean</tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
-		set the <tt>secure</tt> property of the cookie.
+		Sets the <tt>secure</tt> property of the cookie.
 	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><span class="command"><strong>web::cookiecontext</strong></span></span>
 	      <tt><em class="replaceable"><code>name</code></em></tt> <tt>-crypt</tt>
 	      <tt>boolean</tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
-		Flag to turn crypting of cookie context on and off.
-		Default is on.
+		Sets crypting of cookie context on or off.
+		Default: on.
 	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><span class="command"><strong>web::cookiecontext</strong></span></span>
 	      <tt><em class="replaceable"><code>name</code></em></tt> <tt>-channel</tt>
 	      <tt><em class="replaceable"><code>channelName</code></em></tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
-		The response object to send the cookie to (see also
+		Sets the response object to send the cookie to (see also
 		<span style="font-family:monospace"><span class="command"><strong>web::response</strong></span></span>).
 	      </div></div></dd></dl></div><p style="width:90%">
 
@@ -274,7 +280,7 @@ FR
 	context can only be changed <span class="emphasis"><em>before</em></span>
 	anything is output on the respective channel.
 
-      </p></div><div class="section" title="web::filecounter"><div class="titlepage"><div><div><h3 class="title"><a name="web::filecounter"></a>web::filecounter</h3></div></div></div><p style="width:90%">
+      </p></div><div class="section" title="web::filecounter"><div class="titlepage"><div><div><h3 class="title"><a name="web::filecounter"></a><span style="font-family:monospace"><span class="command"><strong>web::filecounter</strong></span></span></h3></div></div></div><p style="width:90%">
 
 	This is a numeric sequence-number generator which stores its
 	state in a file. Basic usage:
@@ -292,44 +298,46 @@ FR
 	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><tt>-filename</tt>
 	      <tt><em class="replaceable"><code>filename</code></em></tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
 		Uses <tt>filename</tt> to store the current
-		value (no default)
+		value (no default).
 	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><tt>-min</tt> <tt><em class="replaceable"><code>value</code></em></tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
 		Uses this value as a minimum at start and after wrap,
-		if wrap is true (default is 0).
+		if wrap is true. Default: 0.
 	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><tt>-max</tt> <tt><em class="replaceable"><code>value</code></em></tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
-		Uses this value as a maximum, if wrap is true (default is 2147483647).
+		Uses this value as a maximum, if wrap is true. Default: 2147483647.
 	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><tt>-seed</tt> <tt><em class="replaceable"><code>value</code></em></tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
-		If persistent file does not yet exists, use this value
-		as a starting point (default is 0).
+		Usea this value	as a starting point if persistent file does
+		not exist yet. Default: 0.
 	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><tt>-incr</tt> <tt><em class="replaceable"><code>value</code></em></tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
-		Uses this value as an increment for each 'nextval'
-		(default is 1).
+		Uses this value as an increment for each 'nextval'.
+		Default: 1.
 	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><tt>-perms</tt>
 	      <tt><em class="replaceable"><code>value</code></em></tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
 		Sets the permissions on the newly created files.
-		(Default is configured in <span style="font-family:monospace"><span class="command"><strong>web::config filepermissions</strong></span></span>, which defaults to 0644.)
+		Default is configured in <span style="font-family:monospace"><span class="command"><strong>web::config filepermissions</strong></span></span>, which defaults to 0644.
 	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><tt>-wrap</tt>
 	      <tt>boolean</tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
 		Indicates whether this counter should wrap around its
-		values (from min to max) (default is false).
+		values (back to min from max). Default: false.
 	      </div></div></dd></dl></div><p style="width:90%">
 
 	After creation, a new command <tt>name</tt> is
 	registered with the following subcommands:
 
 	</p><div class="variablelist"><dl><dt><span style="background:#bbbbff"><span class="term"><tt><em class="replaceable"><code>name</code></em></tt> config</span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
-		Return a flat list of key value pairs with the filecounter's configuration.
+		Returns a flat list of key value pairs with the 
+		filecounter's configuration.
 	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><tt><em class="replaceable"><code>name</code></em></tt> nextval</span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
-		Return the next value.
+		Returns the next value.
 	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><tt><em class="replaceable"><code>name</code></em></tt> curval</span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
-		Return the current value, that is, the value that the
-		last call to "nextval" or "getval" reported (as opposed
-		to the current value in the file).
+		Returns the current value, that is, the value that the
+		last call to "nextval" or "getval"
+		reported (as opposed to the current value in the file).
 	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><tt><em class="replaceable"><code>name</code></em></tt> getval</span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
-		Return the current value in the file. (Do not increment file as in "nextval".)
+		Returns the current value in the file. (Does not increment
+		file as in "nextval".)
 	      </div></div></dd></dl></div><p style="width:90%">
 
-      </p><div class="example"><a name="id3108465"></a><p class="title"><b>Example 13. web::filecounter</b></p><div class="example-contents"><pre style="background:#bbffbb ; width:75%" class="programlisting">
+      </p><div class="example"><a name="id2758135"></a><p class="title"><b>Example 13. <span style="font-family:monospace"><span class="command">web::filecounter</span></span></b></p><div class="example-contents"><pre style="background:#bbffbb ; width:75%" class="programlisting">
 % web::filecounter fc1 -filename test.dat
 fc1
 % fc1 config

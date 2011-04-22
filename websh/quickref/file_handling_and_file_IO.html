@@ -1,45 +1,49 @@
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>File handling and file I/O</title><meta name="generator" content="DocBook XSL Stylesheets V1.75.1"><link rel="home" href="index.html" title="Websh Reference 3.6.0b5"><link rel="up" href="index.html" title="Websh Reference 3.6.0b5"><link rel="prev" href="context_handling.html" title="Context handling"><link rel="next" href="data_encryption.html" title="Data encryption"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">File handling and file I/O</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="context_handling.html">Prev</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="data_encryption.html">Next</a></td></tr></table><hr></div><div class="section" title="File handling and file I/O"><div class="titlepage"><div><div><hr><h2 class="title" style="clear: both"><a name="file_handling_and_file_IO"></a>File handling and file I/O</h2></div></div></div><div class="section" title="web::include"><div class="titlepage"><div><div><h3 class="title"><a name="web::include"></a>web::include</h3></div></div></div><p style="width:90%">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>File handling and file I/O</title><meta name="generator" content="DocBook XSL Stylesheets V1.75.1"><link rel="home" href="index.html" title="Websh Reference 3.6.0b5"><link rel="up" href="index.html" title="Websh Reference 3.6.0b5"><link rel="prev" href="context_handling.html" title="Context handling"><link rel="next" href="data_encryption.html" title="Data encryption"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">File handling and file I/O</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="context_handling.html">Prev</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="data_encryption.html">Next</a></td></tr></table><hr></div><div class="section" title="File handling and file I/O"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="file_handling_and_file_IO"></a>File handling and file I/O</h2></div></div></div><div class="section" title="web::include"><div class="titlepage"><div><div><h3 class="title"><a name="web::include"></a><span style="font-family:monospace"><span class="command"><strong>web::include</strong></span></span></h3></div></div></div><p style="width:90%">
 
-	</p><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><code class="command">web_include</code></span>  <em class="replaceable"><code>fileName</code></em> ?<em class="replaceable"><code>msg</code></em>?</span></div><p style="width:90%">
+	</p><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><code class="command">web::include</code></span>  <em class="replaceable"><code>fileName</code></em> ?<em class="replaceable"><code>msg</code></em>?</span></div><p style="width:90%">
 
 	If the file <tt>fileName</tt> exists, it is sourced (must be a
-	script). Otherwise if the library fileName+"shared lib extension"
-	exists, it is loaded (must be a shared library). Returns 0 on success,
-	1 otherwise. If an error occurs, an error message is written to <tt>msg</tt>.
+	script). Otherwise if the library fileName+"shared lib 
+	extension"	exists, it is loaded (must be a shared library).
+	Returns 0 on success, 1 otherwise. If an error occurs, an error
+	message is written to <tt>msg</tt>.
 
-      </p></div><div class="section" title="web::readfile"><div class="titlepage"><div><div><h3 class="title"><a name="web::readfile"></a>web::readfile</h3></div></div></div><p style="width:90%">
+      </p></div><div class="section" title="web::readfile"><div class="titlepage"><div><div><h3 class="title"><a name="web::readfile"></a><span style="font-family:monospace"><span class="command"><strong>web::readfile</strong></span></span></h3></div></div></div><p style="width:90%">
 
 
 	</p><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><code class="command">web::readfile</code></span>  <em class="replaceable"><code>file</code></em> <em class="replaceable"><code>varName</code></em> <em class="replaceable"><code>msg</code></em></span></div><p style="width:90%">
 
-	<tt>file</tt> is read and written to
+	Reads <tt>file</tt> and writes it to
 	<tt>varName</tt>. Returns 0 on success, 1
 	otherwise. If an error occurs, an error message is written to
 	the variable <tt>msg</tt>.
 
-      </p></div><div class="section" title="web::lockfile and web::unlockfile"><div class="titlepage"><div><div><h3 class="title"><a name="web::lockfile_and_web::unlockfile"></a>web::lockfile and web::unlockfile</h3></div></div></div><p style="width:90%">
+      </p></div><div class="section" title="web::lockfile and web::unlockfile"><div class="titlepage"><div><div><h3 class="title"><a name="web::lockfile_and_web::unlockfile"></a><span style="font-family:monospace"><span class="command"><strong>web::lockfile</strong></span></span> and <span style="font-family:monospace"><span class="command"><strong>web::unlockfile</strong></span></span></h3></div></div></div><p style="width:90%">
 	</p><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><code class="command">web::lockfile</code></span>  <em class="replaceable"><code>fh</code></em></span></div><p style="width:90%">
 	</p><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><code class="command">web::unlockfile</code></span>  <em class="replaceable"><code>fh</code></em></span></div><p style="width:90%">
 
-	Interface to lockf(). lockf() works best on local filesystems.
-	Please read the documentation of lockf on your system to learn
-	about the problems and limitations of file locking. Note that
-	web::lockfile also performs a seek() and resets the file
-	cursor to the beginning of the file.
+	Interfaces <code class="function">lockf()</code>. <code class="function">lockf()</code>
+	works best on local filesystems.
+	Please read the documentation of <code class="function">lockf()</code> on your
+	system to learn	about the problems and limitations of file locking.
+	Note that
+	<span style="font-family:monospace"><span class="command"><strong>web::lockfile</strong></span></span> also performs a 
+	<code class="function">seek()</code> and
+	resets the file	cursor to the beginning of the file.
 
 	<span class="emphasis"><em>Note</em></span> that the file needs to be open for
 	writing.
 
-      </p></div><div class="section" title="web::truncatefile"><div class="titlepage"><div><div><h3 class="title"><a name="web::truncatefile"></a>web::truncatefile</h3></div></div></div><p style="width:90%">
+      </p></div><div class="section" title="web::truncatefile"><div class="titlepage"><div><div><h3 class="title"><a name="web::truncatefile"></a><span style="font-family:monospace"><span class="command"><strong>web::truncatefile</strong></span></span></h3></div></div></div><p style="width:90%">
 
 
 	</p><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><code class="command">web::truncatefile</code></span>  <em class="replaceable"><code>fh</code></em></span></div><p style="width:90%">
 
-	Interface to truncate(). Truncates a file based on the file
-	handle, while Tcl's file commands are based on file
+	Interfaces <code class="function">truncate()</code>. Truncates a file based on 
+	the file handle, while Tcl's file commands are based on file
 	names. This is used to truncate a file while holding the lock.
 
-      </p><div class="example"><a name="id3108726"></a><p class="title"><b>Example 14. web::lockfile</b></p><div class="example-contents"><pre style="background:#bbffbb ; width:75%" class="programlisting">
+      </p><div class="example"><a name="id2758453"></a><p class="title"><b>Example 14. <span style="font-family:monospace"><span class="command">web::lockfile</span></span></b></p><div class="example-contents"><pre style="background:#bbffbb ; width:75%" class="programlisting">
 set fh [open [web::tempfile] w]
 web::lockfile $fh
 puts $fh foo

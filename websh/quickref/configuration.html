@@ -1,20 +1,21 @@
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>Configuration</title><meta name="generator" content="DocBook XSL Stylesheets V1.75.1"><link rel="home" href="index.html" title="Websh Reference 3.6.0b5"><link rel="up" href="index.html" title="Websh Reference 3.6.0b5"><link rel="prev" href="index.html" title="Websh Reference 3.6.0b5"><link rel="next" href="command_dispatching_and_session_management.html" title="Command dispatching and session management"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Configuration</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="index.html">Prev</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="command_dispatching_and_session_management.html">Next</a></td></tr></table><hr></div><div class="section" title="Configuration"><div class="titlepage"><div><div><hr><h2 class="title" style="clear: both"><a name="configuration"></a>Configuration</h2></div></div></div><div class="section" title="web::config"><div class="titlepage"><div><div><h3 class="title"><a name="web::config"></a>web::config</h3></div></div></div><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><code class="command">web::config</code></span>  <em class="replaceable"><code>key</code></em> ?<em class="replaceable"><code>value</code></em>?</span></div><p style="width:90%">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>Configuration</title><meta name="generator" content="DocBook XSL Stylesheets V1.75.1"><link rel="home" href="index.html" title="Websh Reference 3.6.0b5"><link rel="up" href="index.html" title="Websh Reference 3.6.0b5"><link rel="prev" href="index.html" title="Websh Reference 3.6.0b5"><link rel="next" href="command_dispatching_and_session_management.html" title="Command dispatching and session management"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Configuration</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="index.html">Prev</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="command_dispatching_and_session_management.html">Next</a></td></tr></table><hr></div><div class="section" title="Configuration"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="configuration"></a>Configuration</h2></div></div></div><div class="section" title="web::config"><div class="titlepage"><div><div><h3 class="title"><a name="web::config"></a><span style="font-family:monospace"><span class="command"><strong>web::config</strong></span></span></h3></div></div></div><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><code class="command">web::config</code></span>  <em class="replaceable"><code>key</code></em> ?<em class="replaceable"><code>value</code></em>?</span></div><p style="width:90%">
 	If <tt><em class="replaceable"><code>value</code></em></tt> is
 	ommitted, the current value of
 	<tt><em class="replaceable"><code>key</code></em></tt> is returned. Note that
         unlike the <span style="font-family:monospace"><span class="command"><strong>set</strong></span></span> command 
 	<span style="font-family:monospace"><span class="command"><strong>web::config</strong></span></span> always returns the value 
-        for the given key <span class="emphasis"><em>before</em></span> the new value is set. This allows to keep
-        the old value and set it back later.
+        for the given key <span class="emphasis"><em>before</em></span> the new value is set.
+	This allows to keep the old value and set it back later.
       </p><div class="variablelist"><dl><dt><span style="background:#bbbbff"><span class="term"><tt>uploadfilesize</tt>
 	    ?<span class="optional"><tt><em class="replaceable"><code>size</code></em></tt></span>?</span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
-	      Sets the maximum number of bytes that will be saved, when files are uploaded in a multipart form.
-	      Default: 0.
+	      Sets or gets the maximum number of bytes that will be saved, when
+	      files are uploaded in a multipart form. Default: 0.
 	    </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><tt>cmdparam</tt> ?<span class="optional"><tt><em class="replaceable"><code>name</code></em></tt></span>?</span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
-	      Name of the command  parameter in
-	      the URL used to dispatch to <span style="font-family:monospace"><span class="command"><strong>web::command</strong></span></span> using <span style="font-family:monospace"><span class="command"><strong>web::dispatch</strong></span></span>. Default: "cmd".
+	      Sets or gets name of the command  parameter in
+	      the URL used to dispatch to <span style="font-family:monospace"><span class="command"><strong>web::command</strong></span></span>
+	      using <span style="font-family:monospace"><span class="command"><strong>web::dispatch</strong></span></span>. Default: "cmd".
 	    </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><tt>timeparam</tt> ?<span class="optional"><tt><em class="replaceable"><code>name</code></em></tt></span>?</span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
-	      Name of the timestamp parameter in the URL. Default:
+	      Sets or gets name of the timestamp parameter in the URL. Default:
 	      "t".
 	    </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><tt>cmdurltimestamp</tt> ?<span class="optional"><tt>0|1</tt></span>?</span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
 	      Defines whether the timestamp should be included in URLs 
@@ -23,36 +24,45 @@
 	      Turns substitution of log messages on (1) or off (0). Default:
 	      0 (off).
 	    </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><tt>safelog</tt> ?<span class="optional"><tt>0|1</tt></span>?</span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
-	      Makes web::log "safe" if set to 1 (i.e. it never throws an error even if corresponding I/O to file, channel or command etc. fails). Default: 1 (on).
+	      Makes <span style="font-family:monospace"><span class="command"><strong>web::log</strong></span></span> "safe" if set to 1
+	      (i.e. it never throws an error even if corresponding I/O to
+	      file, channel or command etc. fails). Default: 1 (on).
 	    </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><tt>putxmarkup</tt>
 	    ?<span class="optional"><tt>brace|tag</tt></span>?</span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
-	      Sets the markup characters for sections to be eval'd in
+	      Sets or gets the markup characters for sections to be eval'd in
 	      <span style="font-family:monospace"><span class="command"><strong>web::putx</strong></span></span> and <span style="font-family:monospace"><span class="command"><strong>web::putxfile</strong></span></span>
               commands to either curly braces ({ ... }) or special tags (&lt;?
 	      ... ?&gt;). Default: "brace".
 	    </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><tt>encryptchain</tt> ?<span class="optional"><tt><em class="replaceable"><code>list</code></em></tt></span>?</span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
-	      Defines which commands should be tried, in sequence, to
-	      encrypt a message. Default: "web::encryptd".
+	      Sets or gets the list of commands that should be tried, in 
+	      sequence, to encrypt a message. 
+	      Default: "web::encryptd".
 	    </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><tt>decryptchain</tt> ?<span class="optional"><tt><em class="replaceable"><code>list</code></em></tt></span>?</span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
-	      Defines which commands should be tried, in sequence, to
-	      decrypt a message. Default: "web::decryptd".
+	      Sets or gets the list of commands that should be tried, in 
+	      sequence, to decrypt a message. 
+	      Default: "web::decryptd".
 	    </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><tt>filepermissions</tt> ?<span class="optional"><tt><em class="replaceable"><code>permissions</code></em></tt></span>?</span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
-	      Defines the file permissions of files that Websh creates. 
-This affects the creation of log files, filecounters, session files, 
-and temporary files created when files are uploaded in multipart forms (see
-<span style="font-family:monospace"><span class="command"><strong>web::formvar</strong></span></span>). Default is 0644.
+	      Sets or gets the file permissions of files that Websh creates.
+	      This affects the creation of log files, filecounters, session
+	      files, and temporary files created when files are uploaded in
+	      multipart forms (see <span style="font-family:monospace"><span class="command"><strong>web::formvar</strong></span></span>). Default:
+	      0644.
 	    </div></div></dd></dl></div><p style="width:90%">
-The following special subcommand is used to reset all configuration options to their default values:
+      The following special subcommand is used to reset all configuration
+      options to their default values:
       </p><div class="variablelist"><dl><dt><span style="background:#bbbbff"><span class="term"><tt>reset</tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
 	      Resets all values to their defaults.
 	    </div></div></dd></dl></div><p style="width:90%">
-The following two subcommands are read-only and just return their predefined values:
+      The following two subcommands are read-only and just return their
+      predefined values:
       </p><div class="variablelist"><dl><dt><span style="background:#bbbbff"><span class="term"><tt>version</tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
 	      Returns the version info string.
 	    </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><tt>copyright</tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
 	      Returns a copyright message string.
 	    </div></div></dd></dl></div><p style="width:90%">
-The following subcommands are also read-only. They return the current request environment within mod_websh (and if applicable in CGI mode):
+      The following subcommands are also read-only. They return the
+      current request environment within mod_websh (and if applicable
+      in CGI mode):
       </p><div class="variablelist"><dl><dt><span style="background:#bbbbff"><span class="term"><tt>script</tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
 	      Returns the path to the currently requestes Websh script.
 	    </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><tt>server_root</tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
@@ -60,8 +70,9 @@ The following subcommands are also read-only. They return the current request en
 	    </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><tt>document_root</tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
 	      Returns the Apache DocumentRoot configuration path.
 	    </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><tt>interpclass</tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
-	      Returns the interpclass the current request was mapped to (see <span style="font-family:monospace"><span class="command"><strong>web::interpmap</strong></span></span> command).
-	    </div></div></dd></dl></div><div class="example"><a name="id3044356"></a><p class="title"><b>Example 1. web::config</b></p><div class="example-contents"><pre style="background:#bbffbb ; width:75%" class="programlisting">
+	      Returns the interpclass the current request was mapped to
+	      (see <span style="font-family:monospace"><span class="command"><strong>web::interpmap</strong></span></span> command).
+	    </div></div></dd></dl></div><div class="example"><a name="id2696486"></a><p class="title"><b>Example 1. <span style="font-family:monospace"><span class="command">web::config</span></span></b></p><div class="example-contents"><pre style="background:#bbffbb ; width:75%" class="programlisting">
 % web::config decryptchain
 web::encryptd
 % web::config filepermissions 0666

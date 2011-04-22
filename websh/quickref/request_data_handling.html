@@ -1,4 +1,4 @@
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>Request data handling</title><meta name="generator" content="DocBook XSL Stylesheets V1.75.1"><link rel="home" href="index.html" title="Websh Reference 3.6.0b5"><link rel="up" href="index.html" title="Websh Reference 3.6.0b5"><link rel="prev" href="command_dispatching_and_session_management.html" title="Command dispatching and session management"><link rel="next" href="response_data_handling.html" title="Response data handling"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Request data handling</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="command_dispatching_and_session_management.html">Prev</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="response_data_handling.html">Next</a></td></tr></table><hr></div><div class="section" title="Request data handling"><div class="titlepage"><div><div><hr><h2 class="title" style="clear: both"><a name="request_data_handling"></a>Request data handling</h2></div></div></div><div class="section" title="web::request"><div class="titlepage"><div><div><h3 class="title"><a name="web::request"></a>web::request</h3></div></div></div><p style="width:90%">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><title>Request data handling</title><meta name="generator" content="DocBook XSL Stylesheets V1.75.1"><link rel="home" href="index.html" title="Websh Reference 3.6.0b5"><link rel="up" href="index.html" title="Websh Reference 3.6.0b5"><link rel="prev" href="command_dispatching_and_session_management.html" title="Command dispatching and session management"><link rel="next" href="response_data_handling.html" title="Response data handling"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Request data handling</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="command_dispatching_and_session_management.html">Prev</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="response_data_handling.html">Next</a></td></tr></table><hr></div><div class="section" title="Request data handling"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="request_data_handling"></a>Request data handling</h2></div></div></div><div class="section" title="web::request"><div class="titlepage"><div><div><h3 class="title"><a name="web::request"></a><span style="font-family:monospace"><span class="command"><strong>web::request</strong></span></span></h3></div></div></div><p style="width:90%">
 
 	</p><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><code class="command">web::request</code></span>  ?<em class="replaceable"><code>options</code></em>? ?<em class="replaceable"><code>key</code></em>? ?<em class="replaceable"><code>value</code></em>?</span></div><p style="width:90%">
 	</p><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><code class="command">web::request</code></span>  ?<em class="replaceable"><code>key</code></em>? ?<em class="replaceable"><code>default</code></em>?</span></div><p style="width:90%">
@@ -9,32 +9,33 @@
         <tt>-channel</tt>
       </p><p style="width:90%">
 
-	web::request is an accessor to request specific information: either CGI related (stand alone
+	<span style="font-family:monospace"><span class="command"><strong>web::request</strong></span></span> is an accessor to request
+	specific information: either CGI related (stand alone
         Websh) or Apache related (mod_websh).
 
 	</p><div class="variablelist"><dl><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><span class="command"><strong>web::request</strong></span></span> <tt>-names</tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
-		returns a list of all known keys.
+		Returns a list of all known keys.
 	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><span class="command"><strong>web::request</strong></span></span> <tt><em class="replaceable"><code>key</code></em></tt>
 	      ?<span class="optional"><tt><em class="replaceable"><code>default</code></em></tt></span>?</span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
-		returns the value for <tt>key</tt>. Can be a
+		Returns the value for <tt>key</tt>. Can be a
 		list. In case that <tt>key</tt> does not
 		exist, return <tt>default</tt>, if it is
 		given, or an empty string.
 	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><span class="command"><strong>web::request</strong></span></span>
 	      <tt>-count</tt> <tt><em class="replaceable"><code>key</code></em></tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
-		returns number of items in list for
+		Returns number of items in list for
 		<tt>key</tt>; returns 0 if
 		<tt>key</tt> does not exist.
 	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><span class="command"><strong>web::request</strong></span></span>
 	      <tt>-set</tt> <tt><em class="replaceable"><code>key</code></em></tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
-		does the same as <span style="font-family:monospace"><span class="command"><strong>web::request</strong></span></span>
+		Does the same as <span style="font-family:monospace"><span class="command"><strong>web::request</strong></span></span>
 		<tt>key</tt>.
 	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><span class="command"><strong>web::request</strong></span></span>
 	      <tt>-set</tt> <tt><em class="replaceable"><code>key</code></em></tt>
 	      <tt><em class="replaceable"><code>value</code></em></tt>
 	      ?<span class="optional"><tt><em class="replaceable"><code>value</code></em></tt></span>?
 	      ?<span class="optional"><tt><em class="replaceable"><code>...</code></em></tt></span>?</span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
-		adds the parameter <tt>key</tt> to the
+		Adds the parameter <tt>key</tt> to the
 		<span style="font-family:monospace"><span class="command"><strong>web::request</strong></span></span> data. Any existing parameters 
                 with <tt>key</tt> are overwritten.
 	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><span class="command"><strong>web::request</strong></span></span>
@@ -42,43 +43,48 @@
 	      <tt><em class="replaceable"><code>value</code></em></tt>
 	      ?<span class="optional"><tt><em class="replaceable"><code>value</code></em></tt></span>?
 	      ?<span class="optional"><tt><em class="replaceable"><code>...</code></em></tt></span>?</span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
-		append parameters with the same <tt>key</tt>
-		to the web::request data. In this case the existing
-		<tt>value</tt> is not overwritten.
+		Appends parameters with the same <tt>key</tt>
+		to the <span style="font-family:monospace"><span class="command"><strong>web::request</strong></span></span> data. In this case 
+		the existing <tt>value</tt> is not overwritten.
 	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><span class="command"><strong>web::request</strong></span></span>
 	      <tt>-unset</tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
-		deletes all parameters from the web::request data.
+		Deletes all parameters from the <span style="font-family:monospace"><span class="command"><strong>web::request</strong></span></span> data.
 	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><span class="command"><strong>web::request</strong></span></span>
 	      <tt>-unset</tt> <tt><em class="replaceable"><code>key</code></em></tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
-		deletes a parameter from the web::request data.
+		Deletes a parameter from the <span style="font-family:monospace"><span class="command"><strong>web::request</strong></span></span> data.
 	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><span class="command"><strong>web::request</strong></span></span>
 	      <tt>-reset</tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
-		deletes all parameters from the web::request data
-		(like 'web::request -unset'), removes all static
-		parameters (like 'web::cmdurlcfg -unset'), all form
-		variables (like 'web::formvar -unset'), all query
-		string parameters (like 'web::param -unset'), and all
+		Deletes all parameters from the <span style="font-family:monospace"><span class="command"><strong>web::request</strong></span></span>
+		data (like '<span style="font-family:monospace"><span class="command"><strong>web::request -unset</strong></span></span>'), 
+		removes all static parameters (like 
+		'<span style="font-family:monospace"><span class="command"><strong>web::cmdurlcfg -unset</strong></span></span>'), all form
+		variables (like '<span style="font-family:monospace"><span class="command"><strong>web::formvar -unset</strong></span></span>'),
+		all query string parameters (like
+		'<span style="font-family:monospace"><span class="command"><strong>web::param -unset</strong></span></span>'), and all
 		temporary files created by HTTP form upload.
 	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><span class="command"><strong>web::request</strong></span></span>
 	      <tt>-channel</tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
-		returns the preset default channel for the current request.
-                (Note that this is not necessarily the currently selected channel.)
+		Returns the preset default channel for the current request.
+                (Note that this is not necessarily the currently selected
+		channel.)
 	      </div></div></dd></dl></div><p style="width:90%">
 
 	Special case for handling Basic Auth:
 
 	</p><div class="variablelist"><dl><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><span class="command"><strong>web::request</strong></span></span> <tt>AUTH_USER</tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
-		returns the username provided by the user when Basic Auth is requested and Apache 
-		does not handle it (i.e. if Apache does not provide REMOTE_USER).
+		Returns the username provided by the user when Basic Auth is
+		requested and Apache does not handle it (i.e. if Apache does
+		not provide REMOTE_USER).
 	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><span class="command"><strong>web::request</strong></span></span> <tt>AUTH_PW</tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
-		returns the password provided by the user when Basic Auth is requested and Apache 
-		does not handle it (i.e. if Apache does not provide REMOTE_USER).
+		Returns the password provided by the user when Basic Auth is
+		requested and Apache does not handle it (i.e. if Apache does
+		not provide REMOTE_USER).
 	      </div></div></dd></dl></div><p style="width:90%">
 	
         The following example provides a basic app that requires Basic Auth and
         completely bypasses Apache's auth mechanisms.
 
-        </p><div class="example"><a name="id3103982"></a><p class="title"><b>Example 7. web::request AUTH_USER and web::request AUTH_PW</b></p><div class="example-contents"><pre style="background:#bbffbb ; width:75%" class="programlisting">
+        </p><div class="example"><a name="id2753477"></a><p class="title"><b>Example 7. <span style="font-family:monospace"><span class="command">web::request AUTH_USER</span></span> and <span style="font-family:monospace"><span class="command">web::request AUTH_PW</span></span></b></p><div class="example-contents"><pre style="background:#bbffbb ; width:75%" class="programlisting">
 # returns 1 if user/pass provided is websh/websh
 proc isAuthenticated {} {
     if {[web::request -count AUTH_USER]} {
@@ -111,17 +117,17 @@ web::dispatch
         for Apache (as of version 2.0.51) will allow Websh to also provide the
         same functionality when running in CGI (requires mod_setenvif):
 
-        </p><div class="example"><a name="id3104032"></a><p class="title"><b>Example 8. Apache configuration for AUTH_USER and AUTH_PW to work under CGI</b></p><div class="example-contents"><pre style="background:#bbffbb ; width:75%" class="programlisting">
+        </p><div class="example"><a name="id2753536"></a><p class="title"><b>Example 8. Apache configuration for AUTH_USER and AUTH_PW to work under CGI</b></p><div class="example-contents"><pre style="background:#bbffbb ; width:75%" class="programlisting">
 SetEnvIf Authorization "^(Basic .+)$" AUTH_BASIC=$1
 	  </pre></div></div><p style="width:90%"><br class="example-break">
 
-        <span class="emphasis"><em>Important security consideration:</em></span> This configuration 
-        will also expose the authentication information to Websh when Apache does
-        handle the authentication. Although Websh hides the information in that 
-        case, it is always available in the CGI environment. Use this configuration
-        carefully!
+        <span class="emphasis"><em>Important security consideration:</em></span> This
+	configuration will also expose the authentication information to
+	Websh when Apache does handle the authentication. Although Websh
+	hides the information in that case, it is always available in the
+	CGI environment. Use this configuration carefully!
 
-      </p></div><div class="section" title="web::param"><div class="titlepage"><div><div><h3 class="title"><a name="web::param"></a>web::param</h3></div></div></div><p style="width:90%">
+      </p></div><div class="section" title="web::param"><div class="titlepage"><div><div><h3 class="title"><a name="web::param"></a><span style="font-family:monospace"><span class="command"><strong>web::param</strong></span></span></h3></div></div></div><p style="width:90%">
 
 
 	</p><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><code class="command">web::param</code></span>  ?<em class="replaceable"><code>option</code></em>? ?<em class="replaceable"><code>key</code></em>? ?<em class="replaceable"><code>value</code></em>? ?<em class="replaceable"><code>...</code></em>?</span></div><p style="width:90%">
@@ -131,53 +137,56 @@ SetEnvIf Authorization "^(Basic .+)$" AUTH_BASIC=$1
 	<tt>-unset</tt>
 
       </p><p style="width:90%">
-	web::param is an accessor to state information from the
-	querystring.  Suppose the querystring is "lang=EN".
-	After web::dispatch has parsed the querystring,
+	<span style="font-family:monospace"><span class="command"><strong>web::param</strong></span></span> is an accessor to state information
+	from the querystring.  Suppose the querystring is "lang=EN".
+	After <span style="font-family:monospace"><span class="command"><strong>web::dispatch</strong></span></span> has parsed the querystring,
 	<span style="font-family:monospace"><span class="command"><strong>web::param</strong></span></span> <tt>lang</tt> will
 	report <code class="literal">EN</code>.  Additionaly,
-	web::param can manage this data and add, append, and delete
-	parameters as needed.
+	<span style="font-family:monospace"><span class="command"><strong>web::param</strong></span></span> can manage this data and add, append,
+	and delete parameters as needed.
 
 	</p><div class="variablelist"><dl><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><span class="command"><strong>web::param</strong></span></span> <tt>-names</tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
-		returns a list of all known keys.
+		Returns a list of all known keys.
 	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><span class="command"><strong>web::param</strong></span></span> <tt><em class="replaceable"><code>key</code></em></tt>
 	      ?<span class="optional"><tt><em class="replaceable"><code>default</code></em></tt></span>?</span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
-		returns the value for <tt>key</tt>. Can be a
+		Returns the value for <tt>key</tt>. Can be a
 		list. In case that <tt>key</tt> does not
 		exist, return <tt>default</tt>, if it is
 		given, or an empty string.
 	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><span class="command"><strong>web::param</strong></span></span>
 	      <tt>-count</tt> <tt><em class="replaceable"><code>key</code></em></tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
-		returns number of items in list of
+		Returns number of items in list of
 		<tt>key</tt>.
 	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><span class="command"><strong>web::param</strong></span></span> <tt>-set</tt>
 	      <tt><em class="replaceable"><code>key</code></em></tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
-		does the same as '<span style="font-family:monospace"><span class="command"><strong>web::param</strong></span></span>
-		<tt>key</tt>'.
+		Does the same as <span style="font-family:monospace"><span class="command"><strong>web::param</strong></span></span>
+		<tt>key</tt>.
 	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><span class="command"><strong>web::param</strong></span></span> <tt>-set</tt>
 	      <tt><em class="replaceable"><code>key</code></em></tt> <tt><em class="replaceable"><code>value</code></em></tt>
 	      ?<span class="optional"><tt><em class="replaceable"><code>value</code></em></tt></span>?
 	      ?<span class="optional"><tt><em class="replaceable"><code>...</code></em></tt></span>?</span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
-		add the parameter <tt>key</tt> to the
-		web::param data.  Any existing parameters with
-		<tt>key</tt> are overwritten.
+		Adds the parameter <tt>key</tt> to the
+		<span style="font-family:monospace"><span class="command"><strong>web::param</strong></span></span> data.  Any existing 
+		parameters with	<tt>key</tt> are overwritten.
 	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><span class="command"><strong>web::param</strong></span></span>
 	      <tt>-lappend</tt> <tt><em class="replaceable"><code>key</code></em></tt>
 	      <tt><em class="replaceable"><code>value</code></em></tt>
 	      ?<span class="optional"><tt><em class="replaceable"><code>value</code></em></tt></span>?
 	      ?<span class="optional"><tt><em class="replaceable"><code>...</code></em></tt></span>?</span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
-		append parameters with the same <tt>key</tt>
-		to the web::param data.  In this case the existing
-		<tt>value</tt> is not overwritten.
+		Appends parameters with the same <tt>key</tt>
+		to the <span style="font-family:monospace"><span class="command"><strong>web::param</strong></span></span> data.  
+		In this case the existing <tt>value</tt> is not
+		overwritten.
 	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><span class="command"><strong>web::param</strong></span></span> <tt>-unset</tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
-		deletes all parameters from the web::param data.
+		Deletes all parameters from the <span style="font-family:monospace"><span class="command"><strong>web::param</strong></span></span>
+		data.
 	      </div></div></dd><dt><span style="background:#bbbbff"><span class="term"><span style="font-family:monospace"><span class="command"><strong>web::param</strong></span></span>
 	      <tt>-unset</tt> <tt><em class="replaceable"><code>key</code></em></tt></span></span></dt><dd><div style="padding:4 ; margin-top:3 ;  margin-bottom:3 ; width:75%"><div style="margin-bottom:6">
-		delete a parameter from the web::param data.
+		Deletes a parameter from the <span style="font-family:monospace"><span class="command"><strong>web::param</strong></span></span>
+		data.
 	      </div></div></dd></dl></div><p style="width:90%">
 
-      </p></div><div class="section" title="web::formvar"><div class="titlepage"><div><div><h3 class="title"><a name="web::formvar"></a>web::formvar</h3></div></div></div><p style="width:90%">
+      </p></div><div class="section" title="web::formvar"><div class="titlepage"><div><div><h3 class="title"><a name="web::formvar"></a><span style="font-family:monospace"><span class="command"><strong>web::formvar</strong></span></span></h3></div></div></div><p style="width:90%">
 
 	</p><div class="cmdsynopsis"><span style="background:#bbbbff"><span style="font-weight:bold"><code class="command">web::formvar</code></span>  ?<em class="replaceable"><code>options</code></em>? ?<em class="replaceable"><code>key</code></em>? ?<em class="replaceable"><code>value</code></em>?</span></div><p style="width:90%">
       </p><p style="width:90%">
@@ -199,9 +208,10 @@ SetEnvIf Authorization "^(Basic .+)$" AUTH_BASIC=$1
 	Bytes have been truncated, because the file was too big. The last 
 	element contains the mime type of the file.
       </p><p style="width:90%">
-Note that the temporary files are created with the permissions configured by
-<span style="font-family:monospace"><span class="command"><strong>web::config filepermissions</strong></span></span>, which defaults to 0644.
-      </p><div class="example"><a name="id3104552"></a><p class="title"><b>Example 9. web::param</b></p><div class="example-contents"><pre style="background:#bbffbb ; width:75%" class="programlisting">
+        Note that the temporary files are created with the permissions
+	configured by <span style="font-family:monospace"><span class="command"><strong>web::config filepermissions</strong></span></span>,
+	which defaults to 0644.
+      </p><div class="example"><a name="id2754103"></a><p class="title"><b>Example 9. <span style="font-family:monospace"><span class="command">web::param</span></span></b></p><div class="example-contents"><pre style="background:#bbffbb ; width:75%" class="programlisting">
 % web::request CONTENT_LENGTH
 % web::dispatch -querystring "cmd=default&amp;t=100" -postdata "" -cmd ""
 % web::param -names

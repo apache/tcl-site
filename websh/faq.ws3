@@ -36,7 +36,7 @@ Websh is a rapid development environment for building powerful and
 reliable web applications. It is a standard Tcl extension and is
 released as Open Source Software. Websh is versatile and handles
 everything from HTML generation to data-base driven one-to-one page
-customization. Netcetera AG, has been using it for years in many customer
+customization. Netcetera has been using it for years in many customer
 projects, which typically are E-commerce shops or even electronic banking 
 applications.
 <p>

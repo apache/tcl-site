@@ -11,7 +11,7 @@ web::putx {
     <tr valign="top">
     {navbar_null}
     <td width="455">
-    Websh was first developed by <a href="http://www.netcetera.ch">Netcetera AG</a> of Zurich, Switzerland and was contributed to the ASF in 2001.<br>
+    Websh was first developed by <a href="http://www.netcetera.com">Netcetera</a> of Zurich, Switzerland and was contributed to the ASF in 2001.<br>
     Websh is now distributed under the terms of the Apache Software License:
 <pre>
                                  Apache License

@@ -43,7 +43,7 @@
 	the file handle, while Tcl's file commands are based on file
 	names. This is used to truncate a file while holding the lock.
 
-      </p><div class="example"><a name="id2758453"></a><p class="title"><b>Example 14. <span style="font-family:monospace"><span class="command">web::lockfile</span></span></b></p><div class="example-contents"><pre style="background:#bbffbb ; width:75%" class="programlisting">
+      </p><div class="example"><a name="id2741455"></a><p class="title"><b>Example 14. <span style="font-family:monospace"><span class="command">web::lockfile</span></span></b></p><div class="example-contents"><pre style="background:#bbffbb ; width:75%" class="programlisting">
 set fh [open [web::tempfile] w]
 web::lockfile $fh
 puts $fh foo

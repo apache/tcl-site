@@ -14,7 +14,7 @@
 	<tt>cmdName</tt>. If <tt>cmdName</tt> is
 	omitted, "default" is used.
 
-	</p><div class="example"><a name="id2696602"></a><p class="title"><b>Example 2. Simple command dispatching</b></p><div class="example-contents"><pre style="background:#bbffbb ; width:75%" class="programlisting">
+	</p><div class="example"><a name="id2679606"></a><p class="title"><b>Example 2. Simple command dispatching</b></p><div class="example-contents"><pre style="background:#bbffbb ; width:75%" class="programlisting">
 proc page {title code} {
     web::put "&lt;html&gt;&lt;title&gt;[web::htmlify $title]&lt;/title&gt;&lt;body&gt;"
     web::put "&lt;h1&gt;[web::htmlify $title]&lt;/h1&gt;"
@@ -111,7 +111,7 @@ web::dispatch</pre></div></div><p style="width:90%"><br class="example-break">
 	    and
 	    <span style="font-family:monospace"><span class="command"><strong>web::config</strong></span></span><tt>timeparam</tt>.
 	 </div><p style="width:90%">
-       </p><div class="example"><a name="id2751741"></a><p class="title"><b>Example 3. <span style="font-family:monospace"><span class="command">web::cmdurl</span></span></b></p><div class="example-contents"><pre style="background:#bbffbb ; width:75%" class="programlisting">
+       </p><div class="example"><a name="id2734743"></a><p class="title"><b>Example 3. <span style="font-family:monospace"><span class="command">web::cmdurl</span></span></b></p><div class="example-contents"><pre style="background:#bbffbb ; width:75%" class="programlisting">
 % web::cmdurl -notimestamp -urlformat [list scheme host scriptname pathinfo querystring] "test"
 http://websh.com/bin/returnmail/member?XDZuRD2rnsfHjFH
 %	</pre></div></div><br class="example-break"></div><div class="section" title="web::cmdurlcfg"><div class="titlepage"><div><div><h3 class="title"><a name="web::cmdurlcfg"></a><span style="font-family:monospace"><span class="command"><strong>web::cmdurlcfg</strong></span></span></h3></div></div></div><p style="width:90%">
@@ -211,7 +211,7 @@ http://websh.com/bin/returnmail/member?XDZuRD2rnsfHjFH
 	the keys from the command line. The static parameter is only
 	used if there is no such parameter on the command line.
 
-      </p><div class="example"><a name="id2752263"></a><p class="title"><b>Example 4. <span style="font-family:monospace"><span class="command">web::cmdurl</span></span> and <span style="font-family:monospace"><span class="command">web::cmdurlcfg</span></span></b></p><div class="example-contents"><pre style="background:#bbffbb ; width:75%" class="programlisting">
+      </p><div class="example"><a name="id2735265"></a><p class="title"><b>Example 4. <span style="font-family:monospace"><span class="command">web::cmdurl</span></span> and <span style="font-family:monospace"><span class="command">web::cmdurlcfg</span></span></b></p><div class="example-contents"><pre style="background:#bbffbb ; width:75%" class="programlisting">
 % web::cmdurl ""
 ?XDqPtk34XvyPh41gUBo
 % web::cmdurlcfg -scriptname bin/test_script
@@ -316,7 +316,7 @@ cmd
 	<tt>-cmd</tt> option, <span style="font-family:monospace"><span class="command"><strong>web::dispatch</strong></span></span> will
 	call the command "default".
 
-      </p><div class="example"><a name="id2752714"></a><p class="title"><b>Example 5. <span style="font-family:monospace"><span class="command">web::command</span></span> and <span style="font-family:monospace"><span class="command">web::dispatch</span></span></b></p><div class="example-contents"><pre style="background:#bbffbb ; width:75%" class="programlisting">
+      </p><div class="example"><a name="id2735716"></a><p class="title"><b>Example 5. <span style="font-family:monospace"><span class="command">web::command</span></span> and <span style="font-family:monospace"><span class="command">web::dispatch</span></span></b></p><div class="example-contents"><pre style="background:#bbffbb ; width:75%" class="programlisting">
 % set tst {puts "On the hook"}
 puts "On the hook"
 % web::command acmd {puts "this is acmd"}
@@ -368,7 +368,7 @@ d
 	      the corresponding session context without generating a
 	      new session id.
 	    </div></li></ul></div><p style="width:90%">
-      </p><div class="example"><a name="id2752899"></a><p class="title"><b>Example 6. Examples</b></p><div class="example-contents"><p style="width:90%">
+      </p><div class="example"><a name="id2735900"></a><p class="title"><b>Example 6. Examples</b></p><div class="example-contents"><p style="width:90%">
 	See <a class="ulink" href="http://tcl.apache.org/websh/examples/" target="_top">http://tcl.apache.org/websh/examples/</a>
 	for several sample application demonstrating Websh's
 	session management facilities.

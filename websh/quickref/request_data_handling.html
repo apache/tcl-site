@@ -84,7 +84,7 @@
         The following example provides a basic app that requires Basic Auth and
         completely bypasses Apache's auth mechanisms.
 
-        </p><div class="example"><a name="id2753477"></a><p class="title"><b>Example 7. <span style="font-family:monospace"><span class="command">web::request AUTH_USER</span></span> and <span style="font-family:monospace"><span class="command">web::request AUTH_PW</span></span></b></p><div class="example-contents"><pre style="background:#bbffbb ; width:75%" class="programlisting">
+        </p><div class="example"><a name="id2736478"></a><p class="title"><b>Example 7. <span style="font-family:monospace"><span class="command">web::request AUTH_USER</span></span> and <span style="font-family:monospace"><span class="command">web::request AUTH_PW</span></span></b></p><div class="example-contents"><pre style="background:#bbffbb ; width:75%" class="programlisting">
 # returns 1 if user/pass provided is websh/websh
 proc isAuthenticated {} {
     if {[web::request -count AUTH_USER]} {
@@ -117,7 +117,7 @@ web::dispatch
         for Apache (as of version 2.0.51) will allow Websh to also provide the
         same functionality when running in CGI (requires mod_setenvif):
 
-        </p><div class="example"><a name="id2753536"></a><p class="title"><b>Example 8. Apache configuration for AUTH_USER and AUTH_PW to work under CGI</b></p><div class="example-contents"><pre style="background:#bbffbb ; width:75%" class="programlisting">
+        </p><div class="example"><a name="id2736538"></a><p class="title"><b>Example 8. Apache configuration for AUTH_USER and AUTH_PW to work under CGI</b></p><div class="example-contents"><pre style="background:#bbffbb ; width:75%" class="programlisting">
 SetEnvIf Authorization "^(Basic .+)$" AUTH_BASIC=$1
 	  </pre></div></div><p style="width:90%"><br class="example-break">
 
@@ -211,7 +211,7 @@ SetEnvIf Authorization "^(Basic .+)$" AUTH_BASIC=$1
         Note that the temporary files are created with the permissions
 	configured by <span style="font-family:monospace"><span class="command"><strong>web::config filepermissions</strong></span></span>,
 	which defaults to 0644.
-      </p><div class="example"><a name="id2754103"></a><p class="title"><b>Example 9. <span style="font-family:monospace"><span class="command">web::param</span></span></b></p><div class="example-contents"><pre style="background:#bbffbb ; width:75%" class="programlisting">
+      </p><div class="example"><a name="id2737104"></a><p class="title"><b>Example 9. <span style="font-family:monospace"><span class="command">web::param</span></span></b></p><div class="example-contents"><pre style="background:#bbffbb ; width:75%" class="programlisting">
 % web::request CONTENT_LENGTH
 % web::dispatch -querystring "cmd=default&amp;t=100" -postdata "" -cmd ""
 % web::param -names

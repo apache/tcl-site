@@ -117,6 +117,59 @@
 			      </p>
  </div>
  <div class="sez">
+  <h4>Release Notes for Rivet 2.0.4 <span class="timestamp">(23-Sep-2011)</span>
+  </h4>
+  <p>
+   <h5>Bugs fixed</h5>
+  </p>
+  <p>
+						An Tcl error in an AbortScript would trigger a message that
+						erroneously printed that an ErrorScript was running.
+					</p>
+  <p>
+   <h5>Manual Pages Expanded</h5>
+  </p>
+  <p>
+						Manual pages have been expanded to include documentation for more
+						commands implemented but not yet documented. Section documenting 
+						single commands has been reorganized to list commands in alphabetical
+						order.
+					</p>
+  <p>
+   <h5>New Features</h5>
+  </p>
+  <p>
+						Commands <strong>load_env</strong>
+ and <strong>load_headers</strong>
+
+						accept an array name as argument. If not fully qualified the array
+						was created in either the <tt>::request</tt>
+ namespace (.rvt templates)
+						or the global namespace (.tcl scripts). Starting with 2.0.4 
+						these commands, when invoked from within a procedure, create
+						the array in the proc's local scope, unless the argument is a
+						fully qualifed name scoping the array in a user defined namespace.
+					  </p>
+  <p>
+						Command <strong>makeurl</strong>
+ has been extended to be used in three forms
+						<ul>
+    <li>without argument
+								<pre class="programlisting">makeurl
+==&gt; Current script's url</pre>
+    </li>
+    <li>with an absolute path
+								<pre class="programlisting">makeurl /a/b/c
+==&gt; http://&lt;host&gt;:&lt;port&gt;/a/b/c </pre>
+    </li>
+    <li>with a relative path
+								<pre class="programlisting">makeurl a/b/c
+==&gt; http://&lt;host&gt;:&lt;port&gt;/&lt;current script&gt;/a/b/c</pre>
+    </li>
+   </ul>
+  </p>
+ </div>
+ <div class="sez">
   <h4>Release Notes for Rivet 2.0.3 <span class="timestamp">(19-Mar-2011)</span>
   </h4>
   <p>
@@ -270,11 +323,11 @@ ALTER TABLE rivet_session_cache RENAME COLUMN package to package_</pre>
 
 
 		    </div>
-		    <div id="last_modified">Last Modified: 23-03-2011 08:32:58 UTC</div>
+		    <div id="last_modified">Last Modified: 23-09-2011 17:48:52 UTC</div>
 		</div>
 		<div class="clearfloats"></div>
 		<!--div class="leftaligned">: $Author: Massimo Manghi</div>
-		<div class="rightaligned">:23-03-2011 08:32:58</div-->
+		<div class="rightaligned">:23-09-2011 17:48:52</div-->
 		<div>
 		    <table align="center" width="100%">
 			<tr>

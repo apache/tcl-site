@@ -1,138 +1,23 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Tcl Scripts</title>
+    <link rel="stylesheet" href="../css/wondrous/styles.css" type="text/css" />
+</head>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-  <head>
-	
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	<title>Tcl Scripts</title>
-	<link rel="stylesheet" href="../css/rivet.css" />
-    </head>
-    <body>
-    	<!--p align="center"></p -->
-	<!-- ?
-	    parray rivetweb::menus_a
-	? -->
-	<div id="bigcontainer"> 
-	    <div id="pageheadline">
-		<div class="decoration">
-		    <!-- a href="/" --><img src="../picts/Rivetlogo_smaller.png" alt="Apache Rivet" /><!-- /a -->
-		</div>
-		<div class="headline"><headline>Tcl Scripts</headline>
-</div>
-	    </div>
-	    <div id="pagecontents">
-		<div class="navbar navleft"><div class="staticmenu" id="main">
-    <div class="menuheader">Rivet</div>
-    <div class="itemcontainer">
-        <span class="navitem">
-            <a href="../index.html" class="menuitem">Rivet Homepage</a>
-        </span>
-        <span class="navitem">
-            <a href="http://tcl.apache.org/">Apache Tcl Home</a>
-        </span>
-        <span class="navitem">
-            <a href="http://www.tcl.tk/">The Tcl Language</a>
-        </span>
-        <span class="navitem">
-            <a href="download.html" class="menuitem">Getting Rivet</a>
-        </span>
-        <span class="navitem">
-            <a href="http://tcl.apache.org/rivet/manual/">Documentation</a>
-        </span>
-        <span class="navitem">
-            <a href="hello_world.html" class="menuitem">Examples</a>
-        </span>
-        <span class="navitem">
-            <a href="about.html" class="menuitem">About Us - Contact</a>
-        </span>
-    </div>
-</div>
-<div class="staticmenu" id="examples">
-    <div class="menuheader">Examples</div>
-    <div class="itemcontainer">
-        <span class="navitem">
-            <a href="hello_world.html" class="menuitem">Hello world!</a>
-        </span>
-        <span class="navitem">
-            <a href="shaded_table.html" class="menuitem">A shaded table</a>
-        </span>
-        <span class="navitem">
-            <a href="var_access.html" class="menuitem">Variable Access</a>
-        </span>
-        <span class="navitem">
-            <a href="file_upload.html" class="menuitem">File Upload</a>
-        </span>
-        <span class="navitem">
-            <a href="file_download.html" class="menuitem">File Download</a>
-        </span>
-        <span class="navitem">
-            <a href="ajax.html" class="menuitem">XML and Ajax</a>
-        </span>
-        <span class="navitem">
-            <a href="calendar.html" class="menuitem">Calendar</a>
-        </span>
-    </div>
-</div>
-
-</div>
-		<div class="navbar navright"></div>
-		<div id="content"> 
-		    <div class="contentheadline"></div>
-		    <div id="maincontent" style=""><div>
+<body>
+    <div id="container">
+        <div id="header">
+            <h1><a href="../index.html">Rivet</a></h1>
+            <h2 id="slogan">Webscripting for Tcl'ers</h2>
+            <div class="clear"></div>
+        </div>
+        <div id="body">
+            <div id="content">
+                <h2><headline>Tcl Scripts</headline>
+</h2>
+                <div>
  <p>
 		    Pure Tcl scripts let you do the heavy lifting to control your application. A sensible 
 		    design pattern is to put most of your complex logic in these files, and then parse template 
@@ -164,28 +49,82 @@
 
 
 
-		    </div>
-		    <div id="last_modified">Last Modified: 20-07-2010 13:11:09 UTC</div>
-		</div>
-		<div class="clearfloats"></div>
-		<!--div class="leftaligned">:$Author: massimo.manghi $</div>
-		<div class="rightaligned">:20-07-2010 13:11:09</div-->
-		<div>
-		    <table align="center" width="100%">
-			<tr>
-			    <td align="left">
-				<a href="http://www.apache.org/">
-				    <img src="../picts/apache_pb.gif" alt="Powered by Apache" border="0" width="259" height="32"></a>
+                <div class="contentbottom">
+                    <div id="last_modified">Last Modified: 20-07-2010 13:11:09 UTC</div>
+                </div>
+            </div>
 
-			    </td>
-			    <td align="right">
-				<a href="http://www.tcl.tk/">
-				    <img src="../picts/tclp.gif" alt="Powered by Tcl" border="0" width="42" height="64"></a>
-			    </td>
-			</tr>
-		    </table>
-		</div>
-	    </div>
-	</div>
-    </body>
+            <div class="sidebar">
+                <ul>
+                    <li>
+                        <h4>News</h4>
+                        <ul><li><span class="newsheader">23 Sept. 2011</span>: <a href="rn-2-0.html">Rivet 2.0.4 released</a></li></ul>
+                    </li>
+                    <li id="rivetexamples">
+    <h4 class="">Examples</h4>
+    <ul class="blocklist">
+        <li class="navitem">
+            <a href="hello_world.html" class="">Hello world!</a>
+        </li>
+        <li class="navitem">
+            <a href="shaded_table.html" class="">A shaded table</a>
+        </li>
+        <li class="navitem">
+            <a href="var_access.html" class="">Variable Access</a>
+        </li>
+        <li class="navitem">
+            <a href="file_upload.html" class="">File Upload</a>
+        </li>
+        <li class="navitem">
+            <a href="file_download.html" class="">File Download</a>
+        </li>
+        <li class="navitem">
+            <a href="ajax.html" class="">XML and Ajax</a>
+        </li>
+        <li class="navitem">
+            <a href="calendar.html" class="">Calendar</a>
+        </li>
+    </ul>
+</li>
+<li id="main">
+    <h4 class="">Rivet</h4>
+    <ul class="blocklist">
+        <li class="navitem">
+            <a href="../index.html" class="">Rivet Homepage</a>
+        </li>
+        <li class="navitem">
+            <a href="http://tcl.apache.org/" target="asf">Apache Tcl Home</a>
+        </li>
+        <li class="navitem">
+            <a href="http://www.tcl.tk/" target="tclxchange">The Tcl Language
+		    	</a>
+        </li>
+        <li class="navitem">
+            <a href="download.html" class="">Getting Rivet</a>
+        </li>
+        <li class="navitem">
+            <a href="http://tcl.apache.org/rivet/manual/" target="rivetman">Documentation</a>
+        </li>
+        <li class="navitem">
+            <a href="hello_world.html" class="">Examples</a>
+        </li>
+        <li class="navitem">
+            <a href="about.html" class="">About Us - Contact</a>
+        </li>
+    </ul>
+</li>
+
+ 
+                </ul> 
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <div id="footer">
+        <div class="footer-content">
+            <p>Apache Software Foundation | Design by <a href="http://www.spyka.net">Free CSS Templates</a> | <a href="http://www.justfreetemplates.com">Free Web Templates</a></p>
+        </div>
+    </div>
+    <div style="text-align: center; font-size: 0.75em;">Design downloaded from <a href="http://www.freewebtemplates.com/">free website templates</a>.</div></body>
 </html>
+

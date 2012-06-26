@@ -58,13 +58,28 @@
 &lt;/html&gt;
 </pre>
   </p>
+  <p>
+			Starting with version 2.0.5 Rivet also supports a shorthand notation
+			to output simple strings. 
+		    </p>
+  <p>
+   <pre class="programlisting">
+&lt;? set hello_message "Hello world" ?&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;&lt;?= $hello_message ?&gt;&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;&lt;?= [html $hello_message pre b] ?&gt;&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+  </p>
  </div>
 </div>
 
 
 
                 <div class="contentbottom">
-                    <div id="last_modified">Last Modified: 06-11-2011 11:47:35 UTC</div>
+                    <div id="last_modified">Last Modified: 26-06-2012 21:51:26 UTC</div>
                 </div>
             </div>
 
@@ -72,7 +87,10 @@
                 <ul>
                     <li>
                         <h4>News</h4>
-                        <ul><li><span class="newsheader">23 Sept. 2011</span>: <a href="rn-2-0.html">Rivet 2.0.4 released</a></li></ul>
+                        <ul>
+			    <li><span class="newsheader">26 June 2012</span>: <a href="rn-2-0.html">Rivet 2.0.5 released</a></li>
+			    <li><span class="newsheader">6 July 2012</span>: <a href="http://www.eurotcl.tcl3d.org/">10th European Tcl/Tk User Meeting</a></li>
+			</ul>
                     </li>
                     <li id="rivetexamples">
     <h4 class="">Examples</h4>

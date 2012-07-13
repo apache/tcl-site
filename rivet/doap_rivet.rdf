@@ -30,20 +30,20 @@
     <release>
       <Version>
         <name>rivet-2.0</name>
-        <created>2011-09-23</created>
-        <revision>2.0.4</revision>
+        <created>2012-06-26</created>
+        <revision>2.0.5</revision>
       </Version>
     </release>
     <repository>
       <SVNRepository>
-        <location rdf:resource="http://svn.apache.org/repos/asf/tcl/rivet/"/>
-        <browse rdf:resource="http://svn.apache.org/repos/asf/tcl/rivet/"/>
+        <location rdf:resource="http://svn.apache.org/repos/asf/tcl/rivet/" />
+        <browse rdf:resource="http://svn.apache.org/repos/asf/tcl/rivet/" />
       </SVNRepository>
     </repository>
     <maintainer>
       <foaf:Person>
         <foaf:name>Massimo Manghi</foaf:name>
-          <foaf:mbox rdf:resource="mailto:mxmanghi@apache.org"/>
+          <foaf:mbox rdf:resource="mailto:mxmanghi@apache.org" />
       </foaf:Person>
     </maintainer>
   </Project>

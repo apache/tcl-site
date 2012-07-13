@@ -96,10 +96,10 @@ if {[var exists pdfname]} {
 
         puts $pdf
     } else {
-        source pdf_not_found_error.rvt
+        parse pdf_not_found_error.rvt
     }
 } else {
-    source parameter_not_defined_error.rvt
+    parse parameter_not_defined_error.rvt
 }
 </pre>
   <p>

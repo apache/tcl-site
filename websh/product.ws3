@@ -59,7 +59,7 @@ web::putx {
       </table>
     </td>
   </tr>
-    {uppfeil product.ws3 -text "Websh history" -aName history}
+    {uppfeil product.html -text "Websh history" -aName history}
     <tr valign="top">
       <td width="10"></td>
       <td width="150"></td>
@@ -77,7 +77,7 @@ web::putx {
 	current release, Websh 3.  <br><br>
     </td>
     </tr>
-    {uppfeil product.ws3 -text "Based on Tcl" -aName tcl}
+    {uppfeil product.html -text "Based on Tcl" -aName tcl}
     <tr valign="top">
     <tr valign="top">
       <td width="10"></td>
@@ -123,7 +123,7 @@ web::putx {
 
     </td>
     </tr>
-    {uppfeil product.ws3 -text "Websh Design" -aName design}
+    {uppfeil product.html -text "Websh Design" -aName design}
     <tr valign="top">
     <tr valign="top">
       <td width="10"></td>
@@ -223,7 +223,7 @@ web::putx {
 	  The logging module is extensible through plug-Ins.
 	  <br><br><br>
 	  Find more information in the
-	  {pageLink whitepaper.ws3 -show "Websh white paper"}.
+	  {pageLink whitepaper.html -show "Websh white paper"}.
 
 	</td>
       </tr>

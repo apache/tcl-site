@@ -37,7 +37,7 @@ web::putx {
     <p>
     If you would like to be notified when new versions of Websh
     become available for download, you can subscribe to the Websh
-    user {pageLink subscribe.ws3 -show "mailing list"}.
+    user {pageLink subscribe.html -show "mailing list"}.
     </p>
 
     <p>

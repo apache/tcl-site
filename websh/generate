@@ -1,0 +1,24 @@
+#!/usr/local/bin/websh3.6.0b5
+
+
+source websh.interpclass.initializer
+
+set html 1
+
+foreach file [glob *.ws3] {
+
+    set out [file rootname $file].html
+
+    web::response -resetall
+
+    catch {unset output}
+    web::response -select #output
+    web::response -sendheader 0
+
+    web::include $file
+
+    set fh [open $out w]
+    puts -nonewline $fh $output
+    close $fh
+
+}

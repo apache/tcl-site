@@ -46,7 +46,7 @@ and Apache 2 web server.
 <a name="version"></a><a href="#toc"><h2>1.2 What is the current version?</h2></a>
 
 Currently, version 3.6 of Websh has been released as Beta (but fully working
-version). Check the {pageLink download.ws3 -show "download area"} to get the
+version). Check the {pageLink download.html -show "download area"} to get the
 latest version.
 
 <a name="price"></a><a href="#toc"><h2>1.3 What does Websh cost?</h2></a>
@@ -56,7 +56,7 @@ Nothing. It's free. Websh is released as Open Source.
 <a name="download"></a><a href="#toc"><h2>1.4 Where can I download Websh?</h2></a>
 
 The latest release of Websh is available for download in the
-<a href="download.ws3">download area</a> of this site.
+<a href="download.html">download area</a> of this site.
 
 <a name="why"></a><a href="#toc"><h2>1.5 Why should I use Websh?</h2></a>
 
@@ -73,7 +73,7 @@ customers.
 
 <a name="mailinglist"></a><a href="#toc"><h2>1.6 Is there a mailing list?</h2></a>
 
-Sure. Visit the <a href="subscribe.ws3">subscribe</a> page on this site to get more information.
+Sure. Visit the <a href="subscribe.html">subscribe</a> page on this site to get more information.
 
 <a name="technical"></a><a href="#toc"><h1>2 Technical Questions</h1></a>
 

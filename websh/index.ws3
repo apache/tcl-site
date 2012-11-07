@@ -34,6 +34,10 @@ web::putx {
 
           <table border="0" cellpadding="0" cellspacing="0" width="145">
 
+{newsBarElement "2012-11-06" \
+        {<b>Mailing lists consolidated</b>: Only <a href="mailto:websh-dev@tcl.apache.org">websh-dev @tcl.apache.org</a> is left active for all communication.}
+}
+
 {newsBarElement "2009-09-24" \
      {<b>Websh 3.6.0b5 available</b>: Pick the {pageLink http://www.apache.org/dyn/closer.cgi/tcl/websh/source/websh-3.6.0b5-src.tar.gz -show "tarball"}
 	 or browse the {pageLink /websh/download.html -show "download area"}.
@@ -50,10 +54,6 @@ web::putx {
      {<b>Websh 3.6.0b3 available</b>: Pick the {pageLink http://www.apache.org/dyn/closer.cgi/tcl/websh/source/websh-3.6.0b3-src.tar.gz -show "tarball"}
 	 or browse the {pageLink /websh/download.html -show "download area"}.
      }
-}
-
-{newsBarElement "2005-10-16" \
-     {<b>Code repository moved to SVN</b>: Check the {pageLink download.html -show "download area"} for details.}
 }
           </table>
 

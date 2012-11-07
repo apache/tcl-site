@@ -1,0 +1,2 @@
+RedirectMatch permanent ^/websh/(.+)\.ws3$ /websh/$1.html
+

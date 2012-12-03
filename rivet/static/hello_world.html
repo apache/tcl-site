@@ -53,7 +53,7 @@
     &lt;title&gt;&lt;? puts $hello_message ?&gt;&lt;/title&gt;
   &lt;/head&gt;
   &lt;body&gt;&lt;?
-    puts [html $hello_message pre b]
+    puts [::rivet::html $hello_message pre b]
   ?&gt;&lt;/body&gt;
 &lt;/html&gt;
 </pre>
@@ -69,7 +69,7 @@
   &lt;head&gt;
     &lt;title&gt;&lt;?= $hello_message ?&gt;&lt;/title&gt;
   &lt;/head&gt;
-  &lt;body&gt;&lt;?= [html $hello_message pre b] ?&gt;&lt;/body&gt;
+  &lt;body&gt;&lt;?= [::rivet::html $hello_message pre b] ?&gt;&lt;/body&gt;
 &lt;/html&gt;
 </pre>
   </p>
@@ -79,19 +79,12 @@
 
 
                 <div class="contentbottom">
-                    <div id="last_modified">Last Modified: 26-06-2012 21:51:26 UTC</div>
+                    <div id="last_modified">Last Modified: 26-11-2012 01:22:36 UTC</div>
                 </div>
             </div>
 
             <div class="sidebar">
                 <ul>
-                    <li>
-                        <h4>News</h4>
-                        <ul>
-			    <li><span class="newsheader">26 June 2012</span>: <a href="rn-2-0.html">Rivet 2.0.5 released</a></li>
-			    <li><span class="newsheader">6 July 2012</span>: <a href="http://www.eurotcl.tcl3d.org/">10th European Tcl/Tk User Meeting</a></li>
-			</ul>
-                    </li>
                     <li id="rivetexamples">
     <h4 class="">Examples</h4>
     <ul class="blocklist">
@@ -131,13 +124,21 @@
             <a href="download.html" class="">Getting Rivet</a>
         </li>
         <li class="navitem">
-            <a href="http://tcl.apache.org/rivet/manual/" target="rivetman">Documentation</a>
-        </li>
-        <li class="navitem">
             <a href="hello_world.html" class="">Examples</a>
         </li>
         <li class="navitem">
             <a href="about.html" class="">About Us - Contact</a>
+        </li>
+    </ul>
+</li>
+<li id="manual">
+    <h4 class="">Manuals</h4>
+    <ul class="blocklist">
+        <li class="navitem">
+            <a href="http://tcl.apache.org/rivet/manual2.0/" target="rivetman2.0">Rivet 2.0 Manual</a>
+        </li>
+        <li class="navitem">
+            <a href="http://tcl.apache.org/rivet/manual2.1/" target="rivetman2.1">Rivet 2.1 Manual</a>
         </li>
     </ul>
 </li>

@@ -46,9 +46,47 @@
   <h4>Release Notes for Rivet 2.0.6 <span class="timestamp">(30-Nov-2012)</span>
   </h4>
   <h5>Fixed Bugs</h5>
-  <ul>
-   <li/>
-  </ul>
+  <p>
+						Test Suite 
+						<ul>
+    <li>User and Group directives removed from the configuration file
+	    					template to make test suite independent from the command 'id' output from which 
+	    					the values for this parameters were inferred (Bug #53396)</li>
+   </ul>
+  </p>
+  <p>
+						mod_rivet.c
+						<ul>
+    <li>Add UploadDirectory to the list of handled options for RivetUserConf</li>
+    <li>The module returns now a HTTP_INTERNAL_SERVER_ERROR when a <b>::request</b>
+
+		    				namespace cannot be created    </li>
+   </ul>
+  </p>
+  <p> 
+						DIO Package bug fixes
+						<ul>
+    <li>
+								Improved DIO support for Sqlite fixes several bugs.
+							</li>
+    <li>
+								Fixed secs computation made by dio_Mysql when handling timestamp fields.
+							</li>
+    <li>
+								Fixed wrong declaration of 'insert' subcommand in page manual (Bug #53670)
+							</li>
+    <li>
+								Fixed method makeDBFieldValue in class Oracle (Bug #53703)
+							</li>
+    <li>
+								Method 'count' failed when no keyfield was set.
+							</li>
+    <li>
+								Index riv_sess_cache_ix had a incomplete unique key definition that missed the 
+								'package_' column (fixes bug #54063)
+							</li>
+   </ul>
+  </p>
  </div>
  <div class="sez">
   <h4>Release Notes for Rivet 2.0.5 <span class="timestamp">(26-Jun-2012)</span>
@@ -295,7 +333,7 @@ ALTER TABLE rivet_session_cache RENAME COLUMN package to package_</pre>
 
 
                 <div class="contentbottom">
-                    <div id="last_modified">Last Modified: 01-12-2012 16:14:23 UTC</div>
+                    <div id="last_modified">Last Modified: 03-12-2012 02:29:43 UTC</div>
                 </div>
             </div>
 

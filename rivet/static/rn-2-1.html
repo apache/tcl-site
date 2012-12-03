@@ -70,14 +70,19 @@
 						A new <strong>RivetServerInit</strong>
  directives was introduced. 
 						<strong>RivetServerInit</strong>
-	accepts as argument  Tcl code to be run
-						in the initialization stage of the webserver before the child processes are 
-						forked. More details are available in the manual.
+	accepts as argument a Tcl script to be run
+						during the initialization stage of the webserver. This phase takes places 
+						before the child processes are forked. More details are available in the manual.
 					  </p>
   <p>
 						A new <strong>AfterEveryScript</strong>
- directive specifies a new class
-						of configuration scripts that run as last when processing a request
+ directive specifies a new class of 
+						configuration scripts. An <strong>AfterEveryScript</strong>
+ directive tells
+						Rivet what code has to be executed at every request completion, either when 
+						a request processing was successful or an abort condition was handled 
+						by an <strong>AbortScript</strong>
+ directive.
 					  </p>
   <p>
 						The new command <strong>::rivet::inspect</strong>
@@ -121,8 +126,7 @@
 						DIO Package bug fixes
 						<ul>
     <li>
-								Improved DIO support for Sqlite fixes several bugs that occurred when using
-								this backend.
+								Improved DIO support for Sqlite fixes several bugs.
 							</li>
     <li>
 								Fixed secs computation made by dio_Mysql when handling timestamp fields.
@@ -161,7 +165,7 @@
 
 
                 <div class="contentbottom">
-                    <div id="last_modified">Last Modified: 01-12-2012 16:14:23 UTC</div>
+                    <div id="last_modified">Last Modified: 03-12-2012 02:24:10 UTC</div>
                 </div>
             </div>
 

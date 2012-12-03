@@ -1,0 +1,257 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Rivet 2.1: Release Notes and Known Problems</title>
+    <link rel="stylesheet" href="../css/wondrous/styles.css" type="text/css" />
+</head>
+
+<body>
+    <div id="container">
+        <div id="header">
+            <h1><a href="../index.html">Rivet</a></h1>
+            <h2 id="slogan">Webscripting for Tcl'ers</h2>
+            <div class="clear"></div>
+        </div>
+        <div id="body">
+            <div id="content">
+                <h2><headline>Rivet 2.1: Release Notes and Known Problems</headline>
+</h2>
+                <div>
+ <div class="sez">
+  <h4>Download</h4>
+  <p>
+							Rivet 2.1 is available for download from ASF mirror sites. Check the 
+							<a href="download.html">download page</a>
+ for information about 
+							downloading the source code, rpm files or packages for SuSE, 
+							Redhat, Debian and Ubuntu (packages for SuSE and Redhat are available thanks to 
+							Harald Oehlmann).
+					  </p>
+  <p>
+							Code integrity for this release can be checked using the 
+							public keys in the <a href="http://www.apache.org/dist/tcl/KEYS">KEYS</a>
+ file.
+					  </p>
+  <p>
+							Rivet 2.1 works with the Apache Webserver version 2.x (running the 
+							<strong>prefork</strong>
+ MPM) and requires Tcl &gt;= 8.5.11
+					  </p>
+ </div>
+ <div class="sez">
+  <h4>Release Notes for Rivet 2.1</h4>
+  <h5>New commands and Directives</h5>
+  <p>
+						Starting with rivet version 2.1 the whole set of commands was moved into the 
+						<strong>::rivet</strong>
+ namespace. For compatibility with existing software
+						commands are by default in the <strong>::rivet</strong>
+ namespace export list 
+						and automatically imported into the global namespace. 
+						You can change this behaviour in two ways:
+					  </p>
+  <ul>
+   <li>
+							By disabling the automatic import from the <strong>::rivet</strong>
+
+							namespace configuring the build system with the 
+							<em>--disable-import-rivet-commands</em>
+ switch
+						   </li>
+   <li>
+							By disabling the export of the commands, thus forcing scripts to
+							use the fully qualified name of a command using configure's 
+							<strong>--disable-rivet-commands-export</strong>
+ argument
+						   </li>
+  </ul>
+  <p>
+						A new <strong>RivetServerInit</strong>
+ directives was introduced. 
+						<strong>RivetServerInit</strong>
+	accepts as argument  Tcl code to be run
+						in the initialization stage of the webserver before the child processes are 
+						forked. More details are available in the manual.
+					  </p>
+  <p>
+						A new <strong>AfterEveryScript</strong>
+ directive specifies a new class
+						of configuration scripts that run as last when processing a request
+					  </p>
+  <p>
+						The new command <strong>::rivet::inspect</strong>
+ provides deeper introspection
+						in the configuration of a module.
+					  </p>
+  <h5>New switches for the <quote>configure</quote>
+ script  </h5>
+  <p>
+						Some Rivet configuration defaults can be changed running the 
+						<i>configure</i>
+ script passing the following arguments. 
+					  </p>
+  <ul>
+   <li>--enable-virtual-interps-separation</li>
+   <li>--with-upload-dir=DIR</li>
+   <li>--with-post-max=BYTES</li>
+   <li>--disable-upload-var</li>
+  </ul>
+  <h5>
+						Recent Bug Fixes
+					</h5>
+  <p>
+						Test Suite 
+						<ul>
+    <li>User and Group directives removed from the configuration file
+	    					template to make test suite independent from the command 'id' output from which 
+	    					the values for this parameters were inferred (Bug #53396)</li>
+   </ul>
+  </p>
+  <p>
+						mod_rivet.c.
+						<ul>
+    <li>Add UploadDirectory to the list of handled options for RivetUserConf</li>
+    <li>The module returns now a HTTP_INTERNAL_SERVER_ERROR when a <b>::request</b>
+
+		    				namespace cannot be created    </li>
+   </ul>
+  </p>
+  <p> 
+						DIO Package bug fixes
+						<ul>
+    <li>
+								Improved DIO support for Sqlite fixes several bugs that occurred when using
+								this backend.
+							</li>
+    <li>
+								Fixed secs computation made by dio_Mysql when handling timestamp fields.
+							</li>
+    <li>
+								Fixed wrong declaration of 'insert' subcommand in page manual (Bug #53670)
+							</li>
+    <li>
+								Fixed method makeDBFieldValue in class Oracle (Bug #53703)
+							</li>
+    <li>
+								Method 'count' failed when no keyfield was set.
+							</li>
+    <li>
+								Index riv_sess_cache_ix had a incomplete unique key definition that missed the 
+								'package_' column (fixes bug #54063)
+							</li>
+   </ul>
+  </p>
+  <p>
+						New package form 2.0 added with new methods and several fixes including:
+						<ul>
+    <li>	
+								Workaround to avoid wrong parsing of form data when parameter
+		 						values have spaces in them
+							</li>
+    <li>
+								Fixed problem with variable clash in constructor. Also removed unneeded [expr ...] in conditions
+		 						that prevented efficient code handling by the byte compiler (Closes bug #52650)
+							</li>
+   </ul>
+  </p>
+ </div>
+</div>
+
+
+
+                <div class="contentbottom">
+                    <div id="last_modified">Last Modified: 01-12-2012 16:14:23 UTC</div>
+                </div>
+            </div>
+
+            <div class="sidebar">
+                <ul>
+                    <li id="news">
+    <h4 class="">News</h4>
+    <ul class="blocklist">
+        <li class="navitem">
+            <a href="rn-2-1.html" class="">1 Dec 2012: Rivet 2.1.0 released</a>
+        </li>
+        <li class="navitem">
+            <a href="rn-2-0.html" class="">1 Dec 2012: Rivet 2.0.6 released</a>
+        </li>
+    </ul>
+</li>
+<li id="main">
+    <h4 class="">Rivet</h4>
+    <ul class="blocklist">
+        <li class="navitem">
+            <a href="../index.html" class="">Rivet Homepage</a>
+        </li>
+        <li class="navitem">
+            <a href="http://tcl.apache.org/" target="asf">Apache Tcl Home</a>
+        </li>
+        <li class="navitem">
+            <a href="download.html" class="">Getting Rivet</a>
+        </li>
+        <li class="navitem">
+            <a href="hello_world.html" class="">Examples</a>
+        </li>
+        <li class="navitem">
+            <a href="about.html" class="">About Us - Contact</a>
+        </li>
+    </ul>
+</li>
+<li id="tcl">
+    <h4 class="">Tcl/Tk</h4>
+    <ul class="blocklist">
+        <li class="navitem">
+            <a href="http://www.tcl.tk/" target="tclxchange">The Tcl Language
+                </a>
+        </li>
+        <li class="navitem">
+            <a href="http://wiki.tcl.tk/" target="tclxchange">Tcl'ers Wiki</a>
+        </li>
+    </ul>
+</li>
+<li id="manual">
+    <h4 class="">Manuals</h4>
+    <ul class="blocklist">
+        <li class="navitem">
+            <a href="http://tcl.apache.org/rivet/manual2.0/" target="rivetman2.0">Rivet 2.0 Manual</a>
+        </li>
+        <li class="navitem">
+            <a href="http://tcl.apache.org/rivet/manual2.1/" target="rivetman2.1">Rivet 2.1 Manual</a>
+        </li>
+    </ul>
+</li>
+<li id="release">
+    <h4 class="">Downloads</h4>
+    <ul class="blocklist">
+        <li class="navitem">
+            <a href="rn-2-0.html" class="">Rivet 2.0</a>
+        </li>
+        <li class="navitem">
+            <a href="rn-2-1.html" class="">Rivet 2.1</a>
+        </li>
+    </ul>
+</li>
+<li id="acknowledgments">
+    <h4 class="">Acknowledgments</h4>
+    <ul class="blocklist">
+        <li class="navitem">
+            <a href="http://www.apache.org/foundation/thanks.html">ASF Sponsorship</a>
+        </li>
+    </ul>
+</li>
+
+ 
+                </ul> 
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <div id="footer">
+        <div class="footer-content">
+            <p><a href="http://www.apache.org/">Apache Software Foundation</a> | Design by <a href="http://www.spyka.net">Free CSS Templates</a> | <a href="http://www.justfreetemplates.com">Free Web Templates</a></p>
+        </div>
+    </div>
+    <div style="text-align: center; font-size: 0.75em;">Design downloaded from <a href="http://www.freewebtemplates.com/">free website templates</a>.</div></body>
+</html>
+

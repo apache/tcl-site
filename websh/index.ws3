@@ -23,7 +23,7 @@ web::putx {
           a solid base can you build new stuff.
     </p>
     <p>
-    Check out the {pageLink /websh/examples.html -show "examples"}
+    Check out the {pageLink examples.html -show "examples"}
     of Websh applications on this site.
     </p>
     <p>
@@ -40,19 +40,19 @@ web::putx {
 
 {newsBarElement "2009-09-24" \
      {<b>Websh 3.6.0b5 available</b>: Pick the {pageLink http://www.apache.org/dyn/closer.cgi/tcl/websh/source/websh-3.6.0b5-src.tar.gz -show "tarball"}
-	 or browse the {pageLink /websh/download.html -show "download area"}.
+	 or browse the {pageLink download.html -show "download area"}.
      }
 }
 
 {newsBarElement "2006-03-05" \
      {<b>Websh 3.6.0b4 available</b>: Pick the {pageLink http://www.apache.org/dyn/closer.cgi/tcl/websh/source/websh-3.6.0b4-src.tar.gz -show "tarball"}
-	 or browse the {pageLink /websh/download.html -show "download area"}.
+	 or browse the {pageLink download.html -show "download area"}.
      }
 }
 
 {newsBarElement "2005-11-24" \
      {<b>Websh 3.6.0b3 available</b>: Pick the {pageLink http://www.apache.org/dyn/closer.cgi/tcl/websh/source/websh-3.6.0b3-src.tar.gz -show "tarball"}
-	 or browse the {pageLink /websh/download.html -show "download area"}.
+	 or browse the {pageLink download.html -show "download area"}.
      }
 }
           </table>
@@ -63,4 +63,3 @@ web::putx {
 }
 
 finishPage
-

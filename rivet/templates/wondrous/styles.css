@@ -1,0 +1,349 @@
+body {
+	background: #480E0E url('../../picts/wondrous/bodybg.jpg') repeat-x scroll top left;
+	margin:0;
+	padding:0;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	color: #333;
+}
+
+* {
+	margin:0;
+	padding:0;
+}
+
+/** element defaults **/
+table {
+	width: 100%;
+	text-align: left;
+}
+
+th, td {
+	padding: 10px 10px;
+}
+
+th {
+	color: #fff;
+	font-weight: normal;
+	background: transparent url(../../picts/wondrous/h4-bg.png) repeat-x scroll left top;
+}
+
+td {
+	border-bottom: 1px solid #ddd;
+}
+
+code, blockquote {
+	display: block;
+	border-left: 5px solid #ddd;
+	padding: 10px;
+	margin-bottom: 20px;
+}
+blockquote {
+	border-left: 5px solid #480E0E;
+}
+
+blockquote p {
+	font-style: italic;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	margin: 0;
+	color: #666;
+	height: 1%;
+}
+
+p {
+	line-height: 1.5em;
+	margin-bottom: 1em;
+}
+
+a {
+	color: #CC0000;
+}
+
+a:hover {
+	color: #BC2424;
+}
+
+a:focus {
+	outline: none;
+}
+
+fieldset {
+	display: block;
+	border: none;
+	border-top: 1px solid #ddd;
+}
+
+fieldset legend {
+	font-weight: bold;
+	font-size: 13px;
+	padding-right: 10px;
+	color: #999;
+}
+
+fieldset form {
+	padding-top: 15px;
+}
+
+fieldset p label {
+	float: left;
+	width: 150px;
+}
+
+form input, form select, form textarea {
+	padding: 5px;
+	color: #333333;
+	border: 1px solid #ddd;
+}
+
+form input.formbutton {
+	border: none;
+	background:transparent url(../../picts/wondrous/h4-bg.png) repeat-x scroll center;
+	color: #ffffff;
+	font-weight: bold;
+	padding: 6px 10px;
+	font-size: 12px;
+	font-family: Tahoma, Geneva, sans-serif;
+	letter-spacing: 1px;
+	width: auto;
+	overflow: visible;
+}
+
+form.searchform p {
+	margin: 5px 0;
+}
+
+form.searchform input.s {
+	border: 1px solid #330A0A;
+}
+
+span.required {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	color: #ff0000;
+}
+
+h1 {
+	color: #999;
+	font-size: 35px;
+}
+
+h2 {
+	color: #CC0000;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 35px;
+	letter-spacing: -1.5px;
+	font-weight: normal;
+	padding: 0 0 5px;
+	margin: 0;
+    
+}
+
+h3 {
+	color: #BC2424;
+	font-size: 18px;
+	font-weight: normal;
+	margin-bottom: 10px;
+}
+
+h4 {
+	padding-bottom: 10px;
+	font-size: 15px;
+	color: #555555;
+}
+
+h5 {
+	padding-bottom: 10px;
+	font-size: 13px;
+	color: #666666;
+}
+
+ul, ol {
+	margin: 0 0 35px 35px;
+}
+
+li {
+	padding-bottom: 5px;
+}
+
+li ol, li ul {
+	font-size: 1.0em;
+	margin-bottom: 0;
+	padding-top: 5px;
+}
+
+
+#container {
+	width: 1000px;
+	margin:0 auto;
+	padding: 0;
+}
+
+#header {
+	padding: 40px 0px;
+	margin: 0 auto;
+}
+
+#header h1 a {
+	font-family: Arial, Helvetica, sans-serif;
+	color: #FFFFFF;
+	font-size: 60px;
+	font-weight: normal;
+	text-decoration: none;
+	letter-spacing: -5px;
+	float: left;
+}
+
+#header h2 {
+	color: #CCCCCC;
+	float: left;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	margin-left: 12px;
+	margin-top: 28px;
+	padding-left: 4px;
+	text-transform: uppercase;
+	letter-spacing: 0;
+}
+
+
+#body {
+	margin:0 auto 30px;
+}
+
+#content {
+	background-color: #fff;
+	float: left;
+	width: 690px;
+	padding: 20px 25px;
+	margin: 0;
+
+    border-radius: 6px;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+}
+
+.sidebar {
+	width: 250px;
+	padding: 0;
+	float: right;
+}
+
+
+.sidebar ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.sidebar ul li {
+	margin-bottom: 20px;
+	line-height: 1.9em;
+}
+
+.sidebar li ul {
+}
+
+.sidebar li ul li {
+	display: block;
+	border-top: none;
+	padding: 6px 7px;
+	margin: 0;
+	line-height: 1.5em;
+	font-size: 13px;
+	color: #FBDFDF;
+}
+
+.sidebar li ul li a {
+	font-weight: normal;
+	color: #FBDFDF;
+}
+
+.sidebar li ul.blocklist li {
+	padding: 0;
+	display: inline;
+}
+
+.sidebar li ul.blocklist li a {
+	display: block;
+	padding: 7px 8px;
+	margin: 0 7px;
+	text-decoration: none;
+	border-bottom: 1px solid #5F1311;
+}
+
+.sidebar li ul.blocklist li a:hover {
+	color: #fff;
+}
+
+.sidebar li ul li a:hover {
+	color: #eee;
+}
+
+.sidebar h4 {
+	color: #fff;
+	font-family: Arial, Helvetica, sans-serif;
+	background:transparent url('../../picts/wondrous/h4-bg.png') repeat-x scroll top left;
+	font-size: 12px;
+	letter-spacing: 0;
+	text-transform: uppercase;
+	margin: 0;
+	padding: 4px 10px;
+	font-weight: normal;
+	border-bottom: 2px solid #330A0A;
+}
+
+.clear {
+	clear: both;
+}
+
+#footer {
+	margin:0 auto;
+}
+
+.footer-content {
+	background: #330A0A;
+	padding: 20px 5px;
+}
+
+#footer p {
+	text-align: center;
+	color: #fff;
+	font-size: 14px;
+	margin: 0;
+	padding: 0;
+}
+
+#footer p a {
+	color: #fff;
+}
+
+.sez {
+    border-top: 1px solid #444;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.contentbottom {
+    color:  #111;
+    font-size:  0.9em;
+    text-align: right;
+    border-top: 1px solid #222;
+}
+
+.floatright {
+    padding: 5px;
+    margin: 0 auto 5px 5px;
+    float:  right;
+}
+
+.programlisting {
+    margin-top: 1em;
+    background: #FFCC66;
+    padding:    0.7em;
+    border:     1px dashed #778899;
+    font-size:  80%;
+}
+
+div.floatright {
+    padding:    10px auto 10px 10px;
+    margin:     0.5em auto 0.5em 1em;
+}

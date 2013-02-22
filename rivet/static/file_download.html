@@ -1,9 +1,10 @@
+<pre>\$Id: file_download.xml 2373 2013\-01\-31 23:13:11Z massimo.manghi \$</pre>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>File Download</title>
-    <link rel="stylesheet" href="../css/wondrous/styles.css" type="text/css" />
+    <link rel="stylesheet" href="../templates/wondrous/styles.css" type="text/css" />
 </head>
 
 <body>
@@ -15,26 +16,26 @@
         </div>
         <div id="body">
             <div id="content">
-                <h2><headline>File Download</headline>
-</h2>
+                <h2>File Download</h2>
                 <div class="example">
- <!-- p class="title"><b>Example 5. File Download</b></p-->
- <div class="example-contents">
-  <p>
+    <!-- p class="title"><b>Example 5. File Download</b></p-->
+    <div class="example-contents">
+        <p>
                 In general setting up a data file for being sent over http is as easy as determining the file's 
                 URI and letting Apache's do all that is needed. If this approach fits your design all you have to do 
                 is to keep the downloadable files somewhere within Apache's DocumentRoot (or in any of the directories 
                 Apache has right to access).
 		    </p>
-  <p>
+        <p>
                 When a client sends a request for a file, Apache takes care of determining the filetype, sends appropriate 
                 headers to the client and then the file content. The client is responsible for deciding how to handle the 
                 data accordingly to the <quote>content-type</quote>
+
  headers and its internal design. 
                 For example when browsers give up 
                 trying to display a certain "content-type" they display a download dialog box asking for directions from the user.
-		      </p>
-  <p>
+		                        </p>
+        <p>
                 Rivet can help if you have more sofisticated needs. For instance you may be developing an application that uses 
                 webpages to collect input data. This information might be passed on to scripts or programs for processing. 
                 In this case a real file representing the data doesn't exist and the content is generated on demand by the server. 
@@ -42,21 +43,22 @@
                 your scripts may expunge from the pages every link to these files (your pages are dynamic, aren't they?) 
                 and move them out of way, but it looks like a cumbersome solution.
 		    </p>
-  <p>
+        <p>
                 Putting Tcl and Rivet in charge of the whole download mechanism helps in building 
                 cleaner and safer approaches 
                 to the download problem.
 		    </p>
-  <p>
+        <p>
                 In this example a procedure checks for the existence of a parameter passed in by the browser. The parameter is 
                 the name (without extension) of a pdf file. Pdf files are stored in a directory whose path is in the 
                 <b>pdf_repository</b>
+
  variable. 
-		      </p>
-  <p>
+		                        </p>
+        <p>
                 This code is reported as an example of how to control the protocol using the headers command.
 		    </p>
-  <pre class="programlisting"># Code example for the transmission of a pdf file. 
+        <pre class="programlisting"># Code example for the transmission of a pdf file. 
 
 if {[var exists pdfname]} {
     set pdfname [var get pdfname]
@@ -102,84 +104,78 @@ if {[var exists pdfname]} {
     parse parameter_not_defined_error.rvt
 }
 </pre>
-  <p>
+        <p>
                 Before the pdf is sent the procedure sets the Content-Type, Content-Disposition, Content-Description and 
                 Content-Length headers to inform the client about the file type, name and size. Notice that in order to 
                 set the Content-Type header Rivet uses a specialiezed form of the headers command. Headers must be sent before 
                 data gets sent down the output channel. Messing with this prescription causes an error to be raised (in fact 
                 the protocol itself is being violated)
 		    </p>
- </div>
+    </div>
 </div>
 
 
 
                 <div class="contentbottom">
-                    <div id="last_modified">Last Modified: 06-11-2011 11:47:35 UTC</div>
+                    
                 </div>
             </div>
 
             <div class="sidebar">
                 <ul>
-                    <li id="rivetexamples">
-    <h4 class="">Examples</h4>
+                     
+                </ul> 
+                <ul>
+                    <li id="home">
+    <h4>Rivet</h4>
     <ul class="blocklist">
         <li class="navitem">
-            <a href="hello_world.html" class="">Hello world!</a>
+            <a title="A home for Rivet" href="../index.html">Rivet Homepage</a>
         </li>
         <li class="navitem">
-            <a href="shaded_table.html" class="">A shaded table</a>
+            <a title="Home of Apache Tcl related stuff" target="asf" href="http://tcl.apache.org/">Apache Tcl Home</a>
         </li>
         <li class="navitem">
-            <a href="var_access.html" class="">Variable Access</a>
+            <a title="Getting Rivet" href="download.html">Getting Rivet</a>
         </li>
         <li class="navitem">
-            <a href="file_upload.html" class="">File Upload</a>
+            <a title="Hello World!" href="hello_world.html">Examples</a>
         </li>
         <li class="navitem">
-            <a href="file_download.html" class="">File Download</a>
-        </li>
-        <li class="navitem">
-            <a href="ajax.html" class="">XML and Ajax</a>
-        </li>
-        <li class="navitem">
-            <a href="calendar.html" class="">Calendar</a>
+            <a title="The Rivet development team" href="about.html">About Us - Contact</a>
         </li>
     </ul>
 </li>
-<li id="main">
-    <h4 class="">Rivet</h4>
+<li id="rivetexamples">
+    <h4>Examples</h4>
     <ul class="blocklist">
         <li class="navitem">
-            <a href="../index.html" class="">Rivet Homepage</a>
+            <a href="hello_world.html">Hello world!</a>
         </li>
         <li class="navitem">
-            <a href="http://tcl.apache.org/" target="asf">Apache Tcl Home</a>
+            <a href="shaded_table.html">A shaded table</a>
         </li>
         <li class="navitem">
-            <a href="download.html" class="">Getting Rivet</a>
+            <a href="var_access.html">Variable Access</a>
         </li>
         <li class="navitem">
-            <a href="hello_world.html" class="">Examples</a>
+            <a href="file_upload.html">File Upload</a>
         </li>
         <li class="navitem">
-            <a href="about.html" class="">About Us - Contact</a>
+            <a href="file_download.html">File Download</a>
+        </li>
+        <li class="navitem">
+            <a href="ajax.html">XML and Ajax</a>
+        </li>
+        <li class="navitem">
+            <a href="calendar.html">Calendar</a>
         </li>
     </ul>
 </li>
-<li id="manual">
-    <h4 class="">Manuals</h4>
-    <ul class="blocklist">
-        <li class="navitem">
-            <a href="http://tcl.apache.org/rivet/manual2.0/" target="rivetman2.0">Rivet 2.0 Manual</a>
-        </li>
-        <li class="navitem">
-            <a href="http://tcl.apache.org/rivet/manual2.1/" target="rivetman2.1">Rivet 2.1 Manual</a>
-        </li>
-    </ul>
-</li>
-
  
+                </ul> 
+                <ul>
+                     
                 </ul> 
             </div>
             <div class="clear"></div>

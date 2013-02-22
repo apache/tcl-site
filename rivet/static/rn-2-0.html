@@ -1,9 +1,10 @@
+<pre>\$Id: rn\-2\-0.xml 2373 2013\-01\-31 23:13:11Z massimo.manghi \$</pre>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Rivet 2.0: Release Notes and Known Problems</title>
-    <link rel="stylesheet" href="../css/wondrous/styles.css" type="text/css" />
+    <link rel="stylesheet" href="../templates/wondrous/styles.css" type="text/css" />
 </head>
 
 <body>
@@ -15,405 +16,397 @@
         </div>
         <div id="body">
             <div id="content">
-                <h2><headline>Rivet 2.0: Release Notes and Known Problems</headline>
-</h2>
+                <h2>Rivet 2.0: Release Notes and Known Problems</h2>
                 <div>
- <div class="sez">
-  <h4>Download</h4>
-  <p>
+    <div class="sez">
+        <h4>Download</h4>
+        <p>
 				Rivet 2.0 is available for download from ASF mirror sites. Check the 
 				<a href="download.html">download page</a>
+
  for information about 
 				downloading the source code, rpm files or packages for SuSE, 
 				Redhat, Debian and Ubuntu (packages for SuSE and Redhat are available thanks to 
 				Harald Oehlmann).
-			      </p>
-  <p>
+			                        </p>
+        <p>
 				Code integrity for this release can be checked using the 
 				public keys in the <a href="http://www.apache.org/dist/tcl/KEYS">KEYS</a>
+
  file.
-			      </p>
-  <p>
+			                        </p>
+        <p>
 					Rivet 2.0 has been tested on Apache 1.3 , 2.2 and 2.4 servers.
 					<strong>Apache 2.2/2.4 servers must be running 
 					<tt>prefork</tt>
- as multiprocess module   </strong>
+
+ as multiprocess module                            </strong>
+
  though. Rivet is incompatible with the 
 					'worker' and 'event' MPMs.
-			      </p>
- </div>
- <div class="sez">
-  <h4>Release Notes for Rivet 2.0.6 <span class="timestamp">(30-Nov-2012)</span>
-  </h4>
-  <h5>Fixed Bugs</h5>
-  <p>
+			                        </p>
+    </div>
+    <div class="sez">
+        <h4>Release Notes for Rivet 2.0.6 <span class="timestamp">(30-Nov-2012)</span>
+        </h4>
+        <h5>Fixed Bugs</h5>
+        <p>
 						Test Suite 
 						<ul>
-    <li>User and Group directives removed from the configuration file
+                <li>User and Group directives removed from the configuration file
 	    					template to make test suite independent from the command 'id' output from which 
 	    					the values for this parameters were inferred (Bug #53396)</li>
-   </ul>
-  </p>
-  <p>
+            </ul>
+        </p>
+        <p>
 						mod_rivet.c
 						<ul>
-    <li>Add UploadDirectory to the list of handled options for RivetUserConf</li>
-    <li>The module returns now a HTTP_INTERNAL_SERVER_ERROR when a <b>::request</b>
+                <li>Add UploadDirectory to the list of handled options for RivetUserConf</li>
+                <li>The module returns now a HTTP_INTERNAL_SERVER_ERROR when a <b>::request</b>
 
-		    				namespace cannot be created    </li>
-   </ul>
-  </p>
-  <p> 
+
+		    				namespace cannot be created                                    </li>
+            </ul>
+        </p>
+        <p> 
 						DIO Package bug fixes
 						<ul>
-    <li>
+                <li>
 								Improved DIO support for Sqlite fixes several bugs.
 							</li>
-    <li>
+                <li>
 								Fixed secs computation made by dio_Mysql when handling timestamp fields.
 							</li>
-    <li>
+                <li>
 								Fixed wrong declaration of 'insert' subcommand in page manual (Bug #53670)
 							</li>
-    <li>
+                <li>
 								Fixed method makeDBFieldValue in class Oracle (Bug #53703)
 							</li>
-    <li>
+                <li>
 								Method 'count' failed when no keyfield was set.
 							</li>
-    <li>
+                <li>
 								Index riv_sess_cache_ix had a incomplete unique key definition that missed the 
 								'package_' column (fixes bug #54063)
 							</li>
-   </ul>
-  </p>
- </div>
- <div class="sez">
-  <h4>Release Notes for Rivet 2.0.5 <span class="timestamp">(26-Jun-2012)</span>
-  </h4>
-  <h5>Fixed Bugs</h5>
-  <ul>
-   <li>	
+            </ul>
+        </p>
+    </div>
+    <div class="sez">
+        <h4>Release Notes for Rivet 2.0.5 <span class="timestamp">(26-Jun-2012)</span>
+        </h4>
+        <h5>Fixed Bugs</h5>
+        <ul>
+            <li>	
 					    DIO: Mysql connection is now checked when connection reference is reused 
 					    because it could have dropped (contributed by Cyril Shtumf, fixes #53221)
 					</li>
-   <li>
+            <li>
 					    Fixed SQL syntax generated in delete method when multiple fields are
 					    used in the selection clause (contributed by Cyril Shtumf, fixes bug #53222)
 					</li>
-  </ul>
-  <h5>New Features</h5>
-  <ul>
-   <li>
+        </ul>
+        <h5>New Features</h5>
+        <ul>
+            <li>
 					    New shorthand expression <pre class="programlisting">&lt;?= ... ?&gt;</pre>
+
  is
 					    transformed into <pre class="programlisting">&lt;? puts -nonewline "..." ?&gt;</pre>
 
+
 					    (contributed by Jeff Lawson, addresses #53217)
-					   </li>
-   <li>
+					                            </li>
+            <li>
 					    http_accept.tcl: new command parsing of Accept HTTP header lines (contributed by 
 					    Harald Oehlmann)
 					</li>
-   <li>
+            <li>
 					    rivet/packages/entities/entities.tcl: package RivetEntities
 					    (contributed by Harald Oehlmann)
 					</li>
-   <li>
+            <li>
 					    tclconfig/ltmain.sh: updated from recent autotools installation
 					</li>
-   <li>
+            <li>
 					    Support for HttpOnly flag improves security and reduces the risk of
 					    cross-site scripting attacks (contributed by Cyril Shtumf, fixes #53224)
 					</li>
-   <li>
-    <b>form</b>
+            <li>
+                <b>form</b>
+
  class objects create now automatic field ids if left undefined
 					    by the programmer 
-					   </li>
-  </ul>
-  <h5>Manual Pages Expanded</h5>
-  <ul>
-   <li>New pages for package <b>entities</b>
+					                            </li>
+        </ul>
+        <h5>Manual Pages Expanded</h5>
+        <ul>
+            <li>New pages for package <b>entities</b>
+
  and for command <b>http_accept</b>
-   </li>
-   <li>Improved manual entry for 'var list' (Fixes bug #52911)</li>
-  </ul>
- </div>
- <div class="sez">
-  <h4>Release Notes for Rivet 2.0.4 <span class="timestamp">(23-Sep-2011)</span>
-  </h4>
-  <h5>Bugs fixed</h5>
-  <p>
+            </li>
+            <li>Improved manual entry for 'var list' (Fixes bug #52911)</li>
+        </ul>
+    </div>
+    <div class="sez">
+        <h4>Release Notes for Rivet 2.0.4 <span class="timestamp">(23-Sep-2011)</span>
+        </h4>
+        <h5>Bugs fixed</h5>
+        <p>
 						An Tcl error in an AbortScript would trigger a message that
 						erroneously printed that an ErrorScript was running.
 					</p>
-  <h5>Manual Pages Expanded</h5>
-  <p>
+        <h5>Manual Pages Expanded</h5>
+        <p>
 						Manual pages have been expanded to include documentation for more
 						commands implemented but not yet documented. Section documenting 
 						single commands has been reorganized to list commands in alphabetical
 						order.
 					</p>
-  <h5>New Features</h5>
-  <p>
+        <h5>New Features</h5>
+        <p>
 						Commands <strong>load_env</strong>
+
  and <strong>load_headers</strong>
+
 
 						accept an array name as argument. If not fully qualified the array
 						was created in either the <tt>::request</tt>
+
  namespace (.rvt templates)
 						or the global namespace (.tcl scripts). Starting with 2.0.4 
 						these commands, when invoked from within a procedure, create
 						the array in the proc's local scope, unless the argument is a
 						fully qualifed name scoping the array in a user defined namespace.
-					  </p>
-  <p>
+					                    </p>
+        <p>
 						Command <strong>makeurl</strong>
+
  has been extended to be used in three forms
 						<ul>
-    <li>without argument
+                <li>without argument
 								<pre class="programlisting">makeurl
 ==&gt; Current script's url</pre>
-    </li>
-    <li>with an absolute path
+                </li>
+                <li>with an absolute path
 								<pre class="programlisting">makeurl /a/b/c
 ==&gt; http://&lt;host&gt;:&lt;port&gt;/a/b/c </pre>
-    </li>
-    <li>with a relative path
+                </li>
+                <li>with a relative path
 								<pre class="programlisting">makeurl a/b/c
 ==&gt; http://&lt;host&gt;:&lt;port&gt;/&lt;current script&gt;/a/b/c</pre>
-    </li>
-   </ul>
-  </p>
- </div>
- <div class="sez">
-  <h4>Release Notes for Rivet 2.0.3 <span class="timestamp">(19-Mar-2011)</span>
-  </h4>
-  <h5>New Features</h5>
-  <p>
+                </li>
+            </ul>
+        </p>
+    </div>
+    <div class="sez">
+        <h4>Release Notes for Rivet 2.0.3 <span class="timestamp">(19-Mar-2011)</span>
+        </h4>
+        <h5>New Features</h5>
+        <p>
 				        Rivet 2.0.3 introduces 2 new configuration directives
 				        <ul>
-    <li>
+                <li>
 				                New configuration directive <strong>AbortScript</strong>
+
 : 
 				                Tcl script to be run if an <b>abort_page</b>
+
  is called 
 				                in a request processing
-				                </li>
-    <li>
+				                                                </li>
+                <li>
 						New configuration directive 
 				                <strong>AfterEveryScript</strong>
+
 : An <b>abort_page</b>
+
  command stops the
 				                page generation and skips also a configured <strong>AfterScript</strong>
+
  to
 						run an <strong>AbortScript</strong>
+
 . This new configuration script is to 
 						be run anyway, as last script of a single request processing, 
 						whether an abort condition took place during the page
 						generation or the procedure completed successfully.
-				                </li>
-    <li>
+				                                                </li>
+                <li>
 				                Enhanced form for <strong>abort_page</strong>
+
 : page generation can
 				                be interrupted by calling <strong>abort_page</strong>
+
 . The new command 
 				                accepts now an argument whose value can be checked to determine which
 				                condition forced to call the page generation off.
-				                </li>
-    <li>
+				                                                </li>
+                <li>
 				                New command <strong>abort_code</strong>
+
  returns the value of the
 				                argument passed to <strong>abort_page</strong>
+
 . Useful in <b>AbortScript</b>
 
+
 				                or <b>AfterEveryScript</b>
+
  code.
-				                </li>
-   </ul>
-  </p>
-  <h5>Problems fixed</h5>
-  <p>
+				                                                </li>
+            </ul>
+        </p>
+        <h5>Problems fixed</h5>
+        <p>
 				        Code for command <strong>apache_table</strong>
+
  was ported to Rivet for Apache 1.3
-				      </p>
- </div>
- <div class="sez">
-  <h4>Release Notes for Rivet 2.0.2 <span class="timestamp">(25-Oct-2010)</span>
-  </h4>
-  <p>
+				                        </p>
+    </div>
+    <div class="sez">
+        <h4>Release Notes for Rivet 2.0.2 <span class="timestamp">(25-Oct-2010)</span>
+        </h4>
+        <p>
 					   Rivet 2.0.2 is a maintainance release with the main purpose to adjust the 
 					   build process in a way that makes straightforward the generation of a Debian package.
 				    </p>
-  <p>
+        <p>
 					   Rivet (named 
 					   <a href="http://packages.qa.debian.org/liba/libapache2-mod-rivet.html">libapache2-mod-rivet</a>
+
  
 					   to follow the Debian Apache policy) is now in Debian.
 					   The package is sponsored by Sven Hoexter (Debian Developer). 
-				      </p>
- </div>
- <div class="sez">
-  <h4>Relase Notes for Rivet 2.0.1 <span class="timestamp">(12-Jul-2010)</span>
-  </h4>
-  <h5>Fixed Bugs in Rivet 2.0.1</h5>
-  <ul>
-   <li>
+				                        </p>
+    </div>
+    <div class="sez">
+        <h4>Relase Notes for Rivet 2.0.1 <span class="timestamp">(12-Jul-2010)</span>
+        </h4>
+        <h5>Fixed Bugs in Rivet 2.0.1</h5>
+        <ul>
+            <li>
 						Several error messages printed during the installation phase have been
 						fixed. The problems were harmless, but nonetheless annoying.
 					    </li>
-   <li>
+            <li>
 						Fixed bug in installation of the rivetparser library.
 					    </li>
-   <li>
+            <li>
 						Fixed tables creation for Postgres backend. The SQL script that 
 						creates the rivet_session_cache table misnamed 2 columns.
 						<b>Current DIO Postgres backend breaks Session package if the database
 						was created with an old Rivet version</b>
+
 . To fix the problem one has to
 						rename the 'key' and 'package' columns as 'key_' and 'package_'
 <pre class="programlisting">
 ALTER TABLE rivet_session_cache RENAME COLUMN key to key_
 ALTER TABLE rivet_session_cache RENAME COLUMN package to package_</pre>
-   </li>
-   <li>
+            </li>
+            <li>
 						Fixed dio_Postgres.tcl method. A mistyped variable caused at least method 
 						'store' to fail.	
 					    </li>
-  </ul>
-  <h5>New Features</h5>
-  <ul>
-   <li>
-    <p>
+        </ul>
+        <h5>New Features</h5>
+        <ul>
+            <li>
+                <p>
                                 A new package <b>Calendar</b>
+
  has been added. Calendar provides 3 Itcl classes that 
                                 print Calendar tables in ASCII, XML and XHTML forms (see examples and related 
                                 manual page).
-                                </p>
-    <p>
-     <em>
-      <b>Calendar</b>
- requires Tcl8.5 or Tcl8.4 with package 'dict'     </em>
-    </p>
-   </li>
-   <li>
+                                                                </p>
+                <p>
+                    <em>
+                        <b>Calendar</b>
+
+ requires Tcl8.5 or Tcl8.4 with package 'dict'                                            </em>
+                </p>
+            </li>
+            <li>
                             New page for package 'form' added to the manual							
                         </li>
-  </ul>
- </div>
- <div class="sez">
-  <h4>Installation Issues</h4>
-  <p>
+        </ul>
+    </div>
+    <div class="sez">
+        <h4>Installation Issues</h4>
+        <p>
 					    Rivet is widely configurable to select custom directories where the module and
 					    its associated libraries have to reside.
 			    </p>
-  <ul>
-   <li>
+        <ul>
+            <li>
 				    Even though you can install Rivet to run pure Tcl scripts, some associated packages
 				    (namely 'Session' and 'DIO') are written in Itcl, an OO extension of the base 
 				    language.In order to safely run those package, you have to check yourself if 
 				    the Itcl extension installed on your system is compatible with the Tcl version
 				    for which you're building Rivet.
 				</li>
-  </ul>
- </div>
- <div class="sez">
-  <h4>Known Problems</h4>
-  <ul>
-   <li>
+        </ul>
+    </div>
+    <div class="sez">
+        <h4>Known Problems</h4>
+        <ul>
+            <li>
 						    Rivet is reported to conflict with cgi scripts on some Linux machines.
 						    Symptom of the problem is when cgi scripts hang forever and don't send 
 						    any content to the client
 					    </li>
-  </ul>
- </div>
+        </ul>
+    </div>
 </div>
 
 
 
                 <div class="contentbottom">
-                    <div id="last_modified">Last Modified: 03-12-2012 02:29:43 UTC</div>
+                    
                 </div>
             </div>
 
             <div class="sidebar">
                 <ul>
                     <li id="news">
-    <h4 class="">News</h4>
+    <h4>News</h4>
     <ul class="blocklist">
         <li class="navitem">
-            <a href="rn-2-1.html" class="">1 Dec 2012: Rivet 2.1.0 released</a>
+            <a href="rn-2-1.html">21 Feb 2013: Rivet 2.1.1 released</a>
         </li>
         <li class="navitem">
-            <a href="rn-2-0.html" class="">1 Dec 2012: Rivet 2.0.6 released</a>
+            <a href="rn-2-0.html">1 Dec 2012: Rivet 2.0.6 released</a>
         </li>
     </ul>
 </li>
-<li id="main">
-    <h4 class="">Rivet</h4>
-    <ul class="blocklist">
-        <li class="navitem">
-            <a href="../index.html" class="">Rivet Homepage</a>
-        </li>
-        <li class="navitem">
-            <a href="http://tcl.apache.org/" target="asf">Apache Tcl Home</a>
-        </li>
-        <li class="navitem">
-            <a href="download.html" class="">Getting Rivet</a>
-        </li>
-        <li class="navitem">
-            <a href="hello_world.html" class="">Examples</a>
-        </li>
-        <li class="navitem">
-            <a href="about.html" class="">About Us - Contact</a>
-        </li>
-    </ul>
-</li>
-<li id="tcl">
-    <h4 class="">Tcl/Tk</h4>
-    <ul class="blocklist">
-        <li class="navitem">
-            <a href="http://www.tcl.tk/" target="tclxchange">The Tcl Language
-                </a>
-        </li>
-        <li class="navitem">
-            <a href="http://wiki.tcl.tk/" target="tclxchange">Tcl'ers Wiki</a>
-        </li>
-    </ul>
-</li>
-<li id="manual">
-    <h4 class="">Manuals</h4>
-    <ul class="blocklist">
-        <li class="navitem">
-            <a href="http://tcl.apache.org/rivet/manual2.0/" target="rivetman2.0">Rivet 2.0 Manual</a>
-        </li>
-        <li class="navitem">
-            <a href="http://tcl.apache.org/rivet/manual2.1/" target="rivetman2.1">Rivet 2.1 Manual</a>
-        </li>
-    </ul>
-</li>
-<li id="release">
-    <h4 class="">Downloads</h4>
-    <ul class="blocklist">
-        <li class="navitem">
-            <a href="rn-2-0.html" class="">Rivet 2.0</a>
-        </li>
-        <li class="navitem">
-            <a href="rn-2-1.html" class="">Rivet 2.1</a>
-        </li>
-    </ul>
-</li>
-<li id="acknowledgments">
-    <h4 class="">Acknowledgments</h4>
-    <ul class="blocklist">
-        <li class="navitem">
-            <a href="http://www.apache.org/foundation/thanks.html">ASF Sponsorship</a>
-        </li>
-    </ul>
-</li>
-
  
+                </ul> 
+                <ul>
+                    <li id="home">
+    <h4>Rivet</h4>
+    <ul class="blocklist">
+        <li class="navitem">
+            <a title="A home for Rivet" href="../index.html">Rivet Homepage</a>
+        </li>
+        <li class="navitem">
+            <a title="Home of Apache Tcl related stuff" target="asf" href="http://tcl.apache.org/">Apache Tcl Home</a>
+        </li>
+        <li class="navitem">
+            <a title="Getting Rivet" href="download.html">Getting Rivet</a>
+        </li>
+        <li class="navitem">
+            <a title="Hello World!" href="hello_world.html">Examples</a>
+        </li>
+        <li class="navitem">
+            <a title="The Rivet development team" href="about.html">About Us - Contact</a>
+        </li>
+    </ul>
+</li>
+ 
+                </ul> 
+                <ul>
+                     
                 </ul> 
             </div>
             <div class="clear"></div>

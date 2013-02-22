@@ -1,9 +1,10 @@
+<pre>\$Id: hello_world.xml 2243 2012\-11\-26 01:22:36Z massimo.manghi \$</pre>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Hello World</title>
-    <link rel="stylesheet" href="../css/wondrous/styles.css" type="text/css" />
+    <link rel="stylesheet" href="../templates/wondrous/styles.css" type="text/css" />
 </head>
 
 <body>
@@ -15,22 +16,22 @@
         </div>
         <div id="body">
             <div id="content">
-                <h2><headline>Hello World</headline>
-</h2>
+                <h2>Hello World</h2>
                 <div class="example">
- <!-- p class="title"><b>Example 1. Hello World</b></p-->
- <div class="example-contents">
-  <p>
+    <!-- p class="title"><b>Example 1. Hello World</b></p-->
+    <div class="example-contents">
+        <p>
                         As with any tool, it's always nice to see something work, so
                         let's create a small "Hello World" page.
                     </p>
-  <p>
+        <p>
                         Assuming you have Apache configured correctly, create a file
                         called <code class="filename">hello.rvt</code>
+
  where Apache can find
                         it, with the following content:
-                      </p>
-  <pre class="programlisting">&lt;html&gt;
+                                        </p>
+        <pre class="programlisting">&lt;html&gt;
   &lt;head&gt;
     &lt;title&gt;Hello World&lt;/title&gt;
   &lt;/head&gt;
@@ -41,10 +42,11 @@
   &lt;/body&gt;
 &lt;/html&gt;
 </pre>
-  <p>
+        <p>
                         The example can be elaborated, for example using the <tt>
-    <a href="http://tcl.apache.org/rivet/manual/html.html">html</a>
-   </tt>
+                <a href="http://tcl.apache.org/rivet/manual/html.html">html</a>
+            </tt>
+
  command			
                         <pre class="programlisting">
 &lt;? set hello_message "Hello world" ?&gt;
@@ -57,13 +59,13 @@
   ?&gt;&lt;/body&gt;
 &lt;/html&gt;
 </pre>
-  </p>
-  <p>
+        </p>
+        <p>
 			Starting with version 2.0.5 Rivet also supports a shorthand notation
 			to output simple strings. 
 		    </p>
-  <p>
-   <pre class="programlisting">
+        <p>
+            <pre class="programlisting">
 &lt;? set hello_message "Hello world" ?&gt;
 &lt;html&gt;
   &lt;head&gt;
@@ -72,78 +74,72 @@
   &lt;body&gt;&lt;?= [::rivet::html $hello_message pre b] ?&gt;&lt;/body&gt;
 &lt;/html&gt;
 </pre>
-  </p>
- </div>
+        </p>
+    </div>
 </div>
 
 
 
                 <div class="contentbottom">
-                    <div id="last_modified">Last Modified: 26-11-2012 01:22:36 UTC</div>
+                    
                 </div>
             </div>
 
             <div class="sidebar">
                 <ul>
-                    <li id="rivetexamples">
-    <h4 class="">Examples</h4>
+                     
+                </ul> 
+                <ul>
+                    <li id="home">
+    <h4>Rivet</h4>
     <ul class="blocklist">
         <li class="navitem">
-            <a href="hello_world.html" class="">Hello world!</a>
+            <a title="A home for Rivet" href="../index.html">Rivet Homepage</a>
         </li>
         <li class="navitem">
-            <a href="shaded_table.html" class="">A shaded table</a>
+            <a title="Home of Apache Tcl related stuff" target="asf" href="http://tcl.apache.org/">Apache Tcl Home</a>
         </li>
         <li class="navitem">
-            <a href="var_access.html" class="">Variable Access</a>
+            <a title="Getting Rivet" href="download.html">Getting Rivet</a>
         </li>
         <li class="navitem">
-            <a href="file_upload.html" class="">File Upload</a>
+            <a title="Hello World!" href="hello_world.html">Examples</a>
         </li>
         <li class="navitem">
-            <a href="file_download.html" class="">File Download</a>
-        </li>
-        <li class="navitem">
-            <a href="ajax.html" class="">XML and Ajax</a>
-        </li>
-        <li class="navitem">
-            <a href="calendar.html" class="">Calendar</a>
+            <a title="The Rivet development team" href="about.html">About Us - Contact</a>
         </li>
     </ul>
 </li>
-<li id="main">
-    <h4 class="">Rivet</h4>
+<li id="rivetexamples">
+    <h4>Examples</h4>
     <ul class="blocklist">
         <li class="navitem">
-            <a href="../index.html" class="">Rivet Homepage</a>
+            <a href="hello_world.html">Hello world!</a>
         </li>
         <li class="navitem">
-            <a href="http://tcl.apache.org/" target="asf">Apache Tcl Home</a>
+            <a href="shaded_table.html">A shaded table</a>
         </li>
         <li class="navitem">
-            <a href="download.html" class="">Getting Rivet</a>
+            <a href="var_access.html">Variable Access</a>
         </li>
         <li class="navitem">
-            <a href="hello_world.html" class="">Examples</a>
+            <a href="file_upload.html">File Upload</a>
         </li>
         <li class="navitem">
-            <a href="about.html" class="">About Us - Contact</a>
+            <a href="file_download.html">File Download</a>
+        </li>
+        <li class="navitem">
+            <a href="ajax.html">XML and Ajax</a>
+        </li>
+        <li class="navitem">
+            <a href="calendar.html">Calendar</a>
         </li>
     </ul>
 </li>
-<li id="manual">
-    <h4 class="">Manuals</h4>
-    <ul class="blocklist">
-        <li class="navitem">
-            <a href="http://tcl.apache.org/rivet/manual2.0/" target="rivetman2.0">Rivet 2.0 Manual</a>
-        </li>
-        <li class="navitem">
-            <a href="http://tcl.apache.org/rivet/manual2.1/" target="rivetman2.1">Rivet 2.1 Manual</a>
-        </li>
-    </ul>
-</li>
-
  
+                </ul> 
+                <ul>
+                     
                 </ul> 
             </div>
             <div class="clear"></div>

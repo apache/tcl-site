@@ -1,9 +1,10 @@
+<pre>\$Id: file_upload.xml 2373 2013\-01\-31 23:13:11Z massimo.manghi \$</pre>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>File Upload</title>
-    <link rel="stylesheet" href="../css/wondrous/styles.css" type="text/css" />
+    <link rel="stylesheet" href="../templates/wondrous/styles.css" type="text/css" />
 </head>
 
 <body>
@@ -15,128 +16,127 @@
         </div>
         <div id="body">
             <div id="content">
-                <h2><headline>File Upload</headline>
-</h2>
+                <h2>File Upload</h2>
                 <div class="example">
- <p class="title">
-  <b>Example 4. File Upload</b>
- </p>
- <div class="example-contents">
-  <p>
+    <p class="title">
+        <b>Example 4. File Upload</b>
+    </p>
+    <div class="example-contents">
+        <p>
 		    The <b>upload</b>
+
  command endows Rivet with an interface to access files transferred over http as 
 		    parts of a multipart form. The following HTML in one file, say, upload.html creates a form with a 
 		    text input entry. By clicking the file chooser button the file browser shows up and the user 
 		    selects the file to be uploaded (the file path will appear in the text input). In order to make 
 		    sure you're uploading the whole file you must combine the action of the enctype and method attributes 
 		    of the <b>form</b>
+
  tag in the way shown in the example. Failure to do so would result in the client 
 		    sending only the file's path, rather than the actual contents.
-		  </p>
-  <pre class="programlisting">&lt;form action="foo.rvt" enctype="multipart/form-data" method="post"&gt;
+		                    </p>
+        <pre class="programlisting">&lt;form action="foo.rvt" enctype="multipart/form-data" method="post"&gt;
     &lt;input type="file" name="MyUpload"&gt;&lt;/input&gt;
     &lt;input type="submit" value="Send File"&gt;&lt;/input&gt;
 &lt;/form&gt;
 </pre>
-  <p> 
+        <p> 
 		    In the script invoked by the form (upload.rvt) <b>upload ?argument ...?</b>
+
  commands can be used to 
 		    manipulate the various files uploaded.
-		  </p>
-  <pre class="programlisting">&lt;?
+		                    </p>
+        <pre class="programlisting">&lt;?
 upload save MyUpload /tmp/uploadfiles/file1
 puts "Saved file [upload filename MyUpload] \
         ([upload size MyUpload] bytes) to server"
 ?&gt;
 </pre>
-  <p>
+        <p>
 		    Don't forget that the apache server must have write access to the directory where files are being created. 
 		    The Rivet Apache directives have a substantial impact on the upload process, you have to carefully read the 
 		    docs in order to set the appropriate directives values that would match your requirements. 
 		</p>
-  <p>
+        <p>
 		    It is also important to understand that some upload commands are effective only when used in a mutually 
 		    exclusive way. Apache stores the data in temporary files which are read by the 
 		    <b>upload save ?upload name? ?filename?</b>
+
  
 		    or by the <b>upload data ?upload name?</b>
+
  command. Subsequent calls to these 2 commands using the 
 		    same <b>?upload name?</b>
+
  argument will return no data on the second call. Likewise upload channel 
 		    ?upload name? will return a Tcl file channel that you can use in regular Tcl scripts only if you 
 		    haven't already read the data, for example with a call to the upload data ?upload name? command.
-		  </p>
- </div>
+		                    </p>
+    </div>
 </div>
 
 
 
                 <div class="contentbottom">
-                    <div id="last_modified">Last Modified: 20-07-2010 13:11:09 UTC</div>
+                    
                 </div>
             </div>
 
             <div class="sidebar">
                 <ul>
-                    <li id="rivetexamples">
-    <h4 class="">Examples</h4>
+                     
+                </ul> 
+                <ul>
+                    <li id="home">
+    <h4>Rivet</h4>
     <ul class="blocklist">
         <li class="navitem">
-            <a href="hello_world.html" class="">Hello world!</a>
+            <a title="A home for Rivet" href="../index.html">Rivet Homepage</a>
         </li>
         <li class="navitem">
-            <a href="shaded_table.html" class="">A shaded table</a>
+            <a title="Home of Apache Tcl related stuff" target="asf" href="http://tcl.apache.org/">Apache Tcl Home</a>
         </li>
         <li class="navitem">
-            <a href="var_access.html" class="">Variable Access</a>
+            <a title="Getting Rivet" href="download.html">Getting Rivet</a>
         </li>
         <li class="navitem">
-            <a href="file_upload.html" class="">File Upload</a>
+            <a title="Hello World!" href="hello_world.html">Examples</a>
         </li>
         <li class="navitem">
-            <a href="file_download.html" class="">File Download</a>
-        </li>
-        <li class="navitem">
-            <a href="ajax.html" class="">XML and Ajax</a>
-        </li>
-        <li class="navitem">
-            <a href="calendar.html" class="">Calendar</a>
+            <a title="The Rivet development team" href="about.html">About Us - Contact</a>
         </li>
     </ul>
 </li>
-<li id="main">
-    <h4 class="">Rivet</h4>
+<li id="rivetexamples">
+    <h4>Examples</h4>
     <ul class="blocklist">
         <li class="navitem">
-            <a href="../index.html" class="">Rivet Homepage</a>
+            <a href="hello_world.html">Hello world!</a>
         </li>
         <li class="navitem">
-            <a href="http://tcl.apache.org/" target="asf">Apache Tcl Home</a>
+            <a href="shaded_table.html">A shaded table</a>
         </li>
         <li class="navitem">
-            <a href="download.html" class="">Getting Rivet</a>
+            <a href="var_access.html">Variable Access</a>
         </li>
         <li class="navitem">
-            <a href="hello_world.html" class="">Examples</a>
+            <a href="file_upload.html">File Upload</a>
         </li>
         <li class="navitem">
-            <a href="about.html" class="">About Us - Contact</a>
+            <a href="file_download.html">File Download</a>
+        </li>
+        <li class="navitem">
+            <a href="ajax.html">XML and Ajax</a>
+        </li>
+        <li class="navitem">
+            <a href="calendar.html">Calendar</a>
         </li>
     </ul>
 </li>
-<li id="manual">
-    <h4 class="">Manuals</h4>
-    <ul class="blocklist">
-        <li class="navitem">
-            <a href="http://tcl.apache.org/rivet/manual2.0/" target="rivetman2.0">Rivet 2.0 Manual</a>
-        </li>
-        <li class="navitem">
-            <a href="http://tcl.apache.org/rivet/manual2.1/" target="rivetman2.1">Rivet 2.1 Manual</a>
-        </li>
-    </ul>
-</li>
-
  
+                </ul> 
+                <ul>
+                     
                 </ul> 
             </div>
             <div class="clear"></div>

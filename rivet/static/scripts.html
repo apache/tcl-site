@@ -1,9 +1,10 @@
+<pre>\$Id: scripts.xml 931 2010\-07\-20 13:11:09Z massimo.manghi \$</pre>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Tcl Scripts</title>
-    <link rel="stylesheet" href="../css/wondrous/styles.css" type="text/css" />
+    <link rel="stylesheet" href="../templates/wondrous/styles.css" type="text/css" />
 </head>
 
 <body>
@@ -15,17 +16,16 @@
         </div>
         <div id="body">
             <div id="content">
-                <h2><headline>Tcl Scripts</headline>
-</h2>
+                <h2>Tcl Scripts</h2>
                 <div>
- <p>
+    <p>
 		    Pure Tcl scripts let you do the heavy lifting to control your application. A sensible 
 		    design pattern is to put most of your complex logic in these files, and then parse template 
 		    files to display the results. This means that those who are creating the HTML files don't 
 		    have to know much Tcl, and only need to call a few simple commands.
 		</p>
- <p>
-  <pre class="programlisting">proc chat::model::getlines {user} {
+    <p>
+        <pre class="programlisting">proc chat::model::getlines {user} {
     set sk [chat::model::getsock]
     puts $sk [list user $user cmd get msg ""]
     if { ! [eof $sk] } {
@@ -37,84 +37,34 @@
 }
      
 </pre>
- </p>
- <p>
+    </p>
+    <p>
 		    For instance scripts are useful when you want to have control of the http protocol and you are not transmitting 
 		    text/html data. See the example regarding the <a href="file_download.html">file download</a>
 
+
 		    or the xml messaging in <a href="ajax.html">Ajax</a>
+
  development.
-		 </p>
+		            </p>
 </div>
 
 
 
                 <div class="contentbottom">
-                    <div id="last_modified">Last Modified: 20-07-2010 13:11:09 UTC</div>
+                    
                 </div>
             </div>
 
             <div class="sidebar">
                 <ul>
-                    <li id="rivetexamples">
-    <h4 class="">Examples</h4>
-    <ul class="blocklist">
-        <li class="navitem">
-            <a href="hello_world.html" class="">Hello world!</a>
-        </li>
-        <li class="navitem">
-            <a href="shaded_table.html" class="">A shaded table</a>
-        </li>
-        <li class="navitem">
-            <a href="var_access.html" class="">Variable Access</a>
-        </li>
-        <li class="navitem">
-            <a href="file_upload.html" class="">File Upload</a>
-        </li>
-        <li class="navitem">
-            <a href="file_download.html" class="">File Download</a>
-        </li>
-        <li class="navitem">
-            <a href="ajax.html" class="">XML and Ajax</a>
-        </li>
-        <li class="navitem">
-            <a href="calendar.html" class="">Calendar</a>
-        </li>
-    </ul>
-</li>
-<li id="main">
-    <h4 class="">Rivet</h4>
-    <ul class="blocklist">
-        <li class="navitem">
-            <a href="../index.html" class="">Rivet Homepage</a>
-        </li>
-        <li class="navitem">
-            <a href="http://tcl.apache.org/" target="asf">Apache Tcl Home</a>
-        </li>
-        <li class="navitem">
-            <a href="download.html" class="">Getting Rivet</a>
-        </li>
-        <li class="navitem">
-            <a href="hello_world.html" class="">Examples</a>
-        </li>
-        <li class="navitem">
-            <a href="about.html" class="">About Us - Contact</a>
-        </li>
-    </ul>
-</li>
-<li id="manual">
-    <h4 class="">Manuals</h4>
-    <ul class="blocklist">
-        <li class="navitem">
-            <a href="http://tcl.apache.org/rivet/manual2.0/" target="rivetman2.0">Rivet 2.0 Manual</a>
-        </li>
-        <li class="navitem">
-            <a href="http://tcl.apache.org/rivet/manual2.1/" target="rivetman2.1">Rivet 2.1 Manual</a>
-        </li>
-    </ul>
-</li>
-
- 
+                     
+                </ul> 
+                <ul>
+                     
+                </ul> 
+                <ul>
+                     
                 </ul> 
             </div>
             <div class="clear"></div>

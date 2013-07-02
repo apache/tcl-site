@@ -48,7 +48,9 @@
               </p><pre style="background:#ccc; margin: 2ex; margin-right: 10%;       padding: 1ex; border: dashed black 1px ; white-space: pre;      font-family: monospace; font-size: 90%;" class="programlisting">gunzip rivet-X.X.X.tar.gz
 tar -xvf rivet-X.X.X.tar.gz</pre><p style="width:90%">
             </p></li><li class="step" title="Building Rivet"><p class="title"><b>Building Rivet</b></p><ol type="a" class="substeps"><li class="step" title="Step 5.a"><p style="width:90%">
-	      On Linux or Unix systems, Rivet uses the standard <span style="font-family:monospace"><span class="command"><strong>./configure ; make ; make install</strong></span></span> technique.
+	      On Linux or Unix systems, Rivet uses the standard <span style="font-family:monospace"><span class="command"><strong>./configure ; make ; make install
+	      (; make install-packages)</strong></span></span>
+	      sequence.
 	    </p><p style="width:90%">
 	      There are several rivet specific options to configure that might be useful (or needed):
 	      </p><div class="variablelist"><dl><dt><span class="term">--with-tcl</span></dt><dd><div style="padding:4 ; margin-top:3 ; margin-bottom:3 ; width:75%"><div style="margin-bottom:1.5ex ; padding .5ex">
@@ -59,7 +61,7 @@ tar -xvf rivet-X.X.X.tar.gz</pre><p style="width:90%">
 		      program that provides information about the
 		      configuration and compilation options of Apache modules.</div></div></dd><dt><span class="term">--with-apache-version=[1|2]</span></dt><dd><div style="padding:4 ; margin-top:3 ; margin-bottom:3 ; width:75%"><div style="margin-bottom:1.5ex ; padding .5ex">
 			This option tells the build scripts whether you want to build Rivet for the
-			Apache 1.x or Apache 2.x server.
+			Apache 1.x or Apache 2.x server. (Obsolete: Apache 1.x is no longer supported)
 		    </div></div></dd><dt><span class="term">--with-apache-include[=DIR]</span></dt><dd><div style="padding:4 ; margin-top:3 ; margin-bottom:3 ; width:75%"><div style="margin-bottom:1.5ex ; padding .5ex">
 			    Locates the Apache include files on your computer, if they're not in standard directory. 
 		    </div></div></dd><dt><span class="term">--enable-version-display=[yes|no]</span></dt><dd><div style="padding:4 ; margin-top:3 ; margin-bottom:3 ; width:75%"><div style="margin-bottom:1.5ex ; padding .5ex">
@@ -67,7 +69,24 @@ tar -xvf rivet-X.X.X.tar.gz</pre><p style="width:90%">
 			The default is to keep Rivet version hidden.
 		    </div></div></dd><dt><span class="term">--with-rivet-target-dir=DIR</span></dt><dd><div style="padding:4 ; margin-top:3 ; margin-bottom:3 ; width:75%"><div style="margin-bottom:1.5ex ; padding .5ex">
 			    This option tells the install script where Rivet's Tcl packages have to be copied. 
-			</div></div></dd></dl></div><p style="width:90%">
+			</div></div></dd><dt><span class="term">--with-upload-dir=DIR</span></dt><dd><div style="padding:4 ; margin-top:3 ; margin-bottom:3 ; width:75%"><div style="margin-bottom:1.5ex ; padding .5ex">
+		          Configures Rivet's default upload directory 
+		      </div></div></dd><dt><span class="term">--enable-head-requests</span></dt><dd><div style="padding:4 ; margin-top:3 ; margin-bottom:3 ; width:75%"><div style="margin-bottom:1.5ex ; padding .5ex">
+		          By default HEAD requests don't go through the usual request processing which leads
+		          to script execution and therefore resource consumption and Rivet returns a
+		          standard hardcoded HTML header to save CPU time. --enable-head-requests
+		          changes this default (see also <a class="link" href="directives.html" title="Rivet Apache Directives">Rivet Directives</a>)
+		      </div></div></dd><dt><span class="term">--disable-rivet-commands-export</span></dt><dd><div style="padding:4 ; margin-top:3 ; margin-bottom:3 ; width:75%"><div style="margin-bottom:1.5ex ; padding .5ex">
+		          By default Rivet's commands are put on the export list of the <code class="code">::rivet</code>
+		          namespace. With this option you may prevent it thus forcing the programmer to
+		          fully qualify <a class="link" href="commands.html" title="Rivet Tcl Commands and Variables">these commands</a>
+		      </div></div></dd><dt><span class="term">--disable-import-rivet-commands</span></dt><dd><div style="padding:4 ; margin-top:3 ; margin-bottom:3 ; width:75%"><div style="margin-bottom:1.5ex ; padding .5ex">
+		          Likewise commands in the Rivet's namespace when exported are then by default imported
+		          into the global namespace for compatibility with previous version of Rivet.
+		          (Enabling the import of Rivet's commands overrides the switch --disable-rivet-commands-export
+		          and forces the export from <code class="code">::rivet</code>). This switch overrides the default and
+		          prevents the import into the global namespace 
+		      </div></div></dd></dl></div><p style="width:90%">
 	    </p><p style="width:90%">
 		Example: configuring the build system to compile Rivet for an apache 2.x server, using tcl8.5 and
 		specifying a custom name for the apxs program. 
@@ -77,13 +96,19 @@ tar -xvf rivet-X.X.X.tar.gz</pre><p style="width:90%">
 	      run to completion without any errors (a warning or two
 	      is ok, generally).
 	    </p></li><li class="step" title="Install"><p class="title"><b>Install</b></p><p style="width:90%">
-	      Now, you are ready to run the <span style="font-family:monospace"><span class="command"><strong>make
-		install</strong></span></span> to install the resulting files.
-		This should copy the shared object (like
-		<code class="filename">mod_rivet.so</code>, if one was
-		successfully created, into Apache's
-		<code class="filename">libexec</code> directory, as well as
-		install some support scripts and various code.
+	      Now, you are ready to run the
+	    </p><pre style="background:#ccc; margin: 2ex; margin-right: 10%;       padding: 1ex; border: dashed black 1px ; white-space: pre;      font-family: monospace; font-size: 90%;" class="programlisting">make install</pre><p style="width:90%"> 
+	      to install the resulting files.
+		  This should copy the shared object (like <code class="filename">mod_rivet.so</code>, if one was
+		  successfully created, into Apache's <code class="filename">libexec</code> directory, as well as
+		  install some support scripts. This commands creates a functional Rivet module with its
+		  core language.
+	    </p><p style="width:90%">
+	       Starting with 2.1.2 you need also to run
+	    </p><pre style="background:#ccc; margin: 2ex; margin-right: 10%;       padding: 1ex; border: dashed black 1px ; white-space: pre;      font-family: monospace; font-size: 90%;" class="programlisting">make install-packages</pre><p style="width:90%">
+	       in order to have the Tcl packages (such as the 
+	       <code class="code">Session</code> or <code class="code">form</code>) installed
+	       into their target directory
 	    </p></li></ol></li><li class="step" title="Apache Configuration Files"><p class="title"><b>Apache Configuration Files</b></p><p style="width:90%">
 	  Rivet is relatively easy to configure - we start off by
 	  adding the module itself:

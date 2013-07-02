@@ -21,8 +21,7 @@
     <div class="example-contents">
         <p>Here, we demonstrate how to access variables set by GET or POST operations.</p>
         <p>Given an HTML form like the following:</p>
-        <pre class="programlisting">
-&lt;form action="vars.rvt"&gt;
+        <pre class="programlisting">&lt;form action="vars.rvt"&gt;
       &lt;table&gt;
         &lt;tbody&gt;
           &lt;tr&gt;
@@ -52,9 +51,7 @@
           &lt;/tr&gt;
         &lt;/tbody&gt;
       &lt;/table&gt;
-&lt;/form&gt;
-
-</pre>
+&lt;/form&gt;</pre>
         <p>We can use this Rivet script to get the variable values:</p>
         <pre class="programlisting">&lt;?
 set errlist {}
@@ -114,8 +111,7 @@ if { [llength $errlist] != 0 } {
     &lt;/table&gt;
     &lt;?
 }
-?&gt;
-</pre>
+?&gt;</pre>
         <p>The first statement checks to make sure that the boss variable has been passed to the script, 
                 and then does something with that information. If it's not present, an error is added to the list of errors.</p>
         <p>In the second block of code, the variable salary is fetched, with one more error check - because it's a 

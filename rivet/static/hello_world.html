@@ -39,16 +39,14 @@
       &lt;b&gt;&lt;? puts "Hello world" ?&gt;&lt;/b&gt;
     &lt;/pre&gt;
   &lt;/body&gt;
-&lt;/html&gt;
-</pre>
+&lt;/html&gt;</pre>
         <p>
                         The example can be elaborated, for example using the <tt>
                 <a href="http://tcl.apache.org/rivet/manual2.1/html.html">html</a>
             </tt>
 
  command			
-                        <pre class="programlisting">
-&lt;? set hello_message "Hello world" ?&gt;
+                        <pre class="programlisting">&lt;? set hello_message "Hello world" ?&gt;
 &lt;html&gt;
   &lt;head&gt;
     &lt;title&gt;&lt;? puts $hello_message ?&gt;&lt;/title&gt;
@@ -56,23 +54,20 @@
   &lt;body&gt;&lt;?
     puts [::rivet::html $hello_message pre b]
   ?&gt;&lt;/body&gt;
-&lt;/html&gt;
-</pre>
+&lt;/html&gt;</pre>
         </p>
         <p>
 			Starting with version 2.0.5 Rivet also supports a shorthand notation
 			to output simple strings. 
 		    </p>
         <p>
-            <pre class="programlisting">
-&lt;? set hello_message "Hello world" ?&gt;
+            <pre class="programlisting">&lt;? set hello_message "Hello world" ?&gt;
 &lt;html&gt;
   &lt;head&gt;
     &lt;title&gt;&lt;?= $hello_message ?&gt;&lt;/title&gt;
   &lt;/head&gt;
   &lt;body&gt;&lt;?= [::rivet::html $hello_message pre b] ?&gt;&lt;/body&gt;
-&lt;/html&gt;
-</pre>
+&lt;/html&gt;</pre>
         </p>
     </div>
 </div>

@@ -88,8 +88,8 @@ tar -xvf rivet-X.X.X.tar.gz</pre><p style="width:90%">
 		          prevents the import into the global namespace 
 		      </div></div></dd></dl></div><p style="width:90%">
 	    </p><p style="width:90%">
-		Example: configuring the build system to compile Rivet for an apache 2.x server, using tcl8.5 and
-		specifying a custom name for the apxs program. 
+		  Example: configuring the build system to compile Rivet for an apache 2.x server, using tcl8.5 and
+		  specifying a custom name for the apxs program. 
 	    </p><pre style="background:#ccc; margin: 2ex; margin-right: 10%;       padding: 1ex; border: dashed black 1px ; white-space: pre;      font-family: monospace; font-size: 90%;" class="programlisting">./configure --with-tcl=/usr/lib/tcl8.5/ --with-tclsh=/usr/bin/tclsh8.5 \
 	    --with-apxs=/usr/bin/apxs2 --with-apache=/usr --with-apache-version=2</pre></li><li class="step" title="Run make"><p class="title"><b>Run make</b></p><p style="width:90%">
 	      At this point, you are ready to run make, which should
@@ -98,17 +98,12 @@ tar -xvf rivet-X.X.X.tar.gz</pre><p style="width:90%">
 	    </p></li><li class="step" title="Install"><p class="title"><b>Install</b></p><p style="width:90%">
 	      Now, you are ready to run the
 	    </p><pre style="background:#ccc; margin: 2ex; margin-right: 10%;       padding: 1ex; border: dashed black 1px ; white-space: pre;      font-family: monospace; font-size: 90%;" class="programlisting">make install</pre><p style="width:90%"> 
-	      to install the resulting files.
-		  This should copy the shared object (like <code class="filename">mod_rivet.so</code>, if one was
-		  successfully created, into Apache's <code class="filename">libexec</code> directory, as well as
-		  install some support scripts. This commands creates a functional Rivet module with its
-		  core language.
-	    </p><p style="width:90%">
-	       Starting with 2.1.2 you need also to run
-	    </p><pre style="background:#ccc; margin: 2ex; margin-right: 10%;       padding: 1ex; border: dashed black 1px ; white-space: pre;      font-family: monospace; font-size: 90%;" class="programlisting">make install-packages</pre><p style="width:90%">
-	       in order to have the Tcl packages (such as the 
-	       <code class="code">Session</code> or <code class="code">form</code>) installed
-	       into their target directory
+	       to install the resulting files. The <code class="code">install</code> target
+	       actually fires the <code class="code">install-binaries</code> and 
+	       <code class="code">install-packages</code> targets which in turn 
+	       copy the binary modules and Tcl packages to their destination
+	       directories. This commands create a functional Rivet environment with its
+		   core language.
 	    </p></li></ol></li><li class="step" title="Apache Configuration Files"><p class="title"><b>Apache Configuration Files</b></p><p style="width:90%">
 	  Rivet is relatively easy to configure - we start off by
 	  adding the module itself:

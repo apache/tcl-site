@@ -330,9 +330,9 @@ li ol, li ul {
 }
 
 .floatright {
-    padding: 5px;
-    margin: 0 auto 5px 5px;
-    float:  right;
+    padding:    5px;
+    margin:     0 auto 5px 5px;
+    float:      right;
 }
 
 .programlisting {
@@ -346,4 +346,10 @@ li ol, li ul {
 div.floatright {
     padding:    10px auto 10px 10px;
     margin:     0.5em auto 0.5em 1em;
+}
+
+.sidebar li ul.blocklist li a.extern {
+    display:        inline-block;
+    padding-left:   20px;
+    background:     transparent url(../../picts/external-link-grey.png) center left no-repeat;
 }

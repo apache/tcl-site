@@ -42,6 +42,41 @@
                                     </p>
     </div>
     <div class="sez">
+        <h4>Rivet 2.1.4 Release Notes</h4>
+        <p>New features</p>
+        <ul>
+            <li>New subcommand <tt>script</tt>
+
+ for command <strong>::rivet::inspect</strong>
+
+&gt; returns
+		   	      the full path to the current Rivet template or URL referenced script. In case
+		   	      this command is invoked from outside a request processing the string value
+		   	      by [info script] is returned                            </li>
+        </ul>
+        <p>Bug fixed and code reorganization</p>
+        <ul>
+            <li>Changed value returned by command <strong>headers redirect</strong>
+
+&gt; that cause
+		   	      mod_rivet to fail with Tcl 8.6.1 (Fixes bug #55583)                            </li>
+            <li>Reorganized autotools build scripts</li>
+            <li>Redundant log message in ApacheRequest___parse() removed (fixes bug #55845)</li>
+            <li>Small optimization attained by moving allocation of a control structure process
+		   	      from the request processing scope into the process scope</li>
+            <li>Removed call to Tcl to coax Tcl command <strong>info script</strong>
+
+&gt; into 
+		   	      returning the current rivet template name. This feature was undocumented
+		   	      and this task has been devolved to newly create <strong>::rivet::inspect script</strong>
+
+ 
+		   	      command                            </li>
+            <li>Fixed some comments that were breaking Tcl 8.6 (comments cannot go into a Tcl
+		   	      <strong>switch</strong>
+
+ command body)                            </li>
+        </ul>
         <h4>Rivet 2.1.3 Release Notes</h4>
         <ul>
             <li>installation target 'make install' restored to its previous
@@ -254,7 +289,7 @@
                 </a>
         </li>
         <li class="navitem">
-            <a href="rn-2-1.html">1 Oct 2013: Rivet 2.1.3 released</a>
+            <a href="rn-2-1.html">3 Mar 2014: Rivet 2.1.4 released</a>
         </li>
         <li class="navitem">
             <a href="rn-2-0.html">1 Dec 2012: Rivet 2.0.6 released</a>

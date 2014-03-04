@@ -1,4 +1,4 @@
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Rivet Apache Directives</title><link rel="stylesheet" type="text/css" href="rivet.css"><meta name="generator" content="DocBook XSL Stylesheets V1.76.1"><link rel="home" href="index.html" title="Apache Rivet"><link rel="up" href="index.html" title="Apache Rivet"><link rel="prev" href="request.html" title="Apache Child Processes Lifecycle and Request Processing"><link rel="next" href="commands.html" title="Rivet Tcl Commands and Variables"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Rivet Apache Directives</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="request.html"><img src="images/prev.png" alt="Prev"></a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="commands.html"><img src="images/next.png" alt="Next"></a></td></tr></table></div><div class="section" title="Rivet Apache Directives"><div class="titlepage"><div><div><hr><h2 class="title" style="clear: both"><a name="directives"></a>Rivet Apache Directives</h2></div></div></div><div class="section"><div class="titlepage"></div><p style="width:90%">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Rivet Apache Directives</title><link rel="stylesheet" type="text/css" href="rivet.css"><meta name="generator" content="DocBook XSL Stylesheets V1.78.1"><link rel="home" href="index.html" title="Apache Rivet"><link rel="up" href="index.html" title="Apache Rivet"><link rel="prev" href="request.html" title="Apache Child Processes Lifecycle and Request Processing"><link rel="next" href="commands.html" title="Rivet Tcl Commands and Variables"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Rivet Apache Directives</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="request.html"><img src="images/prev.png" alt="Prev"></a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="commands.html"><img src="images/next.png" alt="Next"></a></td></tr></table></div><div class="section"><div class="titlepage"><div><div><hr><h2 class="title" style="clear: both"><a name="directives"></a>Rivet Apache Directives</h2></div></div></div><div class="section"><div class="titlepage"></div><p style="width:90%">
 	      Rivet directives are used within the Apache httpd server
 	      configuration to set up the environment where Rivet script
 	      will be run.  Their precedence is as follows: 
@@ -19,14 +19,14 @@
 	    	is also the right place for doing anything needs to avoid
         	resource concurrency among processes (e.g. the creation and 
 	    	initialization of an IPC system)
-	   </p></div><div class="section"><div class="titlepage"></div><div class="variablelist"><dl><dt><span class="term">
+	   </p></div><div class="section"><div class="titlepage"></div><div class="variablelist"><dl class="variablelist"><dt><span class="term">
 				<div class="cmdsynopsis" style="width:80%"><div style="background:#ccccff ; margin:1ex ; padding:.4ex; padding-left: 0.8ex;   word-spacing:1ex "><span style="font-weight:bold ; font-family:monospace">RivetServerConf</span>  (<span style="font-family:monospace; font-weight: bold;">CacheSize</span> | <span style="font-family:monospace; font-weight: bold;">ServerInitScript</span> | <span style="font-family:monospace; font-weight: bold;">GlobalInitScript</span> | <span style="font-family:monospace; font-weight: bold;">ChildInitScript</span> | <span style="font-family:monospace; font-weight: bold;">ChildExitScript</span> | <span style="font-family:monospace; font-weight: bold;">BeforeScript</span> | <span style="font-family:monospace; font-weight: bold;">AfterScript</span> | <span style="font-family:monospace; font-weight: bold;">ErrorScript</span> | <span style="font-family:monospace; font-weight: bold;">AbortScript</span> | <span style="font-family:monospace; font-weight: bold;">AfterEveryScript</span> | <span style="font-family:monospace; font-weight: bold;">UploadDirectory</span> | <span style="font-family:monospace; font-weight: bold;">UploadMaxSize</span> | <span style="font-family:monospace; font-weight: bold;">UploadFilesToVar</span> | <span style="font-family:monospace; font-weight: bold;">SeparateVirtualInterps</span> | <span style="font-family:monospace; font-weight: bold;">HonorHeaderOnlyRequests</span>)</div></div>
 			</span></dt><dd><div style="padding:4 ; margin-top:3 ; margin-bottom:3 ; width:75%"><div style="margin-bottom:1.5ex ; padding .5ex">
 					<span style="font-family:monospace"><span class="command"><strong>RivetServerConf</strong></span></span> specifies a global
 			    	option that is valid for the whole server.  If you have a
 			    	virtual host, in some cases, the option specified in the
 			    	virtualhost takes precedence over the 'global' version.
-				</div><div class="variablelist"><dl><dt><span class="term">
+				</div><div class="variablelist"><dl class="variablelist"><dt><span class="term">
 						<div class="cmdsynopsis" style="width:80%"><div style="background:#ccccff ; margin:1ex ; padding:.4ex; padding-left: 0.8ex;   word-spacing:1ex "> <span style="font-family:monospace; font-weight: bold;">CacheSize</span>  ?<span style="font-family:monospace; font-weight: bold;"><em class="replaceable"><code>size</code></em></span>?</div></div>
 	      		</span></dt><dd><div style="padding:4 ; margin-top:3 ; margin-bottom:3 ; width:75%"><div style="margin-bottom:1.5ex ; padding .5ex">
 						  Sets the size of the internal page cache, where
@@ -99,7 +99,7 @@
 					  to put it in a GlobalInitScript
 					  ChildInitScript when you are first
 					  developing a web site.
-					  <div class="note" title="Note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="images/note.png"></td><th align="left">Note</th></tr><tr><td align="left" valign="top">
+					  <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="images/note.png"></td><th align="left">Note</th></tr><tr><td align="left" valign="top">
 					    This code is evaluated at the global level, not
 					    inside the request namespace where pages are
 					    evaluated.
@@ -175,7 +175,7 @@
       		  ISP type situation where it is desirable to separate
       		  clients into separate interpreters, so that they
       		  don't accidentally interfere with one another.
-      		</div><div class="note" title="Note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="images/note.png"></td><th align="left">Note</th></tr><tr><td align="left" valign="top">
+      		</div><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="images/note.png"></td><th align="left">Note</th></tr><tr><td align="left" valign="top">
    		      This option is, by nature, only available at the
    		      global level. By enabling <span style="font-family:monospace"><span class="command"><strong>SeparateVirtualInterps</strong></span></span>
    		      you must rely only on <span style="font-family:monospace"><span class="command"><strong>ChildInitScript</strong></span></span> to

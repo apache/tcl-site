@@ -212,7 +212,7 @@ li ol, li ul {
 #content {
 	background-color: #fff;
 	float: left;
-	width: 690px;
+	width: 700px;
 	padding: 20px 25px;
 	margin: 0;
 
@@ -222,7 +222,7 @@ li ol, li ul {
 }
 
 .sidebar {
-	width: 250px;
+	width: 245px;
 	padding: 0;
 	float: right;
 }

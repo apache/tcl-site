@@ -1,4 +1,4 @@
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Apache Child Processes Lifecycle and Request Processing</title><link rel="stylesheet" type="text/css" href="rivet.css"><meta name="generator" content="DocBook XSL Stylesheets V1.78.1"><link rel="home" href="index.html" title="Apache Rivet"><link rel="up" href="index.html" title="Apache Rivet"><link rel="prev" href="installation.html" title="Apache Rivet Installation"><link rel="next" href="directives.html" title="Rivet Apache Directives"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Apache Child Processes Lifecycle and Request Processing</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="installation.html"><img src="images/prev.png" alt="Prev"></a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="directives.html"><img src="images/next.png" alt="Next"></a></td></tr></table></div><div class="section"><div class="titlepage"><div><div><hr><h2 class="title" style="clear: both"><a name="request"></a>Apache Child Processes Lifecycle and Request Processing</h2></div></div></div><div class="simplesect"><div class="titlepage"><div><div><h3 class="title"><a name="idp56088560"></a>Apache Child Process Lifecycle</h3></div></div></div><p style="width:90%">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Apache Child Processes Lifecycle and Request Processing</title><link rel="stylesheet" type="text/css" href="rivet.css"><meta name="generator" content="DocBook XSL Stylesheets V1.78.1"><link rel="home" href="index.html" title="Apache Rivet"><link rel="up" href="index.html" title="Apache Rivet"><link rel="prev" href="installation.html" title="Apache Rivet Installation"><link rel="next" href="directives.html" title="Rivet Apache Directives"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Apache Child Processes Lifecycle and Request Processing</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="installation.html"><img src="images/prev.png" alt="Prev"></a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="directives.html"><img src="images/next.png" alt="Next"></a></td></tr></table></div><div class="section"><div class="titlepage"><div><div><hr><h2 class="title" style="clear: both"><a name="request"></a>Apache Child Processes Lifecycle and Request Processing</h2></div></div></div><div class="simplesect"><div class="titlepage"><div><div><h3 class="title"><a name="idp56434320"></a>Apache Child Process Lifecycle</h3></div></div></div><p style="width:90%">
             Apache Rivet delegates to the <a class="ulink" href="" target="_top">Multi-Processing Module (MPM)</a>
             the task of managing the agents responding to network requests. 
             An MPM is responsible for creating such agents during the start-up, 
@@ -23,7 +23,7 @@
 	    </p><p style="width:90%">
 	    		There are 4 stages in the lifetime of an Apache webserver that are relevant
 	    		to Rivet: 
-	    </p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem"><h4><a name="idp56139040"></a>Single Process Initialization</h4><div style="margin-bottom:1.5ex ; padding .5ex">
+	    </p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem"><h4><a name="idp56484848"></a>Single Process Initialization</h4><div style="margin-bottom:1.5ex ; padding .5ex">
                Apaches starts up as a single process. During this stage Apache performs 
                various preliminary tasks including reading and parsing the configuration. 
 					After the configuration has been read Rivet sets up some internal resources
@@ -39,7 +39,7 @@
 		    		in this context are importing namespace commands and loading packages
 		    		providing code of general interest for every application to
 		    		be served. Also IPC methods can be initialized in this stage.
-	    		</div></li><li class="listitem"><h4><a name="idp56142560"></a>Child Process Initialization</h4><div style="margin-bottom:1.5ex ; padding .5ex">
+	    		</div></li><li class="listitem"><h4><a name="idp56488368"></a>Child Process Initialization</h4><div style="margin-bottom:1.5ex ; padding .5ex">
 		    		Right after the webserver has forked its child processes 
 		    		there is a chance to perform specific initialization of their Tcl interpreters.
                This is the stage where most likely you want to open I/O channels, 
@@ -65,7 +65,7 @@
 	    			<div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="images/note.png"></td><th align="left">Note</th></tr><tr><td align="left" valign="top"><span style="font-family:monospace"><span class="command"><strong>GlobalInitScript</strong></span></span> has no effect to working interpreters
 	    				when <span style="font-family:monospace"><span class="command"><strong>SeparateVirtualInterps</strong></span></span> is set.
 	    			</td></tr></table></div>
-	    		</div></li><li class="listitem"><h4><a name="idp56150784"></a>Request Processing and Content Generation</h4><div style="margin-bottom:1.5ex ; padding .5ex">
+	    		</div></li><li class="listitem"><h4><a name="idp56496672"></a>Request Processing and Content Generation</h4><div style="margin-bottom:1.5ex ; padding .5ex">
                  After a child has been initialized it's ready to serve requests. 
                  A child process' lifetime is almost entirely spent in this phase, waiting
                  for connections and responding to requests. At every request the URL 
@@ -83,7 +83,7 @@
                  be running within the same "before" and "after" scripts to which 
                  the programmer can devolve tasks common to every 
                  page of an application.
-            </div></li><li class="listitem"><h4><a name="idp56155632"></a>Child Process Exit</h4><div style="margin-bottom:1.5ex ; padding .5ex">
+            </div></li><li class="listitem"><h4><a name="idp56501520"></a>Child Process Exit</h4><div style="margin-bottom:1.5ex ; padding .5ex">
                  If no error condition forces the child process to a premature exit, his
                  life is determined by the Apache configuration parameters. To reduce
                  the effects of memory leaks in buggy applications the Apache webserver 
@@ -101,7 +101,7 @@
                  to exit and be replaced by a new one when the workload demands it.
                  This operation implies the <span style="font-family:monospace"><span class="command"><strong>ChildExitScript</strong></span></span> be
                  run before the interpreter is actually deleted.
-             </div></li></ol></div></div><div class="simplesect"><div class="titlepage"><div><div><h3 class="title"><a name="idp56160224"></a>Apache Rivet Error and Exception Scripts Directives</h3></div></div></div><p style="width:90%">
+             </div></li></ol></div></div><div class="simplesect"><div class="titlepage"><div><div><h3 class="title"><a name="idp56506112"></a>Apache Rivet Error and Exception Scripts Directives</h3></div></div></div><p style="width:90%">
             Rivet is highly configurable and each of the webserver lifecycle stages 
             can be exploited to control a web application. 
             Not only the orderly sequence of stages
@@ -127,7 +127,7 @@
 	    	the abnormal condition. Starting with Rivet 2.1.0 <a class="xref" href="abort_page.html" title="abort_page">abort_page</a>
 	    	accepts a free form parameter that can be retrieved later with the command 
 	    	<a class="xref" href="abort_code.html" title="abort_code">abort_code</a>
-	    </p></div><div class="simplesect"><div class="titlepage"><div><div><h3 class="title"><a name="idp56166464"></a>Tcl Namespaces in Rivet and the <span style="font-family:monospace"><span class="command"><strong>::request</strong></span></span> Namespace</h3></div></div></div><p style="width:90%">
+	    </p></div><div class="simplesect"><div class="titlepage"><div><div><h3 class="title"><a name="idp56512352"></a>Tcl Namespaces in Rivet and the <span style="font-family:monospace"><span class="command"><strong>::request</strong></span></span> Namespace</h3></div></div></div><p style="width:90%">
 			With the sole exception of .rvt templates, Rivet runs pure Tcl scripts 
 			at the global namespace. That means that every variable or procedure 
 			created in Tcl scripts resides by default in the 

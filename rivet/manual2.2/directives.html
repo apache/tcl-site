@@ -20,7 +20,7 @@
         	resource concurrency among processes (e.g. the creation and 
 	    	initialization of an IPC system)
 	   </p></div><div class="section"><div class="titlepage"></div><div class="variablelist"><dl class="variablelist"><dt><span class="term">
-				<div class="cmdsynopsis" style="width:80%"><div style="border: 1px solid #282; margin:1ex ; padding:.4ex; padding-left: 0.8ex;   word-spacing:1ex "><span style="font-weight:bold ; font-family:monospace">RivetServerConf</span>  (<span style="font-family:monospace; font-weight: bold;">CacheSize</span> | <span style="font-family:monospace; font-weight: bold;">ServerInitScript</span> | <span style="font-family:monospace; font-weight: bold;">GlobalInitScript</span> | <span style="font-family:monospace; font-weight: bold;">ChildInitScript</span> | <span style="font-family:monospace; font-weight: bold;">ChildExitScript</span> | <span style="font-family:monospace; font-weight: bold;">BeforeScript</span> | <span style="font-family:monospace; font-weight: bold;">AfterScript</span> | <span style="font-family:monospace; font-weight: bold;">ErrorScript</span> | <span style="font-family:monospace; font-weight: bold;">AbortScript</span> | <span style="font-family:monospace; font-weight: bold;">AfterEveryScript</span> | <span style="font-family:monospace; font-weight: bold;">UploadDirectory</span> | <span style="font-family:monospace; font-weight: bold;">UploadMaxSize</span> | <span style="font-family:monospace; font-weight: bold;">UploadFilesToVar</span> | <span style="font-family:monospace; font-weight: bold;">SeparateVirtualInterps</span> | <span style="font-family:monospace; font-weight: bold;">HonorHeaderOnlyRequests</span>)</div></div>
+				<div class="cmdsynopsis" style="width:80%"><div style="border: 1px solid #282; margin:1ex ; padding:.4ex; padding-left: 0.8ex;   word-spacing:1ex "><span style="font-weight:bold ; font-family:monospace">RivetServerConf</span>  (<span style="font-family:monospace; font-weight: bold;">CacheSize</span> | <span style="font-family:monospace; font-weight: bold;">ServerInitScript</span> | <span style="font-family:monospace; font-weight: bold;">GlobalInitScript</span> | <span style="font-family:monospace; font-weight: bold;">ChildInitScript</span> | <span style="font-family:monospace; font-weight: bold;">ChildExitScript</span> | <span style="font-family:monospace; font-weight: bold;">BeforeScript</span> | <span style="font-family:monospace; font-weight: bold;">AfterScript</span> | <span style="font-family:monospace; font-weight: bold;">ErrorScript</span> | <span style="font-family:monospace; font-weight: bold;">AbortScript</span> | <span style="font-family:monospace; font-weight: bold;">AfterEveryScript</span> | <span style="font-family:monospace; font-weight: bold;">UploadDirectory</span> | <span style="font-family:monospace; font-weight: bold;">UploadMaxSize</span> | <span style="font-family:monospace; font-weight: bold;">UploadFilesToVar</span> | <span style="font-family:monospace; font-weight: bold;">SeparateVirtualInterps</span> | <span style="font-family:monospace; font-weight: bold;">SeparateChannels</span> | <span style="font-family:monospace; font-weight: bold;">HonorHeaderOnlyRequests</span>)</div></div>
 			</span></dt><dd><div style="padding:4 ; margin-top:3 ; margin-bottom:3 ; width:75%"><div style="margin-bottom:1.5ex ; padding .5ex">
 					<span style="font-family:monospace"><span class="command"><strong>RivetServerConf</strong></span></span> specifies a global
 			    	option that is valid for the whole server.  If you have a
@@ -185,13 +185,36 @@
    		      slave interpreters that are private to each configured 
    		      virtual host.
    		   </td></tr></table></div></div></dd><dt><span class="term">
-		<div class="cmdsynopsis" style="width:80%"><div style="border: 1px solid #282; margin:1ex ; padding:.4ex; padding-left: 0.8ex;   word-spacing:1ex "> <span style="font-family:monospace; font-weight: bold;">HonorHeaderOnlyRequests</span>  (<span style="font-family:monospace; font-weight: bold;">yes</span> | <span style="font-family:monospace; font-weight: bold;">no</span>)</div></div>
+		     <div class="cmdsynopsis" style="width:80%"><div style="border: 1px solid #282; margin:1ex ; padding:.4ex; padding-left: 0.8ex;   word-spacing:1ex "> <span style="font-family:monospace; font-weight: bold;">SeparateChannels</span>  (<span style="font-family:monospace; font-weight: bold;">yes</span> | <span style="font-family:monospace; font-weight: bold;">no</span>)</div></div>
+		  </span></dt><dd><div style="padding:4 ; margin-top:3 ; margin-bottom:3 ; width:75%"><div style="margin-bottom:1.5ex ; padding .5ex">
+      			Internally mod_rivet creates a new Tcl channel (Rivet channel) which is configured
+      			as <span style="font-family:monospace"><span class="command"><strong>stdout</strong></span></span> and registered to each existing interpreter.
+      			There is no need of multiple channels in a single thread as each thread can 
+      			serve only one request at a time. But if you are deploying mod_rivet in a
+      			complex environment running unrelated applications developed by 
+      			different teams, it could be the case to have <span style="font-family:monospace"><span class="command"><strong>SeparateVirtualInterps</strong></span></span>
+      			set. If you want to enhance the environment separation you may also
+      			set <span style="font-family:monospace"><span class="command"><strong>SeparateChannels</strong></span></span> to force mod_rivet to create
+      			a channel per each Tcl interpreter thus enabling single application
+      			code to change the Rivet channel parameters without affecting other
+      			applications (even though changing the Tcl channel parameters is a rare 
+      			necessity). Setting this options increases the system overheads as each
+      			Rivet channel needs to allocate its own control structures and internal
+      			buffers.
+      		</div><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="images/note.png"></td><th align="left">Note</th></tr><tr><td align="left" valign="top">
+      			This option is implemented in order to have fine grain control over mod_rivet. In
+      			nearly all practical cases you won't need to change Rivet Channel (stdout) settings
+      			for different applications by calling <span style="font-family:monospace"><span class="command"><strong>fconfigure stdout ....</strong></span></span>. 
+      			This option is, by nature, only available at the global level and has effect only if 
+   		      also <span style="font-family:monospace"><span class="command"><strong>SeparateVirtualInterps</strong></span></span> is set
+   		   </td></tr></table></div></div></dd><dt><span class="term">
+				<div class="cmdsynopsis" style="width:80%"><div style="border: 1px solid #282; margin:1ex ; padding:.4ex; padding-left: 0.8ex;   word-spacing:1ex "> <span style="font-family:monospace; font-weight: bold;">HonorHeaderOnlyRequests</span>  (<span style="font-family:monospace; font-weight: bold;">yes</span> | <span style="font-family:monospace; font-weight: bold;">no</span>)</div></div>
 	      </span></dt><dd><div style="padding:4 ; margin-top:3 ; margin-bottom:3 ; width:75%"><div style="margin-bottom:1.5ex ; padding .5ex">
-		  If a HEAD requests is issued by the client Rivet detects
-		  this case and sends back to the client a standard header 
-		  response. If the real header has to be examined (e.g. 
-		  for debugging) you can turn this options on. 
-		</div><div style="margin-bottom:1.5ex ; padding .5ex">This option is, by nature, only available at the global level</div></div></dd></dl></div></div></dd><dt><span class="term">
+				  If a HEAD requests is issued by the client Rivet detects
+				  this case and sends back to the client a standard header 
+				  response. If the real header has to be examined (e.g. 
+				  for debugging) you can turn this options on. 
+				</div><div style="margin-bottom:1.5ex ; padding .5ex">This option is, by nature, only available at the global level</div></div></dd></dl></div></div></dd><dt><span class="term">
 			  <div class="cmdsynopsis" style="width:80%"><div style="border: 1px solid #282; margin:1ex ; padding:.4ex; padding-left: 0.8ex;   word-spacing:1ex "><span style="font-weight:bold ; font-family:monospace">RivetDirConf</span>  (<span style="font-family:monospace; font-weight: bold;">BeforeScript</span> | <span style="font-family:monospace; font-weight: bold;">AfterScript</span> | <span style="font-family:monospace; font-weight: bold;">ErrorScript</span> | <span style="font-family:monospace; font-weight: bold;">UploadDirectory</span>)</div></div>
 			</span></dt><dd><div style="padding:4 ; margin-top:3 ; margin-bottom:3 ; width:75%"><div style="margin-bottom:1.5ex ; padding .5ex">
 			    These options are the same as for

@@ -3,7 +3,7 @@
             It is known to build and run on various Linux distributions 
             (Debian &amp; Ubuntu, Redhat, SuSE and CentOS), FreeBSD and OpenBSD. For some
             of these Unix-like operative systems 
-            <a class="ulink" href="http://tcl.apache.org/rivet/static/download.html" target="_top">binary packages</a> 
+            <a class="ulink" href="http://tcl.apache.org/rivet/html/download.html" target="_top">binary packages</a> 
             are already available for download.
         </p><p style="width:90%">
             Currently there is no way to run Apache Rivet 2.2 on Windows© because            
@@ -14,7 +14,7 @@
             and the
             <a class="ulink" href="http://httpd.apache.org/docs/2.2/mod/mpm_winnt.html" target="_top">winnt</a> MPMs.
             Check our
-            <a class="ulink" href="http://tcl.apache.org/rivet/static/about.html" target="_top">development mailing list</a>
+            <a class="ulink" href="http://tcl.apache.org/rivet/html/about.html" target="_top">development mailing list</a>
             for the latests updates about Rivet development
         </p><p style="width:90%">
             If you need to compile Apache Rivet yourself this is the procedure to follow
@@ -28,7 +28,7 @@
                 have to tell the scripts where the Tcl libraries are located via the
                 --with-tcl option to <span style="font-family:monospace"><span class="command"><strong>configure</strong></span></span> (see below).
             </p></li><li class="step"><p class="title"><b>Get Rivet</b></p><p style="width:90%">
-                Download the sources at <a class="ulink" href="http://tcl.apache.org/rivet/static/download.html" target="_top">http://tcl.apache.org/rivet/static/download.html</a>.  
+                Download the sources at <a class="ulink" href="http://tcl.apache.org/rivet/html/download.html" target="_top">http://tcl.apache.org/rivet/html/download.html</a>.  
             </p></li><li class="step"><p class="title"><b>Get and Install Apache Sources</b></p><p style="width:90%">
                 Rivet needs some of the include (.h) files shipped with the webserver source code. 
                 The easiest way to get them is to download the Apache source.  
@@ -59,10 +59,7 @@ tar -xvf rivet-X.X.X.tar.gz</pre><p style="width:90%">
 		          </div></div></dd><dt><span class="term">--with-tclsh</span></dt><dd><div style="padding:4 ; margin-top:3 ; margin-bottom:3 ; width:75%"><div style="margin-bottom:1.5ex ; padding .5ex">This points to the location of the
 		      <code class="filename">tclsh</code> executable.</div></div></dd><dt><span class="term">--with-apxs</span></dt><dd><div style="padding:4 ; margin-top:3 ; margin-bottom:3 ; width:75%"><div style="margin-bottom:1.5ex ; padding .5ex">The location of the <code class="filename">apxs</code>
 		      program that provides information about the
-		      configuration and compilation options of Apache modules.</div></div></dd><dt><span class="term">--with-apache-version=[1|2]</span></dt><dd><div style="padding:4 ; margin-top:3 ; margin-bottom:3 ; width:75%"><div style="margin-bottom:1.5ex ; padding .5ex">
-			This option tells the build scripts whether you want to build Rivet for the
-			Apache 1.x or Apache 2.x server. (Obsolete: Apache 1.x is no longer supported)
-		    </div></div></dd><dt><span class="term">--with-apache-include[=DIR]</span></dt><dd><div style="padding:4 ; margin-top:3 ; margin-bottom:3 ; width:75%"><div style="margin-bottom:1.5ex ; padding .5ex">
+		      configuration and compilation options of Apache modules.</div></div></dd><dt><span class="term">--with-apache-include[=DIR]</span></dt><dd><div style="padding:4 ; margin-top:3 ; margin-bottom:3 ; width:75%"><div style="margin-bottom:1.5ex ; padding .5ex">
 			    Locates the Apache include files on your computer, if they're not in standard directory. 
 		    </div></div></dd><dt><span class="term">--enable-version-display=[yes|no]</span></dt><dd><div style="padding:4 ; margin-top:3 ; margin-bottom:3 ; width:75%"><div style="margin-bottom:1.5ex ; padding .5ex">
 			This option enables Rivet to display its version in the logfiles when Apache is started. 

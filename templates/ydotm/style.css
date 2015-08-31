@@ -1,0 +1,150 @@
+body {
+	height: 100%;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+}
+#wrapper {
+  min-height: 100%;
+}
+#main {
+  padding-bottom:60px; /* this needs to be bigger than footer height*/
+}
+.footer {
+  background-color: #ffffff;
+  color: #757575;
+  position: relative;
+  margin-top: -60px; /* negative value of footer height */
+  height: 60px;
+  clear:both;
+  padding-top:20px;
+  padding-left: 15px;
+  padding-right: 15px;
+  text-align: center;
+  vertical-align: middle;
+}
+.footer-divider {
+	width:5px;
+	display:inline-block;
+}
+
+/* containers */
+.container-tcl-main {
+	padding-top: 30px;
+	padding-bottom: 20px;
+}
+.container-tcl-body {
+	background: #e5e5e5;
+}
+
+/* navbar */
+
+.tcl-navbar {
+	background: #010101;
+	margin-bottom: 0px;
+	border-width: 0 0 0px;
+}
+.navbar-toggle {
+	background-color: #fff;
+	border: 1px solid #010101;
+}
+.navbar-toggle .icon-bar {
+	color: #000;
+}
+.navbar-collapse {
+	
+}
+#logo {
+	float: left;
+	margin: 0;
+	padding: 0;
+	color: #B23C1C;
+}
+.nav-logo {
+	letter-spacing: -2px;
+	font-weight: normal;
+	color: #B23C1C;
+	font-size: 2.5em;
+	display: block;
+	float: left;
+}
+.nav-logo:hover {
+    color: #FFFFFF;
+}
+.navbar-nav {
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+
+.tcl-navbar .navbar-collapse li a {
+    display: block;
+    /* background: url(images/img06.gif) no-repeat left 12px; */
+    text-decoration: none;
+    text-align: center;
+    text-transform: uppercase;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.4em;
+    font-weight: bold;
+    color: #FFFFFF;
+    border: none;
+}
+.tcl-navbar .navbar-collapse li a:hover {
+    background: #C41800;
+}
+.tcl-navbar .navbar-header #logo a {
+	color: #B23C1C;
+}
+
+/* img centering */
+.img-center {
+	margin:0 auto;
+}
+
+/*intro text */
+.tcl-main-intro {
+	padding-top: 10px;
+}
+.tcl-main-intro .intro-header {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    padding: 0px 0 0 0px;
+    letter-spacing: -1px;
+    font: normal 18px Georgia, "Times New Roman", Times, serif;
+    font-size: 2.5em;
+    font-style: italic;
+    color: #8E8E8E;
+}
+.tcl-main-intro .intro-body {
+	line-height: 110%;
+    padding: 0px 0 0 0px;
+    font-size: 1.2em;
+    color: #000;
+}
+
+/* body text */
+.tcl-main-body h4{
+	color: #000;
+    font-style: italic;
+}
+.tcl-main-body h2{
+	color: #B23C1C;
+}
+
+/* sidebar */
+#sidebar {
+	color: #000;
+}
+.sidebar-title {
+	color: #B23C1C;	
+}
+.navitem {
+	line-height: 25px;
+	margin: 0px 15px;
+	border-left: none;
+	font-size: 1.2em;
+}
+.sidebar-inner-list a{
+	color: #000;
+}
+.sidebar-inner-list a:hover{
+    color: #428bca;
+}

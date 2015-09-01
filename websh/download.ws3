@@ -19,12 +19,12 @@ web::putx {
     <td>
     Download the latest source code from a mirror:<p>
 
-    &nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.apache.org/dyn/closer.cgi/tcl/websh/source/websh-3.6.0b5-src.tar.gz">websh-3.6.0b5-src.tar.gz</a><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.apache.org/dyn/closer.lua/tcl/websh/source/websh-3.6.0b5-src.tar.gz">websh-3.6.0b5-src.tar.gz</a><br>
     &nbsp;&nbsp;&nbsp;&nbsp;<a href="http://svn.apache.org/repos/asf/tcl/websh/tags/3.6.0b5/CHANGES">Overview of changes in 3.6.0b5</a>
 
     <p>Download the latest quick reference (included in the source):
 
-    <p>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.apache.org/dyn/closer.cgi/tcl/websh/source/quickref-3.6.0b5.tar.gz">quickref-3.6.0b5.tar.gz</a>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.apache.org/dyn/closer.lua/tcl/websh/source/quickref-3.6.0b5.tar.gz">quickref-3.6.0b5.tar.gz</a>
     </td>
     </tr>
     </table>
@@ -32,7 +32,7 @@ web::putx {
     <p>
     Or visit the download directory for an index of all downloads:<p>
 
-    &nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.apache.org/dyn/closer.cgi/tcl/websh/">mirrored download directory</a>
+    &nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.apache.org/dyn/closer.lua/tcl/websh/">mirrored download directory</a>
 
     <p>
     If you would like to be notified when new versions of Websh

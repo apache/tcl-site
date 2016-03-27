@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Apache Rivet Contact</title>
+    <title>Rivet 2.3: Release Notes and Known Problems</title>
     <link rel="stylesheet" href="../templates/wondrous/styles.css" type="text/css" />
 </head>
 
@@ -15,68 +15,68 @@
         </div>
         <div id="body">
             <div id="content">
-                <h2>Apache Rivet Contact</h2>
-                <div class="sez">
-    <h4>Contact</h4>
-    <p>
-                To contact the <b>Apache Rivet</b>
+                <h2>Rivet 2.3: Release Notes and Known Problems</h2>
+                <div>
+    <div class="sez">
+        <h4>Download</h4>
+        <p>
+                    Rivet 2.3 is available for download from ASF mirror sites. Check the 
+                    <a href="download.html">download page</a>
 
- team, please write to our mailing list, at 
-                <a href="mailto:rivet-dev@tcl.apache.org">rivet-dev@tcl.apache.org</a>
+ for information about 
+                    downloading the source code, rpm files or packages for SuSE, 
+                    Redhat, Debian and Ubuntu (packages for SuSE and Redhat are available thanks to 
+                    Harald Oehlmann).
+                                    </p>
+        <p>
+                    Code integrity for this release can be checked using the 
+                    public keys in the <a href="http://www.apache.org/dist/tcl/KEYS">KEYS</a>
 
-.
-                        </p>
-    <p>
-                This list is archived here: 
-                <a href="http://mail-archives.apache.org/mod_mbox/tcl-rivet-dev/">
-                http://mail-archives.apache.org/mod_mbox/tcl-rivet-dev/</a>
-    </p>
-    <p>
-                To subscribe, send email to 
-                <a href="mailto:rivet-dev-subscribe@tcl.apache.org">rivet-dev-subscribe@tcl.apache.org</a>
-    </p>
-</div>
+ file.
+                                    </p>
+        <p>
+                    Rivet 2.3 works with the Apache Webserver version 2.2 and 2.4 (running the 
+                    <strong>prefork</strong>
 
-<div class="sez">
-    <h4>Credits</h4>
-    <p>
-        <b>Apache Rivet</b>
+ MPM) and requires Tcl &gt;= 8.5.11. Tcl &gt;= 8.6.1 is
+                    recommended
+                                    </p>
+    </div>
+    <div class="sez">
+        <h4>Rivet 2.3.0 Release Notes</h4>
+        <p>
+                    Rivet 2.3.0 consolidates the 2.2.x module series with several improvements in the way 
+                    the command export was handled. This will be the last 2.x version series in preparation
+                    of the newly developed 3.0 module.
+                </p>
+        <p>
+                    Rivet 2.3.0 introduces the command <b>::rivet::try</b>
 
- owes its existance to a lot of
-                people.  First and foremost, to the people behind the 
-                <a href="http://httpd.apache.org/contributors/">Apache Web Server</a>
+ as a wrapper of the Tcl core 
+                    language <b>try</b>
 
- 
-                and the <a href="http://www.tcl.tk/community/coreteam/index.html">Tool
-                Command Language</a>
+. This command is not exported to the global namespace even when
+                    mod_rivet is build with the <i>--enable-rivet-commands-export</i>
 
-.
-                        </p>
-    <p>
-                Rivet's authors are
-                <a href="http://wiki.tcl.tk/4843">Damon Courtney</a>
+. This command should be
+                    used within Rivet scripts to protect any <b>::rivet::abort_page</b>
 
-, 
-                <a href="http://www.dedasys.com/davidw/">David Welton</a>
+ and
+                    <b>::rivet::exit</b>
 
-  and
-                <a href="http://wiki.tcl.tk/83">Karl Lehenbauer</a>
+ execution. These commands interrupt code execution by
+                    raising a Tcl error with reserved error codes (respectively ABORTPAGE and EXITPAGE) to
+                    signal the module to fire the AbortScript Tcl script with special codes accessible
+                    through the <b>::rivet::abort_code</b>
 
-. 
-                        </p>
-    <p>
-        <a href="http://wiki.tcl.tk/20617">Massimo Manghi</a>
+ command
+		   		                    </p>
+        <p>
+                    Execution of <b>::rivet::try</b>
 
- is taking
-                care of the project doing new developments and fixing bugs.
-                He's also packaging Rivet for Debian/Ubuntu.
-                        </p>
-    <p>
-                The nice logo was created by Randy Stanard,
-                of <a href="http://dewittdesigns.com/">DeWitt Designs</a>
-
-.
-                        </p>
+ fails if mod_rivet is not built with Tcl &gt;= 8.6
+                                    </p>
+    </div>
 </div>
 
 
@@ -163,15 +163,7 @@
  
                 </ul> 
                 <ul>
-                    <li id="acknowledgments">
-    <h4>Acknowledgments</h4>
-    <ul class="blocklist">
-        <li class="navitem">
-            <a href="http://www.apache.org/foundation/thanks.html">ASF Sponsorship</a>
-        </li>
-    </ul>
-</li>
- 
+                     
                 </ul> 
             </div>
             <div class="clear"></div>

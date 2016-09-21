@@ -2,7 +2,176 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Calendar </title>
+    <title></title>
+    <link rel="stylesheet" href="../templates/wondrous/styles.css" type="text/css" />
+</head>
+
+<body>
+    <div id="container">
+        <div id="header">
+            <h1><a href="../index.html">Rivet</a></h1>
+            <h2 id="slogan">Webscripting for Tcl'ers</h2>
+            <div class="clear"></div>
+        </div>
+        <div id="body">
+            <div id="content">
+                <h2>Calendar </h2>
+                <div class="example">
+    <!-- p class="title"><b>Example 7. The Calendar package</b></p -->
+    <p>
+                Rivet comes with a <b>Calendar</b>
+
+ package that provides 3 classes for printing 
+		          calendar tables in various forms.       		
+      		            </p>
+    <p>
+					The <b>Calendar</b>
+
+ class prints ascii calendar tables
+					<pre class="programlisting">package require Calendar
+
+set c [Calendar #auto]
+set c_txt [$c emit]
+puts $c_txt
+      Jul 2010
+ Su Mo Tu We Th Fr Sa 
+              1  2  3
+  4  5  6  7  8  9 10
+ 11 12 13 14 15 16 17
+ 18 19 20 21 22 23 24
+ 25 26 27 28 29 30 31</pre>
+    </p>
+    <p>
+					When it comes to writing web pages <b>HtmlCalendar</b>
+
+ is much fancier than 
+					Calendar. <b>HtmlCalendar</b>
+
+ allows output customization of the cal table
+					by controlling the markup and its attributes. 
+				            </p>
+    <pre class="programlisting">package require Calendar
+
+proc ::cal_cell_attributes { day month year weekday } {
+    if {$weekday == 3} {
+        return [list class curr_wkday]
+    }
+}
+
+set htmlc [HtmlCalendar #auto]
+set html_txt [$htmlc emit -container {table class calendar} -current_weekday 3 \
+                          -cell_function cal_cell_attributes ]
+puts $html_txt</pre>
+    <p>
+					with some CSS styling would print
+				</p>
+    <p>
+        <img src="../picts/calendar.png"/>
+    </p>
+    <p>
+				    Almost the whole HTML of <b>HtmlCalendar</b>
+
+ can be customized. See the 
+                    <a href="http://tcl.apache.org/rivet/manual2.2/calendar_package.html" target="_blank">manual page</a>
+
+
+                    for package Calendar for further reading						
+				            </p>
+</div>
+
+
+
+                <div class="contentbottom">
+                    
+                </div>
+            </div>
+
+            <div class="sidebar">
+                <ul>
+                     
+                </ul> 
+                <ul>
+                    <li id="home">
+    <h4>Rivet</h4>
+    <ul class="blocklist">
+        <li class="navitem">
+            <a title="A home for Rivet" href="../index.html">Rivet Homepage</a>
+        </li>
+        <li class="navitem">
+            <a title="Home of Apache Tcl related stuff" target="asf" href="http://tcl.apache.org/">Apache Tcl Home</a>
+        </li>
+        <li class="navitem">
+            <a title="Getting Rivet" href="download.html">Getting Rivet</a>
+        </li>
+        <li class="navitem">
+            <a title="Hello World!" href="hello_world.html">Examples</a>
+        </li>
+        <li class="navitem">
+            <a title="The Rivet development team" href="about.html">About Us - Contact</a>
+        </li>
+    </ul>
+</li>
+<li id="manual">
+    <h4>Documentation</h4>
+    <ul class="blocklist">
+        <li class="navitem">
+            <a title="Rivet 2.1 Manual" target="rivetman2.1" href="http://tcl.apache.org/rivet/manual2.1/">Rivet 2.1 Manual</a>
+        </li>
+        <li class="navitem">
+            <a title="Rivet 2.2 Manual" target="rivetman2.2" href="http://tcl.apache.org/rivet/manual2.2/">Rivet 2.2 Manual</a>
+        </li>
+        <li class="navitem">
+            <a title="Rivet 2.3 Manual" target="rivetman2.3" href="http://tcl.apache.org/rivet/manual2.3/">Rivet 2.3 Manual</a>
+        </li>
+    </ul>
+</li>
+<li id="rivetexamples">
+    <h4>Examples</h4>
+    <ul class="blocklist">
+        <li class="navitem">
+            <a href="hello_world.html">Hello world!</a>
+        </li>
+        <li class="navitem">
+            <a href="colorful_table.html">A colorful table</a>
+        </li>
+        <li class="navitem">
+            <a href="var_access.html">Variable Access</a>
+        </li>
+        <li class="navitem">
+            <a href="file_upload.html">File Upload</a>
+        </li>
+        <li class="navitem">
+            <a href="file_download.html">File Download</a>
+        </li>
+        <li class="navitem">
+            <a href="ajax.html">XML and Ajax</a>
+        </li>
+        <li class="navitem">
+            <a href="calendar.html">Calendar</a>
+        </li>
+    </ul>
+</li>
+ 
+                </ul> 
+                <ul>
+                     
+                </ul> 
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <div id="footer">
+        <div class="footer-content">
+            <p><a href="http://www.apache.org/">Apache Software Foundation</a> | Design by <a href="http://www.spyka.net">Free CSS Templates</a> | <a href="http://www.justfreetemplates.com">Free Web Templates</a></p>
+        </div>
+    </div>
+    <div style="text-align: center; font-size: 0.75em;">Design downloaded from <a href="http://www.freewebtemplates.com/">free website templates</a>.</div></body>
+</html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
     <link rel="stylesheet" href="../templates/wondrous/styles.css" type="text/css" />
 </head>
 

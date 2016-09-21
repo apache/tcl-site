@@ -2,7 +2,165 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>A Colorful Table</title>
+    <title></title>
+    <link rel="stylesheet" href="../templates/wondrous/styles.css" type="text/css" />
+</head>
+
+<body>
+    <div id="container">
+        <div id="header">
+            <h1><a href="../index.html">Rivet</a></h1>
+            <h2 id="slogan">Webscripting for Tcl'ers</h2>
+            <div class="clear"></div>
+        </div>
+        <div id="body">
+            <div id="content">
+                <h2>A Colorful Table</h2>
+                <div class="example">
+    <!-- p class="title"><b>Example 2. A Shaded Table</b></p-->
+    <div class="example-contents">
+        <p style="width: 90%">In another simple example, we dynamically generate a table selecting a 
+			    	    different background color for each cell.:</p>
+        <pre class="programlisting">puts "&lt;html&gt;&lt;head&gt;"
+puts "&lt;style&gt;\n  td { font-size: 12px; }"
+puts "td.bright { color: #eee; }"
+puts "td.dark { color: #222; }\n &lt;/style&gt;"
+puts "&lt;/head&gt;&lt;body&gt;"
+puts "&lt;table&gt;"
+
+# we create a 8x8 table selecting a different background for each cell
+
+for {set i 0} { $i &lt; 9 } {incr i} {
+    puts "&lt;tr&gt;"
+    for {set j 0} {$j &lt; 9} {incr j} {
+
+        set r [expr int(255 * ($i + $j) / 16)] 
+        set g [expr int(255 * (8 - $i + $j) / 16)]
+        set b [expr int(255 * ($i + 8 - $j) / 16)]
+
+# determining the background luminosity (YIQ space of NTSC) and choosing
+# the foreground color accordingly in order maintain maximum contrast
+
+        if { [expr ($r*0.29894)+($g*0.58704)+($b*0.11402)] &gt; 128} {
+            set cssclass "dark"
+        } else {
+            set cssclass "bright"
+        }
+
+        puts [format "&lt;td bgcolor=\"%02x%02x%02x\" class=\"%s\"&gt;$r $g $b&lt;/td&gt;" $r $g $b $cssclass]
+    }
+    puts "&lt;/tr&gt;"
+}
+puts "&lt;/table&gt;"
+puts "&lt;/body&gt;&lt;/html&gt;"</pre>
+        <p style="width:90%">
+			    	    The text color is determined through a simple CSS rule we put within a
+			    	    HTML &lt;style&gt; element. 
+			    	    Create a file (e.g. color-table.tcl) and put the following code in it.
+						If you read the code, you can see that this is pure Tcl.  We
+						could take the same code, run it outside of Rivet, and it
+						would generate the same HTML!
+			    	</p>
+        <p style="width:90%">The result should look something like this:</p>
+        <p>
+            <img src="../picts/color-table.png"/>
+        </p>
+    </div>
+</div>
+
+
+
+                <div class="contentbottom">
+                    
+                </div>
+            </div>
+
+            <div class="sidebar">
+                <ul>
+                     
+                </ul> 
+                <ul>
+                    <li id="home">
+    <h4>Rivet</h4>
+    <ul class="blocklist">
+        <li class="navitem">
+            <a title="A home for Rivet" href="../index.html">Rivet Homepage</a>
+        </li>
+        <li class="navitem">
+            <a title="Home of Apache Tcl related stuff" target="asf" href="http://tcl.apache.org/">Apache Tcl Home</a>
+        </li>
+        <li class="navitem">
+            <a title="Getting Rivet" href="download.html">Getting Rivet</a>
+        </li>
+        <li class="navitem">
+            <a title="Hello World!" href="hello_world.html">Examples</a>
+        </li>
+        <li class="navitem">
+            <a title="The Rivet development team" href="about.html">About Us - Contact</a>
+        </li>
+    </ul>
+</li>
+<li id="manual">
+    <h4>Documentation</h4>
+    <ul class="blocklist">
+        <li class="navitem">
+            <a title="Rivet 2.1 Manual" target="rivetman2.1" href="http://tcl.apache.org/rivet/manual2.1/">Rivet 2.1 Manual</a>
+        </li>
+        <li class="navitem">
+            <a title="Rivet 2.2 Manual" target="rivetman2.2" href="http://tcl.apache.org/rivet/manual2.2/">Rivet 2.2 Manual</a>
+        </li>
+        <li class="navitem">
+            <a title="Rivet 2.3 Manual" target="rivetman2.3" href="http://tcl.apache.org/rivet/manual2.3/">Rivet 2.3 Manual</a>
+        </li>
+    </ul>
+</li>
+<li id="rivetexamples">
+    <h4>Examples</h4>
+    <ul class="blocklist">
+        <li class="navitem">
+            <a href="hello_world.html">Hello world!</a>
+        </li>
+        <li class="navitem">
+            <a href="colorful_table.html">A colorful table</a>
+        </li>
+        <li class="navitem">
+            <a href="var_access.html">Variable Access</a>
+        </li>
+        <li class="navitem">
+            <a href="file_upload.html">File Upload</a>
+        </li>
+        <li class="navitem">
+            <a href="file_download.html">File Download</a>
+        </li>
+        <li class="navitem">
+            <a href="ajax.html">XML and Ajax</a>
+        </li>
+        <li class="navitem">
+            <a href="calendar.html">Calendar</a>
+        </li>
+    </ul>
+</li>
+ 
+                </ul> 
+                <ul>
+                     
+                </ul> 
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <div id="footer">
+        <div class="footer-content">
+            <p><a href="http://www.apache.org/">Apache Software Foundation</a> | Design by <a href="http://www.spyka.net">Free CSS Templates</a> | <a href="http://www.justfreetemplates.com">Free Web Templates</a></p>
+        </div>
+    </div>
+    <div style="text-align: center; font-size: 0.75em;">Design downloaded from <a href="http://www.freewebtemplates.com/">free website templates</a>.</div></body>
+</html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
     <link rel="stylesheet" href="../templates/wondrous/styles.css" type="text/css" />
 </head>
 

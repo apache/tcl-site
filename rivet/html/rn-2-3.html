@@ -43,9 +43,35 @@
                                     </p>
     </div>
     <div class="sez">
+        <h4>Rivet 2.3.3 Release Notes</h4>
+        <p>
+						Rivet 2.3.3 is a bug fix release for rivet 2.3.
+						<ul>
+                <li>DIO: String quoting of the Posgresql connector was incorrect and has been fixed 
+							(closes bug #60378)</li>
+                <li>New package <strong>formbroker</strong>
+
+: this package is a form response
+							broker and validator, still experimental but usable                                    </li>
+                <li>Fixed typo in manual page</li>
+                <li>Change in mod_rivet internals: as a content generator mod_rivet has to figure out
+							when a request has to be handled or passed on to other modules. 
+							The request type is now determined more correctly from
+							the field <q>header</q>
+
+ of the <strong>request_rec</strong>
+
+ (previosly was
+							<q>content_type</q>
+
+)                                    </li>
+            </ul>
+        </p>
+    </div>
+    <div class="sez">
         <h4>Rivet 2.3.2 Release Notes</h4>
         <p>
-						Rivet 2.3.2 is a bug fix release for package rivet 2.3.
+						Rivet 2.3.2 is a bug fix release for rivet 2.3.
 						<ul>
                 <li>The test suite now requires Apache 2.4</li>
                 <li>Commands <strong>::rivet::try</strong>
@@ -129,7 +155,7 @@
             <a href="rn-2-2.html">5 Dec 2015: Rivet 2.2.4 released</a>
         </li>
         <li class="navitem">
-            <a href="rn-2-3.html">21 Sep 2016: Rivet 2.3.2 released</a>
+            <a href="rn-2-3.html">28 Nov 2016: Rivet 2.3.3 released</a>
         </li>
     </ul>
 </li>

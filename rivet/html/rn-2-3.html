@@ -35,12 +35,33 @@
  file.
                                     </p>
         <p>
-                    Rivet 2.3 works with the Apache Webserver version 2.2 and 2.4 (running the 
+                    Rivet 2.3 is tested and works with the Apache Webserver version 2.4 (running the 
                     <strong>prefork</strong>
 
  MPM) and requires Tcl &gt;= 8.5.11. Tcl &gt;= 8.6.1 is
-                    recommended
+                    recommended. Still this version of Rivet should be also fine when run with Apache
+                    Web Server version 2.2
                                     </p>
+    </div>
+    <div class="sez">
+        <h4>Rivet 2.3.5 Release Notes</h4>
+        <p>
+						Rivet 2.3.5 is a bug fix release for rivet 2.3. Rivet 2.3.5 received contributions
+						from Ronnie Brunner and Jeff Lawson 
+						<ul>
+                <li>Fixed server initialization procedure. ServerInitScript is now executed only once, the second time
+							the server initialization callback is called</li>
+                <li>Fixed test suite problem with virtual host handling in certain installations</li>
+                <li>Mysql DIO connector now handles also the special value NULL for a column</li>
+                <li>Fixed buffer overflow bug in libWWW</li>
+                <li>Tcl environment now can be loaded also from outside mod_rivet</li>
+                <li>Command <strong>::rivet::redirect</strong>
+
+ now accepts integer status code
+							to control redirection. This enables the command to emit status codes other than
+							301 and 302                                    </li>
+            </ul>
+        </p>
     </div>
     <div class="sez">
         <h4>Rivet 2.3.4 Release Notes</h4>
@@ -169,13 +190,13 @@
     <h4>News</h4>
     <ul class="blocklist">
         <li class="navitem">
-            <a href="rn-2-1.html">3 Mar 2014: Rivet 2.1.4 released</a>
+            <a href="rn%2d2%2d1.html">3 Mar 2014: Rivet 2.1.4 released</a>
         </li>
         <li class="navitem">
-            <a href="rn-2-2.html">5 Dec 2015: Rivet 2.2.4 released</a>
+            <a href="rn%2d2%2d2.html">5 Dec 2015: Rivet 2.2.4 released</a>
         </li>
         <li class="navitem">
-            <a href="rn-2-3.html">3 Aug 2017: Rivet 2.3.4 released</a>
+            <a href="rn%2d2%2d3.html">11 Nov 2017: Rivet 2.3.5 released</a>
         </li>
     </ul>
 </li>
@@ -195,7 +216,7 @@
             <a title="Getting Rivet" href="download.html">Getting Rivet</a>
         </li>
         <li class="navitem">
-            <a title="Hello World!" href="hello_world.html">Examples</a>
+            <a title="Hello World!" href="hello%5fworld.html">Examples</a>
         </li>
         <li class="navitem">
             <a title="The Rivet development team" href="about.html">About Us - Contact</a>

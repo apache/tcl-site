@@ -48,6 +48,13 @@
         <revision>2.3.5</revision>
       </Version>
     </release>
+    <release>
+      <Version>
+        <name>rivet-3.0</name>
+        <created>2018-01-17</created>
+        <revision>3.0.0</revision>
+      </Version>
+    </release>
     <repository>
       <SVNRepository>
         <location rdf:resource="http://svn.apache.org/repos/asf/tcl/rivet/" />

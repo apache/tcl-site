@@ -1,0 +1,225 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Apache Rivet HTTP Request Processing</title><link rel="stylesheet" type="text/css" href="rivet.css"><meta name="generator" content="DocBook XSL Stylesheets V1.79.1"><link rel="home" href="index.html" title="Apache Rivet 3.0"><link rel="up" href="index.html" title="Apache Rivet 3.0"><link rel="prev" href="directives.html" title="Apache Rivet 3.0 Configuration"><link rel="next" href="request.html" title="Apache Child Processes Lifecycle and Request Processing"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Apache Rivet HTTP Request Processing</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="directives.html"><img src="images/prev.png" alt="Prev"></a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="request.html"><img src="images/next.png" alt="Next"></a></td></tr></table></div><div class="section"><div class="titlepage"><div><div><hr><h2 class="title" style="clear: both"><a name="processing"></a>Apache Rivet HTTP Request Processing</h2></div></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="idm574"></a>Tcl Scripts Processing</h3></div></div></div><p style="width:90%">
+			The mod_rivet 2.0,2.1,2.2,2.3 modules handle an HTTP request
+			by running a Tcl script or a Rivet (.rvt file) template 
+			whose path appears encoded in the URI (an alias translation or 
+			URL rewriting might occur to establish the real path). 
+			The execution of such scripts can be preceded and/or 
+			followed by the execution scripts common to every path 
+			configured through the BeforeScript and AfterScript
+			directives. These scripts can be configured on a per virtual host, 
+			per directory or per user basis. Execution of such combined
+			scripts can break because of coding errors (thus triggering the
+			ErrorScript execution) or it can deliberately interrupt 
+			ordinary execution by calling ::rivet::abort_page (triggering
+			the execution of a script defined by the directive AbortScript). 
+			This scheme is in case 
+			terminated by a further configurable script (AfterEveryScript).
+			In mod_rivet 2.x module series 
+			this model of request handling was coded within
+			the module mod_rivet.so itself. 
+		</p><p style="width:90%">
+ 			With Rivet 3.0 we changed this approach and landed to
+ 			a new much simpler and flexible model where each request is 
+ 			by default handled by the following Tcl procedure
+		</p><pre class="programlisting"># -- request_handler.tcl
+#
+# Copyright 2002-2017 The Apache Rivet Team
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#	http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+
+# code of the default handler of HTTP requests
+
+    ::try {
+        ::Rivet::initialize_request
+    } on error {err} {
+        ::rivet::apache_log_error crit \
+            "Rivet request initialization failed: $::errorInfo"
+    }
+
+    ::try {
+
+        set script [::rivet::inspect BeforeScript]
+        if {$script ne ""} {
+            set ::Rivet::script $script
+            eval $script
+        }
+
+        set script [::rivet::url_script]
+        if {$script ne ""} {
+            set ::Rivet::script $script
+            namespace eval ::request $script
+        }
+
+        set script [::rivet::inspect AfterScript]
+        if {$script ne ""} {
+            set ::Rivet::script $script
+            eval $script
+        }
+
+    } trap {RIVET ABORTPAGE} {err opts} {
+        ::Rivet::finish_request $script $err $opts AbortScript
+    } trap {RIVET THREAD_EXIT} {err opts} {
+        ::Rivet::finish_request $script $err $opts AbortScript
+    } on error {err opts} {
+        ::Rivet::finish_request $script $err $opts
+    } finally {
+        ::Rivet::finish_request $script "" "" AfterEveryScript
+    }
+   
+# default_request_handler.tcl ---
+</pre><p style="width:90%">
+			Note the call to new 3.0 command ::rivet::url_script
+			that returns the body of the Tcl script or Rivet template
+			pointed by the URL. 
+		</p><p style="width:90%">
+			This procedure emulates the 2.x scheme
+			and as such works as a fully compatible request handling
+			but opens to the programmers the option of replacing it 
+			with their own	application request handling procedure
+		</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="images/note.png"></td><th align="left">Note</th></tr><tr><td align="left" valign="top">
+			Note that if you redefine the core request handler
+			you'll need to handle yourself any error conditions
+			and any code interruption brought about by calling 
+			<span style="font-family:monospace"><span class="command"><strong>::rivet::abort_page</strong></span></span>.
+			The current procedure might work as a template to be
+			reworked and used as a template to develop your own
+			request handler.
+		</td></tr></table></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="idm583"></a>Example: basic OO Rivet Application</h3></div></div></div><p style="width:90%">
+			An applications may have no interest in running
+			a script pointed by the URL as in the traditional approach 
+			followed by rivet inspired to the PHP philosophy of <span class="quote">“<span class="quote">scripting
+			the HTML</span>”</span>. A web based application
+			could be driven entirely by the URL encoded arguments and by the
+			data POSTed with HTML forms, still retaining the ability of exploiting
+			the template engine of Rivet through the <span style="font-family:monospace"><span class="command"><strong>::rivet::parse</strong></span></span>.
+			In other words an application could hinge on a single entry point to
+			handle requests, regardless the complexity of its internal design. 
+		</p><p style="width:90%">This section shows a template for such an application 
+			(let's call it MyRivetApp) based on an Itcl (or TclOO for what 
+			it matters) object instance. In myrivetapp.tcl
+			the application class is defined and an instance of it is
+			created in the global namespace. 
+		</p><pre class="programlisting">## myrivetapp.tcl -- 
+#
+# Application class definition and instance creation
+#
+
+package require Itcl
+
+::itcl::class MyRivetApp {
+
+   private variable application_name
+
+   public method init {}
+   public method request_processing {urlencoded_args}
+
+}
+
+::itcl::body MyRivetApp::init {app_name}{
+
+   # any initialization steps must go here
+   # ....
+
+   set application_name $app_name
+
+}
+
+::itcl::body MyRivetApp::request_processing {urlencoded_args} {
+
+   # the whole application code will run from this method
+   ...
+
+}
+
+set ::theApplication [MyRivetApp #auto]
+
+$::theApplication init [dict get [::rivet::inspect server] hostname]
+
+# -- myrivetapp.tcl
+</pre><p style="width:90%">
+			which provides a very basic interface for both initialization
+			and request processing. Such script will be sourced into the
+			Tcl interpreter at the mod_rivet initialization stage. In the
+			Apache configuration (most likely within a &lt;VirtualHost myrivetapp.com:80&gt;...&lt;/VirtualHost&gt;
+			definition block)
+		</p><pre class="programlisting">&lt;IfModule rivet_module&gt;
+    RivetServerConf ChildInitScript "source myrivetapp.tcl"
+&lt;/IfModule&gt;</pre><p style="width:90%">
+			By running this script when an a thread is started
+			we set it up to respond requests, but we still need to 
+			tell mod_rivet what code will eventually handle requests
+			and how the method MyRivetApp::request_processing will
+			be called with appropriate arguments
+		</p><pre class="programlisting"># -- myapp_request_handler.tcl
+#
+# This script will be read by mod_rivet at the thread initialization
+# stage and its content stored in a Tcl_Obj object. This object will
+# be evaluated calling Tcl_EvalObjExe
+#
+
+::try {
+
+    $::theApplication request_processing [::rivet::var_qs all]
+
+} trap {RIVET ABORTPAGE} {err opts} {
+
+     set abort_code [::rivet::abort_code]
+
+    switch $abort_code {
+       code1 {
+           # handling abort_page with code1
+           ....
+       }
+       code2 {
+           # handling abort_page with code2
+          ....      
+       }
+       # ...
+       default {
+           # default abort handler
+       }
+   }
+
+} trap {RIVET THREAD_EXIT} {err opts} {
+    
+    # myApplication sudden exit handler
+    ...
+
+} on error {err opts} {
+
+    # myApplication error handler
+    ...
+
+} finally {
+
+    # request processing final elaboration
+    
+}
+
+# -- myapp_request_handler.tcl
+</pre></div><p style="width:90%">
+		Finally we have to tell mod_rivet to run this script when a
+		request is delivered to myApplication and we do so
+		using the 3.0 directive <span style="font-family:monospace"><span class="command"><strong>RequestHandler</strong></span></span> 
+	</p><pre class="programlisting">&lt;IfModule rivet_module&gt;
+    RivetServerConf ChildInitScript "source myrivetapp.tcl"
+    RivetServerConf RequestHandler  "myapp_request_handler.tcl"
+&lt;/IfModule&gt;</pre><p style="width:90%">
+		Notice that the argument of the directive <span style="font-family:monospace"><span class="command"><strong>RequestHandler</strong></span></span>
+		is a file name not a Tcl script as for <span style="font-family:monospace"><span class="command"><strong>ChildInitScript</strong></span></span>
+	</p><p style="width:90%">
+		With such approach only the <span style="font-family:monospace"><span class="command"><strong>ChildInitScript</strong></span></span>, <span style="font-family:monospace"><span class="command"><strong>ChildExitScript</strong></span></span>
+		and <span style="font-family:monospace"><span class="command"><strong>GlobalInitScript</strong></span></span> configuration directives are effective, while 
+		the effect of other handler is devolved to our request handler script.
+	</p></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="directives.html"><img src="images/prev.png" alt="Prev"></a> </td><td width="20%" align="center"> </td><td width="40%" align="right"> <a accesskey="n" href="request.html"><img src="images/next.png" alt="Next"></a></td></tr><tr><td width="40%" align="left" valign="top">Apache Rivet 3.0 Configuration </td><td width="20%" align="center"><a accesskey="h" href="index.html"><img src="images/home.png" alt="Home"></a></td><td width="40%" align="right" valign="top"> Apache Child Processes Lifecycle and Request Processing</td></tr></table></div></body></html>

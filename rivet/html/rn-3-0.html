@@ -1,0 +1,274 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Rivet 3.0: Release Notes</title>
+    <link rel="stylesheet" href="../templates/wondrous/styles.css" type="text/css" />
+</head>
+
+<body>
+    <div id="container">
+        <div id="header">
+            <h1><a href="../index.html">Rivet</a></h1>
+            <h2 id="slogan">Webscripting for Tcl'ers</h2>
+            <div class="clear"></div>
+        </div>
+        <div id="body">
+            <div id="content">
+                <h2>Rivet 3.0: Release Notes</h2>
+                <div>
+    <div class="sez">
+        <h4>Download</h4>
+        <p>
+                    Rivet 3.0 is available for download from ASF mirror sites. Check the 
+                    <a href="download.html">download page</a>
+
+ for information about 
+                    downloading the source code. If you plan to run Rivet on Linux or Free-BSD and
+                    you don't want to get bothered building the module yourself then usually,
+                    after a few weeks from release, packages for the most popular 
+                    Linux distributions become available
+                                    </p>
+        <p>
+                    Code integrity for this release can be checked using the 
+                    public keys in the <a href="http://www.apache.org/dist/tcl/KEYS">KEYS</a>
+
+ file.
+                                    </p>
+        <h3>Release Notes</h3>
+        <h4>Requirements</h4>
+        <p>
+                    Rivet 3.0 is tested and works with the Apache Webserver version 2.4 (running any 
+                    MPM) and requires Tcl &gt;= 8.5.11. Tcl &gt;= 8.6.1 is
+                    recommended. Rivet 3.0 now supports also the Apache Webserver when running on the
+                    MS-Windows family of operative systems. The module has been built on MS-Windows 
+                    through the <a href="https://cmake.org/">CMake</a>
+
+ build system using the 
+                    <a href="https://www.visualstudio.com/downloads/#build-tools-for-visual-studio-2017">Visual Studio Community 2017</a>
+
+
+                    compiler.
+                                    </p>
+        <h4>Apache MPM and Rivet Bridge Modules</h4>
+        <p>
+                	  Rivet 3.0 is a major rewriting of mod_rivet, the Apache HTTP Websever module 
+                	  at the core of Rivet. Unlike in previous versions of mod_rivet which only supported
+                	  the <a href="https://httpd.apache.org/docs/2.4/mod/prefork.html">prefork MPM</a>
+
+ 
+                	  (<a href="https://httpd.apache.org/docs/2.4/mpm.html">Multiprocessing Module</a>
+
+),
+                	  starting with 3.0 we attained full support of different MPM for the Apache framework.
+
+						  Threaded MPM integration was achieved by making mod_rivet multithreaded and modular itself,
+						  introducing the mod_rivet/MPM bridge concept. We developed a set of loadable modules which
+						  are supposed not only to overcome the issues related to threading but also to offer 
+						  the best possible MPM mod_rivet integration. 
+						  As a side effect of this modular design, mod_rivet is not only able to
+						  integrate with its environment, but also to work as a framework for writing more MPM bridges
+						  designed along different multi-threading schemes and workload management models. See the
+						  internals section of the <a href="http://tcl.apache.org/rivet/manual3.0/">rivet manual</a>
+
+ 
+						  for further reading. MPM bridges are loaded accordingly
+						  to a heuristics of rules based on the Apache introspection calls, but they can be determined
+						  in the configuration. Only a bridge can be loaded at a time.
+                                    </p>
+        <p>
+                		Version 3.0 is a drop-in replacement of any earlier version of Rivet but there are
+                		new features that can deeply change the way you have so far developed your Rivet
+                		based applications
+                </p>
+        <h4>New Request Processing Scheme</h4>
+        <p>
+                	  In Rivet 2.x request processing was performed in mod_rivet 2.x by chaining together 3 scripts
+                	  
+                	  <ul>
+                <li>
+                    <strong>BeforeScript</strong>
+
+, if defined in the configuration                                    </li>
+                <li>The Tcl script or rvt template referenced by the URL and determined with respect to the 
+                	  	DocumentRoot and following other resource determination methods, such as the ones offered by 
+                	  	mod_alias and mod_rewrite.</li>
+                <li>
+                    <strong>AfterScript</strong>
+
+ if defined in the configuration                                    </li>
+            </ul>
+
+
+						  Errors and exceptions (raised by the ::rivet::abort_page command) are handled by the 
+						  <strong>ErrorScript</strong>
+
+ and <strong>AbortScript</strong>
+
+ (<strong>ErrorScript</strong>
+
+ 
+						  has a default implementation if undefined in the configuration)
+						                    </p>
+        <p>
+							Rivet 3.0 implements a new request processing scheme entirely based on Tcl. 
+							By default rivet 3.0 provides compatibility with the version 2.x scheme 
+							but this can be entirely overridden by the developer replacing the central request
+							handling procedure.
+                </p>
+        <h4>Packages</h4>
+        <p>
+                	Rivet comes with the usual collection of packages. Some of the available packages are
+                </p>
+        <ul>
+            <li>
+                <strong>Asciiglyphs</strong>
+
+: a ASCII-art character printer. Character typefaces were shamelessly taken from
+                	the code of the <a href="https://www.fossil-scm.org/">Fossil DVCS</a>
+
+ under permission of Richard Hipp, Fossil's mastermind                            </li>
+            <li>
+                <strong>Calendar</strong>
+
+: a class to print text, HTML and XML based calendar tables like the ones printed
+                	by the Unix '<a href="https://en.wikipedia.org/wiki/Cal_(Unix)">cal</a>
+
+' command                            </li>
+            <li>
+                <strong>DIO</strong>
+
+: a generic, object-oriented interface to SQL databases. Its main goal is to be as generic as possible                            </li>
+            <li>
+                <strong>Entities</strong>
+
+: The RivetEntities package was kindly provided by Harald Oehlmann 
+                	and is largely taken from a simple yet clever encoder/decoder of HTML entities starting from a utf-8 character string.
+                	The original code writted by Andy Goth is at http://wiki.tcl.tk/26403. Package entities extends the functionality
+                	in the original code combining it with Tcl's 'encoding' command to encode/decode from any supported encoding                            </li>
+            <li>
+                <strong>Form</strong>
+
+: The form package is a utility for generating html forms. 
+                	A form object command saves the programmer from typing the cumbersome html code of input elements,
+                	working out a solution for better standardization and readability of the code                            </li>
+            <li>
+                <strong>Formbroker</strong>
+
+: The FormBroker package creates instances of objects representing a
+                	form data description. These objects offer a simple interface of methods meant to validate and control
+                	data as typically posted through an HTML form                            </li>
+            <li>
+                <strong>session</strong>
+
+: This is session management code. It provides an interface to allow you to generate and track a 
+                	browser's visit as a "session", giving you a unique session ID and an interface for storing and 
+                	retrieving data for that session on the server.                            </li>
+        </ul>
+    </div>
+</div>
+
+
+
+                <div class="contentbottom">
+                    
+                </div>
+            </div>
+
+            <div class="sidebar">
+                <ul>
+                    <li id="news">
+    <h4>News</h4>
+    <ul class="blocklist">
+        <li class="navitem">
+            <a href="rn%2d2%2d1.html">3 Mar 2014: Rivet 2.1.4 released</a>
+        </li>
+        <li class="navitem">
+            <a href="rn%2d2%2d2.html">5 Dec 2015: Rivet 2.2.4 released</a>
+        </li>
+        <li class="navitem">
+            <a href="rn%2d2%2d3.html">11 Nov 2017: Rivet 2.3.5 released</a>
+        </li>
+        <li class="navitem">
+            <a href="rn%2d3%2d0.html">17 Jan 2018: Rivet 3.0.0 released</a>
+        </li>
+    </ul>
+</li>
+ 
+                </ul> 
+                <ul>
+                    <li id="home">
+    <h4>Rivet</h4>
+    <ul class="blocklist">
+        <li class="navitem">
+            <a title="A home for Rivet" href="../index.html">Rivet Homepage</a>
+        </li>
+        <li class="navitem">
+            <a title="Home of Apache Tcl related stuff" target="asf" href="http://tcl.apache.org/">Apache Tcl Home</a>
+        </li>
+        <li class="navitem">
+            <a title="Getting Rivet" href="download.html">Getting Rivet</a>
+        </li>
+        <li class="navitem">
+            <a title="Hello World!" href="hello%5fworld.html">Examples</a>
+        </li>
+        <li class="navitem">
+            <a title="The Rivet development team" href="about.html">About Us - Contact</a>
+        </li>
+    </ul>
+</li>
+<li id="tcl">
+    <h4>Tcl/Tk</h4>
+    <ul class="blocklist">
+        <li class="navitem">
+            <a title="The Tcl Developer Xchange" target="tclxchange" class="extern" href="http://www.tcl.tk/">
+                The Tcl/Tk Language
+                </a>
+        </li>
+        <li class="navitem">
+            <a title="Tcl community wiki site" target="tclwiki" class="extern" href="http://wiki.tcl.tk/">Tcl'ers Wiki</a>
+        </li>
+    </ul>
+</li>
+<li id="manual">
+    <h4>Rivet Documentation</h4>
+    <ul class="blocklist">
+        <li class="navitem">
+            <a title="Rivet 2.1 Manual" target="rivetman2.1" href="http://tcl.apache.org/rivet/manual2.1/">Rivet 2.1</a>
+        </li>
+        <li class="navitem">
+            <a title="Rivet 2.2 Manual" target="rivetman2.2" href="http://tcl.apache.org/rivet/manual2.2/">Rivet 2.2</a>
+        </li>
+        <li class="navitem">
+            <a title="Rivet 2.3 Manual" target="rivetman2.3" href="http://tcl.apache.org/rivet/manual2.3/">Rivet 2.3</a>
+        </li>
+        <li class="navitem">
+            <a title="Rivet 3.0 Manual" target="rivetman3.0" href="http://tcl.apache.org/rivet/manual3.0/">Rivet 3.0</a>
+        </li>
+    </ul>
+</li>
+<li id="support">
+    <h4>Support</h4>
+    <ul class="blocklist">
+        <li class="navitem">
+            <a title="Apache Rivet Bugzilla" class="extern" href="https://issues.apache.org/bugzilla/buglist.cgi?quicksearch=Rivet">Bug Reports</a>
+        </li>
+    </ul>
+</li>
+ 
+                </ul> 
+                <ul>
+                     
+                </ul> 
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <div id="footer">
+        <div class="footer-content">
+            <p><a href="http://www.apache.org/">Apache Software Foundation</a> | Design by <a href="http://www.spyka.net">Free CSS Templates</a> | <a href="http://www.justfreetemplates.com">Free Web Templates</a></p>
+        </div>
+    </div>
+    <div style="text-align: center; font-size: 0.75em;">Design downloaded from <a href="http://www.freewebtemplates.com/">free website templates</a>.</div></body>
+</html>
+

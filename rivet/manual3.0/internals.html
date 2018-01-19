@@ -30,14 +30,14 @@
     		loadable modules that are responsible to adapt the module procedural design to
     		a given class of Apache MPMs. This design is open to the development of more
     		MPM bridges coping with different multi-processing models but also to the development of
-    		different approaches to resource consumption and workload balance. By now we have only 2 bridges: 
+    		different approaches to resource consumption and workload balance. By now we have 3 bridges: 
     	</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">rivet_prefork_mpm.c: a bridge for the prefork MPM</li><li class="listitem">rivet_worker_mpm.c: a threaded bridge creating a pool of threads
     		each running Tcl interpreters and communicating with the worker MPM threads
     		through a thread safe queue. This bridge is needed by the worker MPM.</li><li class="listitem">rivet_lazy_mpm.c: a threaded bridge where Tcl threads are
     		started <span class="quote">“<span class="quote">on demand</span>”</span>. The bridge creates no threads and Tcl interpreters
     		at start up and only when requests come in Tcl execution threads are created.
     		This bridge is explained in detail in the <a class="xref" href="lazybridge.html" title="Example: the “Lazy” bridge">the section called “Example: the <span class="quote">“<span class="quote">Lazy</span>”</span> bridge”</a>.     		
-    		Since the resource demand at startup is minimal this bridge should work well on 
+    		Since the resource demand at startup is minimal this bridge should suite 
     		development machines that go through frequent web server restarts.</li></ul></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="idm4369"></a>mod_rivet MPM Bridge callbacks</h3></div></div></div><p style="width:90%">
     		A bridge is a loadable library implementing different ways to handle
     		specific features needed to mod_rivet. It was originally meant as a way
@@ -104,7 +104,7 @@
 					the <span class="emphasis"><em>worker</em></span> MPM bridge the finalize function
 					is called after the current thread itself is set up for termination.
 					See function Rivet_ExitCmd in
-					<a class="ulink" href="http://svn.apache.org/repos/asf/tcl/rivet/trunk/src/mod_rivet/rivetCore.c" target="_top">rivetCore.c</a>
+					<a class="ulink" href="https://svn.apache.org/repos/asf/tcl/rivet/trunk/src/mod_rivet_ng/rivetCore.c" target="_top">rivetCore.c</a>
 					to have details on how and at what stage this callback is invoked.
 				</li><li class="listitem"><span class="emphasis"><em>mpm_thread_interp</em></span> must be a function returning
 					the interpreter object (a pointer to record of type
@@ -200,12 +200,12 @@
             in order to write a new C language command for mod_rivet 
         </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
                 Define the command and associated C language procedure
-                in src/rivetcmds/rivetCore.c using the macro
+                in src/mod_rivet_ng/rivetCore.c using the macro
                 RIVET_OBJ_CMD<pre class="programlisting">RIVET_OBJ_CMD("mycmd",Rivet_MyCmd,private)</pre>
                 This macro ensures the command is defined as <span style="font-family:monospace"><span class="command"><strong>::rivet::mycmd</strong></span></span>
                 and its ClientData pointer is defined with the thread private data
             </li><li class="listitem">
-                Add the code of Rivet_MyCmd to src/rivetcmd/rivetCore.c (in case
+                Add the code of Rivet_MyCmd to src/mod_rivet_ng/rivetCore.c (in case
                 the code resides in a different file also src/Makefile.am should be
                 changed to tell the build system how to compile the code and
                 link it into mod_rivet.so)

@@ -54,7 +54,7 @@ typedef struct vhost_iface {
     apr_thread_mutex_t* mutex;              /* mutex protecting 'array'                 */
     apr_array_header_t* array;              /* LIFO array of lazy_tcl_worker pointers   */
 } vhost;</pre><p style="width:90%">
- 		A pointer to this array is stored in the bridge status structure which a basic
+ 		A pointer to this data structure array is stored in the bridge status which a basic
  		structure that likely every bridge has to create.
 	</p><pre class="programlisting">/* Lazy bridge internal status data */
 
@@ -65,12 +65,12 @@ typedef struct mpm_bridge_status {
     int                 server_shutdown;    /* the child process is shutting down  */
     vhost*              vhosts;             /* array of vhost descriptors          */
 } mpm_bridge_status;</pre><p style="width:90%">
-		By design the bridge must create exactly one instance of this structure and store its pointer
-		in <span style="font-family:monospace"><span class="command"><strong>module_globals-&gt;mpm</strong></span></span>. This is usually done
-		at the very beginning of the child init script function pointed by 
-		<span style="font-family:monospace"><span class="command"><strong>mpm_child_init</strong></span></span> in
-		the <span style="font-family:monospace"><span class="command"><strong>rivet_bridge_table</strong></span></span> structure. For the lazy bridge this field
-		in the jump table points to <span style="font-family:monospace"><span class="command"><strong>Lazy_MPM_ChildInit</strong></span></span>
+		By design the bridge must create exactly one instance of <span style="font-family:monospace"><span class="command"><strong>mpm_bridge_status</strong></span></span>
+		and store its pointer in <span style="font-family:monospace"><span class="command"><strong>module_globals-&gt;mpm</strong></span></span>.
+		This is usually done at the very beginning of the child init script function pointed by 
+		<span style="font-family:monospace"><span class="command"><strong>mpm_child_init</strong></span></span> in the <span style="font-family:monospace"><span class="command"><strong>rivet_bridge_table</strong></span></span> structure.
+		For the lazy bridge this field in the jump table points to <span style="font-family:monospace"><span class="command"><strong>Lazy_MPM_ChildInit</strong></span></span>
+		function
 	</p><pre class="programlisting">/*
  * -- Lazy_MPM_ChildInit
  * 
@@ -87,7 +87,8 @@ void Lazy_MPM_ChildInit (apr_pool_t* pool, server_rec* server)
 
     module_globals-&gt;mpm = apr_pcalloc(pool,sizeof(mpm_bridge_status));
 
-    /* This mutex is only used to consistently 
+    /* This mutex is only used to consistently carry out these 
+     * two tasks
      *
      *  - set the exit status of a child process (hopefully will be 
      *    unnecessary when Tcl is able again of calling 
@@ -131,7 +132,7 @@ void Lazy_MPM_ChildInit (apr_pool_t* pool, server_rec* server)
         module_globals-&gt;mpm-&gt;vhosts[vh].threads_count = 0;
     }
     module_globals-&gt;mpm-&gt;server_shutdown = 0;
-}</pre></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="idm4500"></a>Handling Tcl's exit core command</h3></div></div></div><p style="width:90%">
+}</pre></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="idm4501"></a>Handling Tcl's exit core command</h3></div></div></div><p style="width:90%">
 		Most of the fields in the <span style="font-family:monospace"><span class="command"><strong>mpm_bridge_status</strong></span></span> are meant to deal 
 		with the child exit process. Rivet supersedes the Tcl core's exit function
 		with a <span style="font-family:monospace"><span class="command"><strong>::rivet::exit</strong></span></span> function and it does so in order to curb the effects
@@ -163,7 +164,7 @@ void Lazy_MPM_ChildInit (apr_pool_t* pool, server_rec* server)
 		when the web server shuts down.
 		See these functions' code for further details, they are very easy to 
 		read and understand
-	</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="idm4519"></a>HTTP request processing with the lazy bridge</h3></div></div></div><p style="width:90%">
+	</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="idm4520"></a>HTTP request processing with the lazy bridge</h3></div></div></div><p style="width:90%">
 		Requests processing with the lazy bridge is done by determining for which
 		virtual host a request was created. The <span style="font-family:monospace"><span class="command"><strong>rivet_server_conf</strong></span></span>
 		structure keeps a numerical index for each virtual host. This index is used
@@ -190,14 +191,16 @@ typedef struct lazy_tcl_worker {
 } lazy_tcl_worker;</pre><p style="width:90%">
 		The server field is assigned with the virtual host server record. Whereas the <span style="font-family:monospace"><span class="command"><strong>conf</strong></span></span>
 		field keeps the pointer to a run time computed <span style="font-family:monospace"><span class="command"><strong>rivet_server_conf</strong></span></span>. This structure
-		may change from request to request because <span style="font-family:monospace"><span class="command"><strong>&lt;Directory ...&gt;...&lt;/Directory&gt;</strong></span></span> could
-		change the configuration with directory specific directive values
+		may change from request to request because the request configuration changes when the URL may refer 
+		to directory specific configuration in <span style="font-family:monospace"><span class="command"><strong>&lt;Directory ...&gt;...&lt;/Directory&gt;</strong></span></span> 
+		blocks
 	</p><p style="width:90%">
 		The Lazy bridge will not start any Tcl worker thread at server startup, but it will
-		wait for requests to come in and they are handed down to a worker threads by popping 
-		a lazy_tcl_worker pointer from the related array in the virtual hosts database or,
-		in case the array is empty and no threads are available, a new worker thread is 
-		created. The code in the <span style="font-family:monospace"><span class="command"><strong>Lazy_MPM_Request</strong></span></span> function
+		wait for requests to come in and then if worker threads are sitting on a virtual host queue
+		a thread's <span style="font-family:monospace"><span class="command"><strong>lazy_tcl_worker</strong></span></span> structure pointer is popped
+		and the request handed to it. If no available thread is on the queue a new worker thread is 
+		created. The code in the <span style="font-family:monospace"><span class="command"><strong>Lazy_MPM_Request</strong></span></span> easy to understand and shows
+		how this is working
 	</p><pre class="programlisting">/* -- Lazy_MPM_Request
  *
  * The lazy bridge HTTP request function. This function 
@@ -218,6 +221,14 @@ int Lazy_MPM_Request (request_rec* r,rivet_req_ctype ctype)
     mutex = module_globals-&gt;mpm-&gt;vhosts[conf-&gt;idx].mutex;
     array = module_globals-&gt;mpm-&gt;vhosts[conf-&gt;idx].array;
     apr_thread_mutex_lock(mutex);
+
+   /* This request may have come while the child process was 
+    * shutting down. We cannot run the risk that incoming requests 
+    * may hang the child process by keeping its threads busy, 
+    * so we simply return an HTTP_INTERNAL_SERVER_ERROR. 
+    * This is hideous and explains why the 'exit' commands must 
+    * be avoided at any costs when programming with mod_rivet
+    */
 
     if (module_globals-&gt;mpm-&gt;server_shutdown == 1) {
         ap_log_rerror(APLOG_MARK, APLOG_ERR, APR_EGENERAL, r,

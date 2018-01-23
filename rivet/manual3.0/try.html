@@ -23,7 +23,8 @@
 				You can handle the <span class="quote">“<span class="quote">exit</span>”</span> and <span class="quote">“<span class="quote">abort</span>”</span> cases with
 				an <span style="font-family:monospace"><span class="command"><strong>AbortScript</strong></span></span>.
 				See <a class="xref" href="directives.html" title="Apache Rivet 3.0 Configuration">the section called “Apache Rivet 3.0 Configuration”</a>
-			</p><pre class="programlisting">&lt;html&gt;&lt;?::rivet::try {
+			</p><pre class="programlisting">&lt;html&gt;&lt;?
+::rivet::try {
 	if {[::rivet::var_qs exists exit]} {
 	    ::rivet::exit [::rivet::var_qs get exit]
 	} elseif {[::rivet::var_qs exists abort]} {
@@ -42,7 +43,7 @@
    puts "$fd --&amp;gt;&amp;gt; $fv&lt;br/&gt;"
 
   }
- }
+}
 ?&gt;&lt;/html&gt;</pre><p style="width:90%">
 			Placing this code in a file (try.rvt) on the 
 			web server <span class="emphasis"><em>DocumentRoot</em></span> 

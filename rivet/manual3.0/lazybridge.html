@@ -1,4 +1,4 @@
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Example: the “Lazy” bridge</title><link rel="stylesheet" type="text/css" href="rivet.css"><meta name="generator" content="DocBook XSL Stylesheets V1.79.1"><link rel="home" href="index.html" title="Apache Rivet 3.0"><link rel="up" href="index.html" title="Apache Rivet 3.0"><link rel="prev" href="internals.html" title="Rivet Internals"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Example: the <span class="quote">“<span class="quote">Lazy</span>”</span> bridge</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="internals.html"><img src="images/prev.png" alt="Prev"></a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> </td></tr></table></div><div class="section"><div class="titlepage"><div><div><hr><h2 class="title" style="clear: both"><a name="lazybridge"></a>Example: the <span class="quote">“<span class="quote">Lazy</span>”</span> bridge</h2></div></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="idm4488"></a>The rationale of threaded bridges</h3></div></div></div><p style="width:90%">    	
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Example: the “Lazy” bridge</title><link rel="stylesheet" type="text/css" href="rivet.css"><meta name="generator" content="DocBook XSL Stylesheets V1.79.1"><link rel="home" href="index.html" title="Apache Rivet 3.0"><link rel="up" href="index.html" title="Apache Rivet 3.0"><link rel="prev" href="internals.html" title="Rivet Internals"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Example: the <span class="quote">“<span class="quote">Lazy</span>”</span> bridge</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="internals.html"><img src="images/prev.png" alt="Prev"></a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> </td></tr></table></div><div class="section"><div class="titlepage"><div><div><hr><h2 class="title" style="clear: both"><a name="lazybridge"></a>Example: the <span class="quote">“<span class="quote">Lazy</span>”</span> bridge</h2></div></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="idm45412672695664"></a>The rationale of threaded bridges</h3></div></div></div><p style="width:90%">    	
 	    	The 'bridge' concept was introduced to cope with the ability of 
 	    	the Apache HTTP web server to adopt different multiprocessing 
 	    	models by loading one of the available MPMs (Multi Processing Modules). 
@@ -19,7 +19,7 @@
    		This demands a Tcl interpreters be run 
    		on separated threads communicating with the HTTP web server 
    		through suitable methods.
-   	</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="idm4492"></a>Lazy bridge data structures</h3></div></div></div><p style="width:90%">
+   	</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="idm45412672692912"></a>Lazy bridge data structures</h3></div></div></div><p style="width:90%">
 	   The lazy bridge was initially developed to outline the basic tasks
     	carried out by each function making a rivet MPM bridge. 
     	The lazy bridge attempts to be minimalist
@@ -132,7 +132,7 @@ void Lazy_MPM_ChildInit (apr_pool_t* pool, server_rec* server)
         module_globals-&gt;mpm-&gt;vhosts[vh].threads_count = 0;
     }
     module_globals-&gt;mpm-&gt;server_shutdown = 0;
-}</pre></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="idm4508"></a>Handling Tcl's exit core command</h3></div></div></div><p style="width:90%">
+}</pre></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="idm45412672635904"></a>Handling Tcl's exit core command</h3></div></div></div><p style="width:90%">
 		Most of the fields in the <span style="font-family:monospace"><span class="command"><strong>mpm_bridge_status</strong></span></span> are meant to deal 
 		with the child exit process. Rivet supersedes the Tcl core's exit function
 		with a <span style="font-family:monospace"><span class="command"><strong>::rivet::exit</strong></span></span> function and it does so in order to curb the effects
@@ -164,7 +164,7 @@ void Lazy_MPM_ChildInit (apr_pool_t* pool, server_rec* server)
 		when the web server shuts down.
 		See these functions' code for further details, they are very easy to 
 		read and understand
-	</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="idm4527"></a>HTTP request processing with the lazy bridge</h3></div></div></div><p style="width:90%">
+	</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="idm45412672622880"></a>HTTP request processing with the lazy bridge</h3></div></div></div><p style="width:90%">
 		Requests processing with the lazy bridge is done by determining for which
 		virtual host a request was created. The <span style="font-family:monospace"><span class="command"><strong>rivet_server_conf</strong></span></span>
 		structure keeps a numerical index for each virtual host. This index is used

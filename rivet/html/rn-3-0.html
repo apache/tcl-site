@@ -82,7 +82,7 @@
                 </p>
         <h4>New Request Processing Scheme</h4>
         <p>
-                	  In Rivet 2.x request processing was performed in mod_rivet 2.x by chaining together 3 scripts
+                	  In Rivet 2.x request processing was performed by chaining together 3 scripts
                 	  
                 	  <ul>
                 <li>
@@ -107,7 +107,7 @@
  (<strong>ErrorScript</strong>
 
  
-						  has a default implementation if undefined in the configuration)
+						  has a default implementation if left undefined)
 						                    </p>
         <p>
 							Rivet 3.0 implements a new request processing scheme entirely based on Tcl. 
@@ -126,7 +126,8 @@
 : a ASCII-art character printer. Character typefaces were shamelessly taken from
                 	the code of the <a href="https://www.fossil-scm.org/">Fossil DVCS</a>
 
- under permission of Richard Hipp, Fossil's mastermind                            </li>
+ under permission of Richard Hipp,
+                	Fossil's mastermind                            </li>
             <li>
                 <strong>Calendar</strong>
 
@@ -137,14 +138,16 @@
             <li>
                 <strong>DIO</strong>
 
-: a generic, object-oriented interface to SQL databases. Its main goal is to be as generic as possible                            </li>
+: a generic, object-oriented interface to SQL databases. Its main goal is
+                	to be as generic as possible                            </li>
             <li>
                 <strong>Entities</strong>
 
 : The RivetEntities package was kindly provided by Harald Oehlmann 
-                	and is largely taken from a simple yet clever encoder/decoder of HTML entities starting from a utf-8 character string.
-                	The original code writted by Andy Goth is at http://wiki.tcl.tk/26403. Package entities extends the functionality
-                	in the original code combining it with Tcl's 'encoding' command to encode/decode from any supported encoding                            </li>
+                	and is largely taken from a simple yet clever encoder/decoder of HTML entities starting from a utf-8
+                	character string. The original code writted by Andy Goth is at http://wiki.tcl.tk/26403. 
+                	Package entities extends the functionality in the original code combining it with Tcl's 'encoding'
+                	command to encode/decode from any supported encoding                            </li>
             <li>
                 <strong>Form</strong>
 

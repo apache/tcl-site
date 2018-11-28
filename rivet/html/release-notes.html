@@ -1,0 +1,307 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Apache Rivet Release Notes</title>
+    <link rel="stylesheet" href="../templates/wondrous/styles.css" type="text/css" />
+</head>
+
+<body>
+    <div id="container">
+        <div id="header">
+            <h1><a href="../index.html">Rivet</a></h1>
+            <h2 id="slogan">Webscripting for Tcl'ers</h2>
+            <div class="clear"></div>
+        </div>
+        <div id="body">
+            <div id="content">
+                <h2>Apache Rivet Release Notes</h2>
+                <p>Apache Rivet current stable version is 3.1.0</p>
+
+<dl>
+    <dt>Rivet 3.1</dt>
+    <dd>
+        <ul>
+            <li>Rivet 3.1.0 is a bug fix release of Rivet 3.0.3. The decision of
+        		releasing a new point release has been suggested by the nature of the fix that,
+        		even though unlikely, in principle might break existing code developed on 
+        		wrong assumptions about the behavior of commands 
+        		<b>::rivet::var_ps</b>
+
+ and <b>::rivet::var_post</b>
+            </li>
+        </ul>
+    </dd>
+    <dt>Rivet 3.0 release notes</dt>
+    <dd>
+        <h4>Rivet 3.0.3</h4>
+        <ul>
+            <li>Packages in DIO are not assuming anymore the rivet command set has
+                            been imported into the global namespace</li>
+            <li>A minor change to ::rivet::xml provides a new form to 
+                            generate self closing elements</li>
+        </ul>
+        <h4>Rivet 3.0.2</h4>
+        <ul>
+            <li>Fixed a bug in the default error handler</li>
+            <li>Other minor changes only relevant to mod_rivet code and with
+ 							no interest at the application level (see the Changelog file to know more)
+ 							</li>
+        </ul>
+        <h4>Rivet 3.0.1</h4>
+        <ul>
+            <li>rivet Namespace determination in librivet has been revised to
+   							 avoid to check for the module globals and therefore avoiding
+   							 the inclusion of mod_rivet.h
+   						</li>
+            <li>A few details in the worker bridge have been fixed, including
+							a thread root interpreter initialization</li>
+            <li>the lazy bridge has been extensively commented</li>
+            <li>documentation has been expanded and corrected in various sections</li>
+        </ul>
+    </dd>
+    <dt>Rivet 2.4</dt>
+    <dd>
+        <h4>Rivet 2.4.0</h4>
+        <ul>
+            <li>Rivet 2.4.0 is a bug fix release of Rivet 2.3.5. The new point
+        				release was done on the same ground of 3.1.0: marking the fact that this version
+        				could potentially (though unlikely) create regressions if commands <b>::rivet::var_post</b>
+
+
+        				and <b>::rivet::var_qs</b>
+
+ are improperly used
+        				                            </li>
+        </ul>
+    </dd>
+    <dt>Rivet 2.3</dt>
+    <dd>
+        <h4>Rivet 2.3.5</h4>
+        <p>
+						Rivet 2.3.5 is a bug fix release for rivet 2.3. Rivet 2.3.5 received contributions
+						from Ronnie Brunner and Jeff Lawson 
+						<ul>
+                <li>Fixed server initialization procedure. ServerInitScript is now executed only once, the second time
+							the server initialization callback is called</li>
+                <li>Fixed test suite problem with virtual host handling in certain installations</li>
+                <li>Mysql DIO connector now handles also the special value NULL for a column</li>
+                <li>Fixed buffer overflow bug in libWWW</li>
+                <li>Tcl environment now can be loaded also from outside mod_rivet</li>
+                <li>Command <strong>::rivet::redirect</strong>
+
+ now accepts integer status code
+							to control redirection. This enables the command to emit status codes other than
+							301 and 302                                    </li>
+            </ul>
+        </p>
+        <h4>Rivet 2.3.4</h4>
+        <p>
+            <ul>
+                <li>Fixed buffer allocation size in command <strong>::rivet::escape_sgml_chars</strong>
+
+
+							(fixes bug #61353)                                    </li>
+                <li>Random number generator is re-seeded for each interpreter thus to guarantee they
+							will output different sequences</li>
+                <li>package <strong>formbroker</strong>
+
+ now handles also boolean type of data                                    </li>
+                <li>invocation of rivet commands has been fully qualified with the <strong>::rivet</strong>
+
+ namespace                                    </li>
+            </ul>
+        </p>
+        <h4>Rivet 2.3.3</h4>
+        <ul>
+            <li>DIO: String quoting of the Posgresql connector was incorrect and has been fixed (closes bug #60378)</li>
+            <li>
+							New package <strong>formbroker</strong>
+
+: this package is a form response broker and validator,
+							still experimental but usable
+						                            </li>
+            <li>Fixed typo in manual page</li>
+            <li>
+							Change in mod_rivet internals: as a content generator mod_rivet has to figure out
+							when a request has to be handled or passed on to other modules. 
+							The request type is now determined more correctly from
+							the field <q>header</q>
+
+ of the <strong>request_rec</strong>
+
+ (previosly was
+							<q>content_type</q>
+
+)
+						                            </li>
+        </ul>
+        <h4>Rivet 2.3.2</h4>
+        <p>
+            <ul>
+                <li>The test suite now requires Apache 2.4</li>
+                <li>Commands <strong>::rivet::try</strong>
+
+ and <strong>::rivet::catch</strong>
+
+
+								have been fixed. Under some circumstances they failed to properly evaluate
+								the code they are supposed to guard and control                                    </li>
+                <li>A new utility command <strong>::rivet::url_query</strong>
+
+ 
+								composes the query part of an URL from a list of parameter-value pairs                                    </li>
+            </ul>
+        </p>
+        <h4>Rivet 2.3.1</h4>
+        <p>
+						Rivet 2.3.1 is a bug fix release for package rivet 2.3. Method 'file' which was
+						to print an HTML5 <pre class="programlisting">&lt;input type="file" name="...."/&gt;</pre>
+
+ 
+						was actually printing an email form field. This problem was not serious but affected any serious 
+						development of forms using rivet's form package
+					                    </p>
+        <h4>Rivet 2.3.0</h4>
+        <p>
+               	Rivet 2.3.0 consolidates the 2.2.x module series with several improvements in the way 
+                  the command export was handled. This will be the last 2.x version series in preparation
+                  of the newly developed 3.0 module.
+               </p>
+        <p>
+                  Rivet 2.3.0 introduces the command <b>::rivet::try</b>
+
+ and <b>::rivet::catch</b>
+
+
+                  as a wrappers of the Tcl core 
+                  language <b>try</b>
+
+ and <b>catch</b>
+
+ commands. These commands are not exported to 
+                  the global namespace even when
+                  mod_rivet is build with the <i>--enable-rivet-commands-export</i>
+
+ and they should be
+                  used within Rivet scripts to protect any <b>::rivet::abort_page</b>
+
+ and
+                  <b>::rivet::exit</b>
+
+ execution. These commands interrupt code execution by
+                  raising a Tcl error with reserved error codes (respectively ABORTPAGE and EXITPAGE) to
+                  signal the module to fire the AbortScript Tcl script with special codes accessible
+                  through the <b>::rivet::abort_code</b>
+
+ command
+		   		                     </p>
+        <p>
+                  Execution of <b>::rivet::try</b>
+
+ fails if mod_rivet is not built with Tcl &gt;= 8.6
+                                    </p>
+        <p>
+                    Command <b>::rivet::exit</b>
+
+ was also introduced to give the command
+                    <b>exit</b>
+
+ a more sensible behaviour within the context of the Apache HTTP Web Server. 
+                    In fact the core command has become an alias of <b>::rivet::exit</b>
+
+ which interrupts 
+                    the script execution and hands control on to an AbortScript. Then it completes the 
+                    request and just before returning to the web server framework it terminates the child
+                    process by calling <b>Tcl_Exit</b>
+        </p>
+        <p>
+                    This command replaces the <b>exit</b>
+
+ core command and it's provided as a way
+                    to give it a meaning within the Rivet and Apache context but the
+                    programmer should avoid to use it and instead adopt proper software design
+                    to bring about sudden process termination
+                                    </p>
+    </dd>
+</dl>
+
+
+
+                <div class="contentbottom">
+                    
+                </div>
+            </div>
+
+            <div class="sidebar">
+                <ul>
+                     
+                </ul> 
+                <ul>
+                    <li id="tclstuff">
+    <h4>Rivet &amp; Tcl</h4>
+    <ul class="blocklist">
+        <li class="navitem">
+            <a title="The Rivet development team" href="about.html">About Us - Contact</a>
+        </li>
+        <li class="navitem">
+            <a title="Home of Apache Tcl related stuff" target="asf" href="http://tcl.apache.org/">Apache Tcl Home</a>
+        </li>
+        <li class="navitem">
+            <a title="The Tcl Developer Xchange" target="tclxchange" class="extern" href="http://www.tcl.tk/">The Tcl/Tk Language</a>
+        </li>
+        <li class="navitem">
+            <a title="Tcl community wiki site" target="tclwiki" class="extern" href="http://wiki.tcl.tk/">Tcl'ers Wiki</a>
+        </li>
+    </ul>
+</li>
+<li id="rivetstuff">
+    <h4>Getting Rivet to Work</h4>
+    <ul class="blocklist">
+        <li class="navitem">
+            <a title="Getting Rivet" href="download.html">Getting Rivet</a>
+        </li>
+        <li class="navitem">
+            <a href="release%2dnotes.html">Release Notes</a>
+        </li>
+        <li class="navitem">
+            <a title="Apache Rivet Bugzilla" class="extern" href="https://issues.apache.org/bugzilla/buglist.cgi?quicksearch=Rivet">Bug Reports</a>
+        </li>
+    </ul>
+</li>
+<li id="documentation">
+    <h4>Documentation</h4>
+    <ul class="blocklist">
+        <li class="navitem">
+            <a href="hello%5fworld.html">Examples</a>
+        </li>
+        <li class="navitem">
+            <a href="manuals.html">Manuals</a>
+        </li>
+    </ul>
+</li>
+ 
+                </ul> 
+                <ul>
+                    <li id="acknowledgments">
+    <h4>Acknowledgments</h4>
+    <ul class="blocklist">
+        <li class="navitem">
+            <a href="http://www.apache.org/foundation/thanks.html">ASF Sponsorship</a>
+        </li>
+    </ul>
+</li>
+ 
+                </ul> 
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <div id="footer">
+        <div class="footer-content">
+            <p><a href="http://www.apache.org/">Apache Software Foundation</a> | Design by <a href="http://www.spyka.net">Free CSS Templates</a> | <a href="http://www.justfreetemplates.com">Free Web Templates</a></p>
+        </div>
+    </div>
+    <div style="text-align: center; font-size: 0.75em;">Design downloaded from <a href="http://www.freewebtemplates.com/">free website templates</a>.</div></body>
+</html>
+

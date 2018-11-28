@@ -1,5 +1,5 @@
 body {
-	background: #480E0E url('../../picts/wondrous/bodybg.jpg') repeat-x scroll top left;
+	background: #480E0E url('picts/bodybg.jpg') repeat-x scroll top left;
 	margin:0;
 	padding:0;
 	font-family: Arial, Helvetica, sans-serif;
@@ -25,7 +25,7 @@ th, td {
 th {
 	color: #fff;
 	font-weight: normal;
-	background: transparent url(../../picts/wondrous/h4-bg.png) repeat-x scroll left top;
+	background: transparent url('picts/h4-bg.png') repeat-x scroll left top;
 }
 
 td {
@@ -97,7 +97,7 @@ form input, form select, form textarea {
 
 form input.formbutton {
 	border: none;
-	background:transparent url(../../picts/wondrous/h4-bg.png) repeat-x scroll center;
+	background:transparent url('picts/h4-bg.png') repeat-x scroll center;
 	color: #ffffff;
 	font-weight: bold;
 	padding: 6px 10px;
@@ -264,10 +264,11 @@ li ol, li ul {
 
 .sidebar li ul.blocklist li a {
 	display: block;
-	padding: 7px 8px;
+	padding: 7px 8px 7px 20px;
 	margin: 0 7px;
 	text-decoration: none;
 	border-bottom: 1px solid #5F1311;
+    background:     transparent url(link-16-white.png) center left no-repeat;
 }
 
 .sidebar li ul.blocklist li a:hover {
@@ -281,7 +282,7 @@ li ol, li ul {
 .sidebar h4 {
 	color: #fff;
 	font-family: Arial, Helvetica, sans-serif;
-	background:transparent url('../../picts/wondrous/h4-bg.png') repeat-x scroll top left;
+	background:transparent url('picts/h4-bg.png') repeat-x scroll top left;
 	font-size: 12px;
 	letter-spacing: 0;
 	text-transform: uppercase;
@@ -349,7 +350,14 @@ div.floatright {
 }
 
 .sidebar li ul.blocklist li a.extern {
-    display:        inline-block;
+    display:        block;
     padding-left:   20px;
-    background:     transparent url(external-link-grey.png) center left no-repeat;
+    background:     transparent url(external-link-16.png) center left no-repeat;
+}
+
+dt {
+    border-bottom:  1px solid black;
+    margin-bottom:  1em;
+    font-size:      110%;
+    font-weight:    bold;
 }

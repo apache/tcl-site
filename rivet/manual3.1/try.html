@@ -1,0 +1,58 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>try</title><link rel="stylesheet" type="text/css" href="rivet.css"><meta name="generator" content="DocBook XSL Stylesheets V1.79.1"><link rel="home" href="index.html" title="Apache Rivet 3.1"><link rel="up" href="commands.html" title="Rivet Tcl Commands and Variables"><link rel="prev" href="read_file.html" title="read_file"><link rel="next" href="unescape_string.html" title="unescape_string"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">try</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="read_file.html"><img src="images/prev.png" alt="Prev"></a> </td><th width="60%" align="center">Rivet Tcl Commands and Variables</th><td width="20%" align="right"> <a accesskey="n" href="unescape_string.html"><img src="images/next.png" alt="Next"></a></td></tr></table></div><div class="refentry"><div class="refentry.separator"><hr></div><a name="try"></a><div class="titlepage"></div><div class="refnamediv"><h2>Name</h2><p>try — 
+				Catch error and exception conditions
+			</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="cmdsynopsis" style="width:80%"><div style="border: 1px solid #282; margin:1ex ; padding:.4ex; padding-left: 0.8ex;   word-spacing:1ex "><span style="font-weight:bold ; font-family:monospace">::rivet::try</span>  ?<span style="font-family:monospace; font-weight: bold;">script</span>? ?<span style="font-family:monospace; font-weight: bold;">script</span>? ?<span style="font-family:monospace; font-weight: bold;"><em class="replaceable"><code>handlers</code></em></span>? ?<span style="font-family:monospace; font-weight: bold;"><em class="replaceable"><code>finally script</code></em></span>?</div></div></div><div class="refsect1"><a name="idm1610"></a><h2>Description</h2><p style="width:90%">
+				<span style="font-family:monospace"><span class="command"><strong>::rivet::try</strong></span></span> wraps the core language
+				command and simply traps exceptions that might have raised
+				by <span style="font-family:monospace"><span class="command"><strong>::rivet::abort_page</strong></span></span> and
+				<span style="font-family:monospace"><span class="command"><strong>::rivet::exit</strong></span></span> to throw them again and
+				thus causing <span style="font-family:monospace"><span class="command"><strong>AbortScript</strong></span></span> to be executed.
+			</p><p style="width:90%">
+				If neither <span style="font-family:monospace"><span class="command"><strong>::rivet::abort_page</strong></span></span> nor
+				<span style="font-family:monospace"><span class="command"><strong>::rivet::exit</strong></span></span> are called from  ?<span style="font-family:monospace; font-weight: bold;">script</span>? 
+				then any handlers specified in the command are tested for execution.
+				Thus <span style="font-family:monospace"><span class="command"><strong>::rivet::try</strong></span></span> can transparently be used
+				as a replacement for Tcl's own <span style="font-family:monospace"><span class="command"><strong>try</strong></span></span> and it's needed
+				if you want  ?<span style="font-family:monospace; font-weight: bold;">script</span>? to safely bail out to <span style="font-family:monospace"><span class="command"><strong>AbortScript</strong></span></span>	
+			</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="images/note.png"></td><th align="left">Note</th></tr><tr><td align="left" valign="top">
+				This command is not exported from the <span style="font-family:monospace"><span class="command"><strong>::rivet</strong></span></span> namespace and therefore has
+				to be fully qualified.
+			</td></tr></table></div><p style="width:90%">
+				This script shows how <span style="font-family:monospace"><span class="command"><strong>::rivet:try</strong></span></span>
+				handles different exceptions or errors. You can drive this script
+				within mod_rivet adding the arguments fail or abort or exit to its URL.
+				You can handle the <span class="quote">“<span class="quote">exit</span>”</span> and <span class="quote">“<span class="quote">abort</span>”</span> cases with
+				an <span style="font-family:monospace"><span class="command"><strong>AbortScript</strong></span></span>.
+				See <a class="xref" href="directives.html" title="Apache Rivet 3.1 Configuration">the section called “Apache Rivet 3.1 Configuration”</a>
+			</p><pre class="programlisting">&lt;html&gt;&lt;?
+::rivet::try {
+	if {[::rivet::var_qs exists exit]} {
+	    ::rivet::exit [::rivet::var_qs get exit]
+	} elseif {[::rivet::var_qs exists abort]} {
+	    ::rivet::abort_page [::rivet::var_qs get abort]
+	} elseif {[::rivet::var_qs exists fail]} {
+	    # this is just a non existent command
+	    wrong_command
+	} else {
+	    puts "&lt;b&gt;OK&lt;/b&gt;"
+	}
+
+} on error {e o} {
+  puts "catching error -&amp;gt; $e&lt;br/&gt;"
+  dict for {fd fv} $o {
+
+   puts "$fd --&amp;gt;&amp;gt; $fv&lt;br/&gt;"
+
+  }
+}
+?&gt;&lt;/html&gt;</pre><p style="width:90%">
+			Placing this code in a file (try.rvt) on the 
+			web server <span class="emphasis"><em>DocumentRoot</em></span> 
+			directory and setting for example the browser
+			to <span style="font-family:monospace"><span class="command"><strong>http://localhost/try.rvt?fail=1</strong></span></span>.			
+		</p><pre class="programlisting">catching error -&gt; invalid command name "wrong_command"
+-errorcode --&gt;&gt; TCL LOOKUP COMMAND wrong_command
+-code --&gt;&gt; 1
+-level --&gt;&gt; 0
+-errorstack --&gt;&gt; INNER {invokeStk1 wrong_command} UP 1
+-errorinfo --&gt;&gt; invalid command name "wrong_command" while executing "wrong_command" ("::try" body line 9)
+-errorline --&gt;&gt; 9</pre></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="read_file.html"><img src="images/prev.png" alt="Prev"></a> </td><td width="20%" align="center"><a accesskey="u" href="commands.html"><img src="images/up.png" alt="Up"></a></td><td width="40%" align="right"> <a accesskey="n" href="unescape_string.html"><img src="images/next.png" alt="Next"></a></td></tr><tr><td width="40%" align="left" valign="top">read_file </td><td width="20%" align="center"><a accesskey="h" href="index.html"><img src="images/home.png" alt="Home"></a></td><td width="40%" align="right" valign="top"> unescape_string</td></tr></table></div></body></html>

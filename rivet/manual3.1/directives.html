@@ -1,0 +1,271 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Apache Rivet 3.1 Configuration</title><link rel="stylesheet" type="text/css" href="rivet.css"><meta name="generator" content="DocBook XSL Stylesheets V1.79.1"><link rel="home" href="index.html" title="Apache Rivet 3.1"><link rel="up" href="index.html" title="Apache Rivet 3.1"><link rel="prev" href="cmake.html" title="Building Rivet 3.1 with CMake"><link rel="next" href="processing.html" title="Apache Rivet HTTP Request Processing"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Apache Rivet 3.1 Configuration</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="cmake.html"><img src="images/prev.png" alt="Prev"></a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="processing.html"><img src="images/next.png" alt="Next"></a></td></tr></table></div><div class="section"><div class="titlepage"><div><div><hr><h2 class="title" style="clear: both"><a name="directives"></a>Apache Rivet 3.1 Configuration</h2></div></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="idm200"></a>Apache Rivet Configuration lines</h3></div></div></div><p style="width:90%">
+	      Rivet directives are used within the Apache httpd server
+	      configuration to set up the environment where Rivet script
+	      will be run.
+		</p><p style="width:90%">
+			Rivet has 3 general <span class="quote">“<span class="quote">scope</span>”</span> directives
+
+			</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">RivetDirConf: for configuration directives meant to
+				apply to a directory tree</li><li class="listitem">RivetUserConf: for directives specific to
+				a user private space</li><li class="listitem">RivetServerConf: for any directive meant to apply
+				globally (either to the whole Rivet installation or a	single 
+				<a class="ulink" href="https://httpd.apache.org/docs/2.4/vhosts" target="_top">virtual host</a>)
+				</li></ul></div><p style="width:90%">
+	      
+			These directives are applied so that RivetDirConf will
+	      override RivetUserConf, which in turn overrides any 
+	      RivetServerConf directives. Not every configuration directory
+	      is meaningful to a scope directive, as shown in the table below. The scope
+	      of application of a configuration line is matched also with the context where
+	      it appears. Virtual hosts definitions are contexts where rivet configuration
+	      lines can appear in many adding further customization to a given virtual
+	      host server.
+	   </p><p style="width:90%">
+			Example of configuration of a web server having independent 
+			interpreters for each virtual host, a larger default cache and a specific
+			script to be executed before any templates/scripts located in /var/www/myrivetapp
+		</p><pre class="programlisting">&lt;IfModule rivet_module&gt;
+    AddType application/x-httpd-rivet .rvt
+    AddType application/x-rivet-tcl   .tcl
+
+    RivetServerConf CacheSize              100
+    RivetServerConf SeparateVirtualInterps On
+&lt;/IfModule&gt;
+
+&lt;Directory /var/www/myrivetapp&gt;
+    RivetDirConf BeforeScript "source /var/www/myrivetapp/before_script.tcl"
+&lt;/Directory&gt;</pre></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="idm212"></a>Configuration Directives</h3></div></div></div><div class="table"><table align="center" title="Configuration Directives application scopes" class="directives"><thead><td>Configuration Directives</td><td>DirConf</td><td>UserConf</td><td>ServerConf</td><td>Virtual Host</td><td>Notes</td></thead><tbody><tr><td>AbortScript</td><td>X</td><td>X</td><td>X</td><td>X</td><td></td></tr><tr><td>AfterScript</td><td>X</td><td>X</td><td>X</td><td>X</td><td></td></tr><tr><td>AfterEveryScript</td><td>X</td><td>X</td><td>X</td><td>X</td><td></td></tr><tr><td>BeforeScript</td><td>X</td><td>X</td><td>X</td><td>X</td><td></td></tr><tr><td>CacheSize</td><td></td><td></td><td>X</td><td></td><td></td></tr><tr><td>ChildExitScript</td><td></td><td></td><td>X</td><td></td><td></td></tr><tr><td>ChildInitScript</td><td></td><td></td><td>X</td><td></td><td></td></tr><tr><td>ErrorScript</td><td>X</td><td>X</td><td>X</td><td>X</td><td></td></tr><tr><td>ExportRivetNS</td><td></td><td></td><td>X</td><td></td><td></td></tr><tr><td>GlobalInitScript</td><td></td><td></td><td>X</td><td></td><td>effective only when SeparateVirtualInterps is Off (default)</td></tr><tr><td>ImportRivetNS</td><td></td><td></td><td>X</td><td></td><td></td></tr><tr><td>HonorHeaderOnlyRequests</td><td></td><td></td><td>X</td><td></td><td></td></tr><tr><td>MpmBridge</td><td></td><td></td><td>X</td><td></td><td>global setting</td></tr><tr><td>RequestHandler</td><td></td><td></td><td>X</td><td>X</td><td></td></tr><tr><td>SeparateChannels</td><td></td><td></td><td>X</td><td></td><td>global setting</td></tr><tr><td>SeparateVirtualInterps</td><td></td><td></td><td>X</td><td></td><td>global setting</td></tr><tr><td>ServerInitScript</td><td></td><td></td><td>X</td><td></td><td></td></tr><tr><td>UploadDirectory</td><td></td><td>X</td><td>X</td><td>X</td><td></td></tr><tr><td>UploadFilesToVar</td><td></td><td></td><td>X</td><td></td><td></td></tr><tr><td>UploadMaxSize</td><td></td><td></td><td>X</td><td>X</td><td></td></tr></tbody></table></div><div class="variablelist"><dl class="variablelist"><dt><span class="term">
+					<div class="cmdsynopsis" style="width:80%"><div style="border: 1px solid #282; margin:1ex ; padding:.4ex; padding-left: 0.8ex;   word-spacing:1ex "> <span style="font-family:monospace; font-weight: bold;">AbortScript</span>  ?<span style="font-family:monospace; font-weight: bold;"><em class="replaceable"><code>script</code></em></span>?</div></div>
+				</span></dt><dd><div style="padding:4 ; margin-top:3 ; margin-bottom:3 ; width:75%"><div style="margin-bottom:1.5ex ; padding .5ex">
+						If an AbortScript is defined control is passed to it as
+						soon as the command <a class="xref" href="abort_page.html" title="abort_page">abort_page</a> is called.
+						AbortScript
+						is the right place where specific actions can be taken
+						to catch resources left dangling by the sudden interruption.				
+					</div></div></dd><dt><span class="term">
+					<div class="cmdsynopsis" style="width:80%"><div style="border: 1px solid #282; margin:1ex ; padding:.4ex; padding-left: 0.8ex;   word-spacing:1ex "> <span style="font-family:monospace; font-weight: bold;">AfterScript</span>  ?<span style="font-family:monospace; font-weight: bold;"><em class="replaceable"><code>script</code></em></span>?</div></div>
+		      </span></dt><dd><div style="padding:4 ; margin-top:3 ; margin-bottom:3 ; width:75%"><div style="margin-bottom:1.5ex ; padding .5ex">
+					  Script to be called after each parsed .rvt template or .tcl script
+					  is executed
+					</div><div style="margin-bottom:1.5ex ; padding .5ex">
+					  In virtual hosts, this option overrides any AfterScript
+					  definitions at the global level.
+					</div></div></dd><dt><span class="term">
+					<div class="cmdsynopsis" style="width:80%"><div style="border: 1px solid #282; margin:1ex ; padding:.4ex; padding-left: 0.8ex;   word-spacing:1ex "> <span style="font-family:monospace; font-weight: bold;">AfterEveryScript</span>  ?<span style="font-family:monospace; font-weight: bold;"><em class="replaceable"><code>script</code></em></span>?</div></div>
+		      </span></dt><dd><div style="padding:4 ; margin-top:3 ; margin-bottom:3 ; width:75%"><div style="margin-bottom:1.5ex ; padding .5ex">
+						AfterEveryScript is a script that is to
+						be run anyway before requests processing ends. This script
+						is therefore run both when the content generation script
+						completes successfully and when its execution is interrupted
+						by <a class="xref" href="abort_page.html" title="abort_page">abort_page</a>. The code in this script
+						can understand whether it's running after the page was
+						interrupted by calling <a class="xref" href="abort_page.html" title="abort_page">abort_page</a>	
+						with the argument  ?<span style="font-family:monospace; font-weight: bold;">-aborting</span>?. The command
+						will return 1 if an abort_page call took place 
+						earlier in the request processing.
+					</div></div></dd><dt><span class="term">
+					<div class="cmdsynopsis" style="width:80%"><div style="border: 1px solid #282; margin:1ex ; padding:.4ex; padding-left: 0.8ex;   word-spacing:1ex "> <span style="font-family:monospace; font-weight: bold;">BeforeScript</span>  ?<span style="font-family:monospace; font-weight: bold;"><em class="replaceable"><code>script</code></em></span>?</div></div>
+		      </span></dt><dd><div style="padding:4 ; margin-top:3 ; margin-bottom:3 ; width:75%"><div style="margin-bottom:1.5ex ; padding .5ex">
+					  Script to be evaluated before each server parsed
+					  (.rvt) page.  This can be used to create a standard
+					  header, for instance.  It could also be used to load
+					  code that you need for every page, if you don't want
+					  to put it in a GlobalInitScript
+					  ChildInitScript when you are first
+					  developing a web site.
+					  <div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="images/note.png"></td><th align="left">Note</th></tr><tr><td align="left" valign="top">
+					    This code is evaluated at the global level, not
+					    inside the request namespace where pages are
+					    evaluated.
+					  </td></tr></table></div>
+					</div><div style="margin-bottom:1.5ex ; padding .5ex">
+					  In virtual hosts, this option takes precedence over
+					  the global setting.
+					</div></div></dd><dt><span class="term">
+					<div class="cmdsynopsis" style="width:80%"><div style="border: 1px solid #282; margin:1ex ; padding:.4ex; padding-left: 0.8ex;   word-spacing:1ex "> <span style="font-family:monospace; font-weight: bold;">CacheSize</span>  ?<span style="font-family:monospace; font-weight: bold;"><em class="replaceable"><code>size</code></em></span>?</div></div>
+   			</span></dt><dd><div style="padding:4 ; margin-top:3 ; margin-bottom:3 ; width:75%"><div style="margin-bottom:1.5ex ; padding .5ex">
+						  Sets the size of the internal page cache, where
+						  <em class="replaceable"><code>size</code></em> is
+						  the number of byte-compiled pages to be cached for
+						  future use.  Default is
+						  <span style="font-family:monospace"><span class="command"><strong>MaxRequestsPerChild</strong></span></span> / 5, or 50,
+						  if <span style="font-family:monospace"><span class="command"><strong>MaxRequestsPerChild</strong></span></span> is 0.
+						</div><div style="margin-bottom:1.5ex ; padding .5ex">
+						  This option is completely global, even when using
+						  separate per-virtual host interpreters.
+						</div></div></dd><dt><span class="term">
+					<div class="cmdsynopsis" style="width:80%"><div style="border: 1px solid #282; margin:1ex ; padding:.4ex; padding-left: 0.8ex;   word-spacing:1ex "> <span style="font-family:monospace; font-weight: bold;">ChildExitScript</span>  ?<span style="font-family:monospace; font-weight: bold;"><em class="replaceable"><code>script</code></em></span>?</div></div>
+	      	</span></dt><dd><div style="padding:4 ; margin-top:3 ; margin-bottom:3 ; width:75%"><div style="margin-bottom:1.5ex ; padding .5ex">
+					  Script to be evaluated when each Apache child
+					  process exits. This is the logical place to clean
+					  up resources created in ChildInitScript, 
+					  if necessary.
+					</div><div style="margin-bottom:1.5ex ; padding .5ex">
+					  In virtual hosts, this script is run in addition to
+					  any global childexitscript.
+	              
+	              When <span style="font-family:monospace"><span class="command"><strong>SeparateVirtualInterp</strong></span></span>
+	              any <span style="font-family:monospace"><span class="command"><strong>ChildExitScript</strong></span></span> placed within a 
+	              &lt;VirtualHost ...&gt;....&lt;/VirtualHost&gt;
+	              will be that Virtual Host specific exit handler
+					</div></div></dd><dt><span class="term">
+					<div class="cmdsynopsis" style="width:80%"><div style="border: 1px solid #282; margin:1ex ; padding:.4ex; padding-left: 0.8ex;   word-spacing:1ex "> <span style="font-family:monospace; font-weight: bold;">ChildInitScript</span>  ?<span style="font-family:monospace; font-weight: bold;"><em class="replaceable"><code>script</code></em></span>?</div></div>
+		      </span></dt><dd><div style="padding:4 ; margin-top:3 ; margin-bottom:3 ; width:75%"><div style="margin-bottom:1.5ex ; padding .5ex">
+					  Script to be evaluated when each Apache child
+					  process is initialized. This is the recommended
+					  place to load modules, create global variables, open
+					  connections to other facilities (such as databases)
+					  and so on.
+					</div><div style="margin-bottom:1.5ex ; padding .5ex">
+					  In virtual hosts, this script is run in addition to
+					  any global childinitscript. 
+	                  When <span style="font-family:monospace"><span class="command"><strong>SeparateVirtualInterp</strong></span></span>
+	                  any <span style="font-family:monospace"><span class="command"><strong>ChildInitScript</strong></span></span> placed within a 
+	                  &lt;VirtualHost ...&gt;....&lt;/VirtualHost&gt;
+	                  will be that Virtual Host specific ininitalization
+					</div></div></dd><dt><span class="term">
+					<div class="cmdsynopsis" style="width:80%"><div style="border: 1px solid #282; margin:1ex ; padding:.4ex; padding-left: 0.8ex;   word-spacing:1ex "> <span style="font-family:monospace; font-weight: bold;">ErrorScript</span>  ?<span style="font-family:monospace; font-weight: bold;"><em class="replaceable"><code>script</code></em></span>?</div></div>
+	      	</span></dt><dd><div style="padding:4 ; margin-top:3 ; margin-bottom:3 ; width:75%"><div style="margin-bottom:1.5ex ; padding .5ex">
+					  When Rivet encounters an error in a script, it
+					  constructs an HTML page with some information about
+					  the error, and the script that was being
+					  evaluated. If an ErrorScript is
+					  specified, it is possible to create custom error
+					  pages.  This may be useful if you want to make sure
+					  that users never view your source code.
+					</div><div style="margin-bottom:1.5ex ; padding .5ex">
+					  In virtual hosts, this option takes precedence over
+					  the global setting.
+					</div></div></dd><dt><span class="term">
+					<div class="cmdsynopsis" style="width:80%"><div style="border: 1px solid #282; margin:1ex ; padding:.4ex; padding-left: 0.8ex;   word-spacing:1ex "> <span style="font-family:monospace; font-weight: bold;">ExportRivetNS</span>  (<span style="font-family:monospace; font-weight: bold;">yes</span> | <span style="font-family:monospace; font-weight: bold;">no</span>)</div></div>
+			  	</span></dt><dd><div style="padding:4 ; margin-top:3 ; margin-bottom:3 ; width:75%"><div style="margin-bottom:1.5ex ; padding .5ex">
+						Rivet commands are created within the ::rivet namespace. Setting
+						this option you tell mod_rivet to place the whole command set on
+						the export list of namespace, enabling your scripts to import
+						them in a different namespace.
+					</div><div style="margin-bottom:1.5ex ; padding .5ex">This option is, by nature, only available at the global level</div></div></dd><dt><span class="term">
+					<div class="cmdsynopsis" style="width:80%"><div style="border: 1px solid #282; margin:1ex ; padding:.4ex; padding-left: 0.8ex;   word-spacing:1ex "> <span style="font-family:monospace; font-weight: bold;">HonorHeaderOnlyRequests</span>  (<span style="font-family:monospace; font-weight: bold;">yes</span> | <span style="font-family:monospace; font-weight: bold;">no</span>)</div></div>
+	      	</span></dt><dd><div style="padding:4 ; margin-top:3 ; margin-bottom:3 ; width:75%"><div style="margin-bottom:1.5ex ; padding .5ex">
+					  If a HEAD requests is issued by the client Rivet detects
+					  this case and sends back to the client a standard header 
+					  response. If the real header has to be examined (e.g. 
+					  for debugging) you can turn this options on. 
+					</div><div style="margin-bottom:1.5ex ; padding .5ex">This option is, by nature, only available at the global level</div></div></dd><dt><span class="term">
+					<div class="cmdsynopsis" style="width:80%"><div style="border: 1px solid #282; margin:1ex ; padding:.4ex; padding-left: 0.8ex;   word-spacing:1ex "> <span style="font-family:monospace; font-weight: bold;">ImportRivetNS</span>  (<span style="font-family:monospace; font-weight: bold;">yes</span> | <span style="font-family:monospace; font-weight: bold;">no</span>)</div></div>
+			  	</span></dt><dd><div style="padding:4 ; margin-top:3 ; margin-bottom:3 ; width:75%"><div style="margin-bottom:1.5ex ; padding .5ex">
+						Rivet commands are created within the ::rivet namespace. Setting
+						this option you tell mod_rivet to place the whole command set on
+						the export list of namespace (implicitly forcing also ExportRivetNS)
+						and then importing the commands on the namespace export list into the 
+						global namespace
+					</div><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="images/note.png"></td><th align="left">Note</th></tr><tr><td align="left" valign="top">
+						This option is provided only for compatibility with existing code that assumes
+						mod_rivet commands to reside in the global namespace. It's utterly discouraged to
+						use it and it could be removed in future versions of Rivet
+						This option is, by nature, only available at the global level
+					</td></tr></table></div></div></dd><dt><span class="term">
+					<div class="cmdsynopsis" style="width:80%"><div style="border: 1px solid #282; margin:1ex ; padding:.4ex; padding-left: 0.8ex;   word-spacing:1ex "> <span style="font-family:monospace; font-weight: bold;">MpmBridge</span>  ?<span style="font-family:monospace; font-weight: bold;"><em class="replaceable"><code>string</code></em></span>?</div></div>
+	      	</span></dt><dd><div style="padding:4 ; margin-top:3 ; margin-bottom:3 ; width:75%"><div style="margin-bottom:1.5ex ; padding .5ex">
+						This global only option tells mod_rivet which MPM bridge has
+						to be loaded. The string argument is interpreted
+						first as a name of an MPM bridge and it's interpolated in the
+						string
+						<pre class="programlisting">bridge = apr_pstrcat(pool,RIVET_DIR,"/mpm/rivet_",rsc-&gt;mpm_bridge,"_mpm.so",NULL);</pre>
+						Where RIVET_DIR is the location of the rivet libraries whose definition
+						is controlled by the configuration argument <span style="color: red">&lt;term&gt;--with-rivet-target-dir=DIR&lt;/term&gt;</span>.
+						For example 
+						<pre class="programlisting">RivetServerConf MpmBridge lazy</pre> will cause the
+						rivet_lazy_mpm.so library module to be loaded. If such library does not exists
+						mod_rivet tries to check if such definition is the fully qualified path to 
+						such MPM bridge. If this fails the module causes the web server to stop with an error.
+					</div></div></dd><dt><span class="term">
+					<div class="cmdsynopsis" style="width:80%"><div style="border: 1px solid #282; margin:1ex ; padding:.4ex; padding-left: 0.8ex;   word-spacing:1ex "> <span style="font-family:monospace; font-weight: bold;">RequestHandler</span>  ?<span style="font-family:monospace; font-weight: bold;">request_handler_filename</span>?</div></div>
+				</span></dt><dd><div style="padding:4 ; margin-top:3 ; margin-bottom:3 ; width:75%"><div style="margin-bottom:1.5ex ; padding .5ex">
+						Filename of the request handler script. Overrides the default request handler. Can
+						be virtual host specific
+					</div><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="images/note.png"></td><th align="left">Note</th></tr><tr><td align="left" valign="top">
+						Note that changing this scripts requires the programmer to understand mod_rivet
+						request processing model. See the <a class="link" href="processing.html" title="Apache Rivet HTTP Request Processing">request processing</a>
+						manual page 
+					</td></tr></table></div></div></dd><dt><span class="term">
+			     <div class="cmdsynopsis" style="width:80%"><div style="border: 1px solid #282; margin:1ex ; padding:.4ex; padding-left: 0.8ex;   word-spacing:1ex "> <span style="font-family:monospace; font-weight: bold;">SeparateChannels</span>  (<span style="font-family:monospace; font-weight: bold;">yes</span> | <span style="font-family:monospace; font-weight: bold;">no</span>)</div></div>
+			  </span></dt><dd><div style="padding:4 ; margin-top:3 ; margin-bottom:3 ; width:75%"><div style="margin-bottom:1.5ex ; padding .5ex">
+	      			Internally mod_rivet creates a new Tcl channel (Rivet channel) which is configured
+	      			as <span style="font-family:monospace"><span class="command"><strong>stdout</strong></span></span> and registered to each existing interpreter.
+	      			There is no need of multiple channels in a single thread as each thread can 
+	      			serve only one request at a time. But if you are deploying mod_rivet in a
+	      			complex environment running unrelated applications developed by 
+	      			different teams, it could be the case to have <span style="font-family:monospace"><span class="command"><strong>SeparateVirtualInterps</strong></span></span>
+	      			set. If you want to enhance the environment separation you may also
+	      			set <span style="font-family:monospace"><span class="command"><strong>SeparateChannels</strong></span></span> to force mod_rivet to create
+	      			a channel per each Tcl interpreter thus enabling single application
+	      			code to change the Rivet channel parameters without affecting other
+	      			applications (even though changing the Tcl channel parameters is a rare 
+	      			necessity). Setting this options increases the system overheads as each
+	      			Rivet channel needs to allocate its own control structures and internal
+	      			buffers.
+	      		</div><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="images/note.png"></td><th align="left">Note</th></tr><tr><td align="left" valign="top">
+	      			This option is implemented in order to have fine-grained control over mod_rivet. In
+	      			nearly all practical cases you won't need to change Rivet Channel (stdout) settings
+	      			for different applications by calling <span style="font-family:monospace"><span class="command"><strong>fconfigure stdout ....</strong></span></span>. 
+	      			This option is, by nature, only available at the global level and has effect only if 
+	   		      also <span style="font-family:monospace"><span class="command"><strong>SeparateVirtualInterps</strong></span></span> is set
+	   		   </td></tr></table></div></div></dd><dt><span class="term">
+		     		<div class="cmdsynopsis" style="width:80%"><div style="border: 1px solid #282; margin:1ex ; padding:.4ex; padding-left: 0.8ex;   word-spacing:1ex "> <span style="font-family:monospace; font-weight: bold;">SeparateVirtualInterps</span>  (<span style="font-family:monospace; font-weight: bold;">yes</span> | <span style="font-family:monospace; font-weight: bold;">no</span>)</div></div>
+		  		</span></dt><dd><div style="padding:4 ; margin-top:3 ; margin-bottom:3 ; width:75%"><div style="margin-bottom:1.5ex ; padding .5ex">
+	      		  If on, Rivet will create a separate Tcl interpreter
+	      		  for each Apache virtual host.  This is useful in an
+	      		  ISP type situation where it is desirable to separate
+	      		  clients into separate interpreters, so that they
+	      		  don't accidentally interfere with one another.
+	      		</div><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="images/note.png"></td><th align="left">Note</th></tr><tr><td align="left" valign="top">
+	   		      This option is, by nature, only available at the
+	   		      global level. By enabling <span style="font-family:monospace"><span class="command"><strong>SeparateVirtualInterps</strong></span></span>
+	   		      you must rely only on <span style="font-family:monospace"><span class="command"><strong>ChildInitScript</strong></span></span> to
+	   		      initialize the interpreters. Don't expect the 
+	   		      initialization done in <span style="font-family:monospace"><span class="command"><strong>ServerInitScript</strong></span></span> and 
+	   		      <span style="font-family:monospace"><span class="command"><strong>GlobalInitScript</strong></span></span> to be handed down to the
+	   		      slave interpreters that are private to each configured 
+	   		      virtual host.
+	   		   </td></tr></table></div></div></dd><dt><span class="term">
+   				<div class="cmdsynopsis" style="width:80%"><div style="border: 1px solid #282; margin:1ex ; padding:.4ex; padding-left: 0.8ex;   word-spacing:1ex "> <span style="font-family:monospace; font-weight: bold;">ServerInitScript</span>  ?<span style="font-family:monospace; font-weight: bold;"><em class="replaceable"><code>script</code></em></span>?</div></div>
+   			</span></dt><dd><div style="padding:4 ; margin-top:3 ; margin-bottom:3 ; width:75%"><div style="margin-bottom:1.5ex ; padding .5ex">
+				    	The directive <span style="font-family:monospace"><span class="command"><strong>ServerInitScript</strong></span></span> plays a special
+				    	role since the script runs within the master interpreter,
+				    	an interpreter created when the Apache web server is setting up
+				    	for answering requests and before worker processes/threads are
+				    	started. During this stage Apache is still running as a 
+				    	single process, so this is the right place for doing 
+				    	initialization of systems such as any IPC systems.
+   				</div><div style="margin-bottom:1.5ex ; padding .5ex">
+		   			On systems with the capability of forking child processes
+		   			the Apache web server can run the prefork MPM. By default 
+		   			rivet selects the prefork brigde which makes mod_rivet work
+		   			the way mod_rivet 2.x work.
+		   			In a web server with this set up child processes inherit a copy of the 
+		   			address space from the parent processes and therefore
+		   			Tcl interpreters too are replicated into the child address space. 
+		   			If SeparateVirtualInteprs is Off child processes run with a
+		   			copy of the Tcl master interpreter and ServerInitScipt
+		   			thus provides a way to initialize only once  
+		   			any subsequent Tcl interpreters created by fork calls as each
+		   			of them are clones of the master interpreter.
+		   		</div></div></dd><dt><span class="term">
+					<div class="cmdsynopsis" style="width:80%"><div style="border: 1px solid #282; margin:1ex ; padding:.4ex; padding-left: 0.8ex;   word-spacing:1ex "> <span style="font-family:monospace; font-weight: bold;">UploadDirectory</span>  ?<span style="font-family:monospace; font-weight: bold;"><em class="replaceable"><code>directory</code></em></span>?</div></div>
+		      </span></dt><dd><div style="padding:4 ; margin-top:3 ; margin-bottom:3 ; width:75%"><div style="margin-bottom:1.5ex ; padding .5ex">Directory to place uploaded files.</div><div style="margin-bottom:1.5ex ; padding .5ex">
+			  			In virtual hosts, this option takes precedence over
+			  			the global setting.
+					</div></div></dd><dt><span class="term">
+					<div class="cmdsynopsis" style="width:80%"><div style="border: 1px solid #282; margin:1ex ; padding:.4ex; padding-left: 0.8ex;   word-spacing:1ex "> <span style="font-family:monospace; font-weight: bold;">UploadFilesToVar</span>  (<span style="font-family:monospace; font-weight: bold;">yes</span> | <span style="font-family:monospace; font-weight: bold;">no</span>)</div></div>
+	      	</span></dt><dd><div style="padding:4 ; margin-top:3 ; margin-bottom:3 ; width:75%"><div style="margin-bottom:1.5ex ; padding .5ex">
+					  This option controls whether it is possible to
+					  upload files to a Tcl variable.  If you have a size
+					  limit, and don't have to deal with large files, this
+					  might be more convenient than sending the data to a
+					  file on disk.
+					</div></div></dd><dt><span class="term">
+					<div class="cmdsynopsis" style="width:80%"><div style="border: 1px solid #282; margin:1ex ; padding:.4ex; padding-left: 0.8ex;   word-spacing:1ex "> <span style="font-family:monospace; font-weight: bold;">UploadMaxSize</span>  ?<span style="font-family:monospace; font-weight: bold;"><em class="replaceable"><code>size</code></em></span>?</div></div>
+				</span></dt><dd><div style="padding:4 ; margin-top:3 ; margin-bottom:3 ; width:75%"><div style="margin-bottom:1.5ex ; padding .5ex">Maximum size for uploaded files.</div><div style="margin-bottom:1.5ex ; padding .5ex">
+					  In virtual hosts, this option takes precedence over
+					  the global setting.
+					</div></div></dd></dl></div></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="cmake.html"><img src="images/prev.png" alt="Prev"></a> </td><td width="20%" align="center"> </td><td width="40%" align="right"> <a accesskey="n" href="processing.html"><img src="images/next.png" alt="Next"></a></td></tr><tr><td width="40%" align="left" valign="top">Building Rivet 3.1 with CMake </td><td width="20%" align="center"><a accesskey="h" href="index.html"><img src="images/home.png" alt="Home"></a></td><td width="40%" align="right" valign="top"> Apache Rivet HTTP Request Processing</td></tr></table></div></body></html>

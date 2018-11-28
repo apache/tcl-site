@@ -1,0 +1,26 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>abort_page</title><link rel="stylesheet" type="text/css" href="rivet.css"><meta name="generator" content="DocBook XSL Stylesheets V1.79.1"><link rel="home" href="index.html" title="Apache Rivet 3.1"><link rel="up" href="commands.html" title="Rivet Tcl Commands and Variables"><link rel="prev" href="abort_code.html" title="abort_code"><link rel="next" href="apache_log_error.html" title="apache_log_error"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">abort_page</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="abort_code.html"><img src="images/prev.png" alt="Prev"></a> </td><th width="60%" align="center">Rivet Tcl Commands and Variables</th><td width="20%" align="right"> <a accesskey="n" href="apache_log_error.html"><img src="images/next.png" alt="Next"></a></td></tr></table></div><div class="refentry"><div class="refentry.separator"><hr></div><a name="abort_page"></a><div class="titlepage"></div><div class="refnamediv"><h2>Name</h2><p>abort_page — 
+		    Stops outputting data to web page, similar in
+		    purpose to PHP's <span style="font-family:monospace"><span class="command"><strong>die</strong></span></span> command.
+		</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="cmdsynopsis" style="width:80%"><div style="border: 1px solid #282; margin:1ex ; padding:.4ex; padding-left: 0.8ex;   word-spacing:1ex "><span style="font-weight:bold ; font-family:monospace">::rivet::abort_page</span>  (<span style="font-family:monospace; font-weight: bold;"><em class="replaceable"><code>abort code</code></em></span> | <span style="font-family:monospace; font-weight: bold;"><em class="replaceable"><code>-aborting</code></em></span>)</div></div></div><div class="refsect1"><a name="idm779"></a><h2>Description</h2><p style="width:90%">
+		    This command flushes the output buffer and stops the Tcl 
+		    script from sending any more data to the client.
+		    A normal Tcl script might use the
+		    <span style="font-family:monospace"><span class="command"><strong>exit</strong></span></span> command, but that cannot be used in
+		    Rivet without actually exiting the apache child
+		    process!
+		    <span style="font-family:monospace"><span class="command"><strong>abort_page</strong></span></span> triggers
+		    the execution of an optional AbortScript that has to be
+		    specified in the configuration. The value of the
+		    argument  ?<span style="font-family:monospace; font-weight: bold;">abort code</span>? can be retrieved with the 
+		    <span style="font-family:monospace"><span class="command"><strong>abort_code</strong></span></span> command during the
+		    execution of <a class="link" href="directives.html" title="Apache Rivet 3.1 Configuration">AbortScript or 
+		    AfterEveryScript</a>, 
+		    allowing the script to take appropriate actions in order to deal
+		    with the cause of the abort. 
+		</p><p style="width:90%">
+		    The argument -aborting causes abort_page
+		    to return 1 when the current execution is the outcome of an abort condition.
+		    In other words this query is meaningful in code specified as 
+		    <a class="link" href="directives.html" title="Apache Rivet 3.1 Configuration">AfterEveryScript</a> to understand
+		    if an abort condition took place beforehand.
+		</p></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="abort_code.html"><img src="images/prev.png" alt="Prev"></a> </td><td width="20%" align="center"><a accesskey="u" href="commands.html"><img src="images/up.png" alt="Up"></a></td><td width="40%" align="right"> <a accesskey="n" href="apache_log_error.html"><img src="images/next.png" alt="Next"></a></td></tr><tr><td width="40%" align="left" valign="top">abort_code </td><td width="20%" align="center"><a accesskey="h" href="index.html"><img src="images/home.png" alt="Home"></a></td><td width="40%" align="right" valign="top"> apache_log_error</td></tr></table></div></body></html>

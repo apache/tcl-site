@@ -1,0 +1,169 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Apache Rivet 3.1 Installation</title><link rel="stylesheet" type="text/css" href="rivet.css"><meta name="generator" content="DocBook XSL Stylesheets V1.79.1"><link rel="home" href="index.html" title="Apache Rivet 3.1"><link rel="up" href="index.html" title="Apache Rivet 3.1"><link rel="prev" href="index.html" title="Apache Rivet 3.1"><link rel="next" href="cmake.html" title="Building Rivet 3.1 with CMake"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Apache Rivet 3.1 Installation</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="index.html"><img src="images/prev.png" alt="Prev"></a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="cmake.html"><img src="images/next.png" alt="Next"></a></td></tr></table></div><div class="section"><div class="titlepage"><div><div><hr><h2 class="title" style="clear: both"><a name="installation"></a>Apache Rivet 3.1 Installation</h2></div></div></div><div class="procedure"><p style="width:90%"> 
+            Rivet 3.1 runs with the Apache 2.2.x and 2.4.x HTTP web servers. 
+            It is known to build and run on various Linux distributions 
+            (Debian &amp; Ubuntu, Redhat, SuSE and CentOS), FreeBSD and OpenBSD. For some
+            of these Unix-like operative systems 
+            <a class="ulink" href="http://tcl.apache.org/rivet/html/download.html" target="_top">binary packages</a> 
+            are already available for download.
+        </p><p style="width:90%">
+				Rivet 2.x was restricted to work with the 
+				<a class="ulink" href="http://httpd.apache.org/docs/2.4/mod/prefork.html" target="_top">prefork</a> MPM
+				of the Apache HTTP webserver. MPM modules are fundamental components of the
+				webserver architecture. They provide multiple implementations of multiprocessing
+				in order to better suit specific OS features and scalability requirements.
+				The prefork MPM exploited the UNIX traditional approach to multiprocess server
+				applications based on the
+				<a class="ulink" href="https://en.wikipedia.org/wiki/Fork_(system_call)" target="_top">fork</a>
+				system call. This model has several limitations but also some advantages. The 
+				solution we adopted tries to attain the best from any MPM as much as possible
+				and Rivet 3.1 is now able to run with the 
+				<a class="ulink" href="http://httpd.apache.org/docs/2.4/mod/worker.html" target="_top">worker</a> 
+            and the
+            <a class="ulink" href="http://httpd.apache.org/docs/2.4/mod/event.html" target="_top">event</a> 
+            MPMs. Rivet 3.1 has not been ported to OS of the Windows family
+            but we feel that the current design would fit just fine with the Windows specific
+            MPMs such as
+            <a class="ulink" href="http://httpd.apache.org/docs/2.4/mod/mpm_winnt.html" target="_top">winnt</a>.
+        </p><p style="width:90%">
+            If you need to build Apache Rivet yourself this is the procedure to follow
+        </p><ol class="procedure" type="1"><li class="step"><p class="title"><b>Building Tcl: requirements</b></p><p style="width:90%">
+                Installing Rivet is about endowing the Apache HTTP webserver with the ability
+                of running scripts written with the Tcl programming language. 
+                Therefore the 
+                <a class="ulink" href="http://www.tcl.tk/" target="_top">Tcl</a> language with its runtime,  
+                development libraries and shell (≥8.5.10 required, ≥8.6.0 recommended) 
+                have to be installed. Building Rivet you will 
+                have to tell the scripts where the Tcl libraries are located via the
+                --with-tcl option of the <span style="font-family:monospace"><span class="command"><strong>configure</strong></span></span> script
+                (see below).
+            </p><p style="width:90%">
+            	Several Tcl packages shipped with rivet need also the 
+            	<a class="ulink" href="http://core.tcl.tk/itcl/" target="_top">Itcl</a>
+            	OOP extension of Tcl. If you need to run any of the 
+            	Session or DIO
+            	packages you need to install this language extension but you don't need it
+            	to build mod_rivet 
+            </p><p style="width:90%">
+            	The 
+            	<a class="ulink" href="http://httpd.apache.org/" target="_top">Apache HTTP Webserver</a> development
+            	files and libraries are required along with the 
+            	<a class="ulink" href="http://apr.apache.org/" target="_top">Apache Portable Runtime</a>
+            	and the
+            	<a class="ulink" href="http://httpd.apache.org/apreq/" target="_top">libapreq</a> library. 
+            </p></li><li class="step"><p class="title"><b>Building Rivet</b></p></li><li class="step"><p class="title"><b>Getting and Installing the Apache Sources</b></p><p style="width:90%">
+                You can build Rivet either statically (compiled into the Apache web
+                server) or dynamically (as a loadable shared library).  
+                We recommend that you build Rivet as a shared library, for maximum flexibility.
+                We will tell Rivet where it the Apache development files and libraries are located 
+                via the --with-apxs option to <span style="font-family:monospace"><span class="command"><strong>configure</strong></span></span> (see below).
+            </p><p style="width:90%">
+            	Most modern Unix OS (Linux and FreeBSD systems included) come with their
+            	own packages of the Apache Web Server executables, runtime libraries and development files
+            	and libraries. Check the documentation of the package manager of your OS 
+            	to find out how to install this software
+            </p></li><li class="step"><p class="title"><b>Uncompress Sources</b></p><p style="width:90%">
+                Download the sources at <a class="ulink" href="http://tcl.apache.org/rivet/html/download.html" target="_top">http://tcl.apache.org/rivet/html/download.html</a>.  
+            </p><p style="width:90%">
+              We will assume that you have Apache installed at this point.
+              You must uncompress the Rivet sources in the directory where you
+              wish to compile them.
+              </p><pre class="programlisting">gunzip rivet-3.1.0.tar.gz
+tar -xvf rivet-3.1.0.tar.gz</pre><p style="width:90%">
+            </p></li><li class="step"><p class="title"><b>Building Rivet</b></p><ol type="a" class="substeps"><li class="step"><p style="width:90%">
+	       Rivet uses the standard <span style="font-family:monospace"><span class="command"><strong>./configure ; make ; make install</strong></span></span>
+	       sequence which installs to their target directories the Apache module, the binary libraries and the
+	       Tcl code
+	    </p><p style="width:90%">
+	      There are several rivet specific options to configure that might be useful (or needed):
+	      </p><div class="variablelist"><dl class="variablelist"><dt><span class="term">--with-apache</span></dt><dd><div style="padding:4 ; margin-top:3 ; margin-bottom:3 ; width:75%"><div style="margin-bottom:1.5ex ; padding .5ex">
+	      				Defines the configure internal variable 'apache_base'. This variable
+	      				points to the root of the Apache web server directory hierarchy
+	      			</div></div></dd><dt><span class="term">--with-tcl</span></dt><dd><div style="padding:4 ; margin-top:3 ; margin-bottom:3 ; width:75%"><div style="margin-bottom:1.5ex ; padding .5ex">
+			              This points to the directory where the
+			              <code class="filename">tclConfig.sh</code> file is located.
+			          </div></div></dd><dt><span class="term">--with-tclsh</span></dt><dd><div style="padding:4 ; margin-top:3 ; margin-bottom:3 ; width:75%"><div style="margin-bottom:1.5ex ; padding .5ex">This points to the location of the
+			      		<code class="filename">tclsh</code> executable.</div></div></dd><dt><span class="term">--with-apxs</span></dt><dd><div style="padding:4 ; margin-top:3 ; margin-bottom:3 ; width:75%"><div style="margin-bottom:1.5ex ; padding .5ex">
+			    			The location of the <code class="filename">apxs</code>
+			      		program that provides information about the
+			      		configuration and compilation options of Apache modules.
+			      	</div></div></dd><dt><span class="term">--with-apache-include[=DIR]</span></dt><dd><div style="padding:4 ; margin-top:3 ; margin-bottom:3 ; width:75%"><div style="margin-bottom:1.5ex ; padding .5ex">
+				    		Locates the Apache include files on your computer, if they're not in standard directory. 
+			    		</div></div></dd><dt><span class="term">--enable-version-display=[yes|no]</span></dt><dd><div style="padding:4 ; margin-top:3 ; margin-bottom:3 ; width:75%"><div style="margin-bottom:1.5ex ; padding .5ex">
+							This option enables Rivet to display its version in the
+							logfiles when Apache is started. The default is to keep the Rivet version hidden.
+			    		</div></div></dd><dt><span class="term">--with-rivet-target-dir=DIR</span></dt><dd><div style="padding:4 ; margin-top:3 ; margin-bottom:3 ; width:75%"><div style="margin-bottom:1.5ex ; padding .5ex">
+					    	This option is for fine tuning of the installation final directories. Rivet Tcl packages, 
+					    	commands and loadable libraries go into the same directory hierarchy 
+					    	(by default is ${apache_base}/lib/rivet${PACKAGE_VERSION}, where $apache_base takes
+					    	the value set by --with-apache) 
+						</div></div></dd><dt><span class="term">--with-upload-dir=DIR</span></dt><dd><div style="padding:4 ; margin-top:3 ; margin-bottom:3 ; width:75%"><div style="margin-bottom:1.5ex ; padding .5ex">
+			         	Configures Rivet's default upload directory. It can be overridden in the configuration
+			          	either globally or specifically for a virtual host 
+			      	</div></div></dd><dt><span class="term">--with-post-max=BYTES</span></dt><dd><div style="padding:4 ; margin-top:3 ; margin-bottom:3 ; width:75%"><div style="margin-bottom:1.5ex ; padding .5ex">
+							The value to this option establishes a default for the maximum size of POST data.
+							Default: 0 (unlimited size)
+						</div></div></dd><dt><span class="term">--enable-head-requests</span></dt><dd><div style="padding:4 ; margin-top:3 ; margin-bottom:3 ; width:75%"><div style="margin-bottom:1.5ex ; padding .5ex">
+				          By default HEAD requests don't go through the usual request processing which leads
+				          to script execution and therefore resource consumption and Rivet returns a
+				          standard hardcoded HTML header to save CPU time. --enable-head-requests
+				          can change the default.
+				      </div></div></dd><dt><span class="term">--enable-rivet-commands-export</span></dt><dd><div style="padding:4 ; margin-top:3 ; margin-bottom:3 ; width:75%"><div style="margin-bottom:1.5ex ; padding .5ex">
+			         	By default Rivet's commands are put on the export list of the <code class="code">::rivet</code>
+			          	namespace. With this option you may prevent it thus forcing the programmers to
+			          	fully qualify in their code. By default this option is enabled and it can be
+			          	changed in the configuration with the directive ExportRivetNS. Disabling
+			          	this option can be also reverted to 'On' with the --enable-import-rivet-commands
+			          	switch
+			      	</div></div></dd><dt><span class="term">--enable-import-rivet-commands</span></dt><dd><div style="padding:4 ; margin-top:3 ; margin-bottom:3 ; width:75%"><div style="margin-bottom:1.5ex ; padding .5ex">
+			         	Rivet's namespace is by default imported into the global namespace. Enabling the import 
+			         	of Rivet's commands overrides the switch and forces --enable-rivet-commands-export=yes 
+			         	thus demanding the commands to be exported (otherwise it would generate errors at run-time).
+			         	This option is disabled by default and it can be changed in the configuration with
+			         	the ImportRivetNS directive
+			      	</div></div></dd><dt><span class="term">--enable-virtual-interps-separation</span></dt><dd><div style="padding:4 ; margin-top:3 ; margin-bottom:3 ; width:75%"><div style="margin-bottom:1.5ex ; padding .5ex">
+							This option changes the default for the SeparateVirtualInterps configuration
+							variable. Default: 0 (no separation among interpreters)
+						</div></div></dd></dl></div><p style="width:90%">
+	    </p><p style="width:90%">
+		  Example: configuring the build system to compile Rivet for an Apache HTTP server custom installation, 
+		  using tcl8.6. In this specific case the determination of the apxs path is redundant and it could be 
+		  omitted since it could be inferred from the --with-apache option value 
+	    </p><pre class="programlisting">./configure --with-tcl=/usr/lib/tcl8.6/ --with-tclsh=/usr/bin/tclsh8.6 \
+	    --with-apxs=/usr/local/apache2/bin/apxs --with-apache=/usr/local/apache2 \
+	    --with-rivetlib-target-dir=/usr/local/apache2/rivet3.0</pre></li><li class="step"><p class="title"><b>Run make</b></p><p style="width:90%">
+	      At this point, you are ready to run make, which should
+	      run to completion without any errors (a warning or two
+	      is OK, generally).
+	    </p></li><li class="step"><p class="title"><b>Install</b></p><p style="width:90%">
+	      Now, you are ready to run the
+	    </p><pre class="programlisting">make install</pre><p style="width:90%"> 
+	       to install the resulting files. The <code class="code">install</code> target
+	       actually fires the <code class="code">install-binaries</code> and 
+	       <code class="code">install-packages</code> targets which in turn 
+	       copy the binary modules and Tcl packages to their destination
+	       directories. This commands create a functional Rivet environment with its
+		   core language.
+	    </p></li></ol></li><li class="step"><p class="title"><b>Apache Configuration Files</b></p><p style="width:90%">
+	  Rivet is relatively easy to configure - we start off by
+	  adding the module itself:
+	</p><pre class="programlisting">LoadModule rivet_module	<em class="replaceable"><code>/usr/lib/apache2/modules/mod_rivet.so</code></em></pre><p style="width:90%">
+	  This tells Apache to load the Rivet shared object, wherever
+	  it happens to reside on your file system.  Now we have to
+	  tell Apache what kind of files are "Rivet" files and how to
+	  process them:
+	</p><pre class="programlisting">AddType application/x-httpd-rivet rvt
+AddType application/x-rivet-tcl tcl</pre><p style="width:90%">
+	  These tell Apache to process files with the
+	  <code class="filename">.rvt</code> and <code class="filename">.tcl</code>
+	  extensions as Rivet files.
+	</p><p style="width:90%">
+	  The characters encoding can be changed using the <span style="font-family:monospace"><span class="command"><strong>header type</strong></span></span> command,
+	  but you can also change the default charset for the whole site:
+	</p><pre class="programlisting">AddType 'application/x-httpd-rivet;charset=utf-8' rvt</pre><p style="width:90%">
+	   All the pages generated by Rivet on this site will be sent with a 
+	    <span style="font-family:monospace"><span class="command"><strong>Content-Type:'text/html;charset=utf-8'</strong></span></span> header.
+	</p><p style="width:90%">You may also wish to use Rivet files as index files for
+	directories.  In that case, you would do the following:</p><pre class="programlisting">DirectoryIndex index.html index.htm index.shtml index.cgi index.tcl index.rvt</pre><p style="width:90%">
+	  For other directives that Rivet provides for Apache
+	  configuration, please see <a class="xref" href="directives.html" title="Apache Rivet 3.1 Configuration">the section called “Apache Rivet 3.1 Configuration”</a>.
+	</p></li></ol></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="index.html"><img src="images/prev.png" alt="Prev"></a> </td><td width="20%" align="center"> </td><td width="40%" align="right"> <a accesskey="n" href="cmake.html"><img src="images/next.png" alt="Next"></a></td></tr><tr><td width="40%" align="left" valign="top">Apache Rivet 3.1 </td><td width="20%" align="center"><a accesskey="h" href="index.html"><img src="images/home.png" alt="Home"></a></td><td width="40%" align="right" valign="top"> Building Rivet 3.1 with CMake</td></tr></table></div></body></html>

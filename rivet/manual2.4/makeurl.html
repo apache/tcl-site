@@ -1,0 +1,17 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>makeurl</title><link rel="stylesheet" type="text/css" href="rivet.css"><meta name="generator" content="DocBook XSL Stylesheets V1.79.1"><link rel="home" href="index.html" title="Apache Rivet"><link rel="up" href="commands.html" title="Rivet Tcl Commands and Variables"><link rel="prev" href="lremove.html" title="lremove"><link rel="next" href="no_body.html" title="no_body"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">makeurl</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="lremove.html"><img src="images/prev.png" alt="Prev"></a> </td><th width="60%" align="center">Rivet Tcl Commands and Variables</th><td width="20%" align="right"> <a accesskey="n" href="no_body.html"><img src="images/next.png" alt="Next"></a></td></tr></table></div><div class="refentry"><div class="refentry.separator"><hr></div><a name="makeurl"></a><div class="titlepage"></div><div class="refnamediv"><h2>Name</h2><p>makeurl — construct url's based on hostname, port.</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="cmdsynopsis" style="width:80%"><div style="border: 1px solid #282; margin:1ex ; padding:.4ex; padding-left: 0.8ex;   word-spacing:1ex "><span style="font-weight:bold ; font-family:monospace">::rivet::makeurl</span>  ?<span style="font-family:monospace; font-weight: bold;"><em class="replaceable"><code>filename</code></em></span>?</div></div></div><div class="refsect1"><a name="idm1282"></a><h2>Description</h2><p style="width:90%">
+		  Create a self referencing URL from a filename. <span style="font-family:monospace"><span class="command"><strong>makeurl</strong></span></span>
+		  can be used in three ways
+		  </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"> No argument is passed to the command (returns the current script URL)</li><li class="listitem"> 
+					A relative style path is passed (returns the argument prepended with the
+					current script's URL
+		    </li><li class="listitem"> 
+					An absolute path is passed to the command: (returns the full URL to the
+					resource)
+		    </li></ul></div><p style="width:90%">
+		</p><p style="width:90%">
+		    Example of absolute path: </p><pre class="programlisting">::rivet::makeurl /tclp.gif</pre><p style="width:90%"> returns
+		    <code class="computeroutput">http://[hostname]:[port]/tclp.gif</code>.
+		    where hostname and port are the hostname and port of the
+		    server in question. The protocol prefix is inferred from the protocol in the URL referencing the
+		    script.
+		</p></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="lremove.html"><img src="images/prev.png" alt="Prev"></a> </td><td width="20%" align="center"><a accesskey="u" href="commands.html"><img src="images/up.png" alt="Up"></a></td><td width="40%" align="right"> <a accesskey="n" href="no_body.html"><img src="images/next.png" alt="Next"></a></td></tr><tr><td width="40%" align="left" valign="top">lremove </td><td width="20%" align="center"><a accesskey="h" href="index.html"><img src="images/home.png" alt="Home"></a></td><td width="40%" align="right" valign="top"> no_body</td></tr></table></div></body></html>

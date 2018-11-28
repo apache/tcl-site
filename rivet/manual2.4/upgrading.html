@@ -1,0 +1,32 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Upgrading from mod_dtcl or NeoWebScript</title><link rel="stylesheet" type="text/css" href="rivet.css"><meta name="generator" content="DocBook XSL Stylesheets V1.79.1"><link rel="home" href="index.html" title="Apache Rivet"><link rel="up" href="index.html" title="Apache Rivet"><link rel="prev" href="internals.html" title="Rivet Internals"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Upgrading from mod_dtcl or NeoWebScript</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="internals.html"><img src="images/prev.png" alt="Prev"></a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> </td></tr></table></div><div class="section"><div class="titlepage"><div><div><hr><h2 class="title" style="clear: both"><a name="upgrading"></a>Upgrading from mod_dtcl or NeoWebScript</h2></div></div></div><p style="width:90%">
+      Rivet is a break from the past, in that we, the authors, have
+      attempted to take what we like best about our past efforts, and
+      leave out or change things we no longer care for.  Backwards
+      compatibility was not a primary goal when creating Rivet, but we
+      do provide this information which may be of use to those wishing
+      to upgrade from mod_dtcl or NWS installations.
+    </p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="idm4238"></a>mod_dtcl</h3></div></div></div><p style="width:90%">
+	Rivet was originally based on the dtcl code, but it has
+	changed (improved!) quite a bit.  The concepts remain the
+	same, but many of the commands have changed.
+      </p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="idm4241"></a>NeoWebScript</h3></div></div></div><p style="width:90%">
+      	NWS was a server-side scripting environment based on the Apache
+        HTTP server and Safe-Tcl and it's not maintained anymore.      
+      </p><p style="width:90%">
+      	The biggest difference between Rivet and Neowebscript is that 
+      	Neowebscript was designed for shared hosting while Rivet is more oriented 
+      	toward a site that owns all of its content. In the words of Karl Lehenbauer,
+      	NWS author and Rivet Team member:
+      	</p><p style="width:90%">
+      	Rivet, however, is considerably more efficient, powerful, and 
+      	evolved, though it still can support multiple independent sites on a single 
+      	machine through its <span class="quote">“<span class="quote">separate virtual interpreters</span>”</span> mechanism.
+      	</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">By powerful, the difference is that the full power of Tcl is available 
+      		to webpage authors, not the restricted version that NWS provides. 
+      		For instance, you can read or write any file in the system that you 
+      		have permission to, require any package, open sockets and pipes, etc.</li><li class="listitem">By efficient, the difference is that Tcl interpreters survive past 
+      		the generation of a webpage and are reused again and again, reducing the 
+      		overhead of generating a page.
+      		</li><li class="listitem">By evolved, all of our efforts have gone toward Rivet for many 
+				years and so, you know, Rivet does more out of the box than Neowebscript did.</li></ul></div><p style="width:90%">
+      </p></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="internals.html"><img src="images/prev.png" alt="Prev"></a> </td><td width="20%" align="center"> </td><td width="40%" align="right"> </td></tr><tr><td width="40%" align="left" valign="top">Rivet Internals </td><td width="20%" align="center"><a accesskey="h" href="index.html"><img src="images/home.png" alt="Home"></a></td><td width="40%" align="right" valign="top"> </td></tr></table></div></body></html>

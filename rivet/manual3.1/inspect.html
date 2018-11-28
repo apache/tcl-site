@@ -1,0 +1,47 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>inspect</title><link rel="stylesheet" type="text/css" href="rivet.css"><meta name="generator" content="DocBook XSL Stylesheets V1.79.1"><link rel="home" href="index.html" title="Apache Rivet 3.1"><link rel="up" href="commands.html" title="Rivet Tcl Commands and Variables"><link rel="prev" href="incr0.html" title="incr0"><link rel="next" href="lassign_array.html" title="lassign_array"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">inspect</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="incr0.html"><img src="images/prev.png" alt="Prev"></a> </td><th width="60%" align="center">Rivet Tcl Commands and Variables</th><td width="20%" align="right"> <a accesskey="n" href="lassign_array.html"><img src="images/next.png" alt="Next"></a></td></tr></table></div><div class="refentry"><div class="refentry.separator"><hr></div><a name="inspect"></a><div class="titlepage"></div><div class="refnamediv"><h2>Name</h2><p>inspect — Introspection command for Rivet configuration</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="cmdsynopsis" style="width:80%"><div style="border: 1px solid #282; margin:1ex ; padding:.4ex; padding-left: 0.8ex;   word-spacing:1ex "><span style="font-weight:bold ; font-family:monospace">::rivet::inspect</span>  ?<span style="font-family:monospace; font-weight: bold;"><em class="replaceable"><code>configuration_section</code></em></span>? ?<span style="font-family:monospace; font-weight: bold;"><em class="replaceable"><code>configuration_parameter</code></em></span>?</div></div></div><div class="refsect1"><a name="idm1323"></a><h2>Description</h2><p style="width:90%">
+             <span style="font-family:monospace"><span class="command"><strong>::rivet::inspect</strong></span></span> provides introspection into the running
+             configuration of Rivet. Rivet's debug command uses it in order to gain insight
+             into the configuration, but it can be used in any script. 
+         </p><p style="width:90%">
+             <span style="font-family:monospace"><span class="command"><strong>::rivet::inspect</strong></span></span> can be called in 5 different forms
+         </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: square; "><li class="listitem" style="list-style-type: square">            
+               With no argument the command returns a dictionary with 3
+               keys: server, dir, user. Each key is associated to a subdictionary 
+               carrying the configuration as set for that request.  In this form the command is 
+               meant to support compatibility with previous versions of mod_rivet 
+               where three global arrays were created to be internally used by command
+               <span style="font-family:monospace"><span class="command"><strong>::rivet::debug</strong></span></span>.
+            </li><li class="listitem" style="list-style-type: square">
+					With the  ?<span style="font-family:monospace; font-weight: bold;">-all</span>? argument a dictionary
+					carrying the whole configuration for that specific request is returned. 
+					If a configuration parameter is not set it's given the
+					string <span class="emphasis"><em>undefined</em></span>. Returned configuration paramenters
+					are<pre class="programlisting">    "ServerInitScript",
+    "GlobalInitScript",
+    "ChildInitScript",
+    "ChildExitScript",
+    "BeforeScript",
+    "AfterScript",
+    "AfterEveryScript",
+    "AbortScript",
+    "ErrorScript",
+    "UploadMaxSize",
+    "UploadDirectory",
+    "UploadFilesToVar",
+    "SeparateVirtualInterps",
+    "HonorHeaderOnlyRequests"</pre></li><li class="listitem" style="list-style-type: square">
+					With one of the Rivet configuration directives listed above as
+					single argument <span style="font-family:monospace"><span class="command"><strong>::rivet::inspect</strong></span></span> returns the 
+					current value in the configuration record. 
+				</li><li class="listitem" style="list-style-type: square">
+					Passing the argument "script" <span style="font-family:monospace"><span class="command"><strong>::rivet::inspect</strong></span></span>
+					returns a path to the current script in a similar way 
+					core command <span style="font-family:monospace"><span class="command"><strong>[info script]</strong></span></span> does. The basic
+					difference is that the core command returns a relative path with
+					respect to the current working directory, whereas mod_rivet's command
+					returns the full path.
+				</li><li class="listitem" style="list-style-type: square">
+                    Passing the argument "server" <span style="font-family:monospace"><span class="command"><strong>::rivet::inspect</strong></span></span>
+                    returns a dictionary with these fields taken from the server record
+                    descriptor
+                    <div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">hostname: The server hostname </li><li class="listitem">admin: The admin's contact information</li><li class="listitem">errorlog: The name of the error log</li><li class="listitem">server_path: Pathname for ServerPath</li></ul></div></li></ul></div></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="incr0.html"><img src="images/prev.png" alt="Prev"></a> </td><td width="20%" align="center"><a accesskey="u" href="commands.html"><img src="images/up.png" alt="Up"></a></td><td width="40%" align="right"> <a accesskey="n" href="lassign_array.html"><img src="images/next.png" alt="Next"></a></td></tr><tr><td width="40%" align="left" valign="top">incr0 </td><td width="20%" align="center"><a accesskey="h" href="index.html"><img src="images/home.png" alt="Home"></a></td><td width="40%" align="right" valign="top"> lassign_array</td></tr></table></div></body></html>

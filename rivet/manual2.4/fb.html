@@ -1,0 +1,260 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>FormBroker</title><link rel="stylesheet" type="text/css" href="rivet.css"><meta name="generator" content="DocBook XSL Stylesheets V1.79.1"><link rel="home" href="index.html" title="Apache Rivet"><link rel="up" href="formbroker.html" title="The Form Broker"><link rel="prev" href="formbroker.html" title="The Form Broker"><link rel="next" href="help.html" title="Resources - How to Get Help"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">FormBroker</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="formbroker.html"><img src="images/prev.png" alt="Prev"></a> </td><th width="60%" align="center">The Form Broker</th><td width="20%" align="right"> <a accesskey="n" href="help.html"><img src="images/next.png" alt="Next"></a></td></tr></table></div><div class="refentry"><a name="fb"></a><div class="titlepage"></div><div class="refnamediv"><h2>Name</h2><p>FormBroker — 
+               Form broker object creator
+            </p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="cmdsynopsis" style="width:80%"><div style="border: 1px solid #282; margin:1ex ; padding:.4ex; padding-left: 0.8ex;   word-spacing:1ex "><span style="font-weight:bold ; font-family:monospace">::FormBroker</span>   <span style="font-family:monospace; font-weight: bold;">create</span>  ?<span style="font-family:monospace; font-weight: bold;">-quoting quoting_procedure</span>? ?<span style="font-family:monospace; font-weight: bold;">variable1 descriptor</span>? ?<span style="font-family:monospace; font-weight: bold;">variable2 descriptor</span>? ?<span style="font-family:monospace; font-weight: bold;">...</span>?</div></div></div><div class="refsect1"><a name="idm4003"></a><h2>Description</h2><p style="width:90%">
+               The command returns a reference to a form broker object by creating
+               a representation of the form data using the list of variable 
+               descriptors passed to <span style="font-family:monospace"><span class="command"><strong>create</strong></span></span>. Each descriptor
+               is a list of parameter or parameter-value pairs whose order has as only requirement
+               to begin with the <span style="font-family:monospace"><span class="command"><strong>{variable_name variable_type}</strong></span></span> pair.
+               A formbroker object handles natively integer, unsigned, string, boolean and email data types.
+               The programmer can defined new data type and provide in the descriptor a
+               reference to a validating procedure for that type.
+            </p><p style="width:90%">
+               The optional  ?<span style="font-family:monospace; font-weight: bold;">-quoting quoting_procedure</span>? switch assigns a procedure to
+               be called to quote the form response values. The quoting procedure is any
+               procedure accepting a single string argument and returning its quoted value. A most
+               basic example is the FormBroker default quoting procedure
+            </p><pre class="programlisting">proc force_quote {str} {
+    return "'$str'"
+}</pre><p style="width:90%">
+               Other parameters of a descriptors are
+            </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><span style="font-family:monospace"><span class="command"><strong>type</strong></span></span>: the data type of the variable</li><li class="listitem"><span style="font-family:monospace"><span class="command"><strong>bounds</strong></span></span>: limits of a variable value. The
+                  meanining of bounds depends on the variable type. For an integer is the
+                  maximum absolute value for that variable (for an unsigned the lower 
+                  limit is invariably 0), for a string is the maximum length of the string. The
+                  parameter bounds has no effect on an email data type
+               </li><li class="listitem"><span style="font-family:monospace"><span class="command"><strong>constrain</strong></span></span>: boolean value telling the variable has to be
+               forced to fulfill the constrain imposed by <span style="font-family:monospace"><span class="command"><strong>bounds</strong></span></span>. This field
+               is bidirectional in that it can be used by the validator to force the
+               variable value rewriting</li><li class="listitem"><span style="font-family:monospace"><span class="command"><strong>validator</strong></span></span>: name of the specialized validator for this variable</li><li class="listitem"><span style="font-family:monospace"><span class="command"><strong>default</strong></span></span>: default value of the variable if not set in a response array. 
+               When a variable is given a default value the form validation will not fail on the fact that
+               this variable may be missing from the form response array</li><li class="listitem"><span style="font-family:monospace"><span class="command"><strong>quote</strong></span></span>: the variable value has to be quoted when written back in
+               the response array</li><li class="listitem"><span style="font-family:monospace"><span class="command"><strong>validator</strong></span></span>: name of the validator procedure. The procedure
+                  can be any Tcl procedure accepting as argument the name of a dictionary
+                  holding the variable	internal representation. 
+               </li></ul></div><p style="width:90%">
+               An example of a form accepting four variable, one for each native type of a form broker object
+            </p><pre class="programlisting"> % set fbroker [::FormBroker create {var1 integer} {var2 unsigned} {var3 string} {var4 integer bounds {-10 100}}]
+::FormBroker::form0</pre></div><div class="refsect1"><a name="idm4030"></a><h2>Form broker object methods</h2><p style="width:90%">
+               The central method of a form broker object is <span style="font-family:monospace"><span class="command"><strong>validate</strong></span></span> 
+            </p><div class="variablelist"><dl class="variablelist"><dt></dt><dd><div style="padding:4 ; margin-top:3 ; margin-bottom:3 ; width:75%"><div class="cmdsynopsis" style="width:80%"><div style="border: 1px solid #282; margin:1ex ; padding:.4ex; padding-left: 0.8ex;   word-spacing:1ex "> <span style="font-family:monospace; font-weight: bold;"><em class="replaceable"><code>formBroker_object</code></em></span>   <span style="font-family:monospace; font-weight: bold;">validate</span>  ?<span style="font-family:monospace; font-weight: bold;">-forcequote</span>?  <span style="font-family:monospace; font-weight: bold;">response</span>  ?<span style="font-family:monospace; font-weight: bold;"><em class="replaceable"><code>response copy</code></em></span>?</div></div><div style="margin-bottom:1.5ex ; padding .5ex">
+                        The method <span style="font-family:monospace"><span class="command"><strong>validate</strong></span></span> takes as argument the name of an array of variables
+                        in the way this is produced by command <a class="xref" href="load_response.html" title="load_response">load_response</a>
+                        returning a form response. The optional argument <em class="replaceable"><code>-forcequote</code></em> causes the
+                        variable values to be rewritten and quoted. If the optional argument <em class="replaceable"><code>response copy</code></em>
+                        is present the validated response is copied in this array instead of the input   <span style="font-family:monospace; font-weight: bold;">response</span> 
+                        array.
+                     </div><div style="margin-bottom:1.5ex ; padding .5ex">
+                        If the form data have been validated the method <span style="font-family:monospace"><span class="command"><strong>validate</strong></span></span> returns <span class="emphasis"><em>true</em></span>
+                     </div><div style="margin-bottom:1.5ex ; padding .5ex">
+                        Example of form data validation (assuming ::rivet::load_response is loading the array <span class="emphasis"><em>response</em></span>
+                        with data taken from a form non displayed here)
+                     </div><pre class="programlisting">% set fbroker [::FormBroker create {var1 integer} {var2 unsigned} {var3 string} {var4 integer bounds {-10 100}}]
+::FormBroker::form0
+
+% ::rivet::load_response
+% parray response
+response(var1) = -10
+response(var2) = 20
+response(var3) = a string
+response(var4) = 50
+
+# let's keep a copy of the response
+
+% array set response_copy [array get response]
+
+# form data validation
+
+% $fbroker validate response
+true
+% $fbroker validate -forcequote response
+% parray response
+response(var1) = '-10'
+response(var2) = '20'
+response(var3) = 'a string'
+response(var4) = '50'
+
+# restore response original value
+
+% array set response [array get response_copy]
+% $fbroker validate -forcequote response response_copy
+true
+% parray response
+response(var1) = -10
+response(var2) = 20
+response(var3) = a string
+response(var4) = 50
+% parray response_copy 
+response_copy(var1) = '-10'
+response_copy(var2) = '20'
+response_copy(var3) = 'a string'
+response_copy(var4) = '50'
+
+# a form object has to be destroyed if it's not needed anymore
+
+% $fbroker destroy</pre></div></dd><dt></dt><dd><div style="padding:4 ; margin-top:3 ; margin-bottom:3 ; width:75%"><div class="cmdsynopsis" style="width:80%"><div style="border: 1px solid #282; margin:1ex ; padding:.4ex; padding-left: 0.8ex;   word-spacing:1ex "> <span style="font-family:monospace; font-weight: bold;"><em class="replaceable"><code>formBroker_object</code></em></span>   <span style="font-family:monospace; font-weight: bold;">failing</span> </div></div><div style="margin-bottom:1.5ex ; padding .5ex">
+                        In case the validation fails method <span style="font-family:monospace"><span class="command"><strong>failing</strong></span></span> returns a list
+                        of <span class="emphasis"><em>variable_name - error_condition</em></span> pairs for each 
+                        variable whose value failed to validate and was impossible to fix. This list
+                        is suitable to populate an array or used directly as a dictionary
+                     </div><pre class="programlisting">% package require formbroker
+1.0
+% set fbroker [::FormBroker create {var1 integer} \
+         {var2 unsigned} \
+         {var3 string} \
+         {var4 integer}]
+::FormBroker::form0
+% ::rivet::load_response
+
+# let's suppose we have an incomplete response
+% parray response
+response(var1) = '100'
+response(var2) = '20'
+response(var3) = 'a string'
+% $fbroker validate response
+false
+$fbroker failing
+var4 MISSING_VAR
+
+# this can be prevented by assigning a variable a default value
+
+% set fbroker [::FormBroker create {var1 integer} \
+                                   {var2 unsigned} \
+                                   {var3 string} \
+                                   {var4 integer default 0}]						
+::FormBroker::form1
+% $fbroker validate response
+true
+% parray response
+response(var1) = 100
+response(var2) = 20
+response(var3) = a string
+response(var4) = 0
+
+% set fbroker [::FormBroker create {var1 integer} \
+                                   {var2 unsigned} \
+                                   {var3 string length 10 constrain} \
+                                   {var4 integer bounds {-10 100}}]
+::FormBroker::form2
+% ::rivet::load_response
+
+# this time the response has invalid data
+
+% parray response
+response(var1) = 'aaaaa'
+response(var2) = '-20'
+response(var3) = 'a longer string that breaks the 10 chars max limit imposed'
+response(var4) = '150'
+% $fbroker validate response
+false
+% $fbroker failing
+var1 NOT_INTEGER var2 FB_OUT_OF_BOUNDS var4 FB_OUT_OF_BOUNDS</pre><div style="margin-bottom:1.5ex ; padding .5ex">
+                        Notice that even though $response(var3) exceeds the 10 characters max length imposed to variable <span class="emphasis"><em>var3</em></span>
+                        this variable is not in the list returned by <span style="font-family:monospace"><span class="command"><strong>failing</strong></span></span> because
+                        the 'constrain' attribute forced the truncation of the string. 
+                        In fact this applies also to the integer and unsigned values 
+                     </div><pre class="programlisting">% set fbroker [::FormBroker create {var1 integer bounds 10 constrain} \
+			            {var2 unsigned constrain} \
+			            {var3 string length 10 constrain} \
+			            {var4 integer bounds {-10 100} constrain}]
+::FormBroker::form0
+% ::rivet::load_response
+% parray response
+response(var1) = abcdef
+response(var2) = -20
+response(var3) = a longer string that breaks the 10 chars max limit imposed
+response(var4) = 150
+% $fbroker validate response response_copy
+false
+% $fbroker failing
+var1 NOT_INTEGER
+% parray response_copy 
+response_copy(var2) = 0
+response_copy(var3) = a longer s
+response_copy(var4) = 100</pre><div style="margin-bottom:1.5ex ; padding .5ex">
+                     The variable <span class="emphasis"><em>var1</em></span> could not be constrained because the input
+                     value "abcdef" is fundamentally incompatible
+                  </div></div></dd><dt></dt><dd><div style="padding:4 ; margin-top:3 ; margin-bottom:3 ; width:75%"><div class="cmdsynopsis" style="width:80%"><div style="border: 1px solid #282; margin:1ex ; padding:.4ex; padding-left: 0.8ex;   word-spacing:1ex "> <span style="font-family:monospace; font-weight: bold;"><em class="replaceable"><code>formBroker_object</code></em></span>   <span style="font-family:monospace; font-weight: bold;">response</span>  ?<span style="font-family:monospace; font-weight: bold;">response_array_name</span>?</div></div><div style="margin-bottom:1.5ex ; padding .5ex">
+                        The <span style="font-family:monospace"><span class="command"><strong>response</strong></span></span> method fills 
+                        the array whose name is passed as optional argument
+                        with the last response processing. If this argument is omitted
+                        the method creates an array named <span class="emphasis"><em>response</em></span>.
+                     </div><div style="margin-bottom:1.5ex ; padding .5ex">
+                        This method can be called also if no form response validation has taken place: it
+                        simply populates the array with the default values assigned to the form variables. As
+                        such is a way to create form default arrays to initialize forms created with
+                        the <a class="xref" href="form_package.html" title="form">form</a> package.
+                     </div><pre class="programlisting">set fbroker [::FormBroker create {var1 integer default 0} \
+            {var2 unsigned default 1} \
+            {var3 string} \
+            {var4 integer default 0}]
+% $fbroker response a
+% parray a
+a(var1) = 0
+a(var2) = 1
+a(var4) = 0</pre></div></dd><dt></dt><dd><div style="padding:4 ; margin-top:3 ; margin-bottom:3 ; width:75%"><div class="cmdsynopsis" style="width:80%"><div style="border: 1px solid #282; margin:1ex ; padding:.4ex; padding-left: 0.8ex;   word-spacing:1ex "> <span style="font-family:monospace; font-weight: bold;"><em class="replaceable"><code>formBroker_object</code></em></span>   <span style="font-family:monospace; font-weight: bold;">reset</span> </div></div><div style="margin-bottom:1.5ex ; padding .5ex">
+                     	The method resets the object to its initial defaults
+                     </div></div></dd></dl></div></div><div class="refsect1"><a name="idm4095"></a><h2>Writing a variable form validator</h2><p style="width:90%">
+            	The form broker is by no means restricted to work only with its native
+            	data types: you may define your own form variable types and have
+            	them validated with their own variable validator. 
+            </p><p style="width:90%">
+            	A validator is a function accepting a dictionary as single argument and
+            	must return either FB_OK, if the variable value is valid, 
+            	or any other used defined error code. The dictionary argument stores
+            	the variable descriptor used internally by the form broker. The dictionary
+            	keys are listed 
+				</p><p style="width:90%">
+            	Suppose you're writing a form text entry that demands as input a network 
+            	interface MAC address. 
+            	A mac address is represented by 6 hexadecimal octets separated by 
+            	either a <span class="quote">“<span class="quote">-</span>”</span> (Windows convention) or <span class="quote">“<span class="quote">:</span>”</span> 
+            	(Unix, Mac convention). The procedure <span style="font-family:monospace"><span class="command"><strong>validate_mac</strong></span></span>
+            	checks the validity of the mac address and if validation is successful it
+            	transforms its representation into the Unix form. 
+            	By setting the key <span class="quote">“<span class="quote">constrain</span>”</span>
+            	in the dictionary <span class="emphasis"><em>mac_address_d</em></span> the procedure
+            	is telling the form broker to copy the transformed value back
+            	in the input response array
+            </p><pre class="programlisting">proc validate_mac {_mac_address_d} {
+    upvar $_mac_address_d mac_address_d
+
+    dict with mac_address_d {
+		  
+        set var [string trim $var]
+        if {[regexp {^[[:xdigit:]]{2}([:-][[:xdigit:]]{2}){5}$} $var]} {
+
+            set var [string tolower $var]
+
+            # we normalize the mac address to the Unix form.
+            # The dash '-' characters in the windows representation 
+            # are replaced by columns ':'
+
+            set var [regsub -all -- {-} $var :]
+
+            # the 'constrain' field is bidirectional:
+            # it tells the validator to curb/change the value
+            # within bonds/forms/representation. By setting it the
+            # validator tells the FormBroker to copy the value
+            # back in the response array
+
+            set constrain 1
+            return FB_OK
+
+         } else {
+
+            return FB_WRONG_MAC
+
+         }
+
+    }
+
+}
+% set fbroker [::FormBroker create {mac mac_address validator validate_mac}]
+% ::rivet::load_response r
+% parray r
+r(mac) = 00-A1-B2-C3-D4-C5
+% $fbroker validate r
+true
+% parray r
+r(mac) = 00:a1:b2:c3:d4:c5</pre></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="formbroker.html"><img src="images/prev.png" alt="Prev"></a> </td><td width="20%" align="center"><a accesskey="u" href="formbroker.html"><img src="images/up.png" alt="Up"></a></td><td width="40%" align="right"> <a accesskey="n" href="help.html"><img src="images/next.png" alt="Next"></a></td></tr><tr><td width="40%" align="left" valign="top">The Form Broker </td><td width="20%" align="center"><a accesskey="h" href="index.html"><img src="images/home.png" alt="Home"></a></td><td width="40%" align="right" valign="top"> Resources - How to Get Help</td></tr></table></div></body></html>

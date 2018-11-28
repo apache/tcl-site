@@ -1,0 +1,16 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>import_keyvalue_pairs</title><link rel="stylesheet" type="text/css" href="rivet.css"><meta name="generator" content="DocBook XSL Stylesheets V1.79.1"><link rel="home" href="index.html" title="Apache Rivet"><link rel="up" href="commands.html" title="Rivet Tcl Commands and Variables"><link rel="prev" href="http_accept.html" title="http_accept"><link rel="next" href="include.html" title="include"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">import_keyvalue_pairs</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="http_accept.html"><img src="images/prev.png" alt="Prev"></a> </td><th width="60%" align="center">Rivet Tcl Commands and Variables</th><td width="20%" align="right"> <a accesskey="n" href="include.html"><img src="images/next.png" alt="Next"></a></td></tr></table></div><div class="refentry"><div class="refentry.separator"><hr></div><a name="import_keyvalue_pairs"></a><div class="titlepage"></div><div class="refnamediv"><h2>Name</h2><p>import_keyvalue_pairs — Import an argument list into the named array</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="cmdsynopsis" style="width:80%"><div style="border: 1px solid #282; margin:1ex ; padding:.4ex; padding-left: 0.8ex;   word-spacing:1ex "><span style="font-weight:bold ; font-family:monospace">::rivet::import_keyvalue_pairs</span>  ?<span style="font-family:monospace; font-weight: bold;">arrayName</span>? ?<span style="font-family:monospace; font-weight: bold;">argsList</span>?</div></div></div><div class="refsect1"><a name="idm1059"></a><h2>Description</h2><p style="width:90%">
+		    key-value pairs, like "-foo bar" are stored in the array  ?<span style="font-family:monospace; font-weight: bold;">arrayName</span>?.  
+		    In that case, the value "bar" would be stored in the element "foo"
+		</p><p style="width:90%">
+		    If "--" appears or a key doesn't begin with "-", the rest of the arg 
+		    list is stored in the special args element of the array.
+		</p><p style="width:90%">
+		    Example:
+		    </p><pre class="programlisting">::rivet::import_keyvalue_pairs keyvalue_map [list -a1 v1 -a2 v2 -a3 v3 -- 1 2 3 4 5]
+parray keyvalue_map
+
+keyvalue_map(a1)   = v1
+keyvalue_map(a2)   = v2
+keyvalue_map(a3)   = v3
+keyvalue_map(args) = 1 2 3 4 5</pre><p style="width:90%">
+		</p></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="http_accept.html"><img src="images/prev.png" alt="Prev"></a> </td><td width="20%" align="center"><a accesskey="u" href="commands.html"><img src="images/up.png" alt="Up"></a></td><td width="40%" align="right"> <a accesskey="n" href="include.html"><img src="images/next.png" alt="Next"></a></td></tr><tr><td width="40%" align="left" valign="top">http_accept </td><td width="20%" align="center"><a accesskey="h" href="index.html"><img src="images/home.png" alt="Home"></a></td><td width="40%" align="right" valign="top"> include</td></tr></table></div></body></html>

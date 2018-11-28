@@ -1,0 +1,31 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Building Rivet 3.1 with CMake</title><link rel="stylesheet" type="text/css" href="rivet.css"><meta name="generator" content="DocBook XSL Stylesheets V1.79.1"><link rel="home" href="index.html" title="Apache Rivet 3.1"><link rel="up" href="index.html" title="Apache Rivet 3.1"><link rel="prev" href="installation.html" title="Apache Rivet 3.1 Installation"><link rel="next" href="directives.html" title="Apache Rivet 3.1 Configuration"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Building Rivet 3.1 with CMake</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="installation.html"><img src="images/prev.png" alt="Prev"></a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="directives.html"><img src="images/next.png" alt="Next"></a></td></tr></table></div><div class="section"><div class="titlepage"><div><div><hr><h2 class="title" style="clear: both"><a name="cmake"></a>Building Rivet 3.1 with CMake</h2></div></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="idm185"></a>CMake build procedure and examples</h3></div></div></div><p style="width:90%">
+				Starting with 3.1 Rivet has adopted <a class="ulink" href="" target="_top">CMake</a>
+				as an alternate build system. The choice of introducing CMake was motivated by the
+				need of an easy to use and reliable build system for Windows installations. Nonetheless
+				the usability of CMake is by no means restricted to that OS and user familiar with this
+				tool set can adopt it to build mod_rivet also on Linux and other systems. 
+				The current CMake script requires CMake 3.2 or later. 
+				The <a class="ulink" href="" target="_top">CMake documentation</a>
+				page has a complete reference of CMake features
+        </p><p style="width:90%">Before running the build script cd into the cmake directory
+				</p><pre class="programlisting">cd cmake</pre><p style="width:90%">        		
+        	</p><p style="width:90%">With default arguments run the following sequence of commands that prepare the build directory
+			build the code and install the binary and application library
+				</p><pre class="programlisting">cmake -E make_directory build
+cmake -E chdir build cmake ..
+cmake --build build --target all --clean-first
+cmake --build build --target install</pre><p style="width:90%">	
+        </p><p style="width:90%">
+        		Installation on a Windows system with a custom installation of the Apache HTTP web server
+        		</p><pre class="programlisting">cmake -E make_directory build
+cmake -E chdir build cmake -DAPACHE_ROOT=G:/Apache24 ..
+cmake --build build --config Release --target install</pre><p style="width:90%">
+        </p><p style="width:90%">
+        		Building rivet on Windows with a 64 bit build of Apache requires specific
+        		directives to the Microsoft C compiler
+        		</p><pre class="programlisting">cmake -E make_directory build_64
+cmake -E chdir build_64 cmake -DAPACHE_ROOT=G:/Apache24 -G "Visual Studio 15 2017 Win64" ..
+cmake --build build_64 --config Release --target install</pre><p style="width:90%">
+ 				-G "..." can be set to any of the available 64-bit generators available under the platform
+ 				depending on your Windows version and Apache build
+        </p></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="installation.html"><img src="images/prev.png" alt="Prev"></a> </td><td width="20%" align="center"> </td><td width="40%" align="right"> <a accesskey="n" href="directives.html"><img src="images/next.png" alt="Next"></a></td></tr><tr><td width="40%" align="left" valign="top">Apache Rivet 3.1 Installation </td><td width="20%" align="center"><a accesskey="h" href="index.html"><img src="images/home.png" alt="Home"></a></td><td width="40%" align="right" valign="top"> Apache Rivet 3.1 Configuration</td></tr></table></div></body></html>

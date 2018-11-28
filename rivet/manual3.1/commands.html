@@ -1,0 +1,19 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Rivet Tcl Commands and Variables</title><link rel="stylesheet" type="text/css" href="rivet.css"><meta name="generator" content="DocBook XSL Stylesheets V1.79.1"><link rel="home" href="index.html" title="Apache Rivet 3.1"><link rel="up" href="index.html" title="Apache Rivet 3.1"><link rel="prev" href="request.html" title="Apache Child Processes Lifecycle and Request Processing"><link rel="next" href="shorthand.html" title="&lt;?= ... ?&gt;"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Rivet Tcl Commands and Variables</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="request.html"><img src="images/prev.png" alt="Prev"></a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="shorthand.html"><img src="images/next.png" alt="Next"></a></td></tr></table></div><div class="section"><div class="titlepage"><div><div><hr><h2 class="title" style="clear: both"><a name="commands"></a>Rivet Tcl Commands and Variables</h2></div></div></div><div class="section"><div class="titlepage"></div><p style="width:90%">
+			Starting with version 2.1.0 the Rivet command set moved into the 
+			<span style="font-family:monospace"><span class="command"><strong>::rivet</strong></span></span> namespace.
+		</p><p style="width:90%">
+			In order to preserve out of the box compatibility with existing scripts,
+			Rivet exports commands by default and makes them available for import 
+			into any namespace (global namespace included). 
+			Rivet's build system can be told not to export the command set by
+			passing the switch <span style="font-family:monospace"><span class="command"><strong>--disable-rivet-commands-export</strong></span></span> 
+			to 'configure'. In the future we may change this option's default.
+		</p><p style="width:90%">
+			Commands must be imported into another namespace with the command:
+		</p><p style="width:90%">
+			<span style="font-family:monospace"><span class="command"><strong>namespace import -force ::rivet::*</strong></span></span>
+		</p><p style="width:90%">
+			Whenever a new application is being developed and compatibility
+			issues can be confined within specific files, it is recommended
+			that commands be specified with their fully qualified names.
+		</p></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="request.html"><img src="images/prev.png" alt="Prev"></a> </td><td width="20%" align="center"> </td><td width="40%" align="right"> <a accesskey="n" href="shorthand.html"><img src="images/next.png" alt="Next"></a></td></tr><tr><td width="40%" align="left" valign="top">Apache Child Processes Lifecycle and Request Processing </td><td width="20%" align="center"><a accesskey="h" href="index.html"><img src="images/home.png" alt="Home"></a></td><td width="40%" align="right" valign="top"> &lt;?= ... ?&gt;</td></tr></table></div></body></html>

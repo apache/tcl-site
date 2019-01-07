@@ -16,17 +16,24 @@
         <div id="body">
             <div id="content">
                 <h2>Apache Rivet Release Notes</h2>
-                <p>Apache Rivet current stable version is 3.1.0</p>
+                <p>Apache Rivet current stable version is 3.1.1</p>
 
 <dl>
-    <dt>Rivet 3.1</dt>
+    <dt>Rivet 3.1 release notes</dt>
     <dd>
+        <h4>Rivet 3.1.1</h4>
+        <ul>
+            <li>Rivet 3.1.1 attempts to solve various problems with
+        			the CMake scripts needed to build mod_rivet on Windows</li>
+            <li>Several broken links in the manual were fixed</li>
+        </ul>
+        <h4>Rivet 3.1.0</h4>
         <ul>
             <li>Rivet 3.1.0 is a bug fix release of Rivet 3.0.3. The decision of
-        		releasing a new point release has been suggested by the nature of the fix that,
-        		even though unlikely, in principle might break existing code developed on 
-        		wrong assumptions about the behavior of commands 
-        		<b>::rivet::var_ps</b>
+        			releasing a new point release has been suggested by the nature of the fix that,
+        			even though unlikely, in principle might break existing code developed on 
+        			wrong assumptions about the behavior of commands 
+        			<b>::rivet::var_ps</b>
 
  and <b>::rivet::var_post</b>
             </li>
@@ -36,10 +43,10 @@
     <dd>
         <h4>Rivet 3.0.3</h4>
         <ul>
-            <li>Packages in DIO are not assuming anymore the rivet command set has
-                            been imported into the global namespace</li>
+            <li>Packages in DIO are anymore assuming the rivet command set has been 
+ 							    imported into the global namespace</li>
             <li>A minor change to ::rivet::xml provides a new form to 
-                            generate self closing elements</li>
+                         generate self closing elements</li>
         </ul>
         <h4>Rivet 3.0.2</h4>
         <ul>

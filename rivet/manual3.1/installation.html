@@ -7,7 +7,7 @@
             are already available for download.
         </p><p style="width:90%">
 				Rivet 2.x was restricted to work with the 
-				<a class="ulink" href="http://httpd.apache.org/docs/2.4/mod/prefork.html" target="_top">prefork</a> MPM
+				<a class="ulink" href="https://httpd.apache.org/docs/2.4/mod/prefork.html" target="_top">prefork</a> MPM
 				of the Apache HTTP webserver. MPM modules are fundamental components of the
 				webserver architecture. They provide multiple implementations of multiprocessing
 				in order to better suit specific OS features and scalability requirements.
@@ -17,13 +17,13 @@
 				system call. This model has several limitations but also some advantages. The 
 				solution we adopted tries to attain the best from any MPM as much as possible
 				and Rivet 3.1 is now able to run with the 
-				<a class="ulink" href="http://httpd.apache.org/docs/2.4/mod/worker.html" target="_top">worker</a> 
+				<a class="ulink" href="https://httpd.apache.org/docs/2.4/mod/worker.html" target="_top">worker</a> 
             and the
-            <a class="ulink" href="http://httpd.apache.org/docs/2.4/mod/event.html" target="_top">event</a> 
+            <a class="ulink" href="https://httpd.apache.org/docs/2.4/mod/event.html" target="_top">event</a> 
             MPMs. Rivet 3.1 has not been ported to OS of the Windows family
             but we feel that the current design would fit just fine with the Windows specific
             MPMs such as
-            <a class="ulink" href="http://httpd.apache.org/docs/2.4/mod/mpm_winnt.html" target="_top">winnt</a>.
+            <a class="ulink" href="https://httpd.apache.org/docs/2.4/mod/mpm_winnt.html" target="_top">winnt</a>.
         </p><p style="width:90%">
             If you need to build Apache Rivet yourself this is the procedure to follow
         </p><ol class="procedure" type="1"><li class="step"><p class="title"><b>Building Tcl: requirements</b></p><p style="width:90%">
@@ -45,7 +45,7 @@
             	to build mod_rivet 
             </p><p style="width:90%">
             	The 
-            	<a class="ulink" href="http://httpd.apache.org/" target="_top">Apache HTTP Webserver</a> development
+            	<a class="ulink" href="http://httpd.apache.org" target="_top">Apache HTTP Webserver</a> development
             	files and libraries are required along with the 
             	<a class="ulink" href="http://apr.apache.org/" target="_top">Apache Portable Runtime</a>
             	and the
@@ -67,8 +67,8 @@
               We will assume that you have Apache installed at this point.
               You must uncompress the Rivet sources in the directory where you
               wish to compile them.
-              </p><pre class="programlisting">gunzip rivet-3.1.0.tar.gz
-tar -xvf rivet-3.1.0.tar.gz</pre><p style="width:90%">
+              </p><pre class="programlisting">gunzip rivet-3.1.1.tar.gz
+tar -xvf rivet-3.1.1.tar.gz</pre><p style="width:90%">
             </p></li><li class="step"><p class="title"><b>Building Rivet</b></p><ol type="a" class="substeps"><li class="step"><p style="width:90%">
 	       Rivet uses the standard <span style="font-family:monospace"><span class="command"><strong>./configure ; make ; make install</strong></span></span>
 	       sequence which installs to their target directories the Apache module, the binary libraries and the

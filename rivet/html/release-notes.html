@@ -16,7 +16,94 @@
         <div id="body">
             <div id="content">
                 <h2>Apache Rivet Release Notes</h2>
-                <p>Apache Rivet current stable version is 3.1.1</p>
+                <p>Apache Rivet current stable version is 3.2.0</p>
+
+<dl>
+    <dt>Rivet 3.2.0 release notes</dt>
+    <dd>
+        <p>
+            <h4>Rivet 3.2.0</h4>
+
+
+      			This version fully embraces threads as the fundamental agents that run Tcl interpreters and
+      			respond to HTTP requests as content generators. As such threads now by default individually 
+      			terminate and release their resources when the <b>exit</b>
+
+ is called. 
+      			This policy change is relevant to the worker and lazy bridges which were
+      			developed to match the requirements imposed by the worker and event MPMs. The prefork bridge
+      			(which is bound to work with the prefork MPM) is unaffected.                    </p>
+        <p>The previous policy of forcing all threads to terminate before a child process calls Tcl_Exit
+      			can be reestablished setting the <b>SingleThreadExit</b>
+
+ boolean directive to <i>Off</i>
+
+. This is
+      			demanded in cases where calling Tcl_DeleteInterp is not safe because,for instance, not properly
+      			designed third-party extensions fail to correctly release their resources and can cause process crashes. 
+      			<!--Nonetheless this setting is discouraged because in case of high workload the <b>exit</b> command 
+      			can cause 505 internal server errors. -->
+        </p>
+        <p>
+		      		Even though Tcl's <b>exit</b>
+
+ command regular usage should be avoided in the design of code,
+		      		it can be useful in the development process as a tool to escape irreversible conditions 
+		      		thay may occur. The <b>exit</b>
+
+ command causes the deletion of a thread with its interpreters 
+		      		making possible to a bridge to replace it with a pristine one. 
+		      	                    </p>
+        <p>If you need to use unsafe extensions that may cause crashes when Tcl_DeleteInterp is called 
+		      	the recommended option is to select the prefork MPM in your server configuration</p>
+        <h4>New commands</h4>
+        <ul>
+            <li>The new <b>::rivet::thread_id</b>
+
+ command has been introduced. 
+		      		<b>::rivet::thread_id</b>
+
+ returns the hexadecimal thread id printed 
+		      		in the very same format adopted by the <b>::thread::id</b>
+
+ command (package Thread). 
+		      		Therefore if you need this information for debugging or logging you don't need to
+		      		require package Thread for that. <p>
+                    <b>[::rivet::thread_id -decimal]</b>
+
+ 
+		      		returns a decimal id that can be matched with the thread id printed in the
+						apache logs                                    </p>
+            </li>
+        </ul>
+        <h4>Fixed bugs</h4>
+        <ul>
+            <li>The <b>::rivet::upload</b>
+
+ command argument checking has been rewritten in order to have a terse
+						code for handling the several sub-command/argument combinations and also with the purpose
+						of fixing a bug that caused server crashes                            </li>
+        </ul>
+        <h4>Test suite extended</h4>
+        <ul>
+            <li>The server utility now handles the supplementary switches -mpm and -bridge<ul>
+                    <li>The first selects a specific MPM to run the tests</li>
+                    <li>The second selects a bridge different from the default. The only cases when the use of
+							both of them is meaningful is to test the worker or lazy bridge with the prefork MPM or the
+							lazy bridge with the worker MPM</li>
+                </ul>
+
+
+						e.g.:<pre>  ./runtests.tcl &lt;path-to-httpd&gt; -mpm worker</pre>
+            </li>
+        </ul>
+        <h4>Internals</h4>
+        <p>Modifications to the internal code that are transparent to the Tcl development include
+					an expansion of mod_rivet's global data structure that now contain all the server-wide configurable options
+					previously stored in the configuration records
+					</p>
+    </dd>
+</dl>
 
 <dl>
     <dt>Rivet 3.1 release notes</dt>
@@ -249,16 +336,16 @@
     <h4>Rivet &amp; Tcl</h4>
     <ul class="blocklist">
         <li class="navitem">
-            <a title="The Rivet development team" href="about.html">About Us - Contact</a>
+            <a class="navitem" title="The Rivet development team" href="about.html">About Us - Contact</a>
         </li>
         <li class="navitem">
-            <a title="Home of Apache Tcl related stuff" target="asf" href="http://tcl.apache.org/">Apache Tcl Home</a>
+            <a class="navitem" title="Home of Apache Tcl related stuff" target="asf" href="http://tcl.apache.org/">Apache Tcl Home</a>
         </li>
         <li class="navitem">
-            <a title="The Tcl Developer Xchange" target="tclxchange" class="extern" href="http://www.tcl.tk/">The Tcl/Tk Language</a>
+            <a class="extern" title="The Tcl Developer Xchange" target="tclxchange" href="http://www.tcl.tk/">The Tcl/Tk Language</a>
         </li>
         <li class="navitem">
-            <a title="Tcl community wiki site" target="tclwiki" class="extern" href="http://wiki.tcl.tk/">Tcl'ers Wiki</a>
+            <a class="extern" title="Tcl community wiki site" target="tclwiki" href="http://wiki.tcl.tk/">Tcl'ers Wiki</a>
         </li>
     </ul>
 </li>
@@ -266,13 +353,13 @@
     <h4>Getting Rivet to Work</h4>
     <ul class="blocklist">
         <li class="navitem">
-            <a title="Getting Rivet" href="download.html">Getting Rivet</a>
+            <a class="navitem" title="Getting Rivet" href="download.html">Getting Rivet</a>
         </li>
         <li class="navitem">
-            <a href="release%2dnotes.html">Release Notes</a>
+            <a class="navitem" title="Release Notes" href="release%2dnotes.html">Release Notes</a>
         </li>
         <li class="navitem">
-            <a title="Apache Rivet Bugzilla" class="extern" href="https://issues.apache.org/bugzilla/buglist.cgi?quicksearch=Rivet">Bug Reports</a>
+            <a class="extern" title="Apache Rivet Bugzilla" href="https://issues.apache.org/bugzilla/buglist.cgi?quicksearch=Rivet">Bug Reports</a>
         </li>
     </ul>
 </li>
@@ -280,10 +367,10 @@
     <h4>Documentation</h4>
     <ul class="blocklist">
         <li class="navitem">
-            <a href="hello%5fworld.html">Examples</a>
+            <a class="navitem" title="Examples" href="hello%5fworld.html">Examples</a>
         </li>
         <li class="navitem">
-            <a href="manuals.html">Manuals</a>
+            <a class="navitem" title="Manuals" href="manuals.html">Manuals</a>
         </li>
     </ul>
 </li>
@@ -294,7 +381,7 @@
     <h4>Acknowledgments</h4>
     <ul class="blocklist">
         <li class="navitem">
-            <a href="http://www.apache.org/foundation/thanks.html">ASF Sponsorship</a>
+            <a class="navitem" title="ASF Sponsorship" href="http://www.apache.org/foundation/thanks.html">ASF Sponsorship</a>
         </li>
     </ul>
 </li>

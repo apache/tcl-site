@@ -78,30 +78,36 @@
         </ul>
         <h4>Fixed bugs</h4>
         <ul>
+            <li>Fixed a rather sneaky bug that caused crashes when a rivet template existed but was not
+               readable because of its file permissions. Still Rivet created an empty cache entry
+               with an invalid object pointer</li>
             <li>The <b>::rivet::upload</b>
 
  command argument checking has been rewritten in order to have a terse
 						code for handling the several sub-command/argument combinations and also with the purpose
-						of fixing a bug that caused server crashes                            </li>
+						of fixing a bug that caused server crashes
+					                            </li>
         </ul>
         <h4>Test suite extended</h4>
         <ul>
-            <li>The server utility now handles the supplementary switches -mpm and -bridge<ul>
+            <li>The server utility now handles the supplementary switches -mpm and -bridge
+					<ul>
                     <li>The first selects a specific MPM to run the tests</li>
                     <li>The second selects a bridge different from the default. The only cases when the use of
 							both of them is meaningful is to test the worker or lazy bridge with the prefork MPM or the
-							lazy bridge with the worker MPM</li>
+							lazy bridge with the worker MPM
+						</li>
                 </ul>
 
 
-						e.g.:<pre>  ./runtests.tcl &lt;path-to-httpd&gt; -mpm worker</pre>
+				e.g.:<pre>  ./runtests.tcl &lt;path-to-httpd&gt; -mpm worker</pre>
             </li>
         </ul>
         <h4>Internals</h4>
         <p>Modifications to the internal code that are transparent to the Tcl development include
-					an expansion of mod_rivet's global data structure that now contain all the server-wide configurable options
-					previously stored in the configuration records
-					</p>
+					   an expansion of mod_rivet's global data structure that now contain all the server-wide configurable options
+					   previously stored in the configuration records
+				    </p>
     </dd>
 </dl>
 

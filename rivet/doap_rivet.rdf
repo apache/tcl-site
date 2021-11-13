@@ -6,59 +6,54 @@
          xmlns:asfext="http://projects.apache.org/ns/asfext#"
          xmlns:foaf="http://xmlns.com/foaf/0.1/">
 <!--
-  =======================================================================
-
-   Copyright (c) 2006 The Apache Software Foundation.  
-   All rights reserved.
-
-  =======================================================================
+    Licensed to the Apache Software Foundation (ASF) under one or more
+    contributor license agreements.  See the NOTICE file distributed with
+    this work for additional information regarding copyright ownership.
+    The ASF licenses this file to You under the Apache License, Version 2.0
+    (the "License"); you may not use this file except in compliance with
+    the License.  You may obtain a copy of the License at
+   
+         https://www.apache.org/licenses/LICENSE-2.0
+   
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
 -->
-  <Project rdf:about="http://tcl.apache.org/rivet/">
-    <created>2010-11-03</created>
-    <license rdf:resource="http://usefulinc.com/doap/licenses/asl20" />
-    <name>Apache Rivet</name>
-    <homepage rdf:resource="http://tcl.apache.org/rivet/" />
-    <asfext:pmc rdf:resource="http://tcl.apache.org" />
+  <Project rdf:about="https://tcl.apache.org/rivet">
+    <created>2021-11-13</created>
+    <license rdf:resource="https://spdx.org/licenses/Apache-2.0" />
+    <name>Apache rivet</name>
+    <homepage rdf:resource="https://tcl.apache.org/rivet" />
+    <asfext:pmc rdf:resource="https://tcl.apache.org" />
     <shortdesc>Server-side Tcl programming system combining ease of use and power</shortdesc>
-    <description>Apache Rivet is a system for creating dynamic web content via the Tcl programming language integrated with Apache Web Server. It is designed to be fast, powerful and extensible, consume few system resources, be easy to learn, and to provide the user with a platform that can also be used for other programming tasks outside the web (GUI's, system administration tasks, text processing, database manipulation, XML, and so on). In order to meet these goals Tcl programming language was chosen to combine with the Apache HTTP Server.
-</description>
+    <description>r</shortdesc>
+    <description>Apache Rivet is a system for creating dynamic web content via the Tcl programming language integrated with Apache Web Server. It is designed to be fast, powerful and extensible, consume few system resources, be easy to learn, and to provide the user with a platform that can also be used for other programming tasks outside the web (GUI's, system administration tasks, text processing, database manipulation, XML, and so on). In order to meet these goals Tcl programming language was chosen to combine with the Apache HTTP Server.</description>
     <bug-database rdf:resource="https://issues.apache.org/bugzilla/buglist.cgi?quicksearch=Rivet" />
-    <mailing-list rdf:resource="http://mail-archives.apache.org/mod_mbox/tcl-rivet-dev/" />
-    <download-page rdf:resource="http://www.apache.org/dyn/closer.cgi/tcl/rivet" />
+    <mailing-list rdf:resource="https://mail-archives.apache.org/mod_mbox/tcl-rivet-dev/" />
+    <download-page rdf:resource="https://downloads.apache.org/tcl/rivet/" />
     <programming-language>Tcl</programming-language>
-    <category rdf:resource="http://projects.apache.org/category/web-framework" />
+    <category rdf:resource="https://projects.apache.org/category/content" />
     <release>
       <Version>
-        <name>rivet-2.4</name>
-        <created>2018-11-28</created>
-        <revision>2.4.0</revision>
-      </Version>
-    </release>
-    <release>
-      <Version>
-        <name>rivet-3.1</name>
-        <created>2019-01-08</created>
-        <revision>3.1.1</revision>
-      </Version>
-    </release>
-    <release>
-      <Version>
-        <name>rivet-3.2</name>
-        <created>2020-11-07</created>
-        <revision>3.2.0</revision>
+        <name>rivet-3.2.1</name>
+        <created>2021-11-13</created>
+        <revision>3.2.1</revision>
       </Version>
     </release>
     <repository>
-      <SVNRepository>
-        <location rdf:resource="http://svn.apache.org/repos/asf/tcl/rivet/" />
-        <browse rdf:resource="http://svn.apache.org/repos/asf/tcl/rivet/" />
-      </SVNRepository>
+      <GitRepository>
+        <location rdf:resource="https://gitbox.apache.org/repos/asf/tcl-rivet.git"/>
+        <browse rdf:resource="https://gitbox.apache.org/repos/asf?p=tcl-rivet.git"/>
+      </GitRepository>
     </repository>
     <maintainer>
       <foaf:Person>
         <foaf:name>Massimo Manghi</foaf:name>
-          <foaf:mbox rdf:resource="mailto:mxmanghi@apache.org" />
+          <foaf:mbox rdf:resource="mailto:mxmanghi@apache.org"/>
       </foaf:Person>
     </maintainer>
   </Project>
 </rdf:RDF>
+

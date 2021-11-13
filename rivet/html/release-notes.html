@@ -16,33 +16,51 @@
         <div id="body">
             <div id="content">
                 <h2>Apache Rivet Release Notes</h2>
-                <p>Apache Rivet current stable version is 3.2.0</p>
+                <p>Apache Rivet current stable version is 3.2.1</p>
 
 <dl>
+    <dt>Rivet 3.2.1 release notes</dt>
+    <dd>
+        <p>
+            <h4>Rivet 3.2.1</h4>
+            <ul>
+                <li>The array built by command ::rivet::inspect server now shows also the current log level</li>
+                <li>Session package tables have larger columns for session data</li>
+                <li>Code for environment variables access extensively rewritten to make substantially
+      					convenient to call ::rivet::env instead of ::rivet::load_env (the manual for long time claimed
+      					that was the case but actually low level code execution was almost the same)</li>
+                <li>Introducing preprocessing macro RIVET_DEBUG_BUILD controlled by the --enable-rivet-debug-build
+      					configure switch. This is meant to enable builds that include specific code for the module
+      					development and debugging that can be excluded from common builds</li>
+                <li>Various manual improvements and correction</li>
+                <li>Fixed issues with the autotools build scripts</li>
+            </ul>
+        </p>
+    </dd>
     <dt>Rivet 3.2.0 release notes</dt>
     <dd>
         <p>
             <h4>Rivet 3.2.0</h4>
 
 
-      			This version fully embraces threads as the fundamental agents that run Tcl interpreters and
-      			respond to HTTP requests as content generators. As such threads now by default individually 
-      			terminate and release their resources when the <b>exit</b>
+	      			This version fully embraces threads as the fundamental agents that run Tcl interpreters and
+	      			respond to HTTP requests as content generators. As such threads now by default individually 
+	      			terminate and release their resources when the <b>exit</b>
 
  is called. 
-      			This policy change is relevant to the worker and lazy bridges which were
-      			developed to match the requirements imposed by the worker and event MPMs. The prefork bridge
-      			(which is bound to work with the prefork MPM) is unaffected.                    </p>
+	      			This policy change is relevant to the worker and lazy bridges which were
+	      			developed to match the requirements imposed by the worker and event MPMs. The prefork bridge
+	      			(which is bound to work with the prefork MPM) is unaffected.                    </p>
         <p>The previous policy of forcing all threads to terminate before a child process calls Tcl_Exit
-      			can be reestablished setting the <b>SingleThreadExit</b>
+	      			can be reestablished setting the <b>SingleThreadExit</b>
 
  boolean directive to <i>Off</i>
 
 . This is
-      			demanded in cases where calling Tcl_DeleteInterp is not safe because,for instance, not properly
-      			designed third-party extensions fail to correctly release their resources and can cause process crashes. 
-      			<!--Nonetheless this setting is discouraged because in case of high workload the <b>exit</b> command 
-      			can cause 505 internal server errors. -->
+	      			demanded in cases where calling Tcl_DeleteInterp is not safe because,for instance, not properly
+	      			designed third-party extensions fail to correctly release their resources and can cause process crashes. 
+	      			<!--Nonetheless this setting is discouraged because in case of high workload the <b>exit</b> command 
+	      			can cause 505 internal server errors. -->
         </p>
         <p>
 		      		Even though Tcl's <b>exit</b>
@@ -329,7 +347,7 @@
 
 
                 <div class="contentbottom">
-                    
+                    <div id="last_modified">Last Modified: 13-11-2021 15:44:27 UTC</div>
                 </div>
             </div>
 

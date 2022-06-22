@@ -28,6 +28,7 @@
     <homepage rdf:resource="https://tcl.apache.org/rivet" />
     <asfext:pmc rdf:resource="https://tcl.apache.org" />
     <shortdesc>Server-side Tcl programming system combining ease of use and power</shortdesc>
+    <description>r</shortdesc>
     <description>Apache Rivet is a system for creating dynamic web content via the Tcl programming language integrated with Apache Web Server. It is designed to be fast, powerful and extensible, consume few system resources, be easy to learn, and to provide the user with a platform that can also be used for other programming tasks outside the web (GUI's, system administration tasks, text processing, database manipulation, XML, and so on). In order to meet these goals Tcl programming language was chosen to combine with the Apache HTTP Server.</description>
     <bug-database rdf:resource="https://issues.apache.org/bugzilla/buglist.cgi?quicksearch=Rivet" />
     <mailing-list rdf:resource="https://mail-archives.apache.org/mod_mbox/tcl-rivet-dev/" />
@@ -36,9 +37,9 @@
     <category rdf:resource="https://projects.apache.org/category/content" />
     <release>
       <Version>
-        <name>rivet-3.2.1</name>
-        <created>2021-11-13</created>
-        <revision>3.2.1</revision>
+        <name>rivet-3.2.2</name>
+        <created>2022-06-20</created>
+        <revision>3.2.2</revision>
       </Version>
     </release>
     <repository>

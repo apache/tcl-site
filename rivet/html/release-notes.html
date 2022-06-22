@@ -16,10 +16,26 @@
         <div id="body">
             <div id="content">
                 <h2>Apache Rivet Release Notes</h2>
-                <p>Apache Rivet current stable version is 3.2.1</p>
+                <p>Apache Rivet current stable version is 3.2.2</p>
 
 <dl>
-    <dt>Rivet 3.2.1 release notes</dt>
+    <dt>Rivet 3.2 release notes</dt>
+    <dd>
+        <p>
+            <h4>Rivet 3.2.2</h4>
+            <ul>
+                <li>A memory leak was fixed in Rivet_Var (src/mod_rivet_ng/rivetCore.c)</li>
+                <li>Installation and TEA scripts were updated</li>
+                <li>The form [::rivet::var all] accepts an optional flat list argument 
+                    of key-value pairs which are defaults of query variables (yes, this argument must be 
+                    interpreted as a dictionary). This form generalizes the [::rivet::var get &lt;varname&gt; &lt;default&gt;] 
+                    command form to [::rivet::var all]</li>
+                <li>Tests for this new form were added. Also ::rivet::var related tests in general were improved</li>
+                <li>Configuration directive HonorHeaderOnlyReqs, though still supported, was renamed as HonorHeadRequests. 
+                    Default for this directive is now 'On'</li>
+            </ul>
+        </p>
+    </dd>
     <dd>
         <p>
             <h4>Rivet 3.2.1</h4>
@@ -37,7 +53,6 @@
             </ul>
         </p>
     </dd>
-    <dt>Rivet 3.2.0 release notes</dt>
     <dd>
         <p>
             <h4>Rivet 3.2.0</h4>
@@ -45,7 +60,7 @@
 
 	      			This version fully embraces threads as the fundamental agents that run Tcl interpreters and
 	      			respond to HTTP requests as content generators. As such threads now by default individually 
-	      			terminate and release their resources when the <b>exit</b>
+	      			terminated and they release their resources when the <b>exit</b>
 
  is called. 
 	      			This policy change is relevant to the worker and lazy bridges which were
@@ -58,10 +73,9 @@
 
 . This is
 	      			demanded in cases where calling Tcl_DeleteInterp is not safe because,for instance, not properly
-	      			designed third-party extensions fail to correctly release their resources and can cause process crashes. 
-	      			<!--Nonetheless this setting is discouraged because in case of high workload the <b>exit</b> command 
-	      			can cause 505 internal server errors. -->
-        </p>
+	      			designed or implemented third-party extensions fail to correctly release their resources and can
+                    cause process crashes. 
+		      	                    </p>
         <p>
 		      		Even though Tcl's <b>exit</b>
 
@@ -347,7 +361,7 @@
 
 
                 <div class="contentbottom">
-                    <div id="last_modified">Last Modified: 13-11-2021 15:44:27 UTC</div>
+                    <div id="last_modified">Last Modified: 21-06-2022 12:24:27 UTC</div>
                 </div>
             </div>
 

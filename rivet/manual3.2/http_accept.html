@@ -11,7 +11,7 @@
                 <span style="font-family:monospace"><span class="command"><strong>::rivet::http_accept</strong></span></span> returns a dictionary
                 value in which every content preference is matched to its
                 precedence value
-            </p><pre class="programlisting">load_headers
+            </p><pre class="programlisting">::rivet::load_headers
 set language_precedence [::rivet::http_accept $headers(Accept-Language)]
 foreach lan [dict keys $language_precedence] {
                 puts "$lan -&gt; [dict get $language_precedence $lan]"

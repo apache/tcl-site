@@ -36,9 +36,9 @@
     <category rdf:resource="https://projects.apache.org/category/content" />
     <release>
       <Version>
-        <name>rivet-3.2.3</name>
-        <created>2023-10-30</created>
-        <revision>3.2.3</revision>
+        <name>rivet-3.2.4</name>
+        <created>2024-02-18</created>
+        <revision>3.2.4</revision>
       </Version>
     </release>
     <repository>

@@ -3,7 +3,7 @@
 		    	command adding some extra error handling needed by mod_rivet design.
 		    	The rationale for Rivet to have its own <span style="font-family:monospace"><span class="command"><strong>::rivet::catch</strong></span></span> reads
 		    	as follows: within mod_rivet a script execution can be interrupted by either calling 
-		    	<span style="font-family:monospace"><span class="command"><strong>::rivet::exit</strong></span></span>(deprecated) or <span style="font-family:monospace"><span class="command"><strong>::rivet::abort_page</strong></span></span>.
+		    	<span style="font-family:monospace"><span class="command"><strong>::rivet::exit</strong></span></span> (not recommended) or <span style="font-family:monospace"><span class="command"><strong>::rivet::abort_page</strong></span></span>.
 		    	These commands implement a simple internal exception mechanism by 
             returning a special error code so that execution is in turn handed down to the
             <span style="font-family:monospace"><span class="command"><strong>AbortScript</strong></span></span> and eventually to <span style="font-family:monospace"><span class="command"><strong>AfterEveryScript</strong></span></span>
@@ -11,7 +11,7 @@
             control of the <span style="font-family:monospace"><span class="command"><strong>::catch</strong></span></span> command would need to do this chore itself,
             checking the error info and in case throw the error again if it had been originated
             by one of mod_rivet's exceptions calls. This is what <span style="font-family:monospace"><span class="command"><strong>::rivet::catch</strong></span></span>
-            does hiding the implementation details provide a better and more compatibile way to
+            does by hiding the implementation details and providing a better and more compatibile way to
             handle this condition.
 			</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="images/note.png"></td><th align="left">Note</th></tr><tr><td align="left" valign="top">
 				This command is not meant to replace the core command, thus it's not exported from the 

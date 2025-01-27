@@ -5,7 +5,7 @@
       themselves, the Subversion revision control system
       (<span style="font-family:monospace"><span class="command"><strong>svn</strong></span></span>) can provide you with information about
       what has been happening with the code.
-    </p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="idm4456"></a>Rivet approach to Apache Multiprocessing Models</h3></div></div></div><p style="width:90%">
+    </p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="id1363"></a>Rivet approach to Apache Multiprocessing Models</h3></div></div></div><p style="width:90%">
     		The Apache HTTP web server has an extremely modular architecture
     		that made it very popular among web developers. Most of the server
     		features can be implemented in external modules, including some of
@@ -39,7 +39,7 @@
 			at start up, only when requests come in Tcl execution threads are created.
 			This bridge is explained in detail in the <a class="xref" href="lazybridge.html" title="Example: the “Lazy” bridge">the section called “Example: the <span class="quote">“<span class="quote">Lazy</span>”</span> bridge”</a>.
 			Since the resource demand at startup is minimal this bridge should suit
-			development machines that go through frequent web server restarts.</li></ul></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="idm4469"></a>mod_rivet MPM Bridge callbacks</h3></div></div></div><p style="width:90%">
+			development machines that go through frequent web server restarts.</li></ul></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="id1364"></a>mod_rivet MPM Bridge callbacks</h3></div></div></div><p style="width:90%">
 			A bridge is a loadable library implementing different ways to handle
 			specific features needed to mod_rivet. It was originally meant as a way
 			to handle the prefork/worker/event MPM specificities, at the same time
@@ -119,8 +119,8 @@
 					status. So this macro (and associated function)	should hide from the module core function
 					the specific approach followed in a particular bridge
 				</li></ul></div><p style="width:90%">
-		</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="idm4503"></a>Server Initialization and MPM Bridge</h3></div></div></div><p style="width:90%">
-      </p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="idm4506"></a>RivetChan</h3></div></div></div><p style="width:90%">
+		</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="id1365"></a>Server Initialization and MPM Bridge</h3></div></div></div><p style="width:90%">
+      </p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="id1366"></a>RivetChan</h3></div></div></div><p style="width:90%">
 			The <span class="structname">RivetChan</span> system was created in
 			order to have an actual Tcl channel that we could redirect
 			standard output to.  This enables us use, for instance, the
@@ -130,7 +130,7 @@
 			Tcl's regular standard output is replaced with an instance of
 			this channel type, so that, by default, output will go to the
 			web page. 
-      </p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="idm4511"></a>The <span style="font-family:monospace"><span class="command"><strong>global</strong></span></span> Command</h3></div></div></div><p style="width:90%">
+      </p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="id1367"></a>The <span style="font-family:monospace"><span class="command"><strong>global</strong></span></span> Command</h3></div></div></div><p style="width:90%">
 			Rivet aims to run standard Tcl code with as few surprises as
 			possible.  At times this involves some compromises - in this
 			case regarding the <span style="font-family:monospace"><span class="command"><strong>global</strong></span></span> command.  The
@@ -145,7 +145,7 @@
 			you really need a true global variable, use either
 			<span style="font-family:monospace"><span class="command"><strong>::global</strong></span></span> or add the :: namespace qualifier
 			to variables you wish to make global.
-      </p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="idm4519"></a>Page Parsing, Execution and Caching</h3></div></div></div><p style="width:90%">
+      </p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="id1368"></a>Page Parsing, Execution and Caching</h3></div></div></div><p style="width:90%">
 			When a Rivet page is requested, it is transformed into an
 			ordinary Tcl script by parsing the file for the &lt;? ?&gt;
 			processing instruction tags.  Everything outside these tags
@@ -171,7 +171,7 @@
 	    	without having to reload it (and re-parse it) from the disk.
 	    	The number of scripts stored in memory is configurable.  This
 	    	feature can significantly improve performance.
-      </p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="idm4527"></a>Extending Rivet by developing C code procedures</h3></div></div></div><p style="width:90%">
+      </p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="id1369"></a>Extending Rivet by developing C code procedures</h3></div></div></div><p style="width:90%">
             Rivet endows the Tcl interpreter with new commands
             serving as interface between the application layer and the
             Apache web server. Many of these commands
@@ -246,7 +246,7 @@ check_fail my_cmd &lt;arg1&gt; &lt;arg2&gt;
 mycmd-&gt;1</pre>
                 The value associated to the test must be 0 in case the
                 command doesn't need to test the <span style="font-family:monospace"><span class="command"><strong>private-&gt;r</strong></span></span> pointer.
-            </li></ul></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="idm4551"></a>Debugging Rivet and Apache</h3></div></div></div><p style="width:90%">
+            </li></ul></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="id1370"></a>Debugging Rivet and Apache</h3></div></div></div><p style="width:90%">
 			If you are interested in hacking on Rivet, you're welcome to
 			contribute!  Invariably, when working with code, things go
 			wrong, and it's necessary to do some debugging.  In a server

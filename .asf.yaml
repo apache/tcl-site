@@ -3,6 +3,8 @@ staging:
   profile: ~
   whoami:  master
  
+#publish:
+#  whoami:  rivet3.2.5
  
 publish:
   whoami:  asf-site

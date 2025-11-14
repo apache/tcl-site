@@ -299,35 +299,35 @@ static void* APR_THREAD_FUNC request_processor (apr_thread_t *thd, void *data)
 
     /* The server configuration */
 
-    rsc = RIVET_SERVER_CONF(w-&gt;gt;server-&gt;gt;module_config);
+    rsc = RIVET_SERVER_CONF(w-&gt;server-&gt;module_config);
 
     /* Rivet_ExecutionThreadInit creates and returns the thread private data. */
 
     private = Rivet_ExecutionThreadInit();
 
-    /* A bridge creates and stores in private-&gt;gt;ext its own thread private
+    /* A bridge creates and stores in private-&gt;ext its own thread private
      * data. The lazy bridge is no exception. We just need a flag controlling
      * the execution and an intepreter control structure */
 
-    private-&gt;gt;ext = apr_pcalloc(private-&gt;gt;pool,sizeof(mpm_bridge_specific));
-    private-&gt;gt;ext-&gt;gt;keep_going = true;
-    RIVET_POKE_INTERP(private,rsc,Rivet_NewVHostInterp(private-&gt;gt;pool,rsc-&gt;gt;default_cache_size));
-    private-&gt;gt;ext-&gt;gt;interp-&gt;gt;channel = private-&gt;gt;channel;
+    private-&gt;ext = apr_pcalloc(private-&gt;pool,sizeof(mpm_bridge_specific));
+    private-&gt;ext-&gt;keep_going = true;
+    RIVET_POKE_INTERP(private,rsc,Rivet_NewVHostInterp(private-&gt;pool,rsc-&gt;default_cache_size));
+    private-&gt;ext-&gt;interp-&gt;channel = private-&gt;channel;
 
     /* The worker thread can respond to a single request at a time therefore
        must handle and register its own Rivet channel */
 
-    Tcl_RegisterChannel(private-&gt;gt;ext-&gt;gt;interp-&gt;gt;interp,*private-&gt;gt;channel);
+    Tcl_RegisterChannel(private-&gt;ext-&gt;interp-&gt;interp,*private-&gt;channel);
 
     /* From the rivet_server_conf structure we determine what scripts we
      * are using to serve requests */
 
-    private-&gt;gt;ext-&gt;gt;interp-&gt;gt;scripts =
-            Rivet_RunningScripts (private-&gt;gt;pool,private-&gt;gt;ext-&gt;gt;interp-&gt;gt;scripts,rsc);
+    private-&gt;ext-&gt;interp-&gt;scripts =
+            Rivet_RunningScripts (private-&gt;pool,private-&gt;ext-&gt;interp-&gt;scripts,rsc);
 
     /* This is the standard Tcl interpreter initialization */
 
-    Rivet_PerInterpInit(private-&gt;gt;ext-&gt;gt;interp,private,w-&gt;gt;server,private-&gt;gt;pool);
+    Rivet_PerInterpInit(private-&gt;ext-&gt;interp,private,w-&gt;server,private-&gt;pool);
 
     /* The child initialization is fired. Beware the terminological
      * trap: we inherited from fork capable systems the term 'child'
@@ -338,60 +338,60 @@ static void* APR_THREAD_FUNC request_processor (apr_thread_t *thd, void *data)
 
     Lazy_RunConfScript(private,w,child_init);
 
-    idx = w-&gt;gt;conf-&gt;gt;idx;
+    idx = w-&gt;conf-&gt;idx;
 
     /* After the thread has run the configuration script we
        increment the threads counter */
 
-    apr_thread_mutex_lock(module_globals-&gt;gt;mpm-&gt;gt;vhosts[idx].mutex);
-    (module_globals-&gt;gt;mpm-&gt;gt;vhosts[idx].threads_count)++;
-    apr_thread_mutex_unlock(module_globals-&gt;gt;mpm-&gt;gt;vhosts[idx].mutex);
+    apr_thread_mutex_lock(module_globals-&gt;mpm-&gt;vhosts[idx].mutex);
+    (module_globals-&gt;mpm-&gt;vhosts[idx].threads_count)++;
+    apr_thread_mutex_unlock(module_globals-&gt;mpm-&gt;vhosts[idx].mutex);
 
     /* The thread is now set up to serve request within the the
-     * do...while loop controlled by private-&gt;gt;keep_going  */
+     * do...while loop controlled by private-&gt;keep_going  */
 
-    apr_thread_mutex_lock(w-&gt;gt;mutex);
+    apr_thread_mutex_lock(w-&gt;mutex);
     do
     {
-        while ((w-&gt;gt;status != init) &amp;&amp; (w-&gt;gt;status != thread_exit)) {
-            apr_thread_cond_wait(w-&gt;gt;condition,w-&gt;gt;mutex);
+        while ((w-&gt;status != init) &amp;&amp; (w-&gt;status != thread_exit)) {
+            apr_thread_cond_wait(w-&gt;condition,w-&gt;mutex);
         }
-        if (w-&gt;gt;status == thread_exit) {
-            private-&gt;gt;ext-&gt;gt;keep_going = false;
+        if (w-&gt;status == thread_exit) {
+            private-&gt;ext-&gt;keep_going = false;
             continue;
         }
 
-        w-&gt;gt;status = processing;
+        w-&gt;status = processing;
 
         /* Content generation */
 
-        private-&gt;gt;req_cnt++;
-        private-&gt;gt;ctype = w-&gt;gt;ctype;
-        private-&gt;gt;r = w-&gt;gt;r;
+        private-&gt;req_cnt++;
+        private-&gt;ctype = w-&gt;ctype;
+        private-&gt;r = w-&gt;r;
 
-        w-&gt;gt;ap_sts = Rivet_SendContent(private);
+        w-&gt;ap_sts = Rivet_SendContent(private);
 
-        w-&gt;gt;status = done;
-        apr_thread_cond_signal(w-&gt;gt;condition);
-        while (w-&gt;gt;status == done) {
-            apr_thread_cond_wait(w-&gt;gt;condition,w-&gt;gt;mutex);
+        w-&gt;status = done;
+        apr_thread_cond_signal(w-&gt;condition);
+        while (w-&gt;status == done) {
+            apr_thread_cond_wait(w-&gt;condition,w-&gt;mutex);
         }
 
         /* rescheduling itself in the array of idle threads */
 
-        apr_thread_mutex_lock(module_globals-&gt;gt;mpm-&gt;gt;vhosts[idx].mutex);
-        *(lazy_tcl_worker **) apr_array_push(module_globals-&gt;gt;mpm-&gt;gt;vhosts[idx].array) = w;
-        apr_thread_mutex_unlock(module_globals-&gt;gt;mpm-&gt;gt;vhosts[idx].mutex);
+        apr_thread_mutex_lock(module_globals-&gt;mpm-&gt;vhosts[idx].mutex);
+        *(lazy_tcl_worker **) apr_array_push(module_globals-&gt;mpm-&gt;vhosts[idx].array) = w;
+        apr_thread_mutex_unlock(module_globals-&gt;mpm-&gt;vhosts[idx].mutex);
 
-    } while (private-&gt;gt;ext-&gt;gt;keep_going);
-    apr_thread_mutex_unlock(w-&gt;gt;mutex);
+    } while (private-&gt;ext-&gt;keep_going);
+    apr_thread_mutex_unlock(w-&gt;mutex);
 
     Lazy_RunConfScript(private,w,child_exit);
-    ap_log_error(APLOG_MARK,APLOG_DEBUG,APR_SUCCESS,w-&gt;gt;server,"processor thread orderly exit");
+    ap_log_error(APLOG_MARK,APLOG_DEBUG,APR_SUCCESS,w-&gt;server,"processor thread orderly exit");
 
-    apr_thread_mutex_lock(module_globals-&gt;gt;mpm-&gt;gt;vhosts[idx].mutex);
-    (module_globals-&gt;gt;mpm-&gt;gt;vhosts[idx].threads_count)--;
-    apr_thread_mutex_unlock(module_globals-&gt;gt;mpm-&gt;gt;vhosts[idx].mutex);
+    apr_thread_mutex_lock(module_globals-&gt;mpm-&gt;vhosts[idx].mutex);
+    (module_globals-&gt;mpm-&gt;vhosts[idx].threads_count)--;
+    apr_thread_mutex_unlock(module_globals-&gt;mpm-&gt;vhosts[idx].mutex);
 
     apr_thread_exit(thd,APR_SUCCESS);
     return NULL;

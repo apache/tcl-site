@@ -1,10 +1,23 @@
 # Staging and publishing profile for yourproject-website.git:
 staging:
-  profile: ~
-  whoami:  master
- 
+  profile:
+  whoami: master
+
 #publish:
 #  whoami:  rivet3.2.5
- 
 publish:
-  whoami:  asf-site
+  whoami: asf-site
+github:
+  rulesets:
+    - name: "Default Branch Protection"
+      type: branch
+      branches:
+        includes:
+          - "~DEFAULT_BRANCH"
+          - "release/*"
+          - "rel/*"
+        excludes: []
+      bypass_teams:
+        - root
+      restrict_deletion: true
+      restrict_force_push: true

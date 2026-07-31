@@ -336,6 +336,17 @@ li ol, li ul {
     float:      right;
 }
 
+.floatleft {
+    padding:    5px;
+    margin:     0 auto 5px 5px;
+    float:      left;
+}
+
+div.floatleft {
+    padding:    10px auto 10px 10px;
+    margin:     0.5em auto 0.5em 1em;
+}
+
 .programlisting {
     margin-top: 1em;
     background: #FFCC66;

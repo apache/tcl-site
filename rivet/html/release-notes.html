@@ -16,17 +16,29 @@
         <div id="body">
             <div id="content">
                 <h2>Apache Rivet Release Notes</h2>
-                <p>Apache Rivet current stable version is <span>3.2.8</span>
+                <p>Apache Rivet current stable version is <span>3.3.0</span>
 </p>
 
 <dl>
+    <dt>Rivet 3.3.0 release notes</dt>
+    <dd>
+        <p>
+            <h4>Rivet 3.3.0</h4>
+            <p>This is the first series of rivet releases officially supporting Tcl9.0 and Tcl8.6</p>
+            <ul>
+                <li>Rivet test suite rebased on UTF-8 instead of ISO-8859-1</li>
+                <li>Fixed bugs in DIO dio_Tdbc and Sqlite3 column values formatter</li>
+                <li>Support for Tcl channels version 5 and adopt explicit fields form for C structure initialization</li>
+                <li>Fixed possible memory leak in Rivet_ProcessorCleanup (worker threads management)</li>
+            </ul>
+        </p>
+    </dd>
     <dt>Rivet 3.2.8 release notes</dt>
     <dd>
         <p>
             <h4>Rivet 3.2.8</h4>
             <ul>
-                <li>Now shipping DIO 1.2.3 and DIO_Tdbc 1.2.5 with several
-                        bug fixes</li>
+                <li>Now shipping DIO 1.2.3 and DIO_Tdbc 1.2.5 with several bug fixes</li>
                 <li>DIO Tdbc class connector now recommended for any supported DBMS</li>
             </ul>
         </p>
@@ -37,8 +49,7 @@
             <h4>Rivet 3.2.6</h4>
             <ul>
                 <li>Now shipping DIO 1.2</li>
-                <li>DIO classes revised to devolve the special fields formatting
-                        to a series of 'formatters' classes</li>
+                <li>DIO classes revised to devolve the special fields formatting to a series of 'formatters' classes</li>
                 <li>Now supporting TDBC based DBMS connectors</li>
             </ul>
         </p>
@@ -57,8 +68,7 @@
         <p>
             <h4>Rivet 3.2.4</h4>
             <ul>
-                <li>Fixed regression bug that failed to run ChildExitScripts
-                        when running the prefork and worker bridges</li>
+                <li>Fixed regression bug that failed to run ChildExitScripts when running the prefork and worker bridges</li>
             </ul>
         </p>
     </dd>
@@ -420,7 +430,7 @@
 
 
                 <div class="contentbottom">
-                    <div id="last_modified">Last Modified: 30-07-2024 21:55:29 UTC</div>
+                    <div id="last_modified">Last Modified: 31-07-2026 01:04:56 UTC</div>
                 </div>
             </div>
 

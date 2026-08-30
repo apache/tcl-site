@@ -16,16 +16,39 @@
         <div id="body">
             <div id="content">
                 <h2>Apache Rivet Release Notes</h2>
-                <p>Apache Rivet current stable version is <span>3.3.0</span>
+                <p>Apache Rivet current stable version is <span>3.3.1</span>
 </p>
 
 <dl>
+    <dt>Rivet 3.3.1 release notes</dt>
+    <dd>
+        <p>
+            <h4>Rivet 3.3.1</h4>
+            <ul>
+                <li>Resolved bug in command <em>::rivet::upload</em>
+
+ that made it incompatible with Tcl9. Add test
+                        in order to ward the code from future regressions                                    </li>
+                <li>Fixed latent bug in <em>::rivet::cookie</em>
+
+. The command excluded handling of
+                        cookie values carrying '='. Actually this is a valid character and only the first
+                        '=' charachter in a cookie value must be handled as separator of the pair (cookie_name,cookie_value)                                    </li>
+            </ul>
+        </p>
+    </dd>
     <dt>Rivet 3.3.0 release notes</dt>
     <dd>
         <p>
             <h4>Rivet 3.3.0</h4>
             <p>This is the first series of rivet releases officially supporting Tcl9.0 and Tcl8.6</p>
             <ul>
+                <li>New commands <em>::rivet::write_binary</em>
+
+ and <em>::rivet::with_binary_output</em>
+
+
+                        send binary output by appropriately controlling the rivet channel settings                                    </li>
                 <li>Rivet test suite rebased on UTF-8 instead of ISO-8859-1</li>
                 <li>Fixed bugs in DIO dio_Tdbc and Sqlite3 column values formatter</li>
                 <li>Support for Tcl channels version 5 and adopt explicit fields form for C structure initialization</li>
@@ -430,7 +453,7 @@
 
 
                 <div class="contentbottom">
-                    <div id="last_modified">Last Modified: 31-07-2026 01:04:56 UTC</div>
+                    <div id="last_modified">Last Modified: 26-08-2026 09:03:19 UTC</div>
                 </div>
             </div>
 
@@ -449,10 +472,10 @@
             <a class="navitem" title="Home of Apache Tcl related stuff" target="asf" href="http://tcl.apache.org/">Apache Tcl Home</a>
         </li>
         <li class="navitem">
-            <a class="extern" title="The Tcl Developer Xchange" target="tclxchange" href="http://www.tcl.tk/">The Tcl/Tk Language</a>
+            <a class="extern" title="The Tcl Developer Xchange" target="tclxchange" href="https://www.tcl-lang.org/">The Tcl/Tk Language</a>
         </li>
         <li class="navitem">
-            <a class="extern" title="Tcl community wiki site" target="tclwiki" href="http://wiki.tcl.tk/">Tcl'ers Wiki</a>
+            <a class="extern" title="Tcl community wiki site" target="tclwiki" href="https://wiki.tcl-lang.org/">Tcl'ers Wiki</a>
         </li>
     </ul>
 </li>
@@ -505,4 +528,3 @@
     </div>
     <div style="text-align: center; font-size: 0.75em;">Design downloaded from <a href="http://www.freewebtemplates.com/">free website templates</a>.</div></body>
 </html>
-

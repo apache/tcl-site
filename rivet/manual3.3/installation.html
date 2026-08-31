@@ -30,7 +30,7 @@
                 Installing Rivet is about endowing the Apache HTTP webserver with the ability
                 of running scripts written with the Tcl programming language. 
                 Therefore the 
-                <a class="ulink" href="http://www.tcl.tk/" target="_top">Tcl</a> language with its runtime,  
+                <a class="ulink" href="https://www.tcl-lang.org/" target="_top">Tcl</a> language with its runtime,  
                 development libraries and shell (≥8.5.10 required, ≥8.6.0 recommended) 
                 have to be installed. Building Rivet you will 
                 have to tell the scripts where the Tcl libraries are located via the
@@ -38,16 +38,16 @@
                 (see below).
             </p><p style="width:90%">
             	Several Tcl packages shipped with rivet need also the 
-            	<a class="ulink" href="http://core.tcl.tk/itcl/" target="_top">Itcl</a>
+            	<a class="ulink" href="https://core.tcl-lang.org/itcl/" target="_top">Itcl</a>
             	OOP extension of Tcl. If you need to run any of the 
             	Session or DIO
             	packages you need to install this language extension but you don't need it
             	to build mod_rivet 
             </p><p style="width:90%">
             	The 
-            	<a class="ulink" href="http://httpd.apache.org" target="_top">Apache HTTP Webserver</a> development
+            	<a class="ulink" href="https://httpd.apache.org/" target="_top">Apache HTTP Webserver</a> development
             	files and libraries are required along with the 
-            	<a class="ulink" href="http://apr.apache.org/" target="_top">Apache Portable Runtime</a>
+            	<a class="ulink" href="https://apr.apache.org/" target="_top">Apache Portable Runtime</a>
             	and the
             	<a class="ulink" href="http://httpd.apache.org/apreq/" target="_top">libapreq</a> library. 
             </p></li><li class="step"><p class="title"><b>Building Rivet</b></p></li><li class="step"><p class="title"><b>Getting and Installing the Apache Sources</b></p><p style="width:90%">
@@ -62,13 +62,13 @@
             	and libraries. Check the documentation of the package manager of your OS 
             	to find out how to install this software
             </p></li><li class="step"><p class="title"><b>Uncompress Sources</b></p><p style="width:90%">
-                Download the sources at <a class="ulink" href="http://tcl.apache.org/rivet/html/download.html" target="_top">http://tcl.apache.org/rivet/html/download.html</a>.  
+                Download the sources at <a class="ulink" href="https://tcl.apache.org/rivet/html/download.html" target="_top">https://tcl.apache.org/rivet/html/download.html</a>.  
             </p><p style="width:90%">
               We will assume that you have Apache installed at this point.
               You must uncompress the Rivet sources in the directory where you
               wish to compile them.
-              </p><pre class="programlisting">gunzip rivet-3.3.0.tar.gz
-tar -xvf rivet-3.3.0.tar.gz</pre><p style="width:90%">
+              </p><pre class="programlisting">gunzip rivet-3.3.1.tar.gz
+tar -xvf rivet-3.3.1.tar.gz</pre><p style="width:90%">
             </p></li><li class="step"><p class="title"><b>Building Rivet</b></p><ol type="a" class="substeps"><li class="step"><p style="width:90%">
 	       Rivet uses the standard <span style="font-family:monospace"><span class="command"><strong>./configure ; make ; make install</strong></span></span>
 	       sequence which installs to their target directories the Apache module, the binary libraries and the

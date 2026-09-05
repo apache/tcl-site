@@ -6,7 +6,7 @@ staging:
 #publish:
 #  whoami:  rivet3.2.5
 publish:
-  whoami: asf-site
+  whoami: rivet-3.3.1
 github:
   rulesets:
     - name: "Default Branch Protection"
